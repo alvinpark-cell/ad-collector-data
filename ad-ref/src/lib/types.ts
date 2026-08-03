@@ -21,6 +21,9 @@ export interface AdItem {
   device?: 'pc' | 'mo';
   buttons?: LandingButton[];
   screenshotPath?: string;
+  // 이 소재가 게재 중인 것으로 확인된 월 목록 ('YYYY-MM'). URL/adId 중복으로 새 항목이
+  // 추가되지 않는 달에도, 다시 수집됐다면 현재 월이 여기 누적됨 (월별 신규/지속 소재 파악용)
+  seenInMonths?: string[];
 }
 
 export interface LandingButton {

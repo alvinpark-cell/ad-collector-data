@@ -100,13 +100,33 @@ async function processAndSaveItems(rawItems, settings) {
   // URL 비교만으로는 같은 광고가 중복 저장될 수 있음 -> adId(libraryID)로 한 번 더 방어
   const existingAdIds = new Set(existingIndex.map(i => i.adId).filter(Boolean));
 
+  // 중복(이미 index.json에 있는) 광고를 다시 만났을 때 "이번 달에도 여전히 게재 중"임을
+  // 기록해두기 위한 조회용 맵 - Meta/Google처럼 월 1회씩만 도는 수집에서, 매번 새 항목으로
+  // 안 잡히더라도 "이 소재가 몇 월에 있었는지" 월별 화면에서 파악할 수 있게 함
+  const existingByAdId = new Map(existingIndex.filter(i => i.adId).map(i => [i.adId, i]));
+  const existingByUrl = new Map(
+    existingIndex.map(i => [normalizeUrl(i.mediaUrl || i.thumbnailUrl), i]).filter(([k]) => k)
+  );
+  const currentMonthKey = new Date().toISOString().slice(0, 7); // 'YYYY-MM'
+  const markSeenThisMonth = (existing) => {
+    if (!existing) return;
+    if (!Array.isArray(existing.seenInMonths)) existing.seenInMonths = [];
+    if (!existing.seenInMonths.includes(currentMonthKey)) existing.seenInMonths.push(currentMonthKey);
+  };
+
   for (const item of rawItems) {
-    if (item.adId && existingAdIds.has(item.adId)) continue;
+    if (item.adId && existingAdIds.has(item.adId)) {
+      markSeenThisMonth(existingByAdId.get(item.adId));
+      continue;
+    }
 
     const rawUrlKey = item.mediaUrl || item.thumbnailUrl;
     if (!rawUrlKey) continue;
     const urlKey = normalizeUrl(rawUrlKey);
-    if (existingUrls.has(urlKey)) continue;
+    if (existingUrls.has(urlKey)) {
+      markSeenThisMonth(existingByUrl.get(urlKey));
+      continue;
+    }
 
     if (item.mediaType === 'image') {
       // 이미지: 다운로드 + pHash 중복 제거
@@ -184,6 +204,7 @@ async function processAndSaveItems(rawItems, settings) {
 
     existingUrls.add(urlKey);
     if (item.adId) existingAdIds.add(item.adId);
+    item.seenInMonths = [currentMonthKey];
     newItems.push(item);
   }
 
