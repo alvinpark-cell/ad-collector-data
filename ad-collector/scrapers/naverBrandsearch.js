@@ -191,7 +191,7 @@ async function collectBrandsearch(browser, brand, device, screenshotDir) {
 
   const date = new Date().toISOString().slice(0,10).replace(/-/g,'');
   const unique = Math.random().toString(36).slice(2,6);
-  const screenshotFilename = `bs_${brand}_${device}_${date}_${unique}.png`;
+  const screenshotFilename = `bs_${brand}_${device}_${date}_${unique}.jpg`;
   const screenshotPath = path.join(screenshotDir, screenshotFilename);
 
   const vpWidth = isMobile ? 390 : 1280;
@@ -203,8 +203,12 @@ async function collectBrandsearch(browser, brand, device, screenshotDir) {
   // 캡처되어 두 슬라이드가 겹쳐 찍히는 문제가 있음 -> transform 값이 연속 2회 동일할 때까지 대기
   await waitForCarouselSettle(page, isMobile);
 
+  // PNG -> JPEG(품질 82)로 전환: 로컬 저장 용량이 주차별로 계속 누적되는 문제 완화
+  // (스크린샷은 육안 확인용이라 약간의 손실 압축은 무방, 용량은 대략 1/5~1/8 수준)
   await page.screenshot({
     path: screenshotPath,
+    type: 'jpeg',
+    quality: 82,
     clip: {
       x: Math.max(0, fullBox.x),
       y: Math.max(0, fullBox.y),
@@ -297,6 +301,18 @@ async function collectBrandsearch(browser, brand, device, screenshotDir) {
               subText: '',
             });
           }
+        });
+      }
+
+      // premiumBottom(주로 PC): 메인 이미지 광고 유닛 바로 아래 붙는 하단 아이콘형
+      // 썸네일 목록이 별도 블록(bottomscroll_ 등)이 아니라 이 유닛 안에
+      // notab.small.single로 중첩되어 있는 경우가 있음 (실측: 키움/미래에셋/삼성/한국투자
+      // PC 전부 이 구조였고, 기존 코드가 이 경로를 안 봐서 썸네일이 통째로 누락되고 있었음.
+      // MO는 반대로 이 내용이 별도 bottomscroll_ 블록으로 나와서 기존 로직으로 이미 잡힘)
+      if (data.notab && data.notab.small && Array.isArray(data.notab.small.single)) {
+        data.notab.small.single.forEach(function(item, idx) {
+          var label = '썸네일' + (idx + 1);
+          if (item.text && item.link) addButton(item.text, item.link, label);
         });
       }
     }
@@ -805,6 +821,23 @@ async function captureGeneral(page, containerId, brand, device, screenshotDir, i
   return { screenshotFilename, buttons };
 }
 
+// 일부 랜딩 도메인(예: onestopsamsungpop.co.kr)이 20초 안에 응답을 못 주는 경우가 잦아서
+// 타임아웃을 30초로 늘리고, 그래도 실패하면 1회 재시도(총 2번 시도)한다.
+// 타임아웃만 늘리면 항상 느린 도메인 하나 때문에 전체 수집이 느려지고, 재시도만 하면
+// 20초 안에 응답 못 하는 도메인은 재시도해도 또 실패하므로 둘을 같이 적용.
+async function gotoWithRetry(page, url, timeout, retries) {
+  let lastErr;
+  for (let attempt = 0; attempt <= retries; attempt++) {
+    try {
+      await page.goto(url, { waitUntil: 'networkidle', timeout });
+      return;
+    } catch (e) {
+      lastErr = e;
+    }
+  }
+  throw lastErr;
+}
+
 // 랜딩 페이지 캡처 (네이버 리다이렉트 처리 + 에러페이지 필터 + 중복 방문 방지)
 function buildLandingEntry(btn, cached) {
   return Object.assign({
@@ -842,7 +875,7 @@ async function captureLandings(context, buttons, brand, device, screenshotDir, i
 
     try {
       const landingPage = await context.newPage();
-      await landingPage.goto(btn.href, { waitUntil: 'networkidle', timeout: 20000 });
+      await gotoWithRetry(landingPage, btn.href, 30000, 1);
       await landingPage.waitForTimeout(1800);
       const finalUrlCheck = landingPage.url();
 
@@ -871,9 +904,9 @@ async function captureLandings(context, buttons, brand, device, screenshotDir, i
 
       const w = isMobile ? 390 : 1280;
       await landingPage.setViewportSize({ width: w, height: 800 });
-      const landingFilename = `landing_${brand}_${device}_${Date.now()}_${unique}.png`;
+      const landingFilename = `landing_${brand}_${device}_${Date.now()}_${unique}.jpg`;
       const landingPath = path.join(screenshotDir, landingFilename);
-      await landingPage.screenshot({ path: landingPath, clip: { x: 0, y: 0, width: w, height: 800 } });
+      await landingPage.screenshot({ path: landingPath, type: 'jpeg', quality: 78, clip: { x: 0, y: 0, width: w, height: 800 } });
 
       // 메인 배너 슬라이드(imgGallery)로 수집된 버튼이면 원본 슬라이드 이미지도 다운로드
       // (스크린샷은 캐러셀의 "현재 보이는 한 장"뿐이라 나머지 슬라이드 실제 배너 이미지는

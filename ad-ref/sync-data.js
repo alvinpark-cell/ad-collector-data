@@ -84,9 +84,21 @@ function syncData() {
   console.log('동기화 완료!');
 }
 
+// 진짜 미러링: src에 없는 dst 파일/폴더는 삭제한다.
+// (예전엔 새 파일만 추가하고 지워진 원본은 절대 안 지워서, ad-collector 쪽에서
+//  중복 제거/정리된 이미지·영상이 ad-ref/public/data에는 계속 남아 몇 GB씩 쌓였음 - 2026-08-03 정리)
 function copyDirSync(src, dst) {
   if (!fs.existsSync(dst)) fs.mkdirSync(dst, { recursive: true });
-  fs.readdirSync(src).forEach(file => {
+
+  const srcNames = new Set(fs.existsSync(src) ? fs.readdirSync(src) : []);
+
+  fs.readdirSync(dst).forEach(name => {
+    if (srcNames.has(name)) return;
+    const dstFile = path.join(dst, name);
+    fs.rmSync(dstFile, { recursive: true, force: true });
+  });
+
+  srcNames.forEach(file => {
     const srcFile = path.join(src, file);
     const dstFile = path.join(dst, file);
     if (fs.statSync(srcFile).isDirectory()) {

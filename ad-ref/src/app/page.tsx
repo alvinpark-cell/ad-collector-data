@@ -9,6 +9,7 @@ import PowerlinkMonitor from '@/components/PowerlinkMonitor';
 import WeekSelector from '@/components/WeekSelector';
 import Sidebar, { ViewKey } from '@/components/Sidebar';
 import { getMonthWeekKey, sortMonthWeekKeysDesc } from '@/lib/weekUtils';
+import { diffBrandSnapshot } from '@/lib/bsDiff';
 
 const BRANDS = [
   '메리츠증권', '키움증권', '미래에셋증권', '삼성증권', 'NH투자증권',
@@ -72,6 +73,42 @@ export default function Home() {
     if (!bsSelectedWeek) return bsData;
     return bsData.filter((i: any) => getMonthWeekKey(i.collectedAt) === bsSelectedWeek);
   }, [bsData, bsSelectedWeek]);
+
+  // 브랜드+디바이스별 전체 수집 이력(시간순 오름차순) - 직전 스냅샷과 비교해 변경사항을 찾기 위함
+  const bsHistoryByBrand = useMemo(() => {
+    const map: Record<string, { pc: any[]; mo: any[] }> = {};
+    BRANDS.forEach(brand => {
+      const items = bsData.filter((i: any) => i.advertiserName === brand);
+      map[brand] = {
+        pc: items.filter((i: any) => i.device === 'pc').sort((a: any, b: any) => a.collectedAt.localeCompare(b.collectedAt)),
+        mo: items.filter((i: any) => i.device === 'mo').sort((a: any, b: any) => a.collectedAt.localeCompare(b.collectedAt)),
+      };
+    });
+    return map;
+  }, [bsData]);
+
+  const findPrevBsEntry = (history: any[], current: any) => {
+    if (!current) return null;
+    const idx = history.findIndex((e: any) => e.id === current.id);
+    if (idx <= 0) return null;
+    return history[idx - 1];
+  };
+
+  // 현재 선택된 주차 기준, 브랜드별 변경사항을 한 곳에 모아 보여주기 위한 요약
+  // (브랜드 카드를 하나하나 펼쳐보지 않아도 캘린더 바로 아래에서 전체를 한눈에 파악 가능하도록)
+  const bsWeeklySummary = useMemo(() => {
+    return BRANDS.map(brand => {
+      const brandBs = bsWeekData.filter((i: any) => i.advertiserName === brand);
+      if (brandBs.length === 0) return null;
+      const pc = brandBs.filter((i: any) => i.device === 'pc').sort((a: any, b: any) => b.collectedAt.localeCompare(a.collectedAt))[0];
+      const mo = brandBs.filter((i: any) => i.device === 'mo').sort((a: any, b: any) => b.collectedAt.localeCompare(a.collectedAt))[0];
+      const history = bsHistoryByBrand[brand] || { pc: [], mo: [] };
+      const prevPc = findPrevBsEntry(history.pc, pc);
+      const prevMo = findPrevBsEntry(history.mo, mo);
+      const diff = diffBrandSnapshot(prevPc, pc, prevMo, mo);
+      return { brand, diff, changeCount: diff.added.length + diff.removed.length };
+    }).filter((v): v is { brand: string; diff: ReturnType<typeof diffBrandSnapshot>; changeCount: number } => v !== null);
+  }, [bsWeekData, bsHistoryByBrand]);
 
   const brandStats = useMemo(() => {
     return BRANDS.map(brand => {
@@ -589,6 +626,37 @@ export default function Home() {
               <>
                 <h2 style={{ fontSize: '20px', fontWeight: 700, marginBottom: '16px' }}>네이버 브랜드검색 모니터링</h2>
                 <WeekSelector weekKeys={bsWeekKeys} selected={bsSelectedWeek} onSelect={setBsSelectedWeek} />
+
+                {bsWeeklySummary.length > 0 && (
+                  <div style={{ marginBottom: '16px', padding: '14px 18px', background: 'rgba(26,26,36,0.6)', border: '1px solid #2e2e3e', borderRadius: '10px' }}>
+                    <p style={{ fontSize: '11px', fontWeight: 700, color: '#8888aa', marginBottom: '10px' }}>이번 주 변경사항</p>
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+                      {bsWeeklySummary.map(({ brand, diff, changeCount }) => {
+                        const changed = !diff.isFirstSnapshot && changeCount > 0;
+                        return (
+                          <div key={brand}
+                            onClick={() => changed && !bsExpanded.has(brand) && toggleBsExpand(brand)}
+                            style={{
+                              display: 'flex', alignItems: 'center', gap: '6px', padding: '7px 12px', borderRadius: '8px',
+                              cursor: changed ? 'pointer' : 'default',
+                              background: changed ? 'rgba(251,146,60,0.15)' : 'rgba(136,136,170,0.06)',
+                              border: `1px solid ${changed ? '#fb923c' : '#2e2e3e'}`,
+                            }}>
+                            <span style={{ fontSize: '12px', fontWeight: 600, color: '#e2e2f0' }}>{brand}</span>
+                            {diff.isFirstSnapshot ? (
+                              <span style={{ fontSize: '10px', color: '#6b7280' }}>최초 수집</span>
+                            ) : changed ? (
+                              <span style={{ fontSize: '12px', fontWeight: 800, color: '#fb923c' }}>🔴 변경 있음</span>
+                            ) : (
+                              <span style={{ fontSize: '10px', color: '#666680' }}>변경없음</span>
+                            )}
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                )}
+
                 {bsData.length === 0 ? (
                   <div style={{ textAlign: 'center', padding: '60px', color: '#8888aa' }}>
                     <div style={{ fontSize: '40px', marginBottom: '12px' }}>🔎</div>
@@ -602,6 +670,8 @@ export default function Home() {
                       const pc = brandBs.filter((i: any) => i.device === 'pc').sort((a: any, b: any) => b.collectedAt.localeCompare(a.collectedAt))[0];
                       const mo = brandBs.filter((i: any) => i.device === 'mo').sort((a: any, b: any) => b.collectedAt.localeCompare(a.collectedAt))[0];
                       const isOpen = bsExpanded.has(brand);
+                      const summaryEntry = bsWeeklySummary.find(s => s.brand === brand);
+                      const showDiffBox = isOpen && summaryEntry && !summaryEntry.diff.isFirstSnapshot && summaryEntry.changeCount > 0;
 
                       return (
                         <div key={brand} style={{ background: 'rgba(26,26,36,0.8)', border: '1px solid #2e2e3e', borderRadius: '12px', overflow: 'hidden' }}>
@@ -617,6 +687,23 @@ export default function Home() {
 
                           {isOpen && (
                             <div style={{ borderTop: '1px solid #2e2e3e', padding: '20px' }}>
+                              {showDiffBox && summaryEntry && (
+                                <div style={{ marginBottom: '20px', padding: '12px 16px', background: 'rgba(251,146,60,0.08)', border: '1px solid rgba(251,146,60,0.3)', borderRadius: '10px' }}>
+                                  <p style={{ fontSize: '11px', fontWeight: 700, color: '#fb923c', marginBottom: '8px' }}>이번 주 변경사항</p>
+                                  <ul style={{ margin: 0, paddingLeft: '18px', display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                                    {summaryEntry.diff.added.map((c, i) => (
+                                      <li key={`a${i}`} style={{ fontSize: '11px', color: '#e2e2f0' }}>
+                                        🆕 <span style={{ color: '#8888aa' }}>[{c.device.toUpperCase()}·{c.area}]</span> {c.text || '(제목 없음)'} 신규
+                                      </li>
+                                    ))}
+                                    {summaryEntry.diff.removed.map((c, i) => (
+                                      <li key={`r${i}`} style={{ fontSize: '11px', color: '#e2e2f0' }}>
+                                        ❌ <span style={{ color: '#8888aa' }}>[{c.device.toUpperCase()}·{c.area}]</span> {c.text || '(제목 없음)'} 종료
+                                      </li>
+                                    ))}
+                                  </ul>
+                                </div>
+                              )}
                               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', marginBottom: '24px' }}>
                                 {[{ item: pc, label: 'PC' }, { item: mo, label: 'MO' }].map(({ item, label }) => (
                                   <div key={label} style={{ background: '#22222f', border: '1px solid #2e2e3e', borderRadius: '10px', overflow: 'hidden' }}>
