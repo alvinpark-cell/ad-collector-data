@@ -15,6 +15,7 @@ export interface AdItem {
   searchType: 'keyword' | 'brand';
   adStartedAt?: string;
   adLastShownAt?: string;
+  detailsLink?: string;
   placements?: string;
   collectedAt: string;
   device?: 'pc' | 'mo';
@@ -39,4 +40,26 @@ export interface FavoriteItem {
   name: string;
   folder: string;
   addedAt: string;
+}
+
+export interface PowerlinkAd {
+  rank: number;
+  advertiserName: string | null;
+  displayUrl: string | null;
+  title: string;
+  description: string | null;
+  adPeriod: string | null;
+  landingUrl: string | null;
+  adId: string | null;
+  imageUrl?: string | null;
+  localImage?: string;
+}
+
+export interface PowerlinkItem {
+  id: string;
+  platform: 'naver_powerlink';
+  device: 'pc' | 'mo';
+  keyword: string;
+  ads: PowerlinkAd[];
+  collectedAt: string;
 }

@@ -4,6 +4,10 @@ import { useState, useEffect, useMemo } from 'react';
 import { AdItem, FavoriteItem } from '@/lib/types';
 import AdCard from '@/components/AdCard';
 import AdModal from '@/components/AdModal';
+import TrendAnalysis from '@/components/TrendAnalysis';
+import PowerlinkMonitor from '@/components/PowerlinkMonitor';
+import WeekSelector from '@/components/WeekSelector';
+import { getMonthWeekKey, sortMonthWeekKeysDesc } from '@/lib/weekUtils';
 
 const BRANDS = [
   '메리츠증권', '키움증권', '미래에셋증권', '삼성증권', 'NH투자증권',
@@ -18,26 +22,34 @@ export default function Home() {
   const [changes, setChanges] = useState<Changes>({ newAds: [], endedAds: [], lastUpdated: null });
   const [bsData, setBsData] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
-  const [view, setView] = useState<'dashboard' | 'brand' | 'search' | 'favorites' | 'brandsearch'>('dashboard');
+  const [view, setView] = useState<'dashboard' | 'brand' | 'search' | 'favorites' | 'brandsearch' | 'trend' | 'powerlink'>('dashboard');
   const [selectedBrand, setSelectedBrand] = useState<string | null>(null);
   const [brandPlatform, setBrandPlatform] = useState<'all' | 'meta' | 'google'>('all');
   const [brandMedia, setBrandMedia] = useState<'all' | 'image' | 'video'>('all');
   const [searchText, setSearchText] = useState('');
-  const [searchPlatform, setSearchPlatform] = useState<'all' | 'meta' | 'google'>('all');
   const [searchMedia, setSearchMedia] = useState<'all' | 'image' | 'video'>('all');
+  const [sliceYears, setSliceYears] = useState<Set<string>>(new Set());
+  const [sliceMonths, setSliceMonths] = useState<Set<string>>(new Set());
+  const [sliceAdvertisers, setSliceAdvertisers] = useState<Set<string>>(new Set());
+  const [slicePlatforms, setSlicePlatforms] = useState<Set<string>>(new Set());
   const [selectedItem, setSelectedItem] = useState<AdItem | null>(null);
   const [favorites, setFavorites] = useState<FavoriteItem[]>([]);
   const [favPopup, setFavPopup] = useState<string | null>(null);
   const [favName, setFavName] = useState('');
   const [favFolder, setFavFolder] = useState('기본 즐겨찾기');
   const [bsExpanded, setBsExpanded] = useState<Set<string>>(new Set());
+  const [bsSelectedWeek, setBsSelectedWeek] = useState<string | null>(null);
 
   useEffect(() => {
     Promise.all([
       fetch('/data/index.json').then(r => r.json()).catch(() => []),
       fetch('/data/changes.json').then(r => r.json()).catch(() => ({ newAds: [], endedAds: [], lastUpdated: null })),
       fetch('/data/bs_index.json').then(r => r.json()).catch(() => []),
-    ]).then(([d, c, bs]) => { setData(d); setChanges(c); setBsData(bs); setLoading(false); });
+    ]).then(([d, c, bs]) => {
+      setData(d); setChanges(c); setBsData(bs); setLoading(false);
+      const weeks = sortMonthWeekKeysDesc(bs.map((i: any) => getMonthWeekKey(i.collectedAt)));
+      if (weeks.length > 0) setBsSelectedWeek(weeks[0]);
+    });
     try {
       const s = localStorage.getItem('ad_ref_favorites'); if (s) setFavorites(JSON.parse(s));
       const n = localStorage.getItem('ad_ref_username'); if (n) setFavName(n);
@@ -64,6 +76,12 @@ export default function Home() {
     if (selectedBrand) { setSelectedBrand(null); }
     else { setView('dashboard'); }
   };
+
+  const bsWeekKeys = useMemo(() => sortMonthWeekKeysDesc(bsData.map((i: any) => getMonthWeekKey(i.collectedAt))), [bsData]);
+  const bsWeekData = useMemo(() => {
+    if (!bsSelectedWeek) return bsData;
+    return bsData.filter((i: any) => getMonthWeekKey(i.collectedAt) === bsSelectedWeek);
+  }, [bsData, bsSelectedWeek]);
 
   const brandStats = useMemo(() => {
     return BRANDS.map(brand => {
@@ -95,6 +113,46 @@ export default function Home() {
       .sort((a, b) => b.collectedAt.localeCompare(a.collectedAt));
   }, [data, selectedBrand, brandPlatform, brandMedia]);
 
+  // 게재일(adStartedAt) 우선, 없으면 수집일(collectedAt)로 대체 - 아직 게재일이 안 잡히는
+  // 광고가 많아서 완전히 정확한 "게재 시점"은 아니지만 슬라이서가 항상 동작하도록 보장
+  const getAdDate = (item: AdItem) => item.adStartedAt || item.collectedAt;
+
+  // 년도/월/광고주명/매체 슬라이서 옵션 (전체 데이터 기준, 엑셀 슬라이서처럼 항상 모든 값 표시)
+  const sliceOptions = useMemo(() => {
+    const years = new Set<string>();
+    const months = new Set<string>();
+    const advertisers = new Set<string>();
+    const platforms = new Set<string>();
+    data.forEach(item => {
+      const d = new Date(getAdDate(item));
+      if (!isNaN(d.getTime())) {
+        years.add(String(d.getFullYear()));
+        months.add(`${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`);
+      }
+      if (item.advertiserName) advertisers.add(item.advertiserName);
+      if (item.platform) platforms.add(item.platform);
+    });
+    return {
+      years: Array.from(years).sort().reverse(),
+      months: Array.from(months).sort().reverse(),
+      advertisers: Array.from(advertisers).sort(),
+      platforms: Array.from(platforms).sort(),
+    };
+  }, [data]);
+
+  const toggleSetValue = (setFn: React.Dispatch<React.SetStateAction<Set<string>>>, value: string) => {
+    setFn(prev => {
+      const next = new Set(prev);
+      next.has(value) ? next.delete(value) : next.add(value);
+      return next;
+    });
+  };
+
+  const clearSlicers = () => {
+    setSliceYears(new Set()); setSliceMonths(new Set());
+    setSliceAdvertisers(new Set()); setSlicePlatforms(new Set());
+  };
+
   // 광고 검색 - 텍스트/필터 없으면 전체 최신순
   const searchResults = useMemo(() => {
     let items = data;
@@ -102,10 +160,23 @@ export default function Home() {
       const q = searchText.toLowerCase();
       items = items.filter(i => [i.advertiserName, i.keyword, i.copyText, i.platform].join(' ').toLowerCase().includes(q));
     }
-    if (searchPlatform !== 'all') items = items.filter(i => i.platform === searchPlatform);
     if (searchMedia !== 'all') items = items.filter(i => i.mediaType === searchMedia);
+    if (slicePlatforms.size > 0) items = items.filter(i => slicePlatforms.has(i.platform));
+    if (sliceAdvertisers.size > 0) items = items.filter(i => sliceAdvertisers.has(i.advertiserName));
+    if (sliceYears.size > 0) {
+      items = items.filter(i => {
+        const d = new Date(getAdDate(i));
+        return !isNaN(d.getTime()) && sliceYears.has(String(d.getFullYear()));
+      });
+    }
+    if (sliceMonths.size > 0) {
+      items = items.filter(i => {
+        const d = new Date(getAdDate(i));
+        return !isNaN(d.getTime()) && sliceMonths.has(`${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`);
+      });
+    }
     return items.sort((a, b) => b.collectedAt.localeCompare(a.collectedAt));
-  }, [data, searchText, searchPlatform, searchMedia]);
+  }, [data, searchText, searchMedia, slicePlatforms, sliceAdvertisers, sliceYears, sliceMonths]);
 
   const toggleFav = (id: string) => {
     if (favorites.some(f => f.id === id)) {
@@ -141,6 +212,35 @@ export default function Home() {
     fontSize: '11px', cursor: 'pointer', whiteSpace: 'nowrap' as const,
   });
 
+  const slicerBtn = (active: boolean) => ({
+    padding: '5px 10px', borderRadius: '6px', border: `1px solid ${active ? '#03c75a' : '#2e2e3e'}`,
+    background: active ? 'rgba(3,199,90,0.15)' : '#1a1a24', color: active ? '#03c75a' : '#8888aa',
+    fontSize: '11px', cursor: 'pointer', whiteSpace: 'nowrap' as const, fontWeight: active ? 700 : 400,
+  });
+
+  const slicerGroup = (
+    title: string,
+    options: string[],
+    selected: Set<string>,
+    onToggle: (v: string) => void,
+    formatLabel?: (v: string) => string,
+  ) => (
+    <div>
+      <div style={{ fontSize: '10px', color: '#8888aa', fontWeight: 700, marginBottom: '6px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+        {title}
+      </div>
+      <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap', maxHeight: '110px', overflowY: 'auto' }}>
+        {options.length === 0
+          ? <span style={{ fontSize: '11px', color: '#555568' }}>데이터 없음</span>
+          : options.map(opt => (
+            <button key={opt} onClick={() => onToggle(opt)} style={slicerBtn(selected.has(opt))}>
+              {formatLabel ? formatLabel(opt) : opt}
+            </button>
+          ))}
+      </div>
+    </div>
+  );
+
   const adGrid = (items: AdItem[], max = 300) => (
     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))', gap: '12px' }}>
       {items.slice(0, max).map(item => (
@@ -172,11 +272,13 @@ export default function Home() {
             { key: 'search', label: '광고 검색' },
             { key: 'favorites', label: '⭐ 즐겨찾기' },
             { key: 'brandsearch', label: '🔎 브랜드검색' },
+            { key: 'trend', label: '📈 검색어 트렌드' },
+            { key: 'powerlink', label: '🔗 파워링크' },
           ] as const).map(({ key, label }) => (
             <button key={key} onClick={() => { setView(key as any); setSelectedBrand(null); }}
               style={{ padding: '5px 12px', borderRadius: '6px', border: 'none', cursor: 'pointer', fontSize: '12px',
-                background: view === key ? (key === 'brandsearch' ? 'rgba(3,199,90,0.15)' : 'rgba(108,99,255,0.2)') : 'transparent',
-                color: view === key ? (key === 'brandsearch' ? '#03c75a' : '#a78bfa') : '#8888aa' }}>
+                background: view === key ? (key === 'brandsearch' || key === 'powerlink' ? 'rgba(3,199,90,0.15)' : 'rgba(108,99,255,0.2)') : 'transparent',
+                color: view === key ? (key === 'brandsearch' || key === 'powerlink' ? '#03c75a' : '#a78bfa') : '#8888aa' }}>
               {label}
             </button>
           ))}
@@ -361,11 +463,26 @@ export default function Home() {
                 <input value={searchText} onChange={e => setSearchText(e.target.value)} placeholder="키워드 또는 광고주명 검색..."
                   style={{ width: '100%', background: '#1a1a24', border: '1px solid #2e2e3e', borderRadius: '10px', padding: '10px 14px 10px 38px', color: '#e2e2f0', fontSize: '14px', outline: 'none' }} />
               </div>
+
+              {/* 엑셀 슬라이서 스타일 필터: 년도 / 월 / 광고주명 / 매체 */}
+              <div style={{ background: 'rgba(26,26,36,0.6)', border: '1px solid #2e2e3e', borderRadius: '10px', padding: '14px', marginBottom: '12px' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '14px' }}>
+                  {slicerGroup('년도', sliceOptions.years, sliceYears, v => toggleSetValue(setSliceYears, v), v => v + '년')}
+                  {slicerGroup('월', sliceOptions.months, sliceMonths, v => toggleSetValue(setSliceMonths, v), v => `${v.split('-')[0]}.${v.split('-')[1]}`)}
+                  {slicerGroup('광고주명', sliceOptions.advertisers, sliceAdvertisers, v => toggleSetValue(setSliceAdvertisers, v))}
+                  {slicerGroup('매체', sliceOptions.platforms, slicePlatforms, v => toggleSetValue(setSlicePlatforms, v), v => v === 'meta' ? 'Meta' : v === 'google' ? 'Google' : v === 'naver_bs' ? '네이버 브검' : v)}
+                </div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginTop: '12px', paddingTop: '10px', borderTop: '1px solid #2e2e3e' }}>
+                  <span style={{ fontSize: '10px', color: '#555568' }}>* 게재일(adStartedAt)이 없는 광고는 수집일 기준으로 년도/월이 계산됩니다</span>
+                  {(sliceYears.size + sliceMonths.size + sliceAdvertisers.size + slicePlatforms.size) > 0 && (
+                    <button onClick={clearSlicers} style={{ marginLeft: 'auto', fontSize: '11px', color: '#f87171', background: 'none', border: 'none', cursor: 'pointer', whiteSpace: 'nowrap' }}>
+                      ✕ 필터 초기화
+                    </button>
+                  )}
+                </div>
+              </div>
+
               <div style={{ display: 'flex', gap: '6px', alignItems: 'center', flexWrap: 'wrap' }}>
-                {(['all','meta','google'] as const).map(p => (
-                  <button key={p} onClick={() => setSearchPlatform(p)} style={chip(searchPlatform === p)}>{p === 'all' ? '전체' : p}</button>
-                ))}
-                <div style={{ width: '1px', background: '#2e2e3e', margin: '0 4px', height: '16px' }} />
                 {(['all','image','video'] as const).map(m => (
                   <button key={m} onClick={() => setSearchMedia(m)} style={chip(searchMedia === m)}>{m === 'all' ? '전체' : m === 'image' ? '이미지' : '영상'}</button>
                 ))}
@@ -404,7 +521,8 @@ export default function Home() {
         {/* 브랜드검색 - 드롭다운 방식 */}
         {view === 'brandsearch' && (
           <>
-            <h2 style={{ fontSize: '20px', fontWeight: 700, marginBottom: '24px' }}>네이버 브랜드검색 모니터링</h2>
+            <h2 style={{ fontSize: '20px', fontWeight: 700, marginBottom: '16px' }}>네이버 브랜드검색 모니터링</h2>
+            <WeekSelector weekKeys={bsWeekKeys} selected={bsSelectedWeek} onSelect={setBsSelectedWeek} />
             {bsData.length === 0 ? (
               <div style={{ textAlign: 'center', padding: '60px', color: '#8888aa' }}>
                 <div style={{ fontSize: '40px', marginBottom: '12px' }}>🔎</div>
@@ -413,7 +531,7 @@ export default function Home() {
             ) : (
               <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                 {BRANDS.map(brand => {
-                  const brandBs = bsData.filter(i => i.advertiserName === brand);
+                  const brandBs = bsWeekData.filter((i: any) => i.advertiserName === brand);
                   if (brandBs.length === 0) return null;
                   const pc = brandBs.filter((i: any) => i.device === 'pc').sort((a: any, b: any) => b.collectedAt.localeCompare(a.collectedAt))[0];
                   const mo = brandBs.filter((i: any) => i.device === 'mo').sort((a: any, b: any) => b.collectedAt.localeCompare(a.collectedAt))[0];
@@ -471,15 +589,26 @@ export default function Home() {
                                 {pc.buttons.filter((btn: any) => btn.landingScreenshot).map((btn: any, idx: number) => (
                                   <div key={idx} style={{ background: '#22222f', border: '1px solid #2e2e3e', borderRadius: '8px', overflow: 'hidden' }}>
                                     <div style={{ padding: '6px 10px', borderBottom: '1px solid #2e2e3e' }}>
-                                      <span style={{ display: 'inline-block', background: '#6c63ff', color: '#fff', fontSize: '10px', fontWeight: 600, padding: '2px 7px', borderRadius: '4px', marginBottom: '4px' }}>{btn.buttonText || '버튼'}</span>
+                                      <div style={{ display: 'flex', gap: '4px', marginBottom: '4px', flexWrap: 'wrap' }}>
+                                        {btn.area && <span style={{ display: 'inline-block', background: '#03c75a', color: '#fff', fontSize: '9px', fontWeight: 700, padding: '2px 7px', borderRadius: '4px' }}>{btn.area}</span>}
+                                        <span style={{ display: 'inline-block', background: '#6c63ff', color: '#fff', fontSize: '10px', fontWeight: 600, padding: '2px 7px', borderRadius: '4px' }}>{btn.buttonText || '버튼'}</span>
+                                      </div>
                                       <a href={btn.finalUrl || btn.buttonUrl} target="_blank" rel="noopener noreferrer"
                                         style={{ display: 'block', fontSize: '9px', color: '#a78bfa', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', textDecoration: 'none' }}>
                                         {(btn.finalUrl || btn.buttonUrl || '').slice(0, 40)}...
                                       </a>
                                     </div>
+                                    {btn.slideImage && (
+                                      <div style={{ position: 'relative', overflow: 'hidden', cursor: 'pointer', borderBottom: '1px solid #2e2e3e' }}
+                                        onClick={() => window.open('/data/' + btn.slideImage, '_blank')}>
+                                        <img src={'/data/' + btn.slideImage} alt="배너 이미지" style={{ width: '100%', display: 'block' }} />
+                                        <span style={{ position: 'absolute', top: '4px', left: '4px', background: 'rgba(0,0,0,0.6)', color: '#fff', fontSize: '8px', padding: '2px 6px', borderRadius: '3px' }}>배너 이미지</span>
+                                      </div>
+                                    )}
                                     <div style={{ position: 'relative', overflow: 'hidden', maxHeight: '220px', cursor: 'pointer' }}
                                       onClick={() => window.open(btn.finalUrl || btn.buttonUrl, '_blank')}>
                                       <img src={'/data/' + btn.landingScreenshot} alt="랜딩" style={{ width: '100%', display: 'block' }} />
+                                      {btn.slideImage && <span style={{ position: 'absolute', top: '4px', left: '4px', background: 'rgba(0,0,0,0.6)', color: '#fff', fontSize: '8px', padding: '2px 6px', borderRadius: '3px' }}>랜딩 페이지</span>}
                                     </div>
                                   </div>
                                 ))}
@@ -495,15 +624,26 @@ export default function Home() {
                                 {mo.buttons.filter((btn: any) => btn.landingScreenshot).map((btn: any, idx: number) => (
                                   <div key={idx} style={{ background: '#22222f', border: '1px solid #2e2e3e', borderRadius: '8px', overflow: 'hidden' }}>
                                     <div style={{ padding: '6px 10px', borderBottom: '1px solid #2e2e3e' }}>
-                                      <span style={{ display: 'inline-block', background: '#6c63ff', color: '#fff', fontSize: '10px', fontWeight: 600, padding: '2px 7px', borderRadius: '4px', marginBottom: '4px' }}>{btn.buttonText || '버튼'}</span>
+                                      <div style={{ display: 'flex', gap: '4px', marginBottom: '4px', flexWrap: 'wrap' }}>
+                                        {btn.area && <span style={{ display: 'inline-block', background: '#03c75a', color: '#fff', fontSize: '9px', fontWeight: 700, padding: '2px 7px', borderRadius: '4px' }}>{btn.area}</span>}
+                                        <span style={{ display: 'inline-block', background: '#6c63ff', color: '#fff', fontSize: '10px', fontWeight: 600, padding: '2px 7px', borderRadius: '4px' }}>{btn.buttonText || '버튼'}</span>
+                                      </div>
                                       <a href={btn.finalUrl || btn.buttonUrl} target="_blank" rel="noopener noreferrer"
                                         style={{ display: 'block', fontSize: '9px', color: '#a78bfa', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', textDecoration: 'none' }}>
                                         {(btn.finalUrl || btn.buttonUrl || '').slice(0, 30)}...
                                       </a>
                                     </div>
+                                    {btn.slideImage && (
+                                      <div style={{ position: 'relative', overflow: 'hidden', cursor: 'pointer', borderBottom: '1px solid #2e2e3e' }}
+                                        onClick={() => window.open('/data/' + btn.slideImage, '_blank')}>
+                                        <img src={'/data/' + btn.slideImage} alt="배너 이미지" style={{ width: '100%', display: 'block' }} />
+                                        <span style={{ position: 'absolute', top: '4px', left: '4px', background: 'rgba(0,0,0,0.6)', color: '#fff', fontSize: '8px', padding: '2px 6px', borderRadius: '3px' }}>배너 이미지</span>
+                                      </div>
+                                    )}
                                     <div style={{ position: 'relative', overflow: 'hidden', maxHeight: '300px', cursor: 'pointer' }}
                                       onClick={() => window.open(btn.finalUrl || btn.buttonUrl, '_blank')}>
                                       <img src={'/data/' + btn.landingScreenshot} alt="랜딩" style={{ width: '100%', display: 'block' }} />
+                                      {btn.slideImage && <span style={{ position: 'absolute', top: '4px', left: '4px', background: 'rgba(0,0,0,0.6)', color: '#fff', fontSize: '8px', padding: '2px 6px', borderRadius: '3px' }}>랜딩 페이지</span>}
                                     </div>
                                   </div>
                                 ))}
@@ -517,6 +657,22 @@ export default function Home() {
                 })}
               </div>
             )}
+          </>
+        )}
+
+        {/* 검색어 트렌드 - 네이버 데이터랩 검색어트렌드 API 실시간 조회 */}
+        {view === 'trend' && (
+          <>
+            <h2 style={{ fontSize: '20px', fontWeight: 700, marginBottom: '20px' }}>검색어 트렌드</h2>
+            <TrendAnalysis brands={BRANDS} clientBrand={CLIENT_BRAND} />
+          </>
+        )}
+
+        {/* 파워링크 모니터링 - 키워드 검색시 노출되는 경쟁사 파워링크 텍스트 광고 */}
+        {view === 'powerlink' && (
+          <>
+            <h2 style={{ fontSize: '20px', fontWeight: 700, marginBottom: '24px' }}>파워링크 모니터링</h2>
+            <PowerlinkMonitor />
           </>
         )}
       </main>

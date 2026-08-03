@@ -148,28 +148,12 @@ async function scrapeGoogle(keywords, brands, settings) {
                   mediaUrl = m ? ('https://www.youtube.com/watch?v=' + m[1]) : src;
                 }
 
-                // 게재일: 카드 텍스트에서 날짜 패턴 추출
-                var cardText = card.innerText || '';
-
-                // "마지막 게재일: 2026년 6월 28일" 패턴
-                var lastShownMatch = cardText.match(/마지막\s*게재일[:\s]*(\d{4})년\s*(\d{1,2})월\s*(\d{1,2})일/);
+                // 게재일: 목록 화면에는 날짜 정보가 전혀 없음(실측 확인됨) - 상세페이지 방문으로
+                // 별도 확보한다 (아래, cards 배열 완성 후). 여기선 상세페이지 링크만 잡아둔다.
+                var detailsA = card.querySelector('a[href*="/creative/"]');
+                var detailsLink = detailsA ? detailsA.href : '';
                 var adLastShownAt = null;
-                if (lastShownMatch) {
-                  adLastShownAt = lastShownMatch[1] + '-' + String(lastShownMatch[2]).padStart(2,'0') + '-' + String(lastShownMatch[3]).padStart(2,'0');
-                }
-
-                // "게재 시작: 2026년 N월 N일" 또는 점 구분 날짜 패턴
-                var startMatch = cardText.match(/(\d{4})년\s*(\d{1,2})월\s*(\d{1,2})일/);
                 var adStartedAt = null;
-                if (startMatch && !lastShownMatch) {
-                  adStartedAt = startMatch[1] + '-' + String(startMatch[2]).padStart(2,'0') + '-' + String(startMatch[3]).padStart(2,'0');
-                }
-                // fallback: 점 구분 날짜
-                if (!adStartedAt && !adLastShownAt) {
-                  var dotDates = cardText.match(/(\d{4})[.\-](\d{1,2})[.\-](\d{1,2})/g) || [];
-                  if (dotDates[0]) adStartedAt = dotDates[0].replace(/\./g,'-').replace(/--/g,'-');
-                  if (dotDates[1]) adLastShownAt = dotDates[1].replace(/\./g,'-').replace(/--/g,'-');
-                }
 
                 // 랜딩 URL
                 var landingUrl = '';
@@ -207,12 +191,15 @@ async function scrapeGoogle(keywords, brands, settings) {
                   advertiserName: advName,
                   copyText: copyText,
                   headline: '',
-                  landingUrl: landingUrl,
+                  // 카드 목록에는 실제 광고주 랜딩 URL이 노출되지 않는 경우가 대부분이라
+                  // (실측상 항상 0건) 못 찾으면 투명성 센터 상세페이지 URL로 대체
+                  landingUrl: landingUrl || detailsLink,
                   sourceUrl: sourceUrl,
                   platform: 'google',
+                  detailsLink: detailsLink,
                   adStartedAt: adStartedAt,
                   adLastShownAt: adLastShownAt,
-                  status: adLastShownAt ? 'ended' : 'active',
+                  status: 'active',
                 });
               } catch (_) {}
             });
@@ -237,6 +224,31 @@ async function scrapeGoogle(keywords, brands, settings) {
               });
             }
           });
+
+          // 각 카드의 상세페이지를 방문해서 정확한 "마지막 게재일"을 확보한다.
+          // 목록 화면에는 날짜 정보가 전혀 없고 상세페이지(.property.last-shown)에만 있음이
+          // 실측으로 확인됨. 월 1회만 도는 배치라 카드당 1번씩 방문해도 시간 부담이 없다.
+          // (주의: 이 날짜로 status를 임의 판정하지 않는다 - 종료 여부는 tracker.js가
+          //  "이번 수집에 다시 나타났는지"로만 판단하는 게 맞고, 마지막 게재일은 그냥
+          //  정확한 메타데이터로만 저장한다.)
+          for (const c of cards) {
+            if (!c.detailsLink) continue;
+            try {
+              await targetPage.goto(c.detailsLink, { waitUntil: 'domcontentloaded', timeout: 15000 });
+              await targetPage.waitForSelector('.last-shown, [class*="last-shown"]', { timeout: 5000 }).catch(function() {});
+              const lastShownText = await targetPage.evaluate(function() {
+                var el = document.querySelector('.last-shown, [class*="last-shown"]');
+                return el ? (el.innerText || '') : '';
+              });
+              const match = lastShownText.match(/(\d{4})년\s*(\d{1,2})월\s*(\d{1,2})일/);
+              if (match) {
+                c.adLastShownAt = match[1] + '-' + String(match[2]).padStart(2, '0') + '-' + String(match[3]).padStart(2, '0');
+              }
+              await targetPage.waitForTimeout(500);
+            } catch (e) {
+              console.log(`    [상세페이지 방문 실패] ${advertiserName}: ${e.message}`);
+            }
+          }
 
           const tagged = cards.map(function(c) {
             return Object.assign({}, c, {

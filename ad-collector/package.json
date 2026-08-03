@@ -5,6 +5,7 @@
   "main": "collector.js",
   "scripts": {
     "collect": "node collector.js",
+    "brand-batch": "node metaBrandBatch.js",
     "schedule": "node scheduler.js",
     "install-browser": "npx playwright install chromium"
   },

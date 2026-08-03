@@ -128,6 +128,20 @@ function buildFilename(platform, keyword, mediaType, ext) {
   return `${platform}_${safeKeyword}_${date}_${unique}.${extension}`;
 }
 
+/**
+ * "년-월-몇째주" 키 계산 (예: 2026-08-W1). 브랜드검색/파워링크를 주 1회로
+ * 제한할 때의 중복판정 기준이자, 화면에서 월/주차 캘린더로 보여줄 때 쓰는 키.
+ * 주차는 달력상 절대 주(일~토)가 아니라 "그 달의 며칠째 주"로 단순 계산한다
+ * (일반적으로 쓰는 "이번달 n주차" 감각과 맞춤).
+ */
+function getMonthWeekKey(dateInput) {
+  const d = new Date(dateInput);
+  const year = d.getFullYear();
+  const month = String(d.getMonth() + 1).padStart(2, '0');
+  const weekOfMonth = Math.ceil(d.getDate() / 7);
+  return `${year}-${month}-W${weekOfMonth}`;
+}
+
 module.exports = {
   computePHash,
   hammingDistance,
@@ -137,4 +151,5 @@ module.exports = {
   saveIndex,
   sanitizeFilename,
   buildFilename,
+  getMonthWeekKey,
 };

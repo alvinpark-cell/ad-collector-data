@@ -310,7 +310,10 @@ async function scrapeMeta(keywords, brands, settings) {
         return Object.assign({}, c, {
           keyword: term,
           searchType: type,
-          advertiserName: type === 'brand' ? term : (c.advertiserName || ''),
+          // 브랜드 검색이라고 해서 advertiserName을 검색어로 덮어쓰지 않는다 —
+          // Facebook 검색이 느슨하게 매칭돼서 무관한 광고주가 섞여 들어올 수 있어서,
+          // 실제 DOM에서 추출한 광고주명을 그대로 유지해야 아래 필터가 의미가 있음
+          advertiserName: c.advertiserName || '',
           id: 'meta_' + Date.now() + '_' + Math.random().toString(36).slice(2, 7),
           collectedAt: new Date().toISOString(),
         });
@@ -327,24 +330,19 @@ async function scrapeMeta(keywords, brands, settings) {
         '이베스트', '유안타', '하이투자', '부국', '케이프',
       ]).map(function(p) { return p.toLowerCase(); });
 
-      let tagged = allTagged;
-
-      if (type === 'keyword') {
-        // 키워드 검색: advertiserName이 금융/증권 관련 패턴과 매칭되는 것만 허용
-        // advertiserName이 비어있는 경우(네트워크 인터셉트로만 잡힌 미디어)는 제외
-        tagged = allTagged.filter(function(c) {
-          var name = (c.advertiserName || '').toLowerCase().trim();
-          if (!name) return false; // 광고주명 없으면 제외
-          return allowedPatterns.some(function(p) { return name.includes(p); });
-        });
-        var filtered = allTagged.length - tagged.length;
-        if (filtered > 0) {
-          console.log(`[Meta] "${term}" 비금융 광고주 ${filtered}개 제외`);
-        }
-      } else if (type === 'brand') {
-        // 브랜드 검색: 검색어 자체가 브랜드명이므로 전부 허용
-        // (이미 해당 브랜드 페이지에서 수집한 것들)
-        tagged = allTagged;
+      // 키워드/브랜드 검색 모두 advertiserName이 금융/증권 관련 패턴과 매칭되는 것만 허용.
+      // 브랜드 검색이라고 무조건 통과시키면 Facebook의 느슨한 검색 매칭 때문에
+      // 무관한 광고주(예: 보험 마케팅 계정 등)가 섞여 들어오는 걸 막을 수 없어서
+      // 타입 구분 없이 동일하게 필터링한다.
+      // advertiserName이 비어있는 경우(네트워크 인터셉트로만 잡힌 미디어)는 제외
+      const tagged = allTagged.filter(function(c) {
+        var name = (c.advertiserName || '').toLowerCase().trim();
+        if (!name) return false; // 광고주명 없으면 제외
+        return allowedPatterns.some(function(p) { return name.includes(p); });
+      });
+      var filtered = allTagged.length - tagged.length;
+      if (filtered > 0) {
+        console.log(`[Meta] "${term}" (${type}) 비금융 광고주 ${filtered}개 제외`);
       }
 
       results.push(...tagged);

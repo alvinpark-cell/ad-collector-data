@@ -41,6 +41,31 @@ async function scrapeNaverBrandsearch(brands, outputDir) {
   return results;
 }
 
+// 캐러셀형 배너(premium_carousel 등)가 자동 재생 중이면 스크린샷 시점에 슬라이드가
+// 전환 애니메이션 중간(예: translate(-1015.9px) 같은 소수점 중간값)일 수 있어 두 슬라이드가
+// 겹쳐 찍히는 문제가 발생함. transform 인라인 스타일 값이 연속 2회(간격 200ms) 동일해질
+// 때까지 최대 3초 대기 후 진행 (그래도 안정 안 되면 타임아웃으로 그냥 진행 - 무한 대기 방지).
+async function waitForCarouselSettle(page, isMobile) {
+  const maxAttempts = 15;
+  let lastSnapshot = null;
+  for (let i = 0; i < maxAttempts; i++) {
+    const snapshot = await page.evaluate(function(isMobileArg) {
+      var bx = isMobileArg
+        ? document.querySelector('section.sp_brand, .api_subject_bx')
+        : document.querySelector('.brand_search');
+      if (!bx) return null;
+      var els = bx.querySelectorAll('[style*="transform"]');
+      var vals = [];
+      els.forEach(function(el) { vals.push(el.style.transform); });
+      return vals.join('|');
+    }, isMobile);
+
+    if (snapshot !== null && snapshot === lastSnapshot) return;
+    lastSnapshot = snapshot;
+    await page.waitForTimeout(200);
+  }
+}
+
 async function collectBrandsearch(browser, brand, device, screenshotDir) {
   const isMobile = device === 'mo';
 
@@ -65,33 +90,66 @@ async function collectBrandsearch(browser, brand, device, screenshotDir) {
   await page.waitForTimeout(3000);
 
   // ── 1단계: 브검 존재 여부 확인 + 스크린샷 영역 탐지 ──────────────────────
-  const detection = await page.evaluate(function() {
-    // 브검 컨테이너: api_subject_bx 안에 브검 블록이 있어야 함
-    var bx = document.querySelector('.api_subject_bx, section.sp_brand');
+  // (2026-07-29 재작성: 네이버가 프론트 구조를 바꿔서 예전 id 패턴은 더 이상 안 걸림.
+  //  __ADFE_TEMPLATE_BLOCK__ 안의 블록 유형으로 "진짜 브랜드검색"인지 판별.
+  //  실제 스크린샷 대조로 검증된 규칙(7/7 브랜드 정답 일치):
+  //   - light_ / premium(image|video|bottom|link|story)_ 계열이 있으면 인정
+  //     (처음엔 premium* 계열에 isbrand===true 조건을 추가로 걸었는데, 실제로는
+  //      isbrand:false인데도 진짜 광고인 사례가 확인돼서 이 필드는 신뢰할 수 없음 -> 제거)
+  //   - directlink_ 단독으로는 인정 안 함 (브랜드검색 없는 브랜드에도 항상 붙는 일반 정보카드라서)
+  //   - pcPowerLink/shoppinglive/shortclip/bottomnotice/brandnews/brandchannel 등은 대상 제외
+  //   - 위 어디에도 안 걸리는 새 블록 유형은 조용히 무시하지 않고 콘솔에 경고 로그)
+  // (2026-07-29 추가 수정: PC와 MO는 프론트엔드 구조 자체가 달라서 브랜드검색 컨테이너의
+  //  실제 클래스명이 다름. PC는 .api_subject_bx가 페이지 내 다른 무관한 섹션(파워링크 등)에도
+  //  똑같이 붙어있어서 첫 번째 매치가 브랜드검색이 아닌 경우가 있었음 -> PC 전용 래퍼인
+  //  .brand_search로 교체. MO는 이 클래스가 존재하지 않고 기존 section.sp_brand가 유효하므로 유지.)
+  const detection = await page.evaluate(function(isMobileArg) {
+    var bx = isMobileArg
+      ? document.querySelector('section.sp_brand, .api_subject_bx')
+      : document.querySelector('.brand_search');
     if (!bx) return { found: false };
 
-    // 브검 여부 판단: __ADFE_TEMPLATE_BLOCK__ 존재 or 알려진 id 패턴
-    var hasAdfe = typeof window.__ADFE_TEMPLATE_BLOCK__ === 'object' &&
-                  Object.keys(window.__ADFE_TEMPLATE_BLOCK__).length > 0;
-    var hasKnownId = !!(
-      bx.querySelector('[id^="premiumvideo_"]') ||
-      bx.querySelector('[id^="premiumstory_"]') ||
-      bx.querySelector('[id^="directlink_"]') ||
-      bx.querySelector('[id^="brandnews_"]') ||
-      bx.querySelector('[id^="bottomscroll_"]') ||
-      bx.querySelector('[id^="bottomtriplelarge"]') ||
-      bx.querySelector('[id^="light_"]')
-    );
+    var adfe = window.__ADFE_TEMPLATE_BLOCK__;
+    if (!adfe || typeof adfe !== 'object') return { found: false };
 
-    if (!hasAdfe && !hasKnownId) return { found: false };
+    var NON_BRAND_PREFIXES = [
+      'directlink', 'brandnews', 'bottomnotice', 'pcPowerLink',
+      'shoppinglive', 'shortclip', 'brandchannel', 'bottomscroll', 'bottomtriplelarge',
+    ];
+
+    var brandKeys = [];
+    var unknownKeys = [];
+
+    Object.keys(adfe).forEach(function(key) {
+      var m = key.match(/^([a-zA-Z]+)_[0-9a-fA-F]{4,}$/);
+      if (!m) return; // 랜덤 접미사 붙은 실제 인스턴스만 검사 (카테고리 나열용 bare 키는 무시)
+      var prefix = m[1];
+      var arr = adfe[key];
+      if (!Array.isArray(arr) || arr.length === 0) return;
+
+      if (prefix === 'light' || /^premium(image|wideimage|video|bottom|link|story)$/.test(prefix)) {
+        brandKeys.push(key);
+      } else if (NON_BRAND_PREFIXES.indexOf(prefix) !== -1) {
+        // 알려진 비-브랜드검색 -> 지나감
+      } else {
+        unknownKeys.push(key);
+      }
+    });
+
+    if (unknownKeys.length > 0) {
+      console.log('[네이버 브검] 처음 보는 블록 유형 발견(허용목록 검토 필요): ' + unknownKeys.join(', '));
+    }
+
+    if (brandKeys.length === 0) return { found: false, unknownKeys: unknownKeys };
 
     var rect = bx.getBoundingClientRect();
     return {
       found: true,
-      hasAdfe: hasAdfe,
+      brandKeys: brandKeys,
+      unknownKeys: unknownKeys,
       box: { x: rect.x, y: rect.top, width: rect.width, height: rect.height },
     };
-  });
+  }, isMobile);
 
   if (!detection.found) {
     console.log(`  [${device.toUpperCase()}] 브랜드검색 없음`);
@@ -100,18 +158,31 @@ async function collectBrandsearch(browser, brand, device, screenshotDir) {
   }
 
   // ── 2단계: 스크린샷 영역을 콘텐츠 전체 높이로 재측정 ─────────────────────
-  const fullBox = await page.evaluate(function() {
-    var bx = document.querySelector('.api_subject_bx, section.sp_brand');
+  const fullBox = await page.evaluate(function(isMobileArg) {
+    var bx = isMobileArg
+      ? document.querySelector('section.sp_brand, .api_subject_bx')
+      : document.querySelector('.brand_search');
     if (!bx) return null;
+
+    // bottomnotice(법적 고지 긴 텍스트)는 순수 광고 크롭에서 제외
+    var notice = bx.querySelector('[data-block-data-set="bottomNotice"]');
     var rect = bx.getBoundingClientRect();
-    // 하위 모든 요소의 실제 하단 경계를 측정
     var bottom = rect.bottom;
+
     bx.querySelectorAll('*').forEach(function(el) {
+      if (notice && (el === notice || notice.contains(el))) return;
       var r = el.getBoundingClientRect();
       if (r.bottom > bottom && r.width > 10) bottom = r.bottom;
     });
+
+    // notice가 있으면 그 시작 지점을 넘지 않도록 상한선을 둠
+    if (notice) {
+      var noticeRect = notice.getBoundingClientRect();
+      if (noticeRect.top < bottom) bottom = noticeRect.top;
+    }
+
     return { x: rect.x, y: rect.top, width: rect.width, height: bottom - rect.top };
-  });
+  }, isMobile);
 
   if (!fullBox || fullBox.height < 50) {
     await context.close();
@@ -128,6 +199,10 @@ async function collectBrandsearch(browser, brand, device, screenshotDir) {
   await page.setViewportSize({ width: vpWidth, height: Math.max(neededHeight, isMobile ? 2200 : 1800) });
   await page.waitForTimeout(500);
 
+  // 캐러셀(premium_carousel 등)이 자동 재생 중이면 슬라이드 전환 애니메이션 중간에
+  // 캡처되어 두 슬라이드가 겹쳐 찍히는 문제가 있음 -> transform 값이 연속 2회 동일할 때까지 대기
+  await waitForCarouselSettle(page, isMobile);
+
   await page.screenshot({
     path: screenshotPath,
     clip: {
@@ -141,11 +216,19 @@ async function collectBrandsearch(browser, brand, device, screenshotDir) {
   console.log(`  [${device.toUpperCase()}] 스크린샷: ${screenshotFilename}`);
 
   // ── 3단계: __ADFE_TEMPLATE_BLOCK__ 에서 버튼 데이터 파싱 ─────────────────
+  // (2026-07-29 재작성: 블록 "키 접두어" 기준으로 분기하는 방식으로 전환.
+  //  이전엔 data shape(예: title+link 있으면 무조건 새소식)로 추측했는데,
+  //  light_(메인배너) 블록의 mainText.title/link가 brandNews 체크에 잘못 걸려
+  //  "설명문구"가 "새소식"으로 오분류되는 문제가 실제로 발견됨 -> prefix로 명확히 구분.
+  //  영역 세분화(메리츠증권 실데이터 대조, 2026-07-29):
+  //   light_ PC: mainImg(메인이미지)/mainText(설명문구)/subLinks(서브링크N)/products(썸네일N)
+  //   light_ MO: img+imgLink(메인이미지)/title+link(설명문구)/thumbnails(썸네일N)
+  //   lightbutton_ (MO 전용, PC의 subLinks에 대응하는 별도 블록): menu3.menu(서브링크N)
   const buttons = await page.evaluate(function() {
     var results = [];
     var seen = new Set();
 
-    function addButton(text, href) {
+    function addButton(text, href, area, slideInfo) {
       if (!href || !text) return;
       // ader.naver.com 리다이렉트에서 실제 URL 추출
       var finalUrl = href;
@@ -158,12 +241,64 @@ async function collectBrandsearch(browser, brand, device, screenshotDir) {
           }
         }
       } catch(_) {}
-      // 중복/전화/빈값 제외
-      if (!finalUrl || seen.has(finalUrl)) return;
-      if (finalUrl.startsWith('tel:')) { seen.add(finalUrl); results.push({ text: text.trim().slice(0,40), href: finalUrl }); return; }
+      if (!finalUrl) return;
+      var areaLabel = area || '기타';
+      // 같은 영역에 동일 URL이 중복 등록되는 것만 방지 (다른 영역이 같은 URL을 공유하는 건 허용 -
+      // 예: 메인이미지와 설명문구가 같은 이벤트 페이지로 연결되는 경우가 실제로 있음)
+      var dedupKey = areaLabel + '::' + finalUrl;
+      if (seen.has(dedupKey)) return;
+      var extra = slideInfo ? {
+        slideIndex: slideInfo.index,
+        slideImageUrl: slideInfo.imgUrl,
+        slideTitle: slideInfo.title,
+        slideSubText: slideInfo.subText,
+      } : {};
+      if (finalUrl.startsWith('tel:')) {
+        seen.add(dedupKey);
+        results.push(Object.assign({ text: text.trim().slice(0,40), href: finalUrl, area: areaLabel }, extra));
+        return;
+      }
       if (!finalUrl.startsWith('http')) return;
-      seen.add(finalUrl);
-      results.push({ text: text.trim().slice(0,40), href: finalUrl });
+      seen.add(dedupKey);
+      results.push(Object.assign({ text: text.trim().slice(0,40), href: finalUrl, area: areaLabel }, extra));
+    }
+
+    // premium* 계열(캐러셀/메인배너) 공통 파싱 - 최상위 블록과 _blocks.next 재귀 양쪽에서 재사용
+    function parsePremiumShape(data) {
+      // imgGallery: PC·MO 공통 캐러셀 구조. 슬라이드가 2장 이상이면 번호를 붙이고,
+      // 1장뿐이면 번호 없이 '메인이미지'만 사용
+      if (Array.isArray(data.imgGallery)) {
+        var galleryLen = data.imgGallery.length;
+        data.imgGallery.forEach(function(item, idx) {
+          var titleArr = item.content && item.content.content2 && item.content.content2.title;
+          var btnText = item.btnText || (titleArr ? titleArr.join(' ') : '');
+          var imgUrl = item.img ? (item.img.uri || item.img.originalUri) : null;
+          var areaLabel = galleryLen > 1 ? ('메인이미지' + (idx + 1)) : '메인이미지';
+          if (item.link) {
+            addButton(btnText || areaLabel, item.link, areaLabel, {
+              index: idx,
+              imgUrl: imgUrl,
+              title: titleArr ? titleArr.join(' ') : (btnText || ''),
+              subText: item.content && item.content.content2 ? item.content.content2.subText : '',
+            });
+          }
+        });
+      }
+
+      // premiumWideImage: MO 전용, 이미지 한 장 + 버튼 여러 개(같은 이미지를 공유)
+      if (data.main && data.main.img && Array.isArray(data.buttons)) {
+        var wideImgUrl = data.main.img.uri || data.main.img.originalUri;
+        data.buttons.forEach(function(btn, idx) {
+          if (btn.text && btn.link) {
+            addButton(btn.text, btn.link, '메인이미지', {
+              index: idx,
+              imgUrl: wideImgUrl,
+              title: btn.text,
+              subText: '',
+            });
+          }
+        });
+      }
     }
 
     var adfe = window.__ADFE_TEMPLATE_BLOCK__;
@@ -171,92 +306,126 @@ async function collectBrandsearch(browser, brand, device, screenshotDir) {
       Object.keys(adfe).forEach(function(blockKey) {
         var blockArr = adfe[blockKey];
         if (!Array.isArray(blockArr)) return;
+        var prefixMatch = blockKey.match(/^([a-zA-Z]+)_[0-9a-fA-F]{4,}$/);
+        var prefix = prefixMatch ? prefixMatch[1] : blockKey;
 
         blockArr.forEach(function(entry) {
           if (!Array.isArray(entry) || entry.length < 2) return;
           var data = entry[1]; // 두 번째 요소가 실제 데이터
           if (!data || typeof data !== 'object') return;
 
-          // ── directLink: 홈페이지 링크 ──
-          if (data.link && data.logoText) {
-            addButton(data.logoText + ' 홈페이지', data.link);
+          // ── directLink: 홈페이지 링크 (필드명이 브랜드마다 logoText/slogan으로 다름) ──
+          if (prefix === 'directlink') {
+            if (data.link) {
+              var homeText = data.logoText ? (data.logoText + ' 홈페이지') : (data.slogan || '홈페이지');
+              addButton(homeText, data.link, '홈페이지');
+            }
+            return;
           }
 
           // ── brandNews: 이벤트/새소식 링크 ──
-          if (data.title && data.link) {
-            addButton(data.title, data.link);
+          if (prefix === 'brandnews') {
+            if (data.title && data.link) addButton(data.title, data.link, '브랜드소식');
+            return;
           }
 
-          // ── premiumStory (플리킹 캐러셀): imgGallery 배열 ──
-          if (Array.isArray(data.imgGallery)) {
-            data.imgGallery.forEach(function(item) {
-              var btnText = item.btnText || (item.content && item.content.content2 && item.content.content2.title ? item.content.content2.title.join(' ') : '');
-              if (item.link) addButton(btnText || '메인이미지', item.link);
-            });
-          }
-
-          // ── bottomScroll (아이콘 버튼 리스트) ──
-          if (Array.isArray(data.items)) {
-            data.items.forEach(function(item) {
-              if (item.text && item.link) addButton(item.text, item.link);
-            });
-          }
-
-          // ── bottomTripleLargeTab (탭 구조) ──
-          if (Array.isArray(data.tabs)) {
-            data.tabs.forEach(function(tab) {
-              if (Array.isArray(tab.items)) {
-                tab.items.forEach(function(item) {
-                  if (item.text && item.link) addButton(item.text, item.link);
-                });
-              }
-            });
-          }
-
-          // ── bottomTripleLarge (탭 없는 3열) ──
-          if (Array.isArray(data.single)) {
-            data.single.forEach(function(item) {
-              if (item.text && item.link) addButton(item.text, item.link);
-            });
-          }
-
-          // ── light_ (썸네일형): imgLink + link ──
-          if (data.imgLink) addButton(data.subtitle || data.title || '메인이미지', data.imgLink);
-          if (data.link && data.title && !data.imgGallery) addButton(data.title, data.link);
-
-          // ── _blocks.next 안의 데이터도 재귀적으로 처리 ──
-          // (네이버는 블록 체인 구조로 next에 다음 블록 데이터를 포함)
-          if (data._blocks && data._blocks.next && data._blocks.next.data) {
-            var nextData = data._blocks.next.data;
-            // premiumStory
-            if (Array.isArray(nextData.imgGallery)) {
-              nextData.imgGallery.forEach(function(item) {
-                var btnText = item.btnText || '';
-                if (item.link) addButton(btnText || '메인이미지', item.link);
+          // ── light_: 메인배너형(캐러셀 아닌 고정 배너 + 설명문구 + 서브링크 + 썸네일) ──
+          // PC/MO가 완전히 다른 필드 구조를 쓰므로 두 형태를 모두 체크
+          if (prefix === 'light') {
+            // PC 형태: mainImg / mainText / subLinks / products
+            if (data.mainImg && data.mainImg.link) {
+              addButton(data.mainImg.bottomText || '메인이미지', data.mainImg.link, '메인이미지');
+            }
+            if (data.mainText && data.mainText.link) {
+              addButton(data.mainText.title || '설명문구', data.mainText.link, '설명문구');
+            }
+            if (Array.isArray(data.subLinks)) {
+              data.subLinks.forEach(function(sl, idx) {
+                var label = '서브링크' + (idx + 1);
+                if (sl.link) addButton(sl.text || label, sl.link, label);
               });
             }
-            // bottomScroll
-            if (Array.isArray(nextData.items)) {
-              nextData.items.forEach(function(item) {
-                if (item.text && item.link) addButton(item.text, item.link);
+            if (Array.isArray(data.products)) {
+              data.products.forEach(function(p, idx) {
+                var label = '썸네일' + (idx + 1);
+                if (p.link) addButton(p.name || label, p.link, label);
               });
             }
-            // bottomTripleLargeTab
-            if (Array.isArray(nextData.tabs)) {
-              nextData.tabs.forEach(function(tab) {
+
+            // MO 형태: img/imgLink(메인이미지) + title/subtitle/link(설명문구) + thumbnails
+            if (data.imgLink) {
+              addButton(data.subtitle || data.title || '메인이미지', data.imgLink, '메인이미지');
+            }
+            if (data.link && (data.title || data.subtitle) && !data.mainText) {
+              addButton(data.title || data.subtitle, data.link, '설명문구');
+            }
+            if (Array.isArray(data.thumbnails)) {
+              data.thumbnails.forEach(function(t, idx) {
+                var label = '썸네일' + (idx + 1);
+                if (t.link) addButton(t.text || label, t.link, label);
+              });
+            }
+            return;
+          }
+
+          // ── lightbutton_: MO 전용, light_의 PC subLinks에 대응하는 별도 블록 ──
+          if (prefix === 'lightbutton') {
+            if (data.menu3 && Array.isArray(data.menu3.menu)) {
+              data.menu3.menu.forEach(function(m, idx) {
+                var label = '서브링크' + (idx + 1);
+                if (m.link) addButton(m.text || label, m.link, label);
+              });
+            }
+            return;
+          }
+
+          // ── bottomScroll: 하단 아이콘형 썸네일 리스트 ──
+          if (prefix === 'bottomscroll') {
+            if (Array.isArray(data.items)) {
+              data.items.forEach(function(item, idx) {
+                var label = '썸네일' + (idx + 1);
+                if (item.text && item.link) addButton(item.text, item.link, label);
+              });
+            }
+            return;
+          }
+
+          // ── bottomTripleLargeTab: 탭으로 구분된 썸네일 그룹 ──
+          if (prefix === 'bottomtriplelargetab') {
+            if (Array.isArray(data.tabs)) {
+              data.tabs.forEach(function(tab, tabIdx) {
                 if (Array.isArray(tab.items)) {
-                  tab.items.forEach(function(item) {
-                    if (item.text && item.link) addButton(item.text, item.link);
+                  tab.items.forEach(function(item, itemIdx) {
+                    var label = '탭' + (tabIdx + 1) + ' 썸네일' + (itemIdx + 1);
+                    if (item.text && item.link) addButton(item.text, item.link, label);
                   });
                 }
               });
             }
-            // bottomTripleLarge single
-            if (Array.isArray(nextData.single)) {
-              nextData.single.forEach(function(item) {
-                if (item.text && item.link) addButton(item.text, item.link);
+            return;
+          }
+
+          // ── bottomTripleLarge: 탭 없는 하단 카드 행. 맨 아래 별도 추천/캠페인 섹션과
+          // 시각적으로 유사해 '다이나믹 썸네일'로 구분 (일반 썸네일과 다른 블록) ──
+          if (prefix === 'bottomtriplelarge') {
+            if (Array.isArray(data.single)) {
+              data.single.forEach(function(item, idx) {
+                var label = '다이나믹 썸네일' + (idx + 1);
+                if (item.text && item.link) addButton(item.text, item.link, label);
               });
             }
+            return;
+          }
+
+          // ── premium* 계열 (캐러셀/메인배너, PC·MO 공통) ──
+          if (/^premium(image|wideimage|video|bottom|link|story)$/.test(prefix)) {
+            parsePremiumShape(data);
+
+            // _blocks.next 안의 데이터도 재귀적으로 처리 (네이버 블록 체인 구조)
+            if (data._blocks && data._blocks.next && data._blocks.next.data) {
+              parsePremiumShape(data._blocks.next.data);
+            }
+            return;
           }
         });
       });
@@ -285,15 +454,16 @@ async function collectBrandsearch(browser, brand, device, screenshotDir) {
               }
             }
           } catch(_) {}
-          if (!seen.has(finalUrl)) {
-            seen.add(finalUrl);
-            results.push({ text: text, href: finalUrl });
+          var dedupKey = '기타::' + finalUrl;
+          if (!seen.has(dedupKey)) {
+            seen.add(dedupKey);
+            results.push({ text: text, href: finalUrl, area: '기타' });
           }
         });
       }
     }
 
-    return results.slice(0, 15);
+    return results.slice(0, 25);
   });
 
   console.log(`  [${device.toUpperCase()}] 버튼 ${buttons.length}개 추출 (ADFE 파싱)`);
@@ -635,14 +805,41 @@ async function captureGeneral(page, containerId, brand, device, screenshotDir, i
   return { screenshotFilename, buttons };
 }
 
-// 랜딩 페이지 캡처 (네이버 리다이렉트 처리 + 에러페이지 필터 + 중복 제거)
+// 랜딩 페이지 캡처 (네이버 리다이렉트 처리 + 에러페이지 필터 + 중복 방문 방지)
+function buildLandingEntry(btn, cached) {
+  return Object.assign({
+    buttonText: btn.text,
+    buttonUrl: btn.href,
+    area: btn.area || '기타',
+    finalUrl: cached.finalUrl,
+    landingScreenshot: cached.landingScreenshot,
+  }, btn.slideImageUrl ? {
+    slideIndex: btn.slideIndex,
+    slideImage: cached.slideImage || null,
+    slideTitle: btn.slideTitle || '',
+    slideSubText: btn.slideSubText || '',
+  } : {});
+}
+
+// 영역 세분화(메인이미지/설명문구 등)로 버튼 개수가 늘면서, 서로 다른 영역이 동일한
+// href를 공유하는 경우(예: 메인이미지와 설명문구가 같은 이벤트 페이지로 연결)가 생김.
+// 이 경우 각 영역은 별도 카드로 보여줘야 하므로 결과에서 제외하지 않고, 대신 동일 href는
+// 한 번만 실제 방문/스크린샷하고 캐시된 결과를 재사용해서 중복 방문 비용만 줄인다.
 async function captureLandings(context, buttons, brand, device, screenshotDir, isMobile) {
   const landingData = [];
-  const seenFinalUrls = new Set();
+  const hrefCache = new Map(); // btn.href -> {finalUrl, landingScreenshot, slideImage} | 'SKIP'
   const unique = Math.random().toString(36).slice(2,6);
 
-  for (const btn of buttons.slice(0, 8)) {
+  for (const btn of buttons.slice(0, 20)) {
     if (!btn.href) continue;
+
+    if (hrefCache.has(btn.href)) {
+      const cached = hrefCache.get(btn.href);
+      if (cached === 'SKIP') continue;
+      landingData.push(buildLandingEntry(btn, cached));
+      continue;
+    }
+
     try {
       const landingPage = await context.newPage();
       await landingPage.goto(btn.href, { waitUntil: 'networkidle', timeout: 20000 });
@@ -653,6 +850,7 @@ async function captureLandings(context, buttons, brand, device, screenshotDir, i
       if (finalUrlCheck.includes('nid.naver.com') || finalUrlCheck.includes('developers.naver.com') ||
           finalUrlCheck.includes('help.naver.com')) {
         console.log(`    [건너뜀-네이버내부] ${btn.text}`);
+        hrefCache.set(btn.href, 'SKIP');
         await landingPage.close();
         continue;
       }
@@ -666,16 +864,10 @@ async function captureLandings(context, buttons, brand, device, screenshotDir, i
 
       if (isErrorPage) {
         console.log(`    [건너뜀-에러] ${btn.text}`);
+        hrefCache.set(btn.href, 'SKIP');
         await landingPage.close();
         continue;
       }
-
-      // 동일 최종 URL 중복 제거
-      if (seenFinalUrls.has(finalUrlCheck)) {
-        await landingPage.close();
-        continue;
-      }
-      seenFinalUrls.add(finalUrlCheck);
 
       const w = isMobile ? 390 : 1280;
       await landingPage.setViewportSize({ width: w, height: 800 });
@@ -683,16 +875,38 @@ async function captureLandings(context, buttons, brand, device, screenshotDir, i
       const landingPath = path.join(screenshotDir, landingFilename);
       await landingPage.screenshot({ path: landingPath, clip: { x: 0, y: 0, width: w, height: 800 } });
 
-      landingData.push({
-        buttonText: btn.text,
-        buttonUrl: btn.href,
+      // 메인 배너 슬라이드(imgGallery)로 수집된 버튼이면 원본 슬라이드 이미지도 다운로드
+      // (스크린샷은 캐러셀의 "현재 보이는 한 장"뿐이라 나머지 슬라이드 실제 배너 이미지는
+      //  ADFE 데이터에 있던 원본 이미지 URL을 직접 받아와야 함)
+      let slideImagePath = null;
+      if (btn.slideImageUrl) {
+        try {
+          const imgResp = await context.request.get(btn.slideImageUrl, { timeout: 10000 });
+          if (imgResp.ok()) {
+            const ext = (btn.slideImageUrl.match(/\.(jpg|jpeg|png|webp|gif)(\?|$)/i) || [,'jpg'])[1].toLowerCase();
+            const slideFilename = `slide_${brand}_${device}_${btn.slideIndex}_${Date.now()}_${unique}.${ext}`;
+            const slideFullPath = path.join(screenshotDir, slideFilename);
+            fs.writeFileSync(slideFullPath, await imgResp.body());
+            slideImagePath = 'screenshots/' + slideFilename;
+          }
+        } catch (e) {
+          console.log(`    [슬라이드 이미지 다운로드 실패] ${btn.text}: ${e.message}`);
+        }
+      }
+
+      const cached = {
         finalUrl: finalUrlCheck,
         landingScreenshot: 'screenshots/' + landingFilename,
-      });
+        slideImage: slideImagePath,
+      };
+      hrefCache.set(btn.href, cached);
+      landingData.push(buildLandingEntry(btn, cached));
+
       await landingPage.close();
       await new Promise(function(r) { setTimeout(r, 800); });
     } catch (e) {
       console.log(`    [실패] ${btn.text}: ${e.message}`);
+      hrefCache.set(btn.href, 'SKIP');
     }
   }
   return landingData;

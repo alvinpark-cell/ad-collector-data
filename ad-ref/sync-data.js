@@ -55,6 +55,16 @@ function syncData() {
     fs.writeFileSync(bsDst, '[]');
   }
 
+  // powerlink_index.json 복사 (파워링크 모니터링)
+  const pwlSrc = path.join(collectorDir, 'data', 'powerlink_index.json');
+  const pwlDst = path.join(nextPublicDir, 'powerlink_index.json');
+  if (fs.existsSync(pwlSrc)) {
+    fs.copyFileSync(pwlSrc, pwlDst);
+    console.log('powerlink_index.json 복사 완료');
+  } else {
+    fs.writeFileSync(pwlDst, '[]');
+  }
+
   // 이미지 폴더 동기화 (심볼릭 링크 또는 복사)
   const imgSrc = path.join(collectorDir, 'output', 'images');
   const imgDst = path.join(nextPublicDir, 'images');
