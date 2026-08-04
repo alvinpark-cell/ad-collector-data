@@ -15,14 +15,18 @@
  * 그래서 이 파일은 이제 "보조/구멍 메우기" 전용으로만 쓴다:
  * - collector.js가 scrapers/meta.js(기존, 안전 검증됨)로 이미 확보한 미디어는 제외하고,
  *   Apify는 찾았는데 기존 스크래퍼가 놓친 것만 골라서 여기로 넘긴다 (adId 기준 대조)
- * - 한 번 실행당 방문 개수 상한(settings.metaDetailMaxVisitsPerRun)을 두고
- * - 요청 사이 텀도 넉넉하게(4~7초, 지터 포함) 둬서 몰아치는 트래픽 패턴 자체를 피한다
+ * - 안전장치는 "한 번에 몇 건까지"가 아니라 "건당 방문 사이 텀을 얼마나 두는가"임 —
+ *   그 주에 찾은 건 그 주 안에 다 처리하되(settings.metaDetailMaxVisitsPerRun로 넉넉하게
+ *   잡아둠), 요청 사이 텀은 그대로 넉넉하게(4~7초, 지터 포함) 둬서 몰아치는 트래픽
+ *   패턴 자체를 피한다 (총 건수를 줄이는 게 아니라 건당 속도를 늦추는 방식)
  */
 
+const path = require('path');
 const { chromium } = require('playwright');
+const { downloadImage, buildFilename, saveIndex } = require('../utils');
 
-const MAX_MEDIA_PER_AD = 6;
-const DEFAULT_MAX_VISITS_PER_RUN = 10;
+const MAX_MEDIA_PER_AD = 30; // 캐러셀 광고 전체 카드를 다 받기 위한 넉넉한 상한 (페이스북 캐러셀 실제 최대치보다 여유있게)
+const DEFAULT_MAX_VISITS_PER_RUN = 150; // metaMediaBatch.js가 2시간마다 이만큼씩 나눠서 처리 (하루 12회 = 최대 1800건/일)
 const MIN_DELAY_MS = 4000;
 const DELAY_JITTER_MS = 3000;
 
@@ -156,4 +160,86 @@ async function hydrateWithMedia(adMetaRows, maxVisitsPerRun) {
   return finalRows;
 }
 
-module.exports = { hydrateWithMedia, extractMediaFromAdPage, isRealContentUrl };
+/**
+ * processItems.js가 이제 미디어 없이도 메타데이터만으로 저장을 허용하므로(구멍 항목 유실 방지),
+ * 그렇게 "미디어 대기 중"으로 저장된 기존 index.json 항목들을 이번 실행에서 채울 수 있는 만큼
+ * 채워 넣는다. 신규 구멍 방문과 같은 예산(settings.metaDetailMaxVisitsPerRun)을 공유하므로
+ * 호출 쪽(collector.js)에서 남은 예산을 cap으로 넘겨준다.
+ *
+ * 건마다 바로바로 index.json에 저장한다(hydrateWithMedia처럼 전체를 다 방문한 뒤 한 번에
+ * 저장하지 않음) - 컴퓨터를 끄는 등으로 배치 중간에 프로세스가 죽어도, 그때까지 처리된
+ * 건들은 이미 디스크에 반영돼 있어서 다음 실행에서 그 지점부터 정확히 이어진다.
+ *
+ * @param {object[]} existingIndex - index.json 전체(참조로 전달 — 매칭되는 항목을 그 자리에서 직접 수정함)
+ * @param {object} settings
+ * @param {number} cap - 이번 실행에서 방문할 최대 건수
+ * @returns {Promise<{attempted:number, updated:number}>}
+ */
+async function backfillPendingMedia(existingIndex, settings, cap) {
+  const pending = existingIndex.filter(i => i.platform === 'meta' && i.adId && !i.mediaType);
+  if (pending.length === 0 || cap <= 0) return { attempted: 0, updated: 0 };
+
+  const toVisit = pending.slice(0, cap);
+  console.log(`[Meta/보완] 미디어 없이 저장된 기존 항목 ${pending.length}건 중 ${toVisit.length}건 이번에 보완 시도`);
+
+  const indexPath = path.join(settings.dataDir, 'index.json');
+  const browser = await chromium.launch({ headless: true });
+  const context = await browser.newContext({
+    userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
+    locale: 'ko-KR',
+    viewport: { width: 800, height: 800 },
+  });
+
+  let attempted = 0;
+  let updated = 0;
+
+  try {
+    for (const target of toVisit) {
+      attempted++;
+      console.log(`  [상세] 광고 ${target.adId} (${target.advertiserName}) 미디어 추출 중...`);
+
+      let mediaList = [];
+      try {
+        mediaList = await extractMediaFromAdPage(context, target);
+      } catch (e) {
+        console.log(`  ⚠ 광고(${target.adId}) 페이지 방문 실패: ${e.message}`);
+      }
+
+      if (mediaList.length === 0) {
+        console.log(`  ⚠ 광고 ${target.adId} 미디어를 찾지 못해 건너뜀`);
+      } else {
+        const m = mediaList[0]; // adId 기준 저장이라 대표 미디어 1개만 사용
+        try {
+          if (m.mediaType === 'image') {
+            const filename = buildFilename('meta', target.keyword, 'image', 'jpg');
+            const imagePath = path.join(settings.outputDir, 'images', 'meta', filename);
+            await downloadImage(m.mediaUrl, imagePath);
+            target.localPath = ['images', 'meta', filename].join('/');
+          } else if (m.mediaType === 'video') {
+            const filename = buildFilename('meta', target.keyword, 'video', 'mp4');
+            const videoPath = path.join(settings.outputDir, 'images', 'meta', 'videos', filename);
+            await downloadImage(m.mediaUrl, videoPath);
+            target.localPath = ['images', 'meta', 'videos', filename].join('/');
+          }
+          if (target.localPath) {
+            target.mediaType = m.mediaType;
+            target.mediaUrl = m.mediaUrl;
+            updated++;
+            saveIndex(indexPath, existingIndex); // 건마다 즉시 저장 - 중단돼도 여기까진 안전
+          }
+        } catch (e) {
+          console.log(`  [보완 실패] ${target.adId}: ${e.message}`);
+        }
+      }
+
+      const delay = MIN_DELAY_MS + Math.random() * DELAY_JITTER_MS;
+      await new Promise((r) => setTimeout(r, delay));
+    }
+  } finally {
+    await browser.close();
+  }
+
+  return { attempted, updated };
+}
+
+module.exports = { hydrateWithMedia, extractMediaFromAdPage, isRealContentUrl, backfillPendingMedia };

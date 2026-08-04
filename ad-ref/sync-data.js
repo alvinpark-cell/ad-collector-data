@@ -65,6 +65,46 @@ function syncData() {
     fs.writeFileSync(pwlDst, '[]');
   }
 
+  // collection_status.json 복사 (각 수집 종류별 마지막 수집 시각/건수 - 홈 화면 표시용)
+  const statusSrc = path.join(collectorDir, 'data', 'collection_status.json');
+  const statusDst = path.join(nextPublicDir, 'collection_status.json');
+  if (fs.existsSync(statusSrc)) {
+    fs.copyFileSync(statusSrc, statusDst);
+    console.log('collection_status.json 복사 완료');
+  } else {
+    fs.writeFileSync(statusDst, '{}');
+  }
+
+  // market_index.json 복사 (코스피/코스닥/나스닥 - 검색어 트렌드 화면 상단)
+  const marketSrc = path.join(collectorDir, 'data', 'market_index.json');
+  const marketDst = path.join(nextPublicDir, 'market_index.json');
+  if (fs.existsSync(marketSrc)) {
+    fs.copyFileSync(marketSrc, marketDst);
+    console.log('market_index.json 복사 완료');
+  } else {
+    fs.writeFileSync(marketDst, '{}');
+  }
+
+  // powerlink_insight.json 복사 (파워링크 주차별 변화 인사이트)
+  const pwlInsightSrc = path.join(collectorDir, 'data', 'powerlink_insight.json');
+  const pwlInsightDst = path.join(nextPublicDir, 'powerlink_insight.json');
+  if (fs.existsSync(pwlInsightSrc)) {
+    fs.copyFileSync(pwlInsightSrc, pwlInsightDst);
+    console.log('powerlink_insight.json 복사 완료');
+  } else {
+    fs.writeFileSync(pwlInsightDst, '{}');
+  }
+
+  // creative_insight.json 복사 (소재 인사이트 - 전체/브랜드별)
+  const creativeInsightSrc = path.join(collectorDir, 'data', 'creative_insight.json');
+  const creativeInsightDst = path.join(nextPublicDir, 'creative_insight.json');
+  if (fs.existsSync(creativeInsightSrc)) {
+    fs.copyFileSync(creativeInsightSrc, creativeInsightDst);
+    console.log('creative_insight.json 복사 완료');
+  } else {
+    fs.writeFileSync(creativeInsightDst, '{}');
+  }
+
   // 이미지 폴더 동기화 (심볼릭 링크 또는 복사)
   const imgSrc = path.join(collectorDir, 'output', 'images');
   const imgDst = path.join(nextPublicDir, 'images');

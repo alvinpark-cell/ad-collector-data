@@ -5,6 +5,12 @@ import { useState, useMemo } from 'react';
 interface TrendAnalysisProps {
   brands: string[];
   clientBrand: string;
+  startDate: string;
+  endDate: string;
+  timeUnit: 'date' | 'week' | 'month';
+  onStartDateChange: (v: string) => void;
+  onEndDateChange: (v: string) => void;
+  onTimeUnitChange: (v: 'date' | 'week' | 'month') => void;
 }
 
 interface DataLabPoint {
@@ -24,7 +30,7 @@ function toApiDate(d: string) {
   return d; // <input type="date"> already gives YYYY-MM-DD, which the API accepts
 }
 
-function defaultDateRange() {
+export function defaultDateRange() {
   const end = new Date();
   const start = new Date();
   start.setFullYear(start.getFullYear() - 1);
@@ -32,15 +38,16 @@ function defaultDateRange() {
   return { start: fmt(start), end: fmt(end) };
 }
 
-export default function TrendAnalysis({ brands, clientBrand }: TrendAnalysisProps) {
-  const { start, end } = useMemo(() => defaultDateRange(), []);
+export default function TrendAnalysis({
+  brands, clientBrand, startDate, endDate, timeUnit, onStartDateChange, onEndDateChange, onTimeUnitChange,
+}: TrendAnalysisProps) {
   const [selected, setSelected] = useState<Set<string>>(new Set([clientBrand]));
-  const [startDate, setStartDate] = useState(start);
-  const [endDate, setEndDate] = useState(end);
-  const [timeUnit, setTimeUnit] = useState<'date' | 'week' | 'month'>('month');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [results, setResults] = useState<DataLabResult[] | null>(null);
+  const [insightText, setInsightText] = useState<string | null>(null);
+  const [insightLoading, setInsightLoading] = useState(false);
+  const [insightError, setInsightError] = useState<string | null>(null);
 
   const toggleBrand = (brand: string) => {
     setSelected(prev => {
@@ -59,6 +66,8 @@ export default function TrendAnalysis({ brands, clientBrand }: TrendAnalysisProp
     if (selected.size === 0) { setError('브랜드를 최소 1개 선택해주세요'); return; }
     setLoading(true);
     setError(null);
+    setInsightText(null);
+    setInsightError(null);
     try {
       const keywordGroups = Array.from(selected).map(brand => ({ groupName: brand, keywords: [brand] }));
       const res = await fetch('/api/naver-trend', {
@@ -74,11 +83,49 @@ export default function TrendAnalysis({ brands, clientBrand }: TrendAnalysisProp
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || '조회 실패');
       setResults(data.results || []);
+      generateTrendInsight(data.results || []);
     } catch (e) {
       setError(e instanceof Error ? e.message : '알 수 없는 오류');
       setResults(null);
     } finally {
       setLoading(false);
+    }
+  };
+
+  // 검색량 추이 + 같은 기간 코스피/코스닥/나스닥 등락률을 Claude에 보내 관련성 인사이트 생성.
+  // 데이터랩 결과는 "조회"를 눌러야만 생기는 일시적 데이터라 미리 만들어둘 수 없어서,
+  // 여기서만 그때그때(POST 라우트, Claude CLI 호출) 생성한다.
+  const generateTrendInsight = async (dataLabResults: DataLabResult[]) => {
+    if (dataLabResults.length === 0) return;
+    setInsightLoading(true);
+    try {
+      const marketRes = await fetch('/data/market_index.json').then(r => r.json()).catch(() => ({}));
+      const summarize = (idx: { data: { date: string; close: number }[] } | undefined) => {
+        if (!idx || !idx.data) return null;
+        const filtered = idx.data.filter((d) => d.date >= startDate && d.date <= endDate);
+        if (filtered.length < 2) return null;
+        return {
+          changePct: ((filtered[filtered.length - 1].close - filtered[0].close) / filtered[0].close) * 100,
+          points: filtered,
+        };
+      };
+      const marketIndexSummary = {
+        kospi: summarize(marketRes.kospi),
+        kosdaq: summarize(marketRes.kosdaq),
+        nasdaq: summarize(marketRes.nasdaq),
+      };
+      const res = await fetch('/api/trend-insight', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ dataLabResults, marketIndexSummary, brands: Array.from(selected) }),
+      });
+      const json = await res.json();
+      if (!res.ok) throw new Error(json.error || '인사이트 생성 실패');
+      setInsightText(json.text);
+    } catch (e) {
+      setInsightError(e instanceof Error ? e.message : '알 수 없는 오류');
+    } finally {
+      setInsightLoading(false);
     }
   };
 
@@ -137,17 +184,17 @@ export default function TrendAnalysis({ brands, clientBrand }: TrendAnalysisProp
         <div style={{ display: 'flex', gap: '16px', alignItems: 'flex-end', flexWrap: 'wrap' }}>
           <div>
             <p style={{ fontSize: '11px', color: '#8888aa', marginBottom: '4px' }}>시작일</p>
-            <input type="date" value={startDate} onChange={e => setStartDate(e.target.value)}
+            <input type="date" value={startDate} onChange={e => onStartDateChange(e.target.value)}
               style={{ background: '#1a1a24', border: '1px solid #2e2e3e', borderRadius: '6px', padding: '6px 10px', color: '#e2e2f0', fontSize: '12px' }} />
           </div>
           <div>
             <p style={{ fontSize: '11px', color: '#8888aa', marginBottom: '4px' }}>종료일</p>
-            <input type="date" value={endDate} onChange={e => setEndDate(e.target.value)}
+            <input type="date" value={endDate} onChange={e => onEndDateChange(e.target.value)}
               style={{ background: '#1a1a24', border: '1px solid #2e2e3e', borderRadius: '6px', padding: '6px 10px', color: '#e2e2f0', fontSize: '12px' }} />
           </div>
           <div>
             <p style={{ fontSize: '11px', color: '#8888aa', marginBottom: '4px' }}>단위</p>
-            <select value={timeUnit} onChange={e => setTimeUnit(e.target.value as 'date' | 'week' | 'month')}
+            <select value={timeUnit} onChange={e => onTimeUnitChange(e.target.value as 'date' | 'week' | 'month')}
               style={{ background: '#1a1a24', border: '1px solid #2e2e3e', borderRadius: '6px', padding: '6px 10px', color: '#e2e2f0', fontSize: '12px' }}>
               <option value="date">일별</option>
               <option value="week">주별</option>
@@ -190,6 +237,13 @@ export default function TrendAnalysis({ brands, clientBrand }: TrendAnalysisProp
           <p style={{ fontSize: '10px', color: '#555568', marginTop: '8px' }}>
             * 절대 검색량이 아닌 상대적 검색 트렌드 지수(기간 내 최고치를 100으로 환산)입니다 - 네이버 데이터랩 제공
           </p>
+
+          <div style={{ marginTop: '16px', background: 'rgba(108,99,255,0.08)', border: '1px solid rgba(108,99,255,0.25)', borderRadius: '10px', padding: '14px 16px' }}>
+            <p style={{ fontSize: '11px', fontWeight: 700, color: '#a78bfa', marginBottom: '6px' }}>🧠 왜 이런 추이가 나왔을까 (코스피/코스닥/나스닥 연동)</p>
+            {insightLoading && <p style={{ fontSize: '12px', color: '#8888aa' }}>인사이트 생성 중...</p>}
+            {insightError && <p style={{ fontSize: '12px', color: '#f87171' }}>생성 실패: {insightError}</p>}
+            {insightText && <p style={{ fontSize: '12px', color: '#e2e2f0', lineHeight: 1.6 }}>{insightText}</p>}
+          </div>
         </div>
       )}
     </div>

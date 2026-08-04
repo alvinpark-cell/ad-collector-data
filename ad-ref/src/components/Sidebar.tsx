@@ -5,7 +5,7 @@ export type ViewKey =
   | 'news-daily' | 'news-weekly'
   | 'dash-all' | 'dash-meta' | 'dash-google' | 'dash-brand' | 'dash-monthly'
   | 'bs' | 'pwl'
-  | 'trend';
+  | 'trend' | 'trend-report';
 
 interface NavLeaf { key: ViewKey; label: string; }
 interface NavGroup { title: string; items: NavLeaf[]; }
@@ -28,7 +28,10 @@ const GROUPS: NavGroup[] = [
   ] },
 ];
 
-const STANDALONE: NavLeaf = { key: 'trend', label: '검색어 트렌드' };
+const STANDALONE: NavLeaf[] = [
+  { key: 'trend', label: '검색어 트렌드' },
+  { key: 'trend-report', label: '트렌드 리포트' },
+];
 
 interface SidebarProps {
   active: ViewKey;
@@ -70,16 +73,18 @@ export default function Sidebar({ active, onSelect }: SidebarProps) {
       ))}
 
       <div style={{ borderTop: '1px solid #2e2e3e', paddingTop: '12px', marginTop: '8px' }}>
-        <button onClick={() => onSelect(STANDALONE.key)}
-          style={{
-            display: 'block', width: '100%', textAlign: 'left', padding: '8px 10px', borderRadius: '6px', border: 'none',
-            cursor: 'pointer', fontSize: '13px',
-            background: active === STANDALONE.key ? 'rgba(108,99,255,0.18)' : 'transparent',
-            color: active === STANDALONE.key ? '#a78bfa' : '#c4c4d4',
-            fontWeight: active === STANDALONE.key ? 600 : 400,
-          }}>
-          {STANDALONE.label}
-        </button>
+        {STANDALONE.map(item => (
+          <button key={item.key} onClick={() => onSelect(item.key)}
+            style={{
+              display: 'block', width: '100%', textAlign: 'left', padding: '8px 10px', borderRadius: '6px', border: 'none',
+              cursor: 'pointer', fontSize: '13px', marginBottom: '2px',
+              background: active === item.key ? 'rgba(108,99,255,0.18)' : 'transparent',
+              color: active === item.key ? '#a78bfa' : '#c4c4d4',
+              fontWeight: active === item.key ? 600 : 400,
+            }}>
+            {item.label}
+          </button>
+        ))}
       </div>
     </aside>
   );

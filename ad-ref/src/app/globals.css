@@ -25,3 +25,12 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #4e4e6e;
 }
+
+/* 어두운 배경에서 브라우저 기본 달력 아이콘이 거의 안 보여서 반전시켜 밝게 표시 */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(0.8);
+  cursor: pointer;
+}
+input[type="date"] {
+  color-scheme: dark;
+}

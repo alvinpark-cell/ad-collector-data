@@ -109,6 +109,22 @@ function saveIndex(indexPath, data) {
 }
 
 /**
+ * 각 수집 종류(메타/구글/브랜드검색/파워링크/메타미디어보완 등)별 마지막 수집 시각과
+ * 결과 건수를 data/collection_status.json에 기록. 백그라운드로 자동 실행되다 보니
+ * 사람이 콘솔 로그를 직접 볼 일이 없어서, 대시보드 홈 화면에서 "언제/몇 건" 확인 가능하도록
+ * 이 파일을 따로 남겨둔다.
+ */
+function updateCollectionStatus(dataDir, key, data) {
+  const statusPath = path.join(dataDir, 'collection_status.json');
+  let status = {};
+  try {
+    if (fs.existsSync(statusPath)) status = JSON.parse(fs.readFileSync(statusPath, 'utf-8'));
+  } catch (_) {}
+  status[key] = { ...data, updatedAt: new Date().toISOString() };
+  fs.writeFileSync(statusPath, JSON.stringify(status, null, 2), 'utf-8');
+}
+
+/**
  * 파일명 안전하게 변환
  */
 function sanitizeFilename(str) {
@@ -151,5 +167,6 @@ module.exports = {
   saveIndex,
   sanitizeFilename,
   buildFilename,
+  updateCollectionStatus,
   getMonthWeekKey,
 };

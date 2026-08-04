@@ -17,6 +17,7 @@ const path = require('path');
 const { scrapeMeta } = require('./scrapers/meta');
 const { processAndSaveItems } = require('./processItems');
 const { generateSite } = require('./generateSite');
+const { updateCollectionStatus } = require('./utils');
 
 const BATCH_SIZE = 3;
 
@@ -60,6 +61,11 @@ async function runNextBrandBatch(settings) {
     console.log(`[브랜드 배치 ${idx + 1}/${batches.length}] 신규 저장: ${newItems.length}개`);
 
     generateSite(finalIndex, settings);
+    updateCollectionStatus(settings.dataDir, 'metaBrandBatch', {
+      lastCollectedAt: new Date().toISOString(),
+      newCount: newItems.length,
+      batch: `${idx + 1}/${batches.length}`,
+    });
   } catch (err) {
     console.error(`[브랜드 배치 ${idx + 1}/${batches.length}] 오류:`, err.message);
   }

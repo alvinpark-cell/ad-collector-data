@@ -4,7 +4,8 @@ import { useState, useEffect, useMemo } from 'react';
 import { AdItem, FavoriteItem } from '@/lib/types';
 import AdCard from '@/components/AdCard';
 import AdModal from '@/components/AdModal';
-import TrendAnalysis from '@/components/TrendAnalysis';
+import TrendAnalysis, { defaultDateRange } from '@/components/TrendAnalysis';
+import MarketIndexPanel from '@/components/MarketIndexPanel';
 import PowerlinkMonitor from '@/components/PowerlinkMonitor';
 import WeekSelector from '@/components/WeekSelector';
 import Sidebar, { ViewKey } from '@/components/Sidebar';
@@ -23,6 +24,8 @@ export default function Home() {
   const [data, setData] = useState<AdItem[]>([]);
   const [changes, setChanges] = useState<Changes>({ newAds: [], endedAds: [], lastUpdated: null });
   const [bsData, setBsData] = useState<any[]>([]);
+  const [collectionStatus, setCollectionStatus] = useState<Record<string, any>>({});
+  const [creativeInsight, setCreativeInsight] = useState<{ overall?: { text: string; itemCount: number }; byBrand?: Record<string, { text: string; itemCount: number }> } | null>(null);
   const [loading, setLoading] = useState(true);
   const [view, setView] = useState<ViewKey>('home');
   const [selectedBrand, setSelectedBrand] = useState<string | null>(null);
@@ -37,6 +40,10 @@ export default function Home() {
   const [showFavOnly, setShowFavOnly] = useState(false);
   const [metaSearchText, setMetaSearchText] = useState('');
   const [googleSearchText, setGoogleSearchText] = useState('');
+  const [metaStartDate, setMetaStartDate] = useState('');
+  const [metaEndDate, setMetaEndDate] = useState('');
+  const [googleStartDate, setGoogleStartDate] = useState('');
+  const [googleEndDate, setGoogleEndDate] = useState('');
   const [selectedItem, setSelectedItem] = useState<AdItem | null>(null);
   const [favorites, setFavorites] = useState<FavoriteItem[]>([]);
   const [favPopup, setFavPopup] = useState<string | null>(null);
@@ -46,13 +53,22 @@ export default function Home() {
   const [bsSelectedWeek, setBsSelectedWeek] = useState<string | null>(null);
   const [selectedMonth, setSelectedMonth] = useState<string | null>(null);
 
+  // 검색어 트렌드 화면의 코스피/코스닥/나스닥 차트가 데이터랩 조회 기간과 동일한 구간을
+  // 보여줘야 해서, 날짜 범위/단위를 여기서 공유 상태로 관리하고 두 컴포넌트에 같이 내려준다.
+  const trendDefaultRange = useMemo(() => defaultDateRange(), []);
+  const [trendStartDate, setTrendStartDate] = useState(trendDefaultRange.start);
+  const [trendEndDate, setTrendEndDate] = useState(trendDefaultRange.end);
+  const [trendTimeUnit, setTrendTimeUnit] = useState<'date' | 'week' | 'month'>('month');
+
   useEffect(() => {
     Promise.all([
       fetch('/data/index.json').then(r => r.json()).catch(() => []),
       fetch('/data/changes.json').then(r => r.json()).catch(() => ({ newAds: [], endedAds: [], lastUpdated: null })),
       fetch('/data/bs_index.json').then(r => r.json()).catch(() => []),
-    ]).then(([d, c, bs]) => {
-      setData(d); setChanges(c); setBsData(bs); setLoading(false);
+      fetch('/data/collection_status.json').then(r => r.json()).catch(() => ({})),
+      fetch('/data/creative_insight.json').then(r => r.json()).catch(() => null),
+    ]).then(([d, c, bs, status, creative]) => {
+      setData(d); setChanges(c); setBsData(bs); setCollectionStatus(status); setCreativeInsight(creative); setLoading(false);
       const weeks = sortMonthWeekKeysDesc(bs.map((i: any) => getMonthWeekKey(i.collectedAt)));
       if (weeks.length > 0) setBsSelectedWeek(weeks[0]);
     });
@@ -62,6 +78,19 @@ export default function Home() {
       const f = localStorage.getItem('ad_ref_lastfolder'); if (f) setFavFolder(f);
     } catch (_) {}
   }, []);
+
+  // 즐겨찾기한 광고가 이후에(중복 정리 등으로) index.json에서 삭제되면, 즐겨찾기 목록엔
+  // id가 남아있는데 실제 카드가 안 그려져서 별 버튼으로 해제할 방법이 없어짐 -> data가
+  // 로드된 뒤 더 이상 존재하지 않는 항목은 자동으로 걸러내고 localStorage도 같이 갱신
+  useEffect(() => {
+    if (data.length === 0 || favorites.length === 0) return;
+    const validIds = new Set(data.map(d => d.id));
+    const pruned = favorites.filter(f => validIds.has(f.id));
+    if (pruned.length !== favorites.length) {
+      setFavorites(pruned);
+      localStorage.setItem('ad_ref_favorites', JSON.stringify(pruned));
+    }
+  }, [data, favorites]);
 
   const goToBrand = (brand: string) => {
     setView('dash-brand');
@@ -80,8 +109,8 @@ export default function Home() {
     BRANDS.forEach(brand => {
       const items = bsData.filter((i: any) => i.advertiserName === brand);
       map[brand] = {
-        pc: items.filter((i: any) => i.device === 'pc').sort((a: any, b: any) => a.collectedAt.localeCompare(b.collectedAt)),
-        mo: items.filter((i: any) => i.device === 'mo').sort((a: any, b: any) => a.collectedAt.localeCompare(b.collectedAt)),
+        pc: items.filter((i: any) => i.device === 'pc').sort((a: any, b: any) => (a.collectedAt || '').localeCompare(b.collectedAt || '')),
+        mo: items.filter((i: any) => i.device === 'mo').sort((a: any, b: any) => (a.collectedAt || '').localeCompare(b.collectedAt || '')),
       };
     });
     return map;
@@ -100,8 +129,8 @@ export default function Home() {
     return BRANDS.map(brand => {
       const brandBs = bsWeekData.filter((i: any) => i.advertiserName === brand);
       if (brandBs.length === 0) return null;
-      const pc = brandBs.filter((i: any) => i.device === 'pc').sort((a: any, b: any) => b.collectedAt.localeCompare(a.collectedAt))[0];
-      const mo = brandBs.filter((i: any) => i.device === 'mo').sort((a: any, b: any) => b.collectedAt.localeCompare(a.collectedAt))[0];
+      const pc = brandBs.filter((i: any) => i.device === 'pc').sort((a: any, b: any) => (b.collectedAt || '').localeCompare(a.collectedAt || ''))[0];
+      const mo = brandBs.filter((i: any) => i.device === 'mo').sort((a: any, b: any) => (b.collectedAt || '').localeCompare(a.collectedAt || ''))[0];
       const history = bsHistoryByBrand[brand] || { pc: [], mo: [] };
       const prevPc = findPrevBsEntry(history.pc, pc);
       const prevMo = findPrevBsEntry(history.mo, mo);
@@ -127,8 +156,8 @@ export default function Home() {
 
   const totalStats = useMemo(() => ({
     total: data.length, new24h: changes.newAds.length, ended24h: changes.endedAds.length,
-    lastMeta: data.filter(i => i.platform === 'meta').sort((a,b) => b.collectedAt.localeCompare(a.collectedAt))[0]?.collectedAt,
-    lastGoogle: data.filter(i => i.platform === 'google').sort((a,b) => b.collectedAt.localeCompare(a.collectedAt))[0]?.collectedAt,
+    lastMeta: data.filter(i => i.platform === 'meta').sort((a,b) => (b.collectedAt || '').localeCompare(a.collectedAt || ''))[0]?.collectedAt,
+    lastGoogle: data.filter(i => i.platform === 'google').sort((a,b) => (b.collectedAt || '').localeCompare(a.collectedAt || ''))[0]?.collectedAt,
   }), [data, changes]);
 
   const brandItems = useMemo(() => {
@@ -137,7 +166,7 @@ export default function Home() {
       .filter(i => (i.advertiserName || '').toLowerCase().includes(selectedBrand.toLowerCase()) || (i.keyword || '').toLowerCase() === selectedBrand.toLowerCase())
       .filter(i => brandPlatform === 'all' ? true : i.platform === brandPlatform)
       .filter(i => brandMedia === 'all' ? true : i.mediaType === brandMedia)
-      .sort((a, b) => b.collectedAt.localeCompare(a.collectedAt));
+      .sort((a, b) => (b.collectedAt || '').localeCompare(a.collectedAt || ''));
   }, [data, selectedBrand, brandPlatform, brandMedia]);
 
   // 게재일(adStartedAt) 우선, 없으면 수집일(collectedAt)로 대체 - 아직 게재일이 안 잡히는
@@ -200,7 +229,7 @@ export default function Home() {
         return !isNaN(d.getTime()) && sliceMonths.has(`${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`);
       });
     }
-    return items.sort((a, b) => b.collectedAt.localeCompare(a.collectedAt));
+    return items.sort((a, b) => (b.collectedAt || '').localeCompare(a.collectedAt || ''));
   }, [data, searchText, searchMedia, slicePlatforms, sliceAdvertisers, sliceYears, sliceMonths]);
 
   const toggleFav = (id: string) => {
@@ -235,8 +264,10 @@ export default function Home() {
       const q = metaSearchText.toLowerCase();
       items = items.filter(i => [i.advertiserName, i.keyword, i.copyText].join(' ').toLowerCase().includes(q));
     }
-    return items.sort((a, b) => b.collectedAt.localeCompare(a.collectedAt));
-  }, [data, metaSearchText]);
+    if (metaStartDate) items = items.filter(i => getAdDate(i) >= metaStartDate);
+    if (metaEndDate) items = items.filter(i => getAdDate(i) <= metaEndDate + 'T23:59:59.999Z');
+    return items.sort((a, b) => (b.collectedAt || '').localeCompare(a.collectedAt || ''));
+  }, [data, metaSearchText, metaStartDate, metaEndDate]);
 
   const googleItems = useMemo(() => {
     let items = data.filter(i => i.platform === 'google');
@@ -244,8 +275,10 @@ export default function Home() {
       const q = googleSearchText.toLowerCase();
       items = items.filter(i => [i.advertiserName, i.keyword, i.copyText].join(' ').toLowerCase().includes(q));
     }
-    return items.sort((a, b) => b.collectedAt.localeCompare(a.collectedAt));
-  }, [data, googleSearchText]);
+    if (googleStartDate) items = items.filter(i => getAdDate(i) >= googleStartDate);
+    if (googleEndDate) items = items.filter(i => getAdDate(i) <= googleEndDate + 'T23:59:59.999Z');
+    return items.sort((a, b) => (b.collectedAt || '').localeCompare(a.collectedAt || ''));
+  }, [data, googleSearchText, googleStartDate, googleEndDate]);
 
   // 월별 신규 소재: 각 항목의 수집일(collectedAt) 기준 월로 묶는다.
   // (index.json은 URL 기준 전역 중복제거라 한 번 저장된 항목은 다시 안 늘어나므로,
@@ -268,7 +301,7 @@ export default function Home() {
     return data.filter(i => {
       const d = new Date(i.collectedAt);
       return !isNaN(d.getTime()) && `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}` === selectedMonth;
-    }).sort((a, b) => b.collectedAt.localeCompare(a.collectedAt));
+    }).sort((a, b) => (b.collectedAt || '').localeCompare(a.collectedAt || ''));
   }, [data, selectedMonth]);
 
   if (loading) return <div style={{ minHeight: '100vh', background: '#0f0f13', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#8888aa' }}>로딩 중...</div>;
@@ -327,9 +360,60 @@ export default function Home() {
 
       <div style={{ flex: 1, minWidth: 0 }}>
         {view === 'home' && (
-          <div style={{ minHeight: '100vh', background: '#ffffff', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <span style={{ color: '#111', fontSize: '18px' }}>think</span>
-          </div>
+          <main style={{ maxWidth: '900px', margin: '0 auto', padding: '48px 24px' }}>
+            <h2 style={{ fontSize: '20px', fontWeight: 700, marginBottom: '20px' }}>수집 현황</h2>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))', gap: '12px' }}>
+              {[
+                { key: 'meta', label: '메타' },
+                { key: 'google', label: '구글' },
+                { key: 'brandsearch', label: '브랜드검색' },
+                { key: 'powerlink', label: '검색광고(파워링크)' },
+                { key: 'metaBrandBatch', label: '메타 브랜드 순환' },
+              ].map(({ key, label }) => {
+                const s = collectionStatus[key];
+                const at = s?.lastCollectedAt ? new Date(s.lastCollectedAt) : null;
+                return (
+                  <div key={key} style={{ background: 'rgba(26,26,36,0.8)', border: '1px solid #2e2e3e', borderRadius: '12px', padding: '16px 18px' }}>
+                    <p style={{ fontSize: '13px', fontWeight: 600, color: '#e2e2f0', marginBottom: '8px' }}>{label}</p>
+                    {at ? (
+                      <>
+                        <p style={{ fontSize: '12px', color: '#a78bfa' }}>{at.toLocaleDateString('ko-KR')}</p>
+                        <p style={{ fontSize: '11px', color: '#8888aa', marginTop: '2px' }}>{at.toLocaleTimeString('ko-KR')}</p>
+                        <p style={{ fontSize: '11px', color: '#8888aa', marginTop: '6px' }}>신규 {s.newCount ?? 0}건</p>
+                      </>
+                    ) : (
+                      <p style={{ fontSize: '12px', color: '#555568' }}>수집 이력 없음</p>
+                    )}
+                  </div>
+                );
+              })}
+
+              {/* 메타 미디어 채우기는 별도 진행상황 지표(시도/성공/대기중)라 다르게 표시 */}
+              <div style={{ background: 'rgba(26,26,36,0.8)', border: '1px solid #2e2e3e', borderRadius: '12px', padding: '16px 18px' }}>
+                <p style={{ fontSize: '13px', fontWeight: 600, color: '#e2e2f0', marginBottom: '8px' }}>메타 이미지/영상 채우기</p>
+                {collectionStatus.metaMediaBatch?.lastRunAt ? (
+                  <>
+                    <p style={{ fontSize: '12px', color: '#a78bfa' }}>
+                      {new Date(collectionStatus.metaMediaBatch.lastRunAt).toLocaleDateString('ko-KR')}
+                    </p>
+                    <p style={{ fontSize: '11px', color: '#8888aa', marginTop: '2px' }}>
+                      {new Date(collectionStatus.metaMediaBatch.lastRunAt).toLocaleTimeString('ko-KR')}
+                    </p>
+                    <p style={{ fontSize: '11px', color: '#8888aa', marginTop: '6px' }}>
+                      {collectionStatus.metaMediaBatch.attempted}건 시도 · {collectionStatus.metaMediaBatch.updated}건 성공
+                    </p>
+                    <p style={{ fontSize: '11px', color: collectionStatus.metaMediaBatch.stillPending > 0 ? '#fb923c' : '#34d399', marginTop: '2px' }}>
+                      {collectionStatus.metaMediaBatch.stillPending > 0
+                        ? `아직 ${collectionStatus.metaMediaBatch.stillPending}건 대기 중`
+                        : '전부 채움 완료'}
+                    </p>
+                  </>
+                ) : (
+                  <p style={{ fontSize: '12px', color: '#555568' }}>수집 이력 없음</p>
+                )}
+              </div>
+            </div>
+          </main>
         )}
 
         {view !== 'home' && (
@@ -360,8 +444,8 @@ export default function Home() {
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '12px', marginBottom: '28px' }}>
                   {[
                     { label: '활성 광고 (전체)', value: totalStats.total.toLocaleString(), color: '#a78bfa' },
-                    { label: '신규 광고 (24h)', value: totalStats.new24h, color: '#34d399' },
-                    { label: '종료 광고 (24h)', value: totalStats.ended24h, color: '#f87171' },
+                    { label: '신규 광고 (월간)', value: totalStats.new24h, color: '#34d399' },
+                    { label: '종료 광고 (월간)', value: totalStats.ended24h, color: '#f87171' },
                     { label: '즐겨찾기', value: favorites.length, color: '#facc15' },
                   ].map(({ label, value, color }) => (
                     <div key={label} style={{ background: 'rgba(26,26,36,0.8)', border: '1px solid #2e2e3e', borderRadius: '12px', padding: '20px' }}>
@@ -370,6 +454,35 @@ export default function Home() {
                     </div>
                   ))}
                 </div>
+
+                {creativeInsight && (() => {
+                  // 광고주명 슬라이서에서 정확히 1개만 고른 경우 그 브랜드 인사이트를, 아니면 전체 기준을 보여준다.
+                  // 브랜드별 인사이트가 아직 준비 안 된 조합(예: 년도/월/매체 조합)은 전체 기준으로 대체하고 안내 문구를 덧붙인다.
+                  // advertiserName은 "미래에셋증권 주식회사"처럼 원본 그대로라 byBrand의 깔끔한
+                  // 브랜드명 키와 정확히 안 맞을 수 있어서 포함관계로 느슨하게 매칭한다.
+                  const singleBrand = sliceAdvertisers.size === 1 ? Array.from(sliceAdvertisers)[0] as string : null;
+                  const matchedBrandKey = singleBrand && creativeInsight.byBrand
+                    ? Object.keys(creativeInsight.byBrand).find(b =>
+                        singleBrand.toLowerCase().includes(b.toLowerCase()) || b.toLowerCase().includes(singleBrand.toLowerCase()))
+                    : undefined;
+                  const brandInsight = matchedBrandKey ? creativeInsight.byBrand?.[matchedBrandKey] : null;
+                  const shown = brandInsight || creativeInsight.overall;
+                  if (!shown) return null;
+                  return (
+                    <div style={{ background: 'rgba(108,99,255,0.08)', border: '1px solid rgba(108,99,255,0.25)', borderRadius: '12px', padding: '16px 18px', marginBottom: '20px' }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
+                        <span style={{ fontSize: '12px', fontWeight: 700, color: '#a78bfa' }}>🧠 소재 인사이트</span>
+                        <span style={{ fontSize: '10px', color: '#8888aa' }}>
+                          {brandInsight ? `${singleBrand} 기준 (${brandInsight.itemCount}건)` : `전체 기준 (${creativeInsight.overall?.itemCount ?? 0}건)`}
+                        </span>
+                        {singleBrand && !brandInsight && (
+                          <span style={{ fontSize: '10px', color: '#fb923c' }}>· 이 브랜드는 아직 별도 인사이트가 없어 전체 기준으로 표시 중</span>
+                        )}
+                      </div>
+                      <p style={{ fontSize: '12px', color: '#e2e2f0', lineHeight: 1.6 }}>{shown.text}</p>
+                    </div>
+                  );
+                })()}
 
                 <div style={{ position: 'relative', maxWidth: '480px', marginBottom: '12px' }}>
                   <span style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: '#8888aa', pointerEvents: 'none' }}>🔍</span>
@@ -432,6 +545,24 @@ export default function Home() {
             {view === 'dash-meta' && (
               <>
                 <h2 style={{ fontSize: '20px', fontWeight: 700, marginBottom: '16px' }}>메타 광고</h2>
+                <div style={{ display: 'flex', gap: '16px', alignItems: 'flex-end', flexWrap: 'wrap', marginBottom: '16px' }}>
+                  <div>
+                    <p style={{ fontSize: '11px', color: '#8888aa', marginBottom: '4px' }}>시작일</p>
+                    <input type="date" value={metaStartDate} onChange={e => setMetaStartDate(e.target.value)}
+                      style={{ background: '#1a1a24', border: '1px solid #2e2e3e', borderRadius: '6px', padding: '6px 10px', color: '#e2e2f0', fontSize: '12px' }} />
+                  </div>
+                  <div>
+                    <p style={{ fontSize: '11px', color: '#8888aa', marginBottom: '4px' }}>종료일</p>
+                    <input type="date" value={metaEndDate} onChange={e => setMetaEndDate(e.target.value)}
+                      style={{ background: '#1a1a24', border: '1px solid #2e2e3e', borderRadius: '6px', padding: '6px 10px', color: '#e2e2f0', fontSize: '12px' }} />
+                  </div>
+                  {(metaStartDate || metaEndDate) && (
+                    <button onClick={() => { setMetaStartDate(''); setMetaEndDate(''); }}
+                      style={{ background: 'transparent', border: '1px solid #2e2e3e', borderRadius: '6px', padding: '6px 10px', color: '#8888aa', fontSize: '12px', cursor: 'pointer' }}>
+                      기간 초기화
+                    </button>
+                  )}
+                </div>
                 <div style={{ position: 'relative', maxWidth: '420px', marginBottom: '16px' }}>
                   <input value={metaSearchText} onChange={e => setMetaSearchText(e.target.value)} placeholder="키워드 또는 광고주명 검색..."
                     style={{ width: '100%', background: '#1a1a24', border: '1px solid #2e2e3e', borderRadius: '10px', padding: '10px 14px', color: '#e2e2f0', fontSize: '13px', outline: 'none' }} />
@@ -445,6 +576,24 @@ export default function Home() {
             {view === 'dash-google' && (
               <>
                 <h2 style={{ fontSize: '20px', fontWeight: 700, marginBottom: '16px' }}>구글 광고</h2>
+                <div style={{ display: 'flex', gap: '16px', alignItems: 'flex-end', flexWrap: 'wrap', marginBottom: '16px' }}>
+                  <div>
+                    <p style={{ fontSize: '11px', color: '#8888aa', marginBottom: '4px' }}>시작일</p>
+                    <input type="date" value={googleStartDate} onChange={e => setGoogleStartDate(e.target.value)}
+                      style={{ background: '#1a1a24', border: '1px solid #2e2e3e', borderRadius: '6px', padding: '6px 10px', color: '#e2e2f0', fontSize: '12px' }} />
+                  </div>
+                  <div>
+                    <p style={{ fontSize: '11px', color: '#8888aa', marginBottom: '4px' }}>종료일</p>
+                    <input type="date" value={googleEndDate} onChange={e => setGoogleEndDate(e.target.value)}
+                      style={{ background: '#1a1a24', border: '1px solid #2e2e3e', borderRadius: '6px', padding: '6px 10px', color: '#e2e2f0', fontSize: '12px' }} />
+                  </div>
+                  {(googleStartDate || googleEndDate) && (
+                    <button onClick={() => { setGoogleStartDate(''); setGoogleEndDate(''); }}
+                      style={{ background: 'transparent', border: '1px solid #2e2e3e', borderRadius: '6px', padding: '6px 10px', color: '#8888aa', fontSize: '12px', cursor: 'pointer' }}>
+                      기간 초기화
+                    </button>
+                  )}
+                </div>
                 <div style={{ position: 'relative', maxWidth: '420px', marginBottom: '16px' }}>
                   <input value={googleSearchText} onChange={e => setGoogleSearchText(e.target.value)} placeholder="키워드 또는 광고주명 검색..."
                     style={{ width: '100%', background: '#1a1a24', border: '1px solid #2e2e3e', borderRadius: '10px', padding: '10px 14px', color: '#e2e2f0', fontSize: '13px', outline: 'none' }} />
@@ -465,7 +614,7 @@ export default function Home() {
                     <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '14px' }}>
                       <thead>
                         <tr style={{ borderBottom: '1px solid #2e2e3e' }}>
-                          {['경쟁사', '활성', '신규 24H', '종료 24H', 'VIDEO', 'IMAGE'].map(h => (
+                          {['경쟁사', '활성', '신규 M', '종료 M', 'VIDEO', 'IMAGE'].map(h => (
                             <th key={h} style={{ padding: '12px 16px', textAlign: h === '경쟁사' ? 'left' : 'right', fontSize: '11px', color: '#8888aa', fontWeight: 500, textTransform: 'uppercase' }}>{h}</th>
                           ))}
                         </tr>
@@ -545,7 +694,7 @@ export default function Home() {
                   {(['meta', 'google'] as const).map(plat => {
                     const platItems = data
                       .filter(i => i.platform === plat && ((i.advertiserName||'').toLowerCase().includes(selectedBrand.toLowerCase()) || (i.keyword||'').toLowerCase() === selectedBrand.toLowerCase()))
-                      .sort((a,b) => b.collectedAt.localeCompare(a.collectedAt)).slice(0, 5);
+                      .sort((a,b) => (b.collectedAt || '').localeCompare(a.collectedAt || '')).slice(0, 5);
                     return (
                       <div key={plat} style={{ background: 'rgba(26,26,36,0.8)', border: '1px solid #2e2e3e', borderRadius: '12px', padding: '16px' }}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px', paddingBottom: '10px', borderBottom: '1px solid #2e2e3e' }}>
@@ -667,8 +816,8 @@ export default function Home() {
                     {BRANDS.map(brand => {
                       const brandBs = bsWeekData.filter((i: any) => i.advertiserName === brand);
                       if (brandBs.length === 0) return null;
-                      const pc = brandBs.filter((i: any) => i.device === 'pc').sort((a: any, b: any) => b.collectedAt.localeCompare(a.collectedAt))[0];
-                      const mo = brandBs.filter((i: any) => i.device === 'mo').sort((a: any, b: any) => b.collectedAt.localeCompare(a.collectedAt))[0];
+                      const pc = brandBs.filter((i: any) => i.device === 'pc').sort((a: any, b: any) => (b.collectedAt || '').localeCompare(a.collectedAt || ''))[0];
+                      const mo = brandBs.filter((i: any) => i.device === 'mo').sort((a: any, b: any) => (b.collectedAt || '').localeCompare(a.collectedAt || ''))[0];
                       const isOpen = bsExpanded.has(brand);
                       const summaryEntry = bsWeeklySummary.find(s => s.brand === brand);
                       const showDiffBox = isOpen && summaryEntry && !summaryEntry.diff.isFirstSnapshot && summaryEntry.changeCount > 0;
@@ -812,7 +961,22 @@ export default function Home() {
             {view === 'trend' && (
               <>
                 <h2 style={{ fontSize: '20px', fontWeight: 700, marginBottom: '20px' }}>검색어 트렌드</h2>
-                <TrendAnalysis brands={BRANDS} clientBrand={CLIENT_BRAND} />
+                <MarketIndexPanel startDate={trendStartDate} endDate={trendEndDate} timeUnit={trendTimeUnit} />
+                <TrendAnalysis brands={BRANDS} clientBrand={CLIENT_BRAND}
+                  startDate={trendStartDate} endDate={trendEndDate} timeUnit={trendTimeUnit}
+                  onStartDateChange={setTrendStartDate} onEndDateChange={setTrendEndDate} onTimeUnitChange={setTrendTimeUnit} />
+              </>
+            )}
+
+            {/* 트렌드 리포트 (구글 시트 API 연동 예정) */}
+            {view === 'trend-report' && (
+              <>
+                <h2 style={{ fontSize: '20px', fontWeight: 700, marginBottom: '20px' }}>트렌드 리포트</h2>
+                <div style={{ background: 'rgba(26,26,36,0.6)', border: '1px solid #2e2e3e', borderRadius: '10px', textAlign: 'center', padding: '80px 20px', color: '#8888aa' }}>
+                  <div style={{ fontSize: '40px', marginBottom: '12px' }}>📊</div>
+                  <p style={{ fontSize: '15px', fontWeight: 600, color: '#e2e2f0', marginBottom: '6px' }}>트렌드 리포트</p>
+                  <p style={{ fontSize: '13px' }}>준비 중입니다 (구글 시트 API 연동 예정)</p>
+                </div>
               </>
             )}
 

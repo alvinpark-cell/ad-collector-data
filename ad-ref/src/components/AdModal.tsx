@@ -14,6 +14,9 @@ export default function AdModal({ item, onClose, dataDir = '' }: AdModalProps) {
   const mediaSrc = dataDir
     ? (item.localPath ? `${dataDir}/${item.localPath}` : getMediaSrc(item))
     : getMediaSrc(item);
+  // 비디오 재생용 로컬 사본 경로. getMediaSrc()는 video 타입일 때 썸네일을 반환하므로
+  // (mediaSrc는 <img>용) <video src>에는 절대 못 쓰고, item.localPath가 있을 때만 사용한다.
+  const videoSrc = item.localPath ? (dataDir ? `${dataDir}/${item.localPath}` : item.localPath) : '';
   const thumbSrc = dataDir
     ? (item.localThumb ? `${dataDir}/${item.localThumb}` : item.thumbnailUrl || '')
     : (item.thumbnailUrl || '');
@@ -61,8 +64,11 @@ export default function AdModal({ item, onClose, dataDir = '' }: AdModalProps) {
         <div style={{ padding: '20px' }}>
           {/* 미디어 */}
           {item.mediaType === 'video' ? (
-            item.mediaUrl ? (
-              <video src={item.mediaUrl} controls poster={thumbSrc} style={{ width: '100%', borderRadius: '8px', marginBottom: '16px', maxHeight: '400px', background: '#000' }} />
+            // 로컬로 받아둔 사본(videoSrc)을 우선 사용 - Meta의 mediaUrl(fbcdn 원본)은
+            // 서명이 걸린 임시 URL이라 시간이 지나면 만료되어 재생이 안 됨. YouTube처럼
+            // 애초에 영상 자체를 안 받고 썸네일만 저장한 경우엔 이 값이 비어서 다음 분기로 감.
+            videoSrc ? (
+              <video src={videoSrc} controls poster={thumbSrc} style={{ width: '100%', borderRadius: '8px', marginBottom: '16px', maxHeight: '400px', background: '#000' }} />
             ) : thumbSrc ? (
               <>
                 <img src={thumbSrc} alt="" style={{ width: '100%', borderRadius: '8px', marginBottom: '8px' }} />

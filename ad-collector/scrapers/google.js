@@ -6,7 +6,11 @@
 
 const { chromium } = require('playwright');
 
-async function scrapeGoogle(keywords, brands, settings) {
+// onBrandDone(brand, brandItems): 브랜드 하나가 끝날 때마다 호출됨(성공/부분실패 모두).
+// 브랜드가 9개나 되고 광고주당 수백 건씩 상세 방문하다 보니 전체가 몇 시간씩 걸릴 수 있는데,
+// 예전엔 9개를 다 돌아야 결과를 반환해서 중간에 죽으면 그때까지 처리한 것도 전부 날아갔음.
+// 호출 쪽(collector.js)이 이 콜백에서 바로 저장하면, 끊겨도 그 지점까지는 안전하게 남는다.
+async function scrapeGoogle(keywords, brands, settings, onBrandDone) {
   const results = [];
   if (!brands || brands.length === 0) return results;
 
@@ -14,6 +18,7 @@ async function scrapeGoogle(keywords, brands, settings) {
 
   for (const brand of brands) {
     console.log(`[Google] "${brand}" 검색 중...`);
+    const resultsLenBefore = results.length;
     try {
       const context = await browser.newContext({
         userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
@@ -117,15 +122,23 @@ async function scrapeGoogle(keywords, brands, settings) {
           }
 
           await targetPage.waitForTimeout(3000);
-          for (let i = 0; i < 5; i++) {
+          // 무한 스크롤이라 고정 횟수(예전엔 5번)만 내리면 광고 많은 광고주는 일부만 로드된
+          // 상태로 끊길 수 있음 - 페이지 높이가 더 안 늘어날 때까지(=끝까지 다 불러올 때까지) 스크롤
+          let lastHeight = 0;
+          for (let i = 0; i < 30; i++) {
             await targetPage.evaluate(function() { window.scrollTo(0, document.body.scrollHeight); });
             await targetPage.waitForTimeout(1800);
+            const height = await targetPage.evaluate(function() { return document.body.scrollHeight; });
+            if (height === lastHeight) break;
+            lastHeight = height;
           }
 
-          // 카드 목록 가져오기 (최대 30개 - 더 많이 수집)
+          // 상한 없이 로드된 카드 전부 조회 (예전엔 광고주당 30개로 제한했었는데,
+          // 실제로는 광고주당 광고 수가 그보다 적은 경우가 많아서 상한 자체가 무의미했고,
+          // 오히려 진짜 30개 넘게 있는 광고주는 일부가 누락되고 있었음)
           const cardCount = await targetPage.locator('creative-preview, [class*="creative-preview"]').count();
-          const maxCards = Math.min(cardCount, 30);
-          console.log(`[Google] "${advertiserName}" 카드 ${cardCount}개 중 ${maxCards}개 상세 조회`);
+          const maxCards = cardCount;
+          console.log(`[Google] "${advertiserName}" 카드 ${cardCount}개 전체 상세 조회`);
 
           // 카드 전체를 DOM에서 한 번에 파싱 (카드별 클릭 방식 → 타임아웃 문제 해결)
           const cards = await targetPage.evaluate(function(args) {
@@ -282,6 +295,15 @@ async function scrapeGoogle(keywords, brands, settings) {
       await new Promise(function(r) { setTimeout(r, 2000); });
     } catch (err) {
       console.error(`[Google] "${brand}" 전체 오류:`, err.message);
+    }
+
+    if (onBrandDone) {
+      const brandItems = results.slice(resultsLenBefore);
+      try {
+        await onBrandDone(brand, brandItems);
+      } catch (e) {
+        console.error(`[Google] "${brand}" 중간 저장 콜백 오류:`, e.message);
+      }
     }
   }
 

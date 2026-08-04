@@ -1,6 +1,8 @@
 /**
- * Apify 계정 2 — 브랜드 검색 (전부 브랜드 타입)
- * 신한투자증권, 한국투자증권, 키움증권, 토스증권, 메리츠증권
+ * Apify 계정 2 — "주식" 키워드 검색
+ * 특정 브랜드로 한정하지 않고, 광고주명에 "증권"/"은행"이 붙은 곳은 다 잡는다
+ * (account1.js와 같은 방식, 검색어만 "주식"으로 다름)
+ * 실제 필터링은 apifyMetaClient.js의 isFinancialAdvertiser()에서 처리.
  *
  * 여기서는 메타데이터만 가져온다 (mediaType/mediaUrl 없음).
  * 실제 이미지/영상은 collector.js가 scrapers/metaAdDetail.js로 채운다.
@@ -12,11 +14,7 @@
 const { fetchAdMetadata } = require('./apifyMetaClient');
 
 const SEARCH_TERMS = [
-  { term: '신한투자증권', type: 'brand' },
-  { term: '한국투자증권', type: 'brand' },
-  { term: '키움증권', type: 'brand' },
-  { term: '토스증권', type: 'brand' },
-  { term: '메리츠증권', type: 'brand' },
+  { term: '주식', type: 'keyword' },
 ];
 
 async function runAccount2(settings) {

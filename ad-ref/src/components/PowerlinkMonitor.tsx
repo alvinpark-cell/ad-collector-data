@@ -5,8 +5,19 @@ import { PowerlinkItem } from '@/lib/types';
 import { getMonthWeekKey, sortMonthWeekKeysDesc } from '@/lib/weekUtils';
 import WeekSelector from './WeekSelector';
 
+interface PowerlinkInsightEntry {
+  type: 'first' | 'change' | 'no-change';
+  weekKey: string;
+  prevWeekKey?: string;
+  newCount?: number;
+  exitedCount?: number;
+  text: string;
+  updatedAt: string;
+}
+
 export default function PowerlinkMonitor() {
   const [data, setData] = useState<PowerlinkItem[]>([]);
+  const [insights, setInsights] = useState<Record<string, PowerlinkInsightEntry>>({});
   const [loading, setLoading] = useState(true);
   const [expanded, setExpanded] = useState<Set<string>>(new Set());
   const [selectedWeek, setSelectedWeek] = useState<string | null>(null);
@@ -18,6 +29,7 @@ export default function PowerlinkMonitor() {
       const weeks = sortMonthWeekKeysDesc(d.map(i => getMonthWeekKey(i.collectedAt)));
       if (weeks.length > 0) setSelectedWeek(weeks[0]);
     }).catch(() => setLoading(false));
+    fetch('/data/powerlink_insight.json').then(r => r.json()).then(setInsights).catch(() => setInsights({}));
   }, []);
 
   const toggle = (key: string) => {
@@ -47,6 +59,27 @@ export default function PowerlinkMonitor() {
   return (
     <div>
       <WeekSelector weekKeys={weekKeys} selected={selectedWeek} onSelect={setSelectedWeek} />
+
+      {Object.keys(insights).length > 0 && (
+        <div style={{ marginBottom: '16px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
+          {keywords.map(keyword => {
+            const insight = insights[keyword];
+            if (!insight || insight.weekKey !== selectedWeek) return null;
+            return (
+              <div key={keyword} style={{ background: 'rgba(108,99,255,0.08)', border: '1px solid rgba(108,99,255,0.25)', borderRadius: '10px', padding: '14px 16px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '6px' }}>
+                  <span style={{ fontSize: '11px', fontWeight: 700, color: '#a78bfa' }}>🔎 &quot;{keyword}&quot; 인사이트</span>
+                  {insight.type === 'change' && (
+                    <span style={{ fontSize: '10px', color: '#8888aa' }}>신규 {insight.newCount}건 · 이탈 {insight.exitedCount}건 ({insight.prevWeekKey} → {insight.weekKey})</span>
+                  )}
+                  {insight.type === 'first' && <span style={{ fontSize: '10px', color: '#6b7280' }}>최초 수집 요약</span>}
+                </div>
+                <p style={{ fontSize: '12px', color: '#e2e2f0', lineHeight: 1.6, whiteSpace: 'pre-wrap' }}>{insight.text}</p>
+              </div>
+            );
+          })}
+        </div>
+      )}
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
         {keywords.map(keyword => {

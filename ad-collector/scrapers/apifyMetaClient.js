@@ -10,10 +10,10 @@
 
 const ACTOR_ID = 'jrcXYlbOAUukohvxa'; // solidcode/meta-ads-library-scraper (Apify Store에서 확인한 실제 액터 ID)
 
-// 증권/은행 등 금융권 광고주만 통과시키는 패턴
+// 광고주명에 "증권"/"은행"이 붙은 곳만 통과시킨다 (OO증권, OO은행 형태)
 // 필요하면 여기 목록만 추가/수정하면 됨
 const ALLOWED_ADVERTISER_PATTERNS = [
-  '증권', '은행', '금융', '캐피탈', '카드', '자산운용', '투자증권',
+  '증권', '은행',
 ];
 
 function isFinancialAdvertiser(pageName) {
@@ -60,6 +60,7 @@ function mapApifyItemToAdMeta(raw, term, type) {
     adLastShownAt: raw.endDate || null,
     status: raw.adStatus === 'INACTIVE' ? 'ended' : 'active',
     platform: 'meta',
+    collectedAt: new Date().toISOString(), // scrapers/meta.js, google.js와 동일하게 여기서도 직접 채워야 함 (안 채우면 ad-ref 정렬에서 죽음)
     placements,
     keyword: term,
     searchType: type,

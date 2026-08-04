@@ -1,6 +1,8 @@
 /**
- * Apify 계정 1 — 브랜드 검색 (전부 브랜드 타입)
- * 삼성증권, 미래에셋증권, NH투자증권, KB증권
+ * Apify 계정 1 — "증권" 키워드 검색
+ * 특정 9개 브랜드로 한정하지 않고, 광고주명에 "증권"/"은행"이 붙은 곳은 다 잡는다
+ * (예: 신한은행, DB증권처럼 추적 대상 9개 밖의 광고도 넓게 수집하고 싶어서)
+ * 실제 필터링은 apifyMetaClient.js의 isFinancialAdvertiser()에서 처리.
  *
  * 여기서는 메타데이터만 가져온다 (mediaType/mediaUrl 없음).
  * 실제 이미지/영상은 collector.js가 scrapers/metaAdDetail.js로 채운다.
@@ -12,10 +14,7 @@
 const { fetchAdMetadata } = require('./apifyMetaClient');
 
 const SEARCH_TERMS = [
-  { term: '삼성증권', type: 'brand' },
-  { term: '미래에셋증권', type: 'brand' },
-  { term: 'NH투자증권', type: 'brand' },
-  { term: 'KB증권', type: 'brand' },
+  { term: '증권', type: 'keyword' },
 ];
 
 async function runAccount1(settings) {

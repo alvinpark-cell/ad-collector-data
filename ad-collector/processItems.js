@@ -120,15 +120,25 @@ async function processAndSaveItems(rawItems, settings) {
       continue;
     }
 
+    // Apify로 메타데이터만 확보하고 아직 실제 이미지/영상을 못 찾은 "구멍" 항목도
+    // adId만 있으면 일단 저장한다(미디어 없이) - 예전엔 미디어 URL이 없으면 여기서
+    // 그냥 버려서, Apify 비용 들여 찾은 광고 정보가 시간 안에 상세페이지를 못 들르면
+    // 통째로 사라지는 문제가 있었음. adId가 있으면 다음 실행에서 metaAdDetail.js의
+    // backfillPendingMedia()가 이 항목을 찾아 미디어를 채워 넣는다.
     const rawUrlKey = item.mediaUrl || item.thumbnailUrl;
-    if (!rawUrlKey) continue;
-    const urlKey = normalizeUrl(rawUrlKey);
-    if (existingUrls.has(urlKey)) {
-      markSeenThisMonth(existingByUrl.get(urlKey));
-      continue;
+    const hasMedia = !!rawUrlKey;
+    if (!hasMedia && !item.adId) continue;
+
+    if (hasMedia) {
+      const urlKey = normalizeUrl(rawUrlKey);
+      if (existingUrls.has(urlKey)) {
+        markSeenThisMonth(existingByUrl.get(urlKey));
+        continue;
+      }
+      existingUrls.add(urlKey);
     }
 
-    if (item.mediaType === 'image') {
+    if (hasMedia && item.mediaType === 'image') {
       // 이미지: 다운로드 + pHash 중복 제거
       const filename = buildFilename(item.platform, item.keyword, 'image', 'jpg');
       const imagePath = path.join(settings.outputDir, 'images', item.platform, filename);
@@ -140,11 +150,12 @@ async function processAndSaveItems(rawItems, settings) {
           continue;
         }
         if (hash) newHashes.push(hash);
-        item.localPath = path.join('images', item.platform, filename);
+        // 브라우저에 그대로 URL로 쓰이는 경로라 path.join(윈도우에서 백슬래시) 대신 항상 슬래시로 조립
+        item.localPath = ['images', item.platform, filename].join('/');
       } catch (err) {
         item.localPath = null;
       }
-    } else if (item.mediaType === 'video') {
+    } else if (hasMedia && item.mediaType === 'video') {
       const isYoutube = (item.thumbnailUrl || '').includes('ytimg') || (item.mediaUrl || '').includes('youtube');
       const isFbcdn = (item.mediaUrl || '').includes('fbcdn') && (item.mediaUrl || '').includes('.mp4');
 
@@ -154,7 +165,7 @@ async function processAndSaveItems(rawItems, settings) {
           const filename = buildFilename(item.platform, item.keyword, 'video', 'mp4');
           const videoPath = path.join(settings.outputDir, 'images', item.platform, 'videos', filename);
           await downloadImage(item.mediaUrl, videoPath);
-          item.localPath = path.join('images', item.platform, 'videos', filename);
+          item.localPath = ['images', item.platform, 'videos', filename].join('/');
           console.log('  영상 저장: ' + filename);
 
           // 썸네일 생성: 1) ffmpeg 시도, 2) 실패 시 Playwright로 첫 프레임 캡처
@@ -175,7 +186,7 @@ async function processAndSaveItems(rawItems, settings) {
             }
 
             if (thumbCreated) {
-              item.localThumb = path.join('images', item.platform, 'video_thumbs', thumbFilename);
+              item.localThumb = ['images', item.platform, 'video_thumbs', thumbFilename].join('/');
             }
           } catch (_) {
             // 둘 다 실패해도 영상 자체는 정상 저장됨
@@ -189,7 +200,7 @@ async function processAndSaveItems(rawItems, settings) {
           const filename = buildFilename(item.platform, item.keyword, 'image', 'jpg');
           const thumbPath = path.join(settings.outputDir, 'images', item.platform, filename);
           await downloadImage(item.thumbnailUrl, thumbPath);
-          item.localThumb = path.join('images', item.platform, filename);
+          item.localThumb = ['images', item.platform, filename].join('/');
         } catch (_) {}
       } else if (!isFbcdn && item.thumbnailUrl) {
         // 기타 썸네일
@@ -197,12 +208,11 @@ async function processAndSaveItems(rawItems, settings) {
           const filename = buildFilename(item.platform, item.keyword, 'image', 'jpg');
           const thumbPath = path.join(settings.outputDir, 'images', item.platform, filename);
           await downloadImage(item.thumbnailUrl, thumbPath);
-          item.localThumb = path.join('images', item.platform, filename);
+          item.localThumb = ['images', item.platform, filename].join('/');
         } catch (_) {}
       }
     }
 
-    existingUrls.add(urlKey);
     if (item.adId) existingAdIds.add(item.adId);
     item.seenInMonths = [currentMonthKey];
     newItems.push(item);
