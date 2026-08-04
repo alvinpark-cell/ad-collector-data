@@ -1,0 +1,18 @@
+{
+  "_comment": "settings.json으로 파일명을 바꾼 뒤 실제 값을 채워서 쓰세요. settings.json은 .gitignore에 등록되어 있어 git에 올라가지 않습니다 (apifyAccount1Token/apifyAccount2Token이 실제 API 키라서).",
+  "appsScriptUrl": "여기에_구글_앱스스크립트_URL_붙여넣기",
+  "scheduleHour": 13,
+  "outputDir": "./output",
+  "dataDir": "./data",
+  "keywords": ["증권"],
+  "powerlinkKeywords": ["증권", "주식"],
+  "brands": ["미래에셋증권", "삼성증권", "NH투자증권", "KB증권", "신한투자증권", "한국투자증권", "키움증권", "토스증권", "메리츠증권"],
+  "advertiserDenylist": ["염승환", "루틴증권"],
+  "communityBrandKeywords": ["메리츠증권", "메리츠 슈퍼365", "메리츠 IRP"],
+  "pHashThreshold": 10,
+  "maxImagesPerKeyword": 30,
+  "apifyAccount1Token": "여기에_Apify_계정1_API_토큰",
+  "apifyAccount2Token": "여기에_Apify_계정2_API_토큰",
+  "apifyMaxResultsPerTerm": 1000,
+  "metaDetailMaxVisitsPerRun": 100
+}

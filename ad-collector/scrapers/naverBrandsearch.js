@@ -7,6 +7,7 @@
 const { chromium } = require('playwright');
 const fs = require('fs');
 const path = require('path');
+const { uploadIfEnabled } = require('../storage');
 
 async function scrapeNaverBrandsearch(brands, outputDir) {
   const results = [];
@@ -504,7 +505,26 @@ async function collectBrandsearch(browser, brand, device, screenshotDir) {
   const landingData = await captureLandings(landingContext, buttons, brand, device, screenshotDir, isMobile);
   await landingContext.close();
 
-  return buildResult(brand, device, screenshotFilename, landingData);
+  const result = buildResult(brand, device, screenshotFilename, landingData);
+  await uploadResultMedia(result, outputDirFromScreenshotDir(screenshotDir));
+  return result;
+}
+
+// screenshotDir은 항상 path.join(outputDir, 'screenshots')로 만들어지므로 부모 폴더를 역산
+function outputDirFromScreenshotDir(screenshotDir) {
+  return path.dirname(screenshotDir);
+}
+
+// 브랜드검색 결과 하나에 걸린 로컬 파일(메인 스크린샷/랜딩 스크린샷/슬라이드 원본 이미지)을
+// 전부 S3에 업로드하고 경로를 공개 URL로 교체한다. 한 곳에 모아서 처리해야 write 지점이
+// 7곳 넘게 흩어져 있는 이 파일 구조에서 빠짐없이 처리할 수 있다.
+async function uploadResultMedia(result, outputDir) {
+  if (result.localPath) result.localPath = await uploadIfEnabled(outputDir, result.localPath);
+  if (result.screenshotPath) result.screenshotPath = await uploadIfEnabled(outputDir, result.screenshotPath);
+  for (const btn of result.buttons || []) {
+    if (btn.landingScreenshot) btn.landingScreenshot = await uploadIfEnabled(outputDir, btn.landingScreenshot);
+    if (btn.slideImage) btn.slideImage = await uploadIfEnabled(outputDir, btn.slideImage);
+  }
 }
 
 // 프리미엄형 (키움증권 스타일) 캡처

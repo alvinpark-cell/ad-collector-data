@@ -1,6 +1,6 @@
 'use client';
 import { AdItem } from '@/lib/types';
-import { getMediaSrc, formatDate } from '@/lib/utils';
+import { getMediaSrc, formatDate, mediaUrl } from '@/lib/utils';
 import { useState } from 'react';
 
 interface AdCardProps {
@@ -14,10 +14,10 @@ interface AdCardProps {
 export default function AdCard({ item, isFavorited, onToggleFav, onClick, dataDir = '' }: AdCardProps) {
   const [imgError, setImgError] = useState(false);
   const mediaSrc = dataDir
-    ? (item.localPath ? `${dataDir}/${item.localPath}` : getMediaSrc(item))
+    ? (item.localPath ? mediaUrl(item.localPath, dataDir) : getMediaSrc(item))
     : getMediaSrc(item);
   const thumbSrc = dataDir
-    ? (item.localThumb ? `${dataDir}/${item.localThumb}` : item.thumbnailUrl || '')
+    ? (item.localThumb ? mediaUrl(item.localThumb, dataDir) : item.thumbnailUrl || '')
     : (item.thumbnailUrl || '');
   const date = formatDate(item.collectedAt);
   const adPeriod = (item.adStartedAt || item.adLastShownAt)

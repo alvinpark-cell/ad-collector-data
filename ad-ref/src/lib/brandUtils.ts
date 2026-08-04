@@ -12,9 +12,20 @@ export function normalizeName(name: string | undefined | null): string {
     .trim();
 }
 
+// 증권사가 자기 이름 대신 별도 앱/서브 브랜드명으로 광고하는 경우 - ad-collector/brandUtils.js와
+// 동일한 별칭 목록 (NH투자증권의 MTS 앱 브랜드명이 "나무증권").
+const BRAND_ALIASES: Record<string, string[]> = {
+  'NH투자증권': ['나무증권', '나무'],
+};
+
 export function matchesBrand(advertiserName: string | undefined | null, brand: string): boolean {
   const a = normalizeName(advertiserName);
   const b = normalizeName(brand);
   if (!a || !b) return false;
-  return a.includes(b) || b.includes(a);
+  if (a.includes(b) || b.includes(a)) return true;
+  const aliases = BRAND_ALIASES[brand] || [];
+  return aliases.some(alias => {
+    const al = normalizeName(alias);
+    return al && (a.includes(al) || al.includes(a));
+  });
 }

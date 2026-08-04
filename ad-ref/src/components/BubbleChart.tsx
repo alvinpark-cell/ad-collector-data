@@ -80,9 +80,25 @@ export default function BubbleChart({ data }: { data: BubbleDatum[] }) {
   return (
     <div>
       <svg viewBox={`${minX} ${minY} ${maxX - minX} ${maxY - minY}`} style={{ width: '100%', height: '320px' }}>
-        {packed.map(p => (
-          <circle key={p.datum.keyword} cx={p.x} cy={p.y} r={p.r} fill={p.color} fillOpacity={0.32} stroke={p.color} strokeWidth="2" />
-        ))}
+        {packed.map(p => {
+          const fontSize = Math.max(10, Math.min(16, p.r * 0.34));
+          const showCount = p.r >= 34;
+          return (
+            <g key={p.datum.keyword}>
+              <circle cx={p.x} cy={p.y} r={p.r} fill={p.color} fillOpacity={0.32} stroke={p.color} strokeWidth="2" />
+              <text x={p.x} y={p.y + (showCount ? -fontSize * 0.35 : 0)} textAnchor="middle" dominantBaseline="middle"
+                fontSize={fontSize} fontWeight={700} fill="#f0f0f8">
+                {p.datum.keyword}
+              </text>
+              {showCount && (
+                <text x={p.x} y={p.y + fontSize * 0.75} textAnchor="middle" dominantBaseline="middle"
+                  fontSize={fontSize * 0.72} fill="#c4c4d4">
+                  {p.datum.count.toLocaleString()}
+                </text>
+              )}
+            </g>
+          );
+        })}
       </svg>
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px 16px', marginTop: '6px' }}>
         {packed

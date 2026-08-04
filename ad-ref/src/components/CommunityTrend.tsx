@@ -4,13 +4,35 @@ import { useEffect, useState } from 'react';
 import BubbleChart from './BubbleChart';
 import InsightBox from './InsightBox';
 
-interface KeywordCount { keyword: string; investing: number; total: number; }
+interface KeywordCount { keyword: string; code?: string | null; investing: number; total: number; sampleReactions?: string[]; }
 interface CommunityTrendData {
   updatedAt: string;
   general: KeywordCount[];
   brand: KeywordCount[];
   generalInsight?: string;
   brandInsight?: string;
+}
+
+function ReactionSamples({ items }: { items: KeywordCount[] }) {
+  const withReactions = items.filter(i => i.sampleReactions && i.sampleReactions.length > 0);
+  if (withReactions.length === 0) return null;
+  return (
+    <div style={{ marginTop: '14px' }}>
+      <p style={{ fontSize: '12px', fontWeight: 700, color: '#c4c4d4', marginBottom: '8px' }}>💬 커뮤니티 실제 반응 (네이버 종목토론실)</p>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+        {withReactions.map(i => (
+          <div key={i.keyword} style={{ background: '#22222f', border: '1px solid #2e2e3e', borderRadius: '8px', padding: '10px 14px' }}>
+            <p style={{ fontSize: '11px', fontWeight: 600, color: '#a78bfa', marginBottom: '6px' }}>{i.keyword}</p>
+            <ul style={{ margin: 0, paddingLeft: '18px', display: 'flex', flexDirection: 'column', gap: '3px' }}>
+              {i.sampleReactions!.map((t, idx) => (
+                <li key={idx} style={{ fontSize: '11px', color: '#c4c4d4' }}>{t}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 }
 
 export default function CommunityTrend() {
@@ -39,12 +61,16 @@ export default function CommunityTrend() {
 
       <section style={{ marginBottom: '32px' }}>
         <p style={{ fontSize: '13px', fontWeight: 700, color: '#e2e2f0', marginBottom: '10px' }}>
-          주식/투자/증권 관련 일반 키워드
+          주식/투자/증권 실시간 인기검색 키워드
+        </p>
+        <p style={{ fontSize: '10px', color: '#555568', marginBottom: '10px' }}>
+          고정 목록이 아니라, 매 수집 시점 네이버 금융 실시간 인기검색 종목 상위 {data.general.length}개를 그대로 가져옵니다.
         </p>
         <div style={{ background: 'rgba(26,26,36,0.8)', border: '1px solid #2e2e3e', borderRadius: '12px', padding: '18px', marginBottom: '14px' }}>
           <BubbleChart data={data.general.map(g => ({ keyword: g.keyword, count: g.total }))} />
         </div>
         <InsightBox title="🧠 일반 키워드 인사이트" text={data.generalInsight || '인사이트 없음'} />
+        <ReactionSamples items={data.general} />
       </section>
 
       <section>

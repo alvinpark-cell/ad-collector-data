@@ -84,8 +84,10 @@ async function updatePowerlinkBrandKeyword(settings, brandsOverride) {
   const indexPath = path.join(settings.dataDir, 'powerlink_brand_index.json');
   const existingIndex = loadIndex(indexPath);
   const weekKey = getMonthWeekKey(new Date());
-  // 이번 주에 이미 수집한 브랜드/기기 조합은 건너뛰고, 이번에 새로 만든 항목으로 교체한다
-  const keptExisting = existingIndex.filter(e => e.weekKey !== weekKey);
+  // 이번에 수집하는 브랜드의 이번 주 항목만 새 걸로 교체한다 - brandsOverride로 브랜드 하나만
+  // 테스트/재수집할 때 다른 브랜드의 이번 주 데이터까지 같이 지워지면 안 되기 때문.
+  const brandsSet = new Set(brands);
+  const keptExisting = existingIndex.filter(e => e.weekKey !== weekKey || !brandsSet.has(e.brand));
   const newEntries = [];
 
   const browser = await chromium.launch({ headless: true });

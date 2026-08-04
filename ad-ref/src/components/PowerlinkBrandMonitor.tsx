@@ -4,6 +4,7 @@ import { useState, useEffect, useMemo } from 'react';
 import { sortMonthWeekKeysDesc } from '@/lib/weekUtils';
 import WeekSelector from './WeekSelector';
 import InsightBox from './InsightBox';
+import { mediaUrl } from '@/lib/utils';
 
 interface PwlSublink { title: string; url: string; imageUrl?: string; }
 interface PwlExtraTitle { badge: string; text: string; url: string; }
@@ -121,8 +122,8 @@ export default function PowerlinkBrandMonitor() {
                               {item.ads.map((ad, i) => (
                                 <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', background: '#22222f', border: '1px solid #2e2e3e', borderRadius: '8px', padding: '10px' }}>
                                   {ad.localImage && (
-                                    <img src={'/data/' + ad.localImage} alt="" style={{ width: '48px', height: '48px', objectFit: 'cover', borderRadius: '6px', flexShrink: 0, cursor: 'pointer' }}
-                                      onClick={() => window.open('/data/' + ad.localImage, '_blank')} />
+                                    <img src={mediaUrl(ad.localImage)} alt="" style={{ width: '48px', height: '48px', objectFit: 'cover', borderRadius: '6px', flexShrink: 0, cursor: 'pointer' }}
+                                      onClick={() => window.open(mediaUrl(ad.localImage), '_blank')} />
                                   )}
                                   <div style={{ flex: 1, minWidth: 0 }}>
                                     <div style={{ display: 'flex', gap: '8px', alignItems: 'baseline', flexWrap: 'wrap' }}>

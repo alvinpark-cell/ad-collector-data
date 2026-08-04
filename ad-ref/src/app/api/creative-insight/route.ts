@@ -52,8 +52,11 @@ export async function POST(req: NextRequest) {
 
   // 텍스트가 없는(주로 구글) 소재는 로컬에 받아둔 이미지가 있으면 Claude가 직접 열어서
   // 문구를 읽어내도록 경로를 넘긴다 (public/data 밑에 sync-data.js가 복사해둔 실제 파일).
+  // localPath가 이미 S3 공개 URL(http로 시작)이면 로컬엔 파일이 없으니 제외한다 - Read 도구로
+  // 원격 URL을 열 수는 없다.
   const noTextWithImage = items.filter(i =>
-    !((i.copyText || '').trim() || (i.headline || '').trim()) && i.localPath && i.mediaType === 'image'
+    !((i.copyText || '').trim() || (i.headline || '').trim()) && i.localPath &&
+    i.mediaType === 'image' && !/^https?:\/\//i.test(i.localPath)
   );
   const imagePaths = noTextWithImage.slice(0, MAX_IMAGES).map(i => path.join(process.cwd(), 'public', 'data', i.localPath!));
 

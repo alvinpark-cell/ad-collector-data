@@ -1,6 +1,6 @@
 'use client';
 import { AdItem } from '@/lib/types';
-import { getMediaSrc } from '@/lib/utils';
+import { getMediaSrc, mediaUrl } from '@/lib/utils';
 
 interface AdModalProps {
   item: AdItem | null;
@@ -12,13 +12,13 @@ export default function AdModal({ item, onClose, dataDir = '' }: AdModalProps) {
   if (!item) return null;
 
   const mediaSrc = dataDir
-    ? (item.localPath ? `${dataDir}/${item.localPath}` : getMediaSrc(item))
+    ? (item.localPath ? mediaUrl(item.localPath, dataDir) : getMediaSrc(item))
     : getMediaSrc(item);
   // 비디오 재생용 로컬 사본 경로. getMediaSrc()는 video 타입일 때 썸네일을 반환하므로
   // (mediaSrc는 <img>용) <video src>에는 절대 못 쓰고, item.localPath가 있을 때만 사용한다.
-  const videoSrc = item.localPath ? (dataDir ? `${dataDir}/${item.localPath}` : item.localPath) : '';
+  const videoSrc = item.localPath ? (dataDir ? mediaUrl(item.localPath, dataDir) : item.localPath) : '';
   const thumbSrc = dataDir
-    ? (item.localThumb ? `${dataDir}/${item.localThumb}` : item.thumbnailUrl || '')
+    ? (item.localThumb ? mediaUrl(item.localThumb, dataDir) : item.thumbnailUrl || '')
     : (item.thumbnailUrl || '');
   const date = item.collectedAt ? new Date(item.collectedAt).toLocaleString('ko-KR') : '-';
   const adPeriod = (item.adStartedAt || item.adLastShownAt)

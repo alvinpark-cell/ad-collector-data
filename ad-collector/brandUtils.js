@@ -15,11 +15,24 @@ function normalizeName(name) {
     .trim();
 }
 
+// 증권사가 자기 이름 대신 별도 앱/서브 브랜드명으로 광고하는 경우 - 문자열만 비교하면
+// 자사 광고인데도 다른 브랜드로 오인해 걸러지므로 알려진 별칭을 명시적으로 인정한다.
+// (NH투자증권의 MTS 앱 브랜드명이 "나무증권"이라 "NH투자증권" 키워드에 "나무증권"
+// 광고주명으로 자사 광고를 냄 - 실제 raw 스크래핑에서 확인됨)
+const BRAND_ALIASES = {
+  'NH투자증권': ['나무증권', '나무'],
+};
+
 function matchesBrand(advertiserName, brand) {
   const a = normalizeName(advertiserName);
   const b = normalizeName(brand);
   if (!a || !b) return false;
-  return a.includes(b) || b.includes(a);
+  if (a.includes(b) || b.includes(a)) return true;
+  const aliases = BRAND_ALIASES[brand] || [];
+  return aliases.some(alias => {
+    const al = normalizeName(alias);
+    return al && (a.includes(al) || al.includes(a));
+  });
 }
 
 // 스캠 광고 판별: "염승환" 같은 특정 인물명/스캠 문구 단위로만 매칭한다.

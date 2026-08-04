@@ -16,6 +16,7 @@ import Sidebar, { ViewKey } from '@/components/Sidebar';
 import { getMonthWeekKey, sortMonthWeekKeysDesc } from '@/lib/weekUtils';
 import { diffBrandSnapshot } from '@/lib/bsDiff';
 import { matchesBrand, normalizeName } from '@/lib/brandUtils';
+import { mediaUrl } from '@/lib/utils';
 
 const BRANDS = [
   '메리츠증권', '키움증권', '미래에셋증권', '삼성증권', 'NH투자증권',
@@ -917,8 +918,8 @@ export default function Home() {
                                         <div style={{ color: '#8888aa', fontSize: '12px', padding: '20px 0', textAlign: 'center' }}>수집된 데이터 없음</div>
                                       ) : item.localPath ? (
                                         <div style={{ maxHeight: '320px', overflow: 'hidden', borderRadius: '8px', cursor: 'pointer', position: 'relative' }}
-                                          onClick={() => window.open('/data/' + item.localPath, '_blank')}>
-                                          <img src={'/data/' + item.localPath} alt="" style={{ width: '100%', display: 'block' }} />
+                                          onClick={() => window.open(mediaUrl(item.localPath), '_blank')}>
+                                          <img src={mediaUrl(item.localPath)} alt="" style={{ width: '100%', display: 'block' }} />
                                           <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '40px', background: 'linear-gradient(transparent, rgba(0,0,0,0.6))', display: 'flex', alignItems: 'flex-end', justifyContent: 'center', paddingBottom: '6px' }}>
                                             <span style={{ fontSize: '10px', color: '#fff' }}>클릭해서 전체 이미지 보기</span>
                                           </div>
@@ -949,14 +950,14 @@ export default function Home() {
                                         </div>
                                         {btn.slideImage && (
                                           <div style={{ position: 'relative', overflow: 'hidden', cursor: 'pointer', borderBottom: '1px solid #2e2e3e' }}
-                                            onClick={() => window.open('/data/' + btn.slideImage, '_blank')}>
-                                            <img src={'/data/' + btn.slideImage} alt="배너 이미지" style={{ width: '100%', display: 'block' }} />
+                                            onClick={() => window.open(mediaUrl(btn.slideImage), '_blank')}>
+                                            <img src={mediaUrl(btn.slideImage)} alt="배너 이미지" style={{ width: '100%', display: 'block' }} />
                                             <span style={{ position: 'absolute', top: '4px', left: '4px', background: 'rgba(0,0,0,0.6)', color: '#fff', fontSize: '8px', padding: '2px 6px', borderRadius: '3px' }}>배너 이미지</span>
                                           </div>
                                         )}
                                         <div style={{ position: 'relative', overflow: 'hidden', maxHeight: '220px', cursor: 'pointer' }}
                                           onClick={() => window.open(btn.finalUrl || btn.buttonUrl, '_blank')}>
-                                          <img src={'/data/' + btn.landingScreenshot} alt="랜딩" style={{ width: '100%', display: 'block' }} />
+                                          <img src={mediaUrl(btn.landingScreenshot)} alt="랜딩" style={{ width: '100%', display: 'block' }} />
                                           {btn.slideImage && <span style={{ position: 'absolute', top: '4px', left: '4px', background: 'rgba(0,0,0,0.6)', color: '#fff', fontSize: '8px', padding: '2px 6px', borderRadius: '3px' }}>랜딩 페이지</span>}
                                         </div>
                                       </div>
@@ -983,14 +984,14 @@ export default function Home() {
                                         </div>
                                         {btn.slideImage && (
                                           <div style={{ position: 'relative', overflow: 'hidden', cursor: 'pointer', borderBottom: '1px solid #2e2e3e' }}
-                                            onClick={() => window.open('/data/' + btn.slideImage, '_blank')}>
-                                            <img src={'/data/' + btn.slideImage} alt="배너 이미지" style={{ width: '100%', display: 'block' }} />
+                                            onClick={() => window.open(mediaUrl(btn.slideImage), '_blank')}>
+                                            <img src={mediaUrl(btn.slideImage)} alt="배너 이미지" style={{ width: '100%', display: 'block' }} />
                                             <span style={{ position: 'absolute', top: '4px', left: '4px', background: 'rgba(0,0,0,0.6)', color: '#fff', fontSize: '8px', padding: '2px 6px', borderRadius: '3px' }}>배너 이미지</span>
                                           </div>
                                         )}
                                         <div style={{ position: 'relative', overflow: 'hidden', maxHeight: '300px', cursor: 'pointer' }}
                                           onClick={() => window.open(btn.finalUrl || btn.buttonUrl, '_blank')}>
-                                          <img src={'/data/' + btn.landingScreenshot} alt="랜딩" style={{ width: '100%', display: 'block' }} />
+                                          <img src={mediaUrl(btn.landingScreenshot)} alt="랜딩" style={{ width: '100%', display: 'block' }} />
                                           {btn.slideImage && <span style={{ position: 'absolute', top: '4px', left: '4px', background: 'rgba(0,0,0,0.6)', color: '#fff', fontSize: '8px', padding: '2px 6px', borderRadius: '3px' }}>랜딩 페이지</span>}
                                         </div>
                                       </div>

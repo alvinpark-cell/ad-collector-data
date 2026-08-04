@@ -12,6 +12,12 @@ const path = require('path');
 const collectorDir = path.join(__dirname, '..', 'ad-collector'); // 실제 폴더명으로 변경
 const nextPublicDir = path.join(__dirname, 'public', 'data');
 
+// ad-collector/storage.js를 그대로 가져와서 S3 활성화 여부만 확인한다 - 이 모듈이 이미
+// ad-collector/.env를 읽어서 판단해주므로 여기서 따로 환경변수 로딩 로직을 만들 필요가 없다.
+// S3가 켜져있으면 item.localPath 등이 이미 공개 URL이라 로컬 output/images·screenshots엔
+// 업로드 실패한 것들만 남아있는 상태라, 그 폴더를 통째로 복사할 이유가 없다.
+const { isS3Enabled } = require(path.join(collectorDir, 'storage.js'));
+
 function syncData() {
   console.log('데이터 동기화 시작...');
 
@@ -143,20 +149,24 @@ function syncData() {
     fs.writeFileSync(communityDst, '{"general":[],"brand":[]}');
   }
 
-  // 이미지 폴더 동기화 (심볼릭 링크 또는 복사)
-  const imgSrc = path.join(collectorDir, 'output', 'images');
-  const imgDst = path.join(nextPublicDir, 'images');
-  if (fs.existsSync(imgSrc)) {
-    copyDirSync(imgSrc, imgDst);
-    console.log('이미지 폴더 동기화 완료');
-  }
+  if (isS3Enabled()) {
+    console.log('S3 스토리지 사용 중 - 이미지/스크린샷 로컬 복사는 건너뜁니다 (localPath가 이미 공개 URL)');
+  } else {
+    // 이미지 폴더 동기화 (심볼릭 링크 또는 복사)
+    const imgSrc = path.join(collectorDir, 'output', 'images');
+    const imgDst = path.join(nextPublicDir, 'images');
+    if (fs.existsSync(imgSrc)) {
+      copyDirSync(imgSrc, imgDst);
+      console.log('이미지 폴더 동기화 완료');
+    }
 
-  // 스크린샷 폴더 동기화 (브랜드검색)
-  const ssSrc = path.join(collectorDir, 'output', 'screenshots');
-  const ssDst = path.join(nextPublicDir, 'screenshots');
-  if (fs.existsSync(ssSrc)) {
-    copyDirSync(ssSrc, ssDst);
-    console.log('스크린샷 폴더 동기화 완료');
+    // 스크린샷 폴더 동기화 (브랜드검색)
+    const ssSrc = path.join(collectorDir, 'output', 'screenshots');
+    const ssDst = path.join(nextPublicDir, 'screenshots');
+    if (fs.existsSync(ssSrc)) {
+      copyDirSync(ssSrc, ssDst);
+      console.log('스크린샷 폴더 동기화 완료');
+    }
   }
 
   console.log('동기화 완료!');

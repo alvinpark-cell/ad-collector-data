@@ -5,6 +5,7 @@ import { PowerlinkItem } from '@/lib/types';
 import { getMonthWeekKey, sortMonthWeekKeysDesc } from '@/lib/weekUtils';
 import WeekSelector from './WeekSelector';
 import InsightBox from './InsightBox';
+import { mediaUrl } from '@/lib/utils';
 
 interface PowerlinkInsightEntry {
   type: 'first' | 'change' | 'no-change';
@@ -131,8 +132,8 @@ export default function PowerlinkMonitor() {
                               <div key={ad.rank} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', background: '#22222f', border: '1px solid #2e2e3e', borderRadius: '8px', padding: '10px' }}>
                                 <span style={{ background: '#6c63ff', color: '#fff', fontSize: '10px', fontWeight: 700, padding: '2px 7px', borderRadius: '4px', flexShrink: 0 }}>{ad.rank}</span>
                                 {ad.localImage && (
-                                  <img src={'/data/' + ad.localImage} alt="" style={{ width: '48px', height: '48px', objectFit: 'cover', borderRadius: '6px', flexShrink: 0, cursor: 'pointer' }}
-                                    onClick={() => window.open('/data/' + ad.localImage, '_blank')} />
+                                  <img src={mediaUrl(ad.localImage)} alt="" style={{ width: '48px', height: '48px', objectFit: 'cover', borderRadius: '6px', flexShrink: 0, cursor: 'pointer' }}
+                                    onClick={() => window.open(mediaUrl(ad.localImage), '_blank')} />
                                 )}
                                 <div style={{ flex: 1, minWidth: 0 }}>
                                   <div style={{ display: 'flex', gap: '8px', alignItems: 'baseline', flexWrap: 'wrap' }}>

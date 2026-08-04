@@ -8,6 +8,7 @@ const { scrapeGoogle } = require('./scrapers/google');
 const { scrapeNaverBrandsearch } = require('./scrapers/naverBrandsearch');
 const { scrapeNaverPowerlink } = require('./scrapers/naverPowerlink');
 const { updatePowerlinkBrandKeyword } = require('./scrapers/powerlinkBrandKeyword');
+const { updatePowerlinkInsight, updatePowerlinkBrandInsight } = require('./scrapers/powerlinkInsight');
 const { loadIndex, saveIndex, getMonthWeekKey, updateCollectionStatus } = require('./utils');
 const { processAndSaveItems } = require('./processItems');
 const { generateSite } = require('./generateSite');
@@ -251,6 +252,10 @@ async function collect() {
   saveIndex(PWL_INDEX_PATH, updatedPwlIndex);
   if (pwlRanThisTime) {
     updateCollectionStatus(settings.dataDir, 'powerlink', { lastCollectedAt: new Date().toISOString(), newCount: newPwlItems.length });
+    try {
+      console.log('\n[파워링크 인사이트] 갱신 시작');
+      await updatePowerlinkInsight(settings);
+    } catch (e) { console.error('[파워링크 인사이트] 오류:', e.message); }
   }
 
   // 검색광고 브랜드키워드 - 9개 브랜드명 자체를 키워드로 파워링크 수집. 한 번 돌 때
@@ -266,6 +271,10 @@ async function collect() {
       const finalBrandIndex = await updatePowerlinkBrandKeyword(settings);
       newPwlBrandCount = finalBrandIndex.filter(i => i.weekKey === currentWeekKey).length;
       updateCollectionStatus(settings.dataDir, 'powerlinkBrand', { lastCollectedAt: new Date().toISOString(), newCount: newPwlBrandCount });
+      try {
+        console.log('\n[검색광고 브랜드키워드 인사이트] 갱신 시작');
+        await updatePowerlinkBrandInsight(settings);
+      } catch (e) { console.error('[검색광고 브랜드키워드 인사이트] 오류:', e.message); }
     }
   } catch (e) { console.error('[검색광고 브랜드키워드] 오류:', e.message); }
 

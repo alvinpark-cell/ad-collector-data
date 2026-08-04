@@ -54,6 +54,14 @@ export function getMediaSrc(item: AdItem): string {
   return item.localPath || item.mediaUrl || '';
 }
 
+// S3 마이그레이션 이후 localPath/localImage/screenshotPath 등은 상대경로("images/xxx.jpg")일
+// 수도, 이미 완전한 공개 URL("https://...")일 수도 있다 - 후자는 그대로 쓰고, 전자만 dataDir을 붙인다.
+export function mediaUrl(value?: string | null, dataDir = '/data'): string {
+  if (!value) return '';
+  if (/^https?:\/\//i.test(value)) return value;
+  return `${dataDir}/${value}`;
+}
+
 export function formatDate(iso: string): string {
   if (!iso) return '';
   return new Date(iso).toLocaleDateString('ko-KR');

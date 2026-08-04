@@ -17,6 +17,7 @@ const { chromium } = require('playwright');
 const { computePHash, isDuplicate, downloadImage, loadIndex, saveIndex, buildFilename } = require('./utils');
 const { trackChanges, applyEndedStatus, saveSnapshot } = require('./scrapers/tracker');
 const { isJunkAdvertiser } = require('./brandUtils');
+const { uploadIfEnabled } = require('./storage');
 
 /**
  * ffmpeg 없을 때 Playwright로 로컬 mp4 파일의 첫 프레임을 캡처
@@ -218,6 +219,12 @@ async function processAndSaveItems(rawItems, settings) {
         } catch (_) {}
       }
     }
+
+    // S3 설정이 돼있으면 방금 받은 이미지/영상/썸네일을 업로드하고 localPath/localThumb를
+    // 공개 URL로 교체한다 - 실패하면 uploadIfEnabled가 로컬 경로를 그대로 돌려주므로
+    // 여기서 별도 분기 없이 항상 호출해도 안전하다 (설정 없으면 그냥 원본 경로 반환).
+    if (item.localPath) item.localPath = await uploadIfEnabled(settings.outputDir, item.localPath);
+    if (item.localThumb) item.localThumb = await uploadIfEnabled(settings.outputDir, item.localThumb);
 
     if (item.adId) existingAdIds.add(item.adId);
     item.seenInMonths = [currentMonthKey];
