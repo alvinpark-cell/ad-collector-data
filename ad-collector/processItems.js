@@ -16,6 +16,7 @@ const { execSync } = require('child_process');
 const { chromium } = require('playwright');
 const { computePHash, isDuplicate, downloadImage, loadIndex, saveIndex, buildFilename } = require('./utils');
 const { trackChanges, applyEndedStatus, saveSnapshot } = require('./scrapers/tracker');
+const { isJunkAdvertiser } = require('./brandUtils');
 
 /**
  * ffmpeg 없을 때 Playwright로 로컬 mp4 파일의 첫 프레임을 캡처
@@ -115,6 +116,11 @@ async function processAndSaveItems(rawItems, settings) {
   };
 
   for (const item of rawItems) {
+    // "염승환 이사" 같은 인물 사칭 스캠 광고는 광고주명이 "증권"을 포함해도 걸러낸다
+    // (allowedAdvertiserPatterns 화이트리스트는 금융 관련 단어 포함 여부만 보기 때문에
+    // 이 필터를 통과 못 시킴 - 실제 증권사명은 denylist에 없으므로 영향 없음)
+    if (isJunkAdvertiser(item.advertiserName, item.copyText, settings.advertiserDenylist)) continue;
+
     if (item.adId && existingAdIds.has(item.adId)) {
       markSeenThisMonth(existingByAdId.get(item.adId));
       continue;

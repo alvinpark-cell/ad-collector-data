@@ -47,26 +47,17 @@ async function scrapeNaverPowerlink(keywords, outputDir) {
   return results;
 }
 
-async function collectPowerlink(browser, keyword, device, screenshotDir) {
-  const isMobile = device === 'mo';
-  const context = await browser.newContext({
-    locale: 'ko-KR',
-    viewport: isMobile ? { width: 390, height: 2400 } : { width: 1280, height: 2000 },
-    userAgent: isMobile
-      ? 'Mozilla/5.0 (Linux; Android 13; SM-S911N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36'
-      : 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
-    isMobile, hasTouch: isMobile,
-  });
-  const page = await context.newPage();
-
-  // "전체보기" 전용 페이지 - PC/MO 둘 다 최대 15개 확보 가능 (메인 검색결과의 10개/5개 제한 우회)
-  const url = isMobile
+// "전체보기" 전용 페이지 URL - PC/MO 둘 다 최대 15개 확보 가능 (메인 검색결과의 10개/5개 제한 우회)
+function buildPowerlinkUrl(keyword, device) {
+  return device === 'mo'
     ? `https://m.ad.search.naver.com/search.naver?where=m_expd&query=${encodeURIComponent(keyword)}`
     : `https://ad.search.naver.com/search.naver?where=ad&query=${encodeURIComponent(keyword)}`;
-  await page.goto(url, { waitUntil: 'networkidle', timeout: 30000 });
-  await page.waitForTimeout(2000);
+}
 
-  const raw = await page.evaluate(function(isMobileArg) {
+// 현재 렌더된 페이지에서 광고 목록을 파싱 - 브랜드키워드 수집기(powerlinkBrandKeyword.js)가
+// 같은 페이지를 여러 번 새로고침하며 이 함수만 반복 호출할 수 있도록 별도 함수로 분리.
+async function extractAds(page, isMobile) {
+  return await page.evaluate(function(isMobileArg) {
     var lis = isMobileArg ? document.querySelectorAll('li.list_item') : document.querySelectorAll('.lst_type > li');
     var out = [];
 
@@ -93,6 +84,38 @@ async function collectPowerlink(browser, keyword, device, screenshotDir) {
       var site = siteEl ? siteEl.textContent.trim() : null;
       if (!site && !landingUrl) return; // 광고 슬롯이 아닌 노이즈 요소 제외
 
+      // 서브링크(sitelink) - "ul.lst_link > li.item > a.link" 형태의 텍스트 링크 3~4개.
+      // 이미지가 붙은 서브링크(이미지형 서브링크)는 실제로는 못 봤지만, 혹시 있으면
+      // sublinks가 아니라 imageSublinks로 따로 분류되도록 방어적으로 처리.
+      var sublinks = [];
+      var imageSublinks = [];
+      Array.from(li.querySelectorAll('ul.lst_link > li.item')).forEach(function(item) {
+        var a = item.querySelector('a');
+        if (!a) return;
+        var subImg = item.querySelector('img');
+        var entry = { title: a.textContent.trim(), url: a.href };
+        if (subImg) {
+          entry.imageUrl = subImg.src || subImg.getAttribute('data-lazysrc1');
+          imageSublinks.push(entry);
+        } else {
+          sublinks.push(entry);
+        }
+      });
+
+      // 추가제목(확장소재) - "이벤트"/"할인"/"신상품" 같은 배지 + 별도 타이틀이 붙는
+      // link_ext_desc 블록. data-promotion 속성에도 배지 텍스트가 중복으로 들어있음.
+      var extDescEl = li.querySelector('a.link_ext_desc');
+      var extraTitle = null;
+      if (extDescEl) {
+        var prefixEl = extDescEl.querySelector('.prefix_ext');
+        var titleExtEl = extDescEl.querySelector('.title_ext');
+        extraTitle = {
+          badge: prefixEl ? prefixEl.textContent.trim() : (li.getAttribute('data-promotion') || ''),
+          text: titleExtEl ? titleExtEl.textContent.trim() : '',
+          url: extDescEl.href,
+        };
+      }
+
       out.push({
         rank: idx + 1,
         advertiserName: site,
@@ -103,28 +126,26 @@ async function collectPowerlink(browser, keyword, device, screenshotDir) {
         landingUrl: landingUrl,
         adId: idMatch ? idMatch[1] : null,
         imageUrl: img ? (img.src || img.getAttribute('data-lazysrc1')) : null,
+        sublinks: sublinks,
+        imageSublinks: imageSublinks,
+        extraTitle: extraTitle,
       });
     });
 
     return out;
   }, isMobile);
+}
 
-  if (raw.length === 0) {
-    await context.close();
-    return null;
-  }
-
-  const ads = raw.slice(0, MAX_ADS);
+// 광고별 원본 썸네일 이미지를 다운로드하고 로컬 경로를 채워 넣는다 (제자리에서 ad를 수정).
+async function downloadAdImages(context, ads, keyword, device, screenshotDir) {
   const date = new Date().toISOString().slice(0, 10).replace(/-/g, '');
-  const unique = Math.random().toString(36).slice(2, 6);
-
-  // 광고별 원본 썸네일 이미지 다운로드
   for (const ad of ads) {
-    if (!ad.imageUrl) continue;
+    if (!ad.imageUrl || ad.localImage) continue;
     try {
       const resp = await context.request.get(ad.imageUrl, { timeout: 10000 });
       if (resp.ok()) {
         const ext = (ad.imageUrl.match(/\.(jpg|jpeg|png|webp|gif)(\?|$)/i) || [, 'jpg'])[1].toLowerCase();
+        const unique = Math.random().toString(36).slice(2, 6);
         const filename = `pwl_img_${keyword}_${device}_${ad.rank}_${date}_${unique}.${ext}`;
         fs.writeFileSync(path.join(screenshotDir, filename), await resp.body());
         ad.localImage = 'screenshots/' + filename;
@@ -133,7 +154,32 @@ async function collectPowerlink(browser, keyword, device, screenshotDir) {
       console.log(`    [이미지 다운로드 실패] ${ad.advertiserName}: ${e.message}`);
     }
   }
+}
 
+async function collectPowerlink(browser, keyword, device, screenshotDir) {
+  const isMobile = device === 'mo';
+  const context = await browser.newContext({
+    locale: 'ko-KR',
+    viewport: isMobile ? { width: 390, height: 2400 } : { width: 1280, height: 2000 },
+    userAgent: isMobile
+      ? 'Mozilla/5.0 (Linux; Android 13; SM-S911N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36'
+      : 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
+    isMobile, hasTouch: isMobile,
+  });
+  const page = await context.newPage();
+
+  await page.goto(buildPowerlinkUrl(keyword, device), { waitUntil: 'networkidle', timeout: 30000 });
+  await page.waitForTimeout(2000);
+
+  const raw = await extractAds(page, isMobile);
+
+  if (raw.length === 0) {
+    await context.close();
+    return null;
+  }
+
+  const ads = raw.slice(0, MAX_ADS);
+  await downloadAdImages(context, ads, keyword, device, screenshotDir);
   await context.close();
 
   return {
@@ -146,4 +192,4 @@ async function collectPowerlink(browser, keyword, device, screenshotDir) {
   };
 }
 
-module.exports = { scrapeNaverPowerlink };
+module.exports = { scrapeNaverPowerlink, buildPowerlinkUrl, extractAds, downloadAdImages, MAX_ADS };

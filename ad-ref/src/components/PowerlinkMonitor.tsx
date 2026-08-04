@@ -4,6 +4,7 @@ import { useState, useEffect, useMemo } from 'react';
 import { PowerlinkItem } from '@/lib/types';
 import { getMonthWeekKey, sortMonthWeekKeysDesc } from '@/lib/weekUtils';
 import WeekSelector from './WeekSelector';
+import InsightBox from './InsightBox';
 
 interface PowerlinkInsightEntry {
   type: 'first' | 'change' | 'no-change';
@@ -56,8 +57,26 @@ export default function PowerlinkMonitor() {
     );
   }
 
+  const totalAdsThisWeek = keywords.reduce((sum, kw) => {
+    const items = weekData.filter(d => d.keyword === kw);
+    return sum + items.reduce((s, i) => s + i.ads.length, 0);
+  }, 0);
+
   return (
     <div>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '14px', marginBottom: '24px' }}>
+        {[
+          { label: '수집 키워드', value: keywords.length, color: '#a78bfa' },
+          { label: '이번 주 소재 (PC+MO 합계)', value: totalAdsThisWeek, color: '#34d399' },
+          { label: '인사이트 생성', value: Object.keys(insights).length, color: '#3aa0e0' },
+        ].map(({ label, value, color }) => (
+          <div key={label} style={{ background: 'rgba(26,26,36,0.8)', border: '1px solid #2e2e3e', borderRadius: '14px', padding: '20px' }}>
+            <p style={{ fontSize: '13px', color: '#8888aa', fontWeight: 500 }}>{label}</p>
+            <p style={{ fontSize: '30px', fontWeight: 700, color, marginTop: '8px', letterSpacing: '-0.5px' }}>{value}</p>
+          </div>
+        ))}
+      </div>
+
       <WeekSelector weekKeys={weekKeys} selected={selectedWeek} onSelect={setSelectedWeek} />
 
       {Object.keys(insights).length > 0 && (
@@ -65,17 +84,11 @@ export default function PowerlinkMonitor() {
           {keywords.map(keyword => {
             const insight = insights[keyword];
             if (!insight || insight.weekKey !== selectedWeek) return null;
+            const badge = insight.type === 'change'
+              ? `신규 ${insight.newCount}건 · 이탈 ${insight.exitedCount}건 (${insight.prevWeekKey} → ${insight.weekKey})`
+              : insight.type === 'first' ? '최초 수집 요약' : undefined;
             return (
-              <div key={keyword} style={{ background: 'rgba(108,99,255,0.08)', border: '1px solid rgba(108,99,255,0.25)', borderRadius: '10px', padding: '14px 16px' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '6px' }}>
-                  <span style={{ fontSize: '11px', fontWeight: 700, color: '#a78bfa' }}>🔎 &quot;{keyword}&quot; 인사이트</span>
-                  {insight.type === 'change' && (
-                    <span style={{ fontSize: '10px', color: '#8888aa' }}>신규 {insight.newCount}건 · 이탈 {insight.exitedCount}건 ({insight.prevWeekKey} → {insight.weekKey})</span>
-                  )}
-                  {insight.type === 'first' && <span style={{ fontSize: '10px', color: '#6b7280' }}>최초 수집 요약</span>}
-                </div>
-                <p style={{ fontSize: '12px', color: '#e2e2f0', lineHeight: 1.6, whiteSpace: 'pre-wrap' }}>{insight.text}</p>
-              </div>
+              <InsightBox key={keyword} title={`🔎 "${keyword}" 인사이트`} badge={badge} text={insight.text} />
             );
           })}
         </div>
@@ -129,6 +142,22 @@ export default function PowerlinkMonitor() {
                                   </div>
                                   <p style={{ fontSize: '11px', color: '#e2e2f0', margin: '3px 0 0' }}>{ad.title}</p>
                                   {ad.description && <p style={{ fontSize: '10px', color: '#8888aa', margin: '2px 0 0' }}>{ad.description}</p>}
+                                  {ad.extraTitle && ad.extraTitle.text && (
+                                    <p style={{ fontSize: '10px', color: '#fb923c', margin: '3px 0 0' }}>
+                                      {ad.extraTitle.badge && <span style={{ fontWeight: 700 }}>[{ad.extraTitle.badge}] </span>}
+                                      {ad.extraTitle.text}
+                                    </p>
+                                  )}
+                                  {((ad.sublinks && ad.sublinks.length > 0) || (ad.imageSublinks && ad.imageSublinks.length > 0)) && (
+                                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginTop: '4px' }}>
+                                      {(ad.sublinks || []).map((s, si) => (
+                                        <span key={`s${si}`} style={{ fontSize: '9px', color: '#a78bfa', background: 'rgba(108,99,255,0.1)', padding: '1px 6px', borderRadius: '3px' }}>{s.title}</span>
+                                      ))}
+                                      {(ad.imageSublinks || []).map((s, si) => (
+                                        <span key={`i${si}`} style={{ fontSize: '9px', color: '#34d399', background: 'rgba(52,211,153,0.1)', padding: '1px 6px', borderRadius: '3px' }}>🖼️ {s.title}</span>
+                                      ))}
+                                    </div>
+                                  )}
                                   {ad.landingUrl && (
                                     <a href={ad.landingUrl} target="_blank" rel="noopener noreferrer"
                                       style={{ fontSize: '9px', color: '#a78bfa', textDecoration: 'none', display: 'inline-block', marginTop: '3px' }}>

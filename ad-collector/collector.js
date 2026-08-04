@@ -7,6 +7,7 @@ const { scrapeMeta } = require('./scrapers/meta');
 const { scrapeGoogle } = require('./scrapers/google');
 const { scrapeNaverBrandsearch } = require('./scrapers/naverBrandsearch');
 const { scrapeNaverPowerlink } = require('./scrapers/naverPowerlink');
+const { updatePowerlinkBrandKeyword } = require('./scrapers/powerlinkBrandKeyword');
 const { loadIndex, saveIndex, getMonthWeekKey, updateCollectionStatus } = require('./utils');
 const { processAndSaveItems } = require('./processItems');
 const { generateSite } = require('./generateSite');
@@ -14,6 +15,7 @@ const { generateBrandsearchSite } = require('./generateBrandsearch');
 
 const BS_INDEX_PATH = path.join(settings.dataDir, 'bs_index.json');
 const PWL_INDEX_PATH = path.join(settings.dataDir, 'powerlink_index.json');
+const PWL_BRAND_INDEX_PATH = path.join(settings.dataDir, 'powerlink_brand_index.json');
 
 async function collect() {
   const startTime = Date.now();
@@ -42,10 +44,12 @@ async function collect() {
   const forceGoogle = forceAll || process.argv.includes('--force-google');
   const forceBs = forceAll || process.argv.includes('--force-bs');
   const forcePwl = forceAll || process.argv.includes('--force-pwl');
+  const forcePwlBrand = forceAll || process.argv.includes('--force-pwl-brand');
   if (forceMeta) console.log('[Meta] 게이트 무시하고 강제 실행');
   if (forceGoogle) console.log('[Google] 게이트 무시하고 강제 실행');
   if (forceBs) console.log('[네이버 브랜드검색] 게이트 무시하고 강제 실행');
   if (forcePwl) console.log('[네이버 파워링크] 게이트 무시하고 강제 실행');
+  if (forcePwlBrand) console.log('[검색광고 브랜드키워드] 게이트 무시하고 강제 실행');
 
   // Meta 수집 - 주 1회만 실행 (브검/파워링크와 동일한 주차 키 기준)
   // 메타 브랜드 9개의 일상적인 순환 수집은 여기가 아니라 별도로 도는 metaBrandBatch.js
@@ -249,6 +253,22 @@ async function collect() {
     updateCollectionStatus(settings.dataDir, 'powerlink', { lastCollectedAt: new Date().toISOString(), newCount: newPwlItems.length });
   }
 
+  // 검색광고 브랜드키워드 - 9개 브랜드명 자체를 키워드로 파워링크 수집. 한 번 돌 때
+  // 브랜드×기기(9×2)마다 페이지를 30회씩 새로고침해서 시간이 꽤 걸리므로 주 1회로 제한.
+  let newPwlBrandCount = 0;
+  try {
+    const existingPwlBrandIndex = loadIndex(PWL_BRAND_INDEX_PATH);
+    const alreadyDoneThisWeek = existingPwlBrandIndex.some(i => i.weekKey === currentWeekKey);
+    if (!forcePwlBrand && alreadyDoneThisWeek) {
+      console.log(`\n[검색광고 브랜드키워드] 이번 주(${currentWeekKey}) 이미 수집함 - 건너뜀`);
+    } else {
+      console.log('\n[검색광고 브랜드키워드] 수집 시작 (주 1회, 브랜드마다 새로고침 30회라 시간이 꽤 걸립니다)');
+      const finalBrandIndex = await updatePowerlinkBrandKeyword(settings);
+      newPwlBrandCount = finalBrandIndex.filter(i => i.weekKey === currentWeekKey).length;
+      updateCollectionStatus(settings.dataDir, 'powerlinkBrand', { lastCollectedAt: new Date().toISOString(), newCount: newPwlBrandCount });
+    }
+  } catch (e) { console.error('[검색광고 브랜드키워드] 오류:', e.message); }
+
   // HTML 생성
   console.log('\nHTML 페이지 생성 중...');
   generateSite(finalIndex, settings);
@@ -260,6 +280,7 @@ async function collect() {
   console.log('  광고: ' + finalIndex.length + '개 (신규: ' + newItems.length + ', 종료: ' + endedAds.length + ')');
   console.log('  브검: ' + updatedBsIndex.length + '개 (신규: ' + newBsItems.length + ')');
   console.log('  파워링크: ' + updatedPwlIndex.length + '개 (신규: ' + newPwlItems.length + ')');
+  console.log('  검색광고 브랜드키워드: 이번 주 처리 ' + newPwlBrandCount + '건');
   console.log('========================================\n');
 }
 

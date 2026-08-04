@@ -2,6 +2,17 @@
 
 import { useState, useMemo } from 'react';
 
+export interface DataLabPoint {
+  period: string;
+  ratio: number;
+}
+
+export interface DataLabResult {
+  title: string;
+  keywords: string[];
+  data: DataLabPoint[];
+}
+
 interface TrendAnalysisProps {
   brands: string[];
   clientBrand: string;
@@ -11,17 +22,10 @@ interface TrendAnalysisProps {
   onStartDateChange: (v: string) => void;
   onEndDateChange: (v: string) => void;
   onTimeUnitChange: (v: 'date' | 'week' | 'month') => void;
-}
-
-interface DataLabPoint {
-  period: string;
-  ratio: number;
-}
-
-interface DataLabResult {
-  title: string;
-  keywords: string[];
-  data: DataLabPoint[];
+  // 검색어 트렌드 결과가 나오면 상위(page.tsx)로 올려보낸다 - 코스피/코스닥/나스닥과
+  // 함께 봐야 하는 인사이트는 이 데이터랩 결과 + 지수 데이터가 둘 다 필요해서 상위에서
+  // 생성하고, MarketIndexPanel의 코스피·코스닥 카드와 나스닥 카드 "사이"에 표시한다.
+  onQueryResults?: (results: DataLabResult[], selectedBrands: string[]) => void;
 }
 
 const LINE_COLORS = ['#6c63ff', '#03c75a', '#e0a030', '#e05a7a', '#3aa0e0'];
@@ -39,15 +43,12 @@ export function defaultDateRange() {
 }
 
 export default function TrendAnalysis({
-  brands, clientBrand, startDate, endDate, timeUnit, onStartDateChange, onEndDateChange, onTimeUnitChange,
+  brands, clientBrand, startDate, endDate, timeUnit, onStartDateChange, onEndDateChange, onTimeUnitChange, onQueryResults,
 }: TrendAnalysisProps) {
   const [selected, setSelected] = useState<Set<string>>(new Set([clientBrand]));
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [results, setResults] = useState<DataLabResult[] | null>(null);
-  const [insightText, setInsightText] = useState<string | null>(null);
-  const [insightLoading, setInsightLoading] = useState(false);
-  const [insightError, setInsightError] = useState<string | null>(null);
 
   const toggleBrand = (brand: string) => {
     setSelected(prev => {
@@ -66,8 +67,6 @@ export default function TrendAnalysis({
     if (selected.size === 0) { setError('브랜드를 최소 1개 선택해주세요'); return; }
     setLoading(true);
     setError(null);
-    setInsightText(null);
-    setInsightError(null);
     try {
       const keywordGroups = Array.from(selected).map(brand => ({ groupName: brand, keywords: [brand] }));
       const res = await fetch('/api/naver-trend', {
@@ -83,49 +82,12 @@ export default function TrendAnalysis({
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || '조회 실패');
       setResults(data.results || []);
-      generateTrendInsight(data.results || []);
+      onQueryResults?.(data.results || [], Array.from(selected));
     } catch (e) {
       setError(e instanceof Error ? e.message : '알 수 없는 오류');
       setResults(null);
     } finally {
       setLoading(false);
-    }
-  };
-
-  // 검색량 추이 + 같은 기간 코스피/코스닥/나스닥 등락률을 Claude에 보내 관련성 인사이트 생성.
-  // 데이터랩 결과는 "조회"를 눌러야만 생기는 일시적 데이터라 미리 만들어둘 수 없어서,
-  // 여기서만 그때그때(POST 라우트, Claude CLI 호출) 생성한다.
-  const generateTrendInsight = async (dataLabResults: DataLabResult[]) => {
-    if (dataLabResults.length === 0) return;
-    setInsightLoading(true);
-    try {
-      const marketRes = await fetch('/data/market_index.json').then(r => r.json()).catch(() => ({}));
-      const summarize = (idx: { data: { date: string; close: number }[] } | undefined) => {
-        if (!idx || !idx.data) return null;
-        const filtered = idx.data.filter((d) => d.date >= startDate && d.date <= endDate);
-        if (filtered.length < 2) return null;
-        return {
-          changePct: ((filtered[filtered.length - 1].close - filtered[0].close) / filtered[0].close) * 100,
-          points: filtered,
-        };
-      };
-      const marketIndexSummary = {
-        kospi: summarize(marketRes.kospi),
-        kosdaq: summarize(marketRes.kosdaq),
-        nasdaq: summarize(marketRes.nasdaq),
-      };
-      const res = await fetch('/api/trend-insight', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ dataLabResults, marketIndexSummary, brands: Array.from(selected) }),
-      });
-      const json = await res.json();
-      if (!res.ok) throw new Error(json.error || '인사이트 생성 실패');
-      setInsightText(json.text);
-    } catch (e) {
-      setInsightError(e instanceof Error ? e.message : '알 수 없는 오류');
-    } finally {
-      setInsightLoading(false);
     }
   };
 
@@ -237,13 +199,6 @@ export default function TrendAnalysis({
           <p style={{ fontSize: '10px', color: '#555568', marginTop: '8px' }}>
             * 절대 검색량이 아닌 상대적 검색 트렌드 지수(기간 내 최고치를 100으로 환산)입니다 - 네이버 데이터랩 제공
           </p>
-
-          <div style={{ marginTop: '16px', background: 'rgba(108,99,255,0.08)', border: '1px solid rgba(108,99,255,0.25)', borderRadius: '10px', padding: '14px 16px' }}>
-            <p style={{ fontSize: '11px', fontWeight: 700, color: '#a78bfa', marginBottom: '6px' }}>🧠 왜 이런 추이가 나왔을까 (코스피/코스닥/나스닥 연동)</p>
-            {insightLoading && <p style={{ fontSize: '12px', color: '#8888aa' }}>인사이트 생성 중...</p>}
-            {insightError && <p style={{ fontSize: '12px', color: '#f87171' }}>생성 실패: {insightError}</p>}
-            {insightText && <p style={{ fontSize: '12px', color: '#e2e2f0', lineHeight: 1.6 }}>{insightText}</p>}
-          </div>
         </div>
       )}
     </div>

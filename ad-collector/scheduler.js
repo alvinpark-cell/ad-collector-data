@@ -11,6 +11,8 @@ const { collect } = require('./collector');
 const { runNextBrandBatch } = require('./metaBrandBatch');
 const { runMetaMediaBatch } = require('./metaMediaBatch');
 const { updateMarketIndex } = require('./scrapers/marketIndex');
+const { updateTrendReport } = require('./scrapers/trendReport');
+const { updateCommunityTrend } = require('./scrapers/communityTrend');
 const settings = require('./settings.json');
 
 console.log('📅 스케줄러 시작');
@@ -18,6 +20,7 @@ console.log('   평일(월~금) 오후 1시에 자동 수집됩니다 (키워드
 console.log('   메타 브랜드 9개는 2시간마다(짝수 시) 3개씩 나눠서 순환 수집됩니다 (IP 차단 방지).');
 console.log('   메타 광고 이미지/영상은 2시간마다(홀수 시) 조금씩 채워집니다 (IP 차단 방지).');
 console.log('   코스피/코스닥/나스닥 지수는 매일 오전 9시에 갱신됩니다.');
+console.log('   트렌드 리포트(구글 시트)는 매일 오전 9시 30분에 다시 받아옵니다.');
 console.log('   지금 바로 실행하려면: node collector.js\n');
 
 // cron 표현식: 초 분 시 일 월 요일
@@ -68,6 +71,32 @@ cron.schedule('0 0 9 * * *', async () => {
     await updateMarketIndex(settings);
   } catch (err) {
     console.error('시장지수 갱신 중 오류:', err.message);
+  }
+}, {
+  timezone: 'Asia/Seoul',
+});
+
+// 트렌드 리포트(구글 시트 - 앱별 MAU/신규설치): 매일 오전 9시 30분 갱신.
+// 팀에서 시트를 수정하면 다음 이 시각에 자동으로 다시 받아온다.
+cron.schedule('0 30 9 * * *', async () => {
+  console.log(`\n⏰ 트렌드 리포트 갱신: ${new Date().toLocaleString('ko-KR')}`);
+  try {
+    await updateTrendReport(settings);
+  } catch (err) {
+    console.error('트렌드 리포트 갱신 중 오류:', err.message);
+  }
+}, {
+  timezone: 'Asia/Seoul',
+});
+
+// 커뮤니티 반응(인베스팅닷컴 키워드 검색량): 주 1회(매주 월요일 오전 8시) 갱신 -
+// 매일 할 만큼 급변하는 지표가 아니라 주 단위면 충분.
+cron.schedule('0 0 8 * * 1', async () => {
+  console.log(`\n⏰ 커뮤니티 반응 갱신: ${new Date().toLocaleString('ko-KR')}`);
+  try {
+    await updateCommunityTrend(settings);
+  } catch (err) {
+    console.error('커뮤니티 반응 갱신 중 오류:', err.message);
   }
 }, {
   timezone: 'Asia/Seoul',

@@ -3,9 +3,9 @@
 export type ViewKey =
   | 'home'
   | 'news-daily' | 'news-weekly'
-  | 'dash-all' | 'dash-meta' | 'dash-google' | 'dash-brand' | 'dash-monthly'
-  | 'bs' | 'pwl'
-  | 'trend' | 'trend-report';
+  | 'dash-all' | 'dash-meta' | 'dash-google' | 'dash-brand'
+  | 'bs' | 'pwl' | 'pwl-brand'
+  | 'trend' | 'trend-report' | 'community-trend';
 
 interface NavLeaf { key: ViewKey; label: string; }
 interface NavGroup { title: string; items: NavLeaf[]; }
@@ -20,17 +20,18 @@ const GROUPS: NavGroup[] = [
     { key: 'dash-meta', label: '메타' },
     { key: 'dash-google', label: '구글' },
     { key: 'dash-brand', label: '브랜드별' },
-    { key: 'dash-monthly', label: '월별' },
   ] },
   { title: '모니터링', items: [
     { key: 'bs', label: '브랜드검색' },
-    { key: 'pwl', label: '검색광고' },
+    { key: 'pwl', label: '검색광고 일반키워드' },
+    { key: 'pwl-brand', label: '검색광고 브랜드키워드' },
   ] },
 ];
 
 const STANDALONE: NavLeaf[] = [
   { key: 'trend', label: '검색어 트렌드' },
   { key: 'trend-report', label: '트렌드 리포트' },
+  { key: 'community-trend', label: '커뮤니티 반응' },
 ];
 
 interface SidebarProps {

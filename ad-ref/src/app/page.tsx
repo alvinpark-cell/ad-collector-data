@@ -4,17 +4,22 @@ import { useState, useEffect, useMemo } from 'react';
 import { AdItem, FavoriteItem } from '@/lib/types';
 import AdCard from '@/components/AdCard';
 import AdModal from '@/components/AdModal';
-import TrendAnalysis, { defaultDateRange } from '@/components/TrendAnalysis';
+import TrendAnalysis, { defaultDateRange, DataLabResult } from '@/components/TrendAnalysis';
 import MarketIndexPanel from '@/components/MarketIndexPanel';
 import PowerlinkMonitor from '@/components/PowerlinkMonitor';
+import PowerlinkBrandMonitor from '@/components/PowerlinkBrandMonitor';
+import InsightBox from '@/components/InsightBox';
+import TrendReport from '@/components/TrendReport';
+import CommunityTrend from '@/components/CommunityTrend';
 import WeekSelector from '@/components/WeekSelector';
 import Sidebar, { ViewKey } from '@/components/Sidebar';
 import { getMonthWeekKey, sortMonthWeekKeysDesc } from '@/lib/weekUtils';
 import { diffBrandSnapshot } from '@/lib/bsDiff';
+import { matchesBrand, normalizeName } from '@/lib/brandUtils';
 
 const BRANDS = [
   '메리츠증권', '키움증권', '미래에셋증권', '삼성증권', 'NH투자증권',
-  '한국투자증권', '카카오페이증권', '토스증권', 'KB증권',
+  '한국투자증권', '신한투자증권', '토스증권', 'KB증권',
 ];
 const CLIENT_BRAND = '메리츠증권';
 
@@ -25,7 +30,10 @@ export default function Home() {
   const [changes, setChanges] = useState<Changes>({ newAds: [], endedAds: [], lastUpdated: null });
   const [bsData, setBsData] = useState<any[]>([]);
   const [collectionStatus, setCollectionStatus] = useState<Record<string, any>>({});
-  const [creativeInsight, setCreativeInsight] = useState<{ overall?: { text: string; itemCount: number }; byBrand?: Record<string, { text: string; itemCount: number }> } | null>(null);
+  const [dynamicInsight, setDynamicInsight] = useState<{ text: string; itemCount: number; label: string } | null>(null);
+  const [insightLoading, setInsightLoading] = useState(false);
+  const [insightError, setInsightError] = useState<string | null>(null);
+  const [insightGeneratedForKey, setInsightGeneratedForKey] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const [view, setView] = useState<ViewKey>('home');
   const [selectedBrand, setSelectedBrand] = useState<string | null>(null);
@@ -51,7 +59,6 @@ export default function Home() {
   const [favFolder, setFavFolder] = useState('기본 즐겨찾기');
   const [bsExpanded, setBsExpanded] = useState<Set<string>>(new Set());
   const [bsSelectedWeek, setBsSelectedWeek] = useState<string | null>(null);
-  const [selectedMonth, setSelectedMonth] = useState<string | null>(null);
 
   // 검색어 트렌드 화면의 코스피/코스닥/나스닥 차트가 데이터랩 조회 기간과 동일한 구간을
   // 보여줘야 해서, 날짜 범위/단위를 여기서 공유 상태로 관리하고 두 컴포넌트에 같이 내려준다.
@@ -59,6 +66,47 @@ export default function Home() {
   const [trendStartDate, setTrendStartDate] = useState(trendDefaultRange.start);
   const [trendEndDate, setTrendEndDate] = useState(trendDefaultRange.end);
   const [trendTimeUnit, setTrendTimeUnit] = useState<'date' | 'week' | 'month'>('month');
+  // 검색어 트렌드(데이터랩) + 코스피/코스닥/나스닥을 함께 봐야 하는 인사이트라 여기서
+  // 생성하고, MarketIndexPanel(지수 표/그래프)과 TrendAnalysis(브랜드 선택 + 데이터랩
+  // 차트) 사이에 독립 섹션으로 표시한다.
+  const [trendInsightText, setTrendInsightText] = useState<string | null>(null);
+  const [trendInsightLoading, setTrendInsightLoading] = useState(false);
+  const [trendInsightError, setTrendInsightError] = useState<string | null>(null);
+
+  const generateTrendInsight = async (dataLabResults: DataLabResult[], selectedBrands: string[]) => {
+    if (dataLabResults.length === 0) return;
+    setTrendInsightLoading(true);
+    setTrendInsightError(null);
+    try {
+      const marketRes = await fetch('/data/market_index.json').then(r => r.json()).catch(() => ({}));
+      const summarize = (idx: { data: { date: string; close: number }[] } | undefined) => {
+        if (!idx || !idx.data) return null;
+        const filtered = idx.data.filter((d: { date: string }) => d.date >= trendStartDate && d.date <= trendEndDate);
+        if (filtered.length < 2) return null;
+        return {
+          changePct: ((filtered[filtered.length - 1].close - filtered[0].close) / filtered[0].close) * 100,
+          points: filtered,
+        };
+      };
+      const marketIndexSummary = {
+        kospi: summarize(marketRes.kospi),
+        kosdaq: summarize(marketRes.kosdaq),
+        nasdaq: summarize(marketRes.nasdaq),
+      };
+      const res = await fetch('/api/trend-insight', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ dataLabResults, marketIndexSummary, brands: selectedBrands }),
+      });
+      const json = await res.json();
+      if (!res.ok) throw new Error(json.error || '인사이트 생성 실패');
+      setTrendInsightText(json.text);
+    } catch (e) {
+      setTrendInsightError(e instanceof Error ? e.message : '알 수 없는 오류');
+    } finally {
+      setTrendInsightLoading(false);
+    }
+  };
 
   useEffect(() => {
     Promise.all([
@@ -66,9 +114,8 @@ export default function Home() {
       fetch('/data/changes.json').then(r => r.json()).catch(() => ({ newAds: [], endedAds: [], lastUpdated: null })),
       fetch('/data/bs_index.json').then(r => r.json()).catch(() => []),
       fetch('/data/collection_status.json').then(r => r.json()).catch(() => ({})),
-      fetch('/data/creative_insight.json').then(r => r.json()).catch(() => null),
-    ]).then(([d, c, bs, status, creative]) => {
-      setData(d); setChanges(c); setBsData(bs); setCollectionStatus(status); setCreativeInsight(creative); setLoading(false);
+    ]).then(([d, c, bs, status]) => {
+      setData(d); setChanges(c); setBsData(bs); setCollectionStatus(status); setLoading(false);
       const weeks = sortMonthWeekKeysDesc(bs.map((i: any) => getMonthWeekKey(i.collectedAt)));
       if (weeks.length > 0) setBsSelectedWeek(weeks[0]);
     });
@@ -142,11 +189,11 @@ export default function Home() {
   const brandStats = useMemo(() => {
     return BRANDS.map(brand => {
       const items = data.filter(i =>
-        (i.advertiserName || '').toLowerCase().includes(brand.toLowerCase()) ||
+        matchesBrand(i.advertiserName, brand) ||
         (i.keyword || '').toLowerCase() === brand.toLowerCase()
       );
-      const newCount = changes.newAds.filter(i => (i.advertiserName || '').toLowerCase().includes(brand.toLowerCase())).length;
-      const endedCount = changes.endedAds.filter(i => (i.advertiserName || '').toLowerCase().includes(brand.toLowerCase())).length;
+      const newCount = changes.newAds.filter(i => matchesBrand(i.advertiserName, brand)).length;
+      const endedCount = changes.endedAds.filter(i => matchesBrand(i.advertiserName, brand)).length;
       return { name: brand, total: items.length, new24h: newCount, ended24h: endedCount,
         video: items.filter(i => i.mediaType === 'video').length,
         image: items.filter(i => i.mediaType === 'image').length,
@@ -163,7 +210,7 @@ export default function Home() {
   const brandItems = useMemo(() => {
     if (!selectedBrand) return [];
     return data
-      .filter(i => (i.advertiserName || '').toLowerCase().includes(selectedBrand.toLowerCase()) || (i.keyword || '').toLowerCase() === selectedBrand.toLowerCase())
+      .filter(i => matchesBrand(i.advertiserName, selectedBrand) || (i.keyword || '').toLowerCase() === selectedBrand.toLowerCase())
       .filter(i => brandPlatform === 'all' ? true : i.platform === brandPlatform)
       .filter(i => brandMedia === 'all' ? true : i.mediaType === brandMedia)
       .sort((a, b) => (b.collectedAt || '').localeCompare(a.collectedAt || ''));
@@ -176,7 +223,11 @@ export default function Home() {
   const sliceOptions = useMemo(() => {
     const years = new Set<string>();
     const months = new Set<string>();
-    const advertisers = new Set<string>();
+    // "미래에셋증권"과 "미래에셋증권 주식회사"처럼 법인 표기만 다른 같은 브랜드가 슬라이서에
+    // 별개 항목으로 뜨지 않도록, 정규화된 이름 기준으로 묶어서 대표 표기 하나만 남긴다.
+    // 알려진 9개 브랜드명과 일치하면 그 깔끔한 이름을 대표로 쓰고, 아니면 가장 짧은(보통
+    // 더 깔끔한) 원본 표기를 대표로 쓴다.
+    const advertiserGroups = new Map<string, string>();
     const platforms = new Set<string>();
     data.forEach(item => {
       const d = new Date(getAdDate(item));
@@ -184,13 +235,21 @@ export default function Home() {
         years.add(String(d.getFullYear()));
         months.add(`${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`);
       }
-      if (item.advertiserName) advertisers.add(item.advertiserName);
+      if (item.advertiserName) {
+        const norm = normalizeName(item.advertiserName);
+        if (norm) {
+          const knownBrand = BRANDS.find(b => normalizeName(b) === norm);
+          const existing = advertiserGroups.get(norm);
+          const label = knownBrand || (existing && existing.length <= item.advertiserName.length ? existing : item.advertiserName);
+          advertiserGroups.set(norm, label);
+        }
+      }
       if (item.platform) platforms.add(item.platform);
     });
     return {
       years: Array.from(years).sort().reverse(),
       months: Array.from(months).sort().reverse(),
-      advertisers: Array.from(advertisers).sort(),
+      advertisers: Array.from(advertiserGroups.values()).sort(),
       platforms: Array.from(platforms).sort(),
     };
   }, [data]);
@@ -216,7 +275,10 @@ export default function Home() {
     }
     if (searchMedia !== 'all') items = items.filter(i => i.mediaType === searchMedia);
     if (slicePlatforms.size > 0) items = items.filter(i => slicePlatforms.has(i.platform));
-    if (sliceAdvertisers.size > 0) items = items.filter(i => sliceAdvertisers.has(i.advertiserName));
+    if (sliceAdvertisers.size > 0) {
+      const selectedGroups = Array.from(sliceAdvertisers);
+      items = items.filter(i => selectedGroups.some(g => matchesBrand(i.advertiserName, g)));
+    }
     if (sliceYears.size > 0) {
       items = items.filter(i => {
         const d = new Date(getAdDate(i));
@@ -231,6 +293,46 @@ export default function Home() {
     }
     return items.sort((a, b) => (b.collectedAt || '').localeCompare(a.collectedAt || ''));
   }, [data, searchText, searchMedia, slicePlatforms, sliceAdvertisers, sliceYears, sliceMonths]);
+
+  // 소재 인사이트는 "지금 선택된 조건"을 그대로 반영해야 해서(광고주/월/매체 뭘 고르든),
+  // 매번 자동으로 다시 생성하지 않고 사용자가 버튼을 눌렀을 때만 현재 필터된 결과로
+  // Claude를 호출한다 - 필터가 바뀌면 이전 결과가 낡았다는 걸 표시만 해준다.
+  const currentFilterKey = useMemo(() => JSON.stringify({
+    searchText, searchMedia,
+    platforms: Array.from(slicePlatforms).sort(),
+    advertisers: Array.from(sliceAdvertisers).sort(),
+    years: Array.from(sliceYears).sort(),
+    months: Array.from(sliceMonths).sort(),
+  }), [searchText, searchMedia, slicePlatforms, sliceAdvertisers, sliceYears, sliceMonths]);
+  const insightStale = dynamicInsight !== null && insightGeneratedForKey !== currentFilterKey;
+
+  const generateCreativeInsight = async () => {
+    setInsightLoading(true);
+    setInsightError(null);
+    try {
+      const label = sliceAdvertisers.size === 1 ? Array.from(sliceAdvertisers)[0] as string : undefined;
+      const payloadItems = searchResults.map(i => ({
+        advertiserName: i.advertiserName, platform: i.platform, copyText: i.copyText,
+        headline: i.headline, status: i.status, collectedAt: i.collectedAt,
+        localPath: i.localPath, mediaType: i.mediaType,
+      }));
+      const res = await fetch('/api/creative-insight', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ items: payloadItems, label }),
+      });
+      const json = await res.json();
+      if (json.error) {
+        setInsightError(json.error);
+      } else {
+        setDynamicInsight({ text: json.text, itemCount: json.itemCount ?? searchResults.length, label: label || '현재 필터' });
+        setInsightGeneratedForKey(currentFilterKey);
+      }
+    } catch (e) {
+      setInsightError(e instanceof Error ? e.message : '인사이트 생성 실패');
+    } finally {
+      setInsightLoading(false);
+    }
+  };
 
   const toggleFav = (id: string) => {
     if (favorites.some(f => f.id === id)) {
@@ -279,30 +381,6 @@ export default function Home() {
     if (googleEndDate) items = items.filter(i => getAdDate(i) <= googleEndDate + 'T23:59:59.999Z');
     return items.sort((a, b) => (b.collectedAt || '').localeCompare(a.collectedAt || ''));
   }, [data, googleSearchText, googleStartDate, googleEndDate]);
-
-  // 월별 신규 소재: 각 항목의 수집일(collectedAt) 기준 월로 묶는다.
-  // (index.json은 URL 기준 전역 중복제거라 한 번 저장된 항목은 다시 안 늘어나므로,
-  //  collectedAt은 사실상 "이 소재를 처음 확보한 시점"과 같다)
-  const monthlyKeys = useMemo(() => {
-    const keys = new Set<string>();
-    data.forEach(i => {
-      const d = new Date(i.collectedAt);
-      if (!isNaN(d.getTime())) keys.add(`${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`);
-    });
-    return Array.from(keys).sort().reverse();
-  }, [data]);
-
-  useEffect(() => {
-    if (!selectedMonth && monthlyKeys.length > 0) setSelectedMonth(monthlyKeys[0]);
-  }, [monthlyKeys, selectedMonth]);
-
-  const monthlyItems = useMemo(() => {
-    if (!selectedMonth) return [];
-    return data.filter(i => {
-      const d = new Date(i.collectedAt);
-      return !isNaN(d.getTime()) && `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}` === selectedMonth;
-    }).sort((a, b) => (b.collectedAt || '').localeCompare(a.collectedAt || ''));
-  }, [data, selectedMonth]);
 
   if (loading) return <div style={{ minHeight: '100vh', background: '#0f0f13', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#8888aa' }}>로딩 중...</div>;
 
@@ -433,56 +511,49 @@ export default function Home() {
             {/* 경쟁사 대시보드 > 전체: 광고 검색(슬라이서) + 즐겨찾기 통합 */}
             {view === 'dash-all' && (
               <>
-                <header style={{ marginBottom: '28px' }}>
-                  <h1 style={{ fontSize: '22px', fontWeight: 700, color: '#fff' }}>경쟁사 광고 - 전체</h1>
-                  <div style={{ display: 'flex', gap: '16px', marginTop: '6px', fontSize: '12px', color: '#8888aa', flexWrap: 'wrap' }}>
+                <header style={{ marginBottom: '32px' }}>
+                  <h1 style={{ fontSize: '24px', fontWeight: 700, color: '#fff' }}>경쟁사 광고 - 전체</h1>
+                  <div style={{ display: 'flex', gap: '16px', marginTop: '8px', fontSize: '13px', color: '#8888aa', flexWrap: 'wrap', lineHeight: 1.6 }}>
                     {totalStats.lastGoogle && <span>Google 최근 수집: {new Date(totalStats.lastGoogle).toLocaleString('ko-KR')}</span>}
                     {totalStats.lastMeta && <span>· Meta 최근 수집: {new Date(totalStats.lastMeta).toLocaleString('ko-KR')}</span>}
                   </div>
                 </header>
 
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '12px', marginBottom: '28px' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '14px', marginBottom: '32px' }}>
                   {[
                     { label: '활성 광고 (전체)', value: totalStats.total.toLocaleString(), color: '#a78bfa' },
                     { label: '신규 광고 (월간)', value: totalStats.new24h, color: '#34d399' },
                     { label: '종료 광고 (월간)', value: totalStats.ended24h, color: '#f87171' },
                     { label: '즐겨찾기', value: favorites.length, color: '#facc15' },
                   ].map(({ label, value, color }) => (
-                    <div key={label} style={{ background: 'rgba(26,26,36,0.8)', border: '1px solid #2e2e3e', borderRadius: '12px', padding: '20px' }}>
-                      <p style={{ fontSize: '12px', color: '#8888aa', fontWeight: 500 }}>{label}</p>
-                      <p style={{ fontSize: '28px', fontWeight: 700, color, marginTop: '6px' }}>{value}</p>
+                    <div key={label} style={{ background: 'rgba(26,26,36,0.8)', border: '1px solid #2e2e3e', borderRadius: '14px', padding: '24px' }}>
+                      <p style={{ fontSize: '13px', color: '#8888aa', fontWeight: 500 }}>{label}</p>
+                      <p style={{ fontSize: '34px', fontWeight: 700, color, marginTop: '8px', letterSpacing: '-0.5px' }}>{value}</p>
                     </div>
                   ))}
                 </div>
 
-                {creativeInsight && (() => {
-                  // 광고주명 슬라이서에서 정확히 1개만 고른 경우 그 브랜드 인사이트를, 아니면 전체 기준을 보여준다.
-                  // 브랜드별 인사이트가 아직 준비 안 된 조합(예: 년도/월/매체 조합)은 전체 기준으로 대체하고 안내 문구를 덧붙인다.
-                  // advertiserName은 "미래에셋증권 주식회사"처럼 원본 그대로라 byBrand의 깔끔한
-                  // 브랜드명 키와 정확히 안 맞을 수 있어서 포함관계로 느슨하게 매칭한다.
-                  const singleBrand = sliceAdvertisers.size === 1 ? Array.from(sliceAdvertisers)[0] as string : null;
-                  const matchedBrandKey = singleBrand && creativeInsight.byBrand
-                    ? Object.keys(creativeInsight.byBrand).find(b =>
-                        singleBrand.toLowerCase().includes(b.toLowerCase()) || b.toLowerCase().includes(singleBrand.toLowerCase()))
-                    : undefined;
-                  const brandInsight = matchedBrandKey ? creativeInsight.byBrand?.[matchedBrandKey] : null;
-                  const shown = brandInsight || creativeInsight.overall;
-                  if (!shown) return null;
-                  return (
-                    <div style={{ background: 'rgba(108,99,255,0.08)', border: '1px solid rgba(108,99,255,0.25)', borderRadius: '12px', padding: '16px 18px', marginBottom: '20px' }}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
-                        <span style={{ fontSize: '12px', fontWeight: 700, color: '#a78bfa' }}>🧠 소재 인사이트</span>
-                        <span style={{ fontSize: '10px', color: '#8888aa' }}>
-                          {brandInsight ? `${singleBrand} 기준 (${brandInsight.itemCount}건)` : `전체 기준 (${creativeInsight.overall?.itemCount ?? 0}건)`}
-                        </span>
-                        {singleBrand && !brandInsight && (
-                          <span style={{ fontSize: '10px', color: '#fb923c' }}>· 이 브랜드는 아직 별도 인사이트가 없어 전체 기준으로 표시 중</span>
-                        )}
-                      </div>
-                      <p style={{ fontSize: '12px', color: '#e2e2f0', lineHeight: 1.6 }}>{shown.text}</p>
-                    </div>
-                  );
-                })()}
+                <div style={{ marginBottom: '20px' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap', marginBottom: dynamicInsight ? '10px' : 0 }}>
+                    <button onClick={generateCreativeInsight} disabled={insightLoading || searchResults.length === 0}
+                      style={{
+                        fontSize: '12px', color: '#a78bfa', background: 'rgba(108,99,255,0.1)', border: '1px solid rgba(108,99,255,0.3)',
+                        borderRadius: '8px', padding: '8px 14px', cursor: insightLoading ? 'default' : 'pointer', opacity: searchResults.length === 0 ? 0.5 : 1,
+                      }}>
+                      {insightLoading ? '🧠 생성 중... (최대 1~2분)' : dynamicInsight ? '🧠 지금 조건으로 다시 생성' : '🧠 지금 선택 조건으로 인사이트 생성'}
+                    </button>
+                    <span style={{ fontSize: '11px', color: '#8888aa' }}>현재 {searchResults.length}건 기준</span>
+                    {insightStale && !insightLoading && (
+                      <span style={{ fontSize: '11px', color: '#fb923c' }}>· 필터가 바뀌었어요 - 다시 생성해보세요</span>
+                    )}
+                    {insightError && <span style={{ fontSize: '11px', color: '#f87171' }}>· {insightError}</span>}
+                  </div>
+                  {dynamicInsight && (
+                    <InsightBox title="🧠 소재 인사이트"
+                      badge={`${dynamicInsight.label} 기준 (${dynamicInsight.itemCount}건)${insightStale ? ' · 이전 조건 결과' : ''}`}
+                      text={dynamicInsight.text} />
+                  )}
+                </div>
 
                 <div style={{ position: 'relative', maxWidth: '480px', marginBottom: '12px' }}>
                   <span style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: '#8888aa', pointerEvents: 'none' }}>🔍</span>
@@ -544,7 +615,23 @@ export default function Home() {
             {/* 경쟁사 대시보드 > 메타 */}
             {view === 'dash-meta' && (
               <>
-                <h2 style={{ fontSize: '20px', fontWeight: 700, marginBottom: '16px' }}>메타 광고</h2>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '16px', flexWrap: 'wrap' }}>
+                  <h2 style={{ fontSize: '20px', fontWeight: 700 }}>메타 광고</h2>
+                  {(() => {
+                    const mb = collectionStatus.metaMediaBatch;
+                    if (!mb) return null;
+                    const pending = mb.stillPending ?? 0;
+                    return (
+                      <span style={{
+                        fontSize: '11px', fontWeight: 600, padding: '3px 10px', borderRadius: '20px',
+                        background: pending > 0 ? 'rgba(251,146,60,0.15)' : 'rgba(52,211,153,0.15)',
+                        color: pending > 0 ? '#fb923c' : '#34d399',
+                      }}>
+                        {pending > 0 ? `🖼️ 이미지/영상 대기 ${pending}건` : '🖼️ 이미지/영상 전부 채워짐'}
+                      </span>
+                    );
+                  })()}
+                </div>
                 <div style={{ display: 'flex', gap: '16px', alignItems: 'flex-end', flexWrap: 'wrap', marginBottom: '16px' }}>
                   <div>
                     <p style={{ fontSize: '11px', color: '#8888aa', marginBottom: '4px' }}>시작일</p>
@@ -731,42 +818,6 @@ export default function Home() {
                   </div>
                   {adGrid(brandItems)}
                 </div>
-              </>
-            )}
-
-            {/* 경쟁사 대시보드 > 월별 (월별 신규 소재) */}
-            {view === 'dash-monthly' && (
-              <>
-                <h2 style={{ fontSize: '20px', fontWeight: 700, marginBottom: '16px' }}>월별 신규 소재</h2>
-                {monthlyKeys.length === 0 ? (
-                  <div style={{ textAlign: 'center', padding: '60px', color: '#8888aa' }}>
-                    <div style={{ fontSize: '40px', marginBottom: '12px' }}>📅</div>
-                    <p>수집된 데이터가 없습니다</p>
-                  </div>
-                ) : (
-                  <>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap', marginBottom: '20px', padding: '10px 14px', background: 'rgba(26,26,36,0.6)', border: '1px solid #2e2e3e', borderRadius: '10px' }}>
-                      <span style={{ fontSize: '11px', color: '#8888aa', fontWeight: 700, marginRight: '4px' }}>월 선택</span>
-                      {monthlyKeys.map(key => {
-                        const active = key === selectedMonth;
-                        const [y, m] = key.split('-');
-                        return (
-                          <button key={key} onClick={() => setSelectedMonth(key)}
-                            style={{
-                              padding: '5px 12px', borderRadius: '20px', cursor: 'pointer', fontSize: '12px', fontWeight: active ? 700 : 400,
-                              border: `1px solid ${active ? '#6c63ff' : '#2e2e3e'}`,
-                              background: active ? 'rgba(108,99,255,0.15)' : 'transparent',
-                              color: active ? '#a78bfa' : '#8888aa', whiteSpace: 'nowrap',
-                            }}>
-                            {y}.{m}
-                          </button>
-                        );
-                      })}
-                    </div>
-                    <p style={{ fontSize: '11px', color: '#8888aa', marginBottom: '14px' }}>신규 소재 {monthlyItems.length}개</p>
-                    {adGrid(monthlyItems)}
-                  </>
-                )}
               </>
             )}
 
@@ -962,29 +1013,39 @@ export default function Home() {
               <>
                 <h2 style={{ fontSize: '20px', fontWeight: 700, marginBottom: '20px' }}>검색어 트렌드</h2>
                 <MarketIndexPanel startDate={trendStartDate} endDate={trendEndDate} timeUnit={trendTimeUnit} />
+                <InsightBox title="🧠 왜 이런 추이가 나왔을까"
+                  badge="코스피/코스닥/나스닥 + 데이터랩 연동"
+                  text={
+                    trendInsightLoading ? '인사이트 생성 중...'
+                    : trendInsightError ? `생성 실패: ${trendInsightError}`
+                    : trendInsightText || '아래에서 브랜드를 선택하고 "조회"를 누르면 인사이트가 여기에 표시됩니다.'
+                  } />
                 <TrendAnalysis brands={BRANDS} clientBrand={CLIENT_BRAND}
                   startDate={trendStartDate} endDate={trendEndDate} timeUnit={trendTimeUnit}
-                  onStartDateChange={setTrendStartDate} onEndDateChange={setTrendEndDate} onTimeUnitChange={setTrendTimeUnit} />
+                  onStartDateChange={setTrendStartDate} onEndDateChange={setTrendEndDate} onTimeUnitChange={setTrendTimeUnit}
+                  onQueryResults={(results, brands) => { generateTrendInsight(results as DataLabResult[], brands); }} />
               </>
             )}
 
-            {/* 트렌드 리포트 (구글 시트 API 연동 예정) */}
-            {view === 'trend-report' && (
-              <>
-                <h2 style={{ fontSize: '20px', fontWeight: 700, marginBottom: '20px' }}>트렌드 리포트</h2>
-                <div style={{ background: 'rgba(26,26,36,0.6)', border: '1px solid #2e2e3e', borderRadius: '10px', textAlign: 'center', padding: '80px 20px', color: '#8888aa' }}>
-                  <div style={{ fontSize: '40px', marginBottom: '12px' }}>📊</div>
-                  <p style={{ fontSize: '15px', fontWeight: 600, color: '#e2e2f0', marginBottom: '6px' }}>트렌드 리포트</p>
-                  <p style={{ fontSize: '13px' }}>준비 중입니다 (구글 시트 API 연동 예정)</p>
-                </div>
-              </>
-            )}
+            {/* 트렌드 리포트 (구글 시트 연동) */}
+            {view === 'trend-report' && <TrendReport />}
 
-            {/* 모니터링 > 검색광고 (파워링크) */}
+            {/* 커뮤니티 반응 (버블차트) */}
+            {view === 'community-trend' && <CommunityTrend />}
+
+            {/* 모니터링 > 검색광고 일반키워드 (파워링크) */}
             {view === 'pwl' && (
               <>
-                <h2 style={{ fontSize: '20px', fontWeight: 700, marginBottom: '24px' }}>검색광고 모니터링</h2>
+                <h2 style={{ fontSize: '20px', fontWeight: 700, marginBottom: '24px' }}>검색광고 일반키워드 모니터링</h2>
                 <PowerlinkMonitor />
+              </>
+            )}
+
+            {/* 모니터링 > 검색광고 브랜드키워드 (파워링크) */}
+            {view === 'pwl-brand' && (
+              <>
+                <h2 style={{ fontSize: '20px', fontWeight: 700, marginBottom: '24px' }}>검색광고 브랜드키워드 모니터링</h2>
+                <PowerlinkBrandMonitor />
               </>
             )}
           </main>

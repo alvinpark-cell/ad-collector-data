@@ -18,6 +18,7 @@ export interface AdItem {
   detailsLink?: string;
   placements?: string;
   collectedAt: string;
+  status?: 'active' | 'ended';
   device?: 'pc' | 'mo';
   buttons?: LandingButton[];
   screenshotPath?: string;
@@ -45,6 +46,9 @@ export interface FavoriteItem {
   addedAt: string;
 }
 
+export interface PowerlinkSublink { title: string; url: string; imageUrl?: string; }
+export interface PowerlinkExtraTitle { badge: string; text: string; url: string; }
+
 export interface PowerlinkAd {
   rank: number;
   advertiserName: string | null;
@@ -54,6 +58,9 @@ export interface PowerlinkAd {
   adPeriod: string | null;
   landingUrl: string | null;
   adId: string | null;
+  sublinks?: PowerlinkSublink[];
+  imageSublinks?: PowerlinkSublink[];
+  extraTitle?: PowerlinkExtraTitle | null;
   imageUrl?: string | null;
   localImage?: string;
 }

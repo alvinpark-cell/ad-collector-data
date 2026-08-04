@@ -105,6 +105,44 @@ function syncData() {
     fs.writeFileSync(creativeInsightDst, '{}');
   }
 
+  // powerlink_brand_index.json / powerlink_brand_insight.json 복사 (검색광고 브랜드키워드)
+  const pwlBrandSrc = path.join(collectorDir, 'data', 'powerlink_brand_index.json');
+  const pwlBrandDst = path.join(nextPublicDir, 'powerlink_brand_index.json');
+  if (fs.existsSync(pwlBrandSrc)) {
+    fs.copyFileSync(pwlBrandSrc, pwlBrandDst);
+    console.log('powerlink_brand_index.json 복사 완료');
+  } else {
+    fs.writeFileSync(pwlBrandDst, '[]');
+  }
+  const pwlBrandInsightSrc = path.join(collectorDir, 'data', 'powerlink_brand_insight.json');
+  const pwlBrandInsightDst = path.join(nextPublicDir, 'powerlink_brand_insight.json');
+  if (fs.existsSync(pwlBrandInsightSrc)) {
+    fs.copyFileSync(pwlBrandInsightSrc, pwlBrandInsightDst);
+    console.log('powerlink_brand_insight.json 복사 완료');
+  } else {
+    fs.writeFileSync(pwlBrandInsightDst, '{}');
+  }
+
+  // trend_report.json 복사 (트렌드 리포트 - 구글 시트에서 받아온 앱별 MAU/신규설치)
+  const trendReportSrc = path.join(collectorDir, 'data', 'trend_report.json');
+  const trendReportDst = path.join(nextPublicDir, 'trend_report.json');
+  if (fs.existsSync(trendReportSrc)) {
+    fs.copyFileSync(trendReportSrc, trendReportDst);
+    console.log('trend_report.json 복사 완료');
+  } else {
+    fs.writeFileSync(trendReportDst, '{"records":[]}');
+  }
+
+  // community_trend.json 복사 (커뮤니티 반응 - 버블차트)
+  const communitySrc = path.join(collectorDir, 'data', 'community_trend.json');
+  const communityDst = path.join(nextPublicDir, 'community_trend.json');
+  if (fs.existsSync(communitySrc)) {
+    fs.copyFileSync(communitySrc, communityDst);
+    console.log('community_trend.json 복사 완료');
+  } else {
+    fs.writeFileSync(communityDst, '{"general":[],"brand":[]}');
+  }
+
   // 이미지 폴더 동기화 (심볼릭 링크 또는 복사)
   const imgSrc = path.join(collectorDir, 'output', 'images');
   const imgDst = path.join(nextPublicDir, 'images');

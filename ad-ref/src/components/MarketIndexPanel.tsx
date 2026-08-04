@@ -176,7 +176,7 @@ export default function MarketIndexPanel({ startDate, endDate, timeUnit }: Marke
       <p style={{ fontSize: '10px', color: '#555568', marginBottom: '8px' }}>
         검색어 트렌드와 동일한 조회 기간({startDate} ~ {endDate}, {timeUnit === 'date' ? '일별' : timeUnit === 'week' ? '주별' : '월별'} 기준)
       </p>
-      <div style={{ display: 'flex', gap: '14px', flexWrap: 'wrap' }}>
+      <div style={{ display: 'flex', gap: '14px', flexWrap: 'wrap', alignItems: 'stretch' }}>
         <IndexCard title="코스피 · 코스닥" indices={[filtered.kospi, filtered.kosdaq].filter((v): v is FilteredIndex => !!v)} />
         <IndexCard title="나스닥" indices={[filtered.nasdaq].filter((v): v is FilteredIndex => !!v)} />
       </div>

@@ -35,6 +35,20 @@ async function computePHash(imagePath) {
 }
 
 /**
+ * 다운로드한 이미지의 실제 픽셀 크기 확인. null이면 읽기 실패(손상된 파일 등).
+ * 프로필 사진/트래킹 픽셀처럼 광고 소재가 아닌 작은 이미지를 걸러낼 때 사용
+ * (URL 패턴만으로는 못 걸러내는 경우의 최종 방어선).
+ */
+async function getImageDimensions(imagePath) {
+  try {
+    const image = await Jimp.read(imagePath);
+    return { width: image.bitmap.width, height: image.bitmap.height };
+  } catch (err) {
+    return null;
+  }
+}
+
+/**
  * 해밍 거리 계산 (두 해시가 얼마나 비슷한지)
  */
 function hammingDistance(hash1, hash2) {
@@ -160,6 +174,7 @@ function getMonthWeekKey(dateInput) {
 
 module.exports = {
   computePHash,
+  getImageDimensions,
   hammingDistance,
   isDuplicate,
   downloadImage,

@@ -21,9 +21,16 @@
  *   패턴 자체를 피한다 (총 건수를 줄이는 게 아니라 건당 속도를 늦추는 방식)
  */
 
+const fs = require('fs');
 const path = require('path');
 const { chromium } = require('playwright');
-const { downloadImage, buildFilename, saveIndex } = require('../utils');
+const { downloadImage, buildFilename, saveIndex, getImageDimensions } = require('../utils');
+
+// 프로필 사진/트래킹 픽셀은 URL 패턴이 제각각이라(s50x50 뿐 아니라 크기 파라미터가
+// 아예 없는 hads-* 트래킹 픽셀 등도 있었음) URL만으로 100% 못 거른다. 그래서 실제로
+// 다운로드한 뒤 픽셀 크기를 확인해서, 너무 작으면 버리고 다음 후보로 넘어가는 걸
+// 최종 방어선으로 둔다.
+const MIN_REAL_IMAGE_DIM = 100;
 
 const MAX_MEDIA_PER_AD = 30; // 캐러셀 광고 전체 카드를 다 받기 위한 넉넉한 상한 (페이스북 캐러셀 실제 최대치보다 여유있게)
 const DEFAULT_MAX_VISITS_PER_RUN = 150; // metaMediaBatch.js가 2시간마다 이만큼씩 나눠서 처리 (하루 12회 = 최대 1800건/일)
@@ -33,6 +40,13 @@ const DELAY_JITTER_MS = 3000;
 function isRealContentUrl(url) {
   if (!url) return false;
   if (url.includes('profile') || url.includes('avatar') || url.includes('emoji')) return false;
+  // 광고주 페이지 프로필 사진도 scontent 호스트에서 내려오는데, URL 안에 "s50x50"처럼
+  // 작은 정사각형 크롭 크기가 박혀있다(예: ..._dst-jpg_s50x50_tt6&...). 실제 광고 소재
+  // 이미지는 이 정도로 작게 크롭되지 않으므로, 이 패턴이 보이고 두 변이 다 150 이하면
+  // 프로필 사진으로 간주해 제외한다. (실제로 이 필터가 없어서 50x50 프로필 사진이
+  // "광고 이미지"로 잘못 저장된 사례 발견 - 2026-08-04)
+  const sizeMatch = url.match(/s(\d{1,3})x(\d{1,3})/i);
+  if (sizeMatch && parseInt(sizeMatch[1], 10) <= 150 && parseInt(sizeMatch[2], 10) <= 150) return false;
   try {
     const host = new URL(url).hostname;
     // 실제 사진/영상 콘텐츠는 scontent-*.fbcdn.net, video-*.fbcdn.net 호스트에서 옴.
@@ -208,24 +222,37 @@ async function backfillPendingMedia(existingIndex, settings, cap) {
       if (mediaList.length === 0) {
         console.log(`  ⚠ 광고 ${target.adId} 미디어를 찾지 못해 건너뜀`);
       } else {
-        const m = mediaList[0]; // adId 기준 저장이라 대표 미디어 1개만 사용
+        // adId 기준 저장이라 대표 미디어 1개만 쓰지만, 첫 후보가 프로필 사진/트래킹
+        // 픽셀처럼 너무 작은 이미지면 버리고 다음 후보로 넘어간다.
         try {
-          if (m.mediaType === 'image') {
-            const filename = buildFilename('meta', target.keyword, 'image', 'jpg');
-            const imagePath = path.join(settings.outputDir, 'images', 'meta', filename);
-            await downloadImage(m.mediaUrl, imagePath);
-            target.localPath = ['images', 'meta', filename].join('/');
-          } else if (m.mediaType === 'video') {
-            const filename = buildFilename('meta', target.keyword, 'video', 'mp4');
-            const videoPath = path.join(settings.outputDir, 'images', 'meta', 'videos', filename);
-            await downloadImage(m.mediaUrl, videoPath);
-            target.localPath = ['images', 'meta', 'videos', filename].join('/');
+          for (const m of mediaList) {
+            if (m.mediaType === 'image') {
+              const filename = buildFilename('meta', target.keyword, 'image', 'jpg');
+              const imagePath = path.join(settings.outputDir, 'images', 'meta', filename);
+              await downloadImage(m.mediaUrl, imagePath);
+              const dims = await getImageDimensions(imagePath);
+              if (!dims || dims.width < MIN_REAL_IMAGE_DIM || dims.height < MIN_REAL_IMAGE_DIM) {
+                fs.unlinkSync(imagePath);
+                continue;
+              }
+              target.localPath = ['images', 'meta', filename].join('/');
+            } else if (m.mediaType === 'video') {
+              const filename = buildFilename('meta', target.keyword, 'video', 'mp4');
+              const videoPath = path.join(settings.outputDir, 'images', 'meta', 'videos', filename);
+              await downloadImage(m.mediaUrl, videoPath);
+              target.localPath = ['images', 'meta', 'videos', filename].join('/');
+            }
+            if (target.localPath) {
+              target.mediaType = m.mediaType;
+              target.mediaUrl = m.mediaUrl;
+              break;
+            }
           }
           if (target.localPath) {
-            target.mediaType = m.mediaType;
-            target.mediaUrl = m.mediaUrl;
             updated++;
             saveIndex(indexPath, existingIndex); // 건마다 즉시 저장 - 중단돼도 여기까진 안전
+          } else {
+            console.log(`  ⚠ 광고 ${target.adId} 후보 미디어가 전부 너무 작아(프로필사진 등) 건너뜀`);
           }
         } catch (e) {
           console.log(`  [보완 실패] ${target.adId}: ${e.message}`);
