@@ -25,26 +25,6 @@ async function scrapeMeta(keywords, brands, settings) {
     try {
       const page = await context.newPage();
 
-      // 네트워크 인터셉트: fbcdn 미디어 캡처
-      const capturedMedia = [];
-      const seenUrls = new Set();
-      page.on('response', async (response) => {
-        try {
-          const url = response.url();
-          const ct = response.headers()['content-type'] || '';
-          if (seenUrls.has(url)) return;
-          if (url.includes('fbcdn.net') && ct.startsWith('image/') &&
-              !url.includes('profile') && !url.includes('avatar') && !url.includes('emoji')) {
-            seenUrls.add(url);
-            capturedMedia.push({ mediaType: 'image', mediaUrl: url });
-          }
-          if (url.includes('fbcdn.net') && (ct.startsWith('video/') || url.includes('.mp4'))) {
-            seenUrls.add(url);
-            capturedMedia.push({ mediaType: 'video', mediaUrl: url });
-          }
-        } catch (_) {}
-      });
-
       const searchUrl = `https://www.facebook.com/ads/library/?active_status=all&ad_type=all&country=KR&q=${encodeURIComponent(term)}&search_type=keyword_unordered&media_type=all`;
       await page.goto(searchUrl, { waitUntil: 'domcontentloaded', timeout: 40000 });
       await page.waitForTimeout(3000);
@@ -68,11 +48,48 @@ async function scrapeMeta(keywords, brands, settings) {
       const cards = await page.evaluate(function() {
         var items = [];
 
+        // 카드 경계 탐지 - "라이브러리 ID:" 텍스트 마커 기준으로 정확히 광고 1건으로
+        // 스코프된 가장 안쪽 조상을 찾는다(metaAdDetail.js의 extractMediaFromAdPage와
+        // 동일한 방식 - 이미 실측으로 검증됨). 예전 셀렉터(._7jyg 등)는 지금 페이스북
+        // DOM에 전혀 매치되지 않고, preWrap 6단계 위 조상 폴백은 범위가 너무 좁아서
+        // 광고주명이 있는 상단 헤더(프로필 링크)까지 못 미쳐 광고주명 추출이 깨지는
+        // 원인이었다(실측 확인 - 2026-08-05). 마커 기반 스코프는 광고주명 앵커까지
+        // 포함하는 걸 확인함.
         var cardEls = [];
-        var selectors = ['._7jyg', '[data-testid="ad-archive-renderer"]', '._8n-1', '[role="article"]'];
-        for (var s = 0; s < selectors.length; s++) {
-          var found = document.querySelectorAll(selectors[s]);
-          if (found.length > 0) { cardEls = Array.from(found); break; }
+        (function() {
+          var markers = [];
+          var walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+          var node;
+          while ((node = walker.nextNode())) {
+            if (node.textContent.indexOf('라이브러리 ID:') !== -1) markers.push(node);
+          }
+          var seenScopes = new Set();
+          markers.forEach(function(textNode) {
+            var cur = textNode.parentElement;
+            var scope = cur;
+            for (var d = 0; d < 20; d++) {
+              if (!cur.parentElement) break;
+              var parent = cur.parentElement;
+              var count = (parent.innerText.match(/라이브러리 ID:/g) || []).length;
+              if (count > 1) break; // 부모로 가면 다른 광고까지 포함됨 - 여기서 멈춤
+              cur = parent;
+              scope = parent;
+            }
+            if (!seenScopes.has(scope)) {
+              seenScopes.add(scope);
+              cardEls.push(scope);
+            }
+          });
+        })();
+
+        // 마커 기반 탐지가 실패한 경우(페이지 구조가 또 바뀌었거나 마커 문구 변경)를
+        // 대비한 폴백 - 예전 셀렉터 → preWrap 조상 climb 순으로 시도
+        if (cardEls.length === 0) {
+          var selectors = ['._7jyg', '[data-testid="ad-archive-renderer"]', '._8n-1', '[role="article"]'];
+          for (var s = 0; s < selectors.length; s++) {
+            var found = document.querySelectorAll(selectors[s]);
+            if (found.length > 0) { cardEls = Array.from(found); break; }
+          }
         }
 
         if (cardEls.length === 0) {
@@ -300,21 +317,12 @@ async function scrapeMeta(keywords, brands, settings) {
         return items;
       });
 
-      // 네트워크 인터셉트 미디어 보완
-      const domUrls = new Set(cards.map(function(c) { return c.mediaUrl; }).filter(Boolean));
-      capturedMedia.forEach(function(m) {
-        if (!domUrls.has(m.mediaUrl)) {
-          cards.push({
-            mediaType: m.mediaType,
-            mediaUrl: m.mediaUrl,
-            advertiserName: type === 'brand' ? term : '',
-            copyText: '', headline: '', landingUrl: '', sourceUrl: searchUrl,
-            adId: '', adStartedAt: null, adLastShownAt: null, status: 'active',
-            platform: 'meta',
-          });
-        }
-      });
-
+      // 예전엔 여기서 네트워크 인터셉트(fbcdn 응답 캡처)로 놓친 미디어를 보완했으나
+      // 제거함 - 그렇게 잡힌 미디어는 어떤 광고 카드에도 못 묶여서(adId/카피/헤드라인
+      // 전부 빈 값) 브랜드명만 검색어로 붙인 정체불명 항목이 됐고, 실측 확인 결과
+      // 상당수가 60x60 프로필 아이콘 등 광고와 무관한 페이지 잡음이었다(2026-08-05,
+      // 삼성증권/NH투자증권 배치에서 확인). 실제 광고 소재는 "라이브러리 ID:" 마커
+      // 기반으로 정확히 스코프된 카드 안에서 DOM 추출만으로 충분히 잡힌다(위 참고).
       const allTagged = cards.map(function(c) {
         return Object.assign({}, c, {
           keyword: term,

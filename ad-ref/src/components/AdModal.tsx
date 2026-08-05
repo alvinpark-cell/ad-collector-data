@@ -14,8 +14,6 @@ export default function AdModal({ item, onClose, dataDir = '' }: AdModalProps) {
   const mediaSrc = dataDir
     ? (item.localPath ? mediaUrl(item.localPath, dataDir) : getMediaSrc(item))
     : getMediaSrc(item);
-  // 비디오 재생용 로컬 사본 경로. getMediaSrc()는 video 타입일 때 썸네일을 반환하므로
-  // (mediaSrc는 <img>용) <video src>에는 절대 못 쓰고, item.localPath가 있을 때만 사용한다.
   const videoSrc = item.localPath ? (dataDir ? mediaUrl(item.localPath, dataDir) : item.localPath) : '';
   const thumbSrc = dataDir
     ? (item.localThumb ? mediaUrl(item.localThumb, dataDir) : item.thumbnailUrl || '')
@@ -26,16 +24,13 @@ export default function AdModal({ item, onClose, dataDir = '' }: AdModalProps) {
     : null;
 
   const placementLabel: Record<string, string> = {
-    facebook: 'Facebook',
-    instagram: 'Instagram',
-    messenger: 'Messenger',
-    audience_network: 'Audience Network',
+    facebook: 'Facebook', instagram: 'Instagram', messenger: 'Messenger', audience_network: 'Audience Network',
   };
   const placementsDisplay = item.placements
     ? item.placements.split(',').map(p => placementLabel[p] || p).join(' · ')
     : '-';
 
-  const rows: [string, string][] = [
+  const fields: [string, string][] = [
     ['플랫폼', item.platform],
     ['노출 매체', placementsDisplay],
     ['광고주', item.advertiserName || '-'],
@@ -43,58 +38,65 @@ export default function AdModal({ item, onClose, dataDir = '' }: AdModalProps) {
     ['수집일', date],
     ['게재일', adPeriod || '-'],
   ];
-  if (item.headline) rows.push(['헤드라인', item.headline]);
 
   return (
     <div
-      style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.85)', zIndex: 100, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '16px' }}
+      style={{ position: 'fixed', inset: 0, background: 'rgba(6,6,10,0.6)', backdropFilter: 'blur(6px)', zIndex: 100, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '16px' }}
       onClick={onClose}
     >
       <div
-        style={{ background: 'var(--bg-surface-solid)', border: '1px solid var(--border)', borderRadius: '16px', width: '100%', maxWidth: '560px', maxHeight: '90vh', overflowY: 'auto' }}
+        style={{
+          background: 'var(--bg-surface-solid)', border: '1px solid var(--border)', borderRadius: 'var(--radius-card)',
+          width: '100%', maxWidth: '600px', maxHeight: '90vh', overflowY: 'auto', boxShadow: 'var(--shadow-card-hover)',
+        }}
         onClick={e => e.stopPropagation()}
       >
         {/* 헤더 */}
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '14px 20px', borderBottom: '1px solid var(--border)', position: 'sticky', top: 0, background: 'var(--bg-surface-solid)', zIndex: 1 }}>
-          <span style={{ fontWeight: 600, color: 'var(--text-primary)' }}>{item.advertiserName || '광고 상세'}</span>
-          <button onClick={onClose} style={{ background: 'none', border: 'none', color: 'var(--text-muted)', fontSize: '22px', cursor: 'pointer', lineHeight: 1 }}>✕</button>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '16px 22px', borderBottom: '1px solid var(--border-subtle)', position: 'sticky', top: 0, background: 'var(--bg-surface-solid)', zIndex: 1, borderTopLeftRadius: 'var(--radius-card)', borderTopRightRadius: 'var(--radius-card)' }}>
+          <span style={{ fontWeight: 700, fontSize: '15px', color: 'var(--text-primary)' }}>{item.advertiserName || '광고 상세'}</span>
+          <button onClick={onClose} style={{
+            width: '28px', height: '28px', borderRadius: '50%', background: 'var(--bg-elevated)', border: 'none',
+            color: 'var(--text-muted)', fontSize: '15px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center',
+          }}>✕</button>
         </div>
 
         {/* 본문 */}
-        <div style={{ padding: '20px' }}>
+        <div style={{ padding: '22px' }}>
           {/* 미디어 */}
           {item.mediaType === 'video' ? (
-            // 로컬로 받아둔 사본(videoSrc)을 우선 사용 - Meta의 mediaUrl(fbcdn 원본)은
-            // 서명이 걸린 임시 URL이라 시간이 지나면 만료되어 재생이 안 됨. YouTube처럼
-            // 애초에 영상 자체를 안 받고 썸네일만 저장한 경우엔 이 값이 비어서 다음 분기로 감.
             videoSrc ? (
-              <video src={videoSrc} controls poster={thumbSrc} style={{ width: '100%', borderRadius: '8px', marginBottom: '16px', maxHeight: '400px', background: '#000' }} />
+              <video src={videoSrc} controls poster={thumbSrc} style={{ width: '100%', borderRadius: '12px', marginBottom: '18px', maxHeight: '400px', background: '#000' }} />
             ) : thumbSrc ? (
               <>
-                <img src={thumbSrc} alt="" style={{ width: '100%', borderRadius: '8px', marginBottom: '8px' }} />
-                <p style={{ fontSize: '13px', color: 'var(--text-muted)', marginBottom: '16px' }}>영상 썸네일 (YouTube에서 재생)</p>
+                <img src={thumbSrc} alt="" style={{ width: '100%', borderRadius: '12px', marginBottom: '8px' }} />
+                <p style={{ fontSize: '12px', color: 'var(--text-muted)', marginBottom: '18px' }}>영상 썸네일 (YouTube에서 재생)</p>
               </>
             ) : (
-              <div style={{ padding: '40px', textAlign: 'center', color: 'var(--text-muted)', marginBottom: '16px' }}>미리보기 없음</div>
+              <div style={{ padding: '40px', textAlign: 'center', color: 'var(--text-muted)', marginBottom: '18px', background: 'var(--bg-elevated)', borderRadius: '12px' }}>미리보기 없음</div>
             )
           ) : mediaSrc ? (
-            <img src={mediaSrc} alt="" style={{ width: '100%', borderRadius: '8px', marginBottom: '16px', maxHeight: '500px', objectFit: 'contain', background: '#0f0f13' }} />
+            <img src={mediaSrc} alt="" style={{ width: '100%', borderRadius: '12px', marginBottom: '18px', maxHeight: '460px', objectFit: 'contain', background: 'var(--bg-elevated)' }} />
           ) : (
-            <div style={{ padding: '40px', textAlign: 'center', color: 'var(--text-muted)', marginBottom: '16px' }}>미리보기 없음</div>
+            <div style={{ padding: '40px', textAlign: 'center', color: 'var(--text-muted)', marginBottom: '18px', background: 'var(--bg-elevated)', borderRadius: '12px' }}>미리보기 없음</div>
           )}
 
-          {/* 메타 정보 */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-            {rows.map(([key, val]) => (
-              <div key={key} style={{ display: 'flex', gap: '8px', fontSize: '14px' }}>
-                <span style={{ color: 'var(--text-muted)', minWidth: '76px', flexShrink: 0 }}>{key}</span>
-                <span style={{ color: 'var(--text-primary)', wordBreak: 'break-all' }}>{val}</span>
+          {/* 헤드라인 */}
+          {item.headline && (
+            <div style={{ fontSize: '15px', fontWeight: 600, color: 'var(--text-primary)', marginBottom: '14px', lineHeight: 1.4 }}>{item.headline}</div>
+          )}
+
+          {/* 메타 정보 - 2열 그리드 */}
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px 16px', background: 'var(--bg-elevated)', borderRadius: '12px', padding: '14px 16px' }}>
+            {fields.map(([key, val]) => (
+              <div key={key}>
+                <div style={{ fontSize: '11px', color: 'var(--text-faint)', textTransform: 'uppercase', letterSpacing: '0.04em', marginBottom: '2px' }}>{key}</div>
+                <div style={{ fontSize: '13px', color: 'var(--text-primary)', wordBreak: 'break-all' }}>{val}</div>
               </div>
             ))}
             {item.landingUrl && (
-              <div style={{ display: 'flex', gap: '8px', fontSize: '14px' }}>
-                <span style={{ color: 'var(--text-muted)', minWidth: '76px', flexShrink: 0 }}>랜딩 URL</span>
-                <a href={item.landingUrl} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent-text)', wordBreak: 'break-all', textDecoration: 'none' }}>
+              <div style={{ gridColumn: '1 / -1' }}>
+                <div style={{ fontSize: '11px', color: 'var(--text-faint)', textTransform: 'uppercase', letterSpacing: '0.04em', marginBottom: '2px' }}>랜딩 URL</div>
+                <a href={item.landingUrl} target="_blank" rel="noopener noreferrer" style={{ fontSize: '13px', color: 'var(--accent-text)', wordBreak: 'break-all', textDecoration: 'none' }}>
                   {item.landingUrl}
                 </a>
               </div>
@@ -103,27 +105,30 @@ export default function AdModal({ item, onClose, dataDir = '' }: AdModalProps) {
 
           {/* 광고 문구 */}
           {item.copyText && (
-            <div style={{ marginTop: '12px', background: 'var(--bg-elevated)', borderRadius: '8px', padding: '12px', fontSize: '13px', color: 'var(--text-secondary)', lineHeight: 1.6, whiteSpace: 'pre-wrap', maxHeight: '200px', overflowY: 'auto' }}>
+            <div style={{ marginTop: '14px', background: 'var(--bg-elevated)', borderRadius: '12px', padding: '14px 16px', fontSize: '13px', color: 'var(--text-secondary)', lineHeight: 1.65, whiteSpace: 'pre-wrap', maxHeight: '200px', overflowY: 'auto' }}>
               {item.copyText}
             </div>
           )}
 
           {/* 버튼들 */}
-          <div style={{ display: 'flex', gap: '12px', marginTop: '14px', flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', gap: '10px', marginTop: '16px', flexWrap: 'wrap' }}>
             {item.sourceUrl && (
-              <a href={item.sourceUrl} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent-text)', fontSize: '14px', textDecoration: 'none' }}>
-                원본 광고 보기 →
-              </a>
+              <a href={item.sourceUrl} target="_blank" rel="noopener noreferrer" style={{
+                fontSize: '13px', fontWeight: 500, color: 'var(--text-primary)', background: 'var(--bg-elevated)',
+                padding: '8px 14px', borderRadius: '20px', textDecoration: 'none',
+              }}>원본 광고 보기 →</a>
             )}
             {item.mediaType === 'video' && item.mediaUrl?.includes('youtube') && (
-              <a href={item.mediaUrl} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--danger)', fontSize: '14px', textDecoration: 'none' }}>
-                YouTube에서 보기 →
-              </a>
+              <a href={item.mediaUrl} target="_blank" rel="noopener noreferrer" style={{
+                fontSize: '13px', fontWeight: 500, color: 'var(--danger)', background: 'var(--bg-elevated)',
+                padding: '8px 14px', borderRadius: '20px', textDecoration: 'none',
+              }}>YouTube에서 보기 →</a>
             )}
             {item.landingUrl && (
-              <a href={item.landingUrl} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--success)', fontSize: '14px', textDecoration: 'none' }}>
-                랜딩 페이지 열기 →
-              </a>
+              <a href={item.landingUrl} target="_blank" rel="noopener noreferrer" style={{
+                fontSize: '13px', fontWeight: 500, color: '#fff', background: 'var(--accent)',
+                padding: '8px 14px', borderRadius: '20px', textDecoration: 'none',
+              }}>랜딩 페이지 열기 →</a>
             )}
           </div>
         </div>

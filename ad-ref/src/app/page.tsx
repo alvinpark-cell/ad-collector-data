@@ -53,6 +53,8 @@ export default function Home() {
   const [metaEndDate, setMetaEndDate] = useState('');
   const [googleStartDate, setGoogleStartDate] = useState('');
   const [googleEndDate, setGoogleEndDate] = useState('');
+  const [metaSliceAdvertisers, setMetaSliceAdvertisers] = useState<Set<string>>(new Set());
+  const [googleSliceAdvertisers, setGoogleSliceAdvertisers] = useState<Set<string>>(new Set());
   const [selectedItem, setSelectedItem] = useState<AdItem | null>(null);
   const [favorites, setFavorites] = useState<FavoriteItem[]>([]);
   const [favPopup, setFavPopup] = useState<string | null>(null);
@@ -255,6 +257,25 @@ export default function Home() {
     };
   }, [data]);
 
+  // 메타/구글 탭 전용 광고주 슬라이서 - sliceOptions.advertisers와 같은 정규화 그룹핑
+  // 로직을 플랫폼별로 나눠서 쓴다. 하드코딩된 목록이 아니라 매번 data에서 새로 뽑으므로
+  // 새 광고주가 수집되면 다음 로드 때 자동으로 슬라이서 옵션에 나타난다.
+  const advertiserOptionsFor = (platform: 'meta' | 'google') => {
+    const groups = new Map<string, string>();
+    data.filter(i => i.platform === platform).forEach(item => {
+      if (!item.advertiserName) return;
+      const norm = normalizeName(item.advertiserName);
+      if (!norm) return;
+      const knownBrand = BRANDS.find(b => normalizeName(b) === norm);
+      const existing = groups.get(norm);
+      const label = knownBrand || (existing && existing.length <= item.advertiserName.length ? existing : item.advertiserName);
+      groups.set(norm, label);
+    });
+    return Array.from(groups.values()).sort();
+  };
+  const metaAdvertiserOptions = useMemo(() => advertiserOptionsFor('meta'), [data]);
+  const googleAdvertiserOptions = useMemo(() => advertiserOptionsFor('google'), [data]);
+
   const toggleSetValue = (setFn: React.Dispatch<React.SetStateAction<Set<string>>>, value: string) => {
     setFn(prev => {
       const next = new Set(prev);
@@ -369,8 +390,12 @@ export default function Home() {
     }
     if (metaStartDate) items = items.filter(i => getAdDate(i) >= metaStartDate);
     if (metaEndDate) items = items.filter(i => getAdDate(i) <= metaEndDate + 'T23:59:59.999Z');
+    if (metaSliceAdvertisers.size > 0) {
+      const selected = Array.from(metaSliceAdvertisers);
+      items = items.filter(i => selected.some(g => matchesBrand(i.advertiserName, g)));
+    }
     return items.sort((a, b) => (b.collectedAt || '').localeCompare(a.collectedAt || ''));
-  }, [data, metaSearchText, metaStartDate, metaEndDate]);
+  }, [data, metaSearchText, metaStartDate, metaEndDate, metaSliceAdvertisers]);
 
   const googleItems = useMemo(() => {
     let items = data.filter(i => i.platform === 'google');
@@ -380,10 +405,24 @@ export default function Home() {
     }
     if (googleStartDate) items = items.filter(i => getAdDate(i) >= googleStartDate);
     if (googleEndDate) items = items.filter(i => getAdDate(i) <= googleEndDate + 'T23:59:59.999Z');
+    if (googleSliceAdvertisers.size > 0) {
+      const selected = Array.from(googleSliceAdvertisers);
+      items = items.filter(i => selected.some(g => matchesBrand(i.advertiserName, g)));
+    }
     return items.sort((a, b) => (b.collectedAt || '').localeCompare(a.collectedAt || ''));
-  }, [data, googleSearchText, googleStartDate, googleEndDate]);
+  }, [data, googleSearchText, googleStartDate, googleEndDate, googleSliceAdvertisers]);
 
   if (loading) return <div style={{ minHeight: '100vh', background: 'var(--bg-page)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--text-muted)' }}>로딩 중...</div>;
+
+  // 페이지 전반의 "카드/패널" 컨테이너 - AdCard/Sidebar/Modal 외에 홈 화면, KPI 타일,
+  // 슬라이서 패널 등에도 같은 라운드/섀도우 톤을 입힌다.
+  const cardStyle = (extra?: React.CSSProperties): React.CSSProperties => ({
+    background: 'var(--bg-surface)',
+    border: '1px solid var(--border)',
+    borderRadius: 'var(--radius-card)',
+    boxShadow: 'var(--shadow-card)',
+    ...extra,
+  });
 
   const chip = (active: boolean) => ({
     padding: '4px 12px', borderRadius: '20px', border: `1px solid ${active ? 'var(--accent)' : 'var(--border)'}`,
@@ -452,7 +491,7 @@ export default function Home() {
                 const s = collectionStatus[key];
                 const at = s?.lastCollectedAt ? new Date(s.lastCollectedAt) : null;
                 return (
-                  <div key={key} style={{ background: 'var(--bg-surface)', border: '1px solid var(--border)', borderRadius: '12px', padding: '16px 18px' }}>
+                  <div key={key} style={cardStyle({ padding: '16px 18px' })}>
                     <p style={{ fontSize: '15px', fontWeight: 600, color: 'var(--text-primary)', marginBottom: '8px' }}>{label}</p>
                     {at ? (
                       <>
@@ -468,7 +507,7 @@ export default function Home() {
               })}
 
               {/* 메타 미디어 채우기는 별도 진행상황 지표(시도/성공/대기중)라 다르게 표시 */}
-              <div style={{ background: 'var(--bg-surface)', border: '1px solid var(--border)', borderRadius: '12px', padding: '16px 18px' }}>
+              <div style={cardStyle({ padding: '16px 18px' })}>
                 <p style={{ fontSize: '15px', fontWeight: 600, color: 'var(--text-primary)', marginBottom: '8px' }}>메타 이미지/영상 채우기</p>
                 {collectionStatus.metaMediaBatch?.lastRunAt ? (
                   <>
@@ -527,7 +566,7 @@ export default function Home() {
                     { label: '종료 광고 (월간)', value: totalStats.ended24h, color: 'var(--danger)' },
                     { label: '즐겨찾기', value: favorites.length, color: '#facc15' },
                   ].map(({ label, value, color }) => (
-                    <div key={label} style={{ background: 'var(--bg-surface)', border: '1px solid var(--border)', borderRadius: '14px', padding: '24px' }}>
+                    <div key={label} style={cardStyle({ padding: '24px' })}>
                       <p style={{ fontSize: '15px', color: 'var(--text-muted)', fontWeight: 500 }}>{label}</p>
                       <p style={{ fontSize: '34px', fontWeight: 700, color, marginTop: '8px', letterSpacing: '-0.5px' }}>{value}</p>
                     </div>
@@ -562,7 +601,7 @@ export default function Home() {
                     style={{ width: '100%', background: 'var(--bg-surface-solid)', border: '1px solid var(--border)', borderRadius: '10px', padding: '10px 14px 10px 38px', color: 'var(--text-primary)', fontSize: '16px', outline: 'none' }} />
                 </div>
 
-                <div style={{ background: 'var(--bg-surface)', border: '1px solid var(--border)', borderRadius: '10px', padding: '14px', marginBottom: '12px' }}>
+                <div style={cardStyle({ padding: '14px', marginBottom: '12px' })}>
                   <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '14px' }}>
                     {slicerGroup('년도', sliceOptions.years, sliceYears, v => toggleSetValue(setSliceYears, v), v => v + '년')}
                     {slicerGroup('월', sliceOptions.months, sliceMonths, v => toggleSetValue(setSliceMonths, v), v => `${v.split('-')[0]}.${v.split('-')[1]}`)}
@@ -655,6 +694,15 @@ export default function Home() {
                   <input value={metaSearchText} onChange={e => setMetaSearchText(e.target.value)} placeholder="키워드 또는 광고주명 검색..."
                     style={{ width: '100%', background: 'var(--bg-surface-solid)', border: '1px solid var(--border)', borderRadius: '10px', padding: '10px 14px', color: 'var(--text-primary)', fontSize: '15px', outline: 'none' }} />
                 </div>
+                <div style={cardStyle({ padding: '14px', marginBottom: '16px' })}>
+                  {slicerGroup('광고주', metaAdvertiserOptions, metaSliceAdvertisers, v => toggleSetValue(setMetaSliceAdvertisers, v))}
+                  {metaSliceAdvertisers.size > 0 && (
+                    <button onClick={() => setMetaSliceAdvertisers(new Set())}
+                      style={{ marginTop: '10px', fontSize: '13px', color: 'var(--danger)', background: 'none', border: 'none', cursor: 'pointer' }}>
+                      ✕ 광고주 필터 초기화
+                    </button>
+                  )}
+                </div>
                 <p style={{ fontSize: '13px', color: 'var(--text-muted)', marginBottom: '14px' }}>{metaItems.length}개</p>
                 {adGrid(metaItems)}
               </>
@@ -686,6 +734,15 @@ export default function Home() {
                   <input value={googleSearchText} onChange={e => setGoogleSearchText(e.target.value)} placeholder="키워드 또는 광고주명 검색..."
                     style={{ width: '100%', background: 'var(--bg-surface-solid)', border: '1px solid var(--border)', borderRadius: '10px', padding: '10px 14px', color: 'var(--text-primary)', fontSize: '15px', outline: 'none' }} />
                 </div>
+                <div style={cardStyle({ padding: '14px', marginBottom: '16px' })}>
+                  {slicerGroup('광고주', googleAdvertiserOptions, googleSliceAdvertisers, v => toggleSetValue(setGoogleSliceAdvertisers, v))}
+                  {googleSliceAdvertisers.size > 0 && (
+                    <button onClick={() => setGoogleSliceAdvertisers(new Set())}
+                      style={{ marginTop: '10px', fontSize: '13px', color: 'var(--danger)', background: 'none', border: 'none', cursor: 'pointer' }}>
+                      ✕ 광고주 필터 초기화
+                    </button>
+                  )}
+                </div>
                 <p style={{ fontSize: '13px', color: 'var(--text-muted)', marginBottom: '14px' }}>{googleItems.length}개</p>
                 {adGrid(googleItems)}
               </>
@@ -698,7 +755,7 @@ export default function Home() {
 
                 <section style={{ marginBottom: '32px' }}>
                   {sectionLabel('경쟁사 KPI 매트릭스')}
-                  <div style={{ background: 'var(--bg-surface)', border: '1px solid var(--border)', borderRadius: '12px', overflow: 'hidden' }}>
+                  <div style={cardStyle({ overflow: 'hidden' })}>
                     <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '16px' }}>
                       <thead>
                         <tr style={{ borderBottom: '1px solid var(--border)' }}>
@@ -784,7 +841,7 @@ export default function Home() {
                       .filter(i => i.platform === plat && ((i.advertiserName||'').toLowerCase().includes(selectedBrand.toLowerCase()) || (i.keyword||'').toLowerCase() === selectedBrand.toLowerCase()))
                       .sort((a,b) => (b.collectedAt || '').localeCompare(a.collectedAt || '')).slice(0, 5);
                     return (
-                      <div key={plat} style={{ background: 'var(--bg-surface)', border: '1px solid var(--border)', borderRadius: '12px', padding: '16px' }}>
+                      <div key={plat} style={cardStyle({ padding: '16px' })}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px', paddingBottom: '10px', borderBottom: '1px solid var(--border)' }}>
                           <span style={{ background: plat === 'meta' ? '#1877f2' : '#ea4335', color: '#fff', fontSize: '12px', fontWeight: 700, padding: '2px 8px', borderRadius: '4px', textTransform: 'uppercase' }}>{plat}</span>
                           <span style={{ fontSize: '15px', fontWeight: 600 }}>최신 5개</span>
@@ -829,7 +886,7 @@ export default function Home() {
                 <WeekSelector weekKeys={bsWeekKeys} selected={bsSelectedWeek} onSelect={setBsSelectedWeek} />
 
                 {bsWeeklySummary.length > 0 && (
-                  <div style={{ marginBottom: '16px', padding: '14px 18px', background: 'var(--bg-surface)', border: '1px solid var(--border)', borderRadius: '10px' }}>
+                  <div style={cardStyle({ marginBottom: '16px', padding: '14px 18px' })}>
                     <p style={{ fontSize: '13px', fontWeight: 700, color: 'var(--text-muted)', marginBottom: '10px' }}>이번 주 변경사항</p>
                     <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
                       {bsWeeklySummary.map(({ brand, diff, changeCount }) => {
@@ -875,7 +932,7 @@ export default function Home() {
                       const showDiffBox = isOpen && summaryEntry && !summaryEntry.diff.isFirstSnapshot && summaryEntry.changeCount > 0;
 
                       return (
-                        <div key={brand} style={{ background: 'var(--bg-surface)', border: '1px solid var(--border)', borderRadius: '12px', overflow: 'hidden' }}>
+                        <div key={brand} style={cardStyle({ overflow: 'hidden' })}>
                           <button onClick={() => toggleBsExpand(brand)}
                             style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '14px 20px', background: 'none', border: 'none', cursor: 'pointer', color: 'var(--text-primary)' }}>
                             <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>

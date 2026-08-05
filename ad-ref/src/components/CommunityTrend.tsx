@@ -33,17 +33,17 @@ function Sparkline({ values }: { values: number[] }) {
 
 interface TopicRow extends CommunityKeyword { changePct: number | null; sparkValues: number[]; }
 
-// 선택한 날짜 기준 TOP10 + 전일比(하루 전 같은 키워드 대비 %) + 7일 추이(최근 최대 7일간
+// 특정 하루 기준 TOP10 + 전일比(하루 전 같은 키워드 대비 %) + 7일 추이(최근 최대 7일간
 // 해당 키워드의 언급량, 그날 데이터에 없으면 0으로 처리)를 계산한다.
-function buildTopicRows(history: CommunityDaySnapshot[], group: 'general' | 'brand', selectedDate: string): TopicRow[] {
+function buildTopicRowsForDay(history: CommunityDaySnapshot[], group: 'general' | 'brand', selectedDate: string): { rows: TopicRow[]; keywords: CommunityKeyword[] } {
   const sorted = [...history].sort((a, b) => a.date.localeCompare(b.date));
   const idx = sorted.findIndex(h => h.date === selectedDate);
-  if (idx === -1) return [];
+  if (idx === -1) return { rows: [], keywords: [] };
   const current = sorted[idx][group];
   const prevMap = new Map((idx > 0 ? sorted[idx - 1][group] : []).map(k => [k.keyword, k.volume]));
   const windowSlice = sorted.slice(Math.max(0, idx - 6), idx + 1);
 
-  return [...current]
+  const rows = [...current]
     .sort((a, b) => b.volume - a.volume)
     .slice(0, 10)
     .map(k => {
@@ -52,15 +52,60 @@ function buildTopicRows(history: CommunityDaySnapshot[], group: 'general' | 'bra
       const sparkValues = windowSlice.map(day => day[group].find(x => x.keyword === k.keyword)?.volume ?? 0);
       return { ...k, changePct, sparkValues };
     });
+
+  return { rows, keywords: current };
 }
 
-function TopicSection({ title, subtitle, history, selectedDate, group }: {
-  title: string; subtitle?: string; history: CommunityDaySnapshot[]; selectedDate: string; group: 'general' | 'brand';
-}) {
-  const daySnapshot = history.find(h => h.date === selectedDate);
-  const keywords = daySnapshot ? daySnapshot[group] : [];
-  const rows = useMemo(() => buildTopicRows(history, group, selectedDate), [history, group, selectedDate]);
+// 기간(범위) 기준 - 선택 구간 안의 모든 날짜에서 같은 키워드의 언급량을 합산하고,
+// 감정 분류는 그 기간 중 언급량이 가장 컸던 날의 값을 대표로 쓴다(하루 단위 분류를
+// 억지로 평균 내는 것보다 "가장 두드러졌던 날의 톤"이 더 의미 있다고 판단). 대표 반응도
+// 기간 전체에서 모아 중복 제거한다. 전일比는 "하루 전 대비"라는 개념 자체가 기간에는
+// 안 맞아서 계산하지 않고, 추이(스파크라인)는 최근 7일 고정 대신 선택한 기간 그대로 보여준다.
+function buildTopicRowsForRange(history: CommunityDaySnapshot[], group: 'general' | 'brand', startDate: string, endDate: string): { rows: TopicRow[]; keywords: CommunityKeyword[] } {
+  const sorted = [...history].sort((a, b) => a.date.localeCompare(b.date));
+  const inRange = sorted.filter(h => h.date >= startDate && h.date <= endDate);
+  if (inRange.length === 0) return { rows: [], keywords: [] };
 
+  interface Merged { keyword: string; sentiment: Sentiment; volume: number; reactions: CommunityReaction[]; maxDailyVolume: number; }
+  const merged = new Map<string, Merged>();
+
+  inRange.forEach(day => {
+    day[group].forEach(k => {
+      const existing = merged.get(k.keyword);
+      if (!existing) {
+        merged.set(k.keyword, { keyword: k.keyword, sentiment: k.sentiment, volume: k.volume, reactions: [...(k.reactions || [])], maxDailyVolume: k.volume });
+      } else {
+        existing.volume += k.volume;
+        existing.reactions.push(...(k.reactions || []));
+        if (k.volume > existing.maxDailyVolume) { existing.maxDailyVolume = k.volume; existing.sentiment = k.sentiment; }
+      }
+    });
+  });
+
+  merged.forEach(m => {
+    const seen = new Set<string>();
+    m.reactions = m.reactions.filter(r => {
+      const key = `${r.source}::${r.text}`;
+      if (seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    });
+  });
+
+  const allMerged = Array.from(merged.values()).sort((a, b) => b.volume - a.volume);
+  const rows: TopicRow[] = allMerged.slice(0, 10).map(m => ({
+    keyword: m.keyword, sentiment: m.sentiment, volume: m.volume, reactions: m.reactions,
+    changePct: null,
+    sparkValues: inRange.map(day => day[group].find(x => x.keyword === m.keyword)?.volume ?? 0),
+  }));
+  const keywords: CommunityKeyword[] = allMerged.map(m => ({ keyword: m.keyword, sentiment: m.sentiment, volume: m.volume, reactions: m.reactions }));
+
+  return { rows, keywords };
+}
+
+function TopicSection({ title, subtitle, rows, keywords, periodLabel, sparkDayCount }: {
+  title: string; subtitle?: string; rows: TopicRow[]; keywords: CommunityKeyword[]; periodLabel: string; sparkDayCount: number;
+}) {
   // 대표 반응: 언급량 상위 키워드부터 하나씩, 출처가 겹치지 않게 최대 3개
   const representative: { keyword: string; source: string; text: string }[] = [];
   const seenSources = new Set<string>();
@@ -81,7 +126,7 @@ function TopicSection({ title, subtitle, history, selectedDate, group }: {
 
       <div style={{ background: 'var(--bg-surface)', border: '1px solid var(--border)', borderRadius: '12px', padding: '16px', marginBottom: '14px', overflowX: 'auto' }}>
         <p style={{ fontSize: '14px', fontWeight: 700, color: 'var(--text-secondary)', marginBottom: '10px' }}>
-          상위 화제 키워드 TOP 10 · 최근 {rows[0]?.sparkValues.length || 1}일 추이
+          상위 화제 키워드 TOP 10 · {periodLabel}
         </p>
         {rows.length === 0 ? (
           <p style={{ fontSize: '14px', color: 'var(--text-muted)', padding: '10px 0' }}>데이터 없음</p>
@@ -93,7 +138,7 @@ function TopicSection({ title, subtitle, history, selectedDate, group }: {
                 <th style={{ padding: '6px 8px', fontWeight: 500 }}>키워드</th>
                 <th style={{ padding: '6px 8px', fontWeight: 500 }}>분류</th>
                 <th style={{ padding: '6px 8px', fontWeight: 500 }}>언급량</th>
-                <th style={{ padding: '6px 8px', fontWeight: 500 }}>전일比</th>
+                {sparkDayCount > 1 && rows.some(r => r.changePct !== null) && <th style={{ padding: '6px 8px', fontWeight: 500 }}>전일比</th>}
                 <th style={{ padding: '6px 8px', fontWeight: 500 }}>추이</th>
               </tr>
             </thead>
@@ -106,9 +151,11 @@ function TopicSection({ title, subtitle, history, selectedDate, group }: {
                     <span style={{ fontSize: '13px', color: SENTIMENT_COLOR[r.sentiment] }}>{SENTIMENT_LABEL[r.sentiment]}</span>
                   </td>
                   <td style={{ padding: '7px 8px', color: 'var(--text-secondary)' }}>{r.volume.toLocaleString()}</td>
-                  <td style={{ padding: '7px 8px', color: r.changePct == null ? 'var(--text-faint)' : r.changePct >= 0 ? '#e6483f' : '#3aa0e0' }}>
-                    {r.changePct == null ? 'NEW' : `${r.changePct >= 0 ? '+' : ''}${r.changePct}%`}
-                  </td>
+                  {sparkDayCount > 1 && rows.some(x => x.changePct !== null) && (
+                    <td style={{ padding: '7px 8px', color: r.changePct == null ? 'var(--text-faint)' : r.changePct >= 0 ? '#e6483f' : '#3aa0e0' }}>
+                      {r.changePct == null ? (rows.some(x => x.changePct !== null) ? 'NEW' : '-') : `${r.changePct >= 0 ? '+' : ''}${r.changePct}%`}
+                    </td>
+                  )}
                   <td style={{ padding: '7px 8px' }}><Sparkline values={r.sparkValues} /></td>
                 </tr>
               ))}
@@ -134,10 +181,15 @@ function TopicSection({ title, subtitle, history, selectedDate, group }: {
   );
 }
 
+type DateMode = 'day' | 'range';
+
 export default function CommunityTrend() {
   const [data, setData] = useState<CommunityTrendData | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [selectedDate, setSelectedDate] = useState<string>('');
+  const [mode, setMode] = useState<DateMode>('day');
+  const [rangeStart, setRangeStart] = useState<string>('');
+  const [rangeEnd, setRangeEnd] = useState<string>('');
 
   useEffect(() => {
     fetch('/data/community_trend.json')
@@ -145,7 +197,11 @@ export default function CommunityTrend() {
       .then((json: CommunityTrendData) => {
         setData(json);
         const dates = (json.history || []).map(h => h.date).sort();
-        if (dates.length > 0) setSelectedDate(dates[dates.length - 1]);
+        if (dates.length > 0) {
+          setSelectedDate(dates[dates.length - 1]);
+          setRangeStart(dates[Math.max(0, dates.length - 7)]);
+          setRangeEnd(dates[dates.length - 1]);
+        }
       })
       .catch(e => setError(e instanceof Error ? e.message : '조회 실패'));
   }, []);
@@ -154,6 +210,16 @@ export default function CommunityTrend() {
   if (!data || !selectedDate) return <p style={{ fontSize: '15px', color: 'var(--text-muted)' }}>불러오는 중...</p>;
 
   const availableDates = data.history.map(h => h.date);
+  const modeBtn = (active: boolean) => ({
+    padding: '6px 14px', borderRadius: '20px', border: `1px solid ${active ? 'var(--accent)' : 'var(--border)'}`,
+    background: active ? 'var(--accent)' : 'var(--bg-surface-solid)', color: active ? '#fff' : 'var(--text-muted)',
+    fontSize: '13px', fontWeight: 600, cursor: 'pointer',
+  });
+
+  const general = mode === 'day' ? buildTopicRowsForDay(data.history, 'general', selectedDate) : buildTopicRowsForRange(data.history, 'general', rangeStart, rangeEnd);
+  const brand = mode === 'day' ? buildTopicRowsForDay(data.history, 'brand', selectedDate) : buildTopicRowsForRange(data.history, 'brand', rangeStart, rangeEnd);
+  const periodLabel = mode === 'day' ? `${selectedDate} 기준` : `${rangeStart} ~ ${rangeEnd} 합산`;
+  const sparkDayCount = mode === 'day' ? Math.min(7, availableDates.filter(d => d <= selectedDate).length) : (rangeStart && rangeEnd ? availableDates.filter(d => d >= rangeStart && d <= rangeEnd).length : 0);
 
   return (
     <div>
@@ -162,17 +228,43 @@ export default function CommunityTrend() {
         최근 갱신: {new Date(data.updatedAt).toLocaleString('ko-KR')}
       </p>
 
-      <div style={{ display: 'flex', gap: '20px', marginBottom: '24px', flexWrap: 'wrap', alignItems: 'flex-start' }}>
-        <DateCalendar availableDates={availableDates} selected={selectedDate} onSelect={setSelectedDate} />
-        <p style={{ fontSize: '14px', color: 'var(--text-muted)', flex: 1, minWidth: '220px', paddingTop: '4px' }}>
-          <strong style={{ color: 'var(--text-secondary)' }}>{selectedDate}</strong> 기준 데이터입니다. 과거 이력은 이 기능을 도입한 날부터 쌓이므로,
-          전일比·추이 그래프는 데이터가 쌓일수록 점점 정확해집니다.
-        </p>
+      <div style={{ display: 'flex', gap: '8px', marginBottom: '16px' }}>
+        <button onClick={() => setMode('day')} style={modeBtn(mode === 'day')}>특정 날짜</button>
+        <button onClick={() => setMode('range')} style={modeBtn(mode === 'range')}>기간</button>
       </div>
 
+      {mode === 'day' ? (
+        <div style={{ display: 'flex', gap: '20px', marginBottom: '24px', flexWrap: 'wrap', alignItems: 'flex-start' }}>
+          <DateCalendar availableDates={availableDates} selected={selectedDate} onSelect={setSelectedDate} />
+          <p style={{ fontSize: '14px', color: 'var(--text-muted)', flex: 1, minWidth: '220px', paddingTop: '4px' }}>
+            <strong style={{ color: 'var(--text-secondary)' }}>{selectedDate}</strong> 기준 데이터입니다. 과거 이력은 이 기능을 도입한 날부터 쌓이므로,
+            전일比·추이 그래프는 데이터가 쌓일수록 점점 정확해집니다.
+          </p>
+        </div>
+      ) : (
+        <div style={{ display: 'flex', gap: '16px', alignItems: 'flex-end', flexWrap: 'wrap', marginBottom: '24px' }}>
+          <div>
+            <p style={{ fontSize: '13px', color: 'var(--text-muted)', marginBottom: '4px' }}>시작일</p>
+            <input type="date" value={rangeStart} min={availableDates[0]} max={rangeEnd || availableDates[availableDates.length - 1]}
+              onChange={e => setRangeStart(e.target.value)}
+              style={{ background: 'var(--bg-surface-solid)', border: '1px solid var(--border)', borderRadius: '6px', padding: '6px 10px', color: 'var(--text-primary)', fontSize: '14px' }} />
+          </div>
+          <div>
+            <p style={{ fontSize: '13px', color: 'var(--text-muted)', marginBottom: '4px' }}>종료일</p>
+            <input type="date" value={rangeEnd} min={rangeStart || availableDates[0]} max={availableDates[availableDates.length - 1]}
+              onChange={e => setRangeEnd(e.target.value)}
+              style={{ background: 'var(--bg-surface-solid)', border: '1px solid var(--border)', borderRadius: '6px', padding: '6px 10px', color: 'var(--text-primary)', fontSize: '14px' }} />
+          </div>
+          <p style={{ fontSize: '13px', color: 'var(--text-faint)', paddingBottom: '6px' }}>
+            선택한 기간 동안의 언급량을 합산해서 보여줍니다 (전일比는 기간 모드에서는 계산하지 않습니다).
+          </p>
+        </div>
+      )}
+
       <TopicSection title="주식/투자 전반 화제 키워드" subtitle="디시인사이드 주식 갤러리 + 웹서치 기반. 메리츠증권 한정이 아닌 시장 전체 화제."
-        history={data.history} selectedDate={selectedDate} group="general" />
-      <TopicSection title="메리츠증권 화제 키워드" history={data.history} selectedDate={selectedDate} group="brand" />
+        rows={general.rows} keywords={general.keywords} periodLabel={periodLabel} sparkDayCount={sparkDayCount} />
+      <TopicSection title="메리츠증권 화제 키워드"
+        rows={brand.rows} keywords={brand.keywords} periodLabel={periodLabel} sparkDayCount={sparkDayCount} />
     </div>
   );
 }

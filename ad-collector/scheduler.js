@@ -15,6 +15,7 @@ const { updateTrendReport } = require('./scrapers/trendReport');
 const { updateCommunityTrend } = require('./scrapers/communityTrend');
 const { backfillMissingImages } = require('./googleMediaBackfill');
 const { backfillGoogleImageText } = require('./googleTextBackfill');
+const { backfillLastShown } = require('./googleLastShownBackfill');
 const settings = require('./settings.json');
 
 console.log('📅 스케줄러 시작');
@@ -126,6 +127,19 @@ cron.schedule('0 30 7 * * *', async () => {
     await backfillGoogleImageText(settings, 200);
   } catch (err) {
     console.error('구글 OCR 백필 중 오류:', err.message);
+  }
+}, {
+  timezone: 'Asia/Seoul',
+});
+
+// 구글 광고 마지막 게재일 백필: 수집 시점엔 게재 중이라 값이 없다가, 이후 종료
+// 처리(status: 'ended')된 광고를 상세페이지에서 다시 확인해 정확한 값을 채운다.
+cron.schedule('0 45 7 * * *', async () => {
+  console.log(`\n⏰ 구글 게재일 백필 실행: ${new Date().toLocaleString('ko-KR')}`);
+  try {
+    await backfillLastShown(settings);
+  } catch (err) {
+    console.error('구글 게재일 백필 중 오류:', err.message);
   }
 }, {
   timezone: 'Asia/Seoul',

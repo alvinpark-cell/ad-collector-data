@@ -17,33 +17,83 @@ const MAX_CIRCLES = 15;
 // 면적으로 크기를 인지하므로 이게 표준적인 버블차트 스케일링 방식). 로그 스케일은 값이
 // 수십~수천 배씩 차이날 때만 의미가 있는데, 지금처럼 값들이 비슷한 자릿수(수백~천)에
 // 몰려있으면 로그가 차이를 거의 다 눌러버려서 원 크기가 다 똑같아 보이는 문제가 있었음.
-function radiusFor(count: number, maxCount: number, minR: number, maxR: number) {
-  if (maxCount <= 0) return minR;
-  const ratio = Math.sqrt(Math.max(count, 0) / maxCount);
+//
+// count/maxCount 비율만 쓰면(예전 방식) 최솟값이 0에 가깝지 않은 이상 반지름이 minR까지
+// 안 내려가서(예: 최소가 최대의 60%면 반지름도 60%대에 머묾) 화면에 실제로 뜬 항목들
+// 사이의 크기 차이가 잘 안 느껴지는 문제가 있었다(2026-08-05 확인). 그래서 지금 화면에
+// 뜨는 항목들의 실제 최소~최대로 먼저 0~1로 정규화한 뒤 sqrt를 적용 - 이러면 가장 작은
+// 항목은 항상 minR, 가장 큰 항목은 항상 maxR을 써서 주어진 반지름 범위를 최대로 활용한다.
+function radiusFor(count: number, minCount: number, maxCount: number, minR: number, maxR: number) {
+  if (maxCount <= minCount) return (minR + maxR) / 2;
+  const norm = (Math.max(count, minCount) - minCount) / (maxCount - minCount);
+  const ratio = Math.sqrt(norm);
   return minR + ratio * (maxR - minR);
 }
 
-// 화제 키워드가 "코스피 급등락(롤러코스피 변동성)"처럼 긴 구문인 경우가 많아서, 한 줄에
-// 다 안 들어가면 공백 기준으로 2줄까지 나눠 접는다. 나눌 공백이 없으면(아주 긴 단일
-// 단어) 한 줄로 두고 폰트 크기 계산 쪽에서 더 작게 줄인다.
-function wrapKeyword(keyword: string): string[] {
-  if (keyword.length <= 7) return [keyword];
-  const mid = Math.floor(keyword.length / 2);
-  let splitAt = keyword.lastIndexOf(' ', mid);
-  if (splitAt <= 0) splitAt = keyword.indexOf(' ', mid);
-  if (splitAt <= 0) return [keyword];
-  return [keyword.slice(0, splitAt).trim(), keyword.slice(splitAt + 1).trim()];
+// 폰트 크기 하한을 9px에서 11px로 올렸더니(2026-08-05, 작은 원 글씨 안 보임 피드백)
+// 예전의 "중간 지점 근처 공백에서 2줄로만 접기" 방식으로는 긴 키워드가 안전 폭에 안
+// 맞는 경우가 늘어서, 그 초과분을 글자 단위로 그냥 잘라버리면 단어 중간이 잘리는
+// 문제가 생겼다(2026-08-05 재확인). 그래서 "단어(공백/가운데점 기준) 단위로 줄이
+// 넘치기 직전까지 채우고 다음 줄로 넘기는" 정식 그리디 워드랩으로 교체 - 항상 단어
+// 경계에서만 줄이 바뀌고, 최대 3줄까지 허용한다.
+const FONT_FLOOR = 11;
+const FONT_CEIL = 19;
+const MAX_LINES = 3;
+
+// 가운데점(·)으로 이어진 긴 합성어(예: "사이드카·서킷브레이커")는 공백이 없어서 그
+// 자체로 한 "단어"면 줄바꿈 기회가 없다 - · 뒤를 부드러운 줄바꿈 지점으로 취급해서
+// 쪼갠다(가운데점 자체는 앞 조각에 붙여서 의미가 안 끊기게 유지).
+function splitWords(keyword: string): string[] {
+  return keyword.split(' ').flatMap(token => {
+    if (!token.includes('·')) return [token];
+    const idx = token.indexOf('·');
+    return [token.slice(0, idx + 1), token.slice(idx + 1)].filter(Boolean);
+  });
 }
 
-// 원 안에 텍스트가 넘치지 않도록, 원의 "안전 폭"(가로/세로 대각선 기준 내접 정사각형 한 변)에
-// 가장 긴 줄이 맞춰지도록 폰트 크기를 역산한다. 한글은 폭이 거의 정사각형(글자당 약 0.95em)
-// 이라 이 근사치로 충분히 정확하다.
-function fitFontSize(lines: string[], r: number, reserveForCount: boolean): number {
+// 주어진 폰트 크기 기준으로 단어들을 안전 폭 안에서 그리디하게 줄바꿈한다 - 단어 중간이
+// 아니라 항상 단어와 단어 사이에서만 줄이 나뉜다.
+function wrapToLines(words: string[], fontSize: number, safeWidth: number): string[] {
+  const maxChars = Math.max(1, Math.floor(safeWidth / (fontSize * 0.95)));
+  const lines: string[] = [];
+  let current = '';
+  for (const word of words) {
+    const candidate = current ? `${current} ${word}` : word;
+    if (candidate.length <= maxChars || !current) {
+      current = candidate;
+    } else {
+      lines.push(current);
+      current = word;
+    }
+  }
+  if (current) lines.push(current);
+  return lines;
+}
+
+// 원 반지름에 맞는 최대 폰트 크기와, 그 크기로 단어 경계만 지켜서 접은 줄들을 함께 정한다.
+// 큰 폰트부터 내려가며 "줄 수가 MAX_LINES 이내 + 세로로도 다 들어감"을 만족하는 첫 크기를
+// 쓰고, 하한(FONT_FLOOR)까지 내려도 안 맞으면 그 크기로 MAX_LINES까지만 자르고 마지막
+// 줄만 말줄임(…) 처리한다(단어 자체가 안전 폭보다 긴 극단적인 경우의 최후 방어선).
+function layoutBubbleText(keyword: string, r: number): { fontSize: number; lines: string[] } {
   const safeWidth = r * Math.SQRT2 * 0.86;
-  const safeHeight = (r * Math.SQRT2 * 0.86) / (lines.length + (reserveForCount ? 0.7 : 0));
-  const longest = Math.max(...lines.map(l => l.length), 1);
-  const byWidth = safeWidth / (longest * 0.95);
-  return Math.max(9, Math.min(19, byWidth, safeHeight));
+  const safeHeight = r * Math.SQRT2 * 0.86;
+  const words = splitWords(keyword);
+
+  for (let fontSize = FONT_CEIL; fontSize >= FONT_FLOOR; fontSize -= 0.5) {
+    const lines = wrapToLines(words, fontSize, safeWidth);
+    const lineHeight = fontSize * 1.15;
+    if (lines.length <= MAX_LINES && lines.length * lineHeight <= safeHeight) {
+      return { fontSize, lines };
+    }
+  }
+
+  const lines = wrapToLines(words, FONT_FLOOR, safeWidth).slice(0, MAX_LINES);
+  const maxChars = Math.max(1, Math.floor(safeWidth / (FONT_FLOOR * 0.95)));
+  const lastIdx = lines.length - 1;
+  if (lastIdx >= 0 && lines[lastIdx].length > maxChars) {
+    lines[lastIdx] = maxChars <= 1 ? lines[lastIdx].slice(0, 1) + '…' : lines[lastIdx].slice(0, maxChars - 1) + '…';
+  }
+  return { fontSize: FONT_FLOOR, lines };
 }
 
 interface PackItem { r: number; datum: BubbleDatum; color: string; }
@@ -95,10 +145,12 @@ export default function BubbleChart({ data }: { data: BubbleDatum[] }) {
     return <div style={{ padding: '30px', textAlign: 'center', color: 'var(--text-muted)', fontSize: '14px' }}>데이터 없음</div>;
   }
 
-  const minR = 34, maxR = 100;
-  const maxCount = Math.max(...capped.map(d => d.count), 1);
+  const minR = 42, maxR = 108;
+  const counts = capped.map(d => d.count);
+  const minCount = Math.min(...counts);
+  const maxCount = Math.max(...counts, 1);
   const items: PackItem[] = capped.map(d => ({
-    r: radiusFor(d.count, maxCount, minR, maxR),
+    r: radiusFor(d.count, minCount, maxCount, minR, maxR),
     datum: d,
     color: SENTIMENT_COLOR[d.sentiment || 'neutral'],
   }));
@@ -122,27 +174,19 @@ export default function BubbleChart({ data }: { data: BubbleDatum[] }) {
       </div>
       <svg viewBox={`${minX} ${minY} ${maxX - minX} ${maxY - minY}`} style={{ width: '100%', height: '440px' }}>
         {packed.map(p => {
-          const showCount = p.r >= 42;
-          const lines = wrapKeyword(p.datum.keyword);
-          const fontSize = fitFontSize(lines, p.r, showCount);
+          const { fontSize, lines } = layoutBubbleText(p.datum.keyword, p.r);
           const lineHeight = fontSize * 1.15;
           const totalTextHeight = lines.length * lineHeight;
-          const firstLineY = p.y - totalTextHeight / 2 + lineHeight / 2 - (showCount ? fontSize * 0.55 : 0);
+          const firstLineY = p.y - totalTextHeight / 2 + lineHeight / 2;
           return (
             <g key={p.datum.keyword}>
-              <circle cx={p.x} cy={p.y} r={p.r} fill={p.color} fillOpacity={0.32} stroke={p.color} strokeWidth="2" />
+              <circle cx={p.x} cy={p.y} r={p.r} fill={p.color} style={{ fillOpacity: 'var(--bubble-fill-opacity)' }} stroke={p.color} strokeWidth="2" />
               {lines.map((line, i) => (
                 <text key={i} x={p.x} y={firstLineY + i * lineHeight} textAnchor="middle" dominantBaseline="middle"
                   fontSize={fontSize} fontWeight={700} fill="#f5f5fa">
                   {line}
                 </text>
               ))}
-              {showCount && (
-                <text x={p.x} y={firstLineY + lines.length * lineHeight + fontSize * 0.15} textAnchor="middle" dominantBaseline="middle"
-                  fontSize={fontSize * 0.72} fill="#d8d8e4">
-                  {p.datum.count.toLocaleString()}
-                </text>
-              )}
             </g>
           );
         })}

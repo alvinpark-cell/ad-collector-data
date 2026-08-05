@@ -9,12 +9,12 @@
 /* 다크(기본)/라이트 테마 색상 토큰. 컴포넌트들은 하드코딩된 hex 대신 이 변수를 쓴다.
    라이트 모드는 메리츠증권 CI 컬러(빨강 계열)를 포인트/강조색으로 쓴다. */
 :root {
-  --bg-page: #0f0f13;
-  --bg-surface: rgba(26, 26, 36, 0.8);
-  --bg-surface-solid: #1a1a24;
-  --bg-elevated: #22222f;
-  --border: #2e2e3e;
-  --border-subtle: #22222f;
+  --bg-page: #0a0a0e;
+  --bg-surface: rgba(19, 20, 27, 0.7);
+  --bg-surface-solid: #14151c;
+  --bg-elevated: #1b1c25;
+  --border: rgba(255, 255, 255, 0.07);
+  --border-subtle: rgba(255, 255, 255, 0.04);
   --text-primary: #e2e2f0;
   --text-secondary: #c4c4d4;
   --text-muted: #8888aa;
@@ -30,16 +30,23 @@
   --scrollbar-track: #1a1a24;
   --scrollbar-thumb: #2e2e3e;
   --scrollbar-thumb-hover: #4e4e6e;
+  --radius-card: 18px;
+  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.24), 0 10px 28px -10px rgba(0, 0, 0, 0.4);
+  --shadow-card-hover: 0 2px 6px rgba(0, 0, 0, 0.3), 0 18px 36px -12px rgba(var(--accent-rgb), 0.4);
+  /* 커뮤니티 반응 버블차트 원 채우기 불투명도 - 다크 배경에선 반투명한 파스텔 톤이
+     잘 보이지만, 밝은 배경에서 같은 반투명도를 쓰면 흰색 텍스트와 대비가 거의 안 나서
+     글자가 안 보이는 문제가 있었다(2026-08-05). 다크 모드만 반투명, 라이트 모드는 불투명. */
+  --bubble-fill-opacity: 0.32;
   color-scheme: dark;
 }
 
 :root[data-theme='light'] {
-  --bg-page: #fbf6f5;
-  --bg-surface: rgba(255, 255, 255, 0.92);
+  --bg-page: #f8f5f2;
+  --bg-surface: rgba(255, 255, 255, 0.85);
   --bg-surface-solid: #ffffff;
-  --bg-elevated: #fdefee;
-  --border: #f0d8d6;
-  --border-subtle: #f6e7e6;
+  --bg-elevated: #f6efec;
+  --border: rgba(30, 15, 12, 0.08);
+  --border-subtle: rgba(30, 15, 12, 0.05);
   --text-primary: #2a1412;
   --text-secondary: #5c3532;
   --text-muted: #8d6462;
@@ -55,6 +62,9 @@
   --scrollbar-track: #fbf6f5;
   --scrollbar-thumb: #f0d8d6;
   --scrollbar-thumb-hover: #e0b6b2;
+  --shadow-card: 0 1px 2px rgba(30, 15, 12, 0.04), 0 10px 28px -12px rgba(30, 15, 12, 0.14);
+  --shadow-card-hover: 0 2px 6px rgba(30, 15, 12, 0.07), 0 18px 36px -14px rgba(230, 72, 63, 0.28);
+  --bubble-fill-opacity: 1;
   color-scheme: light;
 }
 
