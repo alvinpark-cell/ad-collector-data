@@ -1,13 +1,12 @@
 /**
  * 스케줄러
- * 평일(월~금) 오후 1시에 자동으로 광고 수집을 실행합니다.
- * 
+ *
  * 실행 방법: node scheduler.js
  * (컴퓨터가 켜져 있는 동안 계속 실행되어야 합니다)
  */
 
 const cron = require('node-cron');
-const { collect } = require('./collector');
+const { collect, runWeeklyMeta, runWeeklyGoogle, runWeeklyPowerlink } = require('./collector');
 const { runNextBrandBatch } = require('./metaBrandBatch');
 const { runMetaMediaBatch } = require('./metaMediaBatch');
 const { updateMarketIndex } = require('./scrapers/marketIndex');
@@ -16,10 +15,15 @@ const { updateCommunityTrend } = require('./scrapers/communityTrend');
 const { backfillMissingImages } = require('./googleMediaBackfill');
 const { backfillGoogleImageText } = require('./googleTextBackfill');
 const { backfillLastShown } = require('./googleLastShownBackfill');
+const { isHoliday } = require('./holidays');
+const { isFirstBusinessDayOfWeek } = require('./scheduleUtils');
 const settings = require('./settings.json');
 
 console.log('📅 스케줄러 시작');
-console.log('   평일(월~금) 오후 1시에 자동 수집됩니다 (키워드 + Google + 네이버).');
+console.log('   메타(Apify+키워드)/구글은 매일 오전 11시에 "이번 주 첫 평일(공휴일 제외)"인지');
+console.log('   확인해서 주 1회만 실행됩니다 (공휴일이 겹치면 자동으로 다음 평일로 밀림).');
+console.log('   검색광고 일반키워드(파워링크)는 월/수/금 오전 11시, 그날이 공휴일이면 건너뜁니다.');
+console.log('   브랜드검색/검색광고 브랜드키워드는 평일 오후 1시에 주 1회 실행됩니다.');
 console.log('   메타 브랜드 9개는 2시간마다(짝수 시) 3개씩 나눠서 순환 수집됩니다 (IP 차단 방지).');
 console.log('   메타 광고 이미지/영상은 2시간마다(홀수 시) 조금씩 채워집니다 (IP 차단 방지).');
 console.log('   코스피/코스닥/나스닥 지수는 매일 오전 9시에 갱신됩니다.');
@@ -27,7 +31,47 @@ console.log('   트렌드 리포트(구글 시트)는 매일 오전 9시 30분�
 console.log('   지금 바로 실행하려면: node collector.js\n');
 
 // cron 표현식: 초 분 시 일 월 요일
-// '0 0 13 * * 1-5' = 매주 월~금 13:00:00
+
+// 메타(Apify+키워드)/구글 - 주 1회, 이번 주 첫 평일(공휴일 제외)에만 실행.
+// 크론 자체는 매일 11시에 돌지만, isFirstBusinessDayOfWeek()가 true인 날에만 실제로
+// 수집한다 - 월요일이 공휴일이면 화요일로, 추석처럼 월~수가 다 공휴일이면 목요일로
+// 자동으로 밀린다. Apify는 호출당 비용이 드는 유료 API라 주 1회 이상 늘리지 않는다.
+cron.schedule('0 0 11 * * *', async () => {
+  const now = new Date();
+  if (!isFirstBusinessDayOfWeek(now)) {
+    console.log(`\n⏰ [메타/구글] ${now.toLocaleDateString('ko-KR')}는 이번 주 실행일이 아님 - 건너뜀`);
+    return;
+  }
+  console.log(`\n⏰ 메타/구글 주간 수집 실행: ${now.toLocaleString('ko-KR')}`);
+  try {
+    await Promise.all([runWeeklyMeta(settings), runWeeklyGoogle(settings)]);
+  } catch (err) {
+    console.error('메타/구글 수집 중 오류:', err.message);
+  }
+}, {
+  timezone: 'Asia/Seoul',
+});
+
+// 검색광고 일반키워드(네이버 파워링크) - 월/수/금 오전 11시. 이미 주 3회라 공휴일이어도
+// 대체일을 만들지 않고 그날만 건너뛴다(메타/구글과 달리 한 번 놓쳐도 그 주 안에 또 돈다).
+cron.schedule('0 0 11 * * 1,3,5', async () => {
+  const now = new Date();
+  if (isHoliday(now)) {
+    console.log(`\n⏰ [파워링크] ${now.toLocaleDateString('ko-KR')}는 공휴일 - 건너뜀`);
+    return;
+  }
+  console.log(`\n⏰ 파워링크(일반키워드) 수집 실행: ${now.toLocaleString('ko-KR')}`);
+  try {
+    await runWeeklyPowerlink(settings);
+  } catch (err) {
+    console.error('파워링크 수집 중 오류:', err.message);
+  }
+}, {
+  timezone: 'Asia/Seoul',
+});
+
+// 브랜드검색 + 검색광고 브랜드키워드 - 평일 오후 1시, 주 1회("이번 주에 이미 했는지" 게이트는
+// collect() 내부에서 처리). '0 0 13 * * 1-5' = 매주 월~금 13:00:00
 cron.schedule('0 0 13 * * 1-5', async () => {
   console.log(`\n⏰ 스케줄 실행: ${new Date().toLocaleString('ko-KR')}`);
   try {

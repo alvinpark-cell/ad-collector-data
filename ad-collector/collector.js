@@ -14,153 +14,187 @@ const { processAndSaveItems } = require('./processItems');
 const { generateSite } = require('./generateSite');
 const { generateBrandsearchSite } = require('./generateBrandsearch');
 
-const BS_INDEX_PATH = path.join(settings.dataDir, 'bs_index.json');
 const PWL_INDEX_PATH = path.join(settings.dataDir, 'powerlink_index.json');
 const PWL_BRAND_INDEX_PATH = path.join(settings.dataDir, 'powerlink_brand_index.json');
 
-async function collect() {
-  const startTime = Date.now();
-  console.log('\n========================================');
-  console.log('광고 수집 시작: ' + new Date().toLocaleString('ko-KR'));
-  console.log('========================================\n');
-
-  const existingIndex = loadIndex(path.join(settings.dataDir, 'index.json'));
-  const existingBsIndex = loadIndex(BS_INDEX_PATH);
-  const existingPwlIndex = loadIndex(PWL_INDEX_PATH);
-  console.log('기존 항목: ' + existingIndex.length + '개 (브검: ' + existingBsIndex.length + '개, 파워링크: ' + existingPwlIndex.length + '개)\n');
-
-  let allRaw = [];
-  // 브검/파워링크와 동일한 주차 키를 메타/구글에도 그대로 써서 네 가지 수집을 전부 주 1회,
-  // 같은 타이밍에 묶어서 진행한다 (Apify 실제 비용을 확인해보니 한 번에 $0.05 수준으로 아주
-  // 저렴해서, 굳이 월 1회로 따로 뺄 필요 없이 주 1회로 같이 돌려도 무방하다고 판단함)
+/**
+ * 메타 주 1회 수집 (기존 Playwright 키워드 스크래퍼 + Apify 메타데이터).
+ * 스케줄러 쪽에서 공휴일 인지 요일 판정을 하고 이 함수를 호출하므로, 여기서는 요일을
+ * 신경 쓰지 않고 "이번 주(주차 키)에 이미 했는지"만 확인한다(중복 실행 방지용 안전장치 -
+ * 크론이 하루에 두 번 걸리거나 서버가 재시작되는 경우에 대비).
+ */
+async function runWeeklyMeta(settings, { force = false } = {}) {
   const currentWeekKey = getMonthWeekKey(new Date());
-
-  // 테스트/수동 확인용 강제 실행 플래그: node collector.js --force-meta (또는 --force-google)
-  // 로 실행하면 이번 주에 이미 돌았어도 그 매체만 강제로 돈다.
-  // node collector.js --force-all 로 실행하면 이번 주에 뭘 이미 했든 전부 무시하고
-  // 메타/구글/브검/파워링크 전부 다시 수집한다(덮어쓰기 개념). 매체별로 따로 강제하고
-  // 싶으면 --force-meta/--force-google/--force-bs/--force-pwl 개별 플래그도 가능.
-  const forceAll = process.argv.includes('--force-all');
-  const forceMeta = forceAll || process.argv.includes('--force-meta');
-  const forceGoogle = forceAll || process.argv.includes('--force-google');
-  const forceBs = forceAll || process.argv.includes('--force-bs');
-  const forcePwl = forceAll || process.argv.includes('--force-pwl');
-  const forcePwlBrand = forceAll || process.argv.includes('--force-pwl-brand');
-  if (forceMeta) console.log('[Meta] 게이트 무시하고 강제 실행');
-  if (forceGoogle) console.log('[Google] 게이트 무시하고 강제 실행');
-  if (forceBs) console.log('[네이버 브랜드검색] 게이트 무시하고 강제 실행');
-  if (forcePwl) console.log('[네이버 파워링크] 게이트 무시하고 강제 실행');
-  if (forcePwlBrand) console.log('[검색광고 브랜드키워드] 게이트 무시하고 강제 실행');
-
-  // Meta 수집 - 주 1회만 실행 (브검/파워링크와 동일한 주차 키 기준)
-  // 메타 브랜드 9개의 일상적인 순환 수집은 여기가 아니라 별도로 도는 metaBrandBatch.js
-  // (Apify 아닌 순수 Playwright라 과금과 무관, 그래서 그쪽은 그대로 2시간마다 유지)가 전담
   const META_LAST_RUN_PATH = path.join(settings.dataDir, 'meta_last_run.json');
   const metaLastRun = fs.existsSync(META_LAST_RUN_PATH)
     ? JSON.parse(fs.readFileSync(META_LAST_RUN_PATH, 'utf-8'))
     : { weekKey: null };
 
-  let metaRanThisTime = false;
-  if (!forceMeta && metaLastRun.weekKey === currentWeekKey) {
+  if (!force && metaLastRun.weekKey === currentWeekKey) {
     console.log(`\n[Meta] 이번 주(${currentWeekKey})에 이미 수집함 - 건너뜀`);
-  } else {
-    metaRanThisTime = true;
-    // 핵심 단계(Apify 메타데이터 확보)가 실제로 성공했을 때만 "이번 주 완료"로 기록한다.
-    // 예전엔 중간에 오류가 나도(catch로 삼켜지니까) 무조건 완료 기록을 남겨서, 진짜
-    // 실패한 주에도 다음 실행에서 재시도가 안 되는 문제가 있었음.
-    let metaSucceeded = false;
-
-    // Meta 수집 (1) 기존 Playwright 스크래퍼로 "키워드"만 수집.
-    try {
-      console.log('[Meta/기존] 키워드 수집 시작');
-      const metaResults = await scrapeMeta(settings.keywords, [], settings);
-      allRaw.push(...metaResults);
-      console.log(`[Meta/기존] ${metaResults.length}개 수집 완료`);
-    } catch (e) { console.error('[Meta/기존] 오류:', e.message); }
-
-    // Meta 수집 (2) Apify로 "증권"/"주식" 키워드 메타데이터 확보(광고주명에 증권/은행 붙은 곳 전부).
-    // 여기서는 메타데이터만 저장한다(미디어 없이도 processItems.js가 허용) - 실제 이미지/영상은
-    // 이 collect()가 아니라 별도로 2시간마다 도는 metaMediaBatch.js가 하루 내내 나눠서 채운다.
-    // (페이스북 페이지를 한 세션에 몰아서 대량 방문하면 자동화 탐지 위험이 있어서, metaBrandBatch.js와
-    // 같은 이유로 분리 - 한 번에 다 처리하지 않고 하루치 예산을 여러 번에 걸쳐 나눠 쓴다)
-    try {
-      console.log('\n[Meta/Apify] 메타데이터 수집 시작');
-      const [account1Meta, account2Meta] = await Promise.all([
-        runAccount1(settings),
-        runAccount2(settings),
-      ]);
-      const allMeta = [...account1Meta, ...account2Meta];
-      console.log(`[Meta/Apify] 메타데이터 ${allMeta.length}건 확보`);
-
-      const alreadyCoveredAdIds = new Set(existingIndex.map(i => i.adId).filter(Boolean));
-      const gaps = allMeta.filter(m => m.adId && !alreadyCoveredAdIds.has(m.adId));
-      console.log(`[Meta/Apify] 기존에 이미 확보한 것 제외하면 ${gaps.length}건이 신규 - 메타데이터만 저장 (이미지/영상은 metaMediaBatch.js가 2시간마다 채움)`);
-
-      allRaw.push(...gaps);
-      metaSucceeded = true;
-    } catch (e) { console.error('[Meta/Apify] 오류:', e.message); }
-
-    // --force-meta로 돌린 테스트 실행은 "이번 주 정식 수집"으로 치지 않음 - 그래야
-    // 원래 주기에 자동 수집이 게이트에 막히지 않고 그대로 진행됨
-    if (forceMeta) {
-      console.log('[Meta] --force-meta 테스트 실행이라 이번 주 완료 기록은 남기지 않음');
-    } else if (metaSucceeded) {
-      fs.writeFileSync(META_LAST_RUN_PATH, JSON.stringify({ weekKey: currentWeekKey, ranAt: new Date().toISOString() }), 'utf-8');
-    } else {
-      console.log('[Meta] Apify 단계 실패 - 이번 주 완료 기록 남기지 않음 (다음 실행에서 재시도)');
-    }
+    return;
   }
 
-  // Google 수집 - 주 1회만 실행 (브검/파워링크와 동일한 주차 키 기준)
+  const existingIndex = loadIndex(path.join(settings.dataDir, 'index.json'));
+  let allRaw = [];
+  let metaSucceeded = false;
+
+  // Meta 수집 (1) 기존 Playwright 스크래퍼로 "키워드"만 수집.
+  try {
+    console.log('[Meta/기존] 키워드 수집 시작');
+    const metaResults = await scrapeMeta(settings.keywords, [], settings);
+    allRaw.push(...metaResults);
+    console.log(`[Meta/기존] ${metaResults.length}개 수집 완료`);
+  } catch (e) { console.error('[Meta/기존] 오류:', e.message); }
+
+  // Meta 수집 (2) Apify로 "증권"/"주식" 키워드 메타데이터 확보(광고주명에 증권/은행 붙은 곳 전부).
+  // 여기서는 메타데이터만 저장한다(미디어 없이도 processItems.js가 허용) - 실제 이미지/영상은
+  // 별도로 2시간마다 도는 metaMediaBatch.js가 하루 내내 나눠서 채운다.
+  try {
+    console.log('\n[Meta/Apify] 메타데이터 수집 시작');
+    const [account1Meta, account2Meta] = await Promise.all([
+      runAccount1(settings),
+      runAccount2(settings),
+    ]);
+    const allMeta = [...account1Meta, ...account2Meta];
+    console.log(`[Meta/Apify] 메타데이터 ${allMeta.length}건 확보`);
+
+    const alreadyCoveredAdIds = new Set(existingIndex.map(i => i.adId).filter(Boolean));
+    const gaps = allMeta.filter(m => m.adId && !alreadyCoveredAdIds.has(m.adId));
+    console.log(`[Meta/Apify] 기존에 이미 확보한 것 제외하면 ${gaps.length}건이 신규 - 메타데이터만 저장 (이미지/영상은 metaMediaBatch.js가 2시간마다 채움)`);
+
+    allRaw.push(...gaps);
+    metaSucceeded = true;
+  } catch (e) { console.error('[Meta/Apify] 오류:', e.message); }
+
+  const { newItems, finalIndex } = await processAndSaveItems(allRaw, settings);
+  const metaNewCount = newItems.filter(i => i.platform === 'meta').length;
+  console.log(`[Meta] 신규 저장 ${metaNewCount}개`);
+  updateCollectionStatus(settings.dataDir, 'meta', { lastCollectedAt: new Date().toISOString(), newCount: metaNewCount });
+  generateSite(finalIndex, settings);
+
+  // --force-meta로 돌린 테스트 실행은 "이번 주 정식 수집"으로 치지 않음 - 그래야
+  // 원래 주기에 자동 수집이 게이트에 막히지 않고 그대로 진행됨
+  if (force) {
+    console.log('[Meta] 강제 실행이라 이번 주 완료 기록은 남기지 않음');
+  } else if (metaSucceeded) {
+    fs.writeFileSync(META_LAST_RUN_PATH, JSON.stringify({ weekKey: currentWeekKey, ranAt: new Date().toISOString() }), 'utf-8');
+  } else {
+    console.log('[Meta] Apify 단계 실패 - 이번 주 완료 기록 남기지 않음 (다음 실행에서 재시도)');
+  }
+}
+
+/**
+ * 구글 주 1회 수집. 브랜드가 9개나 되고 광고주당 광고가 수백~1,000건 이상 나와서 전체가
+ * 몇 시간씩 걸릴 수 있음 - 브랜드 하나 끝날 때마다 바로 저장해서, 중간에 끊겨도 그 지점까지는
+ * 안전하게 남는다.
+ */
+async function runWeeklyGoogle(settings, { force = false } = {}) {
+  const currentWeekKey = getMonthWeekKey(new Date());
   const GOOGLE_LAST_RUN_PATH = path.join(settings.dataDir, 'google_last_run.json');
   const googleLastRun = fs.existsSync(GOOGLE_LAST_RUN_PATH)
     ? JSON.parse(fs.readFileSync(GOOGLE_LAST_RUN_PATH, 'utf-8'))
     : { weekKey: null };
 
-  let googleRanThisTime = false;
-  let googleNewCount = 0;
-  if (!forceGoogle && googleLastRun.weekKey === currentWeekKey) {
+  if (!force && googleLastRun.weekKey === currentWeekKey) {
     console.log(`\n[Google] 이번 주(${currentWeekKey})에 이미 수집함 - 건너뜀`);
-  } else {
-    googleRanThisTime = true;
-    try {
-      console.log('\n[Google] 수집 시작 (주 1회)');
-      // 브랜드가 9개나 되고 광고주당 광고가 수백 건씩(많으면 1,000건 이상) 나와서 전체가
-      // 몇 시간씩 걸릴 수 있음 - 예전엔 9개 브랜드를 다 돌아야 한 번에 저장해서, 중간에
-      // 컴퓨터가 꺼지면 그때까지 처리한 것도 전부 날아갔다. 이제 브랜드 하나 끝날 때마다
-      // 바로 processAndSaveItems로 저장해서, 끊겨도 그 지점까지는 안전하게 남는다.
-      await scrapeGoogle(settings.keywords, settings.brands, settings, async (brand, brandItems) => {
-        if (brandItems.length === 0) return;
-        const { newItems: brandNewItems } = await processAndSaveItems(brandItems, settings);
-        googleNewCount += brandNewItems.length;
-        console.log(`[Google] "${brand}" 저장 완료 (신규 ${brandNewItems.length}개, 누적 ${googleNewCount}개)`);
-      });
-      if (!forceGoogle) {
-        fs.writeFileSync(GOOGLE_LAST_RUN_PATH, JSON.stringify({ weekKey: currentWeekKey, ranAt: new Date().toISOString() }), 'utf-8');
-      } else {
-        console.log('[Google] --force-google 테스트 실행이라 이번 주 완료 기록은 남기지 않음');
-      }
-    } catch (e) { console.error('[Google] 오류:', e.message); }
+    return;
   }
 
-  // 구글은 브랜드별로 이미 위에서 바로바로 저장 완료됨 - 여기서는 메타(+기존 키워드 스크래퍼)만 처리
-  console.log('\n총 수집(중복제거 전, 메타만): ' + allRaw.length + '개');
-
-  const { newItems, finalIndex, newAds, endedAds } = await processAndSaveItems(allRaw, settings);
-  console.log('신규 항목(중복 제외): ' + newItems.length + '개');
-  console.log('신규 광고: ' + newAds.length + '개, 종료 광고: ' + endedAds.length + '개');
-  if (googleRanThisTime) console.log('구글 신규(중복 제외, 브랜드별 누적): ' + googleNewCount + '개');
-
-  // 실제로 이번에 수집을 시도한 매체만 상태 기록 (건너뛴 매체는 마지막 수집 시각을 그대로 둠).
-  // 메타는 adId 중복 제거 전/후 숫자가 헷갈릴 수 있어서(같은 광고가 여러 검색어에 걸리는 등)
-  // "중복 제외 후 실제 신규 저장 건수"를 명확히 기록해둔다.
-  if (metaRanThisTime) {
-    const metaNewCount = newItems.filter(i => i.platform === 'meta').length;
-    updateCollectionStatus(settings.dataDir, 'meta', { lastCollectedAt: new Date().toISOString(), newCount: metaNewCount });
-  }
-  if (googleRanThisTime) {
+  let googleNewCount = 0;
+  try {
+    console.log('\n[Google] 수집 시작 (주 1회)');
+    await scrapeGoogle(settings.keywords, settings.brands, settings, async (brand, brandItems) => {
+      if (brandItems.length === 0) return;
+      const { newItems: brandNewItems, finalIndex } = await processAndSaveItems(brandItems, settings);
+      googleNewCount += brandNewItems.length;
+      console.log(`[Google] "${brand}" 저장 완료 (신규 ${brandNewItems.length}개, 누적 ${googleNewCount}개)`);
+      generateSite(finalIndex, settings);
+    });
     updateCollectionStatus(settings.dataDir, 'google', { lastCollectedAt: new Date().toISOString(), newCount: googleNewCount });
-  }
+    if (force) {
+      console.log('[Google] 강제 실행이라 이번 주 완료 기록은 남기지 않음');
+    } else {
+      fs.writeFileSync(GOOGLE_LAST_RUN_PATH, JSON.stringify({ weekKey: currentWeekKey, ranAt: new Date().toISOString() }), 'utf-8');
+    }
+  } catch (e) { console.error('[Google] 오류:', e.message); }
+}
+
+/**
+ * 네이버 파워링크(일반 키워드 "증권"/"주식") 수집 - 키워드마다 PC/MO 15개씩 이미지까지
+ * 다운로드하는 작업. 스케줄러에서 월/수/금 지정된 요일에만 호출한다(그 요일이 공휴일이면
+ * 스케줄러가 아예 호출하지 않고 건너뜀 - 이미 주 3회라 대체일 없이 그냥 스킵).
+ */
+async function runWeeklyPowerlink(settings, { force = false } = {}) {
+  const currentWeekKey = getMonthWeekKey(new Date());
+  const existingPwlIndex = loadIndex(PWL_INDEX_PATH);
+  let newPwlItems = [];
+
+  try {
+    const existingPwlWeekKeys = new Set(
+      existingPwlIndex.map(i => `${i.keyword}_${i.device}_${getMonthWeekKey(i.collectedAt)}`)
+    );
+    const keywordsNeedingCollection = force ? (settings.powerlinkKeywords || []).slice() : (settings.powerlinkKeywords || []).filter(keyword =>
+      ['pc', 'mo'].some(device => !existingPwlWeekKeys.has(`${keyword}_${device}_${currentWeekKey}`))
+    );
+
+    if (keywordsNeedingCollection.length === 0) {
+      console.log(`\n[네이버 파워링크] 이번 주(${currentWeekKey})에 전체 키워드 이미 수집함 - 건너뜀`);
+      return;
+    }
+
+    console.log('\n[네이버 파워링크] 수집 시작 (대상: ' + keywordsNeedingCollection.join(', ') + ')');
+    const pwlResults = await scrapeNaverPowerlink(keywordsNeedingCollection, settings.outputDir);
+    const rawPwlItems = pwlResults.filter(Boolean);
+
+    newPwlItems = rawPwlItems.filter(item => {
+      const key = `${item.keyword}_${item.device}_${currentWeekKey}`;
+      if (!force && existingPwlWeekKeys.has(key)) {
+        console.log(`[파워링크 중복 스킵] ${item.keyword} ${item.device} (이번 주 이미 수집됨)`);
+        return false;
+      }
+      return true;
+    });
+
+    console.log('[네이버 파워링크] ' + newPwlItems.length + '개 수집 (중복 ' + (rawPwlItems.length - newPwlItems.length) + '개 제외)');
+  } catch (e) { console.error('[네이버 파워링크] 오류:', e.message); }
+
+  const newPwlKeys = new Set(newPwlItems.map(i => `${i.keyword}_${i.device}_${currentWeekKey}`));
+  const keptExistingPwlIndex = force
+    ? existingPwlIndex.filter(i => !newPwlKeys.has(`${i.keyword}_${i.device}_${getMonthWeekKey(i.collectedAt)}`))
+    : existingPwlIndex;
+  const updatedPwlIndex = [...keptExistingPwlIndex, ...newPwlItems];
+  saveIndex(PWL_INDEX_PATH, updatedPwlIndex);
+  updateCollectionStatus(settings.dataDir, 'powerlink', { lastCollectedAt: new Date().toISOString(), newCount: newPwlItems.length });
+  try {
+    console.log('\n[파워링크 인사이트] 갱신 시작');
+    await updatePowerlinkInsight(settings);
+  } catch (e) { console.error('[파워링크 인사이트] 오류:', e.message); }
+}
+
+/**
+ * 네이버 브랜드검색 + 검색광고 브랜드키워드 - 평일 13시마다 도는 이 collect()가 그대로
+ * 전담한다(주 1회, "이번 주에 이미 했는지"로 게이트). 메타/구글/파워링크(일반)는 각각
+ * runWeeklyMeta/runWeeklyGoogle/runWeeklyPowerlink로 분리되어 스케줄러가 공휴일을
+ * 감안한 별도 시각에 직접 호출한다 - 이 함수 안에서는 더 이상 다루지 않는다.
+ */
+async function collect() {
+  const startTime = Date.now();
+  console.log('\n========================================');
+  console.log('브랜드검색/검색광고 브랜드키워드 수집 시작: ' + new Date().toLocaleString('ko-KR'));
+  console.log('========================================\n');
+
+  const existingBsIndex = loadIndex(path.join(settings.dataDir, 'bs_index.json'));
+  console.log('기존 브검 항목: ' + existingBsIndex.length + '개\n');
+
+  const currentWeekKey = getMonthWeekKey(new Date());
+
+  // 테스트/수동 확인용 강제 실행 플래그
+  const forceAll = process.argv.includes('--force-all');
+  const forceBs = forceAll || process.argv.includes('--force-bs');
+  const forcePwlBrand = forceAll || process.argv.includes('--force-pwl-brand');
+  if (forceBs) console.log('[네이버 브랜드검색] 게이트 무시하고 강제 실행');
+  if (forcePwlBrand) console.log('[검색광고 브랜드키워드] 게이트 무시하고 강제 실행');
 
   // 네이버 브랜드검색 수집 - 주 1회만 실행 (브랜드마다 PC/MO 스크린샷+랜딩 캡처까지 하는
   // 무거운 작업이라 매일 도는 이 collect()에서 매번 돌릴 필요 없음. 브랜드별로 이번 주에
@@ -205,57 +239,9 @@ async function collect() {
     ? existingBsIndex.filter(i => !newBsKeys.has(`${i.advertiserName}_${i.device}_${getMonthWeekKey(i.collectedAt)}`))
     : existingBsIndex;
   const updatedBsIndex = [...keptExistingBsIndex, ...newBsItems];
-  saveIndex(BS_INDEX_PATH, updatedBsIndex);
+  saveIndex(path.join(settings.dataDir, 'bs_index.json'), updatedBsIndex);
   if (bsRanThisTime) {
     updateCollectionStatus(settings.dataDir, 'brandsearch', { lastCollectedAt: new Date().toISOString(), newCount: newBsItems.length });
-  }
-
-  // 네이버 파워링크 모니터링 수집 - 주 1회만 실행 (키워드마다 PC/MO 15개씩 이미지까지
-  // 다운로드하는 작업이라 매일 돌릴 필요 없음)
-  let newPwlItems = [];
-  let pwlRanThisTime = false;
-  try {
-    const existingPwlWeekKeys = new Set(
-      existingPwlIndex.map(i => `${i.keyword}_${i.device}_${getMonthWeekKey(i.collectedAt)}`)
-    );
-    const keywordsNeedingCollection = forcePwl ? (settings.powerlinkKeywords || []).slice() : (settings.powerlinkKeywords || []).filter(keyword =>
-      ['pc', 'mo'].some(device => !existingPwlWeekKeys.has(`${keyword}_${device}_${currentWeekKey}`))
-    );
-
-    if (keywordsNeedingCollection.length === 0) {
-      console.log(`\n[네이버 파워링크] 이번 주(${currentWeekKey})에 전체 키워드 이미 수집함 - 건너뜀`);
-    } else {
-      pwlRanThisTime = true;
-      console.log('\n[네이버 파워링크] 수집 시작 (주 1회, 대상: ' + keywordsNeedingCollection.join(', ') + ')');
-      const pwlResults = await scrapeNaverPowerlink(keywordsNeedingCollection, settings.outputDir);
-      const rawPwlItems = pwlResults.filter(Boolean);
-
-      newPwlItems = rawPwlItems.filter(item => {
-        const key = `${item.keyword}_${item.device}_${currentWeekKey}`;
-        if (!forcePwl && existingPwlWeekKeys.has(key)) {
-          console.log(`[파워링크 중복 스킵] ${item.keyword} ${item.device} (이번 주 이미 수집됨)`);
-          return false;
-        }
-        return true;
-      });
-
-      console.log('[네이버 파워링크] ' + newPwlItems.length + '개 수집 (중복 ' + (rawPwlItems.length - newPwlItems.length) + '개 제외)');
-    }
-  } catch (e) { console.error('[네이버 파워링크] 오류:', e.message); }
-
-  // --force-pwl도 브검과 동일하게 덧붙이기가 아니라 덮어쓰기로 처리
-  const newPwlKeys = new Set(newPwlItems.map(i => `${i.keyword}_${i.device}_${currentWeekKey}`));
-  const keptExistingPwlIndex = forcePwl
-    ? existingPwlIndex.filter(i => !newPwlKeys.has(`${i.keyword}_${i.device}_${getMonthWeekKey(i.collectedAt)}`))
-    : existingPwlIndex;
-  const updatedPwlIndex = [...keptExistingPwlIndex, ...newPwlItems];
-  saveIndex(PWL_INDEX_PATH, updatedPwlIndex);
-  if (pwlRanThisTime) {
-    updateCollectionStatus(settings.dataDir, 'powerlink', { lastCollectedAt: new Date().toISOString(), newCount: newPwlItems.length });
-    try {
-      console.log('\n[파워링크 인사이트] 갱신 시작');
-      await updatePowerlinkInsight(settings);
-    } catch (e) { console.error('[파워링크 인사이트] 오류:', e.message); }
   }
 
   // 검색광고 브랜드키워드 - 9개 브랜드명 자체를 키워드로 파워링크 수집. 한 번 돌 때
@@ -278,22 +264,28 @@ async function collect() {
     }
   } catch (e) { console.error('[검색광고 브랜드키워드] 오류:', e.message); }
 
-  // HTML 생성
-  console.log('\nHTML 페이지 생성 중...');
-  generateSite(finalIndex, settings);
+  // HTML 생성 (레거시 정적 사이트 - 브검 전용)
   generateBrandsearchSite(updatedBsIndex, settings);
 
   const elapsed = Math.round((Date.now() - startTime) / 1000);
   console.log('\n========================================');
   console.log('완료! (' + elapsed + '초 소요)');
-  console.log('  광고: ' + finalIndex.length + '개 (신규: ' + newItems.length + ', 종료: ' + endedAds.length + ')');
   console.log('  브검: ' + updatedBsIndex.length + '개 (신규: ' + newBsItems.length + ')');
-  console.log('  파워링크: ' + updatedPwlIndex.length + '개 (신규: ' + newPwlItems.length + ')');
   console.log('  검색광고 브랜드키워드: 이번 주 처리 ' + newPwlBrandCount + '건');
   console.log('========================================\n');
 }
 
-module.exports = { collect };
+module.exports = { collect, runWeeklyMeta, runWeeklyGoogle, runWeeklyPowerlink };
 if (require.main === module) {
-  collect().catch(err => { console.error('오류:', err); process.exit(1); });
+  const forceAll = process.argv.includes('--force-all');
+  const runMeta = forceAll || process.argv.includes('--force-meta');
+  const runGoogle = forceAll || process.argv.includes('--force-google');
+  const runPwl = forceAll || process.argv.includes('--force-pwl');
+
+  (async () => {
+    if (runMeta) await runWeeklyMeta(settings, { force: true });
+    if (runGoogle) await runWeeklyGoogle(settings, { force: true });
+    if (runPwl) await runWeeklyPowerlink(settings, { force: true });
+    await collect();
+  })().catch(err => { console.error('오류:', err); process.exit(1); });
 }
