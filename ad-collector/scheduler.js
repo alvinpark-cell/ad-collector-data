@@ -13,6 +13,8 @@ const { runMetaMediaBatch } = require('./metaMediaBatch');
 const { updateMarketIndex } = require('./scrapers/marketIndex');
 const { updateTrendReport } = require('./scrapers/trendReport');
 const { updateCommunityTrend } = require('./scrapers/communityTrend');
+const { backfillMissingImages } = require('./googleMediaBackfill');
+const { backfillGoogleImageText } = require('./googleTextBackfill');
 const settings = require('./settings.json');
 
 console.log('📅 스케줄러 시작');
@@ -89,14 +91,41 @@ cron.schedule('0 30 9 * * *', async () => {
   timezone: 'Asia/Seoul',
 });
 
-// 커뮤니티 반응(인베스팅닷컴 키워드 검색량): 주 1회(매주 월요일 오전 8시) 갱신 -
-// 매일 할 만큼 급변하는 지표가 아니라 주 단위면 충분.
-cron.schedule('0 0 8 * * 1', async () => {
+// 커뮤니티 반응(화제 키워드 + 감정분류 + 실제 반응): 매일 오전 8시 갱신 - 캘린더로
+// 과거 날짜를 조회하고 전일比/7일 추이 스파크라인을 보여주려면 매일 기록이 쌓여야 함.
+cron.schedule('0 0 8 * * *', async () => {
   console.log(`\n⏰ 커뮤니티 반응 갱신: ${new Date().toLocaleString('ko-KR')}`);
   try {
     await updateCommunityTrend(settings);
   } catch (err) {
     console.error('커뮤니티 반응 갱신 중 오류:', err.message);
+  }
+}, {
+  timezone: 'Asia/Seoul',
+});
+
+// 구글 이미지 다운로드 실패 복구: 최초 수집 시 다운로드가 실패해(레이트리밋 추정)
+// mediaUrl만 있고 로컬 파일이 없는 항목을 매일 다시 시도한다 - 이 mediaUrl(구글 CDN
+// 링크)은 언젠가 만료될 수 있어서 실패한 채로 오래 두면 안 됨.
+cron.schedule('0 0 7 * * *', async () => {
+  console.log(`\n⏰ 구글 이미지 백필 실행: ${new Date().toLocaleString('ko-KR')}`);
+  try {
+    await backfillMissingImages(settings);
+  } catch (err) {
+    console.error('구글 이미지 백필 중 오류:', err.message);
+  }
+}, {
+  timezone: 'Asia/Seoul',
+});
+
+// 구글 이미지 광고 OCR 텍스트 백필: 하루 200건씩 - 위 이미지 백필 다음에 실행해서
+// 그날 새로 복구된 이미지도 바로 텍스트 추출 대상에 포함되게 한다.
+cron.schedule('0 30 7 * * *', async () => {
+  console.log(`\n⏰ 구글 OCR 백필 실행: ${new Date().toLocaleString('ko-KR')}`);
+  try {
+    await backfillGoogleImageText(settings, 200);
+  } catch (err) {
+    console.error('구글 OCR 백필 중 오류:', err.message);
   }
 }, {
   timezone: 'Asia/Seoul',

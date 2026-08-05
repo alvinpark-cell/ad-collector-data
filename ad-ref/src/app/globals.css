@@ -6,9 +6,62 @@
   box-sizing: border-box;
 }
 
+/* 다크(기본)/라이트 테마 색상 토큰. 컴포넌트들은 하드코딩된 hex 대신 이 변수를 쓴다.
+   라이트 모드는 메리츠증권 CI 컬러(빨강 계열)를 포인트/강조색으로 쓴다. */
+:root {
+  --bg-page: #0f0f13;
+  --bg-surface: rgba(26, 26, 36, 0.8);
+  --bg-surface-solid: #1a1a24;
+  --bg-elevated: #22222f;
+  --border: #2e2e3e;
+  --border-subtle: #22222f;
+  --text-primary: #e2e2f0;
+  --text-secondary: #c4c4d4;
+  --text-muted: #8888aa;
+  --text-faint: #555568;
+  --accent: #6c63ff;
+  --accent-rgb: 108, 99, 255;
+  --accent-soft: rgba(108, 99, 255, 0.15);
+  --accent-text: #a78bfa;
+  --border-rgb: 46, 46, 62;
+  --text-muted-rgb: 136, 136, 170;
+  --success: #34d399;
+  --danger: #f87171;
+  --scrollbar-track: #1a1a24;
+  --scrollbar-thumb: #2e2e3e;
+  --scrollbar-thumb-hover: #4e4e6e;
+  color-scheme: dark;
+}
+
+:root[data-theme='light'] {
+  --bg-page: #fbf6f5;
+  --bg-surface: rgba(255, 255, 255, 0.92);
+  --bg-surface-solid: #ffffff;
+  --bg-elevated: #fdefee;
+  --border: #f0d8d6;
+  --border-subtle: #f6e7e6;
+  --text-primary: #2a1412;
+  --text-secondary: #5c3532;
+  --text-muted: #8d6462;
+  --text-faint: #b6928f;
+  --accent: #e6483f;
+  --accent-rgb: 230, 72, 63;
+  --accent-soft: rgba(230, 72, 63, 0.12);
+  --accent-text: #c23a31;
+  --border-rgb: 240, 216, 214;
+  --text-muted-rgb: 141, 100, 98;
+  --success: #1a9e6e;
+  --danger: #d3372e;
+  --scrollbar-track: #fbf6f5;
+  --scrollbar-thumb: #f0d8d6;
+  --scrollbar-thumb-hover: #e0b6b2;
+  color-scheme: light;
+}
+
 body {
-  background: #0f0f13;
-  color: #e2e2f0;
+  background: var(--bg-page);
+  color: var(--text-primary);
+  transition: background 0.15s ease, color 0.15s ease;
 }
 
 ::-webkit-scrollbar {
@@ -16,21 +69,21 @@ body {
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #1a1a24;
+  background: var(--scrollbar-track);
 }
 ::-webkit-scrollbar-thumb {
-  background: #2e2e3e;
+  background: var(--scrollbar-thumb);
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #4e4e6e;
+  background: var(--scrollbar-thumb-hover);
 }
 
-/* 어두운 배경에서 브라우저 기본 달력 아이콘이 거의 안 보여서 반전시켜 밝게 표시 */
+/* 다크 모드에선 브라우저 기본 달력 아이콘이 거의 안 보여서 반전시켜 밝게 표시.
+   라이트 모드는 원래 아이콘이 이미 잘 보이므로 반전하지 않는다. */
 input[type="date"]::-webkit-calendar-picker-indicator {
-  filter: invert(0.8);
   cursor: pointer;
 }
-input[type="date"] {
-  color-scheme: dark;
+:root:not([data-theme='light']) input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(0.8);
 }

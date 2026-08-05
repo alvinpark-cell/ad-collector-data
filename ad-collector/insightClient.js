@@ -32,16 +32,20 @@ function hasEnoughDataForInsight(itemCount) {
  * @param {any} dataPayload - stdin으로 흘려보낼 데이터 (객체면 JSON.stringify, 문자열이면 그대로)
  * @returns {string} Claude가 생성한 텍스트 (trim됨)
  */
-function generateInsight(promptText, dataPayload) {
+function generateInsight(promptText, dataPayload, options) {
   const input = dataPayload == null
     ? undefined
     : (typeof dataPayload === 'string' ? dataPayload : JSON.stringify(dataPayload, null, 2));
+  const timeout = (options && options.timeout) || 180000;
   try {
-    const result = execFileSync('claude', ['-p', promptText, '--output-format', 'text'], {
+    // --allowedTools WebSearch: 커뮤니티 반응 키워드 조사처럼 웹 검색이 필요한 프롬프트를
+    // 위한 것 - Read(로컬 이미지 읽기)는 -p 모드에서 기본 허용이지만 WebSearch는 명시적으로
+    // 허용해야 동작함(안 하면 "웹 검색 권한이 승인되지 않아..."라고만 답하고 끝남).
+    const result = execFileSync('claude', ['-p', promptText, '--output-format', 'text', '--allowedTools', 'WebSearch'], {
       input,
       encoding: 'utf-8',
       maxBuffer: 1024 * 1024 * 20,
-      timeout: 120000,
+      timeout,
     });
     return result.trim();
   } catch (e) {

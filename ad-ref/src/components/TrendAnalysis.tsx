@@ -28,7 +28,7 @@ interface TrendAnalysisProps {
   onQueryResults?: (results: DataLabResult[], selectedBrands: string[]) => void;
 }
 
-const LINE_COLORS = ['#6c63ff', '#03c75a', '#e0a030', '#e05a7a', '#3aa0e0'];
+const LINE_COLORS = ['var(--accent)', '#03c75a', '#e0a030', '#e05a7a', '#3aa0e0'];
 
 function toApiDate(d: string) {
   return d; // <input type="date"> already gives YYYY-MM-DD, which the API accepts
@@ -122,8 +122,8 @@ export default function TrendAnalysis({
 
   return (
     <div>
-      <div style={{ background: 'rgba(26,26,36,0.8)', border: '1px solid #2e2e3e', borderRadius: '12px', padding: '20px', marginBottom: '20px' }}>
-        <p style={{ fontSize: '12px', fontWeight: 700, color: '#8888aa', marginBottom: '10px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+      <div style={{ background: 'var(--bg-surface)', border: '1px solid var(--border)', borderRadius: '12px', padding: '20px', marginBottom: '20px' }}>
+        <p style={{ fontSize: '14px', fontWeight: 700, color: 'var(--text-muted)', marginBottom: '10px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
           브랜드 선택 (최대 5개)
         </p>
         <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', marginBottom: '16px' }}>
@@ -132,10 +132,10 @@ export default function TrendAnalysis({
             return (
               <button key={brand} onClick={() => toggleBrand(brand)}
                 style={{
-                  padding: '6px 14px', borderRadius: '8px', cursor: 'pointer', fontSize: '12px', fontWeight: active ? 700 : 400,
-                  border: `1px solid ${active ? '#6c63ff' : '#2e2e3e'}`,
-                  background: active ? 'rgba(108,99,255,0.15)' : '#1a1a24',
-                  color: active ? '#a78bfa' : '#8888aa',
+                  padding: '6px 14px', borderRadius: '8px', cursor: 'pointer', fontSize: '14px', fontWeight: active ? 700 : 400,
+                  border: `1px solid ${active ? 'var(--accent)' : 'var(--border)'}`,
+                  background: active ? 'var(--accent-soft)' : 'var(--bg-surface-solid)',
+                  color: active ? 'var(--accent-text)' : 'var(--text-muted)',
                 }}>
                 {brand}{brand === clientBrand ? ' (client)' : ''}
               </button>
@@ -145,58 +145,58 @@ export default function TrendAnalysis({
 
         <div style={{ display: 'flex', gap: '16px', alignItems: 'flex-end', flexWrap: 'wrap' }}>
           <div>
-            <p style={{ fontSize: '11px', color: '#8888aa', marginBottom: '4px' }}>시작일</p>
+            <p style={{ fontSize: '13px', color: 'var(--text-muted)', marginBottom: '4px' }}>시작일</p>
             <input type="date" value={startDate} onChange={e => onStartDateChange(e.target.value)}
-              style={{ background: '#1a1a24', border: '1px solid #2e2e3e', borderRadius: '6px', padding: '6px 10px', color: '#e2e2f0', fontSize: '12px' }} />
+              style={{ background: 'var(--bg-surface-solid)', border: '1px solid var(--border)', borderRadius: '6px', padding: '6px 10px', color: 'var(--text-primary)', fontSize: '14px' }} />
           </div>
           <div>
-            <p style={{ fontSize: '11px', color: '#8888aa', marginBottom: '4px' }}>종료일</p>
+            <p style={{ fontSize: '13px', color: 'var(--text-muted)', marginBottom: '4px' }}>종료일</p>
             <input type="date" value={endDate} onChange={e => onEndDateChange(e.target.value)}
-              style={{ background: '#1a1a24', border: '1px solid #2e2e3e', borderRadius: '6px', padding: '6px 10px', color: '#e2e2f0', fontSize: '12px' }} />
+              style={{ background: 'var(--bg-surface-solid)', border: '1px solid var(--border)', borderRadius: '6px', padding: '6px 10px', color: 'var(--text-primary)', fontSize: '14px' }} />
           </div>
           <div>
-            <p style={{ fontSize: '11px', color: '#8888aa', marginBottom: '4px' }}>단위</p>
+            <p style={{ fontSize: '13px', color: 'var(--text-muted)', marginBottom: '4px' }}>단위</p>
             <select value={timeUnit} onChange={e => onTimeUnitChange(e.target.value as 'date' | 'week' | 'month')}
-              style={{ background: '#1a1a24', border: '1px solid #2e2e3e', borderRadius: '6px', padding: '6px 10px', color: '#e2e2f0', fontSize: '12px' }}>
+              style={{ background: 'var(--bg-surface-solid)', border: '1px solid var(--border)', borderRadius: '6px', padding: '6px 10px', color: 'var(--text-primary)', fontSize: '14px' }}>
               <option value="date">일별</option>
               <option value="week">주별</option>
               <option value="month">월별</option>
             </select>
           </div>
           <button onClick={runQuery} disabled={loading}
-            style={{ padding: '7px 20px', borderRadius: '6px', border: 'none', cursor: loading ? 'default' : 'pointer', fontSize: '13px', fontWeight: 600, background: '#6c63ff', color: '#fff', opacity: loading ? 0.6 : 1 }}>
+            style={{ padding: '7px 20px', borderRadius: '6px', border: 'none', cursor: loading ? 'default' : 'pointer', fontSize: '15px', fontWeight: 600, background: 'var(--accent)', color: '#fff', opacity: loading ? 0.6 : 1 }}>
             {loading ? '조회 중...' : '조회'}
           </button>
         </div>
 
-        {error && <p style={{ fontSize: '12px', color: '#f87171', marginTop: '12px' }}>{error}</p>}
+        {error && <p style={{ fontSize: '14px', color: 'var(--danger)', marginTop: '12px' }}>{error}</p>}
       </div>
 
       {chart && (
-        <div style={{ background: 'rgba(26,26,36,0.8)', border: '1px solid #2e2e3e', borderRadius: '12px', padding: '20px' }}>
+        <div style={{ background: 'var(--bg-surface)', border: '1px solid var(--border)', borderRadius: '12px', padding: '20px' }}>
           <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', marginBottom: '12px' }}>
             {chart.lines.map(l => (
-              <span key={l.title} style={{ fontSize: '12px', color: '#8888aa', display: 'flex', alignItems: 'center', gap: '6px' }}>
+              <span key={l.title} style={{ fontSize: '14px', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', gap: '6px' }}>
                 <span style={{ width: '10px', height: '10px', borderRadius: '2px', background: l.color, display: 'inline-block' }} />
                 {l.title}
               </span>
             ))}
           </div>
           <svg viewBox={`0 0 ${chart.width} ${chart.height}`} style={{ width: '100%', height: '260px' }}>
-            <line x1={chart.padLeft} y1={chart.padTop} x2={chart.padLeft} y2={chart.height - chart.padBottom} stroke="#2e2e3e" strokeWidth="1" />
-            <line x1={chart.padLeft} y1={chart.height - chart.padBottom} x2={chart.width - 12} y2={chart.height - chart.padBottom} stroke="#2e2e3e" strokeWidth="1" />
+            <line x1={chart.padLeft} y1={chart.padTop} x2={chart.padLeft} y2={chart.height - chart.padBottom} stroke="var(--border)" strokeWidth="1" />
+            <line x1={chart.padLeft} y1={chart.height - chart.padBottom} x2={chart.width - 12} y2={chart.height - chart.padBottom} stroke="var(--border)" strokeWidth="1" />
             {chart.lines.map(l => (
               <polyline key={l.title} points={l.points} fill="none" stroke={l.color} strokeWidth="2" />
             ))}
             {chart.xLabels.map(({ p, idx }) => (
-              <text key={idx} x={chart.xFor(idx, chart.periodsLen)} y={chart.height - 8} fontSize="10" fill="#8888aa" textAnchor="middle">
+              <text key={idx} x={chart.xFor(idx, chart.periodsLen)} y={chart.height - 8} fontSize="10" fill="var(--text-muted)" textAnchor="middle">
                 {p.slice(0, 7)}
               </text>
             ))}
-            <text x={chart.padLeft - 6} y={chart.padTop + 4} fontSize="10" fill="#8888aa" textAnchor="end">{Math.round(chart.maxRatio)}</text>
-            <text x={chart.padLeft - 6} y={chart.height - chart.padBottom} fontSize="10" fill="#8888aa" textAnchor="end">0</text>
+            <text x={chart.padLeft - 6} y={chart.padTop + 4} fontSize="10" fill="var(--text-muted)" textAnchor="end">{Math.round(chart.maxRatio)}</text>
+            <text x={chart.padLeft - 6} y={chart.height - chart.padBottom} fontSize="10" fill="var(--text-muted)" textAnchor="end">0</text>
           </svg>
-          <p style={{ fontSize: '10px', color: '#555568', marginTop: '8px' }}>
+          <p style={{ fontSize: '12px', color: 'var(--text-faint)', marginTop: '8px' }}>
             * 절대 검색량이 아닌 상대적 검색 트렌드 지수(기간 내 최고치를 100으로 환산)입니다 - 네이버 데이터랩 제공
           </p>
         </div>

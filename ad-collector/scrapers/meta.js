@@ -113,17 +113,29 @@ async function scrapeMeta(keywords, brands, settings) {
               if (hEl) advertiserName = hEl.innerText.trim();
             }
 
-            // 광고 라이브러리 ID 추출 (카드 내 링크 또는 data 속성)
+            // 광고 라이브러리 ID 추출 - 예전엔 innerHTML의 ad_archive_id 패턴이나
+            // ads/library/?id= 링크를 찾았는데, 지금 페이스북 DOM엔 둘 다 전혀 없다(실측
+            // 확인 - 2026-08-05). 대신 카드 화면에 그대로 보이는 "라이브러리 ID: 12345" 텍스트가
+            // 안정적이라, 카드에서 위로 올라가며 그 텍스트가 정확히 1번만 나오는(=아직 이
+            // 카드 하나로 스코프된) 가장 안쪽 조상에서 숫자를 뽑는다. 텍스트 문구가 바뀌는
+            // 경우를 대비해 카드 자체에도 먼저 시도한다.
             var adId = '';
-            var idMatch = card.innerHTML.match(/ad_archive_id["\s:=]+(\d{10,})/);
-            if (!idMatch) idMatch = card.innerHTML.match(/\/(\d{15,})/);
-            if (idMatch) adId = idMatch[1];
-            // 라이브러리 링크에서 ID 추출
-            var libLinkEl = card.querySelector('a[href*="ads/library/?id="]');
-            if (libLinkEl) {
-              var idFromUrl = libLinkEl.href.match(/[?&]id=(\d+)/);
-              if (idFromUrl) adId = idFromUrl[1];
-            }
+            (function() {
+              var libMatch = card.innerText.match(/라이브러리 ID:\s*(\d+)/);
+              if (libMatch) { adId = libMatch[1]; return; }
+              var cur = card;
+              for (var d = 0; d < 10; d++) {
+                if (!cur.parentElement) break;
+                cur = cur.parentElement;
+                var count = (cur.innerText.match(/라이브러리 ID:/g) || []).length;
+                if (count === 1) {
+                  var m = cur.innerText.match(/라이브러리 ID:\s*(\d+)/);
+                  if (m) adId = m[1];
+                  break;
+                }
+                if (count > 1) break; // 이미 다른 광고까지 포함된 조상 - 더 못 감
+              }
+            })();
 
             // 게재 시작일 / 종료일 추출
             var adStartedAt = null, adLastShownAt = null, adStatus = 'active';
@@ -214,13 +226,10 @@ async function scrapeMeta(keywords, brands, settings) {
               }
             }
 
-            // 원본 링크
-            var libLink = card.querySelector('a[href*="/ads/archive/"], a[href*="ad_id="], a[href*="ads/library/?id="]');
-            var sourceUrl = libLink ? libLink.href : '';
-            if (!adId && sourceUrl) {
-              var idFromSource = sourceUrl.match(/[?&]id=(\d+)/);
-              if (idFromSource) adId = idFromSource[1];
-            }
+            // 원본 링크 - 예전 셀렉터(ads/archive/, ad_id=, ads/library/?id=)에 맞는 링크가
+            // 지금 DOM엔 없어서(실측 확인) adId를 직접 조립한다. adId 추출 자체가 위에서
+            // "라이브러리 ID:" 텍스트 기반으로 이미 이 광고 하나로 정확히 스코프됐으므로 안전함.
+            var sourceUrl = adId ? ('https://www.facebook.com/ads/library/?id=' + adId) : '';
 
             // 플레이스먼트 (Facebook/Instagram/Messenger 등 노출 매체)
             var placements = [];

@@ -15,7 +15,7 @@ interface MarketIndexPanelProps {
 }
 
 const LABELS: Record<string, string> = { kospi: '코스피', kosdaq: '코스닥', nasdaq: '나스닥' };
-const COLORS: Record<string, string> = { kospi: '#6c63ff', kosdaq: '#03c75a', nasdaq: '#e0a030' };
+const COLORS: Record<string, string> = { kospi: 'var(--accent)', kosdaq: '#03c75a', nasdaq: '#e0a030' };
 
 function fmtNum(n: number) {
   return n.toLocaleString('ko-KR', { maximumFractionDigits: 2 });
@@ -72,16 +72,16 @@ function IndexCard({ title, indices }: { title: string; indices: FilteredIndex[]
   const last7 = indices.map(idx => ({ ...idx, data: idx.data.slice(-7) }));
 
   return (
-    <div style={{ background: 'rgba(26,26,36,0.8)', border: '1px solid #2e2e3e', borderRadius: '12px', padding: '18px', flex: 1, minWidth: '320px' }}>
+    <div style={{ background: 'var(--bg-surface)', border: '1px solid var(--border)', borderRadius: '12px', padding: '18px', flex: 1, minWidth: '320px' }}>
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '10px', flexWrap: 'wrap', gap: '6px' }}>
-        <p style={{ fontSize: '13px', fontWeight: 700, color: '#e2e2f0' }}>{title}</p>
+        <p style={{ fontSize: '15px', fontWeight: 700, color: 'var(--text-primary)' }}>{title}</p>
         <div style={{ display: 'flex', gap: '12px' }}>
           {indices.map(idx => (
-            <span key={idx.key} style={{ fontSize: '11px', color: '#8888aa', display: 'flex', alignItems: 'center', gap: '5px' }}>
+            <span key={idx.key} style={{ fontSize: '13px', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', gap: '5px' }}>
               <span style={{ width: '8px', height: '8px', borderRadius: '2px', background: COLORS[idx.key], display: 'inline-block' }} />
               {LABELS[idx.key]}
               {idx.changePct !== null && (
-                <span style={{ color: idx.changePct >= 0 ? '#f87171' : '#3aa0e0', fontWeight: 600 }}>
+                <span style={{ color: idx.changePct >= 0 ? 'var(--danger)' : '#3aa0e0', fontWeight: 600 }}>
                   {idx.changePct >= 0 ? '+' : ''}{idx.changePct.toFixed(2)}%
                 </span>
               )}
@@ -92,40 +92,40 @@ function IndexCard({ title, indices }: { title: string; indices: FilteredIndex[]
 
       {chart ? (
         <svg viewBox={`0 0 ${chart.width} ${chart.height}`} style={{ width: '100%', height: '160px' }}>
-          <line x1={chart.padLeft} y1={chart.zeroY} x2={chart.width - 10} y2={chart.zeroY} stroke="#2e2e3e" strokeWidth="1" strokeDasharray="3,3" />
+          <line x1={chart.padLeft} y1={chart.zeroY} x2={chart.width - 10} y2={chart.zeroY} stroke="var(--border)" strokeWidth="1" strokeDasharray="3,3" />
           {chart.lines.map(l => (
             <polyline key={l.key} points={l.points} fill="none" stroke={l.color} strokeWidth="2" />
           ))}
-          <text x={chart.padLeft - 6} y={chart.padTop + 4} fontSize="9" fill="#8888aa" textAnchor="end">{chart.maxPct.toFixed(1)}%</text>
-          <text x={chart.padLeft - 6} y={chart.zeroY + 3} fontSize="9" fill="#8888aa" textAnchor="end">0%</text>
-          <text x={chart.padLeft - 6} y={chart.padTop + chart.plotH} fontSize="9" fill="#8888aa" textAnchor="end">{chart.minPct.toFixed(1)}%</text>
+          <text x={chart.padLeft - 6} y={chart.padTop + 4} fontSize="9" fill="var(--text-muted)" textAnchor="end">{chart.maxPct.toFixed(1)}%</text>
+          <text x={chart.padLeft - 6} y={chart.zeroY + 3} fontSize="9" fill="var(--text-muted)" textAnchor="end">0%</text>
+          <text x={chart.padLeft - 6} y={chart.padTop + chart.plotH} fontSize="9" fill="var(--text-muted)" textAnchor="end">{chart.minPct.toFixed(1)}%</text>
         </svg>
       ) : (
-        <div style={{ height: '160px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#555568', fontSize: '12px' }}>선택한 기간에 데이터 없음</div>
+        <div style={{ height: '160px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--text-faint)', fontSize: '14px' }}>선택한 기간에 데이터 없음</div>
       )}
 
-      <p style={{ fontSize: '9px', color: '#555568', margin: '8px 0 4px' }}>최근 7거래일</p>
+      <p style={{ fontSize: '11px', color: 'var(--text-faint)', margin: '8px 0 4px' }}>최근 7거래일</p>
       <div style={{ overflowX: 'auto' }}>
-        <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '10px' }}>
+        <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '12px' }}>
           <thead>
-            <tr style={{ color: '#8888aa', textAlign: 'right' }}>
+            <tr style={{ color: 'var(--text-muted)', textAlign: 'right' }}>
               <th style={{ textAlign: 'left', paddingBottom: '4px' }}>날짜</th>
               {last7.map(idx => <th key={idx.key} style={{ paddingBottom: '4px' }}>{LABELS[idx.key]}</th>)}
             </tr>
           </thead>
           <tbody>
             {(last7[0]?.data || []).map((d, i) => (
-              <tr key={d.date} style={{ borderTop: '1px solid #22222f' }}>
-                <td style={{ padding: '3px 0', color: '#8888aa' }}>{d.date.slice(5)}</td>
+              <tr key={d.date} style={{ borderTop: '1px solid var(--bg-elevated)' }}>
+                <td style={{ padding: '3px 0', color: 'var(--text-muted)' }}>{d.date.slice(5)}</td>
                 {last7.map(idx => {
                   const point = idx.data[i];
                   const prev = idx.data[i - 1];
                   const dayChange = point && prev ? ((point.close - prev.close) / prev.close) * 100 : null;
                   return (
-                    <td key={idx.key} style={{ padding: '3px 0', textAlign: 'right', color: '#e2e2f0' }}>
+                    <td key={idx.key} style={{ padding: '3px 0', textAlign: 'right', color: 'var(--text-primary)' }}>
                       {point ? fmtNum(point.close) : '-'}
                       {dayChange !== null && (
-                        <span style={{ color: dayChange >= 0 ? '#f87171' : '#3aa0e0', marginLeft: '4px' }}>
+                        <span style={{ color: dayChange >= 0 ? 'var(--danger)' : '#3aa0e0', marginLeft: '4px' }}>
                           ({dayChange >= 0 ? '+' : ''}{dayChange.toFixed(1)}%)
                         </span>
                       )}
@@ -165,15 +165,15 @@ export default function MarketIndexPanel({ startDate, endDate, timeUnit }: Marke
   }, [data, startDate, endDate]);
 
   if (error) {
-    return <p style={{ fontSize: '12px', color: '#f87171', marginBottom: '20px' }}>지수 데이터를 불러오지 못했습니다: {error}</p>;
+    return <p style={{ fontSize: '14px', color: 'var(--danger)', marginBottom: '20px' }}>지수 데이터를 불러오지 못했습니다: {error}</p>;
   }
   if (!filtered) {
-    return <p style={{ fontSize: '12px', color: '#8888aa', marginBottom: '20px' }}>시장 지수 불러오는 중...</p>;
+    return <p style={{ fontSize: '14px', color: 'var(--text-muted)', marginBottom: '20px' }}>시장 지수 불러오는 중...</p>;
   }
 
   return (
     <div style={{ marginBottom: '24px' }}>
-      <p style={{ fontSize: '10px', color: '#555568', marginBottom: '8px' }}>
+      <p style={{ fontSize: '12px', color: 'var(--text-faint)', marginBottom: '8px' }}>
         검색어 트렌드와 동일한 조회 기간({startDate} ~ {endDate}, {timeUnit === 'date' ? '일별' : timeUnit === 'week' ? '주별' : '월별'} 기준)
       </p>
       <div style={{ display: 'flex', gap: '14px', flexWrap: 'wrap', alignItems: 'stretch' }}>

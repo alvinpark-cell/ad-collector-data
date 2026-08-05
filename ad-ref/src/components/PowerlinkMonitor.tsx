@@ -47,11 +47,11 @@ export default function PowerlinkMonitor() {
 
   const keywords = useMemo(() => Array.from(new Set(weekData.map(d => d.keyword))), [weekData]);
 
-  if (loading) return <div style={{ color: '#8888aa', fontSize: '13px' }}>로딩 중...</div>;
+  if (loading) return <div style={{ color: 'var(--text-muted)', fontSize: '15px' }}>로딩 중...</div>;
 
   if (data.length === 0) {
     return (
-      <div style={{ textAlign: 'center', padding: '60px', color: '#8888aa' }}>
+      <div style={{ textAlign: 'center', padding: '60px', color: 'var(--text-muted)' }}>
         <div style={{ fontSize: '40px', marginBottom: '12px' }}>🔗</div>
         <p>수집된 파워링크 데이터가 없습니다</p>
       </div>
@@ -67,12 +67,12 @@ export default function PowerlinkMonitor() {
     <div>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '14px', marginBottom: '24px' }}>
         {[
-          { label: '수집 키워드', value: keywords.length, color: '#a78bfa' },
-          { label: '이번 주 소재 (PC+MO 합계)', value: totalAdsThisWeek, color: '#34d399' },
+          { label: '수집 키워드', value: keywords.length, color: 'var(--accent-text)' },
+          { label: '이번 주 소재 (PC+MO 합계)', value: totalAdsThisWeek, color: 'var(--success)' },
           { label: '인사이트 생성', value: Object.keys(insights).length, color: '#3aa0e0' },
         ].map(({ label, value, color }) => (
-          <div key={label} style={{ background: 'rgba(26,26,36,0.8)', border: '1px solid #2e2e3e', borderRadius: '14px', padding: '20px' }}>
-            <p style={{ fontSize: '13px', color: '#8888aa', fontWeight: 500 }}>{label}</p>
+          <div key={label} style={{ background: 'var(--bg-surface)', border: '1px solid var(--border)', borderRadius: '14px', padding: '20px' }}>
+            <p style={{ fontSize: '15px', color: 'var(--text-muted)', fontWeight: 500 }}>{label}</p>
             <p style={{ fontSize: '30px', fontWeight: 700, color, marginTop: '8px', letterSpacing: '-0.5px' }}>{value}</p>
           </div>
         ))}
@@ -103,48 +103,48 @@ export default function PowerlinkMonitor() {
           const isOpen = expanded.has(keyword);
 
           return (
-            <div key={keyword} style={{ background: 'rgba(26,26,36,0.8)', border: '1px solid #2e2e3e', borderRadius: '12px', overflow: 'hidden' }}>
+            <div key={keyword} style={{ background: 'var(--bg-surface)', border: '1px solid var(--border)', borderRadius: '12px', overflow: 'hidden' }}>
               <button onClick={() => toggle(keyword)}
-                style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '14px 20px', background: 'none', border: 'none', cursor: 'pointer', color: '#e2e2f0' }}>
+                style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '14px 20px', background: 'none', border: 'none', cursor: 'pointer', color: 'var(--text-primary)' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                   <span style={{ fontSize: '15px', fontWeight: 600 }}>{keyword}</span>
-                  <span style={{ fontSize: '11px', color: '#8888aa' }}>PC {pc ? `✓ (${pc.ads.length}개)` : '✗'} · MO {mo ? `✓ (${mo.ads.length}개)` : '✗'}</span>
-                  {pc && <span style={{ fontSize: '10px', color: '#555568' }}>수집일 {new Date(pc.collectedAt).toLocaleDateString('ko-KR')}</span>}
+                  <span style={{ fontSize: '13px', color: 'var(--text-muted)' }}>PC {pc ? `✓ (${pc.ads.length}개)` : '✗'} · MO {mo ? `✓ (${mo.ads.length}개)` : '✗'}</span>
+                  {pc && <span style={{ fontSize: '12px', color: 'var(--text-faint)' }}>수집일 {new Date(pc.collectedAt).toLocaleDateString('ko-KR')}</span>}
                 </div>
-                <span style={{ color: '#8888aa', fontSize: '18px', transition: 'transform 0.2s', transform: isOpen ? 'rotate(180deg)' : 'none' }}>▼</span>
+                <span style={{ color: 'var(--text-muted)', fontSize: '18px', transition: 'transform 0.2s', transform: isOpen ? 'rotate(180deg)' : 'none' }}>▼</span>
               </button>
 
               {isOpen && (
-                <div style={{ borderTop: '1px solid #2e2e3e', padding: '20px' }}>
+                <div style={{ borderTop: '1px solid var(--border)', padding: '20px' }}>
                   <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
                     {[{ item: pc, label: 'PC' }, { item: mo, label: 'MO' }].map(({ item, label }) => (
                       <div key={label}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '10px' }}>
-                          <span style={{ background: '#03c75a', color: '#fff', fontSize: '10px', fontWeight: 700, padding: '2px 8px', borderRadius: '4px' }}>{label}</span>
-                          <span style={{ fontSize: '12px', fontWeight: 600 }}>네이버 파워링크</span>
-                          {item && <span style={{ marginLeft: 'auto', fontSize: '10px', color: '#8888aa' }}>{new Date(item.collectedAt).toLocaleDateString('ko-KR')}</span>}
+                          <span style={{ background: '#03c75a', color: '#fff', fontSize: '12px', fontWeight: 700, padding: '2px 8px', borderRadius: '4px' }}>{label}</span>
+                          <span style={{ fontSize: '14px', fontWeight: 600 }}>네이버 파워링크</span>
+                          {item && <span style={{ marginLeft: 'auto', fontSize: '12px', color: 'var(--text-muted)' }}>{new Date(item.collectedAt).toLocaleDateString('ko-KR')}</span>}
                         </div>
                         {!item ? (
-                          <div style={{ color: '#8888aa', fontSize: '12px', padding: '20px 0', textAlign: 'center' }}>수집된 데이터 없음</div>
+                          <div style={{ color: 'var(--text-muted)', fontSize: '14px', padding: '20px 0', textAlign: 'center' }}>수집된 데이터 없음</div>
                         ) : (
                           <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
                             {item.ads.map(ad => (
-                              <div key={ad.rank} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', background: '#22222f', border: '1px solid #2e2e3e', borderRadius: '8px', padding: '10px' }}>
-                                <span style={{ background: '#6c63ff', color: '#fff', fontSize: '10px', fontWeight: 700, padding: '2px 7px', borderRadius: '4px', flexShrink: 0 }}>{ad.rank}</span>
+                              <div key={ad.rank} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', background: 'var(--bg-elevated)', border: '1px solid var(--border)', borderRadius: '8px', padding: '10px' }}>
+                                <span style={{ background: 'var(--accent)', color: '#fff', fontSize: '12px', fontWeight: 700, padding: '2px 7px', borderRadius: '4px', flexShrink: 0 }}>{ad.rank}</span>
                                 {ad.localImage && (
                                   <img src={mediaUrl(ad.localImage)} alt="" style={{ width: '48px', height: '48px', objectFit: 'cover', borderRadius: '6px', flexShrink: 0, cursor: 'pointer' }}
                                     onClick={() => window.open(mediaUrl(ad.localImage), '_blank')} />
                                 )}
                                 <div style={{ flex: 1, minWidth: 0 }}>
                                   <div style={{ display: 'flex', gap: '8px', alignItems: 'baseline', flexWrap: 'wrap' }}>
-                                    <span style={{ fontSize: '12px', fontWeight: 600 }}>{ad.advertiserName || '(광고주명 없음)'}</span>
-                                    {ad.displayUrl && <span style={{ fontSize: '10px', color: '#8888aa' }}>{ad.displayUrl}</span>}
-                                    {ad.adPeriod && <span style={{ fontSize: '9px', color: '#555568', marginLeft: 'auto' }}>집행 {ad.adPeriod}</span>}
+                                    <span style={{ fontSize: '14px', fontWeight: 600 }}>{ad.advertiserName || '(광고주명 없음)'}</span>
+                                    {ad.displayUrl && <span style={{ fontSize: '12px', color: 'var(--text-muted)' }}>{ad.displayUrl}</span>}
+                                    {ad.adPeriod && <span style={{ fontSize: '11px', color: 'var(--text-faint)', marginLeft: 'auto' }}>집행 {ad.adPeriod}</span>}
                                   </div>
-                                  <p style={{ fontSize: '11px', color: '#e2e2f0', margin: '3px 0 0' }}>{ad.title}</p>
-                                  {ad.description && <p style={{ fontSize: '10px', color: '#8888aa', margin: '2px 0 0' }}>{ad.description}</p>}
+                                  <p style={{ fontSize: '13px', color: 'var(--text-primary)', margin: '3px 0 0' }}>{ad.title}</p>
+                                  {ad.description && <p style={{ fontSize: '12px', color: 'var(--text-muted)', margin: '2px 0 0' }}>{ad.description}</p>}
                                   {ad.extraTitle && ad.extraTitle.text && (
-                                    <p style={{ fontSize: '10px', color: '#fb923c', margin: '3px 0 0' }}>
+                                    <p style={{ fontSize: '12px', color: '#fb923c', margin: '3px 0 0' }}>
                                       {ad.extraTitle.badge && <span style={{ fontWeight: 700 }}>[{ad.extraTitle.badge}] </span>}
                                       {ad.extraTitle.text}
                                     </p>
@@ -152,16 +152,16 @@ export default function PowerlinkMonitor() {
                                   {((ad.sublinks && ad.sublinks.length > 0) || (ad.imageSublinks && ad.imageSublinks.length > 0)) && (
                                     <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginTop: '4px' }}>
                                       {(ad.sublinks || []).map((s, si) => (
-                                        <span key={`s${si}`} style={{ fontSize: '9px', color: '#a78bfa', background: 'rgba(108,99,255,0.1)', padding: '1px 6px', borderRadius: '3px' }}>{s.title}</span>
+                                        <span key={`s${si}`} style={{ fontSize: '11px', color: 'var(--accent-text)', background: 'var(--accent-soft)', padding: '1px 6px', borderRadius: '3px' }}>{s.title}</span>
                                       ))}
                                       {(ad.imageSublinks || []).map((s, si) => (
-                                        <span key={`i${si}`} style={{ fontSize: '9px', color: '#34d399', background: 'rgba(52,211,153,0.1)', padding: '1px 6px', borderRadius: '3px' }}>🖼️ {s.title}</span>
+                                        <span key={`i${si}`} style={{ fontSize: '11px', color: 'var(--success)', background: 'rgba(52,211,153,0.1)', padding: '1px 6px', borderRadius: '3px' }}>🖼️ {s.title}</span>
                                       ))}
                                     </div>
                                   )}
                                   {ad.landingUrl && (
                                     <a href={ad.landingUrl} target="_blank" rel="noopener noreferrer"
-                                      style={{ fontSize: '9px', color: '#a78bfa', textDecoration: 'none', display: 'inline-block', marginTop: '3px' }}>
+                                      style={{ fontSize: '11px', color: 'var(--accent-text)', textDecoration: 'none', display: 'inline-block', marginTop: '3px' }}>
                                       {ad.landingUrl.slice(0, 40)} ↗
                                     </a>
                                   )}

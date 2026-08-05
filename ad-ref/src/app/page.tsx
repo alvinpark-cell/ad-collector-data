@@ -383,18 +383,18 @@ export default function Home() {
     return items.sort((a, b) => (b.collectedAt || '').localeCompare(a.collectedAt || ''));
   }, [data, googleSearchText, googleStartDate, googleEndDate]);
 
-  if (loading) return <div style={{ minHeight: '100vh', background: '#0f0f13', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#8888aa' }}>로딩 중...</div>;
+  if (loading) return <div style={{ minHeight: '100vh', background: 'var(--bg-page)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--text-muted)' }}>로딩 중...</div>;
 
   const chip = (active: boolean) => ({
-    padding: '4px 12px', borderRadius: '20px', border: `1px solid ${active ? '#6c63ff' : '#2e2e3e'}`,
-    background: active ? 'rgba(108,99,255,0.12)' : 'transparent', color: active ? '#a78bfa' : '#8888aa',
-    fontSize: '11px', cursor: 'pointer', whiteSpace: 'nowrap' as const,
+    padding: '4px 12px', borderRadius: '20px', border: `1px solid ${active ? 'var(--accent)' : 'var(--border)'}`,
+    background: active ? 'rgba(var(--accent-rgb),0.12)' : 'transparent', color: active ? 'var(--accent-text)' : 'var(--text-muted)',
+    fontSize: '13px', cursor: 'pointer', whiteSpace: 'nowrap' as const,
   });
 
   const slicerBtn = (active: boolean) => ({
-    padding: '5px 10px', borderRadius: '6px', border: `1px solid ${active ? '#03c75a' : '#2e2e3e'}`,
-    background: active ? 'rgba(3,199,90,0.15)' : '#1a1a24', color: active ? '#03c75a' : '#8888aa',
-    fontSize: '11px', cursor: 'pointer', whiteSpace: 'nowrap' as const, fontWeight: active ? 700 : 400,
+    padding: '5px 10px', borderRadius: '6px', border: `1px solid ${active ? '#03c75a' : 'var(--border)'}`,
+    background: active ? 'rgba(3,199,90,0.15)' : 'var(--bg-surface-solid)', color: active ? '#03c75a' : 'var(--text-muted)',
+    fontSize: '13px', cursor: 'pointer', whiteSpace: 'nowrap' as const, fontWeight: active ? 700 : 400,
   });
 
   const slicerGroup = (
@@ -405,12 +405,12 @@ export default function Home() {
     formatLabel?: (v: string) => string,
   ) => (
     <div>
-      <div style={{ fontSize: '10px', color: '#8888aa', fontWeight: 700, marginBottom: '6px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+      <div style={{ fontSize: '12px', color: 'var(--text-muted)', fontWeight: 700, marginBottom: '6px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
         {title}
       </div>
       <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap', maxHeight: '110px', overflowY: 'auto' }}>
         {options.length === 0
-          ? <span style={{ fontSize: '11px', color: '#555568' }}>데이터 없음</span>
+          ? <span style={{ fontSize: '13px', color: 'var(--text-faint)' }}>데이터 없음</span>
           : options.map(opt => (
             <button key={opt} onClick={() => onToggle(opt)} style={slicerBtn(selected.has(opt))}>
               {formatLabel ? formatLabel(opt) : opt}
@@ -430,11 +430,11 @@ export default function Home() {
   );
 
   const sectionLabel = (text: string) => (
-    <h2 style={{ fontSize: '11px', fontWeight: 600, color: '#8888aa', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '12px' }}>{text}</h2>
+    <h2 style={{ fontSize: '13px', fontWeight: 600, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '12px' }}>{text}</h2>
   );
 
   return (
-    <div style={{ minHeight: '100vh', background: '#0f0f13', color: '#e2e2f0', fontFamily: '-apple-system, "Segoe UI", sans-serif', display: 'flex' }}>
+    <div style={{ minHeight: '100vh', background: 'var(--bg-page)', color: 'var(--text-primary)', fontFamily: '-apple-system, "Segoe UI", sans-serif', display: 'flex' }}>
       <Sidebar active={view} onSelect={(key) => { setView(key); setSelectedBrand(null); }} />
 
       <div style={{ flex: 1, minWidth: 0 }}>
@@ -452,43 +452,43 @@ export default function Home() {
                 const s = collectionStatus[key];
                 const at = s?.lastCollectedAt ? new Date(s.lastCollectedAt) : null;
                 return (
-                  <div key={key} style={{ background: 'rgba(26,26,36,0.8)', border: '1px solid #2e2e3e', borderRadius: '12px', padding: '16px 18px' }}>
-                    <p style={{ fontSize: '13px', fontWeight: 600, color: '#e2e2f0', marginBottom: '8px' }}>{label}</p>
+                  <div key={key} style={{ background: 'var(--bg-surface)', border: '1px solid var(--border)', borderRadius: '12px', padding: '16px 18px' }}>
+                    <p style={{ fontSize: '15px', fontWeight: 600, color: 'var(--text-primary)', marginBottom: '8px' }}>{label}</p>
                     {at ? (
                       <>
-                        <p style={{ fontSize: '12px', color: '#a78bfa' }}>{at.toLocaleDateString('ko-KR')}</p>
-                        <p style={{ fontSize: '11px', color: '#8888aa', marginTop: '2px' }}>{at.toLocaleTimeString('ko-KR')}</p>
-                        <p style={{ fontSize: '11px', color: '#8888aa', marginTop: '6px' }}>신규 {s.newCount ?? 0}건</p>
+                        <p style={{ fontSize: '14px', color: 'var(--accent-text)' }}>{at.toLocaleDateString('ko-KR')}</p>
+                        <p style={{ fontSize: '13px', color: 'var(--text-muted)', marginTop: '2px' }}>{at.toLocaleTimeString('ko-KR')}</p>
+                        <p style={{ fontSize: '13px', color: 'var(--text-muted)', marginTop: '6px' }}>신규 {s.newCount ?? 0}건</p>
                       </>
                     ) : (
-                      <p style={{ fontSize: '12px', color: '#555568' }}>수집 이력 없음</p>
+                      <p style={{ fontSize: '14px', color: 'var(--text-faint)' }}>수집 이력 없음</p>
                     )}
                   </div>
                 );
               })}
 
               {/* 메타 미디어 채우기는 별도 진행상황 지표(시도/성공/대기중)라 다르게 표시 */}
-              <div style={{ background: 'rgba(26,26,36,0.8)', border: '1px solid #2e2e3e', borderRadius: '12px', padding: '16px 18px' }}>
-                <p style={{ fontSize: '13px', fontWeight: 600, color: '#e2e2f0', marginBottom: '8px' }}>메타 이미지/영상 채우기</p>
+              <div style={{ background: 'var(--bg-surface)', border: '1px solid var(--border)', borderRadius: '12px', padding: '16px 18px' }}>
+                <p style={{ fontSize: '15px', fontWeight: 600, color: 'var(--text-primary)', marginBottom: '8px' }}>메타 이미지/영상 채우기</p>
                 {collectionStatus.metaMediaBatch?.lastRunAt ? (
                   <>
-                    <p style={{ fontSize: '12px', color: '#a78bfa' }}>
+                    <p style={{ fontSize: '14px', color: 'var(--accent-text)' }}>
                       {new Date(collectionStatus.metaMediaBatch.lastRunAt).toLocaleDateString('ko-KR')}
                     </p>
-                    <p style={{ fontSize: '11px', color: '#8888aa', marginTop: '2px' }}>
+                    <p style={{ fontSize: '13px', color: 'var(--text-muted)', marginTop: '2px' }}>
                       {new Date(collectionStatus.metaMediaBatch.lastRunAt).toLocaleTimeString('ko-KR')}
                     </p>
-                    <p style={{ fontSize: '11px', color: '#8888aa', marginTop: '6px' }}>
+                    <p style={{ fontSize: '13px', color: 'var(--text-muted)', marginTop: '6px' }}>
                       {collectionStatus.metaMediaBatch.attempted}건 시도 · {collectionStatus.metaMediaBatch.updated}건 성공
                     </p>
-                    <p style={{ fontSize: '11px', color: collectionStatus.metaMediaBatch.stillPending > 0 ? '#fb923c' : '#34d399', marginTop: '2px' }}>
+                    <p style={{ fontSize: '13px', color: collectionStatus.metaMediaBatch.stillPending > 0 ? '#fb923c' : 'var(--success)', marginTop: '2px' }}>
                       {collectionStatus.metaMediaBatch.stillPending > 0
                         ? `아직 ${collectionStatus.metaMediaBatch.stillPending}건 대기 중`
                         : '전부 채움 완료'}
                     </p>
                   </>
                 ) : (
-                  <p style={{ fontSize: '12px', color: '#555568' }}>수집 이력 없음</p>
+                  <p style={{ fontSize: '14px', color: 'var(--text-faint)' }}>수집 이력 없음</p>
                 )}
               </div>
             </div>
@@ -500,12 +500,12 @@ export default function Home() {
 
             {/* 뉴스 클리핑 - 스텁 (추후 기존 코드 연결 예정) */}
             {(view === 'news-daily' || view === 'news-weekly') && (
-              <div style={{ textAlign: 'center', padding: '80px 20px', color: '#8888aa' }}>
+              <div style={{ textAlign: 'center', padding: '80px 20px', color: 'var(--text-muted)' }}>
                 <div style={{ fontSize: '40px', marginBottom: '12px' }}>📰</div>
-                <p style={{ fontSize: '15px', fontWeight: 600, color: '#e2e2f0', marginBottom: '6px' }}>
+                <p style={{ fontSize: '15px', fontWeight: 600, color: 'var(--text-primary)', marginBottom: '6px' }}>
                   {view === 'news-daily' ? '데일리 뉴스' : '주간 인사이트'}
                 </p>
-                <p style={{ fontSize: '13px' }}>준비 중입니다</p>
+                <p style={{ fontSize: '15px' }}>준비 중입니다</p>
               </div>
             )}
 
@@ -513,8 +513,8 @@ export default function Home() {
             {view === 'dash-all' && (
               <>
                 <header style={{ marginBottom: '32px' }}>
-                  <h1 style={{ fontSize: '24px', fontWeight: 700, color: '#fff' }}>경쟁사 광고 - 전체</h1>
-                  <div style={{ display: 'flex', gap: '16px', marginTop: '8px', fontSize: '13px', color: '#8888aa', flexWrap: 'wrap', lineHeight: 1.6 }}>
+                  <h1 style={{ fontSize: '24px', fontWeight: 700, color: 'var(--text-primary)' }}>경쟁사 광고 - 전체</h1>
+                  <div style={{ display: 'flex', gap: '16px', marginTop: '8px', fontSize: '15px', color: 'var(--text-muted)', flexWrap: 'wrap', lineHeight: 1.6 }}>
                     {totalStats.lastGoogle && <span>Google 최근 수집: {new Date(totalStats.lastGoogle).toLocaleString('ko-KR')}</span>}
                     {totalStats.lastMeta && <span>· Meta 최근 수집: {new Date(totalStats.lastMeta).toLocaleString('ko-KR')}</span>}
                   </div>
@@ -522,13 +522,13 @@ export default function Home() {
 
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '14px', marginBottom: '32px' }}>
                   {[
-                    { label: '활성 광고 (전체)', value: totalStats.total.toLocaleString(), color: '#a78bfa' },
-                    { label: '신규 광고 (월간)', value: totalStats.new24h, color: '#34d399' },
-                    { label: '종료 광고 (월간)', value: totalStats.ended24h, color: '#f87171' },
+                    { label: '활성 광고 (전체)', value: totalStats.total.toLocaleString(), color: 'var(--accent-text)' },
+                    { label: '신규 광고 (월간)', value: totalStats.new24h, color: 'var(--success)' },
+                    { label: '종료 광고 (월간)', value: totalStats.ended24h, color: 'var(--danger)' },
                     { label: '즐겨찾기', value: favorites.length, color: '#facc15' },
                   ].map(({ label, value, color }) => (
-                    <div key={label} style={{ background: 'rgba(26,26,36,0.8)', border: '1px solid #2e2e3e', borderRadius: '14px', padding: '24px' }}>
-                      <p style={{ fontSize: '13px', color: '#8888aa', fontWeight: 500 }}>{label}</p>
+                    <div key={label} style={{ background: 'var(--bg-surface)', border: '1px solid var(--border)', borderRadius: '14px', padding: '24px' }}>
+                      <p style={{ fontSize: '15px', color: 'var(--text-muted)', fontWeight: 500 }}>{label}</p>
                       <p style={{ fontSize: '34px', fontWeight: 700, color, marginTop: '8px', letterSpacing: '-0.5px' }}>{value}</p>
                     </div>
                   ))}
@@ -538,16 +538,16 @@ export default function Home() {
                   <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap', marginBottom: dynamicInsight ? '10px' : 0 }}>
                     <button onClick={generateCreativeInsight} disabled={insightLoading || searchResults.length === 0}
                       style={{
-                        fontSize: '12px', color: '#a78bfa', background: 'rgba(108,99,255,0.1)', border: '1px solid rgba(108,99,255,0.3)',
+                        fontSize: '14px', color: 'var(--accent-text)', background: 'var(--accent-soft)', border: '1px solid rgba(var(--accent-rgb),0.3)',
                         borderRadius: '8px', padding: '8px 14px', cursor: insightLoading ? 'default' : 'pointer', opacity: searchResults.length === 0 ? 0.5 : 1,
                       }}>
                       {insightLoading ? '🧠 생성 중... (최대 1~2분)' : dynamicInsight ? '🧠 지금 조건으로 다시 생성' : '🧠 지금 선택 조건으로 인사이트 생성'}
                     </button>
-                    <span style={{ fontSize: '11px', color: '#8888aa' }}>현재 {searchResults.length}건 기준</span>
+                    <span style={{ fontSize: '13px', color: 'var(--text-muted)' }}>현재 {searchResults.length}건 기준</span>
                     {insightStale && !insightLoading && (
-                      <span style={{ fontSize: '11px', color: '#fb923c' }}>· 필터가 바뀌었어요 - 다시 생성해보세요</span>
+                      <span style={{ fontSize: '13px', color: '#fb923c' }}>· 필터가 바뀌었어요 - 다시 생성해보세요</span>
                     )}
-                    {insightError && <span style={{ fontSize: '11px', color: '#f87171' }}>· {insightError}</span>}
+                    {insightError && <span style={{ fontSize: '13px', color: 'var(--danger)' }}>· {insightError}</span>}
                   </div>
                   {dynamicInsight && (
                     <InsightBox title="🧠 소재 인사이트"
@@ -557,22 +557,22 @@ export default function Home() {
                 </div>
 
                 <div style={{ position: 'relative', maxWidth: '480px', marginBottom: '12px' }}>
-                  <span style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: '#8888aa', pointerEvents: 'none' }}>🔍</span>
+                  <span style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: 'var(--text-muted)', pointerEvents: 'none' }}>🔍</span>
                   <input value={searchText} onChange={e => setSearchText(e.target.value)} placeholder="키워드 또는 광고주명 검색..."
-                    style={{ width: '100%', background: '#1a1a24', border: '1px solid #2e2e3e', borderRadius: '10px', padding: '10px 14px 10px 38px', color: '#e2e2f0', fontSize: '14px', outline: 'none' }} />
+                    style={{ width: '100%', background: 'var(--bg-surface-solid)', border: '1px solid var(--border)', borderRadius: '10px', padding: '10px 14px 10px 38px', color: 'var(--text-primary)', fontSize: '16px', outline: 'none' }} />
                 </div>
 
-                <div style={{ background: 'rgba(26,26,36,0.6)', border: '1px solid #2e2e3e', borderRadius: '10px', padding: '14px', marginBottom: '12px' }}>
+                <div style={{ background: 'var(--bg-surface)', border: '1px solid var(--border)', borderRadius: '10px', padding: '14px', marginBottom: '12px' }}>
                   <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '14px' }}>
                     {slicerGroup('년도', sliceOptions.years, sliceYears, v => toggleSetValue(setSliceYears, v), v => v + '년')}
                     {slicerGroup('월', sliceOptions.months, sliceMonths, v => toggleSetValue(setSliceMonths, v), v => `${v.split('-')[0]}.${v.split('-')[1]}`)}
                     {slicerGroup('광고주명', sliceOptions.advertisers, sliceAdvertisers, v => toggleSetValue(setSliceAdvertisers, v))}
                     {slicerGroup('매체', sliceOptions.platforms, slicePlatforms, v => toggleSetValue(setSlicePlatforms, v), v => v === 'meta' ? 'Meta' : v === 'google' ? 'Google' : v === 'naver_bs' ? '네이버 브검' : v)}
                   </div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginTop: '12px', paddingTop: '10px', borderTop: '1px solid #2e2e3e' }}>
-                    <span style={{ fontSize: '10px', color: '#555568' }}>* 게재일(adStartedAt)이 없는 광고는 수집일 기준으로 년도/월이 계산됩니다</span>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginTop: '12px', paddingTop: '10px', borderTop: '1px solid var(--border)' }}>
+                    <span style={{ fontSize: '12px', color: 'var(--text-faint)' }}>* 게재일(adStartedAt)이 없는 광고는 수집일 기준으로 년도/월이 계산됩니다</span>
                     {(sliceYears.size + sliceMonths.size + sliceAdvertisers.size + slicePlatforms.size) > 0 && (
-                      <button onClick={clearSlicers} style={{ marginLeft: 'auto', fontSize: '11px', color: '#f87171', background: 'none', border: 'none', cursor: 'pointer', whiteSpace: 'nowrap' }}>
+                      <button onClick={clearSlicers} style={{ marginLeft: 'auto', fontSize: '13px', color: 'var(--danger)', background: 'none', border: 'none', cursor: 'pointer', whiteSpace: 'nowrap' }}>
                         ✕ 필터 초기화
                       </button>
                     )}
@@ -583,23 +583,23 @@ export default function Home() {
                   {(['all','image','video'] as const).map(m => (
                     <button key={m} onClick={() => setSearchMedia(m)} style={chip(searchMedia === m)}>{m === 'all' ? '전체' : m === 'image' ? '이미지' : '영상'}</button>
                   ))}
-                  <div style={{ width: '1px', background: '#2e2e3e', margin: '0 4px', height: '16px' }} />
+                  <div style={{ width: '1px', background: 'var(--border)', margin: '0 4px', height: '16px' }} />
                   <button onClick={() => setShowFavOnly(v => !v)} style={chip(showFavOnly)}>⭐ 즐겨찾기만</button>
-                  <span style={{ marginLeft: 'auto', fontSize: '11px', color: '#8888aa' }}>
+                  <span style={{ marginLeft: 'auto', fontSize: '13px', color: 'var(--text-muted)' }}>
                     {showFavOnly ? `${favorites.length}개` : `${searchResults.length}개`}
                   </span>
                 </div>
 
                 {showFavOnly ? (
                   Object.keys(favFolders).length === 0 ? (
-                    <div style={{ textAlign: 'center', padding: '60px', color: '#8888aa' }}>
+                    <div style={{ textAlign: 'center', padding: '60px', color: 'var(--text-muted)' }}>
                       <div style={{ fontSize: '40px', marginBottom: '12px' }}>⭐</div>
                       <p>즐겨찾기한 광고가 없습니다<br />카드의 ☆ 버튼을 눌러 추가해보세요</p>
                     </div>
                   ) : Object.entries(favFolders).map(([folder, items]) => (
                     <div key={folder} style={{ marginBottom: '32px' }}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px', color: '#a78bfa', fontWeight: 600, fontSize: '14px' }}>
-                        📁 {folder} <span style={{ color: '#8888aa', fontWeight: 400, fontSize: '12px' }}>{items.length}개</span>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px', color: 'var(--accent-text)', fontWeight: 600, fontSize: '16px' }}>
+                        📁 {folder} <span style={{ color: 'var(--text-muted)', fontWeight: 400, fontSize: '14px' }}>{items.length}개</span>
                       </div>
                       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))', gap: '12px' }}>
                         {items.map(f => {
@@ -624,9 +624,9 @@ export default function Home() {
                     const pending = mb.stillPending ?? 0;
                     return (
                       <span style={{
-                        fontSize: '11px', fontWeight: 600, padding: '3px 10px', borderRadius: '20px',
+                        fontSize: '13px', fontWeight: 600, padding: '3px 10px', borderRadius: '20px',
                         background: pending > 0 ? 'rgba(251,146,60,0.15)' : 'rgba(52,211,153,0.15)',
-                        color: pending > 0 ? '#fb923c' : '#34d399',
+                        color: pending > 0 ? '#fb923c' : 'var(--success)',
                       }}>
                         {pending > 0 ? `🖼️ 이미지/영상 대기 ${pending}건` : '🖼️ 이미지/영상 전부 채워짐'}
                       </span>
@@ -635,27 +635,27 @@ export default function Home() {
                 </div>
                 <div style={{ display: 'flex', gap: '16px', alignItems: 'flex-end', flexWrap: 'wrap', marginBottom: '16px' }}>
                   <div>
-                    <p style={{ fontSize: '11px', color: '#8888aa', marginBottom: '4px' }}>시작일</p>
+                    <p style={{ fontSize: '13px', color: 'var(--text-muted)', marginBottom: '4px' }}>시작일</p>
                     <input type="date" value={metaStartDate} onChange={e => setMetaStartDate(e.target.value)}
-                      style={{ background: '#1a1a24', border: '1px solid #2e2e3e', borderRadius: '6px', padding: '6px 10px', color: '#e2e2f0', fontSize: '12px' }} />
+                      style={{ background: 'var(--bg-surface-solid)', border: '1px solid var(--border)', borderRadius: '6px', padding: '6px 10px', color: 'var(--text-primary)', fontSize: '14px' }} />
                   </div>
                   <div>
-                    <p style={{ fontSize: '11px', color: '#8888aa', marginBottom: '4px' }}>종료일</p>
+                    <p style={{ fontSize: '13px', color: 'var(--text-muted)', marginBottom: '4px' }}>종료일</p>
                     <input type="date" value={metaEndDate} onChange={e => setMetaEndDate(e.target.value)}
-                      style={{ background: '#1a1a24', border: '1px solid #2e2e3e', borderRadius: '6px', padding: '6px 10px', color: '#e2e2f0', fontSize: '12px' }} />
+                      style={{ background: 'var(--bg-surface-solid)', border: '1px solid var(--border)', borderRadius: '6px', padding: '6px 10px', color: 'var(--text-primary)', fontSize: '14px' }} />
                   </div>
                   {(metaStartDate || metaEndDate) && (
                     <button onClick={() => { setMetaStartDate(''); setMetaEndDate(''); }}
-                      style={{ background: 'transparent', border: '1px solid #2e2e3e', borderRadius: '6px', padding: '6px 10px', color: '#8888aa', fontSize: '12px', cursor: 'pointer' }}>
+                      style={{ background: 'transparent', border: '1px solid var(--border)', borderRadius: '6px', padding: '6px 10px', color: 'var(--text-muted)', fontSize: '14px', cursor: 'pointer' }}>
                       기간 초기화
                     </button>
                   )}
                 </div>
                 <div style={{ position: 'relative', maxWidth: '420px', marginBottom: '16px' }}>
                   <input value={metaSearchText} onChange={e => setMetaSearchText(e.target.value)} placeholder="키워드 또는 광고주명 검색..."
-                    style={{ width: '100%', background: '#1a1a24', border: '1px solid #2e2e3e', borderRadius: '10px', padding: '10px 14px', color: '#e2e2f0', fontSize: '13px', outline: 'none' }} />
+                    style={{ width: '100%', background: 'var(--bg-surface-solid)', border: '1px solid var(--border)', borderRadius: '10px', padding: '10px 14px', color: 'var(--text-primary)', fontSize: '15px', outline: 'none' }} />
                 </div>
-                <p style={{ fontSize: '11px', color: '#8888aa', marginBottom: '14px' }}>{metaItems.length}개</p>
+                <p style={{ fontSize: '13px', color: 'var(--text-muted)', marginBottom: '14px' }}>{metaItems.length}개</p>
                 {adGrid(metaItems)}
               </>
             )}
@@ -666,27 +666,27 @@ export default function Home() {
                 <h2 style={{ fontSize: '20px', fontWeight: 700, marginBottom: '16px' }}>구글 광고</h2>
                 <div style={{ display: 'flex', gap: '16px', alignItems: 'flex-end', flexWrap: 'wrap', marginBottom: '16px' }}>
                   <div>
-                    <p style={{ fontSize: '11px', color: '#8888aa', marginBottom: '4px' }}>시작일</p>
+                    <p style={{ fontSize: '13px', color: 'var(--text-muted)', marginBottom: '4px' }}>시작일</p>
                     <input type="date" value={googleStartDate} onChange={e => setGoogleStartDate(e.target.value)}
-                      style={{ background: '#1a1a24', border: '1px solid #2e2e3e', borderRadius: '6px', padding: '6px 10px', color: '#e2e2f0', fontSize: '12px' }} />
+                      style={{ background: 'var(--bg-surface-solid)', border: '1px solid var(--border)', borderRadius: '6px', padding: '6px 10px', color: 'var(--text-primary)', fontSize: '14px' }} />
                   </div>
                   <div>
-                    <p style={{ fontSize: '11px', color: '#8888aa', marginBottom: '4px' }}>종료일</p>
+                    <p style={{ fontSize: '13px', color: 'var(--text-muted)', marginBottom: '4px' }}>종료일</p>
                     <input type="date" value={googleEndDate} onChange={e => setGoogleEndDate(e.target.value)}
-                      style={{ background: '#1a1a24', border: '1px solid #2e2e3e', borderRadius: '6px', padding: '6px 10px', color: '#e2e2f0', fontSize: '12px' }} />
+                      style={{ background: 'var(--bg-surface-solid)', border: '1px solid var(--border)', borderRadius: '6px', padding: '6px 10px', color: 'var(--text-primary)', fontSize: '14px' }} />
                   </div>
                   {(googleStartDate || googleEndDate) && (
                     <button onClick={() => { setGoogleStartDate(''); setGoogleEndDate(''); }}
-                      style={{ background: 'transparent', border: '1px solid #2e2e3e', borderRadius: '6px', padding: '6px 10px', color: '#8888aa', fontSize: '12px', cursor: 'pointer' }}>
+                      style={{ background: 'transparent', border: '1px solid var(--border)', borderRadius: '6px', padding: '6px 10px', color: 'var(--text-muted)', fontSize: '14px', cursor: 'pointer' }}>
                       기간 초기화
                     </button>
                   )}
                 </div>
                 <div style={{ position: 'relative', maxWidth: '420px', marginBottom: '16px' }}>
                   <input value={googleSearchText} onChange={e => setGoogleSearchText(e.target.value)} placeholder="키워드 또는 광고주명 검색..."
-                    style={{ width: '100%', background: '#1a1a24', border: '1px solid #2e2e3e', borderRadius: '10px', padding: '10px 14px', color: '#e2e2f0', fontSize: '13px', outline: 'none' }} />
+                    style={{ width: '100%', background: 'var(--bg-surface-solid)', border: '1px solid var(--border)', borderRadius: '10px', padding: '10px 14px', color: 'var(--text-primary)', fontSize: '15px', outline: 'none' }} />
                 </div>
-                <p style={{ fontSize: '11px', color: '#8888aa', marginBottom: '14px' }}>{googleItems.length}개</p>
+                <p style={{ fontSize: '13px', color: 'var(--text-muted)', marginBottom: '14px' }}>{googleItems.length}개</p>
                 {adGrid(googleItems)}
               </>
             )}
@@ -694,38 +694,38 @@ export default function Home() {
             {/* 경쟁사 대시보드 > 브랜드별 */}
             {view === 'dash-brand' && !selectedBrand && (
               <>
-                <h1 style={{ fontSize: '22px', fontWeight: 700, color: '#fff', marginBottom: '24px' }}>브랜드별</h1>
+                <h1 style={{ fontSize: '22px', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '24px' }}>브랜드별</h1>
 
                 <section style={{ marginBottom: '32px' }}>
                   {sectionLabel('경쟁사 KPI 매트릭스')}
-                  <div style={{ background: 'rgba(26,26,36,0.8)', border: '1px solid #2e2e3e', borderRadius: '12px', overflow: 'hidden' }}>
-                    <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '14px' }}>
+                  <div style={{ background: 'var(--bg-surface)', border: '1px solid var(--border)', borderRadius: '12px', overflow: 'hidden' }}>
+                    <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '16px' }}>
                       <thead>
-                        <tr style={{ borderBottom: '1px solid #2e2e3e' }}>
+                        <tr style={{ borderBottom: '1px solid var(--border)' }}>
                           {['경쟁사', '활성', '신규 M', '종료 M', 'VIDEO', 'IMAGE'].map(h => (
-                            <th key={h} style={{ padding: '12px 16px', textAlign: h === '경쟁사' ? 'left' : 'right', fontSize: '11px', color: '#8888aa', fontWeight: 500, textTransform: 'uppercase' }}>{h}</th>
+                            <th key={h} style={{ padding: '12px 16px', textAlign: h === '경쟁사' ? 'left' : 'right', fontSize: '13px', color: 'var(--text-muted)', fontWeight: 500, textTransform: 'uppercase' }}>{h}</th>
                           ))}
                         </tr>
                       </thead>
                       <tbody>
                         {brandStats.map(b => (
                           <tr key={b.name} onClick={() => goToBrand(b.name)}
-                            style={{ borderBottom: '1px solid rgba(46,46,62,0.4)', cursor: 'pointer', background: b.isClient ? 'rgba(108,99,255,0.06)' : 'transparent', transition: 'background 0.15s' }}
-                            onMouseEnter={e => (e.currentTarget.style.background = b.isClient ? 'rgba(108,99,255,0.12)' : 'rgba(255,255,255,0.03)')}
-                            onMouseLeave={e => (e.currentTarget.style.background = b.isClient ? 'rgba(108,99,255,0.06)' : 'transparent')}>
+                            style={{ borderBottom: '1px solid rgba(var(--border-rgb),0.4)', cursor: 'pointer', background: b.isClient ? 'rgba(var(--accent-rgb),0.06)' : 'transparent', transition: 'background 0.15s' }}
+                            onMouseEnter={e => (e.currentTarget.style.background = b.isClient ? 'rgba(var(--accent-rgb),0.12)' : 'rgba(255,255,255,0.03)')}
+                            onMouseLeave={e => (e.currentTarget.style.background = b.isClient ? 'rgba(var(--accent-rgb),0.06)' : 'transparent')}>
                             <td style={{ padding: '12px 16px' }}>
-                              <span style={{ color: '#e2e2f0', fontWeight: 500 }}>{b.name}</span>
-                              {b.isClient && <span style={{ marginLeft: '8px', background: 'rgba(108,99,255,0.4)', color: '#a78bfa', fontSize: '10px', fontWeight: 600, padding: '1px 6px', borderRadius: '3px' }}>client</span>}
+                              <span style={{ color: 'var(--text-primary)', fontWeight: 500 }}>{b.name}</span>
+                              {b.isClient && <span style={{ marginLeft: '8px', background: 'rgba(var(--accent-rgb),0.4)', color: 'var(--accent-text)', fontSize: '12px', fontWeight: 600, padding: '1px 6px', borderRadius: '3px' }}>client</span>}
                             </td>
-                            <td style={{ padding: '12px 16px', textAlign: 'right', fontFamily: 'monospace', fontWeight: 700, color: '#fff' }}>{b.total.toLocaleString()}</td>
+                            <td style={{ padding: '12px 16px', textAlign: 'right', fontFamily: 'monospace', fontWeight: 700, color: 'var(--text-primary)' }}>{b.total.toLocaleString()}</td>
                             <td style={{ padding: '12px 16px', textAlign: 'right' }}>
-                              {b.new24h > 0 ? <span style={{ background: 'rgba(52,211,153,0.15)', color: '#34d399', fontSize: '12px', fontWeight: 600, padding: '2px 8px', borderRadius: '4px' }}>+{b.new24h}</span> : <span style={{ color: '#4e4e6e' }}>-</span>}
+                              {b.new24h > 0 ? <span style={{ background: 'rgba(52,211,153,0.15)', color: 'var(--success)', fontSize: '14px', fontWeight: 600, padding: '2px 8px', borderRadius: '4px' }}>+{b.new24h}</span> : <span style={{ color: 'var(--text-faint)' }}>-</span>}
                             </td>
                             <td style={{ padding: '12px 16px', textAlign: 'right' }}>
-                              {b.ended24h > 0 ? <span style={{ background: 'rgba(248,113,113,0.15)', color: '#f87171', fontSize: '12px', fontWeight: 600, padding: '2px 8px', borderRadius: '4px' }}>-{b.ended24h}</span> : <span style={{ color: '#4e4e6e' }}>-</span>}
+                              {b.ended24h > 0 ? <span style={{ background: 'rgba(248,113,113,0.15)', color: 'var(--danger)', fontSize: '14px', fontWeight: 600, padding: '2px 8px', borderRadius: '4px' }}>-{b.ended24h}</span> : <span style={{ color: 'var(--text-faint)' }}>-</span>}
                             </td>
-                            <td style={{ padding: '12px 16px', textAlign: 'right', color: '#c4c4d4' }}>{b.video > 0 ? b.video : <span style={{ color: '#4e4e6e' }}>-</span>}</td>
-                            <td style={{ padding: '12px 16px', textAlign: 'right', color: '#c4c4d4' }}>{b.image > 0 ? b.image : <span style={{ color: '#4e4e6e' }}>-</span>}</td>
+                            <td style={{ padding: '12px 16px', textAlign: 'right', color: 'var(--text-secondary)' }}>{b.video > 0 ? b.video : <span style={{ color: 'var(--text-faint)' }}>-</span>}</td>
+                            <td style={{ padding: '12px 16px', textAlign: 'right', color: 'var(--text-secondary)' }}>{b.image > 0 ? b.image : <span style={{ color: 'var(--text-faint)' }}>-</span>}</td>
                           </tr>
                         ))}
                       </tbody>
@@ -738,10 +738,10 @@ export default function Home() {
                   <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(140px, 1fr))', gap: '10px' }}>
                     {brandStats.map(b => (
                       <button key={b.name} onClick={() => goToBrand(b.name)}
-                        style={{ background: b.isClient ? 'rgba(108,99,255,0.1)' : 'rgba(26,26,36,0.8)', border: `1px solid ${b.isClient ? 'rgba(108,99,255,0.4)' : '#2e2e3e'}`, borderRadius: '12px', padding: '12px', textAlign: 'center', cursor: 'pointer' }}>
-                        <div style={{ fontSize: '13px', fontWeight: 600, color: '#e2e2f0' }}>{b.name}</div>
-                        <div style={{ fontSize: '11px', color: '#8888aa', marginTop: '4px' }}>활성 {b.total.toLocaleString()}</div>
-                        {b.isClient && <div style={{ marginTop: '6px' }}><span style={{ background: 'rgba(108,99,255,0.3)', color: '#a78bfa', fontSize: '10px', padding: '1px 6px', borderRadius: '3px' }}>client</span></div>}
+                        style={{ background: b.isClient ? 'var(--accent-soft)' : 'var(--bg-surface)', border: `1px solid ${b.isClient ? 'rgba(var(--accent-rgb),0.4)' : 'var(--border)'}`, borderRadius: '12px', padding: '12px', textAlign: 'center', cursor: 'pointer' }}>
+                        <div style={{ fontSize: '15px', fontWeight: 600, color: 'var(--text-primary)' }}>{b.name}</div>
+                        <div style={{ fontSize: '13px', color: 'var(--text-muted)', marginTop: '4px' }}>활성 {b.total.toLocaleString()}</div>
+                        {b.isClient && <div style={{ marginTop: '6px' }}><span style={{ background: 'rgba(var(--accent-rgb),0.3)', color: 'var(--accent-text)', fontSize: '12px', padding: '1px 6px', borderRadius: '3px' }}>client</span></div>}
                       </button>
                     ))}
                   </div>
@@ -753,12 +753,12 @@ export default function Home() {
             {view === 'dash-brand' && selectedBrand && (
               <>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '24px' }}>
-                  <button onClick={() => setSelectedBrand(null)} style={{ background: 'none', border: '1px solid #2e2e3e', color: '#8888aa', padding: '4px 10px', borderRadius: '6px', cursor: 'pointer', fontSize: '12px' }}>
+                  <button onClick={() => setSelectedBrand(null)} style={{ background: 'none', border: '1px solid var(--border)', color: 'var(--text-muted)', padding: '4px 10px', borderRadius: '6px', cursor: 'pointer', fontSize: '14px' }}>
                     ← 목록으로
                   </button>
                   <h2 style={{ fontSize: '22px', fontWeight: 700 }}>{selectedBrand}</h2>
                   {brandStats.find(b => b.name === selectedBrand)?.isClient && (
-                    <span style={{ background: 'rgba(108,99,255,0.4)', color: '#a78bfa', fontSize: '10px', fontWeight: 600, padding: '2px 8px', borderRadius: '4px' }}>client</span>
+                    <span style={{ background: 'rgba(var(--accent-rgb),0.4)', color: 'var(--accent-text)', fontSize: '12px', fontWeight: 600, padding: '2px 8px', borderRadius: '4px' }}>client</span>
                   )}
                 </div>
 
@@ -767,13 +767,13 @@ export default function Home() {
                     const s = brandStats.find(b => b.name === selectedBrand);
                     if (!s) return null;
                     return [
-                      { label: `전체 ${s.total}`, color: '#a78bfa' },
+                      { label: `전체 ${s.total}`, color: 'var(--accent-text)' },
                       { label: `Meta ${data.filter(i=>i.platform==='meta'&&(i.advertiserName||'').includes(selectedBrand)).length}`, color: '#6aadff' },
                       { label: `Google ${data.filter(i=>i.platform==='google'&&(i.advertiserName||'').includes(selectedBrand)).length}`, color: '#ff8a80' },
-                      { label: `이미지 ${s.image}`, color: '#e2e2f0' },
-                      { label: `영상 ${s.video}`, color: '#e2e2f0' },
+                      { label: `이미지 ${s.image}`, color: 'var(--text-primary)' },
+                      { label: `영상 ${s.video}`, color: 'var(--text-primary)' },
                     ].map(({ label, color }) => (
-                      <span key={label} style={{ fontSize: '11px', color, background: '#22222f', padding: '3px 10px', borderRadius: '20px' }}>{label}</span>
+                      <span key={label} style={{ fontSize: '13px', color, background: 'var(--bg-elevated)', padding: '3px 10px', borderRadius: '20px' }}>{label}</span>
                     ));
                   })()}
                 </div>
@@ -784,13 +784,13 @@ export default function Home() {
                       .filter(i => i.platform === plat && ((i.advertiserName||'').toLowerCase().includes(selectedBrand.toLowerCase()) || (i.keyword||'').toLowerCase() === selectedBrand.toLowerCase()))
                       .sort((a,b) => (b.collectedAt || '').localeCompare(a.collectedAt || '')).slice(0, 5);
                     return (
-                      <div key={plat} style={{ background: 'rgba(26,26,36,0.8)', border: '1px solid #2e2e3e', borderRadius: '12px', padding: '16px' }}>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px', paddingBottom: '10px', borderBottom: '1px solid #2e2e3e' }}>
-                          <span style={{ background: plat === 'meta' ? '#1877f2' : '#ea4335', color: '#fff', fontSize: '10px', fontWeight: 700, padding: '2px 8px', borderRadius: '4px', textTransform: 'uppercase' }}>{plat}</span>
-                          <span style={{ fontSize: '13px', fontWeight: 600 }}>최신 5개</span>
+                      <div key={plat} style={{ background: 'var(--bg-surface)', border: '1px solid var(--border)', borderRadius: '12px', padding: '16px' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px', paddingBottom: '10px', borderBottom: '1px solid var(--border)' }}>
+                          <span style={{ background: plat === 'meta' ? '#1877f2' : '#ea4335', color: '#fff', fontSize: '12px', fontWeight: 700, padding: '2px 8px', borderRadius: '4px', textTransform: 'uppercase' }}>{plat}</span>
+                          <span style={{ fontSize: '15px', fontWeight: 600 }}>최신 5개</span>
                         </div>
                         {platItems.length === 0 ? (
-                          <div style={{ color: '#8888aa', fontSize: '12px', padding: '16px 0', textAlign: 'center' }}>수집된 {plat} 광고 없음</div>
+                          <div style={{ color: 'var(--text-muted)', fontSize: '14px', padding: '16px 0', textAlign: 'center' }}>수집된 {plat} 광고 없음</div>
                         ) : (
                           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(130px, 1fr))', gap: '8px' }}>
                             {platItems.map(item => (
@@ -805,13 +805,13 @@ export default function Home() {
 
                 <div>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '14px', flexWrap: 'wrap' }}>
-                    <span style={{ fontSize: '13px', fontWeight: 600 }}>전체 광고</span>
-                    <span style={{ fontSize: '11px', color: '#8888aa' }}>{brandItems.length}개</span>
+                    <span style={{ fontSize: '15px', fontWeight: 600 }}>전체 광고</span>
+                    <span style={{ fontSize: '13px', color: 'var(--text-muted)' }}>{brandItems.length}개</span>
                     <div style={{ marginLeft: 'auto', display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
                       {(['all','meta','google'] as const).map(p => (
                         <button key={p} onClick={() => setBrandPlatform(p)} style={chip(brandPlatform === p)}>{p === 'all' ? '전체' : p}</button>
                       ))}
-                      <div style={{ width: '1px', background: '#2e2e3e', margin: '0 4px' }} />
+                      <div style={{ width: '1px', background: 'var(--border)', margin: '0 4px' }} />
                       {(['all','image','video'] as const).map(m => (
                         <button key={m} onClick={() => setBrandMedia(m)} style={chip(brandMedia === m)}>{m === 'all' ? '전체' : m === 'image' ? '이미지' : '영상'}</button>
                       ))}
@@ -829,8 +829,8 @@ export default function Home() {
                 <WeekSelector weekKeys={bsWeekKeys} selected={bsSelectedWeek} onSelect={setBsSelectedWeek} />
 
                 {bsWeeklySummary.length > 0 && (
-                  <div style={{ marginBottom: '16px', padding: '14px 18px', background: 'rgba(26,26,36,0.6)', border: '1px solid #2e2e3e', borderRadius: '10px' }}>
-                    <p style={{ fontSize: '11px', fontWeight: 700, color: '#8888aa', marginBottom: '10px' }}>이번 주 변경사항</p>
+                  <div style={{ marginBottom: '16px', padding: '14px 18px', background: 'var(--bg-surface)', border: '1px solid var(--border)', borderRadius: '10px' }}>
+                    <p style={{ fontSize: '13px', fontWeight: 700, color: 'var(--text-muted)', marginBottom: '10px' }}>이번 주 변경사항</p>
                     <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
                       {bsWeeklySummary.map(({ brand, diff, changeCount }) => {
                         const changed = !diff.isFirstSnapshot && changeCount > 0;
@@ -840,16 +840,16 @@ export default function Home() {
                             style={{
                               display: 'flex', alignItems: 'center', gap: '6px', padding: '7px 12px', borderRadius: '8px',
                               cursor: changed ? 'pointer' : 'default',
-                              background: changed ? 'rgba(251,146,60,0.15)' : 'rgba(136,136,170,0.06)',
-                              border: `1px solid ${changed ? '#fb923c' : '#2e2e3e'}`,
+                              background: changed ? 'rgba(251,146,60,0.15)' : 'rgba(var(--text-muted-rgb),0.06)',
+                              border: `1px solid ${changed ? '#fb923c' : 'var(--border)'}`,
                             }}>
-                            <span style={{ fontSize: '12px', fontWeight: 600, color: '#e2e2f0' }}>{brand}</span>
+                            <span style={{ fontSize: '14px', fontWeight: 600, color: 'var(--text-primary)' }}>{brand}</span>
                             {diff.isFirstSnapshot ? (
-                              <span style={{ fontSize: '10px', color: '#6b7280' }}>최초 수집</span>
+                              <span style={{ fontSize: '12px', color: 'var(--text-muted)' }}>최초 수집</span>
                             ) : changed ? (
-                              <span style={{ fontSize: '12px', fontWeight: 800, color: '#fb923c' }}>🔴 변경 있음</span>
+                              <span style={{ fontSize: '14px', fontWeight: 800, color: '#fb923c' }}>🔴 변경 있음</span>
                             ) : (
-                              <span style={{ fontSize: '10px', color: '#666680' }}>변경없음</span>
+                              <span style={{ fontSize: '12px', color: '#666680' }}>변경없음</span>
                             )}
                           </div>
                         );
@@ -859,7 +859,7 @@ export default function Home() {
                 )}
 
                 {bsData.length === 0 ? (
-                  <div style={{ textAlign: 'center', padding: '60px', color: '#8888aa' }}>
+                  <div style={{ textAlign: 'center', padding: '60px', color: 'var(--text-muted)' }}>
                     <div style={{ fontSize: '40px', marginBottom: '12px' }}>🔎</div>
                     <p>수집된 브랜드검색 데이터가 없습니다</p>
                   </div>
@@ -875,31 +875,31 @@ export default function Home() {
                       const showDiffBox = isOpen && summaryEntry && !summaryEntry.diff.isFirstSnapshot && summaryEntry.changeCount > 0;
 
                       return (
-                        <div key={brand} style={{ background: 'rgba(26,26,36,0.8)', border: '1px solid #2e2e3e', borderRadius: '12px', overflow: 'hidden' }}>
+                        <div key={brand} style={{ background: 'var(--bg-surface)', border: '1px solid var(--border)', borderRadius: '12px', overflow: 'hidden' }}>
                           <button onClick={() => toggleBsExpand(brand)}
-                            style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '14px 20px', background: 'none', border: 'none', cursor: 'pointer', color: '#e2e2f0' }}>
+                            style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '14px 20px', background: 'none', border: 'none', cursor: 'pointer', color: 'var(--text-primary)' }}>
                             <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                               <span style={{ fontSize: '15px', fontWeight: 600 }}>{brand}</span>
-                              {brand === CLIENT_BRAND && <span style={{ background: 'rgba(108,99,255,0.4)', color: '#a78bfa', fontSize: '10px', fontWeight: 600, padding: '1px 6px', borderRadius: '3px' }}>client</span>}
-                              <span style={{ fontSize: '11px', color: '#8888aa' }}>PC {pc ? '✓' : '✗'} · MO {mo ? '✓' : '✗'}</span>
+                              {brand === CLIENT_BRAND && <span style={{ background: 'rgba(var(--accent-rgb),0.4)', color: 'var(--accent-text)', fontSize: '12px', fontWeight: 600, padding: '1px 6px', borderRadius: '3px' }}>client</span>}
+                              <span style={{ fontSize: '13px', color: 'var(--text-muted)' }}>PC {pc ? '✓' : '✗'} · MO {mo ? '✓' : '✗'}</span>
                             </div>
-                            <span style={{ color: '#8888aa', fontSize: '18px', transition: 'transform 0.2s', transform: isOpen ? 'rotate(180deg)' : 'none' }}>▼</span>
+                            <span style={{ color: 'var(--text-muted)', fontSize: '18px', transition: 'transform 0.2s', transform: isOpen ? 'rotate(180deg)' : 'none' }}>▼</span>
                           </button>
 
                           {isOpen && (
-                            <div style={{ borderTop: '1px solid #2e2e3e', padding: '20px' }}>
+                            <div style={{ borderTop: '1px solid var(--border)', padding: '20px' }}>
                               {showDiffBox && summaryEntry && (
                                 <div style={{ marginBottom: '20px', padding: '12px 16px', background: 'rgba(251,146,60,0.08)', border: '1px solid rgba(251,146,60,0.3)', borderRadius: '10px' }}>
-                                  <p style={{ fontSize: '11px', fontWeight: 700, color: '#fb923c', marginBottom: '8px' }}>이번 주 변경사항</p>
+                                  <p style={{ fontSize: '13px', fontWeight: 700, color: '#fb923c', marginBottom: '8px' }}>이번 주 변경사항</p>
                                   <ul style={{ margin: 0, paddingLeft: '18px', display: 'flex', flexDirection: 'column', gap: '4px' }}>
                                     {summaryEntry.diff.added.map((c, i) => (
-                                      <li key={`a${i}`} style={{ fontSize: '11px', color: '#e2e2f0' }}>
-                                        🆕 <span style={{ color: '#8888aa' }}>[{c.device.toUpperCase()}·{c.area}]</span> {c.text || '(제목 없음)'} 신규
+                                      <li key={`a${i}`} style={{ fontSize: '13px', color: 'var(--text-primary)' }}>
+                                        🆕 <span style={{ color: 'var(--text-muted)' }}>[{c.device.toUpperCase()}·{c.area}]</span> {c.text || '(제목 없음)'} 신규
                                       </li>
                                     ))}
                                     {summaryEntry.diff.removed.map((c, i) => (
-                                      <li key={`r${i}`} style={{ fontSize: '11px', color: '#e2e2f0' }}>
-                                        ❌ <span style={{ color: '#8888aa' }}>[{c.device.toUpperCase()}·{c.area}]</span> {c.text || '(제목 없음)'} 종료
+                                      <li key={`r${i}`} style={{ fontSize: '13px', color: 'var(--text-primary)' }}>
+                                        ❌ <span style={{ color: 'var(--text-muted)' }}>[{c.device.toUpperCase()}·{c.area}]</span> {c.text || '(제목 없음)'} 종료
                                       </li>
                                     ))}
                                   </ul>
@@ -907,25 +907,25 @@ export default function Home() {
                               )}
                               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', marginBottom: '24px' }}>
                                 {[{ item: pc, label: 'PC' }, { item: mo, label: 'MO' }].map(({ item, label }) => (
-                                  <div key={label} style={{ background: '#22222f', border: '1px solid #2e2e3e', borderRadius: '10px', overflow: 'hidden' }}>
-                                    <div style={{ padding: '10px 14px', borderBottom: '1px solid #2e2e3e', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                                      <span style={{ background: '#03c75a', color: '#fff', fontSize: '10px', fontWeight: 700, padding: '2px 8px', borderRadius: '4px' }}>{label}</span>
-                                      <span style={{ fontSize: '12px', fontWeight: 600 }}>네이버 브랜드검색</span>
-                                      {item && <span style={{ marginLeft: 'auto', fontSize: '10px', color: '#8888aa' }}>{new Date(item.collectedAt).toLocaleDateString('ko-KR')}</span>}
+                                  <div key={label} style={{ background: 'var(--bg-elevated)', border: '1px solid var(--border)', borderRadius: '10px', overflow: 'hidden' }}>
+                                    <div style={{ padding: '10px 14px', borderBottom: '1px solid var(--border)', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                                      <span style={{ background: '#03c75a', color: '#fff', fontSize: '12px', fontWeight: 700, padding: '2px 8px', borderRadius: '4px' }}>{label}</span>
+                                      <span style={{ fontSize: '14px', fontWeight: 600 }}>네이버 브랜드검색</span>
+                                      {item && <span style={{ marginLeft: 'auto', fontSize: '12px', color: 'var(--text-muted)' }}>{new Date(item.collectedAt).toLocaleDateString('ko-KR')}</span>}
                                     </div>
                                     <div style={{ padding: '12px' }}>
                                       {!item ? (
-                                        <div style={{ color: '#8888aa', fontSize: '12px', padding: '20px 0', textAlign: 'center' }}>수집된 데이터 없음</div>
+                                        <div style={{ color: 'var(--text-muted)', fontSize: '14px', padding: '20px 0', textAlign: 'center' }}>수집된 데이터 없음</div>
                                       ) : item.localPath ? (
                                         <div style={{ maxHeight: '320px', overflow: 'hidden', borderRadius: '8px', cursor: 'pointer', position: 'relative' }}
                                           onClick={() => window.open(mediaUrl(item.localPath), '_blank')}>
                                           <img src={mediaUrl(item.localPath)} alt="" style={{ width: '100%', display: 'block' }} />
                                           <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '40px', background: 'linear-gradient(transparent, rgba(0,0,0,0.6))', display: 'flex', alignItems: 'flex-end', justifyContent: 'center', paddingBottom: '6px' }}>
-                                            <span style={{ fontSize: '10px', color: '#fff' }}>클릭해서 전체 이미지 보기</span>
+                                            <span style={{ fontSize: '12px', color: '#fff' }}>클릭해서 전체 이미지 보기</span>
                                           </div>
                                         </div>
                                       ) : (
-                                        <div style={{ color: '#8888aa', fontSize: '12px', padding: '20px 0', textAlign: 'center' }}>이미지 없음</div>
+                                        <div style={{ color: 'var(--text-muted)', fontSize: '14px', padding: '20px 0', textAlign: 'center' }}>이미지 없음</div>
                                       )}
                                     </div>
                                   </div>
@@ -934,31 +934,31 @@ export default function Home() {
 
                               {pc && pc.buttons && pc.buttons.length > 0 && (
                                 <div style={{ marginBottom: '24px' }}>
-                                  <p style={{ fontSize: '12px', fontWeight: 700, color: '#a78bfa', marginBottom: '10px' }}>PC 랜딩</p>
+                                  <p style={{ fontSize: '14px', fontWeight: 700, color: 'var(--accent-text)', marginBottom: '10px' }}>PC 랜딩</p>
                                   <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))', gap: '12px' }}>
                                     {pc.buttons.filter((btn: any) => btn.landingScreenshot).map((btn: any, idx: number) => (
-                                      <div key={idx} style={{ background: '#22222f', border: '1px solid #2e2e3e', borderRadius: '8px', overflow: 'hidden' }}>
-                                        <div style={{ padding: '6px 10px', borderBottom: '1px solid #2e2e3e' }}>
+                                      <div key={idx} style={{ background: 'var(--bg-elevated)', border: '1px solid var(--border)', borderRadius: '8px', overflow: 'hidden' }}>
+                                        <div style={{ padding: '6px 10px', borderBottom: '1px solid var(--border)' }}>
                                           <div style={{ display: 'flex', gap: '4px', marginBottom: '4px', flexWrap: 'wrap' }}>
-                                            {btn.area && <span style={{ display: 'inline-block', background: '#03c75a', color: '#fff', fontSize: '9px', fontWeight: 700, padding: '2px 7px', borderRadius: '4px' }}>{btn.area}</span>}
-                                            <span style={{ display: 'inline-block', background: '#6c63ff', color: '#fff', fontSize: '10px', fontWeight: 600, padding: '2px 7px', borderRadius: '4px' }}>{btn.buttonText || '버튼'}</span>
+                                            {btn.area && <span style={{ display: 'inline-block', background: '#03c75a', color: '#fff', fontSize: '11px', fontWeight: 700, padding: '2px 7px', borderRadius: '4px' }}>{btn.area}</span>}
+                                            <span style={{ display: 'inline-block', background: 'var(--accent)', color: '#fff', fontSize: '12px', fontWeight: 600, padding: '2px 7px', borderRadius: '4px' }}>{btn.buttonText || '버튼'}</span>
                                           </div>
                                           <a href={btn.finalUrl || btn.buttonUrl} target="_blank" rel="noopener noreferrer"
-                                            style={{ display: 'block', fontSize: '9px', color: '#a78bfa', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', textDecoration: 'none' }}>
+                                            style={{ display: 'block', fontSize: '11px', color: 'var(--accent-text)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', textDecoration: 'none' }}>
                                             {(btn.finalUrl || btn.buttonUrl || '').slice(0, 40)}...
                                           </a>
                                         </div>
                                         {btn.slideImage && (
-                                          <div style={{ position: 'relative', overflow: 'hidden', cursor: 'pointer', borderBottom: '1px solid #2e2e3e' }}
+                                          <div style={{ position: 'relative', overflow: 'hidden', cursor: 'pointer', borderBottom: '1px solid var(--border)' }}
                                             onClick={() => window.open(mediaUrl(btn.slideImage), '_blank')}>
                                             <img src={mediaUrl(btn.slideImage)} alt="배너 이미지" style={{ width: '100%', display: 'block' }} />
-                                            <span style={{ position: 'absolute', top: '4px', left: '4px', background: 'rgba(0,0,0,0.6)', color: '#fff', fontSize: '8px', padding: '2px 6px', borderRadius: '3px' }}>배너 이미지</span>
+                                            <span style={{ position: 'absolute', top: '4px', left: '4px', background: 'rgba(0,0,0,0.6)', color: '#fff', fontSize: '10px', padding: '2px 6px', borderRadius: '3px' }}>배너 이미지</span>
                                           </div>
                                         )}
                                         <div style={{ position: 'relative', overflow: 'hidden', maxHeight: '220px', cursor: 'pointer' }}
                                           onClick={() => window.open(btn.finalUrl || btn.buttonUrl, '_blank')}>
                                           <img src={mediaUrl(btn.landingScreenshot)} alt="랜딩" style={{ width: '100%', display: 'block' }} />
-                                          {btn.slideImage && <span style={{ position: 'absolute', top: '4px', left: '4px', background: 'rgba(0,0,0,0.6)', color: '#fff', fontSize: '8px', padding: '2px 6px', borderRadius: '3px' }}>랜딩 페이지</span>}
+                                          {btn.slideImage && <span style={{ position: 'absolute', top: '4px', left: '4px', background: 'rgba(0,0,0,0.6)', color: '#fff', fontSize: '10px', padding: '2px 6px', borderRadius: '3px' }}>랜딩 페이지</span>}
                                         </div>
                                       </div>
                                     ))}
@@ -968,31 +968,31 @@ export default function Home() {
 
                               {mo && mo.buttons && mo.buttons.length > 0 && (
                                 <div>
-                                  <p style={{ fontSize: '12px', fontWeight: 700, color: '#a78bfa', marginBottom: '10px' }}>MO 랜딩</p>
+                                  <p style={{ fontSize: '14px', fontWeight: 700, color: 'var(--accent-text)', marginBottom: '10px' }}>MO 랜딩</p>
                                   <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(160px, 1fr))', gap: '12px' }}>
                                     {mo.buttons.filter((btn: any) => btn.landingScreenshot).map((btn: any, idx: number) => (
-                                      <div key={idx} style={{ background: '#22222f', border: '1px solid #2e2e3e', borderRadius: '8px', overflow: 'hidden' }}>
-                                        <div style={{ padding: '6px 10px', borderBottom: '1px solid #2e2e3e' }}>
+                                      <div key={idx} style={{ background: 'var(--bg-elevated)', border: '1px solid var(--border)', borderRadius: '8px', overflow: 'hidden' }}>
+                                        <div style={{ padding: '6px 10px', borderBottom: '1px solid var(--border)' }}>
                                           <div style={{ display: 'flex', gap: '4px', marginBottom: '4px', flexWrap: 'wrap' }}>
-                                            {btn.area && <span style={{ display: 'inline-block', background: '#03c75a', color: '#fff', fontSize: '9px', fontWeight: 700, padding: '2px 7px', borderRadius: '4px' }}>{btn.area}</span>}
-                                            <span style={{ display: 'inline-block', background: '#6c63ff', color: '#fff', fontSize: '10px', fontWeight: 600, padding: '2px 7px', borderRadius: '4px' }}>{btn.buttonText || '버튼'}</span>
+                                            {btn.area && <span style={{ display: 'inline-block', background: '#03c75a', color: '#fff', fontSize: '11px', fontWeight: 700, padding: '2px 7px', borderRadius: '4px' }}>{btn.area}</span>}
+                                            <span style={{ display: 'inline-block', background: 'var(--accent)', color: '#fff', fontSize: '12px', fontWeight: 600, padding: '2px 7px', borderRadius: '4px' }}>{btn.buttonText || '버튼'}</span>
                                           </div>
                                           <a href={btn.finalUrl || btn.buttonUrl} target="_blank" rel="noopener noreferrer"
-                                            style={{ display: 'block', fontSize: '9px', color: '#a78bfa', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', textDecoration: 'none' }}>
+                                            style={{ display: 'block', fontSize: '11px', color: 'var(--accent-text)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', textDecoration: 'none' }}>
                                             {(btn.finalUrl || btn.buttonUrl || '').slice(0, 30)}...
                                           </a>
                                         </div>
                                         {btn.slideImage && (
-                                          <div style={{ position: 'relative', overflow: 'hidden', cursor: 'pointer', borderBottom: '1px solid #2e2e3e' }}
+                                          <div style={{ position: 'relative', overflow: 'hidden', cursor: 'pointer', borderBottom: '1px solid var(--border)' }}
                                             onClick={() => window.open(mediaUrl(btn.slideImage), '_blank')}>
                                             <img src={mediaUrl(btn.slideImage)} alt="배너 이미지" style={{ width: '100%', display: 'block' }} />
-                                            <span style={{ position: 'absolute', top: '4px', left: '4px', background: 'rgba(0,0,0,0.6)', color: '#fff', fontSize: '8px', padding: '2px 6px', borderRadius: '3px' }}>배너 이미지</span>
+                                            <span style={{ position: 'absolute', top: '4px', left: '4px', background: 'rgba(0,0,0,0.6)', color: '#fff', fontSize: '10px', padding: '2px 6px', borderRadius: '3px' }}>배너 이미지</span>
                                           </div>
                                         )}
                                         <div style={{ position: 'relative', overflow: 'hidden', maxHeight: '300px', cursor: 'pointer' }}
                                           onClick={() => window.open(btn.finalUrl || btn.buttonUrl, '_blank')}>
                                           <img src={mediaUrl(btn.landingScreenshot)} alt="랜딩" style={{ width: '100%', display: 'block' }} />
-                                          {btn.slideImage && <span style={{ position: 'absolute', top: '4px', left: '4px', background: 'rgba(0,0,0,0.6)', color: '#fff', fontSize: '8px', padding: '2px 6px', borderRadius: '3px' }}>랜딩 페이지</span>}
+                                          {btn.slideImage && <span style={{ position: 'absolute', top: '4px', left: '4px', background: 'rgba(0,0,0,0.6)', color: '#fff', fontSize: '10px', padding: '2px 6px', borderRadius: '3px' }}>랜딩 페이지</span>}
                                         </div>
                                       </div>
                                     ))}
@@ -1056,15 +1056,15 @@ export default function Home() {
       {selectedItem && <AdModal item={selectedItem} onClose={() => setSelectedItem(null)} dataDir="/data" />}
 
       {favPopup && (
-        <div style={{ position: 'fixed', bottom: '24px', right: '24px', background: '#1a1a24', border: '1px solid #2e2e3e', borderRadius: '12px', padding: '16px 20px', zIndex: 60, minWidth: '260px', boxShadow: '0 8px 32px rgba(0,0,0,0.5)' }}>
-          <h4 style={{ fontSize: '13px', fontWeight: 600, marginBottom: '12px' }}>⭐ 즐겨찾기 추가</h4>
+        <div style={{ position: 'fixed', bottom: '24px', right: '24px', background: 'var(--bg-surface-solid)', border: '1px solid var(--border)', borderRadius: '12px', padding: '16px 20px', zIndex: 60, minWidth: '260px', boxShadow: '0 8px 32px rgba(0,0,0,0.5)' }}>
+          <h4 style={{ fontSize: '15px', fontWeight: 600, marginBottom: '12px' }}>⭐ 즐겨찾기 추가</h4>
           <input value={favName} onChange={e => setFavName(e.target.value)} placeholder="내 이름"
-            style={{ width: '100%', background: '#22222f', border: '1px solid #2e2e3e', borderRadius: '6px', padding: '7px 10px', color: '#e2e2f0', fontSize: '12px', marginBottom: '8px', outline: 'none' }} />
+            style={{ width: '100%', background: 'var(--bg-elevated)', border: '1px solid var(--border)', borderRadius: '6px', padding: '7px 10px', color: 'var(--text-primary)', fontSize: '14px', marginBottom: '8px', outline: 'none' }} />
           <input value={favFolder} onChange={e => setFavFolder(e.target.value)} placeholder="폴더명"
-            style={{ width: '100%', background: '#22222f', border: '1px solid #2e2e3e', borderRadius: '6px', padding: '7px 10px', color: '#e2e2f0', fontSize: '12px', marginBottom: '12px', outline: 'none' }} />
+            style={{ width: '100%', background: 'var(--bg-elevated)', border: '1px solid var(--border)', borderRadius: '6px', padding: '7px 10px', color: 'var(--text-primary)', fontSize: '14px', marginBottom: '12px', outline: 'none' }} />
           <div style={{ display: 'flex', gap: '8px' }}>
-            <button onClick={confirmFav} style={{ flex: 1, background: '#6c63ff', color: '#fff', border: 'none', borderRadius: '6px', padding: '8px', fontSize: '12px', cursor: 'pointer', fontWeight: 500 }}>저장</button>
-            <button onClick={() => setFavPopup(null)} style={{ flex: 1, background: '#22222f', color: '#8888aa', border: 'none', borderRadius: '6px', padding: '8px', fontSize: '12px', cursor: 'pointer' }}>취소</button>
+            <button onClick={confirmFav} style={{ flex: 1, background: 'var(--accent)', color: '#fff', border: 'none', borderRadius: '6px', padding: '8px', fontSize: '14px', cursor: 'pointer', fontWeight: 500 }}>저장</button>
+            <button onClick={() => setFavPopup(null)} style={{ flex: 1, background: 'var(--bg-elevated)', color: 'var(--text-muted)', border: 'none', borderRadius: '6px', padding: '8px', fontSize: '14px', cursor: 'pointer' }}>취소</button>
           </div>
         </div>
       )}

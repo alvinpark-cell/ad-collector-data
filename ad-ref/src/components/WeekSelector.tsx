@@ -37,15 +37,15 @@ export default function WeekSelector({ weekKeys, selected, onSelect }: WeekSelec
   const slots = buildMonthWeekSlots(year, month);
 
   return (
-    <div style={{ marginBottom: '16px', padding: '12px 16px', background: 'rgba(26,26,36,0.6)', border: '1px solid #2e2e3e', borderRadius: '10px' }}>
+    <div style={{ marginBottom: '16px', padding: '12px 16px', background: 'var(--bg-surface)', border: '1px solid var(--border)', borderRadius: '10px' }}>
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '10px' }}>
-        <span style={{ fontSize: '11px', color: '#8888aa', fontWeight: 700 }}>수집 주차</span>
+        <span style={{ fontSize: '13px', color: 'var(--text-muted)', fontWeight: 700 }}>수집 주차</span>
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
           <button onClick={() => shiftMonth(-1)} disabled={!canGoPrev}
-            style={{ background: 'none', border: 'none', color: canGoPrev ? '#e2e2f0' : '#3a3a4a', cursor: canGoPrev ? 'pointer' : 'default', fontSize: '14px', padding: '2px 6px' }}>◀</button>
-          <span style={{ fontSize: '13px', fontWeight: 600, color: '#e2e2f0', minWidth: '80px', textAlign: 'center' }}>{year}년 {month}월</span>
+            style={{ background: 'none', border: 'none', color: canGoPrev ? 'var(--text-primary)' : 'var(--text-faint)', cursor: canGoPrev ? 'pointer' : 'default', fontSize: '16px', padding: '2px 6px' }}>◀</button>
+          <span style={{ fontSize: '15px', fontWeight: 600, color: 'var(--text-primary)', minWidth: '80px', textAlign: 'center' }}>{year}년 {month}월</span>
           <button onClick={() => shiftMonth(1)} disabled={!canGoNext}
-            style={{ background: 'none', border: 'none', color: canGoNext ? '#e2e2f0' : '#3a3a4a', cursor: canGoNext ? 'pointer' : 'default', fontSize: '14px', padding: '2px 6px' }}>▶</button>
+            style={{ background: 'none', border: 'none', color: canGoNext ? 'var(--text-primary)' : 'var(--text-faint)', cursor: canGoNext ? 'pointer' : 'default', fontSize: '16px', padding: '2px 6px' }}>▶</button>
         </div>
       </div>
 
@@ -56,10 +56,10 @@ export default function WeekSelector({ weekKeys, selected, onSelect }: WeekSelec
           return (
             <button key={slot.key} onClick={() => hasData && onSelect(slot.key)} disabled={!hasData}
               style={{
-                padding: '6px 12px', borderRadius: '8px', fontSize: '12px', fontWeight: active ? 700 : 500,
-                border: `1px solid ${active ? '#6c63ff' : hasData ? '#2e2e3e' : '#26263200'}`,
-                background: active ? 'rgba(108,99,255,0.15)' : hasData ? '#22222f' : 'transparent',
-                color: active ? '#a78bfa' : hasData ? '#c8c8dc' : '#454555',
+                padding: '6px 12px', borderRadius: '8px', fontSize: '14px', fontWeight: active ? 700 : 500,
+                border: `1px solid ${active ? 'var(--accent)' : hasData ? 'var(--border)' : '#26263200'}`,
+                background: active ? 'var(--accent-soft)' : hasData ? 'var(--bg-elevated)' : 'transparent',
+                color: active ? 'var(--accent-text)' : hasData ? 'var(--text-secondary)' : 'var(--text-faint)',
                 cursor: hasData ? 'pointer' : 'default',
                 whiteSpace: 'nowrap',
               }}>

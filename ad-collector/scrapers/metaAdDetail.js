@@ -57,55 +57,75 @@ function isRealContentUrl(url) {
   }
 }
 
+/**
+ * === 2026-08-05 발견한 핵심 버그와 수정 경위 ===
+ * `facebook.com/ads/library/?id=...`는 광고 1건만 보여주는 페이지가 아니다 - 실제로 열어보면
+ * "결과 ~16개"라는 텍스트와 함께 그 광고주의 여러 광고가 섞인 목록 페이지가 로드된다
+ * (라이브러리 ID가 URL의 id와 다른 광고가 최상단에 나오기도 함). 그래서 예전 코드처럼
+ * 네트워크 응답/전체 페이지 DOM에서 이미지를 다 긁으면, 캐러셀 카드가 아니라 완전히 다른
+ * 광고의 이미지가 같이 잡혀서 엉뚱한 이미지가 이 adId에 저장되는 사고가 실제로 발생했다
+ * (삼성증권 광고 하나의 이미지가 다른 삼성증권 광고 레코드에 잘못 저장된 사례로 확인).
+ *
+ * 고친 방식: 페이지 안에서 "라이브러리 ID: {adId}" 텍스트를 찾아, 그 조상 엘리먼트를 위로
+ * 올라가며 "그 조상 안에 라이브러리 ID: 가 몇 번 나오는지" 세어서 정확히 1번인 가장 안쪽
+ * 조상을 광고 카드 경계로 삼는다(1을 넘어가는 순간 여러 광고를 아우르게 된 것이므로 그
+ * 직전 단계가 정확한 경계). 실측 결과 이 경계 안엔 이미지 2장(실제 소재 1장 + 작은 프로필
+ * 썸네일 1장)만 들어있어 정확히 스코프됨을 확인함. 마커를 못 찾으면(페이지 구조가 또
+ * 바뀌었거나 광고가 삭제된 경우) 안전하게 빈 배열을 반환한다 - 엉뚱한 이미지를 저장하는
+ * 것보다 아예 못 찾는 게 낫다.
+ */
 async function extractMediaFromAdPage(context, meta) {
-  const media = [];
-  const seenUrls = new Set();
   const page = await context.newPage();
-
-  page.on('response', (response) => {
-    try {
-      if (media.length >= MAX_MEDIA_PER_AD) return;
-      const url = response.url();
-      const ct = response.headers()['content-type'] || '';
-      if (seenUrls.has(url) || !isRealContentUrl(url)) return;
-      if (ct.startsWith('image/')) {
-        seenUrls.add(url);
-        media.push({ mediaType: 'image', mediaUrl: url });
-      } else if (ct.startsWith('video/') || url.includes('.mp4')) {
-        seenUrls.add(url);
-        media.push({ mediaType: 'video', mediaUrl: url });
-      }
-    } catch (_) {}
-  });
+  let media = [];
 
   try {
     const targetUrl = `https://www.facebook.com/ads/library/?id=${encodeURIComponent(meta.adId)}`;
     await page.goto(targetUrl, { waitUntil: 'domcontentloaded', timeout: 30000 });
     await page.waitForTimeout(2500);
 
-    // DOM에서도 img/video src 보강 (네트워크 인터셉트로 못 잡는 경우 대비), 동일하게 호스트 제한
-    const domMedia = await page.evaluate(() => {
-      const items = [];
-      document.querySelectorAll('img').forEach((img) => {
-        if (img.src && img.naturalWidth > 0 && img.naturalWidth < 100) return; // 아이콘류 배제
-        items.push({ mediaType: 'image', mediaUrl: img.src || '' });
-      });
-      document.querySelectorAll('video').forEach((v) => {
-        const src = v.src || (v.querySelector('source') ? v.querySelector('source').src : '');
-        items.push({ mediaType: 'video', mediaUrl: src || '' });
-      });
-      return items;
-    });
-    domMedia.forEach((m) => {
-      if (media.length >= MAX_MEDIA_PER_AD) return;
-      if (!m.mediaUrl || seenUrls.has(m.mediaUrl) || !isRealContentUrl(m.mediaUrl)) return;
-      seenUrls.add(m.mediaUrl);
-      media.push(m);
-    });
+    const domMedia = await page.evaluate((adId) => {
+      const marker = '라이브러리 ID: ' + adId;
+      const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+      let node, textNode = null;
+      while ((node = walker.nextNode())) {
+        if (node.textContent.includes(marker)) { textNode = node; break; }
+      }
+      if (!textNode) return { scoped: false, items: [] };
 
-    if (media.length >= MAX_MEDIA_PER_AD) {
-      console.log(`  ⚠ 광고 ${meta.adId} 미디어 개수가 상한(${MAX_MEDIA_PER_AD})에 도달 — 일부만 저장됨`);
+      const countMarkers = (el) => (el.innerText.match(/라이브러리 ID:/g) || []).length;
+      let scope = textNode.parentElement;
+      let cur = scope;
+      for (let d = 0; d < 20; d++) {
+        if (!cur.parentElement) break;
+        const parent = cur.parentElement;
+        if (countMarkers(parent) > 1) break; // 부모로 가면 다른 광고까지 포함됨 - 여기서 멈춤
+        cur = parent;
+        scope = parent;
+      }
+
+      const items = [];
+      scope.querySelectorAll('img').forEach((img) => {
+        if (img.src) items.push({ mediaType: 'image', mediaUrl: img.src, w: img.naturalWidth, h: img.naturalHeight });
+      });
+      scope.querySelectorAll('video').forEach((v) => {
+        const src = v.src || (v.querySelector('source') ? v.querySelector('source').src : '');
+        if (src) items.push({ mediaType: 'video', mediaUrl: src });
+      });
+      return { scoped: true, items };
+    }, meta.adId);
+
+    if (!domMedia.scoped) {
+      console.log(`  ⚠ 광고 ${meta.adId} 페이지에서 "라이브러리 ID:" 마커를 못 찾음 - 스코프 불가로 건너뜀`);
+      return [];
     }
+
+    const seenUrls = new Set();
+    media = domMedia.items.filter((m) => {
+      if (!m.mediaUrl || seenUrls.has(m.mediaUrl) || !isRealContentUrl(m.mediaUrl)) return false;
+      if (m.mediaType === 'image' && m.w > 0 && m.w < 100) return false; // 작은 프로필 썸네일 배제
+      seenUrls.add(m.mediaUrl);
+      return true;
+    }).slice(0, MAX_MEDIA_PER_AD);
   } catch (err) {
     console.error(`  ⚠ 광고(${meta.adId}) 페이지 방문 실패: ${err.message}`);
   } finally {

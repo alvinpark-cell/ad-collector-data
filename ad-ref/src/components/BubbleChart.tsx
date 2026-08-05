@@ -1,17 +1,49 @@
 'use client';
 
-interface BubbleDatum { keyword: string; count: number; }
+export type Sentiment = 'positive' | 'neutral' | 'negative';
+interface BubbleDatum { keyword: string; count: number; sentiment?: Sentiment; }
 
-const COLORS = ['#6c63ff', '#03c75a', '#e0a030', '#e05a7a', '#3aa0e0', '#a78bfa', '#34d399', '#f472b6', '#facc15'];
+const SENTIMENT_COLOR: Record<Sentiment, string> = {
+  positive: '#e6483f',
+  neutral: '#8888aa',
+  negative: '#3aa0e0',
+};
+const SENTIMENT_LABEL: Record<Sentiment, string> = {
+  positive: '긍정 언급', neutral: '중립 언급', negative: '부정 언급',
+};
+const MAX_CIRCLES = 15;
 
-// 절대 언급량이 아니라 상대적 관심도를 보여주는 용도라 로그 스케일로 반지름을 정해서
-// 극단적으로 큰 값(예: 인베스팅닷컴 검색결과 수천 건) 하나가 나머지를 다 작은 점으로
-// 만들어버리는 걸 완화한다.
+// 원 "면적"이 언급량에 비례하도록 반지름은 sqrt(값)에 비례시킨다(면적 = πr², 사람 눈은
+// 면적으로 크기를 인지하므로 이게 표준적인 버블차트 스케일링 방식). 로그 스케일은 값이
+// 수십~수천 배씩 차이날 때만 의미가 있는데, 지금처럼 값들이 비슷한 자릿수(수백~천)에
+// 몰려있으면 로그가 차이를 거의 다 눌러버려서 원 크기가 다 똑같아 보이는 문제가 있었음.
 function radiusFor(count: number, maxCount: number, minR: number, maxR: number) {
-  const logMax = Math.log(maxCount + 1);
-  if (logMax === 0) return minR;
-  const logV = Math.log(count + 1);
-  return minR + (logV / logMax) * (maxR - minR);
+  if (maxCount <= 0) return minR;
+  const ratio = Math.sqrt(Math.max(count, 0) / maxCount);
+  return minR + ratio * (maxR - minR);
+}
+
+// 화제 키워드가 "코스피 급등락(롤러코스피 변동성)"처럼 긴 구문인 경우가 많아서, 한 줄에
+// 다 안 들어가면 공백 기준으로 2줄까지 나눠 접는다. 나눌 공백이 없으면(아주 긴 단일
+// 단어) 한 줄로 두고 폰트 크기 계산 쪽에서 더 작게 줄인다.
+function wrapKeyword(keyword: string): string[] {
+  if (keyword.length <= 7) return [keyword];
+  const mid = Math.floor(keyword.length / 2);
+  let splitAt = keyword.lastIndexOf(' ', mid);
+  if (splitAt <= 0) splitAt = keyword.indexOf(' ', mid);
+  if (splitAt <= 0) return [keyword];
+  return [keyword.slice(0, splitAt).trim(), keyword.slice(splitAt + 1).trim()];
+}
+
+// 원 안에 텍스트가 넘치지 않도록, 원의 "안전 폭"(가로/세로 대각선 기준 내접 정사각형 한 변)에
+// 가장 긴 줄이 맞춰지도록 폰트 크기를 역산한다. 한글은 폭이 거의 정사각형(글자당 약 0.95em)
+// 이라 이 근사치로 충분히 정확하다.
+function fitFontSize(lines: string[], r: number, reserveForCount: boolean): number {
+  const safeWidth = r * Math.SQRT2 * 0.86;
+  const safeHeight = (r * Math.SQRT2 * 0.86) / (lines.length + (reserveForCount ? 0.7 : 0));
+  const longest = Math.max(...lines.map(l => l.length), 1);
+  const byWidth = safeWidth / (longest * 0.95);
+  return Math.max(9, Math.min(19, byWidth, safeHeight));
 }
 
 interface PackItem { r: number; datum: BubbleDatum; color: string; }
@@ -19,7 +51,7 @@ interface PackedCircle extends PackItem { x: number; y: number; }
 
 // 원끼리 서로 맞닿아 뭉쳐있는 형태(circle packing) - 정식 아폴로니안 packing 알고리즘 대신,
 // "이미 놓인 원들 가장자리를 따라 여러 각도를 시도해보고 겹치지 않으면서 중심에 가장 가까운
-// 자리를 고른다"는 그리디 방식으로 근사한다. 원이 9개 안팎이라 이 정도로도 충분히 자연스럽게
+// 자리를 고른다"는 그리디 방식으로 근사한다. 원이 15개 안팎이라 이 정도로도 충분히 자연스럽게
 // 뭉친 모양이 나오고 계산량도 O(n^2)라 가볍다.
 function packCircles(items: PackItem[]): PackedCircle[] {
   const sorted = [...items].sort((a, b) => b.r - a.r);
@@ -58,16 +90,17 @@ function packCircles(items: PackItem[]): PackedCircle[] {
 }
 
 export default function BubbleChart({ data }: { data: BubbleDatum[] }) {
-  if (data.length === 0) {
-    return <div style={{ padding: '30px', textAlign: 'center', color: '#8888aa', fontSize: '12px' }}>데이터 없음</div>;
+  const capped = data.slice(0, MAX_CIRCLES);
+  if (capped.length === 0) {
+    return <div style={{ padding: '30px', textAlign: 'center', color: 'var(--text-muted)', fontSize: '14px' }}>데이터 없음</div>;
   }
 
-  const minR = 22, maxR = 72;
-  const maxCount = Math.max(...data.map(d => d.count), 1);
-  const items: PackItem[] = data.map((d, i) => ({
+  const minR = 34, maxR = 100;
+  const maxCount = Math.max(...capped.map(d => d.count), 1);
+  const items: PackItem[] = capped.map(d => ({
     r: radiusFor(d.count, maxCount, minR, maxR),
     datum: d,
-    color: COLORS[i % COLORS.length],
+    color: SENTIMENT_COLOR[d.sentiment || 'neutral'],
   }));
   const packed = packCircles(items);
 
@@ -79,20 +112,34 @@ export default function BubbleChart({ data }: { data: BubbleDatum[] }) {
 
   return (
     <div>
-      <svg viewBox={`${minX} ${minY} ${maxX - minX} ${maxY - minY}`} style={{ width: '100%', height: '320px' }}>
+      <div style={{ display: 'flex', gap: '16px', marginBottom: '8px' }}>
+        {(Object.keys(SENTIMENT_COLOR) as Sentiment[]).map(s => (
+          <span key={s} style={{ fontSize: '14px', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', gap: '5px' }}>
+            <span style={{ width: '10px', height: '10px', borderRadius: '50%', background: SENTIMENT_COLOR[s], display: 'inline-block' }} />
+            {SENTIMENT_LABEL[s]}
+          </span>
+        ))}
+      </div>
+      <svg viewBox={`${minX} ${minY} ${maxX - minX} ${maxY - minY}`} style={{ width: '100%', height: '440px' }}>
         {packed.map(p => {
-          const fontSize = Math.max(10, Math.min(16, p.r * 0.34));
-          const showCount = p.r >= 34;
+          const showCount = p.r >= 42;
+          const lines = wrapKeyword(p.datum.keyword);
+          const fontSize = fitFontSize(lines, p.r, showCount);
+          const lineHeight = fontSize * 1.15;
+          const totalTextHeight = lines.length * lineHeight;
+          const firstLineY = p.y - totalTextHeight / 2 + lineHeight / 2 - (showCount ? fontSize * 0.55 : 0);
           return (
             <g key={p.datum.keyword}>
               <circle cx={p.x} cy={p.y} r={p.r} fill={p.color} fillOpacity={0.32} stroke={p.color} strokeWidth="2" />
-              <text x={p.x} y={p.y + (showCount ? -fontSize * 0.35 : 0)} textAnchor="middle" dominantBaseline="middle"
-                fontSize={fontSize} fontWeight={700} fill="#f0f0f8">
-                {p.datum.keyword}
-              </text>
+              {lines.map((line, i) => (
+                <text key={i} x={p.x} y={firstLineY + i * lineHeight} textAnchor="middle" dominantBaseline="middle"
+                  fontSize={fontSize} fontWeight={700} fill="#f5f5fa">
+                  {line}
+                </text>
+              ))}
               {showCount && (
-                <text x={p.x} y={p.y + fontSize * 0.75} textAnchor="middle" dominantBaseline="middle"
-                  fontSize={fontSize * 0.72} fill="#c4c4d4">
+                <text x={p.x} y={firstLineY + lines.length * lineHeight + fontSize * 0.15} textAnchor="middle" dominantBaseline="middle"
+                  fontSize={fontSize * 0.72} fill="#d8d8e4">
                   {p.datum.count.toLocaleString()}
                 </text>
               )}
@@ -100,17 +147,6 @@ export default function BubbleChart({ data }: { data: BubbleDatum[] }) {
           );
         })}
       </svg>
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px 16px', marginTop: '6px' }}>
-        {packed
-          .slice()
-          .sort((a, b) => b.datum.count - a.datum.count)
-          .map(p => (
-            <span key={p.datum.keyword} style={{ fontSize: '12px', color: '#c4c4d4', display: 'flex', alignItems: 'center', gap: '6px' }}>
-              <span style={{ width: '10px', height: '10px', borderRadius: '50%', background: p.color, display: 'inline-block' }} />
-              {p.datum.keyword} <span style={{ color: '#8888aa' }}>({p.datum.count.toLocaleString()})</span>
-            </span>
-          ))}
-      </div>
     </div>
   );
 }

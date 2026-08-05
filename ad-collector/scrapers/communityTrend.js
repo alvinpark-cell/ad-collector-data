@@ -1,171 +1,284 @@
 /**
- * 커뮤니티 반응 - 주식/투자/증권 관련 일반 키워드와 메리츠증권 관련 키워드가 얼마나
- * 언급되는지 대략적인 "관심도"를 모아 버블차트로 보여주기 위한 수집기.
+ * 커뮤니티 반응 - "주식/투자 전반 화제 키워드"(시장 전체)와 "메리츠증권 화제 키워드"
+ * (브랜드 특정) 두 그룹에 대해, 실제로 화제가 되고 있는 키워드 TOP 15를 뽑아
+ * 감정 분류(긍정/중립/부정) + 상대적 언급량 + 실제 확인된 대표 반응과 함께 매일
+ * 기록해서 캘린더로 과거 날짜도 조회하고, 전일 대비/7일 추이 스파크라인을 그릴 수
+ * 있게 한다.
  *
- * 원래 디시인사이드/MLB파크/인베스팅닷컴 3개 소스를 시도했으나, 실제로 붙여보니:
- * - MLB파크: 방문마다 페이지 구조가 달라져서 안정적으로 파싱이 안 됨
- * - 디시인사이드: "게시판 내 검색" URL 파라미터(s_type/s_keyword)가 실제로는
- *   필터링을 안 하고 그냥 최신글 목록을 그대로 반환함. 게다가 한 번 더 확인해보니
- *   "주식 갤러리"로 알려진 gall_id들(stock, stock_new1)이 실제로는 2011년에 활동이
- *   끊긴 옛 갤러리이거나 전혀 무관한 밈 갤러리로 재활용된 상태라, 게시글 제목에서
- *   키워드를 추출하는 용도로도 못 쓸 정도로 신뢰할 수 없음이 재확인됨.
- * 두 소스 다 제외.
+ * 소스 전략:
+ * - 디시인사이드 주식 갤러리(gall_id=neostock, 예전에 썼던 stock/stock_new1은 죽은
+ *   갤러리였고 이건 실제로 살아있는 걸 확인함) + 에펨코리아 주식 게시판(fmkorea.com/stock)
+ *   에서 최근 글 제목을 긁어와 Claude에게 "실제로 존재하는 글감"으로 같이 넘긴다 -
+ *   이 목록만으로 키워드/반응을 뽑으라는 게 아니라, Claude가 웹 검색으로 찾은 내용과
+ *   섞어서 "지어낸 반응"이 아니라 실제 근거가 있는 반응 위주로 답하게 하는 보조 자료다.
+ *   두 커뮤니티는 톤/성향이 달라서(디시=밈 섞인 직설적 반응, 펨코=캐주얼한 반응 위주)
+ *   같이 넣어두면 한쪽 커뮤니티 색깔에 치우치지 않는 균형 잡힌 소재가 된다.
+ * - 나머지 화제 키워드 발굴/감정분류/대표 반응 문장/출처는 Claude(-p CLI, 웹서치 가능)에게
+ *   맡긴다 - 언론사/블로그/커뮤니티 등 다양한 소스를 우리가 각각 스크래퍼로 만드는
+ *   대신, 이미 웹 검색이 가능한 Claude에게 "실제로 확인해서" 종합하게 하는 방식.
  *
- * 일반 키워드는 더 이상 settings.json에 사람이 미리 정해두지 않는다. 대신 네이버
- * 금융의 "실시간 급상승/인기검색 종목" 페이지(lastsearch2.naver)에서 그 시점 기준
- * 실제로 가장 많이 검색되는 종목 상위 N개를 그대로 가져와서 매번 다르게 구성한다 -
- * 이 페이지는 네이버가 자체 집계하는 실제 검색 순위라 커뮤니티 게시글에서 직접
- * 키워드를 추출하는 것보다 훨씬 안정적이고 신뢰할 수 있는 "인기 키워드" 소스다.
- * 종목별 "실제 반응"은 그 종목의 네이버 종목토론실(투자자 게시판) 최신 글 제목을
- * 그대로 보여준다 - 실제 투자자들이 쓴 글이라 검색 결과 건수보다 훨씬 생생하다.
- * 관심도 수치 자체는 기존처럼 인베스팅닷컴 검색 결과 건수를 그대로 쓴다.
+ * 과거 이력은 오늘부터 매일 쌓이는 구조라, 이 스크립트를 처음 돌린 날 이전 데이터는
+ * 존재할 수 없다 - 전일 대비/7일 추이는 데이터가 쌓이면서 점점 의미 있어진다.
  */
 
 const fs = require('fs');
 const path = require('path');
 const { chromium } = require('playwright');
-const { generateInsight, buildInsightPrompt, hasEnoughDataForInsight, NO_INSIGHT_TEXT } = require('../insightClient');
+const { generateInsight } = require('../insightClient');
 
 const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36';
-const TOP_N_GENERAL = 6;
-const SAMPLE_REACTIONS_PER_KEYWORD = 5;
+const TOP_N = 15;
 
-// 네이버 금융의 실시간 인기검색 종목 순위 - 사람이 미리 정한 목록이 아니라 그 시점에
-// 실제로 가장 많이 검색된 종목을 그대로 가져오는 용도.
-async function fetchTopSearchedStocks(browser, n) {
+function todayKey() {
+  return new Date().toISOString().slice(0, 10); // YYYY-MM-DD
+}
+
+// 디시인사이드 주식 갤러리(neostock) 최신 글 제목 - Claude에게 근거 자료로 같이 넘길 용도.
+// "[123]" 형태의 댓글 수 뱃지가 제목 셀렉터에 같이 잡히는 경우가 있어 그런 건 걸러낸다.
+async function fetchDcinsideTitles(browser, pages = 2) {
   const context = await browser.newContext({ userAgent: UA, locale: 'ko-KR' });
   const page = await context.newPage();
+  const titles = [];
   try {
-    await page.goto('https://finance.naver.com/sise/lastsearch2.naver', { waitUntil: 'domcontentloaded', timeout: 20000 });
-    await page.waitForTimeout(800);
-    const rows = await page.evaluate(() => {
-      return Array.from(document.querySelectorAll('table.type_5 tbody tr')).map(tr => {
-        const a = tr.querySelector('a[href*="code="]');
-        if (!a) return null;
-        const m = a.getAttribute('href').match(/code=(\d+)/);
-        return m ? { name: a.textContent.trim(), code: m[1] } : null;
-      }).filter(Boolean);
-    });
-    return rows.slice(0, n);
-  } finally {
-    await context.close();
-  }
-}
-
-// 특정 종목의 네이버 종목토론실 최신 글 제목 몇 개 - "커뮤니티 실제 반응"용 샘플.
-async function fetchDiscussionSample(browser, code, n) {
-  const context = await browser.newContext({ userAgent: UA, locale: 'ko-KR' });
-  const page = await context.newPage();
-  try {
-    await page.goto(`https://finance.naver.com/item/board.naver?code=${code}`, { waitUntil: 'domcontentloaded', timeout: 20000 });
-    await page.waitForTimeout(800);
-    const titles = await page.evaluate(() => {
-      return Array.from(document.querySelectorAll('table.type2 tr')).map(tr => {
-        const a = tr.querySelector('td.title a');
-        if (!a) return null;
-        return (a.getAttribute('title') || a.textContent || '').trim();
-      }).filter(Boolean);
-    });
-    return titles.slice(0, n);
-  } catch (e) {
-    console.log(`  [종목토론실 실패] ${code}: ${e.message}`);
-    return [];
-  } finally {
-    await context.close();
-  }
-}
-
-// 인베스팅닷컴은 로드 타이밍이 들쭉날쭉해서(광고/개인화 스크립트 때문으로 추정) 한 번
-// 실패하면 대기 시간을 늘려서 한 번 더 시도한다.
-async function countInvesting(page, keyword, attempt = 1) {
-  const url = `https://kr.investing.com/search/?q=${encodeURIComponent(keyword)}`;
-  await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 20000 });
-  await page.waitForTimeout(attempt === 1 ? 2500 : 4500);
-  const text = await page.evaluate(() => document.body.innerText);
-  const m = text.match(/결과\s*[:：]\s*([\d,]+)/);
-  if (m) return parseInt(m[1].replace(/,/g, ''), 10);
-  if (attempt < 2) return countInvesting(page, keyword, attempt + 1);
-  return 0;
-}
-
-async function collectKeywordCounts(browser, items) {
-  const results = [];
-  for (const item of items) {
-    const keyword = typeof item === 'string' ? item : item.name;
-    const code = typeof item === 'string' ? null : item.code;
-    // 검색을 거듭할수록(같은 page를 재사용하면) 사이트가 봇으로 판단하는지 두 번째
-    // 검색부터 결과가 비어버리는 현상이 있어서, 매 키워드마다 완전히 새 context/page를
-    // 새로 열어 마치 매번 새 방문자인 것처럼 검색한다.
-    const context = await browser.newContext({ userAgent: UA, locale: 'ko-KR' });
-    const page = await context.newPage();
-    let inv = 0;
-    try { inv = await countInvesting(page, keyword); } catch (e) { console.log(`  [인베스팅닷컴 실패] "${keyword}": ${e.message}`); }
-    console.log(`  "${keyword}" - 인베스팅닷컴 ${inv}건`);
-    await context.close();
-
-    let sampleReactions = [];
-    if (code) {
-      sampleReactions = await fetchDiscussionSample(browser, code, SAMPLE_REACTIONS_PER_KEYWORD);
-      console.log(`  "${keyword}" - 종목토론실 실제 반응 ${sampleReactions.length}건`);
+    for (let p = 1; p <= pages; p++) {
+      await page.goto(`https://gall.dcinside.com/board/lists/?id=neostock&page=${p}`, { waitUntil: 'domcontentloaded', timeout: 20000 });
+      await page.waitForTimeout(1000);
+      const pageTitles = await page.evaluate(() => {
+        return Array.from(document.querySelectorAll('.gall_list tbody tr .gall_tit a')).map(a => a.textContent.trim());
+      });
+      titles.push(...pageTitles.filter(t => t && !/^\[\d+\]$/.test(t)));
     }
-
-    results.push({ keyword, code, investing: inv, total: inv, sampleReactions });
-    await new Promise(r => setTimeout(r, 1000));
+  } catch (e) {
+    console.log(`  [디시인사이드 실패] ${e.message}`);
+  } finally {
+    await context.close();
   }
-  return results;
+  return Array.from(new Set(titles));
 }
 
-async function generateCommunityInsight(label, counts) {
-  const total = counts.reduce((s, c) => s + c.total, 0);
-  if (!hasEnoughDataForInsight(total) || counts.every(c => c.total === 0)) return NO_INSIGHT_TEXT;
-  const prompt = buildInsightPrompt(
-    `다음은 ${label} 키워드별 인베스팅닷컴 검색 결과 건수와, 종목이라면 네이버 종목토론실 최신 글 제목 몇 개를 같이 준 것이야 ` +
-    '(검색 결과 건수는 그 키워드에 대한 뉴스/시세/분석 콘텐츠가 얼마나 쌓여있는지 보여주는 상대적 관심도 지표, 토론실 글 제목은 실제 투자자 반응). ' +
-    '어떤 키워드가 특히 관심도가 높은지/낮은지, 토론실 글 제목에서 드러나는 실제 투자자 심리(기대/우려/논쟁 등)는 어떤지를 한국어로 정리해줘.'
-  );
+// 에펨코리아 주식 게시판 최신 글 제목 - 댓글수/조회수 배지가 같이 딸려오는 span들은
+// 제거하고 순수 제목 텍스트만 남긴다. "1", "5" 처럼 숫자 하나만 남는 잔재도 걸러낸다.
+async function fetchFmkoreaTitles(browser, pages = 2) {
+  const context = await browser.newContext({ userAgent: UA, locale: 'ko-KR' });
+  const page = await context.newPage();
+  const titles = [];
   try {
-    return await generateInsight(prompt, counts.map(c => ({
-      키워드: c.keyword, 검색결과건수: c.total,
-      실제반응샘플: c.sampleReactions && c.sampleReactions.length ? c.sampleReactions : undefined,
-    })));
+    for (let p = 1; p <= pages; p++) {
+      const url = p === 1 ? 'https://www.fmkorea.com/stock' : `https://www.fmkorea.com/stock?page=${p}`;
+      await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 20000 });
+      await page.waitForTimeout(1000);
+      const pageTitles = await page.evaluate(() => {
+        return Array.from(document.querySelectorAll('td.title a')).map(a => {
+          const clone = a.cloneNode(true);
+          clone.querySelectorAll('.comment_count, .cate, span').forEach(e => e.remove());
+          return clone.textContent.trim();
+        });
+      });
+      titles.push(...pageTitles.filter(t => t && !/^\d+$/.test(t)));
+    }
   } catch (e) {
-    console.error(`[커뮤니티 반응 인사이트] "${label}" 오류:`, e.message);
-    return NO_INSIGHT_TEXT;
+    console.log(`  [에펨코리아 실패] ${e.message}`);
+  } finally {
+    await context.close();
   }
+  return Array.from(new Set(titles));
+}
+
+// 백필용: 디시인사이드 글 목록을 페이지 1부터 이어서 훑으며 "작성일(title 속성의
+// YYYY-MM-DD HH:MM:SS)"별로 묶는다. 실측 결과 페이지당 약 12~13개 글이 하루치라,
+// 목표 날짜 중 가장 오래된 날짜를 지나칠 때까지 페이지를 계속 넘긴다. 공지/고정글은
+// title 속성이 없어서 자동으로 제외된다.
+async function fetchDcinsideTitlesByDate(browser, targetDates) {
+  const context = await browser.newContext({ userAgent: UA, locale: 'ko-KR' });
+  const page = await context.newPage();
+  const byDate = {};
+  targetDates.forEach(d => { byDate[d] = []; });
+  const earliest = [...targetDates].sort()[0];
+  const maxPages = 200;
+
+  try {
+    for (let p = 1; p <= maxPages; p++) {
+      await page.goto(`https://gall.dcinside.com/board/lists/?id=neostock&page=${p}`, { waitUntil: 'domcontentloaded', timeout: 20000 });
+      await page.waitForTimeout(500);
+      const rows = await page.evaluate(() => {
+        return Array.from(document.querySelectorAll('.gall_list tbody tr')).map(tr => {
+          const titleEl = tr.querySelector('.gall_tit a');
+          const dateEl = tr.querySelector('.gall_date');
+          const iso = dateEl ? dateEl.getAttribute('title') : null;
+          if (!titleEl || !iso) return null;
+          return { title: titleEl.textContent.trim(), date: iso.slice(0, 10) };
+        }).filter(Boolean);
+      });
+      if (rows.length === 0) continue;
+      rows.forEach(r => { if (byDate[r.date]) byDate[r.date].push(r.title); });
+      const oldestOnPage = rows[rows.length - 1].date;
+      if (oldestOnPage < earliest) break;
+    }
+  } catch (e) {
+    console.log(`  [디시인사이드 백필 실패] ${e.message}`);
+  } finally {
+    await context.close();
+  }
+  Object.keys(byDate).forEach(d => { byDate[d] = Array.from(new Set(byDate[d])); });
+  return byDate;
+}
+
+function extractJson(text) {
+  const fenced = text.match(/```(?:json)?\s*([\s\S]*?)```/);
+  const raw = fenced ? fenced[1] : text;
+  const start = raw.indexOf('{');
+  const end = raw.lastIndexOf('}');
+  if (start === -1 || end === -1) throw new Error('JSON 형식을 찾지 못함');
+  const candidate = raw.slice(start, end + 1);
+  try {
+    return JSON.parse(candidate);
+  } catch (e) {
+    // 지시했는데도 가끔 문자열 값 안에 이스케이프 안 된 개행이 남는 경우가 있어,
+    // 실제 개행만 골라 공백으로 치환한 뒤 한 번 더 시도해본다(마지막 안전망).
+    const repaired = candidate.replace(/[\r\n]+/g, ' ');
+    return JSON.parse(repaired);
+  }
+}
+
+const RESEARCH_FORMAT = '\n\n반드시 아래 JSON 형식으로만 답해 - 다른 설명이나 마크다운 코드블록 없이 순수 JSON 텍스트만 출력해:\n' +
+  '{"keywords": [{"keyword": "문자열", "sentiment": "positive|neutral|negative", "volume": 1~1000 사이 정수(상대적 화제성 추정치), ' +
+  '"reactions": [{"source": "매체/커뮤니티명", "text": "실제로 확인한 반응 요약 1~2문장"}]}]}\n' +
+  '키워드는 최대 15개, 각 키워드당 reactions는 1~3개. 실제로 확인/검색한 내용 기반으로만 답하고, 근거 없이 지어내지 마. ' +
+  '중요: text/keyword/source 값 안에는 큰따옴표(")를 절대 쓰지 마 - 기사 제목 등을 인용할 땐 큰따옴표 대신 「」를 쓰거나 그냥 풀어서 써줘 ' +
+  '(큰따옴표를 이스케이프 안 해서 JSON이 깨지는 문제가 있었음). 줄바꿈 문자도 넣지 말고 한 줄로 이어서 써줘.';
+
+async function researchTopicKeywords(scopeLabel, dcinsideTitles, fmkoreaTitles, dateLabel) {
+  const timeframe = dateLabel
+    ? `${dateLabel} 하루 동안(그 날짜 전후로) 실제로 화제였던`
+    : '최근(최근 1~2주 이내) 실제로 화제가 되고 있는';
+  const prompt = `${scopeLabel}에 대해 웹 검색해서 ${timeframe} 키워드/이슈를 조사해줘. ` +
+    '키워드는 특정 종목명보다는 이슈/테마 단위(예: 수수료 정책, 시장 급락, 특정 이벤트명)를 우선하고, 각 키워드가 시장/커뮤니티에서 ' +
+    '긍정적으로 받아들여지는지 부정적으로 받아들여지는지도 판단해줘. 아래는 디시인사이드 주식 갤러리(neostock)' +
+    (fmkoreaTitles.length ? '와 에펨코리아 주식 게시판' : '') +
+    `에서 실제로 ${dateLabel ? `${dateLabel} 전후로` : '최근'} 올라온 글 제목 목록이야 - 참고 자료로 쓰고, 여기 없는 내용도 웹 검색으로 보충해서 답해도 돼:\n\n` +
+    '[디시인사이드 주식 갤러리]\n' + dcinsideTitles.slice(0, 60).map(t => `- ${t}`).join('\n') +
+    (fmkoreaTitles.length ? '\n\n[에펨코리아 주식 게시판]\n' + fmkoreaTitles.slice(0, 60).map(t => `- ${t}`).join('\n') : '') +
+    RESEARCH_FORMAT;
+
+  // 웹서치가 포함된 조사라 일반 인사이트 생성보다 훨씬 오래 걸림 - 기본 타임아웃(3분)으로는
+  // 소스 2개를 합친 뒤로 종종 부족해서(ETIMEDOUT) 5분으로 늘림.
+  const text = await generateInsight(prompt, null, { timeout: 300000 });
+  return extractJson(text);
+}
+
+// 게재일(실제 글 작성일) 기준 과거 이력 백필 - 오늘 이전 daysBack일에 대해 디시인사이드
+// 실제 글을 날짜별로 모아서 그 날짜 맥락으로 리서치한다. 이미 history에 있는 날짜는
+// 건드리지 않는다(라이브 갱신으로 이미 채워진 오늘자 등을 덮어쓰지 않기 위함).
+async function backfillCommunityTrendHistory(settings, daysBack) {
+  const outPath = path.join(settings.dataDir, 'community_trend.json');
+  const existing = fs.existsSync(outPath) ? JSON.parse(fs.readFileSync(outPath, 'utf-8')) : { history: [] };
+  const existingDates = new Set((existing.history || []).map(h => h.date));
+
+  const targetDates = [];
+  for (let i = 1; i <= daysBack; i++) {
+    const d = new Date();
+    d.setDate(d.getDate() - i);
+    const key = d.toISOString().slice(0, 10);
+    if (!existingDates.has(key)) targetDates.push(key);
+  }
+  if (targetDates.length === 0) {
+    console.log('[커뮤니티 반응 백필] 이미 전부 채워져 있어 건너뜀');
+    return existing;
+  }
+
+  console.log(`[커뮤니티 반응 백필] 대상 날짜: ${targetDates.join(', ')}`);
+  const browser = await chromium.launch({ headless: true });
+  console.log('[커뮤니티 반응 백필] 디시인사이드 글 날짜별 수집 중 (페이지를 여러 장 넘깁니다)...');
+  const byDate = await fetchDcinsideTitlesByDate(browser, targetDates);
+  await browser.close();
+  targetDates.forEach(d => console.log(`  ${d}: ${byDate[d].length}건`));
+
+  const history = [...(existing.history || [])];
+  for (const date of targetDates.sort()) {
+    const titles = byDate[date] || [];
+    console.log(`[커뮤니티 반응 백필] ${date} 조사 중 (글 ${titles.length}건 기반)...`);
+    let generalKeywords = [];
+    let brandKeywords = [];
+    try {
+      const general = await researchTopicKeywords('한국 주식/증권/투자 시장 전반', titles, [], date);
+      generalKeywords = (general.keywords || []).slice(0, TOP_N);
+    } catch (e) {
+      console.error(`  [${date}] 시장 전체 조사 실패:`, e.message);
+    }
+    try {
+      const brand = await researchTopicKeywords('메리츠증권(증권사)과 직접 관련된 주제', titles, [], date);
+      brandKeywords = (brand.keywords || []).slice(0, TOP_N);
+    } catch (e) {
+      console.error(`  [${date}] 메리츠증권 조사 실패:`, e.message);
+    }
+    history.push({ date, general: generalKeywords, brand: brandKeywords });
+    // 매 날짜마다 저장 - 중간에 실패해도 그때까지 백필한 건 안전하게 남도록
+    history.sort((a, b) => a.date.localeCompare(b.date));
+    fs.writeFileSync(outPath, JSON.stringify({ updatedAt: new Date().toISOString(), history }, null, 2), 'utf-8');
+  }
+
+  console.log(`[커뮤니티 반응 백필] 완료 (누적 ${history.length}일치)`);
+  return { updatedAt: new Date().toISOString(), history };
 }
 
 async function updateCommunityTrend(settings) {
   const browser = await chromium.launch({ headless: true });
-  const brandKeywords = settings.communityBrandKeywords || [];
 
-  console.log('[커뮤니티 반응] 실시간 인기검색 종목 조회 중...');
-  const topStocks = await fetchTopSearchedStocks(browser, TOP_N_GENERAL);
-  console.log('[커뮤니티 반응] 이번 회차 일반 키워드(실시간 인기검색 상위):', topStocks.map(s => s.name).join(', '));
+  console.log('[커뮤니티 반응] 디시인사이드 주식 갤러리 수집 중...');
+  const dcinsideTitles = await fetchDcinsideTitles(browser, 2);
+  console.log(`[커뮤니티 반응] 디시인사이드 글 제목 ${dcinsideTitles.length}건 확보`);
 
-  console.log('[커뮤니티 반응] 일반 키워드 수집 중...');
-  const general = await collectKeywordCounts(browser, topStocks);
-  console.log('[커뮤니티 반응] 브랜드 키워드 수집 중...');
-  const brand = await collectKeywordCounts(browser, brandKeywords);
+  console.log('[커뮤니티 반응] 에펨코리아 주식 게시판 수집 중...');
+  const fmkoreaTitles = await fetchFmkoreaTitles(browser, 2);
+  console.log(`[커뮤니티 반응] 에펨코리아 글 제목 ${fmkoreaTitles.length}건 확보`);
 
   await browser.close();
 
-  console.log('[커뮤니티 반응] 인사이트 생성 중...');
-  const generalInsight = await generateCommunityInsight('주식/투자/증권 실시간 인기검색', general);
-  const brandInsight = await generateCommunityInsight('메리츠증권 관련', brand);
-
-  const result = {
-    updatedAt: new Date().toISOString(),
-    general, brand,
-    generalInsight, brandInsight,
-  };
+  // 조사가 실패했을 때 빈 배열로 오늘자 데이터를 덮어써버리면 이미 성공적으로 저장된
+  // 오늘 데이터가 통째로 날아간다(실제로 한 번 이렇게 날려먹은 적 있음) - 실패 시엔
+  // 오늘자 기존 저장값이 있으면 그걸 그대로 유지한다.
   const outPath = path.join(settings.dataDir, 'community_trend.json');
+  const existing = fs.existsSync(outPath) ? JSON.parse(fs.readFileSync(outPath, 'utf-8')) : { history: [] };
+  const today = todayKey();
+  const existingToday = (existing.history || []).find(h => h.date === today);
+
+  console.log('[커뮤니티 반응] 시장 전체 화제 키워드 조사 중...');
+  let generalKeywords = existingToday ? existingToday.general : [];
+  try {
+    const general = await researchTopicKeywords('한국 주식/증권/투자 시장 전반', dcinsideTitles, fmkoreaTitles);
+    generalKeywords = (general.keywords || []).slice(0, TOP_N);
+  } catch (e) {
+    console.error('[커뮤니티 반응] 시장 전체 조사 실패, 기존 오늘자 데이터 유지:', e.message);
+  }
+
+  console.log('[커뮤니티 반응] 메리츠증권 화제 키워드 조사 중...');
+  let brandKeywords = existingToday ? existingToday.brand : [];
+  try {
+    const brand = await researchTopicKeywords('메리츠증권(증권사)과 직접 관련된 주제', dcinsideTitles, fmkoreaTitles);
+    brandKeywords = (brand.keywords || []).slice(0, TOP_N);
+  } catch (e) {
+    console.error('[커뮤니티 반응] 메리츠증권 조사 실패, 기존 오늘자 데이터 유지:', e.message);
+  }
+
+  const todaySnapshot = { date: today, general: generalKeywords, brand: brandKeywords };
+
+  const history = (existing.history || []).filter(h => h.date !== todaySnapshot.date);
+  history.push(todaySnapshot);
+  history.sort((a, b) => a.date.localeCompare(b.date));
+
+  const result = { updatedAt: new Date().toISOString(), history };
   fs.writeFileSync(outPath, JSON.stringify(result, null, 2), 'utf-8');
-  console.log('[커뮤니티 반응] community_trend.json 갱신 완료');
+  console.log(`[커뮤니티 반응] community_trend.json 갱신 완료 (누적 ${history.length}일치)`);
   return result;
 }
 
-module.exports = { updateCommunityTrend };
+module.exports = { updateCommunityTrend, backfillCommunityTrendHistory };
 if (require.main === module) {
   const settings = require('../settings.json');
-  updateCommunityTrend(settings).catch(err => { console.error('오류:', err); process.exit(1); });
+  const daysBackArg = process.argv[2];
+  if (daysBackArg) {
+    backfillCommunityTrendHistory(settings, parseInt(daysBackArg, 10)).catch(err => { console.error('오류:', err); process.exit(1); });
+  } else {
+    updateCommunityTrend(settings).catch(err => { console.error('오류:', err); process.exit(1); });
+  }
 }
