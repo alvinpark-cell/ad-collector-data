@@ -1,0 +1,35 @@
+{
+  "google": {
+    "lastCollectedAt": "2026-08-04T06:21:51.190Z",
+    "newCount": 1446,
+    "updatedAt": "2026-08-04T06:21:51.193Z"
+  },
+  "meta": {
+    "lastCollectedAt": "2026-08-04T06:21:51.186Z",
+    "newCount": 69,
+    "updatedAt": "2026-08-04T06:21:51.188Z"
+  },
+  "brandsearch": {
+    "lastCollectedAt": "2026-08-04T06:51:37.290Z",
+    "newCount": 13,
+    "updatedAt": "2026-08-04T06:51:37.290Z"
+  },
+  "powerlink": {
+    "lastCollectedAt": "2026-08-04T06:51:58.230Z",
+    "newCount": 4,
+    "updatedAt": "2026-08-04T06:51:58.231Z"
+  },
+  "metaMediaBatch": {
+    "lastRunAt": "2026-08-04T10:26:18.130Z",
+    "attempted": 25,
+    "updated": 25,
+    "stillPending": 0,
+    "updatedAt": "2026-08-04T10:26:18.131Z"
+  },
+  "metaBrandBatch": {
+    "lastCollectedAt": "2026-08-05T05:13:23.028Z",
+    "newCount": 13,
+    "batch": "3/3",
+    "updatedAt": "2026-08-05T05:13:23.028Z"
+  }
+}

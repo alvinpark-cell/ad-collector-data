@@ -4,7 +4,12 @@ ad-collector/data/
 
 # ad-ref 빌드/캐시
 ad-ref/.next/
-ad-ref/public/data/
+
+# 수집된 이미지/영상/스크린샷 사본 (sync-data.js가 output/에서 복사해온 것 - 용량 큼)
+# JSON 데이터(ad-ref/public/data/*.json)는 Vercel 팀 피드백용 데모 배포를 위해 예외적으로
+# 커밋함(2026-08-05) - 실제 S3 연동 전까지의 임시 조치, S3 붙으면 다시 gitignore 처리할 것.
+ad-ref/public/data/images/
+ad-ref/public/data/screenshots/
 
 # node_modules
 ad-collector/node_modules/
