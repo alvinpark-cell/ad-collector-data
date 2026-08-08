@@ -38,17 +38,25 @@ async function fetchOne(key, symbol) {
 }
 
 async function updateMarketIndex(settings) {
+  const outPath = path.join(settings.dataDir, 'market_index.json');
+  // 하나라도 조회가 실패하면 그 키는 results에 안 채워지는데, 예전엔 그대로 덮어써서
+  // 그 지수의 기존 1년치 데이터 전체가 파일에서 사라졌었다(2026-08-09 발견) - 실패한
+  // 키는 기존 파일에 있던 값을 그대로 유지해서, 다음 날 성공할 때까지 화면이 비지 않게 함.
+  const existing = fs.existsSync(outPath) ? JSON.parse(fs.readFileSync(outPath, 'utf-8')) : {};
   const results = {};
+  const failedKeys = [];
   for (const [key, symbol] of Object.entries(SYMBOLS)) {
     try {
       results[key] = await fetchOne(key, symbol);
     } catch (e) {
-      console.error(`[시장지수] ${key}(${symbol}) 조회 실패:`, e.message);
+      console.error(`[시장지수] ${key}(${symbol}) 조회 실패, 기존 데이터 유지:`, e.message);
+      failedKeys.push(key);
+      if (existing[key]) results[key] = existing[key];
     }
   }
-  const outPath = path.join(settings.dataDir, 'market_index.json');
   fs.writeFileSync(outPath, JSON.stringify({ ...results, updatedAt: new Date().toISOString() }, null, 2), 'utf-8');
-  console.log('[시장지수] market_index.json 갱신 완료:', Object.keys(results).join(', '));
+  console.log('[시장지수] market_index.json 갱신 완료:', Object.keys(results).join(', '),
+    failedKeys.length ? `(실패해서 기존 값 유지: ${failedKeys.join(', ')})` : '');
   return results;
 }
 

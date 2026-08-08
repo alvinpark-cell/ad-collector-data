@@ -104,8 +104,18 @@ async function updateTrendReport(settings) {
     }))
     .filter(r => r.year && r.month);
 
-  const result = { updatedAt: new Date().toISOString(), records };
   const outPath = path.join(settings.dataDir, 'trend_report.json');
+  // 시트 응답이 200인데도 헤더를 못 찾거나(구조 변경 등) 내용이 비정상이면 records가
+  // 0행이 되는데, 그대로 덮어쓰면 기존에 잘 쌓여있던 데이터가 통째로 날아간다
+  // (2026-08-09 발견, market_index.json에서 같은 유형의 버그를 고치며 같이 확인함) -
+  // 0행이면 기존 파일을 그대로 두고 경고만 남긴다.
+  if (records.length === 0) {
+    console.error('[트렌드 리포트] 파싱 결과가 0행이라 기존 데이터를 유지하고 저장을 건너뜀 (시트 구조가 바뀌었을 수 있음)');
+    const existing = fs.existsSync(outPath) ? JSON.parse(fs.readFileSync(outPath, 'utf-8')) : { updatedAt: null, records: [] };
+    return existing;
+  }
+
+  const result = { updatedAt: new Date().toISOString(), records };
   fs.writeFileSync(outPath, JSON.stringify(result, null, 2), 'utf-8');
   console.log(`[트렌드 리포트] ${records.length}행 저장 완료 (data/trend_report.json)`);
   return result;
