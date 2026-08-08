@@ -337,9 +337,25 @@ ad-ref는 `output: 'export'`(정적 export) 모드로 빌드됩니다. 서버에
   백필이 아직 안 끝나서 후보 자체가 없었을 뿐 브랜드로 범위를 좁혀둔 코드는 아니었음 -
   전체 브랜드 백필이 끝난 지금 다시 돌려보니 1,042건이 새로 대상에 잡힘(위 문구 버그로
   풀려난 미래에셋증권 500건 포함). 매일 300건씩 자동으로 채워지도록 스케줄에도 등록
-  (07:35, `googleDescriptionBackfill.js`).
+  (07:35, `googleDescriptionBackfill.js`). **실행 결과(2026-08-09): 291건 성공, 751건은
+  "org's monthly spend limit" 에러로 실패**(아래 항목 참고) - 실패분은 `aiDescription`이
+  그대로 비어있어서 계속 대상 조건에 걸리니, 한도 문제만 풀리면(계정 전환 등) 스케줄이든
+  수동 실행이든 자동으로 이어서 채워짐. 751건을 빨리 채우고 싶으면 300건/일 스케줄로는
+  3일 걸리니 계정 전환 후 `node googleDescriptionBackfill.js`로 한 번에 수동 실행 권장.
+- **⚠️ 발견: `ad-collector`가 쓰는 `claude` CLI 로그인 계정이 팀원 개인 계정으로 돼있어서
+  그 계정의 조직 월 지출 한도에 걸림** - 위 디스크립션 백필이 도중에 "You've hit your
+  org's monthly spend limit"로 실패한 원인. 이 대화(Claude Code 세션)의 팀 플랜 사용량
+  (5시간/주간 한도)과는 완전히 별개의 한도임 - Anthropic Console API 조직 단위 월 $ 지출
+  한도로 보임. 재테스트해보니 한도 자체는 이미 풀린 상태였음(일시적이었던 것으로 추정).
+  **팀원 개인 계정에 의존하는 지금 구조의 실제 리스크가 처음으로 발생한 사례**이니, 다음
+  세션부터는 이 컴퓨터의 `claude` CLI를 본인 계정으로 재로그인해서 진행하기로 함(위
+  "2. Claude CLI 기반 인사이트" 섹션에 적어둔 리스크가 그대로 발생한 것 - 계정 소유자가
+  본인 작업에 쓰려 할 때 한도가 이미 소진돼 있을 수 있다는 그 우려).
 
 ### 아직 안 끝난 것 (다음 세션에서 이어서 할 것)
+0. **`claude` CLI 로그인 계정을 팀원 개인 계정 → 본인 계정으로 전환** - 위 "⚠️ 발견"
+   항목 참고. 전환 후 남은 디스크립션 백필 751건 수동 실행 권장(`node
+   googleDescriptionBackfill.js`, ad-collector 폴더에서).
 1. **`googleTextBackfill.js`(OCR)와 `googleDescriptionBackfill.js`(aiDescription) 필드
    겹침 정리** - OCR이 이미지 안 문구를 먼저 `copyText`에 "텍스트없음"으로 채우면
    `googleDescriptionBackfill.js`의 대상 필터(`copyText` 비어있음)가 그 소재를 건너뛰게
