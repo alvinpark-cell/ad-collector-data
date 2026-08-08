@@ -218,12 +218,17 @@ async function scrapeGoogle(keywords, brands, settings, onBrandDone) {
                 var advLink = card.querySelector('a[href*="adstransparency.google.com/advertiser"]');
                 if (advLink) sourceUrl = advLink.href;
 
-                // 복사 텍스트
+                // 복사 텍스트 - 일부 광고주(실측: "미래에셋증권 주식회사") 카드는 광고주명
+                // 라벨이 길이 조건(10~400자)을 충족해서 실제 카피보다 먼저 걸려버린다. 그러면
+                // "문구 있음"으로 오인돼 디스크립션 백필도 건너뛰고, 화면에는 광고주명만 문구로
+                // 보이는 문제가 생긴다(2026-08-09 확인) - 광고주명과 같은 텍스트는 후보에서 제외.
                 var copyText = '';
+                var advNameNorm = advName.replace(/\s/g, '');
                 var textEls = card.querySelectorAll('p, span, div');
                 for (var j = 0; j < textEls.length; j++) {
                   var t = (textEls[j].innerText || '').trim();
-                  if (t.length > 10 && t.length < 400 && !t.includes('http') && !t.includes('google.com')) {
+                  if (t.length > 10 && t.length < 400 && !t.includes('http') && !t.includes('google.com') &&
+                      t.replace(/\s/g, '') !== advNameNorm) {
                     copyText = t;
                     break;
                   }

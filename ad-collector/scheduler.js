@@ -16,6 +16,7 @@ const { backfillMissingImages } = require('./googleMediaBackfill');
 const { backfillGoogleImageText } = require('./googleTextBackfill');
 const { backfillLastShown } = require('./googleLastShownBackfill');
 const { backfillNoDateFallback } = require('./noDateFallbackBackfill');
+const { backfillDescriptions } = require('./googleDescriptionBackfill');
 const { isHoliday } = require('./holidays');
 const { isFirstBusinessDayOfWeek } = require('./scheduleUtils');
 const settings = require('./settings.json');
@@ -172,6 +173,21 @@ cron.schedule('0 30 7 * * *', async () => {
     await backfillGoogleImageText(settings, 200);
   } catch (err) {
     console.error('구글 OCR 백필 중 오류:', err.message);
+  }
+}, {
+  timezone: 'Asia/Seoul',
+});
+
+// 구글 이미지 소재 설명(aiDescription) 백필: 문구가 없는(모델/비주얼 위주) 구글 이미지를
+// Claude가 직접 읽어 설명을 채운다. 하루 300건씩 - 처음엔 메리츠증권만 대상으로 수동
+// 실행했다가 다른 8개 브랜드 백필이 끝난 뒤에야 전체 대상이 됨을 확인(2026-08-09), 이제
+// 매일 자동으로 나머지 브랜드까지 채워지도록 등록.
+cron.schedule('0 35 7 * * *', async () => {
+  console.log(`\n⏰ 구글 디스크립션 백필 실행: ${new Date().toLocaleString('ko-KR')}`);
+  try {
+    await backfillDescriptions(300);
+  } catch (err) {
+    console.error('구글 디스크립션 백필 중 오류:', err.message);
   }
 }, {
   timezone: 'Asia/Seoul',
