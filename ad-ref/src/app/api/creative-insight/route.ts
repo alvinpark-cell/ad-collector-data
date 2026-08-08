@@ -10,15 +10,20 @@ import path from 'path';
 interface CreativeItem {
   advertiserName?: string; platform?: string; copyText?: string; headline?: string;
   status?: string; collectedAt?: string; localPath?: string; mediaType?: string;
+  aiDescription?: string;
 }
 
 const MAX_ROWS = 150;
 const MAX_IMAGES = 6;
 
+// aiDescription은 googleDescriptionBackfill.js가 문구 없는(모델/비주얼 위주) 구글 소재를
+// 미리 이미지 분석해서 채워둔 값 - copyText/headline이 비어있으면 이걸로 대체한다.
 function toRow(item: CreativeItem) {
+  const hasRealText = (item.copyText || '').trim() || (item.headline || '').trim();
   return {
     광고주: item.advertiserName || '', 매체: item.platform || '',
-    문구: (item.copyText || '').slice(0, 200), 헤드라인: item.headline || '',
+    문구: hasRealText ? (item.copyText || '').slice(0, 200) : (item.aiDescription || '').slice(0, 200),
+    헤드라인: item.headline || '',
     상태: item.status || '', 수집월: (item.collectedAt || '').slice(0, 7),
   };
 }
@@ -36,12 +41,13 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ text: '인사이트 없음', itemCount: 0 });
   }
 
-  // 문구가 같은 중복 소재는 합치고, 그래도 많으면 대표만 샘플링
-  const withText = items.filter(i => (i.copyText || '').trim() || (i.headline || '').trim());
+  // 문구가 같은 중복 소재는 합치고, 그래도 많으면 대표만 샘플링 (aiDescription으로 대체된
+  // 것도 "텍스트 있음"으로 취급 - toRow()가 이미 그 값을 문구 자리에 채워준다)
+  const withText = items.filter(i => (i.copyText || '').trim() || (i.headline || '').trim() || (i.aiDescription || '').trim());
   const seen = new Set<string>();
   const deduped: CreativeItem[] = [];
   for (const it of withText) {
-    const key = `${it.copyText || ''}::${it.headline || ''}`;
+    const key = `${it.copyText || ''}::${it.headline || ''}::${it.aiDescription || ''}`;
     if (seen.has(key)) continue;
     seen.add(key);
     deduped.push(it);
@@ -50,12 +56,13 @@ export async function POST(req: NextRequest) {
   const isSampled = sampled.length < withText.length;
   const rows = sampled.map(toRow);
 
-  // 텍스트가 없는(주로 구글) 소재는 로컬에 받아둔 이미지가 있으면 Claude가 직접 열어서
-  // 문구를 읽어내도록 경로를 넘긴다 (public/data 밑에 sync-data.js가 복사해둔 실제 파일).
-  // localPath가 이미 S3 공개 URL(http로 시작)이면 로컬엔 파일이 없으니 제외한다 - Read 도구로
-  // 원격 URL을 열 수는 없다.
+  // 텍스트도 aiDescription도 없는(아직 디스크립션 백필 안 된) 구글 소재만, 로컬에 받아둔
+  // 이미지가 있으면 Claude가 직접 열어서 그 자리에서 읽어내도록 경로를 넘긴다 (public/data
+  // 밑에 sync-data.js가 복사해둔 실제 파일). aiDescription이 이미 있으면 다시 이미지를
+  // 보낼 필요 없음(비용/시간 절약) - localPath가 S3 공개 URL(http로 시작)이면 로컬엔
+  // 파일이 없으니 제외한다.
   const noTextWithImage = items.filter(i =>
-    !((i.copyText || '').trim() || (i.headline || '').trim()) && i.localPath &&
+    !((i.copyText || '').trim() || (i.headline || '').trim() || (i.aiDescription || '').trim()) && i.localPath &&
     i.mediaType === 'image' && !/^https?:\/\//i.test(i.localPath)
   );
   const imagePaths = noTextWithImage.slice(0, MAX_IMAGES).map(i => path.join(process.cwd(), 'public', 'data', i.localPath!));
@@ -89,6 +96,15 @@ export async function POST(req: NextRequest) {
     });
     return NextResponse.json({ text: stdout.trim(), itemCount: items.length });
   } catch (e) {
-    return NextResponse.json({ error: e instanceof Error ? e.message : 'Claude 호출 실패' }, { status: 500 });
+    // execFileSync 에러 메시지에는 프롬프트 전체를 포함한 명령어 전체가 그대로 들어있어서
+    // (Node 기본 동작) 그걸 그대로 노출하면 화면이 프롬프트로 도배된다. claude CLI는 로그인
+    // 안 됐을 때 "Not logged in · Please run /login" 같은 실제 원인을 stderr가 아니라
+    // stdout으로 찍길래(실측 확인) stdout도 같이 본다 - 둘 다 없을 때만 명령어 메시지의
+    // 첫 줄로 대체한다.
+    const errObj = e as { stderr?: unknown; stdout?: unknown };
+    const stderr = errObj && typeof errObj === 'object' && 'stderr' in errObj ? String(errObj.stderr || '').trim() : '';
+    const stdoutMsg = errObj && typeof errObj === 'object' && 'stdout' in errObj ? String(errObj.stdout || '').trim() : '';
+    const message = stderr || stdoutMsg || (e instanceof Error ? e.message.split('\n')[0] : 'Claude 호출 실패');
+    return NextResponse.json({ error: message }, { status: 500 });
   }
 }

@@ -17,6 +17,7 @@ import { getMonthWeekKey, sortMonthWeekKeysDesc } from '@/lib/weekUtils';
 import { diffBrandSnapshot } from '@/lib/bsDiff';
 import { matchesBrand, normalizeName } from '@/lib/brandUtils';
 import { mediaUrl } from '@/lib/utils';
+import { pickVisuallyDistinctIds } from '@/lib/visualDedup';
 
 const BRANDS = [
   '메리츠증권', '키움증권', '미래에셋증권', '삼성증권', 'NH투자증권',
@@ -40,15 +41,21 @@ export default function Home() {
   const [selectedBrand, setSelectedBrand] = useState<string | null>(null);
   const [brandPlatform, setBrandPlatform] = useState<'all' | 'meta' | 'google'>('all');
   const [brandMedia, setBrandMedia] = useState<'all' | 'image' | 'video'>('all');
+  const [brandSort, setBrandSort] = useState<'recent' | 'duration'>('recent');
   const [searchText, setSearchText] = useState('');
   const [searchMedia, setSearchMedia] = useState<'all' | 'image' | 'video'>('all');
+  const [searchSort, setSearchSort] = useState<'recent' | 'duration'>('recent');
+  // 같은 템플릿/모델에 문구만 다른 소재가 시각적으로 비슷해서 사람 눈에는 "중복 수집된 것
+  // 처럼" 보이는 문제 - 데이터는 그대로 두고, 화면에 보여줄 대표 소재만 추려서 접는 토글
+  const [hideSimilarImages, setHideSimilarImages] = useState(false);
   const [sliceYears, setSliceYears] = useState<Set<string>>(new Set());
   const [sliceMonths, setSliceMonths] = useState<Set<string>>(new Set());
   const [sliceAdvertisers, setSliceAdvertisers] = useState<Set<string>>(new Set());
   const [slicePlatforms, setSlicePlatforms] = useState<Set<string>>(new Set());
-  const [showFavOnly, setShowFavOnly] = useState(false);
   const [metaSearchText, setMetaSearchText] = useState('');
   const [googleSearchText, setGoogleSearchText] = useState('');
+  const [metaSort, setMetaSort] = useState<'recent' | 'duration'>('recent');
+  const [googleSort, setGoogleSort] = useState<'recent' | 'duration'>('recent');
   const [metaStartDate, setMetaStartDate] = useState('');
   const [metaEndDate, setMetaEndDate] = useState('');
   const [googleStartDate, setGoogleStartDate] = useState('');
@@ -210,18 +217,46 @@ export default function Home() {
     lastGoogle: data.filter(i => i.platform === 'google').sort((a,b) => (b.collectedAt || '').localeCompare(a.collectedAt || ''))[0]?.collectedAt,
   }), [data, changes]);
 
+  // 게재일(adStartedAt) 우선, 구글은 이게 원래 항상 비어있어서(구글이 시작일 정보를 안 줌)
+  // 그다음으로 마지막 게재일(adLastShownAt)을 본다 - 이게 없으면 수집일(collectedAt)로 대체.
+  // (2026-08-07 수정: collectedAt만 쓰면 2025년에 끝난 광고를 오늘 재확인했다는 이유로
+  //  "2026년 소재"로 잡히는 문제가 있었음 - adLastShownAt이 있으면 그게 훨씬 정확한
+  //  실제 게재 시점이라 우선한다.)
+  const getAdDate = (item: AdItem) => item.adStartedAt || item.adLastShownAt || item.collectedAt;
+
+  // "게재일 긴 순서" 정렬용 - 처음 확인된 시점(adStartedAt, 없으면 최초 수집일)부터 마지막으로
+  // 확인된 시점(종료된 광고는 adLastShownAt, 아직도 게재 중이면 지금 이 순간)까지의 기간.
+  // 오래 살아남은(계속 재수집되며 확인된) 소재일수록 값이 커진다.
+  const getAdDurationMs = (item: AdItem) => {
+    const start = new Date(item.adStartedAt || item.collectedAt).getTime();
+    const end = new Date(item.status === 'ended' ? (item.adLastShownAt || item.collectedAt) : (item.adLastShownAt || Date.now())).getTime();
+    if (isNaN(start) || isNaN(end)) return 0;
+    return Math.max(0, end - start);
+  };
+
+  // "최신순" 정렬용 - adStartedAt/adLastShownAt이 둘 다 없는 광고(오래전에 끝났는데 상세페이지에서
+  // 마지막 게재일을 더 이상 안 보여주는 경우, 실측상 종료 소재의 약 40%)는 getAdDate가 collectedAt으로
+  // 대체되는데, 이 값은 "백필로 재발견된 시점"일 뿐 실제 게재 시점과 무관하다. 그대로 두면 2025년에
+  // 끝난 소재가 며칠 전 백필됐다는 이유만으로 최신순 맨 위에 뜨는 문제가 생긴다(실측 확인: 메리츠증권
+  // 모델 이미지 소재 다수). 그래서 실제 날짜 정보가 있는 광고를 항상 먼저 두고, 그 안에서만 최신순으로
+  // 비교한다 - 날짜 정보 없는 광고끼리는 collectedAt으로 비교해 순서만 안정적으로 유지한다.
+  const compareByRecency = (a: AdItem, b: AdItem) => {
+    const aReal = !!(a.adStartedAt || a.adLastShownAt);
+    const bReal = !!(b.adStartedAt || b.adLastShownAt);
+    if (aReal !== bReal) return aReal ? -1 : 1;
+    return getAdDate(b).localeCompare(getAdDate(a));
+  };
+
   const brandItems = useMemo(() => {
     if (!selectedBrand) return [];
     return data
       .filter(i => matchesBrand(i.advertiserName, selectedBrand) || (i.keyword || '').toLowerCase() === selectedBrand.toLowerCase())
       .filter(i => brandPlatform === 'all' ? true : i.platform === brandPlatform)
       .filter(i => brandMedia === 'all' ? true : i.mediaType === brandMedia)
-      .sort((a, b) => (b.collectedAt || '').localeCompare(a.collectedAt || ''));
-  }, [data, selectedBrand, brandPlatform, brandMedia]);
-
-  // 게재일(adStartedAt) 우선, 없으면 수집일(collectedAt)로 대체 - 아직 게재일이 안 잡히는
-  // 광고가 많아서 완전히 정확한 "게재 시점"은 아니지만 슬라이서가 항상 동작하도록 보장
-  const getAdDate = (item: AdItem) => item.adStartedAt || item.collectedAt;
+      .sort((a, b) => brandSort === 'duration'
+        ? getAdDurationMs(b) - getAdDurationMs(a)
+        : compareByRecency(a, b));
+  }, [data, selectedBrand, brandPlatform, brandMedia, brandSort]);
 
   const sliceOptions = useMemo(() => {
     const years = new Set<string>();
@@ -313,8 +348,18 @@ export default function Home() {
         return !isNaN(d.getTime()) && sliceMonths.has(`${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`);
       });
     }
-    return items.sort((a, b) => (b.collectedAt || '').localeCompare(a.collectedAt || ''));
-  }, [data, searchText, searchMedia, slicePlatforms, sliceAdvertisers, sliceYears, sliceMonths]);
+    return items.sort((a, b) => searchSort === 'duration'
+      ? getAdDurationMs(b) - getAdDurationMs(a)
+      : compareByRecency(a, b));
+  }, [data, searchText, searchMedia, slicePlatforms, sliceAdvertisers, sliceYears, sliceMonths, searchSort]);
+
+  // "비슷한 소재 접기" 토글이 켜져 있을 때만 계산한다(꺼져있으면 그대로 통과, 비용 없음).
+  // items는 이미 최신순으로 정렬돼 들어와서, 그리디 방식으로 훑을 때 항상 최신 것이 대표로 남는다.
+  const visualDedupeIds = (items: AdItem[]) => hideSimilarImages ? pickVisuallyDistinctIds(items) : null;
+  const withVisualDedupe = (items: AdItem[]) => {
+    const ids = visualDedupeIds(items);
+    return ids ? items.filter(i => ids.has(i.id)) : items;
+  };
 
   // 소재 인사이트는 "지금 선택된 조건"을 그대로 반영해야 해서(광고주/월/매체 뭘 고르든),
   // 매번 자동으로 다시 생성하지 않고 사용자가 버튼을 눌렀을 때만 현재 필터된 결과로
@@ -336,7 +381,7 @@ export default function Home() {
       const payloadItems = searchResults.map(i => ({
         advertiserName: i.advertiserName, platform: i.platform, copyText: i.copyText,
         headline: i.headline, status: i.status, collectedAt: i.collectedAt,
-        localPath: i.localPath, mediaType: i.mediaType,
+        localPath: i.localPath, mediaType: i.mediaType, aiDescription: i.aiDescription,
       }));
       const res = await fetch('/api/creative-insight', {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
@@ -394,8 +439,10 @@ export default function Home() {
       const selected = Array.from(metaSliceAdvertisers);
       items = items.filter(i => selected.some(g => matchesBrand(i.advertiserName, g)));
     }
-    return items.sort((a, b) => (b.collectedAt || '').localeCompare(a.collectedAt || ''));
-  }, [data, metaSearchText, metaStartDate, metaEndDate, metaSliceAdvertisers]);
+    return items.sort((a, b) => metaSort === 'duration'
+      ? getAdDurationMs(b) - getAdDurationMs(a)
+      : compareByRecency(a, b));
+  }, [data, metaSearchText, metaStartDate, metaEndDate, metaSliceAdvertisers, metaSort]);
 
   const googleItems = useMemo(() => {
     let items = data.filter(i => i.platform === 'google');
@@ -409,8 +456,10 @@ export default function Home() {
       const selected = Array.from(googleSliceAdvertisers);
       items = items.filter(i => selected.some(g => matchesBrand(i.advertiserName, g)));
     }
-    return items.sort((a, b) => (b.collectedAt || '').localeCompare(a.collectedAt || ''));
-  }, [data, googleSearchText, googleStartDate, googleEndDate, googleSliceAdvertisers]);
+    return items.sort((a, b) => googleSort === 'duration'
+      ? getAdDurationMs(b) - getAdDurationMs(a)
+      : compareByRecency(a, b));
+  }, [data, googleSearchText, googleStartDate, googleEndDate, googleSliceAdvertisers, googleSort]);
 
   if (loading) return <div style={{ minHeight: '100vh', background: 'var(--bg-page)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--text-muted)' }}>로딩 중...</div>;
 
@@ -436,6 +485,24 @@ export default function Home() {
     fontSize: '13px', cursor: 'pointer', whiteSpace: 'nowrap' as const, fontWeight: active ? 700 : 400,
   });
 
+  // 같은 템플릿에 문구만 다른 구글 소재가 시각적으로 비슷해 사람 눈에 "중복 수집처럼" 보이는
+  // 문제 대응용 - 데이터는 그대로 두고 화면에 대표 소재만 남기는 토글. 전역 상태 하나를 여러
+  // 탭(전체/구글/브랜드 상세)에서 공유해서 쓴다.
+  const similarToggleButton = () => (
+    <button onClick={() => setHideSimilarImages(v => !v)} style={chip(hideSimilarImages)}>
+      {hideSimilarImages ? '✓ ' : ''}비슷한 소재 접기
+    </button>
+  );
+
+  // adGrid()가 화면에는 최근 150개만 그려서(카드 수천 개를 한 번에 그리면 브라우저가 느려짐),
+  // 위쪽 "N개" 카운트(전체 필터링된 개수)와 실제 보이는 카드 수가 달라서 "왜 다 안 나오지"
+  // 오해가 생겼다(2026-08-07). 150개 넘을 때만 이 안내를 보여준다.
+  const gridCapNote = (totalCount: number, cap = 150) => totalCount > cap ? (
+    <p style={{ fontSize: '12px', color: 'var(--text-faint)', marginBottom: '12px' }}>
+      ※ 화면에는 최근 {cap}개만 표시됩니다(전체 {totalCount.toLocaleString()}개 중). 특정 브랜드의 전체 목록은 &quot;경쟁사 바로가기&quot;에서 브랜드를 클릭하면 전부 볼 수 있습니다.
+    </p>
+  ) : null;
+
   const slicerGroup = (
     title: string,
     options: string[],
@@ -459,7 +526,33 @@ export default function Home() {
     </div>
   );
 
-  const adGrid = (items: AdItem[], max = 300) => (
+  // 년도/월처럼 "그때그때 하나만 고르는" 필터는 칩 다중선택보다 다른 필터들(단위, 시작일 등)과
+  // 똑같은 드롭다운 형식이 UI 전체에서 더 일관돼 보인다 - 단일 선택으로 단순화.
+  const dropdownFilter = (
+    title: string,
+    options: string[],
+    selected: Set<string>,
+    setFn: React.Dispatch<React.SetStateAction<Set<string>>>,
+    formatLabel?: (v: string) => string,
+  ) => (
+    <div>
+      <div style={{ fontSize: '12px', color: 'var(--text-muted)', fontWeight: 700, marginBottom: '6px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+        {title}
+      </div>
+      <select
+        value={selected.size > 0 ? Array.from(selected)[0] : ''}
+        onChange={e => setFn(e.target.value ? new Set([e.target.value]) : new Set())}
+        style={{ width: '100%', background: 'var(--bg-surface-solid)', border: '1px solid var(--border)', borderRadius: '6px', padding: '6px 10px', color: 'var(--text-primary)', fontSize: '14px' }}
+      >
+        <option value="">전체</option>
+        {options.map(opt => (
+          <option key={opt} value={opt}>{formatLabel ? formatLabel(opt) : opt}</option>
+        ))}
+      </select>
+    </div>
+  );
+
+  const adGrid = (items: AdItem[], max = 150) => (
     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))', gap: '12px' }}>
       {items.slice(0, max).map(item => (
         <AdCard key={item.id} item={item} isFavorited={favorites.some(f => f.id === item.id)}
@@ -470,6 +563,63 @@ export default function Home() {
 
   const sectionLabel = (text: string) => (
     <h2 style={{ fontSize: '13px', fontWeight: 600, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '12px' }}>{text}</h2>
+  );
+
+  // "브랜드별" 탭의 KPI 매트릭스+바로가기 - 전체 탭(KPI 박스 바로 밑)과 브랜드별 탭
+  // (브랜드 미선택 상태) 양쪽에서 같이 쓴다.
+  const brandOverviewSection = () => (
+    <>
+      <section style={{ marginBottom: '32px' }}>
+        {sectionLabel('경쟁사 KPI 매트릭스')}
+        <div style={cardStyle({ overflow: 'hidden' })}>
+          <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '16px' }}>
+            <thead>
+              <tr style={{ borderBottom: '1px solid var(--border)' }}>
+                {['경쟁사', '활성', '신규 M', '종료 M', 'VIDEO', 'IMAGE'].map(h => (
+                  <th key={h} style={{ padding: '12px 16px', textAlign: h === '경쟁사' ? 'left' : 'right', fontSize: '13px', color: 'var(--text-muted)', fontWeight: 500, textTransform: 'uppercase' }}>{h}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {brandStats.map(b => (
+                <tr key={b.name} onClick={() => goToBrand(b.name)}
+                  style={{ borderBottom: '1px solid rgba(var(--border-rgb),0.4)', cursor: 'pointer', background: b.isClient ? 'rgba(var(--accent-rgb),0.06)' : 'transparent', transition: 'background 0.15s' }}
+                  onMouseEnter={e => (e.currentTarget.style.background = b.isClient ? 'rgba(var(--accent-rgb),0.12)' : 'rgba(255,255,255,0.03)')}
+                  onMouseLeave={e => (e.currentTarget.style.background = b.isClient ? 'rgba(var(--accent-rgb),0.06)' : 'transparent')}>
+                  <td style={{ padding: '12px 16px' }}>
+                    <span style={{ color: 'var(--text-primary)', fontWeight: 500 }}>{b.name}</span>
+                    {b.isClient && <span style={{ marginLeft: '8px', background: 'rgba(var(--accent-rgb),0.4)', color: 'var(--accent-text)', fontSize: '12px', fontWeight: 600, padding: '1px 6px', borderRadius: '3px' }}>client</span>}
+                  </td>
+                  <td style={{ padding: '12px 16px', textAlign: 'right', fontFamily: 'monospace', fontWeight: 700, color: 'var(--text-primary)' }}>{b.total.toLocaleString()}</td>
+                  <td style={{ padding: '12px 16px', textAlign: 'right' }}>
+                    {b.new24h > 0 ? <span style={{ background: 'rgba(52,211,153,0.15)', color: 'var(--success)', fontSize: '14px', fontWeight: 600, padding: '2px 8px', borderRadius: '4px' }}>+{b.new24h}</span> : <span style={{ color: 'var(--text-faint)' }}>-</span>}
+                  </td>
+                  <td style={{ padding: '12px 16px', textAlign: 'right' }}>
+                    {b.ended24h > 0 ? <span style={{ background: 'rgba(248,113,113,0.15)', color: 'var(--danger)', fontSize: '14px', fontWeight: 600, padding: '2px 8px', borderRadius: '4px' }}>-{b.ended24h}</span> : <span style={{ color: 'var(--text-faint)' }}>-</span>}
+                  </td>
+                  <td style={{ padding: '12px 16px', textAlign: 'right', color: 'var(--text-secondary)' }}>{b.video > 0 ? b.video : <span style={{ color: 'var(--text-faint)' }}>-</span>}</td>
+                  <td style={{ padding: '12px 16px', textAlign: 'right', color: 'var(--text-secondary)' }}>{b.image > 0 ? b.image : <span style={{ color: 'var(--text-faint)' }}>-</span>}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section style={{ marginBottom: '32px' }}>
+        {sectionLabel('경쟁사 바로가기')}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(140px, 1fr))', gap: '10px' }}>
+          {brandStats.map(b => (
+            <button key={b.name} onClick={() => goToBrand(b.name)}
+              style={{ background: b.isClient ? 'var(--accent-soft)' : 'var(--bg-surface)', border: `1px solid ${b.isClient ? 'rgba(var(--accent-rgb),0.4)' : 'var(--border)'}`, borderRadius: '12px', padding: '12px', textAlign: 'center', cursor: 'pointer' }}>
+              <div style={{ fontSize: '15px', fontWeight: 600, color: 'var(--text-primary)' }}>{b.name}</div>
+              <div style={{ fontSize: '13px', color: 'var(--text-muted)', marginTop: '4px' }}>활성 {b.total.toLocaleString()}</div>
+              {b.isClient && <div style={{ marginTop: '6px' }}><span style={{ background: 'rgba(var(--accent-rgb),0.3)', color: 'var(--accent-text)', fontSize: '12px', padding: '1px 6px', borderRadius: '3px' }}>client</span></div>}
+            </button>
+          ))}
+        </div>
+      </section>
+    </>
   );
 
   return (
@@ -573,6 +723,8 @@ export default function Home() {
                   ))}
                 </div>
 
+                {brandOverviewSection()}
+
                 <div style={{ marginBottom: '20px' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap', marginBottom: dynamicInsight ? '10px' : 0 }}>
                     <button onClick={generateCreativeInsight} disabled={insightLoading || searchResults.length === 0}
@@ -603,8 +755,8 @@ export default function Home() {
 
                 <div style={cardStyle({ padding: '14px', marginBottom: '12px' })}>
                   <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '14px' }}>
-                    {slicerGroup('년도', sliceOptions.years, sliceYears, v => toggleSetValue(setSliceYears, v), v => v + '년')}
-                    {slicerGroup('월', sliceOptions.months, sliceMonths, v => toggleSetValue(setSliceMonths, v), v => `${v.split('-')[0]}.${v.split('-')[1]}`)}
+                    {dropdownFilter('년도', sliceOptions.years, sliceYears, setSliceYears, v => v + '년')}
+                    {dropdownFilter('월', sliceOptions.months, sliceMonths, setSliceMonths, v => `${v.split('-')[0]}.${v.split('-')[1]}`)}
                     {slicerGroup('광고주명', sliceOptions.advertisers, sliceAdvertisers, v => toggleSetValue(setSliceAdvertisers, v))}
                     {slicerGroup('매체', sliceOptions.platforms, slicePlatforms, v => toggleSetValue(setSlicePlatforms, v), v => v === 'meta' ? 'Meta' : v === 'google' ? 'Google' : v === 'naver_bs' ? '네이버 브검' : v)}
                   </div>
@@ -622,33 +774,41 @@ export default function Home() {
                   {(['all','image','video'] as const).map(m => (
                     <button key={m} onClick={() => setSearchMedia(m)} style={chip(searchMedia === m)}>{m === 'all' ? '전체' : m === 'image' ? '이미지' : '영상'}</button>
                   ))}
-                  <div style={{ width: '1px', background: 'var(--border)', margin: '0 4px', height: '16px' }} />
-                  <button onClick={() => setShowFavOnly(v => !v)} style={chip(showFavOnly)}>⭐ 즐겨찾기만</button>
-                  <span style={{ marginLeft: 'auto', fontSize: '13px', color: 'var(--text-muted)' }}>
-                    {showFavOnly ? `${favorites.length}개` : `${searchResults.length}개`}
-                  </span>
+                  <div style={{ width: '1px', background: 'var(--border)', margin: '0 4px' }} />
+                  {(['recent','duration'] as const).map(s => (
+                    <button key={s} onClick={() => setSearchSort(s)} style={chip(searchSort === s)}>{s === 'recent' ? '최신순' : '게재일 긴 순서'}</button>
+                  ))}
+                  {similarToggleButton()}
+                  <span style={{ marginLeft: 'auto', fontSize: '13px', color: 'var(--text-muted)' }}>{withVisualDedupe(searchResults).length}개</span>
                 </div>
+                {gridCapNote(withVisualDedupe(searchResults).length)}
 
-                {showFavOnly ? (
-                  Object.keys(favFolders).length === 0 ? (
-                    <div style={{ textAlign: 'center', padding: '60px', color: 'var(--text-muted)' }}>
-                      <div style={{ fontSize: '40px', marginBottom: '12px' }}>⭐</div>
-                      <p>즐겨찾기한 광고가 없습니다<br />카드의 ☆ 버튼을 눌러 추가해보세요</p>
+                {adGrid(withVisualDedupe(searchResults))}
+              </>
+            )}
+
+            {/* 경쟁사 대시보드 > 즐겨찾기 */}
+            {view === 'dash-fav' && (
+              <>
+                <h1 style={{ fontSize: '24px', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '24px' }}>즐겨찾기</h1>
+                {Object.keys(favFolders).length === 0 ? (
+                  <div style={{ textAlign: 'center', padding: '60px', color: 'var(--text-muted)' }}>
+                    <div style={{ fontSize: '40px', marginBottom: '12px' }}>⭐</div>
+                    <p>즐겨찾기한 광고가 없습니다<br />카드의 ☆ 버튼을 눌러 추가해보세요</p>
+                  </div>
+                ) : Object.entries(favFolders).map(([folder, items]) => (
+                  <div key={folder} style={{ marginBottom: '32px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px', color: 'var(--accent-text)', fontWeight: 600, fontSize: '16px' }}>
+                      📁 {folder} <span style={{ color: 'var(--text-muted)', fontWeight: 400, fontSize: '14px' }}>{items.length}개</span>
                     </div>
-                  ) : Object.entries(favFolders).map(([folder, items]) => (
-                    <div key={folder} style={{ marginBottom: '32px' }}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px', color: 'var(--accent-text)', fontWeight: 600, fontSize: '16px' }}>
-                        📁 {folder} <span style={{ color: 'var(--text-muted)', fontWeight: 400, fontSize: '14px' }}>{items.length}개</span>
-                      </div>
-                      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))', gap: '12px' }}>
-                        {items.map(f => {
-                          const item = data.find(d => d.id === f.id);
-                          return item ? <AdCard key={f.id} item={item} isFavorited={true} onToggleFav={toggleFav} onClick={setSelectedItem} dataDir="/data" /> : null;
-                        })}
-                      </div>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))', gap: '12px' }}>
+                      {items.map(f => {
+                        const item = data.find(d => d.id === f.id);
+                        return item ? <AdCard key={f.id} item={item} isFavorited={true} onToggleFav={toggleFav} onClick={setSelectedItem} dataDir="/data" /> : null;
+                      })}
                     </div>
-                  ))
-                ) : adGrid(searchResults)}
+                  </div>
+                ))}
               </>
             )}
 
@@ -703,7 +863,15 @@ export default function Home() {
                     </button>
                   )}
                 </div>
-                <p style={{ fontSize: '13px', color: 'var(--text-muted)', marginBottom: '14px' }}>{metaItems.length}개</p>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '14px', flexWrap: 'wrap' }}>
+                  <p style={{ fontSize: '13px', color: 'var(--text-muted)', margin: 0 }}>{metaItems.length}개</p>
+                  <div style={{ marginLeft: 'auto', display: 'flex', gap: '6px' }}>
+                    {(['recent','duration'] as const).map(s => (
+                      <button key={s} onClick={() => setMetaSort(s)} style={chip(metaSort === s)}>{s === 'recent' ? '최신순' : '게재일 긴 순서'}</button>
+                    ))}
+                  </div>
+                </div>
+                {gridCapNote(metaItems.length)}
                 {adGrid(metaItems)}
               </>
             )}
@@ -743,66 +911,25 @@ export default function Home() {
                     </button>
                   )}
                 </div>
-                <p style={{ fontSize: '13px', color: 'var(--text-muted)', marginBottom: '14px' }}>{googleItems.length}개</p>
-                {adGrid(googleItems)}
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '14px', flexWrap: 'wrap' }}>
+                  {similarToggleButton()}
+                  <p style={{ fontSize: '13px', color: 'var(--text-muted)', margin: 0 }}>{withVisualDedupe(googleItems).length}개</p>
+                  <div style={{ marginLeft: 'auto', display: 'flex', gap: '6px' }}>
+                    {(['recent','duration'] as const).map(s => (
+                      <button key={s} onClick={() => setGoogleSort(s)} style={chip(googleSort === s)}>{s === 'recent' ? '최신순' : '게재일 긴 순서'}</button>
+                    ))}
+                  </div>
+                </div>
+                {gridCapNote(withVisualDedupe(googleItems).length)}
+                {adGrid(withVisualDedupe(googleItems))}
               </>
             )}
 
-            {/* 경쟁사 대시보드 > 브랜드별 */}
+            {/* 경쟁사 대시보드 > 브랜드별 (내용은 전체 탭에도 동일하게 표시됨 - brandOverviewSection) */}
             {view === 'dash-brand' && !selectedBrand && (
               <>
                 <h1 style={{ fontSize: '22px', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '24px' }}>브랜드별</h1>
-
-                <section style={{ marginBottom: '32px' }}>
-                  {sectionLabel('경쟁사 KPI 매트릭스')}
-                  <div style={cardStyle({ overflow: 'hidden' })}>
-                    <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '16px' }}>
-                      <thead>
-                        <tr style={{ borderBottom: '1px solid var(--border)' }}>
-                          {['경쟁사', '활성', '신규 M', '종료 M', 'VIDEO', 'IMAGE'].map(h => (
-                            <th key={h} style={{ padding: '12px 16px', textAlign: h === '경쟁사' ? 'left' : 'right', fontSize: '13px', color: 'var(--text-muted)', fontWeight: 500, textTransform: 'uppercase' }}>{h}</th>
-                          ))}
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {brandStats.map(b => (
-                          <tr key={b.name} onClick={() => goToBrand(b.name)}
-                            style={{ borderBottom: '1px solid rgba(var(--border-rgb),0.4)', cursor: 'pointer', background: b.isClient ? 'rgba(var(--accent-rgb),0.06)' : 'transparent', transition: 'background 0.15s' }}
-                            onMouseEnter={e => (e.currentTarget.style.background = b.isClient ? 'rgba(var(--accent-rgb),0.12)' : 'rgba(255,255,255,0.03)')}
-                            onMouseLeave={e => (e.currentTarget.style.background = b.isClient ? 'rgba(var(--accent-rgb),0.06)' : 'transparent')}>
-                            <td style={{ padding: '12px 16px' }}>
-                              <span style={{ color: 'var(--text-primary)', fontWeight: 500 }}>{b.name}</span>
-                              {b.isClient && <span style={{ marginLeft: '8px', background: 'rgba(var(--accent-rgb),0.4)', color: 'var(--accent-text)', fontSize: '12px', fontWeight: 600, padding: '1px 6px', borderRadius: '3px' }}>client</span>}
-                            </td>
-                            <td style={{ padding: '12px 16px', textAlign: 'right', fontFamily: 'monospace', fontWeight: 700, color: 'var(--text-primary)' }}>{b.total.toLocaleString()}</td>
-                            <td style={{ padding: '12px 16px', textAlign: 'right' }}>
-                              {b.new24h > 0 ? <span style={{ background: 'rgba(52,211,153,0.15)', color: 'var(--success)', fontSize: '14px', fontWeight: 600, padding: '2px 8px', borderRadius: '4px' }}>+{b.new24h}</span> : <span style={{ color: 'var(--text-faint)' }}>-</span>}
-                            </td>
-                            <td style={{ padding: '12px 16px', textAlign: 'right' }}>
-                              {b.ended24h > 0 ? <span style={{ background: 'rgba(248,113,113,0.15)', color: 'var(--danger)', fontSize: '14px', fontWeight: 600, padding: '2px 8px', borderRadius: '4px' }}>-{b.ended24h}</span> : <span style={{ color: 'var(--text-faint)' }}>-</span>}
-                            </td>
-                            <td style={{ padding: '12px 16px', textAlign: 'right', color: 'var(--text-secondary)' }}>{b.video > 0 ? b.video : <span style={{ color: 'var(--text-faint)' }}>-</span>}</td>
-                            <td style={{ padding: '12px 16px', textAlign: 'right', color: 'var(--text-secondary)' }}>{b.image > 0 ? b.image : <span style={{ color: 'var(--text-faint)' }}>-</span>}</td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </div>
-                </section>
-
-                <section>
-                  {sectionLabel('경쟁사 바로가기')}
-                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(140px, 1fr))', gap: '10px' }}>
-                    {brandStats.map(b => (
-                      <button key={b.name} onClick={() => goToBrand(b.name)}
-                        style={{ background: b.isClient ? 'var(--accent-soft)' : 'var(--bg-surface)', border: `1px solid ${b.isClient ? 'rgba(var(--accent-rgb),0.4)' : 'var(--border)'}`, borderRadius: '12px', padding: '12px', textAlign: 'center', cursor: 'pointer' }}>
-                        <div style={{ fontSize: '15px', fontWeight: 600, color: 'var(--text-primary)' }}>{b.name}</div>
-                        <div style={{ fontSize: '13px', color: 'var(--text-muted)', marginTop: '4px' }}>활성 {b.total.toLocaleString()}</div>
-                        {b.isClient && <div style={{ marginTop: '6px' }}><span style={{ background: 'rgba(var(--accent-rgb),0.3)', color: 'var(--accent-text)', fontSize: '12px', padding: '1px 6px', borderRadius: '3px' }}>client</span></div>}
-                      </button>
-                    ))}
-                  </div>
-                </section>
+                {brandOverviewSection()}
               </>
             )}
 
@@ -823,12 +950,19 @@ export default function Home() {
                   {(() => {
                     const s = brandStats.find(b => b.name === selectedBrand);
                     if (!s) return null;
+                    const brandItemsAll = data.filter(i =>
+                      matchesBrand(i.advertiserName, selectedBrand) || (i.keyword || '').toLowerCase() === selectedBrand.toLowerCase()
+                    );
+                    const countBy = (platform: string, mediaType: string) =>
+                      brandItemsAll.filter(i => i.platform === platform && i.mediaType === mediaType).length;
                     return [
                       { label: `전체 ${s.total}`, color: 'var(--accent-text)' },
-                      { label: `Meta ${data.filter(i=>i.platform==='meta'&&(i.advertiserName||'').includes(selectedBrand)).length}`, color: '#6aadff' },
-                      { label: `Google ${data.filter(i=>i.platform==='google'&&(i.advertiserName||'').includes(selectedBrand)).length}`, color: '#ff8a80' },
-                      { label: `이미지 ${s.image}`, color: 'var(--text-primary)' },
-                      { label: `영상 ${s.video}`, color: 'var(--text-primary)' },
+                      { label: `Meta ${countBy('meta','image') + countBy('meta','video')}`, color: '#6aadff' },
+                      { label: `Google ${countBy('google','image') + countBy('google','video')}`, color: '#ff8a80' },
+                      { label: `Meta 이미지 ${countBy('meta','image')}`, color: 'var(--text-secondary)' },
+                      { label: `Meta 영상 ${countBy('meta','video')}`, color: 'var(--text-secondary)' },
+                      { label: `Google 이미지 ${countBy('google','image')}`, color: 'var(--text-secondary)' },
+                      { label: `Google 영상 ${countBy('google','video')}`, color: 'var(--text-secondary)' },
                     ].map(({ label, color }) => (
                       <span key={label} style={{ fontSize: '13px', color, background: 'var(--bg-elevated)', padding: '3px 10px', borderRadius: '20px' }}>{label}</span>
                     ));
@@ -863,7 +997,7 @@ export default function Home() {
                 <div>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '14px', flexWrap: 'wrap' }}>
                     <span style={{ fontSize: '15px', fontWeight: 600 }}>전체 광고</span>
-                    <span style={{ fontSize: '13px', color: 'var(--text-muted)' }}>{brandItems.length}개</span>
+                    <span style={{ fontSize: '13px', color: 'var(--text-muted)' }}>{withVisualDedupe(brandItems).length}개</span>
                     <div style={{ marginLeft: 'auto', display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
                       {(['all','meta','google'] as const).map(p => (
                         <button key={p} onClick={() => setBrandPlatform(p)} style={chip(brandPlatform === p)}>{p === 'all' ? '전체' : p}</button>
@@ -872,9 +1006,14 @@ export default function Home() {
                       {(['all','image','video'] as const).map(m => (
                         <button key={m} onClick={() => setBrandMedia(m)} style={chip(brandMedia === m)}>{m === 'all' ? '전체' : m === 'image' ? '이미지' : '영상'}</button>
                       ))}
+                      <div style={{ width: '1px', background: 'var(--border)', margin: '0 4px' }} />
+                      {(['recent','duration'] as const).map(s => (
+                        <button key={s} onClick={() => setBrandSort(s)} style={chip(brandSort === s)}>{s === 'recent' ? '최신순' : '게재일 긴 순서'}</button>
+                      ))}
+                      {similarToggleButton()}
                     </div>
                   </div>
-                  {adGrid(brandItems)}
+                  {adGrid(withVisualDedupe(brandItems), Infinity)}
                 </div>
               </>
             )}
@@ -927,6 +1066,22 @@ export default function Home() {
                       if (brandBs.length === 0) return null;
                       const pc = brandBs.filter((i: any) => i.device === 'pc').sort((a: any, b: any) => (b.collectedAt || '').localeCompare(a.collectedAt || ''))[0];
                       const mo = brandBs.filter((i: any) => i.device === 'mo').sort((a: any, b: any) => (b.collectedAt || '').localeCompare(a.collectedAt || ''))[0];
+
+                      // creativeSetId 기준으로 PC/MO를 소재 세트로 묶는다 - 이전에 수집된(creativeSetId
+                      // 없는) 데이터는 device별로 하나의 레거시 세트에 담아 그대로 보여준다.
+                      const setMap = new Map<string, { label: string; pc?: any; mo?: any }>();
+                      brandBs.forEach((item: any) => {
+                        // creativeSetId 없는 구버전 데이터는 브랜드당 PC/MO 하나씩만 있던 시절 것이라
+                        // 전부 같은 "legacy" 버킷 하나에 담아 기존처럼 PC+MO 한 쌍으로 보여준다.
+                        const setId = item.creativeSetId || 'legacy';
+                        if (!setMap.has(setId)) setMap.set(setId, { label: item.creativeLabel || '소재' });
+                        const entry = setMap.get(setId)!;
+                        const key = item.device === 'mo' ? 'mo' : 'pc';
+                        const existing = entry[key];
+                        if (!existing || (item.collectedAt || '') > (existing.collectedAt || '')) entry[key] = item;
+                      });
+                      const creativeSets = Array.from(setMap.values());
+
                       const isOpen = bsExpanded.has(brand);
                       const summaryEntry = bsWeeklySummary.find(s => s.brand === brand);
                       const showDiffBox = isOpen && summaryEntry && !summaryEntry.diff.isFirstSnapshot && summaryEntry.changeCount > 0;
@@ -962,100 +1117,118 @@ export default function Home() {
                                   </ul>
                                 </div>
                               )}
-                              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', marginBottom: '24px' }}>
-                                {[{ item: pc, label: 'PC' }, { item: mo, label: 'MO' }].map(({ item, label }) => (
-                                  <div key={label} style={{ background: 'var(--bg-elevated)', border: '1px solid var(--border)', borderRadius: '10px', overflow: 'hidden' }}>
-                                    <div style={{ padding: '10px 14px', borderBottom: '1px solid var(--border)', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                                      <span style={{ background: '#03c75a', color: '#fff', fontSize: '12px', fontWeight: 700, padding: '2px 8px', borderRadius: '4px' }}>{label}</span>
-                                      <span style={{ fontSize: '14px', fontWeight: 600 }}>네이버 브랜드검색</span>
-                                      {item && <span style={{ marginLeft: 'auto', fontSize: '12px', color: 'var(--text-muted)' }}>{new Date(item.collectedAt).toLocaleDateString('ko-KR')}</span>}
-                                    </div>
-                                    <div style={{ padding: '12px' }}>
-                                      {!item ? (
-                                        <div style={{ color: 'var(--text-muted)', fontSize: '14px', padding: '20px 0', textAlign: 'center' }}>수집된 데이터 없음</div>
-                                      ) : item.localPath ? (
-                                        <div style={{ maxHeight: '320px', overflow: 'hidden', borderRadius: '8px', cursor: 'pointer', position: 'relative' }}
-                                          onClick={() => window.open(mediaUrl(item.localPath), '_blank')}>
-                                          <img src={mediaUrl(item.localPath)} alt="" style={{ width: '100%', display: 'block' }} />
-                                          <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '40px', background: 'linear-gradient(transparent, rgba(0,0,0,0.6))', display: 'flex', alignItems: 'flex-end', justifyContent: 'center', paddingBottom: '6px' }}>
-                                            <span style={{ fontSize: '12px', color: '#fff' }}>클릭해서 전체 이미지 보기</span>
-                                          </div>
-                                        </div>
-                                      ) : (
-                                        <div style={{ color: 'var(--text-muted)', fontSize: '14px', padding: '20px 0', textAlign: 'center' }}>이미지 없음</div>
-                                      )}
-                                    </div>
-                                  </div>
-                                ))}
-                              </div>
+                              {creativeSets.map((set, setIdx) => {
+                                const mainImages: { path: string; area: string }[] = [];
+                                const seenImg = new Set<string>();
+                                [set.pc, set.mo].forEach((item: any) => {
+                                  (item?.buttons || []).forEach((btn: any) => {
+                                    if (btn.slideImage && !seenImg.has(btn.slideImage)) {
+                                      seenImg.add(btn.slideImage);
+                                      mainImages.push({ path: btn.slideImage, area: btn.area || '메인이미지' });
+                                    }
+                                  });
+                                });
 
-                              {pc && pc.buttons && pc.buttons.length > 0 && (
-                                <div style={{ marginBottom: '24px' }}>
-                                  <p style={{ fontSize: '14px', fontWeight: 700, color: 'var(--accent-text)', marginBottom: '10px' }}>PC 랜딩</p>
-                                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))', gap: '12px' }}>
-                                    {pc.buttons.filter((btn: any) => btn.landingScreenshot).map((btn: any, idx: number) => (
-                                      <div key={idx} style={{ background: 'var(--bg-elevated)', border: '1px solid var(--border)', borderRadius: '8px', overflow: 'hidden' }}>
-                                        <div style={{ padding: '6px 10px', borderBottom: '1px solid var(--border)' }}>
-                                          <div style={{ display: 'flex', gap: '4px', marginBottom: '4px', flexWrap: 'wrap' }}>
-                                            {btn.area && <span style={{ display: 'inline-block', background: '#03c75a', color: '#fff', fontSize: '11px', fontWeight: 700, padding: '2px 7px', borderRadius: '4px' }}>{btn.area}</span>}
-                                            <span style={{ display: 'inline-block', background: 'var(--accent)', color: '#fff', fontSize: '12px', fontWeight: 600, padding: '2px 7px', borderRadius: '4px' }}>{btn.buttonText || '버튼'}</span>
+                                return (
+                                  <div key={setIdx} style={{ marginBottom: '28px' }}>
+                                    {creativeSets.length > 1 && (
+                                      <p style={{ fontSize: '13px', fontWeight: 700, color: 'var(--text-primary)', background: 'var(--bg-elevated)', display: 'inline-block', padding: '3px 10px', borderRadius: '6px', marginBottom: '10px' }}>{set.label}</p>
+                                    )}
+                                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', marginBottom: mainImages.length > 0 ? '10px' : '24px' }}>
+                                      {[{ item: set.pc, label: 'PC' }, { item: set.mo, label: 'MO' }].map(({ item, label }) => (
+                                        <div key={label} style={{ background: 'var(--bg-elevated)', border: '1px solid var(--border)', borderRadius: '10px', overflow: 'hidden' }}>
+                                          <div style={{ padding: '10px 14px', borderBottom: '1px solid var(--border)', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                                            <span style={{ background: '#03c75a', color: '#fff', fontSize: '12px', fontWeight: 700, padding: '2px 8px', borderRadius: '4px' }}>{label}</span>
+                                            <span style={{ fontSize: '14px', fontWeight: 600 }}>네이버 브랜드검색</span>
+                                            {item && <span style={{ marginLeft: 'auto', fontSize: '12px', color: 'var(--text-muted)' }}>{new Date(item.collectedAt).toLocaleDateString('ko-KR')}</span>}
                                           </div>
-                                          <a href={btn.finalUrl || btn.buttonUrl} target="_blank" rel="noopener noreferrer"
-                                            style={{ display: 'block', fontSize: '11px', color: 'var(--accent-text)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', textDecoration: 'none' }}>
-                                            {(btn.finalUrl || btn.buttonUrl || '').slice(0, 40)}...
-                                          </a>
+                                          <div style={{ padding: '12px' }}>
+                                            {!item ? (
+                                              <div style={{ color: 'var(--text-muted)', fontSize: '14px', padding: '20px 0', textAlign: 'center' }}>수집된 데이터 없음</div>
+                                            ) : item.localPath ? (
+                                              <div style={{ maxHeight: '320px', overflow: 'hidden', borderRadius: '8px', cursor: 'pointer', position: 'relative' }}
+                                                onClick={() => window.open(mediaUrl(item.localPath), '_blank')}>
+                                                <img src={mediaUrl(item.localPath)} alt="" style={{ width: '100%', display: 'block' }} />
+                                                <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '40px', background: 'linear-gradient(transparent, rgba(0,0,0,0.6))', display: 'flex', alignItems: 'flex-end', justifyContent: 'center', paddingBottom: '6px' }}>
+                                                  <span style={{ fontSize: '12px', color: '#fff' }}>클릭해서 전체 이미지 보기</span>
+                                                </div>
+                                              </div>
+                                            ) : (
+                                              <div style={{ color: 'var(--text-muted)', fontSize: '14px', padding: '20px 0', textAlign: 'center' }}>이미지 없음</div>
+                                            )}
+                                          </div>
                                         </div>
-                                        {btn.slideImage && (
-                                          <div style={{ position: 'relative', overflow: 'hidden', cursor: 'pointer', borderBottom: '1px solid var(--border)' }}
-                                            onClick={() => window.open(mediaUrl(btn.slideImage), '_blank')}>
-                                            <img src={mediaUrl(btn.slideImage)} alt="배너 이미지" style={{ width: '100%', display: 'block' }} />
-                                            <span style={{ position: 'absolute', top: '4px', left: '4px', background: 'rgba(0,0,0,0.6)', color: '#fff', fontSize: '10px', padding: '2px 6px', borderRadius: '3px' }}>배너 이미지</span>
-                                          </div>
-                                        )}
-                                        <div style={{ position: 'relative', overflow: 'hidden', maxHeight: '220px', cursor: 'pointer' }}
-                                          onClick={() => window.open(btn.finalUrl || btn.buttonUrl, '_blank')}>
-                                          <img src={mediaUrl(btn.landingScreenshot)} alt="랜딩" style={{ width: '100%', display: 'block' }} />
-                                          {btn.slideImage && <span style={{ position: 'absolute', top: '4px', left: '4px', background: 'rgba(0,0,0,0.6)', color: '#fff', fontSize: '10px', padding: '2px 6px', borderRadius: '3px' }}>랜딩 페이지</span>}
+                                      ))}
+                                    </div>
+
+                                    {mainImages.length > 0 && (
+                                      <div style={{ marginBottom: '24px' }}>
+                                        <p style={{ fontSize: '12px', color: 'var(--text-muted)', marginBottom: '6px' }}>메인이미지 ({mainImages.length})</p>
+                                        <div style={{ display: 'flex', gap: '8px', overflowX: 'auto', paddingBottom: '4px' }}>
+                                          {mainImages.map((img, i) => (
+                                            <div key={i} style={{ flexShrink: 0, width: '100px', cursor: 'pointer', borderRadius: '8px', overflow: 'hidden', border: '1px solid var(--border)' }}
+                                              onClick={() => window.open(mediaUrl(img.path), '_blank')}>
+                                              <img src={mediaUrl(img.path)} alt={img.area} style={{ width: '100%', height: '100px', objectFit: 'cover', display: 'block' }} />
+                                            </div>
+                                          ))}
                                         </div>
                                       </div>
-                                    ))}
-                                  </div>
-                                </div>
-                              )}
+                                    )}
 
-                              {mo && mo.buttons && mo.buttons.length > 0 && (
-                                <div>
-                                  <p style={{ fontSize: '14px', fontWeight: 700, color: 'var(--accent-text)', marginBottom: '10px' }}>MO 랜딩</p>
-                                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(160px, 1fr))', gap: '12px' }}>
-                                    {mo.buttons.filter((btn: any) => btn.landingScreenshot).map((btn: any, idx: number) => (
-                                      <div key={idx} style={{ background: 'var(--bg-elevated)', border: '1px solid var(--border)', borderRadius: '8px', overflow: 'hidden' }}>
-                                        <div style={{ padding: '6px 10px', borderBottom: '1px solid var(--border)' }}>
-                                          <div style={{ display: 'flex', gap: '4px', marginBottom: '4px', flexWrap: 'wrap' }}>
-                                            {btn.area && <span style={{ display: 'inline-block', background: '#03c75a', color: '#fff', fontSize: '11px', fontWeight: 700, padding: '2px 7px', borderRadius: '4px' }}>{btn.area}</span>}
-                                            <span style={{ display: 'inline-block', background: 'var(--accent)', color: '#fff', fontSize: '12px', fontWeight: 600, padding: '2px 7px', borderRadius: '4px' }}>{btn.buttonText || '버튼'}</span>
-                                          </div>
-                                          <a href={btn.finalUrl || btn.buttonUrl} target="_blank" rel="noopener noreferrer"
-                                            style={{ display: 'block', fontSize: '11px', color: 'var(--accent-text)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', textDecoration: 'none' }}>
-                                            {(btn.finalUrl || btn.buttonUrl || '').slice(0, 30)}...
-                                          </a>
-                                        </div>
-                                        {btn.slideImage && (
-                                          <div style={{ position: 'relative', overflow: 'hidden', cursor: 'pointer', borderBottom: '1px solid var(--border)' }}
-                                            onClick={() => window.open(mediaUrl(btn.slideImage), '_blank')}>
-                                            <img src={mediaUrl(btn.slideImage)} alt="배너 이미지" style={{ width: '100%', display: 'block' }} />
-                                            <span style={{ position: 'absolute', top: '4px', left: '4px', background: 'rgba(0,0,0,0.6)', color: '#fff', fontSize: '10px', padding: '2px 6px', borderRadius: '3px' }}>배너 이미지</span>
-                                          </div>
-                                        )}
-                                        <div style={{ position: 'relative', overflow: 'hidden', maxHeight: '300px', cursor: 'pointer' }}
-                                          onClick={() => window.open(btn.finalUrl || btn.buttonUrl, '_blank')}>
-                                          <img src={mediaUrl(btn.landingScreenshot)} alt="랜딩" style={{ width: '100%', display: 'block' }} />
-                                          {btn.slideImage && <span style={{ position: 'absolute', top: '4px', left: '4px', background: 'rgba(0,0,0,0.6)', color: '#fff', fontSize: '10px', padding: '2px 6px', borderRadius: '3px' }}>랜딩 페이지</span>}
+                                    {set.pc && set.pc.buttons && set.pc.buttons.length > 0 && (
+                                      <div style={{ marginBottom: '24px' }}>
+                                        <p style={{ fontSize: '14px', fontWeight: 700, color: 'var(--accent-text)', marginBottom: '10px' }}>PC 랜딩</p>
+                                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))', gap: '12px' }}>
+                                          {set.pc.buttons.filter((btn: any) => btn.landingScreenshot).map((btn: any, idx: number) => (
+                                            <div key={idx} style={{ background: 'var(--bg-elevated)', border: '1px solid var(--border)', borderRadius: '8px', overflow: 'hidden' }}>
+                                              <div style={{ padding: '6px 10px', borderBottom: '1px solid var(--border)' }}>
+                                                <div style={{ display: 'flex', gap: '4px', marginBottom: '4px', flexWrap: 'wrap' }}>
+                                                  {btn.area && <span style={{ display: 'inline-block', background: '#03c75a', color: '#fff', fontSize: '11px', fontWeight: 700, padding: '2px 7px', borderRadius: '4px' }}>{btn.area}</span>}
+                                                  <span style={{ display: 'inline-block', background: 'var(--accent)', color: '#fff', fontSize: '12px', fontWeight: 600, padding: '2px 7px', borderRadius: '4px' }}>{btn.buttonText || '버튼'}</span>
+                                                </div>
+                                                <a href={btn.finalUrl || btn.buttonUrl} target="_blank" rel="noopener noreferrer"
+                                                  style={{ display: 'block', fontSize: '11px', color: 'var(--accent-text)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', textDecoration: 'none' }}>
+                                                  {(btn.finalUrl || btn.buttonUrl || '').slice(0, 40)}...
+                                                </a>
+                                              </div>
+                                              <div style={{ position: 'relative', overflow: 'hidden', maxHeight: '220px', cursor: 'pointer' }}
+                                                onClick={() => window.open(btn.finalUrl || btn.buttonUrl, '_blank')}>
+                                                <img src={mediaUrl(btn.landingScreenshot)} alt="랜딩" style={{ width: '100%', display: 'block' }} />
+                                              </div>
+                                            </div>
+                                          ))}
                                         </div>
                                       </div>
-                                    ))}
+                                    )}
+
+                                    {set.mo && set.mo.buttons && set.mo.buttons.length > 0 && (
+                                      <div>
+                                        <p style={{ fontSize: '14px', fontWeight: 700, color: 'var(--accent-text)', marginBottom: '10px' }}>MO 랜딩</p>
+                                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(160px, 1fr))', gap: '12px' }}>
+                                          {set.mo.buttons.filter((btn: any) => btn.landingScreenshot).map((btn: any, idx: number) => (
+                                            <div key={idx} style={{ background: 'var(--bg-elevated)', border: '1px solid var(--border)', borderRadius: '8px', overflow: 'hidden' }}>
+                                              <div style={{ padding: '6px 10px', borderBottom: '1px solid var(--border)' }}>
+                                                <div style={{ display: 'flex', gap: '4px', marginBottom: '4px', flexWrap: 'wrap' }}>
+                                                  {btn.area && <span style={{ display: 'inline-block', background: '#03c75a', color: '#fff', fontSize: '11px', fontWeight: 700, padding: '2px 7px', borderRadius: '4px' }}>{btn.area}</span>}
+                                                  <span style={{ display: 'inline-block', background: 'var(--accent)', color: '#fff', fontSize: '12px', fontWeight: 600, padding: '2px 7px', borderRadius: '4px' }}>{btn.buttonText || '버튼'}</span>
+                                                </div>
+                                                <a href={btn.finalUrl || btn.buttonUrl} target="_blank" rel="noopener noreferrer"
+                                                  style={{ display: 'block', fontSize: '11px', color: 'var(--accent-text)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', textDecoration: 'none' }}>
+                                                  {(btn.finalUrl || btn.buttonUrl || '').slice(0, 30)}...
+                                                </a>
+                                              </div>
+                                              <div style={{ position: 'relative', overflow: 'hidden', maxHeight: '300px', cursor: 'pointer' }}
+                                                onClick={() => window.open(btn.finalUrl || btn.buttonUrl, '_blank')}>
+                                                <img src={mediaUrl(btn.landingScreenshot)} alt="랜딩" style={{ width: '100%', display: 'block' }} />
+                                              </div>
+                                            </div>
+                                          ))}
+                                        </div>
+                                      </div>
+                                    )}
                                   </div>
-                                </div>
-                              )}
+                                );
+                              })}
                             </div>
                           )}
                         </div>
@@ -1070,18 +1243,22 @@ export default function Home() {
             {view === 'trend' && (
               <>
                 <h2 style={{ fontSize: '20px', fontWeight: 700, marginBottom: '20px' }}>검색어 트렌드</h2>
-                <MarketIndexPanel startDate={trendStartDate} endDate={trendEndDate} timeUnit={trendTimeUnit} />
-                <InsightBox title="🧠 왜 이런 추이가 나왔을까"
-                  badge="코스피/코스닥/나스닥 + 데이터랩 연동"
-                  text={
-                    trendInsightLoading ? '인사이트 생성 중...'
-                    : trendInsightError ? `생성 실패: ${trendInsightError}`
-                    : trendInsightText || '아래에서 브랜드를 선택하고 "조회"를 누르면 인사이트가 여기에 표시됩니다.'
-                  } />
                 <TrendAnalysis brands={BRANDS} clientBrand={CLIENT_BRAND}
                   startDate={trendStartDate} endDate={trendEndDate} timeUnit={trendTimeUnit}
                   onStartDateChange={setTrendStartDate} onEndDateChange={setTrendEndDate} onTimeUnitChange={setTrendTimeUnit}
                   onQueryResults={(results, brands) => { generateTrendInsight(results as DataLabResult[], brands); }} />
+                <div style={{ marginTop: '24px' }}>
+                  <InsightBox title="🧠 왜 이런 추이가 나왔을까"
+                    badge="코스피/코스닥/나스닥 + 데이터랩 연동"
+                    text={
+                      trendInsightLoading ? '인사이트 생성 중...'
+                      : trendInsightError ? `생성 실패: ${trendInsightError}`
+                      : trendInsightText || '위에서 브랜드를 선택하고 "조회"를 누르면 인사이트가 여기에 표시됩니다.'
+                    } />
+                </div>
+                <div style={{ marginTop: '24px' }}>
+                  <MarketIndexPanel startDate={trendStartDate} endDate={trendEndDate} timeUnit={trendTimeUnit} />
+                </div>
               </>
             )}
 

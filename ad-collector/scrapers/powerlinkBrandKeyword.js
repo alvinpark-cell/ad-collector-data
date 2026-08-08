@@ -113,7 +113,14 @@ async function updatePowerlinkBrandKeyword(settings, brandsOverride) {
 
   await browser.close();
 
-  const finalIndex = [...keptExisting, ...newEntries];
+  // 저장 시점에 파일을 다시 읽어서 병합한다 - 브랜드 9개 x 디바이스 2개 x 새로고침 30회라
+  // 이 함수 호출 자체가 오래 걸릴 수 있는데, 그 사이 다른 프로세스가 같은 파일에 이미 쓴
+  // 내용이 있다면 그걸 덮어쓰지 않기 위함(2026-08-07, 다른 백필 스크립트에서 같은 패턴으로
+  // 데이터 손실 발견 후 전체 점검). "이번에 수집한 브랜드의 이번 주 항목 교체"라는 원래
+  // 의도는 그대로, 기준이 되는 기존 데이터만 최신 걸로 다시 읽는다.
+  const freshIndex = loadIndex(indexPath);
+  const freshKeptExisting = freshIndex.filter(e => e.weekKey !== weekKey || !brandsSet.has(e.brand));
+  const finalIndex = [...freshKeptExisting, ...newEntries];
   saveIndex(indexPath, finalIndex);
   console.log('[검색광고 브랜드키워드] powerlink_brand_index.json 갱신 완료');
   return finalIndex;

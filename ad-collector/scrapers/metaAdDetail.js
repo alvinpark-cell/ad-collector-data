@@ -24,7 +24,27 @@
 const fs = require('fs');
 const path = require('path');
 const { chromium } = require('playwright');
-const { downloadImage, buildFilename, saveIndex, getImageDimensions } = require('../utils');
+const { downloadImage, buildFilename, saveIndex, loadIndex, getImageDimensions } = require('../utils');
+
+// 이 함수는 광고 하나당 페이지 방문+다운로드로 몇 초씩 걸려서 전체 실행(최대 수백 건)이
+// 오래 걸리는데, 그 사이 스케줄러의 다른 수집 작업이 같은 index.json에 새 항목을 추가할
+// 수 있다. 호출 쪽(metaMediaBatch.js)이 시작할 때 읽어둔 existingIndex 스냅샷을 그대로
+// 저장하면 그 사이 추가된 새 항목이 통째로 사라진다(실측: 다른 백필 스크립트가 이 패턴으로
+// 신규 267건을 날린 사고 발생, 2026-08-06). 저장 시점마다 파일을 다시 읽어서, 지금까지
+// 채운 미디어 필드만 adId 기준으로 최신 내용에 병합해 저장한다.
+function saveMetaMediaMerged(indexPath, updatedByAdId) {
+  const fresh = loadIndex(indexPath);
+  fresh.forEach(item => {
+    const update = updatedByAdId.get(item.adId);
+    if (update) {
+      item.localPath = update.localPath;
+      item.mediaType = update.mediaType;
+      item.mediaUrl = update.mediaUrl;
+    }
+  });
+  saveIndex(indexPath, fresh);
+  return fresh;
+}
 
 // 프로필 사진/트래킹 픽셀은 URL 패턴이 제각각이라(s50x50 뿐 아니라 크기 파라미터가
 // 아예 없는 hads-* 트래킹 픽셀 등도 있었음) URL만으로 100% 못 거른다. 그래서 실제로
@@ -226,6 +246,7 @@ async function backfillPendingMedia(existingIndex, settings, cap) {
 
   let attempted = 0;
   let updated = 0;
+  const updatedByAdId = new Map();
 
   try {
     for (const target of toVisit) {
@@ -270,7 +291,8 @@ async function backfillPendingMedia(existingIndex, settings, cap) {
           }
           if (target.localPath) {
             updated++;
-            saveIndex(indexPath, existingIndex); // 건마다 즉시 저장 - 중단돼도 여기까진 안전
+            updatedByAdId.set(target.adId, { localPath: target.localPath, mediaType: target.mediaType, mediaUrl: target.mediaUrl });
+            saveMetaMediaMerged(indexPath, updatedByAdId); // 건마다 즉시 저장 - 중단돼도 여기까진 안전
           } else {
             console.log(`  ⚠ 광고 ${target.adId} 후보 미디어가 전부 너무 작아(프로필사진 등) 건너뜀`);
           }

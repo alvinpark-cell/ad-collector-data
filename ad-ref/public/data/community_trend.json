@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-05T02:57:37.417Z",
+  "updatedAt": "2026-08-08T13:14:41.886Z",
   "history": [
     {
       "date": "2026-07-29",
@@ -1825,6 +1825,394 @@
       ]
     },
     {
+      "date": "2026-08-04",
+      "general": [
+        {
+          "keyword": "코스피 7월 대폭락 사태",
+          "sentiment": "negative",
+          "volume": 950,
+          "reactions": [
+            {
+              "source": "한국일보",
+              "text": "7월 22% 급락, 주요국 중 최대 하락률"
+            },
+            {
+              "source": "나무위키",
+              "text": "1997 외환위기 이후 최악 월간 낙폭"
+            },
+            {
+              "source": "머니투데이",
+              "text": "공포의 7월이라는 표현 확산"
+            }
+          ]
+        },
+        {
+          "keyword": "단일종목 레버리지 ETF 논란",
+          "sentiment": "negative",
+          "volume": 900,
+          "reactions": [
+            {
+              "source": "헤럴드경제",
+              "text": "레버리지 개미 손실 급증 우려"
+            },
+            {
+              "source": "서울경제",
+              "text": "당국 책임론, 청산 물량이 낙폭 증폭"
+            },
+            {
+              "source": "주식 커뮤니티",
+              "text": "당국 사후대응 늦었다는 불만"
+            }
+          ]
+        },
+        {
+          "keyword": "개미 국장 이탈 및 당국 책임론",
+          "sentiment": "negative",
+          "volume": 800,
+          "reactions": [
+            {
+              "source": "YTN",
+              "text": "다시는 국장 안한다는 개미 대탈출"
+            },
+            {
+              "source": "블룸버그(다음 재인용)",
+              "text": "산전수전 다 겪어도 동요했다는 반응"
+            },
+            {
+              "source": "주식 커뮤니티",
+              "text": "기본예탁금 상향 등 규제 뒷북 비판"
+            }
+          ]
+        },
+        {
+          "keyword": "반도체 고점 논란",
+          "sentiment": "negative",
+          "volume": 750,
+          "reactions": [
+            {
+              "source": "경제지 종합",
+              "text": "AI 수요 정점 우려, 메모리 수출가 둔화"
+            },
+            {
+              "source": "시장 리포트",
+              "text": "삼성전자·SK하이닉스 급락 촉발 원인"
+            }
+          ]
+        },
+        {
+          "keyword": "코스피 8월 반등",
+          "sentiment": "positive",
+          "volume": 700,
+          "reactions": [
+            {
+              "source": "서울경제",
+              "text": "8/4 1.62퍼센트 상승, 6358선 마감"
+            },
+            {
+              "source": "인포스탁데일리",
+              "text": "반도체 훈풍에 개장초 반등 시도"
+            }
+          ]
+        },
+        {
+          "keyword": "코스닥 매수 사이드카·급등",
+          "sentiment": "positive",
+          "volume": 650,
+          "reactions": [
+            {
+              "source": "다음뉴스",
+              "text": "코스닥 5.88퍼센트 급등, 3일째 사이드카"
+            },
+            {
+              "source": "주식테마왕",
+              "text": "코스피와 디커플링 장세라는 평가"
+            }
+          ]
+        },
+        {
+          "keyword": "네이버-엔비디아 AI 팩토리",
+          "sentiment": "positive",
+          "volume": 600,
+          "reactions": [
+            {
+              "source": "쿠키뉴스",
+              "text": "엔비디아·브룩필드 투자 유치 호평"
+            },
+            {
+              "source": "글로벌이코노믹",
+              "text": "연매출 14조원 전망, 주가 폭등"
+            },
+            {
+              "source": "CBC뉴스",
+              "text": "글로벌 협력 확대라는 긍정 평가"
+            }
+          ]
+        },
+        {
+          "keyword": "코리아 디스카운트·카지노 발언",
+          "sentiment": "negative",
+          "volume": 550,
+          "reactions": [
+            {
+              "source": "블룸버그(인베스팅 재인용)",
+              "text": "코스피는 카지노라는 혹평"
+            },
+            {
+              "source": "투자 커뮤니티",
+              "text": "국장 신뢰도 저하 우려 확산"
+            }
+          ]
+        },
+        {
+          "keyword": "한미 관세협상·특정민감국 지정",
+          "sentiment": "negative",
+          "volume": 500,
+          "reactions": [
+            {
+              "source": "부산하프스",
+              "text": "지정 유지시 수십조원 관세리스크 우려"
+            },
+            {
+              "source": "KCTDI",
+              "text": "협상 장기화시 수출기업 불확실성 가중"
+            }
+          ]
+        },
+        {
+          "keyword": "미-이란 긴장완화 및 국제유가 급락",
+          "sentiment": "positive",
+          "volume": 450,
+          "reactions": [
+            {
+              "source": "인포스탁데일리",
+              "text": "군사작전 취소로 긴장완화, 유가 급락"
+            },
+            {
+              "source": "굿모닝경제",
+              "text": "WTI 82달러대, 전쟁 프리미엄 소멸"
+            }
+          ]
+        },
+        {
+          "keyword": "방산·전력주 강세",
+          "sentiment": "positive",
+          "volume": 400,
+          "reactions": [
+            {
+              "source": "주식테마왕",
+              "text": "한미 통상협상·동유럽 수출기대 부각"
+            },
+            {
+              "source": "시장 리포트",
+              "text": "GE 에어로스페이스 실적 서프라이즈 훈풍"
+            }
+          ]
+        },
+        {
+          "keyword": "이차전지 랠리",
+          "sentiment": "positive",
+          "volume": 350,
+          "reactions": [
+            {
+              "source": "주식테마왕",
+              "text": "ESS 수요확대·테슬라 실적기대 모멘텀"
+            }
+          ]
+        },
+        {
+          "keyword": "원달러 환율 상승",
+          "sentiment": "negative",
+          "volume": 300,
+          "reactions": [
+            {
+              "source": "시장 데이터",
+              "text": "1432.5원, 전주말대비 소폭 상승"
+            }
+          ]
+        },
+        {
+          "keyword": "조선업 수출 기대",
+          "sentiment": "positive",
+          "volume": 300,
+          "reactions": [
+            {
+              "source": "주식테마왕",
+              "text": "동유럽 수출기대감에 관련주 상승"
+            }
+          ]
+        }
+      ],
+      "brand": [
+        {
+          "keyword": "발행어음 인가 배제·지연",
+          "sentiment": "negative",
+          "volume": 720,
+          "reactions": [
+            {
+              "source": "인사이트코리아",
+              "text": "삼성증권은 진행되는데 메리츠만 멈춰섬"
+            },
+            {
+              "source": "시사오늘",
+              "text": "금융위 역차별 논란 제기"
+            },
+            {
+              "source": "자본시장뉴스",
+              "text": "IB 사업 확장 차질 우려"
+            }
+          ]
+        },
+        {
+          "keyword": "이화전기 BW 부정거래 검찰수사",
+          "sentiment": "negative",
+          "volume": 680,
+          "reactions": [
+            {
+              "source": "이코노믹뷰(econovill)",
+              "text": "본사 압수수색 보도"
+            },
+            {
+              "source": "SBS",
+              "text": "1700억 대여금 용처 의혹 취재"
+            },
+            {
+              "source": "뉴시스",
+              "text": "미공개정보 시세차익 의혹 압색"
+            }
+          ]
+        },
+        {
+          "keyword": "메리츠금융 합병 미공개정보 이용 의혹",
+          "sentiment": "negative",
+          "volume": 610,
+          "reactions": [
+            {
+              "source": "한국경제",
+              "text": "압색 소식에 주가 6%대 급락"
+            },
+            {
+              "source": "비즈니스포스트",
+              "text": "가족계좌 이용 매수 의혹 제기"
+            },
+            {
+              "source": "뉴스1",
+              "text": "52주 최저가 경신"
+            }
+          ]
+        },
+        {
+          "keyword": "전직 임원 불법대출 항소심 실형",
+          "sentiment": "negative",
+          "volume": 480,
+          "reactions": [
+            {
+              "source": "이투데이",
+              "text": "2심 징역 7년6개월 선고 보도"
+            },
+            {
+              "source": "뉴스핌",
+              "text": "내부통제 부실 지적"
+            },
+            {
+              "source": "더퍼블릭",
+              "text": "1심 대비 형량 일부 감경"
+            }
+          ]
+        },
+        {
+          "keyword": "2분기 역대 최대 실적",
+          "sentiment": "positive",
+          "volume": 560,
+          "reactions": [
+            {
+              "source": "파이낸셜신문",
+              "text": "분기 순이익 7376억 사상 최대 평가"
+            },
+            {
+              "source": "한국금융신문",
+              "text": "30분기 연속 천억대 순익 호평"
+            },
+            {
+              "source": "인베스트조선",
+              "text": "IB·자산운용 고른 성장 긍정 평가"
+            }
+          ]
+        },
+        {
+          "keyword": "자사주 매입·주주환원 밸류업",
+          "sentiment": "positive",
+          "volume": 420,
+          "reactions": [
+            {
+              "source": "블로터",
+              "text": "석달만에 매입목표 61% 달성 호평"
+            },
+            {
+              "source": "EBN",
+              "text": "배당맛집 경쟁사 격차 확대 평가"
+            },
+            {
+              "source": "네이트뉴스",
+              "text": "TSR 169.6퍼센트 부각"
+            }
+          ]
+        },
+        {
+          "keyword": "해외주식 수수료 무료 이벤트 종료",
+          "sentiment": "negative",
+          "volume": 350,
+          "reactions": [
+            {
+              "source": "다음뉴스",
+              "text": "美주식 수수료 제로 중단 보도"
+            },
+            {
+              "source": "인베스트조선",
+              "text": "리테일 치킨게임 체질개선 시험대 평가"
+            },
+            {
+              "source": "업계 관계자",
+              "text": "헤비트레이더 이탈 잔존율 우려"
+            }
+          ]
+        },
+        {
+          "keyword": "회사채 수요예측 흥행",
+          "sentiment": "positive",
+          "volume": 260,
+          "reactions": [
+            {
+              "source": "시그널(다음)",
+              "text": "모집액 3배 주문 유입 흥행 평가"
+            },
+            {
+              "source": "시장 관계자",
+              "text": "AA0 안정적 등급 기반 발행 확대 전망"
+            }
+          ]
+        },
+        {
+          "keyword": "8월 초 증시 급락·변동성 확대",
+          "sentiment": "negative",
+          "volume": 400,
+          "reactions": [
+            {
+              "source": "머니투데이",
+              "text": "공포의 7월 이후 반등 시도 평가"
+            },
+            {
+              "source": "MBC뉴스",
+              "text": "외국인 매도에 재급락 지적"
+            },
+            {
+              "source": "투자자 커뮤니티",
+              "text": "증권업종 실적 불확실성 우려"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "date": "2026-08-05",
       "general": [
         {
@@ -2210,6 +2598,1108 @@
             {
               "source": "디시인사이드(나스닥 마이너 갤러리)",
               "text": "메리츠 증권 왜 안 써?? 라는 글에서 이용자들이 타사 대비 장단점을 비교하는 반응을 보였다."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2026-08-06",
+      "general": [
+        {
+          "keyword": "코스피 급락(매도 사이드카 발동)",
+          "sentiment": "negative",
+          "volume": 950,
+          "reactions": [
+            {
+              "source": "한국경제",
+              "text": "구글 인재이탈·샌디스크 쇼크 여파 4.58%↓"
+            },
+            {
+              "source": "아시아경제",
+              "text": "코스피200선물 5%↓ 사이드카 발동"
+            },
+            {
+              "source": "디시인사이드 주식갤러리",
+              "text": "주가 10%빠져도 상승여력 있다는 계산글"
+            }
+          ]
+        },
+        {
+          "keyword": "글로벌 AI 버블 우려",
+          "sentiment": "negative",
+          "volume": 820,
+          "reactions": [
+            {
+              "source": "파이낸셜뉴스",
+              "text": "AI거품 꺼지면 세계경제 동반위기 우려"
+            },
+            {
+              "source": "글로벌이코노믹",
+              "text": "8월 비수기 진입, 방향성 경계감"
+            }
+          ]
+        },
+        {
+          "keyword": "외국인 순매도 확대",
+          "sentiment": "negative",
+          "volume": 700,
+          "reactions": [
+            {
+              "source": "한국경제",
+              "text": "외국인 1.7조 매도, 개인방어 역부족"
+            },
+            {
+              "source": "디시인사이드 주식갤러리",
+              "text": "주식앱 형들 봐달라는 하소연글"
+            }
+          ]
+        },
+        {
+          "keyword": "반도체 피크아웃 논란",
+          "sentiment": "neutral",
+          "volume": 650,
+          "reactions": [
+            {
+              "source": "한국일보",
+              "text": "삼성전자, 2028년까지 공급부족 반박"
+            },
+            {
+              "source": "뉴스핌",
+              "text": "SK하이닉스, 피크아웃 우려 과도 해명"
+            }
+          ]
+        },
+        {
+          "keyword": "코스피 6600선 랠리 후 변동성",
+          "sentiment": "neutral",
+          "volume": 600,
+          "reactions": [
+            {
+              "source": "서울경제",
+              "text": "6600선 회복 후 7000선 도전 기대"
+            },
+            {
+              "source": "부산일보",
+              "text": "사상최대 폭등 뒤 급락 반복 우려"
+            }
+          ]
+        },
+        {
+          "keyword": "구글 AI 핵심인재 이탈",
+          "sentiment": "negative",
+          "volume": 600,
+          "reactions": [
+            {
+              "source": "한국경제",
+              "text": "AI인재 4명 동시 이탈, 구글주가 4%↓"
+            },
+            {
+              "source": "머니투데이",
+              "text": "AI 리더십 흔들린다는 우려"
+            }
+          ]
+        },
+        {
+          "keyword": "미국 관세(무역법 301조) 협상 데드라인",
+          "sentiment": "negative",
+          "volume": 550,
+          "reactions": [
+            {
+              "source": "대신증권 리포트",
+              "text": "8월 데드라인 앞두고 한미 협상 노림수"
+            },
+            {
+              "source": "NRC 정책보고서",
+              "text": "대미수출 3.2%감소 전망 우려"
+            }
+          ]
+        },
+        {
+          "keyword": "샌디스크 실적 가이던스 쇼크",
+          "sentiment": "negative",
+          "volume": 500,
+          "reactions": [
+            {
+              "source": "한국경제",
+              "text": "가이던스 컨센서스 하회, 주가 8%대 급락"
+            }
+          ]
+        },
+        {
+          "keyword": "코스닥 이차전지·바이오 강세",
+          "sentiment": "positive",
+          "volume": 480,
+          "reactions": [
+            {
+              "source": "시황브리핑",
+              "text": "5거래일 연속 상승, 하방지지력 부각"
+            }
+          ]
+        },
+        {
+          "keyword": "카카오게임즈 2분기 적자 지속",
+          "sentiment": "negative",
+          "volume": 450,
+          "reactions": [
+            {
+              "source": "한국경제",
+              "text": "영업손실 230억, 7분기 연속 적자"
+            },
+            {
+              "source": "디지털데일리",
+              "text": "내년 1분기 흑자전환 기대 vs 신중론"
+            },
+            {
+              "source": "디시인사이드 주식갤러리",
+              "text": "모바일매출 47.8%감소 지적글"
+            }
+          ]
+        },
+        {
+          "keyword": "개인투자자 저가매수 심리",
+          "sentiment": "neutral",
+          "volume": 400,
+          "reactions": [
+            {
+              "source": "디시인사이드 주식갤러리",
+              "text": "나만 아는 돈버는법이라는 자조 유머"
+            },
+            {
+              "source": "디시인사이드 주식갤러리",
+              "text": "급락장서 상승여력 계산하는 글 확산"
+            }
+          ]
+        }
+      ],
+      "brand": [
+        {
+          "keyword": "반도체발 코스피 급락(매도 사이드카)",
+          "sentiment": "negative",
+          "volume": 950,
+          "reactions": [
+            {
+              "source": "뉴스핌",
+              "text": "반도체주 급락에 코스피 4.58% 급락"
+            },
+            {
+              "source": "머니투데이",
+              "text": "외국인 이탈 코스피 4%대 하락 우려"
+            },
+            {
+              "source": "YTN",
+              "text": "매도 사이드카 발동, 개미 패닉매도"
+            }
+          ]
+        },
+        {
+          "keyword": "국세청 특별세무조사(PF수수료·SPC 자금흐름)",
+          "sentiment": "negative",
+          "volume": 620,
+          "reactions": [
+            {
+              "source": "뉴스핌",
+              "text": "하나금융 이어 메리츠도 세무조사, PF리스크 주목"
+            },
+            {
+              "source": "머니투데이",
+              "text": "국세청 조사4국 금융권 정조준 비판"
+            },
+            {
+              "source": "허핑턴포스트코리아",
+              "text": "저승사자 조사4국 표적 의혹 확산"
+            }
+          ]
+        },
+        {
+          "keyword": "부동산PF 익스포저 과다 리스크",
+          "sentiment": "negative",
+          "volume": 560,
+          "reactions": [
+            {
+              "source": "인사이트",
+              "text": "PF 익스포저 자기자본 127%, 업계 최고 우려"
+            },
+            {
+              "source": "블로터",
+              "text": "부동산 중심 자본운용 딜레마 지적"
+            }
+          ]
+        },
+        {
+          "keyword": "홈플러스 회생 지원(DIP대출·최대채권자)",
+          "sentiment": "neutral",
+          "volume": 480,
+          "reactions": [
+            {
+              "source": "한국경제",
+              "text": "메리츠 2000억 DIP대출로 극적 회생 지원"
+            },
+            {
+              "source": "헤럴드경제",
+              "text": "점포매각 용처 놓고 여당과 이견 노출"
+            },
+            {
+              "source": "더팩트",
+              "text": "압축 회생 통할지 우려 섞인 시각"
+            }
+          ]
+        },
+        {
+          "keyword": "주식·환전 수수료 전면 무료화 정책",
+          "sentiment": "positive",
+          "volume": 700,
+          "reactions": [
+            {
+              "source": "EBN",
+              "text": "수수료 제로 효과 톡톡, 고객유치 성공"
+            },
+            {
+              "source": "헤럴드경제",
+              "text": "업계최초 전면무료화 파격 정책 호평"
+            }
+          ]
+        },
+        {
+          "keyword": "미국주식 무료수수료 중단(신규계좌)",
+          "sentiment": "negative",
+          "volume": 380,
+          "reactions": [
+            {
+              "source": "탑데일리",
+              "text": "신규계좌 美주식 무료수수료 중단 아쉬움"
+            },
+            {
+              "source": "다음뉴스",
+              "text": "제로 수수료 축소 이용자 불만"
+            }
+          ]
+        },
+        {
+          "keyword": "급락 후 저평가 매수 전환 의견",
+          "sentiment": "positive",
+          "volume": 520,
+          "reactions": [
+            {
+              "source": "비즈니스포스트",
+              "text": "신한투자 목표주가 12만→13만 상향"
+            },
+            {
+              "source": "알파비즈",
+              "text": "ROE19%·PBR1.6배, 저평가 매수구간 진입"
+            }
+          ]
+        },
+        {
+          "keyword": "카카오게임즈 투자의견 보류 리포트",
+          "sentiment": "negative",
+          "volume": 300,
+          "reactions": [
+            {
+              "source": "머니투데이",
+              "text": "상반기까지 눌림목, 투자의견 보류 제시"
+            },
+            {
+              "source": "디시인사이드 주식갤러리",
+              "text": "2분기 적자지속, 모바일매출 감소 우려"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2026-08-07",
+      "general": [
+        {
+          "keyword": "코스피 극심한 변동성",
+          "sentiment": "negative",
+          "volume": 850,
+          "reactions": [
+            {
+              "source": "머니투데이",
+              "text": "6365→6415→6158 급변동 지적"
+            },
+            {
+              "source": "한국일보",
+              "text": "홀짝게임 오명이라는 비판"
+            },
+            {
+              "source": "디시인사이드 주식갤러리",
+              "text": "주갤은 맛이 갓찌라는 자조"
+            }
+          ]
+        },
+        {
+          "keyword": "개인투자자 대규모 순매도",
+          "sentiment": "negative",
+          "volume": 780,
+          "reactions": [
+            {
+              "source": "뉴시스",
+              "text": "개미 폭풍매도로 하락 반전"
+            },
+            {
+              "source": "디시인사이드 주식갤러리",
+              "text": "개미만도 못한 스스로 역겹다는 자책"
+            },
+            {
+              "source": "비즈니스코리아",
+              "text": "외국인 순매도에 6250선 후퇴"
+            }
+          ]
+        },
+        {
+          "keyword": "레버리지 ETN·ETF 규제 강화",
+          "sentiment": "negative",
+          "volume": 700,
+          "reactions": [
+            {
+              "source": "금융위원회",
+              "text": "기본예탁금 3천만원 상향 조기시행"
+            },
+            {
+              "source": "조세금융신문",
+              "text": "신규상장 무기한 중단 발표"
+            },
+            {
+              "source": "클리앙",
+              "text": "규제 실효성 놓고 갑론을박"
+            }
+          ]
+        },
+        {
+          "keyword": "중동 지정학 리스크(호르무즈 해협)",
+          "sentiment": "negative",
+          "volume": 720,
+          "reactions": [
+            {
+              "source": "인포스탁데일리",
+              "text": "유가 폭등에 뉴욕증시 하락"
+            },
+            {
+              "source": "EBN",
+              "text": "중동 긴장 격화 우려"
+            },
+            {
+              "source": "KB증권",
+              "text": "확전 가능성 경계하는 분석"
+            }
+          ]
+        },
+        {
+          "keyword": "7월 서킷브레이커 트라우마",
+          "sentiment": "negative",
+          "volume": 650,
+          "reactions": [
+            {
+              "source": "YTN",
+              "text": "이틀 연속 서킷브레이커 회자"
+            },
+            {
+              "source": "나무위키",
+              "text": "7월 4차례 발동 기록 재조명"
+            },
+            {
+              "source": "전국시민의소리",
+              "text": "7월 급락 33% 특집 조명"
+            }
+          ]
+        },
+        {
+          "keyword": "미국 8월 고용지표 부진",
+          "sentiment": "neutral",
+          "volume": 600,
+          "reactions": [
+            {
+              "source": "KCIF국제금융센터",
+              "text": "비농업고용 2.2만명 증가 쇼크"
+            },
+            {
+              "source": "Benzinga Korea",
+              "text": "고용쇼크에도 월가는 랠리 반응"
+            },
+            {
+              "source": "VT마켓",
+              "text": "9월 금리인하 기대 강화"
+            }
+          ]
+        },
+        {
+          "keyword": "반도체 슈퍼사이클 기대",
+          "sentiment": "positive",
+          "volume": 900,
+          "reactions": [
+            {
+              "source": "MBC뉴스",
+              "text": "반도체는 건재하다는 코스피 반전 평가"
+            },
+            {
+              "source": "Threads",
+              "text": "SK하이닉스 상한가 삼성전자 급등 공유"
+            },
+            {
+              "source": "보안뉴스",
+              "text": "반도체株 회복세 진단"
+            }
+          ]
+        },
+        {
+          "keyword": "웹젠 실적 부진(신작 부재)",
+          "sentiment": "negative",
+          "volume": 300,
+          "reactions": [
+            {
+              "source": "게임메카",
+              "text": "2분기 영업익 전년比 8.4퍼센트↓"
+            },
+            {
+              "source": "아주경제",
+              "text": "신작 부재로 실적 부진 평가"
+            },
+            {
+              "source": "디시인사이드 주식갤러리",
+              "text": "신작 부재 여파 게시글 공유"
+            }
+          ]
+        },
+        {
+          "keyword": "SK하이닉스 솔리다임 美 상장 이슈",
+          "sentiment": "negative",
+          "volume": 400,
+          "reactions": [
+            {
+              "source": "시장 소식통",
+              "text": "주주환원 기대 못미쳐 실망감"
+            }
+          ]
+        },
+        {
+          "keyword": "2차전지·태양광 테마 강세",
+          "sentiment": "positive",
+          "volume": 500,
+          "reactions": [
+            {
+              "source": "이비엔뉴스",
+              "text": "상위권에 2차전지 태양광 포진"
+            },
+            {
+              "source": "이투데이",
+              "text": "M&A 훈풍에 급등락주 속출"
+            }
+          ]
+        },
+        {
+          "keyword": "M&A 테마주 상한가 랠리",
+          "sentiment": "positive",
+          "volume": 450,
+          "reactions": [
+            {
+              "source": "이비엔뉴스",
+              "text": "상상인증권 유니켐 혜인 상한가"
+            },
+            {
+              "source": "이투데이",
+              "text": "경영권 인수설에 급등"
+            }
+          ]
+        },
+        {
+          "keyword": "9월 FOMC 금리인하 기대감",
+          "sentiment": "positive",
+          "volume": 550,
+          "reactions": [
+            {
+              "source": "KCIF국제금융센터",
+              "text": "파월 고용 하방위험 발언 재조명"
+            },
+            {
+              "source": "VT마켓",
+              "text": "국채금리 하락 달러 약세"
+            }
+          ]
+        },
+        {
+          "keyword": "외국인 수급 이탈",
+          "sentiment": "negative",
+          "volume": 600,
+          "reactions": [
+            {
+              "source": "Businesskorea",
+              "text": "외국인 순매도에 코스피 후퇴"
+            },
+            {
+              "source": "머니투데이",
+              "text": "6258.77 마감 0.60퍼센트↓"
+            }
+          ]
+        },
+        {
+          "keyword": "개인 신용거래·빚투 후유증",
+          "sentiment": "negative",
+          "volume": 500,
+          "reactions": [
+            {
+              "source": "나무위키",
+              "text": "신용거래가 변동성 증폭했다는 지적"
+            },
+            {
+              "source": "디시인사이드 주식갤러리",
+              "text": "주식앱 형들 한번만 봐줘라는 하소연"
+            }
+          ]
+        },
+        {
+          "keyword": "급등 이후 차익실현 압력",
+          "sentiment": "neutral",
+          "volume": 480,
+          "reactions": [
+            {
+              "source": "미주중앙일보",
+              "text": "증시 분열 8월 전망 우려"
+            },
+            {
+              "source": "KB증권",
+              "text": "단기 급등에 따른 차익실현 압력 진단"
+            }
+          ]
+        }
+      ],
+      "brand": [
+        {
+          "keyword": "발행어음 인가 지연",
+          "sentiment": "negative",
+          "volume": 640,
+          "reactions": [
+            {
+              "source": "디지털데일리",
+              "text": "삼성은 9부능선인데 메리츠는 안갯속"
+            },
+            {
+              "source": "뉴스웨이",
+              "text": "발묶인 삼성·메리츠 형평성 논란"
+            },
+            {
+              "source": "시사저널",
+              "text": "산 넘어 산, 인가 앞두고 빨간불"
+            }
+          ]
+        },
+        {
+          "keyword": "이화전기 BW 불공정거래 검찰수사",
+          "sentiment": "negative",
+          "volume": 430,
+          "reactions": [
+            {
+              "source": "인사이트",
+              "text": "BW 수사가 인가 심의 제외 변수"
+            },
+            {
+              "source": "알티케이뉴스",
+              "text": "내부통제 미비 리스크 지적"
+            }
+          ]
+        },
+        {
+          "keyword": "전직 임원 불법대출 항소심 실형",
+          "sentiment": "negative",
+          "volume": 380,
+          "reactions": [
+            {
+              "source": "이투데이",
+              "text": "2심서 징역 7년6개월 선고"
+            },
+            {
+              "source": "비즈트리뷴",
+              "text": "발행어음도 막혔는데 사법리스크 이어져"
+            }
+          ]
+        },
+        {
+          "keyword": "미공개정보 이용 시세차익 압수수색",
+          "sentiment": "negative",
+          "volume": 340,
+          "reactions": [
+            {
+              "source": "쿠키뉴스",
+              "text": "압수수색 소식에 주가 6%대 급락"
+            },
+            {
+              "source": "뉴시스",
+              "text": "메리츠화재 전 사장 등 겨냥 수사"
+            }
+          ]
+        },
+        {
+          "keyword": "국세청 세무조사(PF 수수료)",
+          "sentiment": "negative",
+          "volume": 300,
+          "reactions": [
+            {
+              "source": "뉴스핌",
+              "text": "하나금융 이어 세무조사 대상 지목"
+            },
+            {
+              "source": "디지털타임스",
+              "text": "저승사자 국세청 등장 우려"
+            }
+          ]
+        },
+        {
+          "keyword": "부동산 PF 익스포저 우려",
+          "sentiment": "negative",
+          "volume": 360,
+          "reactions": [
+            {
+              "source": "블로터",
+              "text": "자기자본 웃도는 부동산금융 부담"
+            },
+            {
+              "source": "자본시장뉴스",
+              "text": "자기자본 127% PF, 경기민감 지적"
+            }
+          ]
+        },
+        {
+          "keyword": "회사채 수요예측 흥행",
+          "sentiment": "positive",
+          "volume": 260,
+          "reactions": [
+            {
+              "source": "이데일리",
+              "text": "모집액 4.8배 주문 몰려"
+            },
+            {
+              "source": "다음 시그널",
+              "text": "4800억 주문 유입 흥행"
+            }
+          ]
+        },
+        {
+          "keyword": "자사주 매입·소각 주주환원",
+          "sentiment": "positive",
+          "volume": 310,
+          "reactions": [
+            {
+              "source": "블로터",
+              "text": "석 달 만에 목표치 61% 채워"
+            },
+            {
+              "source": "톱스타뉴스",
+              "text": "밸류업 시험대라는 평가"
+            }
+          ]
+        },
+        {
+          "keyword": "신용등급 AA 상향",
+          "sentiment": "positive",
+          "volume": 210,
+          "reactions": [
+            {
+              "source": "헤럴드경제",
+              "text": "차별화한 IB 경쟁력 호평"
+            },
+            {
+              "source": "블로터",
+              "text": "수익성 우수 신평사 호평"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2026-08-08",
+      "general": [
+        {
+          "keyword": "코스피 역대급 폭등(17.9%)",
+          "sentiment": "positive",
+          "volume": 950,
+          "reactions": [
+            {
+              "source": "머니투데이",
+              "text": "사상 최대 상승률 진기록 환호"
+            },
+            {
+              "source": "디시인사이드 주식갤러리",
+              "text": "바닥 찍고 불장 왔다는 흥분"
+            },
+            {
+              "source": "파이낸셜뉴스",
+              "text": "미친 변동성에 8월 전망 엇갈림"
+            }
+          ]
+        },
+        {
+          "keyword": "반도체 슈퍼사이클(HBM·D램 가격 급등)",
+          "sentiment": "positive",
+          "volume": 900,
+          "reactions": [
+            {
+              "source": "아주경제",
+              "text": "HBM4·D램 가격 상승 본격화 기대"
+            },
+            {
+              "source": "에펨코리아 주식게시판",
+              "text": "램가격 급등에 물린 주식 회복 기대"
+            },
+            {
+              "source": "테크월드",
+              "text": "메모리값 폭등에 완판 행진"
+            }
+          ]
+        },
+        {
+          "keyword": "외국인 순매수 vs 개미 패닉매도",
+          "sentiment": "negative",
+          "volume": 700,
+          "reactions": [
+            {
+              "source": "뉴스핌",
+              "text": "외국인 9조 사자에 개미 대탈출"
+            },
+            {
+              "source": "파이낸셜뉴스",
+              "text": "개미 항복매도 8월까지 지속 우려"
+            },
+            {
+              "source": "디시인사이드 주식갤러리",
+              "text": "개미만 못먹었다는 박탈감"
+            }
+          ]
+        },
+        {
+          "keyword": "헤지펀드 마진콜發 급락·반등",
+          "sentiment": "neutral",
+          "volume": 550,
+          "reactions": [
+            {
+              "source": "서울신문",
+              "text": "마진콜 청산이 단기 바닥 신호로 해석"
+            },
+            {
+              "source": "다음뉴스",
+              "text": "흔든 진범 잡혔다는 안도 반응"
+            }
+          ]
+        },
+        {
+          "keyword": "국민연금 국내주식 비중 확대(20.8%)",
+          "sentiment": "positive",
+          "volume": 500,
+          "reactions": [
+            {
+              "source": "정책브리핑",
+              "text": "목표비중 상향에 수급 개선 기대"
+            },
+            {
+              "source": "머니투데이",
+              "text": "매도폭탄 피했다는 안도"
+            },
+            {
+              "source": "인베스트조선",
+              "text": "강제매도 부담 완화 긍정 평가"
+            }
+          ]
+        },
+        {
+          "keyword": "미국 9월 기준금리 인하 기대",
+          "sentiment": "positive",
+          "volume": 500,
+          "reactions": [
+            {
+              "source": "MS투데이",
+              "text": "인하 아슬아슬했다는 의사록 해석"
+            },
+            {
+              "source": "에펨코리아 주식게시판",
+              "text": "QE하면 주식 호재라는 기대감"
+            },
+            {
+              "source": "KB생각",
+              "text": "인하시 수급 개선 전망"
+            }
+          ]
+        },
+        {
+          "keyword": "공매도 재개·기본예탁금 상향",
+          "sentiment": "negative",
+          "volume": 480,
+          "reactions": [
+            {
+              "source": "KDI경제교육센터",
+              "text": "접근성 제고방안 놓고 갑론을박"
+            },
+            {
+              "source": "개인 브런치",
+              "text": "문 닫히기 전 매수하자는 조급함"
+            },
+            {
+              "source": "디시인사이드 주식갤러리",
+              "text": "개미 계좌 털린다는 불안"
+            }
+          ]
+        },
+        {
+          "keyword": "넥스트레이드(NXT) 프리마켓 시초가 왜곡 논란",
+          "sentiment": "negative",
+          "volume": 420,
+          "reactions": [
+            {
+              "source": "파이낸셜뉴스",
+              "text": "11주 거래로 하한가 반복 황당"
+            },
+            {
+              "source": "아시아경제",
+              "text": "시초가 왜곡 제도 허점 지적"
+            },
+            {
+              "source": "쿠키뉴스",
+              "text": "아침부터 찬물이라는 투자자 불만"
+            }
+          ]
+        },
+        {
+          "keyword": "밸류업 프로그램·코리아 디스카운트 해소",
+          "sentiment": "neutral",
+          "volume": 400,
+          "reactions": [
+            {
+              "source": "매일일보",
+              "text": "공시기업 731개 성과에도 회의적 시각"
+            },
+            {
+              "source": "삼일PwC",
+              "text": "주주환원 개선 조짐 긍정 평가"
+            }
+          ]
+        },
+        {
+          "keyword": "대주주 양도세 기준 유지(50억원)",
+          "sentiment": "positive",
+          "volume": 380,
+          "reactions": [
+            {
+              "source": "정책브리핑",
+              "text": "기준 유지에 개미 부담 완화 반응"
+            },
+            {
+              "source": "디시인사이드 주식갤러리",
+              "text": "양도세 안내면 계좌 털린다는 경고글"
+            }
+          ]
+        },
+        {
+          "keyword": "빚투·코인 투자 열풍 재점화",
+          "sentiment": "negative",
+          "volume": 350,
+          "reactions": [
+            {
+              "source": "에펨코리아 주식게시판",
+              "text": "대출받아 코인 올인 경험담"
+            },
+            {
+              "source": "디시인사이드 주식갤러리",
+              "text": "로또 1등 기대하는 한탕주의 글"
+            }
+          ]
+        },
+        {
+          "keyword": "지수추종 ETF 논쟁(S&P500 vs 나스닥100)",
+          "sentiment": "neutral",
+          "volume": 320,
+          "reactions": [
+            {
+              "source": "에펨코리아 주식게시판",
+              "text": "나스닥100이 낫다는 갑론을박"
+            },
+            {
+              "source": "에펨코리아 주식게시판",
+              "text": "지수추종은 이기적이라는 반박"
+            }
+          ]
+        },
+        {
+          "keyword": "데브시스터즈 실적 부진(2분기 연속 적자)",
+          "sentiment": "negative",
+          "volume": 300,
+          "reactions": [
+            {
+              "source": "경향게임스",
+              "text": "매출 반토막 영업손실 확대 우려"
+            },
+            {
+              "source": "디시인사이드 주식갤러리",
+              "text": "매출 반토막에 냉소적 반응"
+            },
+            {
+              "source": "디지털데일리",
+              "text": "신작으로 하반기 반등 기대"
+            }
+          ]
+        },
+        {
+          "keyword": "중국 AI 데이터 고갈·반도체 수요 연결",
+          "sentiment": "neutral",
+          "volume": 280,
+          "reactions": [
+            {
+              "source": "에펨코리아 주식게시판",
+              "text": "중국어 데이터 부족 비상 반응"
+            },
+            {
+              "source": "이코노미트리뷴",
+              "text": "기술절도 조사로 생태계 긴장"
+            }
+          ]
+        },
+        {
+          "keyword": "증권사 수수료 할인 이벤트 경쟁",
+          "sentiment": "neutral",
+          "volume": 250,
+          "reactions": [
+            {
+              "source": "청년일보",
+              "text": "신규고객 수수료 우대 경쟁 심화"
+            },
+            {
+              "source": "디시인사이드 주식갤러리",
+              "text": "실전투자대회·할인 이벤트 홍보 잇따름"
+            }
+          ]
+        }
+      ],
+      "brand": [
+        {
+          "keyword": "발행어음 인가 지연",
+          "sentiment": "negative",
+          "volume": 780,
+          "reactions": [
+            {
+              "source": "디지털데일리",
+              "text": "삼성증권은 9부능선인데 메리츠만 안갯속"
+            },
+            {
+              "source": "시사오늘",
+              "text": "금융위 역차별 논란 제기"
+            },
+            {
+              "source": "비즈트리뷴",
+              "text": "사법 리스크로 발행어음도 막힘"
+            }
+          ]
+        },
+        {
+          "keyword": "이화전기 BW 불공정거래 의혹",
+          "sentiment": "negative",
+          "volume": 640,
+          "reactions": [
+            {
+              "source": "뉴시스",
+              "text": "미공개정보 이용 시세차익 의혹 압수수색"
+            },
+            {
+              "source": "인베스트조선",
+              "text": "회장 구속 직전 지분 전량 매도 정황"
+            }
+          ]
+        },
+        {
+          "keyword": "전직 임원 불법대출 횡령 유죄",
+          "sentiment": "negative",
+          "volume": 480,
+          "reactions": [
+            {
+              "source": "이코노미톡뉴스",
+              "text": "항소심 징역 7년6개월 벌금 10억 선고"
+            },
+            {
+              "source": "비즈트리뷴",
+              "text": "1186억 불법대출 알선 유죄 인정"
+            }
+          ]
+        },
+        {
+          "keyword": "국세청 특별세무조사",
+          "sentiment": "negative",
+          "volume": 430,
+          "reactions": [
+            {
+              "source": "조세금융신문",
+              "text": "PF수수료·SPC 자금흐름까지 조사"
+            },
+            {
+              "source": "이코노미톡뉴스",
+              "text": "회계자료 확보 세금탈루 여부 확인"
+            }
+          ]
+        },
+        {
+          "keyword": "1분기 실적 호조",
+          "sentiment": "positive",
+          "volume": 500,
+          "reactions": [
+            {
+              "source": "아주경제",
+              "text": "순이익 2543억 전년比 35.7%↑"
+            },
+            {
+              "source": "아이뉴스24",
+              "text": "IB·리테일 전부문 고른 성장 평가"
+            }
+          ]
+        },
+        {
+          "keyword": "Super365 리테일 확장",
+          "sentiment": "positive",
+          "volume": 610,
+          "reactions": [
+            {
+              "source": "서울경제",
+              "text": "2025 증권대상 리테일 혁신 수상"
+            },
+            {
+              "source": "인베스트조선",
+              "text": "가입자 26만명 예탁자산 급증 호평"
+            }
+          ]
+        },
+        {
+          "keyword": "미국주식 수수료 무료 중단",
+          "sentiment": "negative",
+          "volume": 400,
+          "reactions": [
+            {
+              "source": "한국경제",
+              "text": "새해부터 제로수수료 중단 아쉬움"
+            },
+            {
+              "source": "인베스트조선",
+              "text": "치킨게임식 확장 체질개선 시험대 지적"
+            }
+          ]
+        },
+        {
+          "keyword": "코스피 7월 대폭락",
+          "sentiment": "negative",
+          "volume": 900,
+          "reactions": [
+            {
+              "source": "머니투데이",
+              "text": "공포의 7월 이후 반등 여부 주목"
+            },
+            {
+              "source": "전국시민의소리",
+              "text": "반도체 쏠림·레버리지 충격 지적"
+            }
+          ]
+        },
+        {
+          "keyword": "투자 커뮤니티 서비스 도입",
+          "sentiment": "neutral",
+          "volume": 260,
+          "reactions": [
+            {
+              "source": "네이트뉴스",
+              "text": "AI 번역 활용 글로벌 소통 구상 기대"
             }
           ]
         }

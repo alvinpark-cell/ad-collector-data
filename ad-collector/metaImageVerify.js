@@ -19,6 +19,21 @@ const { chromium } = require('playwright');
 const { loadIndex, saveIndex, downloadImage, computePHash, hammingDistance } = require('./utils');
 const { extractMediaFromAdPage } = require('./scrapers/metaAdDetail');
 
+// 광고 하나당 페이지 방문+다운로드+pHash 비교로 몇 초씩 걸려서 전체 실행이 오래 걸리는데,
+// 그 사이 스케줄러의 다른 수집 작업이 같은 index.json에 새 항목을 추가할 수 있다. 시작할
+// 때 읽어둔 스냅샷을 그대로 저장하면 그 사이 추가된 새 항목이 통째로 사라진다(실측: 다른
+// 백필 스크립트가 이 패턴으로 신규 267건을 날린 사고 발생, 2026-08-06). 저장 시점마다
+// 파일을 다시 읽어서, 지금까지 교체한 이미지 정보만 id 기준으로 최신 내용에 병합해 저장한다.
+function saveRepairsMerged(indexPath, updatedItemsById) {
+  const fresh = loadIndex(indexPath);
+  fresh.forEach(item => {
+    const update = updatedItemsById.get(item.id);
+    if (update) item.imageRepairedAt = update.imageRepairedAt;
+  });
+  saveIndex(indexPath, fresh);
+  return fresh;
+}
+
 async function removeOrphanFallbackItems(settings) {
   const indexPath = path.join(settings.dataDir, 'index.json');
   const index = loadIndex(indexPath);
@@ -60,6 +75,7 @@ async function verifyAndRepairMetaImages(settings, maxPerRun = Infinity) {
   });
 
   let matched = 0, fixed = 0, skipped = 0;
+  const updatedItemsById = new Map();
 
   try {
     for (let n = 0; n < targets.length; n++) {
@@ -96,10 +112,11 @@ async function verifyAndRepairMetaImages(settings, maxPerRun = Infinity) {
         } else {
           fs.copyFileSync(tmpPath, currentPath);
           fs.unlinkSync(tmpPath);
-          item.imageRepairedAt = new Date().toISOString();
+          const imageRepairedAt = new Date().toISOString();
+          updatedItemsById.set(item.id, { imageRepairedAt });
           fixed++;
           console.log(`  🔧 교체: ${item.advertiserName}(${item.adId}) - pHash 거리 ${dist}`);
-          saveIndex(indexPath, index);
+          saveRepairsMerged(indexPath, updatedItemsById);
         }
       } catch (e) {
         console.log(`  [다운로드/비교 실패] ${item.advertiserName}(${item.adId}): ${e.message}`);

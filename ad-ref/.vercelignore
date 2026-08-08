@@ -1,0 +1,10 @@
+# Vercel 배포 시 이 폴더(ad-ref)가 배포 루트라 상위 .gitignore가 안 먹힘 - 여기 따로 명시.
+# 실제 광고 이미지/영상/스크린샷 사본(15,000여 개 파일, 700MB+) - 데모에는 JSON만 필요,
+# 카드는 이미지가 없으면 플레이스홀더 아이콘으로 대체됨.
+public/data/images/
+public/data/screenshots/
+
+# 로컬 빌드 산출물/캐시
+.next/
+out/
+node_modules/

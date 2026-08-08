@@ -9,6 +9,10 @@ const fs = require('fs');
 const path = require('path');
 const { uploadIfEnabled } = require('../storage');
 
+// 브랜드검색은 파워링크(경매, REFRESH_COUNT=30)와 달리 브랜드 소유 지면이라 소재 로테이션이
+// 훨씬 드물다 - 그래도 A/B 로테이션이 있는 브랜드가 실제로 관찰되어 새로고침 비교 자체는 필요.
+const REFRESH_COUNT = 6;
+
 async function scrapeNaverBrandsearch(brands, outputDir) {
   const results = [];
   const screenshotDir = path.join(outputDir, 'screenshots');
@@ -20,26 +24,26 @@ async function scrapeNaverBrandsearch(brands, outputDir) {
     console.log(`[네이버 브검] "${brand}" 수집 중...`);
 
     try {
-      const pcResult = await collectBrandsearch(browser, brand, 'pc', screenshotDir);
-      if (pcResult) console.log(`[네이버 브검 PC] "${brand}" 완료 (${pcResult.buttons.length}개 버튼)`);
+      const pcResults = await collectBrandsearch(browser, brand, 'pc', screenshotDir);
+      if (pcResults.length > 0) console.log(`[네이버 브검 PC] "${brand}" 완료 (소재 ${pcResults.length}개)`);
       else console.log(`[네이버 브검 PC] "${brand}" 브랜드검색 없음`);
-      if (pcResult) results.push(pcResult);
+      results.push(...pcResults);
     } catch (e) { console.error(`[네이버 브검 PC] "${brand}" 오류:`, e.message); }
 
     await new Promise(r => setTimeout(r, 1500));
 
     try {
-      const moResult = await collectBrandsearch(browser, brand, 'mo', screenshotDir);
-      if (moResult) console.log(`[네이버 브검 MO] "${brand}" 완료 (${moResult.buttons.length}개 버튼)`);
+      const moResults = await collectBrandsearch(browser, brand, 'mo', screenshotDir);
+      if (moResults.length > 0) console.log(`[네이버 브검 MO] "${brand}" 완료 (소재 ${moResults.length}개)`);
       else console.log(`[네이버 브검 MO] "${brand}" 브랜드검색 없음`);
-      if (moResult) results.push(moResult);
+      results.push(...moResults);
     } catch (e) { console.error(`[네이버 브검 MO] "${brand}" 오류:`, e.message); }
 
     await new Promise(r => setTimeout(r, 2000));
   }
 
   await browser.close();
-  return results;
+  return assignCreativeSets(results);
 }
 
 // 캐러셀형 배너(premium_carousel 등)가 자동 재생 중이면 스크린샷 시점에 슬라이드가
@@ -90,7 +94,21 @@ async function collectBrandsearch(browser, brand, device, screenshotDir) {
   await page.goto(searchUrl, { waitUntil: 'networkidle', timeout: 30000 });
   await page.waitForTimeout(3000);
 
-  // ── 1단계: 브검 존재 여부 확인 + 스크린샷 영역 탐지 ──────────────────────
+  // ── 소재 로테이션 감지: 페이지를 REFRESH_COUNT회 새로고침하며 매번 소재를 파싱하고,
+  // "버튼 텍스트/영역 + 메인이미지 URL"을 합친 키로 이미 본 소재인지 판단한다. 설명문구/
+  // 서브링크가 완전히 같아도 메인이미지만 바뀌면 다른 키가 되어 별도 소재로 잡힌다.
+  // 비용이 드는 스크린샷/랜딩 캡처는 "진짜 새 소재"로 확정된 경우에만 수행한다
+  // (파워링크 브랜드키워드의 30회 새로고침+텍스트키 dedup과 같은 패턴, 여기선 이미지도 키에 포함).
+  const seenKeys = new Set();
+  const variants = [];
+
+  for (let i = 0; i < REFRESH_COUNT; i++) {
+    if (i > 0) {
+      await page.reload({ waitUntil: 'networkidle', timeout: 30000 });
+      await page.waitForTimeout(2000);
+    }
+
+    // ── 1단계: 브검 존재 여부 확인 + 스크린샷 영역 탐지 ──────────────────────
   // (2026-07-29 재작성: 네이버가 프론트 구조를 바꿔서 예전 id 패턴은 더 이상 안 걸림.
   //  __ADFE_TEMPLATE_BLOCK__ 안의 블록 유형으로 "진짜 브랜드검색"인지 판별.
   //  실제 스크린샷 대조로 검증된 규칙(7/7 브랜드 정답 일치):
@@ -152,14 +170,17 @@ async function collectBrandsearch(browser, brand, device, screenshotDir) {
     };
   }, isMobile);
 
-  if (!detection.found) {
-    console.log(`  [${device.toUpperCase()}] 브랜드검색 없음`);
-    await context.close();
-    return null;
-  }
+    if (!detection.found) {
+      if (i === 0) {
+        console.log(`  [${device.toUpperCase()}] 브랜드검색 없음`);
+        await context.close();
+        return [];
+      }
+      continue; // 이번 새로고침에는 안 보임 - 다음 새로고침에서 재시도
+    }
 
-  // ── 2단계: 스크린샷 영역을 콘텐츠 전체 높이로 재측정 ─────────────────────
-  const fullBox = await page.evaluate(function(isMobileArg) {
+    // ── 2단계: 스크린샷 영역을 콘텐츠 전체 높이로 재측정 ─────────────────────
+    const fullBox = await page.evaluate(function(isMobileArg) {
     var bx = isMobileArg
       ? document.querySelector('section.sp_brand, .api_subject_bx')
       : document.querySelector('.brand_search');
@@ -185,42 +206,9 @@ async function collectBrandsearch(browser, brand, device, screenshotDir) {
     return { x: rect.x, y: rect.top, width: rect.width, height: bottom - rect.top };
   }, isMobile);
 
-  if (!fullBox || fullBox.height < 50) {
-    await context.close();
-    return null;
-  }
+    if (!fullBox || fullBox.height < 50) continue;
 
-  const date = new Date().toISOString().slice(0,10).replace(/-/g,'');
-  const unique = Math.random().toString(36).slice(2,6);
-  const screenshotFilename = `bs_${brand}_${device}_${date}_${unique}.jpg`;
-  const screenshotPath = path.join(screenshotDir, screenshotFilename);
-
-  const vpWidth = isMobile ? 390 : 1280;
-  const neededHeight = Math.ceil(fullBox.y + fullBox.height) + 80;
-  await page.setViewportSize({ width: vpWidth, height: Math.max(neededHeight, isMobile ? 2200 : 1800) });
-  await page.waitForTimeout(500);
-
-  // 캐러셀(premium_carousel 등)이 자동 재생 중이면 슬라이드 전환 애니메이션 중간에
-  // 캡처되어 두 슬라이드가 겹쳐 찍히는 문제가 있음 -> transform 값이 연속 2회 동일할 때까지 대기
-  await waitForCarouselSettle(page, isMobile);
-
-  // PNG -> JPEG(품질 82)로 전환: 로컬 저장 용량이 주차별로 계속 누적되는 문제 완화
-  // (스크린샷은 육안 확인용이라 약간의 손실 압축은 무방, 용량은 대략 1/5~1/8 수준)
-  await page.screenshot({
-    path: screenshotPath,
-    type: 'jpeg',
-    quality: 82,
-    clip: {
-      x: Math.max(0, fullBox.x),
-      y: Math.max(0, fullBox.y),
-      width: Math.min(fullBox.width, vpWidth - Math.max(0, fullBox.x)),
-      height: fullBox.height,
-    },
-  });
-
-  console.log(`  [${device.toUpperCase()}] 스크린샷: ${screenshotFilename}`);
-
-  // ── 3단계: __ADFE_TEMPLATE_BLOCK__ 에서 버튼 데이터 파싱 ─────────────────
+    // ── 3단계: __ADFE_TEMPLATE_BLOCK__ 에서 버튼 데이터 파싱 ─────────────────
   // (2026-07-29 재작성: 블록 "키 접두어" 기준으로 분기하는 방식으로 전환.
   //  이전엔 data shape(예: title+link 있으면 무조건 새소식)로 추측했는데,
   //  light_(메인배너) 블록의 mainText.title/link가 brandNews 체크에 잘못 걸려
@@ -350,8 +338,17 @@ async function collectBrandsearch(browser, brand, device, screenshotDir) {
           // PC/MO가 완전히 다른 필드 구조를 쓰므로 두 형태를 모두 체크
           if (prefix === 'light') {
             // PC 형태: mainImg / mainText / subLinks / products
+            // (2026-08-05 추가: mainImg.img.uri에 실제 배너 이미지 원본이 있음 - 캐러셀형과
+            //  같은 slideInfo 경로로 넘겨서 이미지 자체도 다운로드되게 함. 설명문구/서브링크가
+            //  동일해도 이 이미지가 바뀌면 소재 중복판정에서 다른 소재로 잡혀야 하기 때문.)
             if (data.mainImg && data.mainImg.link) {
-              addButton(data.mainImg.bottomText || '메인이미지', data.mainImg.link, '메인이미지');
+              var mainImgUrl = data.mainImg.img ? (data.mainImg.img.uri || data.mainImg.img.originalUri) : null;
+              addButton(data.mainImg.bottomText || '메인이미지', data.mainImg.link, '메인이미지', {
+                index: 0,
+                imgUrl: mainImgUrl,
+                title: data.mainImg.bottomText || '',
+                subText: '',
+              });
             }
             if (data.mainText && data.mainText.link) {
               addButton(data.mainText.title || '설명문구', data.mainText.link, '설명문구');
@@ -371,7 +368,13 @@ async function collectBrandsearch(browser, brand, device, screenshotDir) {
 
             // MO 형태: img/imgLink(메인이미지) + title/subtitle/link(설명문구) + thumbnails
             if (data.imgLink) {
-              addButton(data.subtitle || data.title || '메인이미지', data.imgLink, '메인이미지');
+              var moImgUrl = data.img ? (data.img.uri || data.img.originalUri) : null;
+              addButton(data.subtitle || data.title || '메인이미지', data.imgLink, '메인이미지', {
+                index: 0,
+                imgUrl: moImgUrl,
+                title: data.subtitle || data.title || '',
+                subText: '',
+              });
             }
             if (data.link && (data.title || data.subtitle) && !data.mainText) {
               addButton(data.title || data.subtitle, data.link, '설명문구');
@@ -481,17 +484,59 @@ async function collectBrandsearch(browser, brand, device, screenshotDir) {
     }
 
     return results.slice(0, 25);
-  });
+    });
 
-  console.log(`  [${device.toUpperCase()}] 버튼 ${buttons.length}개 추출 (ADFE 파싱)`);
-  if (buttons.length > 0) {
+    // ── 소재 판별: 버튼 텍스트/영역 + 메인이미지 URL을 합친 키로 이미 본 소재인지 확인.
+    // 이미 본 키면 스크린샷/랜딩 캡처 없이 다음 새로고침으로 건너뛴다(비용 절약).
+    const textKey = buttons.map(function(b) { return b.area + '::' + b.text; }).sort().join('|');
+    const imgKey = buttons.filter(function(b) { return b.slideImageUrl; })
+      .map(function(b) { return b.area + '::' + b.slideImageUrl; }).sort().join('|');
+    const compositeKey = textKey + '###' + imgKey;
+
+    if (seenKeys.has(compositeKey)) continue;
+    seenKeys.add(compositeKey);
+
+    const creativeIndex = variants.length + 1;
+    console.log(`  [${device.toUpperCase()}] 소재${creativeIndex} 확인 (새로고침 ${i + 1}/${REFRESH_COUNT}회차, 버튼 ${buttons.length}개)`);
     buttons.forEach(function(b) { console.log(`    - ${b.text}: ${b.href.slice(0,60)}`); });
+
+    // 새 소재로 확정된 경우에만 비용 드는 스크린샷 캡처 수행
+    const date = new Date().toISOString().slice(0,10).replace(/-/g,'');
+    const unique = Math.random().toString(36).slice(2,6);
+    const screenshotFilename = `bs_${brand}_${device}_${date}_${unique}_c${creativeIndex}.jpg`;
+    const screenshotPath = path.join(screenshotDir, screenshotFilename);
+
+    const vpWidth = isMobile ? 390 : 1280;
+    const neededHeight = Math.ceil(fullBox.y + fullBox.height) + 80;
+    await page.setViewportSize({ width: vpWidth, height: Math.max(neededHeight, isMobile ? 2200 : 1800) });
+    await page.waitForTimeout(500);
+
+    // 캐러셀(premium_carousel 등)이 자동 재생 중이면 슬라이드 전환 애니메이션 중간에
+    // 캡처되어 두 슬라이드가 겹쳐 찍히는 문제가 있음 -> transform 값이 연속 2회 동일할 때까지 대기
+    await waitForCarouselSettle(page, isMobile);
+
+    // PNG -> JPEG(품질 82)로 전환: 로컬 저장 용량이 주차별로 계속 누적되는 문제 완화
+    await page.screenshot({
+      path: screenshotPath,
+      type: 'jpeg',
+      quality: 82,
+      clip: {
+        x: Math.max(0, fullBox.x),
+        y: Math.max(0, fullBox.y),
+        width: Math.min(fullBox.width, vpWidth - Math.max(0, fullBox.x)),
+        height: fullBox.height,
+      },
+    });
+
+    variants.push({ buttons, screenshotFilename, creativeIndex });
   }
 
   await context.close();
 
-  // ── 4단계: 랜딩 캡처 ──────────────────────────────────────────────────────
-  // 랜딩 캡처는 별도 브라우저 context에서 처리 (context 이미 닫혔으므로 새로 열기)
+  if (variants.length === 0) return [];
+
+  // ── 4단계: 랜딩 캡처 (소재별로 순차 진행) ────────────────────────────────
+  // 랜딩 캡처는 별도 브라우저 context에서 처리 (탐지용 context는 이미 닫혔으므로 새로 열기)
   const landingContext = await browser.newContext({
     locale: 'ko-KR',
     viewport: isMobile ? { width: 390, height: 900 } : { width: 1280, height: 900 },
@@ -502,17 +547,113 @@ async function collectBrandsearch(browser, brand, device, screenshotDir) {
     hasTouch: isMobile,
   });
 
-  const landingData = await captureLandings(landingContext, buttons, brand, device, screenshotDir, isMobile);
+  const results = [];
+  for (const variant of variants) {
+    const landingData = await captureLandings(landingContext, variant.buttons, brand, device, screenshotDir, isMobile);
+    const result = buildResult(brand, device, variant.screenshotFilename, landingData);
+    // deviceCreativeIndex는 PC/MO 각각 안에서 새로고침으로 발견된 순서(디버깅용).
+    // 화면에 보여줄 최종 "소재N" 라벨과 PC/MO 짝짓기는 assignCreativeSets()에서 확정한다.
+    result.deviceCreativeIndex = variant.creativeIndex;
+    await uploadResultMedia(result, outputDirFromScreenshotDir(screenshotDir));
+    results.push(result);
+  }
   await landingContext.close();
 
-  const result = buildResult(brand, device, screenshotFilename, landingData);
-  await uploadResultMedia(result, outputDirFromScreenshotDir(screenshotDir));
-  return result;
+  return results;
 }
 
 // screenshotDir은 항상 path.join(outputDir, 'screenshots')로 만들어지므로 부모 폴더를 역산
 function outputDirFromScreenshotDir(screenshotDir) {
   return path.dirname(screenshotDir);
+}
+
+// PC/MO는 같은 캠페인이어도 랜딩 URL에 utm_content=pc/mo, utm_term=..._pc/_mo 같은
+// 플랫폼 구분 쿼리스트링이 붙어 URL이 완전히는 안 겹친다(실측: 메리츠증권 확인).
+// origin+pathname만 남기고 쿼리스트링/해시는 버려서 비교한다.
+function landingUrlsOf(result) {
+  const urls = new Set();
+  (result.buttons || []).forEach(b => {
+    if (!b.finalUrl) return;
+    try {
+      const u = new URL(b.finalUrl);
+      urls.add(u.origin + u.pathname);
+    } catch (_) {
+      urls.add(b.finalUrl);
+    }
+  });
+  return urls;
+}
+
+function textTokensOf(result) {
+  const tokens = new Set();
+  (result.buttons || []).forEach(b => {
+    (b.buttonText || '').split(/\s+/).forEach(t => { if (t) tokens.add(t); });
+  });
+  return tokens;
+}
+
+function jaccard(setA, setB) {
+  if (setA.size === 0 || setB.size === 0) return 0;
+  let inter = 0;
+  setA.forEach(x => { if (setB.has(x)) inter++; });
+  return inter / (setA.size + setB.size - inter);
+}
+
+// PC 소재와 MO 소재를 같은 "세트"로 묶는다 - 1차로 랜딩 URL이 겹치는지 보고(가장 신뢰도 높음,
+// 브랜드검색은 PC/MO가 보통 같은 캠페인 랜딩으로 연결됨), URL이 하나도 안 겹치면 버튼 텍스트
+// 토큰 유사도(자카드)로 대체 판단한다. 사람이 눈으로 매번 확인할 필요 없이 결정적으로 매칭됨.
+const TEXT_SIMILARITY_THRESHOLD = 0.25;
+
+function assignCreativeSets(results) {
+  const byBrand = new Map();
+  results.forEach(r => {
+    if (!byBrand.has(r.advertiserName)) byBrand.set(r.advertiserName, []);
+    byBrand.get(r.advertiserName).push(r);
+  });
+
+  byBrand.forEach((items, brand) => {
+    const pcItems = items.filter(r => r.device === 'pc');
+    const moItems = items.filter(r => r.device === 'mo');
+    const usedMo = new Set();
+    let setCounter = 0;
+
+    pcItems.forEach(pc => {
+      const pcUrls = landingUrlsOf(pc);
+      const pcTokens = textTokensOf(pc);
+      let bestMo = null;
+      let bestScore = 0;
+
+      moItems.forEach(mo => {
+        if (usedMo.has(mo.id)) return;
+        const moUrls = landingUrlsOf(mo);
+        let urlOverlap = 0;
+        pcUrls.forEach(u => { if (moUrls.has(u)) urlOverlap++; });
+        const score = urlOverlap > 0 ? (1000 + urlOverlap) : jaccard(pcTokens, textTokensOf(mo));
+        if (score > bestScore) { bestScore = score; bestMo = mo; }
+      });
+
+      setCounter++;
+      const setLabel = `소재${setCounter}`;
+      pc.creativeSetId = `${brand}_set${setCounter}`;
+      pc.creativeLabel = setLabel;
+
+      if (bestMo && (bestScore >= 1000 || bestScore >= TEXT_SIMILARITY_THRESHOLD)) {
+        bestMo.creativeSetId = pc.creativeSetId;
+        bestMo.creativeLabel = setLabel;
+        usedMo.add(bestMo.id);
+      }
+    });
+
+    // PC와 못 묶인 MO 소재는 자기 혼자만의 세트로 남는다(짝이 없는 채로 표시됨)
+    moItems.forEach(mo => {
+      if (mo.creativeSetId) return;
+      setCounter++;
+      mo.creativeSetId = `${brand}_set${setCounter}`;
+      mo.creativeLabel = `소재${setCounter}`;
+    });
+  });
+
+  return results;
 }
 
 // 브랜드검색 결과 하나에 걸린 로컬 파일(메인 스크린샷/랜딩 스크린샷/슬라이드 원본 이미지)을

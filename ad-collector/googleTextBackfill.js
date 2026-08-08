@@ -14,6 +14,21 @@ const path = require('path');
 const { loadIndex, saveIndex } = require('./utils');
 const { generateInsight } = require('./insightClient');
 
+// 이미지 하나당 Claude 호출이 몇 초씩 걸려서 전체 실행이 오래 걸리는데, 그 사이 스케줄러의
+// 다른 수집 작업이 같은 index.json에 새 항목을 추가할 수 있다. 시작할 때 읽어둔 스냅샷을
+// 그대로 저장하면 그 사이 추가된 새 항목이 통째로 사라진다(실측: 다른 백필 스크립트가 이
+// 패턴으로 신규 267건을 날린 사고 발생, 2026-08-06). 저장 시점마다 파일을 다시 읽어서,
+// 지금까지 채운 copyText만 id 기준으로 최신 내용에 병합해 저장한다.
+function saveTextMerged(indexPath, updatedItemsById) {
+  const fresh = loadIndex(indexPath);
+  fresh.forEach(item => {
+    const update = updatedItemsById.get(item.id);
+    if (update) item.copyText = update.copyText;
+  });
+  saveIndex(indexPath, fresh);
+  return fresh;
+}
+
 const PROMPT = '첨부한 로컬 이미지 파일을 열어서 그 안에 있는 광고 카피/문구를 전부 그대로 옮겨 적어줘. ' +
   '설명이나 해석 없이 이미지에 실제로 적힌 텍스트만 답해. 이미지 안에 텍스트가 전혀 없으면 다른 말 없이 정확히 "텍스트없음"이라고만 답해.';
 
@@ -30,6 +45,7 @@ async function backfillGoogleImageText(settings, maxPerRun = Infinity) {
   console.log(`[구글 OCR 백필] 대상 ${candidates.length}건 중 이번 실행에서 ${targets.length}건 시도`);
 
   let success = 0, empty = 0, fail = 0;
+  const updatedItemsById = new Map();
   for (let n = 0; n < targets.length; n++) {
     const item = targets[n];
     const fullPath = path.join(settings.outputDir, item.localPath);
@@ -38,7 +54,8 @@ async function backfillGoogleImageText(settings, maxPerRun = Infinity) {
     try {
       const text = await generateInsight(`${PROMPT}\n\n이미지 경로: ${fullPath}`, null);
       const trimmed = text.trim();
-      item.copyText = trimmed || '텍스트없음';
+      const copyText = trimmed || '텍스트없음';
+      updatedItemsById.set(item.id, { copyText });
       if (trimmed === '텍스트없음' || !trimmed) empty++; else success++;
     } catch (e) {
       fail++;
@@ -46,12 +63,12 @@ async function backfillGoogleImageText(settings, maxPerRun = Infinity) {
     }
 
     if ((n + 1) % 20 === 0) {
-      saveIndex(indexPath, index);
+      saveTextMerged(indexPath, updatedItemsById);
       console.log(`  ...진행 ${n + 1}/${targets.length} (중간 저장 완료)`);
     }
   }
 
-  saveIndex(indexPath, index);
+  saveTextMerged(indexPath, updatedItemsById);
   console.log(`[구글 OCR 백필] 완료 - 텍스트 추출 ${success}건, 텍스트없음 ${empty}건, 실패 ${fail}건 (남은 대상: ${candidates.length - targets.length}건)`);
   return { success, empty, fail, remaining: candidates.length - targets.length };
 }

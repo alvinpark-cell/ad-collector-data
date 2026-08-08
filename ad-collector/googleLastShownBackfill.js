@@ -16,11 +16,32 @@ const { loadIndex, saveIndex } = require('./utils');
 const MIN_DELAY_MS = 2000;
 const DELAY_JITTER_MS = 1500;
 
+// 상세페이지 방문이 건당 몇 초씩 걸려서 전체 실행이 오래 걸리는데, 그 사이 스케줄러의 다른
+// 수집 작업(2시간마다 메타 배치 등)이 같은 index.json에 새 항목을 추가할 수 있다. 시작할 때
+// 읽어둔 스냅샷을 그대로 저장하면 그 사이 추가된 새 항목이 통째로 사라진다(실측: 다른
+// 백필 스크립트가 이 패턴으로 신규 267건을 날린 사고 발생, 2026-08-06). 저장 시점마다
+// 파일을 다시 읽어서, 지금까지 채운 adLastShownAt만 id 기준으로 최신 내용에 병합해 저장한다.
+function saveLastShownMerged(indexPath, updatedItemsById) {
+  const fresh = loadIndex(indexPath);
+  fresh.forEach(item => {
+    const update = updatedItemsById.get(item.id);
+    if (update) {
+      item.adLastShownAt = update.adLastShownAt;
+      delete item.adDateEstimated;
+    }
+  });
+  saveIndex(indexPath, fresh);
+  return fresh;
+}
+
 async function backfillLastShown(settings, maxPerRun = Infinity) {
   const indexPath = path.join(settings.dataDir, 'index.json');
   const index = loadIndex(indexPath);
+  // adDateEstimated가 있는 항목은 noDateFallbackBackfill.js가 넣어둔 2025-01-01 자리표시자일
+  // 뿐 실제 값이 아니라, 나중에 다시 시도해서 진짜 값을 찾으면 덮어써야 한다(!adLastShownAt
+  // 조건만으로는 이미 값이 있다고 보고 영영 다시 시도 안 하게 됨).
   const candidates = index.filter(i =>
-    i.platform === 'google' && i.status === 'ended' && !i.adLastShownAt && i.detailsLink
+    i.platform === 'google' && i.status === 'ended' && (!i.adLastShownAt || i.adDateEstimated) && i.detailsLink
   );
   const targets = candidates.slice(0, maxPerRun);
 
@@ -35,6 +56,7 @@ async function backfillLastShown(settings, maxPerRun = Infinity) {
   });
 
   let success = 0, fail = 0;
+  const updatedItemsById = new Map();
 
   try {
     for (let n = 0; n < targets.length; n++) {
@@ -49,7 +71,8 @@ async function backfillLastShown(settings, maxPerRun = Infinity) {
         });
         const match = lastShownText.match(/(\d{4})년\s*(\d{1,2})월\s*(\d{1,2})일/);
         if (match) {
-          item.adLastShownAt = match[1] + '-' + String(match[2]).padStart(2, '0') + '-' + String(match[3]).padStart(2, '0');
+          const adLastShownAt = match[1] + '-' + String(match[2]).padStart(2, '0') + '-' + String(match[3]).padStart(2, '0');
+          updatedItemsById.set(item.id, { adLastShownAt });
           success++;
         } else {
           fail++;
@@ -63,7 +86,7 @@ async function backfillLastShown(settings, maxPerRun = Infinity) {
       }
 
       if ((n + 1) % 10 === 0) {
-        saveIndex(indexPath, index);
+        saveLastShownMerged(indexPath, updatedItemsById);
         console.log(`  ...진행 ${n + 1}/${targets.length} (중간 저장 완료)`);
       }
 
@@ -74,7 +97,7 @@ async function backfillLastShown(settings, maxPerRun = Infinity) {
     await browser.close();
   }
 
-  saveIndex(indexPath, index);
+  saveLastShownMerged(indexPath, updatedItemsById);
   console.log(`[구글 게재일 백필] 완료 - 성공 ${success}건, 실패 ${fail}건 (남은 대상: ${candidates.length - targets.length}건)`);
   return { success, fail, remaining: candidates.length - targets.length };
 }

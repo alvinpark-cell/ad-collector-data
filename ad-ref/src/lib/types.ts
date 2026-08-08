@@ -9,6 +9,12 @@ export interface AdItem {
   advertiserName: string;
   copyText: string;
   headline?: string;
+  // 문구/헤드라인이 아예 없는(모델·비주얼 위주) 구글 소재를 googleDescriptionBackfill.js가
+  // 이미지 분석으로 미리 채워둔 설명 - 소재 인사이트가 "문구 없음" 소재도 분석에 반영하도록 씀
+  aiDescription?: string;
+  // 구글 이미지 소재의 시각적 유사도 해시(32x32 그레이스케일 1024비트, 이진 문자열) - 데이터
+  // 저장/중복판정에는 안 쓰고, 대시보드의 "비슷한 소재 접기" 화면 표시용 필터에만 쓴다.
+  visualHash?: string;
   landingUrl?: string;
   sourceUrl?: string;
   keyword: string;

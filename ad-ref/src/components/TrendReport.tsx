@@ -112,8 +112,11 @@ export default function TrendReport() {
   return (
     <div>
       <h2 style={{ fontSize: '22px', fontWeight: 700, marginBottom: '8px' }}>트렌드 리포트</h2>
-      <p style={{ fontSize: '14px', color: 'var(--text-muted)', marginBottom: '24px' }}>
+      <p style={{ fontSize: '14px', color: 'var(--text-muted)', marginBottom: '8px' }}>
         팀 구글 시트 기준 · 최근 데이터 {currentMonth} (구글 시트에서 정기적으로 다시 받아와 갱신됩니다)
+      </p>
+      <p style={{ fontSize: '12px', color: 'var(--text-faint)', marginBottom: '24px' }}>
+        * MAU·신규설치 단위: 명 · 증감률(%) = (이번달 - 전월) / 전월 × 100 · 성별/연령대는 최근 3개월 평균 비중(%)
       </p>
 
       {/* 전월 대비 증감 */}

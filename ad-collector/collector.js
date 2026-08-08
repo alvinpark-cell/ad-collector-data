@@ -159,10 +159,14 @@ async function runWeeklyPowerlink(settings, { force = false } = {}) {
     console.log('[네이버 파워링크] ' + newPwlItems.length + '개 수집 (중복 ' + (rawPwlItems.length - newPwlItems.length) + '개 제외)');
   } catch (e) { console.error('[네이버 파워링크] 오류:', e.message); }
 
+  // 저장 시점에 파일을 다시 읽어서 병합한다 - 키워드별 PC/MO 수집이 오래 걸릴 수 있는데,
+  // 그 사이 다른 프로세스가 같은 파일에 이미 쓴 내용을 덮어쓰지 않기 위함(2026-08-07,
+  // 다른 백필 스크립트에서 같은 패턴으로 데이터 손실 발견 후 전체 점검).
   const newPwlKeys = new Set(newPwlItems.map(i => `${i.keyword}_${i.device}_${currentWeekKey}`));
+  const freshPwlIndex = loadIndex(PWL_INDEX_PATH);
   const keptExistingPwlIndex = force
-    ? existingPwlIndex.filter(i => !newPwlKeys.has(`${i.keyword}_${i.device}_${getMonthWeekKey(i.collectedAt)}`))
-    : existingPwlIndex;
+    ? freshPwlIndex.filter(i => !newPwlKeys.has(`${i.keyword}_${i.device}_${getMonthWeekKey(i.collectedAt)}`))
+    : freshPwlIndex;
   const updatedPwlIndex = [...keptExistingPwlIndex, ...newPwlItems];
   saveIndex(PWL_INDEX_PATH, updatedPwlIndex);
   updateCollectionStatus(settings.dataDir, 'powerlink', { lastCollectedAt: new Date().toISOString(), newCount: newPwlItems.length });
@@ -234,12 +238,17 @@ async function collect() {
 
   // --force-bs로 다시 수집한 경우 "덧붙이기"가 아니라 "덮어쓰기"가 되도록, 이번 주에
   // 이미 있던 같은 브랜드+디바이스 항목은 새 걸로 교체(제거 후 추가)한다.
+  // 저장 시점에 파일을 다시 읽어서 병합한다 - 브랜드검색 수집(브랜드마다 새로고침 여러 번)이
+  // 오래 걸릴 수 있는데, 그 사이 다른 프로세스가 같은 파일에 이미 쓴 내용을 덮어쓰지 않기
+  // 위함(2026-08-07, 다른 백필 스크립트에서 같은 패턴으로 데이터 손실 발견 후 전체 점검).
+  const bsIndexPath = path.join(settings.dataDir, 'bs_index.json');
   const newBsKeys = new Set(newBsItems.map(i => `${i.advertiserName}_${i.device}_${currentWeekKey}`));
+  const freshBsIndex = loadIndex(bsIndexPath);
   const keptExistingBsIndex = forceBs
-    ? existingBsIndex.filter(i => !newBsKeys.has(`${i.advertiserName}_${i.device}_${getMonthWeekKey(i.collectedAt)}`))
-    : existingBsIndex;
+    ? freshBsIndex.filter(i => !newBsKeys.has(`${i.advertiserName}_${i.device}_${getMonthWeekKey(i.collectedAt)}`))
+    : freshBsIndex;
   const updatedBsIndex = [...keptExistingBsIndex, ...newBsItems];
-  saveIndex(path.join(settings.dataDir, 'bs_index.json'), updatedBsIndex);
+  saveIndex(bsIndexPath, updatedBsIndex);
   if (bsRanThisTime) {
     updateCollectionStatus(settings.dataDir, 'brandsearch', { lastCollectedAt: new Date().toISOString(), newCount: newBsItems.length });
   }

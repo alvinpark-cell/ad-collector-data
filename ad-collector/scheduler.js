@@ -15,6 +15,7 @@ const { updateCommunityTrend } = require('./scrapers/communityTrend');
 const { backfillMissingImages } = require('./googleMediaBackfill');
 const { backfillGoogleImageText } = require('./googleTextBackfill');
 const { backfillLastShown } = require('./googleLastShownBackfill');
+const { backfillNoDateFallback } = require('./noDateFallbackBackfill');
 const { isHoliday } = require('./holidays');
 const { isFirstBusinessDayOfWeek } = require('./scheduleUtils');
 const settings = require('./settings.json');
@@ -184,6 +185,21 @@ cron.schedule('0 45 7 * * *', async () => {
     await backfillLastShown(settings);
   } catch (err) {
     console.error('구글 게재일 백필 중 오류:', err.message);
+  }
+}, {
+  timezone: 'Asia/Seoul',
+});
+
+// 날짜 정보 전혀 없는 구글 종료 소재(adStartedAt/adLastShownAt 둘 다 없음)에 2025-01-01
+// 추정치 채우기: 위 게재일 백필(07:45)이 그날 새로 종료 처리된 것 중 일부를 못 채우고
+// 넘어가면, 그 나머지가 대시보드 "최신순"에서 수집일 때문에 맨 위로 뜨는 문제가 있었다
+// (2026-08-08 확인). 게재일 백필 다음에 돌려서 그 결과를 반영한 나머지만 대상으로 한다.
+cron.schedule('0 50 7 * * *', async () => {
+  console.log(`\n⏰ 날짜없음 소재 추정치 백필 실행: ${new Date().toLocaleString('ko-KR')}`);
+  try {
+    backfillNoDateFallback(settings);
+  } catch (err) {
+    console.error('날짜없음 소재 백필 중 오류:', err.message);
   }
 }, {
   timezone: 'Asia/Seoul',

@@ -64,10 +64,19 @@ async function capturePlaywrightVideoFrame(videoPath, thumbPath) {
 }
 
 // fbcdn URL에서 변동되는 토큰을 제거하고 핵심 파일 경로만 추출 (중복 판정용)
+// (2026-08-06 수정: 유튜브 watch URL(구글 영상 광고)은 실제 구분자가 쿼리스트링의
+//  v= 파라미터에 있는데, origin+pathname만 쓰면 모든 영상이 "https://www.youtube.com/watch"
+//  하나로 뭉개져서 서로 다른 영상이 전부 "이미 있음"으로 오판되는 버그가 있었음
+//  - 실측: 삼성증권 영상 1,408개가 전부 이 키 하나로 충돌해 신규 0건 처리됨.
+//  v= 파라미터는 그대로 살려서 영상별로 구분되게 함.)
 function normalizeUrl(url) {
   if (!url) return '';
   try {
     const u = new URL(url);
+    if ((u.hostname === 'www.youtube.com' || u.hostname === 'youtube.com') && u.pathname === '/watch') {
+      const v = u.searchParams.get('v');
+      if (v) return u.origin + u.pathname + '?v=' + v;
+    }
     return u.origin + u.pathname;
   } catch (_) {
     return url.split('?')[0];
@@ -146,17 +155,30 @@ async function processAndSaveItems(rawItems, settings) {
     }
 
     if (hasMedia && item.mediaType === 'image') {
-      // 이미지: 다운로드 + pHash 중복 제거
+      // 이미지 다운로드 + (구글 제외) pHash 중복 제거.
+      // 구글 CDN(simgad) URL은 이미지 콘텐츠와 1:1로 매칭되는 콘텐츠 주소 방식이라 위의
+      // URL 기준 중복 제거만으로 이미 충분하다. 그런데 여기 pHash 체크까지 겹쳐서, 같은
+      // 템플릿/모델 사진에 문구만 다른(URL도 다른, 실제로는 서로 다른) 소재들을 대량으로
+      // "중복 이미지"로 오판해 버리고 있었다 (실측: 메리츠증권 한 세션에서 카드 2246개 중
+      // 544개가 이렇게 버려지고 신규 1건만 남음, 2026-08-07 발견). 메타는 광고 서명 URL이
+      // 실행마다 바뀔 수 있어 pHash가 여전히 필요하므로 그대로 둔다.
       const filename = buildFilename(item.platform, item.keyword, 'image', 'jpg');
       const imagePath = path.join(settings.outputDir, 'images', item.platform, filename);
       try {
         await downloadImage(item.mediaUrl, imagePath);
-        const hash = await computePHash(imagePath);
-        if (isDuplicate(hash, newHashes, settings.pHashThreshold)) {
-          fs.unlink(imagePath, () => {});
-          continue;
+        if (item.platform !== 'google') {
+          const hash = await computePHash(imagePath);
+          if (isDuplicate(hash, newHashes, settings.pHashThreshold)) {
+            fs.unlink(imagePath, () => {});
+            continue;
+          }
+          if (hash) newHashes.push(hash);
+        } else {
+          // 구글은 중복 판정에는 안 쓰지만(위 설명 참고), 대시보드에서 "비슷하게 보이는
+          // 소재 접기" 같은 화면 표시용 필터를 만들 수 있게 시각적 유사도 해시만 저장해둔다
+          // (데이터를 지우는 게 아니라 그룹핑 정보만 남기는 것).
+          item.visualHash = await computePHash(imagePath);
         }
-        if (hash) newHashes.push(hash);
         // 브라우저에 그대로 URL로 쓰이는 경로라 path.join(윈도우에서 백슬래시) 대신 항상 슬래시로 조립
         item.localPath = ['images', item.platform, filename].join('/');
       } catch (err) {
@@ -231,8 +253,19 @@ async function processAndSaveItems(rawItems, settings) {
     newItems.push(item);
   }
 
-  const updatedIndex = [...existingIndex, ...newItems];
   const { newAds, endedAds } = trackChanges(newItems, existingIndex);
+
+  // 저장 시점에 파일을 다시 읽어서 병합한다 - 이 함수 호출 자체가(이미지/영상 다운로드 등으로)
+  // 몇 초~몇 분, 대량 수집 시 더 길게 걸릴 수 있는데, 그 사이 다른 프로세스(예: 스케줄러의
+  // 다른 배치)가 같은 index.json에 이미 새 항목을 저장했다면 그걸 덮어쓰지 않기 위함
+  // (실측: 이 패턴으로 신규 267건이 통째로 사라진 사고 발생, 2026-08-06 - 다른 백필 스크립트
+  // 에서 먼저 발견돼 고쳤고, 거의 모든 수집 경로가 공유하는 이 함수도 동일하게 고침).
+  // 신규 판정(newAds/endedAds)은 이 호출 시작 시점의 existingIndex 기준으로 그대로 두고,
+  // 최종 저장 내용만 최신 파일에 병합한다.
+  const freshIndex = loadIndex(INDEX_PATH);
+  const freshIds = new Set(freshIndex.map(i => i.id).filter(Boolean));
+  const genuinelyNewItems = newItems.filter(i => !i.id || !freshIds.has(i.id));
+  const updatedIndex = [...freshIndex, ...genuinelyNewItems];
   const finalIndex = applyEndedStatus(updatedIndex, endedAds);
 
   const existingChanges = fs.existsSync(CHANGES_PATH) ? JSON.parse(fs.readFileSync(CHANGES_PATH, 'utf-8')) : { newAds: [], endedAds: [] };

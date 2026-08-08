@@ -25,6 +25,14 @@ export async function POST(req: NextRequest) {
     });
     return NextResponse.json({ text: stdout.trim() });
   } catch (e) {
-    return NextResponse.json({ error: e instanceof Error ? e.message : 'Claude 호출 실패' }, { status: 500 });
+    // execFileSync 에러 메시지에는 프롬프트를 포함한 명령어 전체가 들어있어서(Node 기본 동작)
+    // 그걸 그대로 노출하면 화면이 프롬프트로 도배된다. claude CLI는 로그인 안 됐을 때
+    // "Not logged in · Please run /login" 같은 실제 원인을 stderr가 아니라 stdout으로
+    // 찍길래(실측 확인) stdout도 같이 본다 - 둘 다 없을 때만 명령어 메시지의 첫 줄로 대체한다.
+    const errObj = e as { stderr?: unknown; stdout?: unknown };
+    const stderr = errObj && typeof errObj === 'object' && 'stderr' in errObj ? String(errObj.stderr || '').trim() : '';
+    const stdoutMsg = errObj && typeof errObj === 'object' && 'stdout' in errObj ? String(errObj.stdout || '').trim() : '';
+    const message = stderr || stdoutMsg || (e instanceof Error ? e.message.split('\n')[0] : 'Claude 호출 실패');
+    return NextResponse.json({ error: message }, { status: 500 });
   }
 }

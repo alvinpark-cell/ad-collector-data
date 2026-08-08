@@ -175,6 +175,7 @@ export default function MarketIndexPanel({ startDate, endDate, timeUnit }: Marke
     <div style={{ marginBottom: '24px' }}>
       <p style={{ fontSize: '12px', color: 'var(--text-faint)', marginBottom: '8px' }}>
         검색어 트렌드와 동일한 조회 기간({startDate} ~ {endDate}, {timeUnit === 'date' ? '일별' : timeUnit === 'week' ? '주별' : '월별'} 기준)
+        · 그래프는 지수 값이 아니라 조회 시작일 대비 등락률(%)입니다 · 데이터 출처: Yahoo Finance
       </p>
       <div style={{ display: 'flex', gap: '14px', flexWrap: 'wrap', alignItems: 'stretch' }}>
         <IndexCard title="코스피 · 코스닥" indices={[filtered.kospi, filtered.kosdaq].filter((v): v is FilteredIndex => !!v)} />
