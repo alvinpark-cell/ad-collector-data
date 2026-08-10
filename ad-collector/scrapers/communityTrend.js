@@ -29,8 +29,28 @@ const { generateInsight } = require('../insightClient');
 const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36';
 const TOP_N = 15;
 
+// toISOString()은 항상 UTC라서, 한국 시간 오전 9시 이전에 이 함수를 부르면 실제로는
+// 하루 전 날짜가 나온다(예: KST 08:00은 UTC로 전날 23:00) - 이 컴퓨터의 OS 시간대가
+// 한국(Asia/Seoul)이라는 전제로, UTC 대신 로컬 날짜 구성요소를 그대로 쓴다.
+function localDateKey(d) {
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, '0');
+  const day = String(d.getDate()).padStart(2, '0');
+  return `${y}-${m}-${day}`;
+}
+
 function todayKey() {
-  return new Date().toISOString().slice(0, 10); // YYYY-MM-DD
+  return localDateKey(new Date());
+}
+
+// 매일 08시에 도는 실시간 수집은 "오늘"이 아니라 "어제 하루치"를 기록해야 한다 - 08시
+// 시점에는 어제는 이미 하루가 다 끝난 완전한 데이터지만, 오늘은 겨우 8시간 지난 반쪽
+// 데이터라 화제 키워드가 다 안 모인 채로 "오늘자"로 확정되어 버리는 문제가 있었음
+// (2026-08-10 수정).
+function yesterdayKey() {
+  const d = new Date();
+  d.setDate(d.getDate() - 1);
+  return localDateKey(d);
 }
 
 // 디시인사이드 주식 갤러리(neostock) 최신 글 제목 - Claude에게 근거 자료로 같이 넘길 용도.
@@ -235,36 +255,36 @@ async function updateCommunityTrend(settings) {
 
   await browser.close();
 
-  // 조사가 실패했을 때 빈 배열로 오늘자 데이터를 덮어써버리면 이미 성공적으로 저장된
-  // 오늘 데이터가 통째로 날아간다(실제로 한 번 이렇게 날려먹은 적 있음) - 실패 시엔
-  // 오늘자 기존 저장값이 있으면 그걸 그대로 유지한다.
+  // 조사가 실패했을 때 빈 배열로 어제자 데이터를 덮어써버리면 이미 성공적으로 저장된
+  // 데이터가 통째로 날아간다(실제로 한 번 이렇게 날려먹은 적 있음) - 실패 시엔
+  // 기존 저장값이 있으면 그걸 그대로 유지한다.
   const outPath = path.join(settings.dataDir, 'community_trend.json');
   const existing = fs.existsSync(outPath) ? JSON.parse(fs.readFileSync(outPath, 'utf-8')) : { history: [] };
-  const today = todayKey();
-  const existingToday = (existing.history || []).find(h => h.date === today);
+  const targetDate = yesterdayKey();
+  const existingTarget = (existing.history || []).find(h => h.date === targetDate);
 
-  console.log('[커뮤니티 반응] 시장 전체 화제 키워드 조사 중...');
-  let generalKeywords = existingToday ? existingToday.general : [];
+  console.log(`[커뮤니티 반응] 시장 전체 화제 키워드 조사 중... (대상: ${targetDate})`);
+  let generalKeywords = existingTarget ? existingTarget.general : [];
   try {
-    const general = await researchTopicKeywords('한국 주식/증권/투자 시장 전반', dcinsideTitles, fmkoreaTitles);
+    const general = await researchTopicKeywords('한국 주식/증권/투자 시장 전반', dcinsideTitles, fmkoreaTitles, targetDate);
     generalKeywords = (general.keywords || []).slice(0, TOP_N);
   } catch (e) {
-    console.error('[커뮤니티 반응] 시장 전체 조사 실패, 기존 오늘자 데이터 유지:', e.message);
+    console.error(`[커뮤니티 반응] 시장 전체 조사 실패, ${targetDate} 기존 데이터 유지:`, e.message);
   }
 
-  console.log('[커뮤니티 반응] 메리츠증권 화제 키워드 조사 중...');
-  let brandKeywords = existingToday ? existingToday.brand : [];
+  console.log(`[커뮤니티 반응] 메리츠증권 화제 키워드 조사 중... (대상: ${targetDate})`);
+  let brandKeywords = existingTarget ? existingTarget.brand : [];
   try {
-    const brand = await researchTopicKeywords('메리츠증권(증권사)과 직접 관련된 주제', dcinsideTitles, fmkoreaTitles);
+    const brand = await researchTopicKeywords('메리츠증권(증권사)과 직접 관련된 주제', dcinsideTitles, fmkoreaTitles, targetDate);
     brandKeywords = (brand.keywords || []).slice(0, TOP_N);
   } catch (e) {
-    console.error('[커뮤니티 반응] 메리츠증권 조사 실패, 기존 오늘자 데이터 유지:', e.message);
+    console.error(`[커뮤니티 반응] 메리츠증권 조사 실패, ${targetDate} 기존 데이터 유지:`, e.message);
   }
 
-  const todaySnapshot = { date: today, general: generalKeywords, brand: brandKeywords };
+  const targetSnapshot = { date: targetDate, general: generalKeywords, brand: brandKeywords };
 
-  const history = (existing.history || []).filter(h => h.date !== todaySnapshot.date);
-  history.push(todaySnapshot);
+  const history = (existing.history || []).filter(h => h.date !== targetSnapshot.date);
+  history.push(targetSnapshot);
   history.sort((a, b) => a.date.localeCompare(b.date));
 
   const result = { updatedAt: new Date().toISOString(), history };
