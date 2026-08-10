@@ -71,7 +71,7 @@ export default function Home() {
   const [bsSelectedWeek, setBsSelectedWeek] = useState<string | null>(null);
   // 브랜드검색 PC/MO 스크린샷 클릭 시 전체 스크린샷 1장 + 그 디바이스의 메인이미지(슬라이드)들을
   // 좌우 화살표로 넘겨보는 갤러리 - PC와 MO는 서로 다른 슬라이드라 갤러리를 따로 연다.
-  const [bsGallery, setBsGallery] = useState<string[] | null>(null);
+  const [bsGallery, setBsGallery] = useState<{ path: string; caption?: string }[] | null>(null);
   const [bsGalleryIndex, setBsGalleryIndex] = useState(0);
 
   // 검색어 트렌드 화면의 코스피/코스닥/나스닥 차트가 데이터랩 조회 기간과 동일한 구간을
@@ -431,7 +431,7 @@ export default function Home() {
     setBsExpanded(prev => { const n = new Set(prev); n.has(key) ? n.delete(key) : n.add(key); return n; });
   };
 
-  const openBsGallery = (images: string[]) => { setBsGallery(images); setBsGalleryIndex(0); };
+  const openBsGallery = (images: { path: string; caption?: string }[]) => { setBsGallery(images); setBsGalleryIndex(0); };
   const closeBsGallery = () => setBsGallery(null);
   const bsGalleryPrev = () => setBsGalleryIndex(i => (bsGallery ? (i - 1 + bsGallery.length) % bsGallery.length : 0));
   const bsGalleryNext = () => setBsGalleryIndex(i => (bsGallery ? (i + 1) % bsGallery.length : 0));
@@ -1153,9 +1153,16 @@ export default function Home() {
                                 });
                                 // 전체 스크린샷 클릭 시 열리는 갤러리는 PC/MO가 서로 다른 슬라이드를 보여줘야
                                 // 해서 디바이스별로 따로 모은다(위 mainImages는 화면 하단 썸네일 줄에 쓰는
-                                // PC+MO 합친 목록이라 갤러리용으로는 재사용할 수 없음).
-                                const pcSlides: string[] = (set.pc?.buttons || []).filter((b: any) => b.slideImage).map((b: any) => b.slideImage);
-                                const moSlides: string[] = (set.mo?.buttons || []).filter((b: any) => b.slideImage).map((b: any) => b.slideImage);
+                                // PC+MO 합친 목록이라 갤러리용으로는 재사용할 수 없음). 각 슬라이드의 실제
+                                // 문구(헤드라인/서브텍스트)와 버튼 텍스트도 같이 캡션으로 보여줄 수 있게
+                                // 이미지 경로만이 아니라 캡션 문자열도 같이 만들어서 넘긴다.
+                                const slideCaption = (b: any) => {
+                                  const titleLine = b.slideTitle || '';
+                                  const parts = [titleLine, b.slideSubText || ''].filter(Boolean).join(' · ');
+                                  return b.buttonText ? `${parts}${parts ? ' — ' : ''}[${b.buttonText}]` : parts;
+                                };
+                                const pcSlides = (set.pc?.buttons || []).filter((b: any) => b.slideImage).map((b: any) => ({ path: b.slideImage, caption: slideCaption(b) }));
+                                const moSlides = (set.mo?.buttons || []).filter((b: any) => b.slideImage).map((b: any) => ({ path: b.slideImage, caption: slideCaption(b) }));
 
                                 return (
                                   <div key={setIdx} style={{ marginBottom: '28px' }}>
@@ -1175,7 +1182,7 @@ export default function Home() {
                                               <div style={{ color: 'var(--text-muted)', fontSize: '14px', padding: '20px 0', textAlign: 'center' }}>수집된 데이터 없음</div>
                                             ) : item.localPath ? (
                                               <div style={{ maxHeight: '320px', overflow: 'hidden', borderRadius: '8px', cursor: 'pointer', position: 'relative' }}
-                                                onClick={() => openBsGallery([item.localPath, ...slides])}>
+                                                onClick={() => openBsGallery([{ path: item.localPath }, ...slides])}>
                                                 <img src={mediaUrl(item.localPath)} alt="" style={{ width: '100%', display: 'block' }} />
                                                 <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '40px', background: 'linear-gradient(transparent, rgba(0,0,0,0.6))', display: 'flex', alignItems: 'flex-end', justifyContent: 'center', paddingBottom: '6px' }}>
                                                   <span style={{ fontSize: '12px', color: '#fff' }}>클릭해서 전체 이미지 보기{slides.length > 0 ? ` (스크린샷 + 메인이미지 ${slides.length}장)` : ''}</span>
@@ -1329,9 +1336,16 @@ export default function Home() {
             <button onClick={(e) => { e.stopPropagation(); bsGalleryPrev(); }}
               style={{ position: 'absolute', left: '16px', top: '50%', transform: 'translateY(-50%)', background: 'rgba(255,255,255,0.1)', border: 'none', color: '#fff', fontSize: '28px', width: '48px', height: '48px', borderRadius: '50%', cursor: 'pointer' }}>‹</button>
           )}
-          <img src={mediaUrl(bsGallery[bsGalleryIndex])} alt=""
-            onClick={(e) => e.stopPropagation()}
-            style={{ maxWidth: '90vw', maxHeight: '90vh', objectFit: 'contain', borderRadius: '8px' }} />
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px', maxWidth: '90vw', maxHeight: '90vh' }}
+            onClick={(e) => e.stopPropagation()}>
+            <img src={mediaUrl(bsGallery[bsGalleryIndex].path)} alt=""
+              style={{ maxWidth: '90vw', maxHeight: '78vh', objectFit: 'contain', borderRadius: '8px' }} />
+            {bsGallery[bsGalleryIndex].caption && (
+              <p style={{ color: '#fff', fontSize: '14px', textAlign: 'center', background: 'rgba(0,0,0,0.5)', padding: '8px 16px', borderRadius: '8px', maxWidth: '600px' }}>
+                {bsGallery[bsGalleryIndex].caption}
+              </p>
+            )}
+          </div>
           {bsGallery.length > 1 && (
             <button onClick={(e) => { e.stopPropagation(); bsGalleryNext(); }}
               style={{ position: 'absolute', right: '16px', top: '50%', transform: 'translateY(-50%)', background: 'rgba(255,255,255,0.1)', border: 'none', color: '#fff', fontSize: '28px', width: '48px', height: '48px', borderRadius: '50%', cursor: 'pointer' }}>›</button>
