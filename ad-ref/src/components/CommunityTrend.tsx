@@ -261,7 +261,7 @@ export default function CommunityTrend() {
         </div>
       )}
 
-      <TopicSection title="주식/투자 전반 화제 키워드" subtitle="디시인사이드 주식 갤러리 + 웹서치 기반. 메리츠증권 한정이 아닌 시장 전체 화제."
+      <TopicSection title="주식/투자 전반 화제 키워드" subtitle="디시인사이드 주식 갤러리 + 에펨코리아 주식 게시판 + Claude 웹서치 기반. 메리츠증권 한정이 아닌 시장 전체 화제."
         rows={general.rows} keywords={general.keywords} periodLabel={periodLabel} sparkDayCount={sparkDayCount} />
       <TopicSection title="메리츠증권 화제 키워드"
         rows={brand.rows} keywords={brand.keywords} periodLabel={periodLabel} sparkDayCount={sparkDayCount} />
