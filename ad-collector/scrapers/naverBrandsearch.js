@@ -46,6 +46,94 @@ async function scrapeNaverBrandsearch(brands, outputDir) {
   return assignCreativeSets(results);
 }
 
+// 캐러셀 슬라이드(imgGallery)마다 실제 렌더링된 배너를 캡처 - 배경 이미지 파일만 받으면
+// 네이버가 그 위에 얹는 헤드라인 문구/서브텍스트/버튼("중개형 ISA는 미래에셋증권에서" 등)이
+// 전부 빠진다(실측 확인, 2026-08-10 - 배경 사진 URL(imgUri)에는 문구가 없고, 문구는
+// __ADFE_TEMPLATE_BLOCK__ 데이터에만 별도로 있음). .premium_carousel_wrap이 고정폭
+// overflow:hidden 창이고 안쪽 .premium_carousel에 슬라이드가 전부 나란히 있어서, transform을
+// 슬라이드 폭만큼씩 옮기면 그 창에 슬라이드가 하나씩 온전히(배경+문구+버튼 다 합쳐진 채로)
+// 보인다 - 그 상태에서 창 자체를 스크린샷하면 실제 렌더링 그대로 캡처됨.
+// 구조가 다른 브랜드/캐러셀 종류는 셀렉터가 안 맞으면 조용히 건너뛰고, 기존 방식대로
+// 배경 이미지만 받는 예전 폴백을 그대로 쓰게 한다(완전히 실패해도 데이터 손실 없음).
+async function captureCarouselSlides(page, buttons, brand, device, screenshotDir) {
+  const slideIndexes = [...new Set(
+    buttons.filter(function(b) { return b.slideImageUrl != null; }).map(function(b) { return b.slideIndex; })
+  )];
+  if (slideIndexes.length === 0) return;
+
+  const wrap = page.locator('.premium_carousel_wrap').first();
+  if (await wrap.count() === 0) return;
+  const carousel = page.locator('.premium_carousel').first();
+  if (await carousel.count() === 0) return;
+
+  const geometry = await page.evaluate(function() {
+    var w = document.querySelector('.premium_carousel_wrap');
+    var c = document.querySelector('.premium_carousel');
+    if (!w || !c || c.children.length === 0) return null;
+    return {
+      slideWidth: c.children[0].getBoundingClientRect().width,
+      originalTransform: c.style.transform,
+      originalTransition: c.style.transition,
+    };
+  });
+  if (!geometry || !geometry.slideWidth) return;
+
+  await page.evaluate(function() {
+    var c = document.querySelector('.premium_carousel');
+    if (c) c.style.transition = 'none';
+    // 슬라이드 안의 문구(.premium_copy)도 트랜지션 없이 즉시 전환되게 함 - 안 그러면
+    // opacity를 강제로 바꿔도 CSS 트랜지션이 걸려서 캡처 시점에 덜 나타난 상태일 수 있음.
+    Array.from(c ? c.querySelectorAll('.premium_copy') : []).forEach(function(el) {
+      el.style.transition = 'none';
+    });
+  });
+
+  const unique = Math.random().toString(36).slice(2, 6);
+  const captured = new Map(); // slideIndex -> relative path
+
+  for (const idx of slideIndexes) {
+    try {
+      await page.evaluate(function(args) {
+        var c = document.querySelector('.premium_carousel');
+        if (!c) return;
+        c.style.transform = 'translate(-' + (args.idx * args.slideWidth) + 'px)';
+        // 문구 오버레이(.premium_copy)는 위치가 아니라 opacity(is_fadein 클래스)로만
+        // 보였다 안 보였다 하는 구조라, transform만 옮기면 배경 이미지는 슬라이드별로
+        // 바뀌지만 문구는 원래 활성이었던 슬라이드 것만 계속 보인다(실측 확인,
+        // 2026-08-10) - 지금 캡처하려는 슬라이드의 문구만 강제로 보이게 하고 나머지는
+        // 숨긴다.
+        Array.from(c.children).forEach(function(slide, i) {
+          var copy = slide.querySelector('.premium_copy');
+          if (copy) copy.style.opacity = (i === args.idx) ? '1' : '0';
+        });
+      }, { idx: idx, slideWidth: geometry.slideWidth });
+      await page.waitForTimeout(150);
+
+      const filename = `slide_${brand}_${device}_${idx}_${Date.now()}_${unique}.jpg`;
+      const fullPath = path.join(screenshotDir, filename);
+      await wrap.screenshot({ path: fullPath, type: 'jpeg', quality: 88 });
+      captured.set(idx, 'screenshots/' + filename);
+    } catch (e) {
+      console.log(`    [캐러셀 슬라이드${idx} 캡처 실패] ${e.message}`);
+    }
+  }
+
+  // 캡처한 로컬 경로를 해당 버튼(들)에 붙여서, 이후 captureLandings()가 원본 이미지
+  // 대신 이 완전히 합성된 캡처를 우선 쓰게 한다.
+  buttons.forEach(function(b) {
+    if (b.slideImageUrl != null && captured.has(b.slideIndex)) {
+      b.slideImageComposite = captured.get(b.slideIndex);
+    }
+  });
+
+  // 원래 상태로 되돌림(같은 page/context를 다음 새로고침에서도 계속 쓰므로) - transition은
+  // 다시 켜두면 다음 자동재생 시 자연스럽게 넘어감.
+  await page.evaluate(function(args) {
+    var c = document.querySelector('.premium_carousel');
+    if (c) { c.style.transform = args.transform || ''; c.style.transition = args.transition || ''; }
+  }, { transform: geometry.originalTransform, transition: geometry.originalTransition });
+}
+
 // 캐러셀형 배너(premium_carousel 등)가 자동 재생 중이면 스크린샷 시점에 슬라이드가
 // 전환 애니메이션 중간(예: translate(-1015.9px) 같은 소수점 중간값)일 수 있어 두 슬라이드가
 // 겹쳐 찍히는 문제가 발생함. transform 인라인 스타일 값이 연속 2회(간격 200ms) 동일해질
@@ -527,6 +615,11 @@ async function collectBrandsearch(browser, brand, device, screenshotDir) {
         height: fullBox.height,
       },
     });
+
+    // 캐러셀이면 슬라이드마다 실제 배너(배경+문구+버튼 합쳐진 것) 캡처 - 메인 스크린샷은
+    // 캐러셀이 자연스럽게 자동재생 중인 "현재 슬라이드"만 담기 때문에, 나머지 슬라이드는
+    // 여기서 직접 하나씩 넘겨가며 따로 캡처해야 함.
+    await captureCarouselSlides(page, buttons, brand, device, screenshotDir);
 
     variants.push({ buttons, screenshotFilename, creativeIndex });
   }
@@ -1069,11 +1162,12 @@ async function captureLandings(context, buttons, brand, device, screenshotDir, i
       const landingPath = path.join(screenshotDir, landingFilename);
       await landingPage.screenshot({ path: landingPath, type: 'jpeg', quality: 78, clip: { x: 0, y: 0, width: w, height: 800 } });
 
-      // 메인 배너 슬라이드(imgGallery)로 수집된 버튼이면 원본 슬라이드 이미지도 다운로드
-      // (스크린샷은 캐러셀의 "현재 보이는 한 장"뿐이라 나머지 슬라이드 실제 배너 이미지는
-      //  ADFE 데이터에 있던 원본 이미지 URL을 직접 받아와야 함)
-      let slideImagePath = null;
-      if (btn.slideImageUrl) {
+      // 메인 배너 슬라이드(imgGallery) 이미지 - captureCarouselSlides()가 캐러셀을 직접
+      // 넘겨가며 찍은 합성 캡처(배경+문구+버튼 다 보임)가 있으면 그걸 우선 쓰고, 그게 없는
+      // 경우(캐러셀 구조가 달라 캡처 실패 등)에만 배경 사진 원본을 대신 받는다(문구/버튼은
+      // 빠지지만 완전히 비어있는 것보단 나음).
+      let slideImagePath = btn.slideImageComposite || null;
+      if (!slideImagePath && btn.slideImageUrl) {
         try {
           const imgResp = await context.request.get(btn.slideImageUrl, { timeout: 10000 });
           if (imgResp.ok()) {
