@@ -628,6 +628,9 @@ export default function Home() {
 
       <section style={{ marginBottom: '32px' }}>
         {sectionLabel('경쟁사 바로가기')}
+        <p style={{ fontSize: '12px', color: 'var(--text-faint)', marginTop: '-6px', marginBottom: '12px' }}>
+          숫자는 해당 브랜드의 활성 소재 개수입니다 - 브랜드를 클릭하면 전체 소재를 확인할 수 있습니다.
+        </p>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(140px, 1fr))', gap: '10px' }}>
           {brandStats.map(b => (
             <button key={b.name} onClick={() => goToBrand(b.name)}
