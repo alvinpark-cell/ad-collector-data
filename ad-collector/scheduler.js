@@ -17,18 +17,15 @@ const { backfillGoogleImageText } = require('./googleTextBackfill');
 const { backfillLastShown } = require('./googleLastShownBackfill');
 const { backfillNoDateFallback } = require('./noDateFallbackBackfill');
 const { backfillDescriptions } = require('./googleDescriptionBackfill');
-const { isHoliday } = require('./holidays');
 const { isFirstBusinessDayOfWeek } = require('./scheduleUtils');
 const settings = require('./settings.json');
 
 console.log('📅 스케줄러 시작');
-console.log('   메타(Apify+키워드)/구글은 매일 오전 11시에 "이번 주 첫 평일(공휴일 제외)"인지');
-console.log('   확인해서 주 1회만 실행됩니다 (공휴일이 겹치면 자동으로 다음 평일로 밀림).');
-console.log('   검색광고 일반키워드(파워링크)는 월/수/금 오전 11시, 그날이 공휴일이면 건너뜁니다.');
-console.log('   브랜드검색/검색광고 브랜드키워드는 평일 오후 1시에 주 1회 실행됩니다.');
+console.log('   메타/구글/검색광고 일반키워드/브랜드검색/검색광고 브랜드키워드는 전부 매일 오전 11시에');
+console.log('   "이번 주 첫 평일(공휴일 제외)"인지 확인해서 주 1회만 실행됩니다(2026-08-10부터 시간 통일).');
 console.log('   메타 브랜드 9개는 2시간마다(짝수 시) 3개씩 나눠서 순환 수집됩니다 (IP 차단 방지).');
 console.log('   메타 광고 이미지/영상은 2시간마다(홀수 시) 조금씩 채워집니다 (IP 차단 방지).');
-console.log('   코스피/코스닥/나스닥 지수는 매일 오전 9시에 갱신됩니다.');
+console.log('   코스피/코스닥/나스닥 지수, 커뮤니티 반응은 매일 오전 9시 30분에 갱신됩니다(전일자 기준).');
 console.log('   트렌드 리포트(구글 시트)는 매일 오전 9시 30분에 다시 받아옵니다.');
 console.log('   지금 바로 실행하려면: node collector.js\n');
 
@@ -54,12 +51,14 @@ cron.schedule('0 0 11 * * *', async () => {
   timezone: 'Asia/Seoul',
 });
 
-// 검색광고 일반키워드(네이버 파워링크) - 월/수/금 오전 11시. 이미 주 3회라 공휴일이어도
-// 대체일을 만들지 않고 그날만 건너뛴다(메타/구글과 달리 한 번 놓쳐도 그 주 안에 또 돈다).
-cron.schedule('0 0 11 * * 1,3,5', async () => {
+// 검색광고 일반키워드(네이버 파워링크) - 메타/구글과 동일하게 매일 11시에 "이번 주 첫
+// 평일(공휴일 제외)"인지 확인해서 주 1회만 실행(2026-08-10: 예전엔 월/수/금 3회 크론에
+// 공휴일이면 그냥 건너뛰는 방식이었는데, 시간대를 다른 주간 수집과 통일하고 재시도용
+// 여러 요일 크론도 필요 없다고 판단해 메타/구글과 같은 방식으로 맞춤).
+cron.schedule('0 0 11 * * *', async () => {
   const now = new Date();
-  if (isHoliday(now)) {
-    console.log(`\n⏰ [파워링크] ${now.toLocaleDateString('ko-KR')}는 공휴일 - 건너뜀`);
+  if (!isFirstBusinessDayOfWeek(now)) {
+    console.log(`\n⏰ [파워링크 일반키워드] ${now.toLocaleDateString('ko-KR')}는 이번 주 실행일이 아님 - 건너뜀`);
     return;
   }
   console.log(`\n⏰ 파워링크(일반키워드) 수집 실행: ${now.toLocaleString('ko-KR')}`);
@@ -72,10 +71,18 @@ cron.schedule('0 0 11 * * 1,3,5', async () => {
   timezone: 'Asia/Seoul',
 });
 
-// 브랜드검색 + 검색광고 브랜드키워드 - 평일 오후 1시, 주 1회("이번 주에 이미 했는지" 게이트는
-// collect() 내부에서 처리). '0 0 13 * * 1-5' = 매주 월~금 13:00:00
-cron.schedule('0 0 13 * * 1-5', async () => {
-  console.log(`\n⏰ 스케줄 실행: ${new Date().toLocaleString('ko-KR')}`);
+// 브랜드검색 + 검색광고 브랜드키워드 - 메타/구글/일반키워드와 동일한 시각(오전 11시)에
+// "이번 주 첫 평일"인지 확인해서 주 1회만 실행(2026-08-10: 예전엔 평일 오후 1시에 매일
+// 돌면서 collect() 내부의 "이번 주에 이미 했는지" 개별 체크로 주 1회를 만들었는데, 다른
+// 주간 수집들과 시각을 통일하고 같은 공휴일 인지 로직을 쓰도록 맞춤 - collect() 내부
+// 체크는 그대로 남아있어도 무해한 안전장치라 손대지 않음).
+cron.schedule('0 0 11 * * *', async () => {
+  const now = new Date();
+  if (!isFirstBusinessDayOfWeek(now)) {
+    console.log(`\n⏰ [브랜드검색/브랜드키워드] ${now.toLocaleDateString('ko-KR')}는 이번 주 실행일이 아님 - 건너뜀`);
+    return;
+  }
+  console.log(`\n⏰ 브랜드검색/브랜드키워드 수집 실행: ${now.toLocaleString('ko-KR')}`);
   try {
     await collect();
   } catch (err) {
@@ -113,8 +120,10 @@ cron.schedule('0 1-23/2 * * *', async () => {
   timezone: 'Asia/Seoul',
 });
 
-// 코스피/코스닥/나스닥 지수: 매일 오전 9시(장 시작 무렵) 갱신
-cron.schedule('0 0 9 * * *', async () => {
+// 코스피/코스닥/나스닥 지수: 매일 오전 9시 30분 갱신(2026-08-10: 트렌드 리포트와 시각
+// 통일 요청에 따라 09시→09시30분으로 변경. 지수 자체가 전일 종가 기준이라 "전일자"
+// 데이터인 건 원래도 그랬음, 시각만 옮김).
+cron.schedule('0 30 9 * * *', async () => {
   console.log(`\n⏰ 시장지수 갱신: ${new Date().toLocaleString('ko-KR')}`);
   try {
     await updateMarketIndex(settings);
@@ -138,9 +147,11 @@ cron.schedule('0 30 9 * * *', async () => {
   timezone: 'Asia/Seoul',
 });
 
-// 커뮤니티 반응(화제 키워드 + 감정분류 + 실제 반응): 매일 오전 8시 갱신 - 캘린더로
+// 커뮤니티 반응(화제 키워드 + 감정분류 + 실제 반응): 매일 오전 9시 30분 갱신(2026-08-10:
+// 08시→09시30분으로 변경, 다른 "전일자" 수집들과 시각 통일). updateCommunityTrend() 내부에서
+// yesterdayKey()로 전일자 스냅샷을 기록하므로 시각이 늦어져도 라벨링에는 문제 없음 - 캘린더로
 // 과거 날짜를 조회하고 전일比/7일 추이 스파크라인을 보여주려면 매일 기록이 쌓여야 함.
-cron.schedule('0 0 8 * * *', async () => {
+cron.schedule('0 30 9 * * *', async () => {
   console.log(`\n⏰ 커뮤니티 반응 갱신: ${new Date().toLocaleString('ko-KR')}`);
   try {
     await updateCommunityTrend(settings);
