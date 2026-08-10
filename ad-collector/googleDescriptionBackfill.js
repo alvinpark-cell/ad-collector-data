@@ -23,7 +23,10 @@ function saveDescriptionsMerged(indexPath, updatedItemsById) {
   const fresh = loadIndex(indexPath);
   fresh.forEach(item => {
     const update = updatedItemsById.get(item.id);
-    if (update) item.aiDescription = update.aiDescription;
+    if (update) {
+      if (update.aiDescription) item.aiDescription = update.aiDescription;
+      if (update.brokenImage) item.brokenImage = true;
+    }
   });
   saveIndex(indexPath, fresh);
   return fresh;
@@ -44,6 +47,7 @@ async function backfillDescriptions(maxPerRun = Infinity) {
     i.platform === 'google' &&
     !((i.copyText || '').trim() || (i.headline || '').trim()) &&
     !i.aiDescription &&
+    !i.brokenImage &&
     i.localPath && i.mediaType === 'image' && !/^https?:\/\//i.test(i.localPath)
   );
   const targets = candidates.slice(0, maxPerRun);
@@ -70,7 +74,16 @@ async function backfillDescriptions(maxPerRun = Infinity) {
         timeout: 60000,
       });
       const desc = stdout.trim();
-      if (desc) {
+      // 실제 다운로드가 오류 페이지/깨진 이미지 아이콘으로 저장된 경우, Claude가 광고
+      // 내용 대신 "이 파일은 실제 이미지가 아니다"라는 설명을 반환한다(실측 확인,
+      // 2026-08-09) - 이걸 그대로 aiDescription에 저장하면 소재 인사이트가 오염되니,
+      // brokenImage로만 표시해서 다음 실행부터 후보에서 제외한다(재다운로드는 별도 과제).
+      const looksBroken = /실제 (광고 )?이미지가 아니|깨진 이미지|손상된 이미지|플레이스홀더|자리표시자|429 오류|이미지를 (열|볼) 수 없|파일이 손상/.test(desc);
+      if (looksBroken) {
+        updatedItemsById.set(item.id, { brokenImage: true });
+        fail++;
+        console.log(`  [깨진 이미지로 판단] ${item.id}`);
+      } else if (desc) {
         updatedItemsById.set(item.id, { aiDescription: desc });
         success++;
       } else {

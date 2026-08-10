@@ -2,6 +2,30 @@
   "newAds": [
     {
       "mediaType": "image",
+      "mediaUrl": "https://scontent-ssn1-1.xx.fbcdn.net/v/t39.35426-6/762584802_4333126963664151_8838642925252695775_n.jpg?stp=dst-jpg_s600x600_tt6&_nc_cat=100&ccb=1-7&_nc_sid=c53f8f&_nc_ohc=ZzuE0V7iEYUQ7kNvwFCHcOE&_nc_oc=AdpNuHdC4DTksShMuo-H1ABLrVB9-3IrRP6ot2w2SRUvF0sNagGDfB0vq4KecgCQxD4&_nc_zt=14&_nc_ht=scontent-ssn1-1.xx&_nc_gid=Dq2KSfY0By-xc1cUaitbcA&_nc_ss=7b289&oh=00_AQF1K86M-XVLJvU_7A5MW6BPBzmO-9JMj8_FtG-lzj586A&oe=6A7D724A",
+      "advertiserName": "나무증권",
+      "copyText": "🌳나무에서 국내주식 시작하면? 수수료 ZERO✨\n \n 🎉 신규·휴면 고객 대상\n 국내주식 수수료 24개월 완전무료!\n \n 💸 거래수수료도 0원\n 🏦 유관기관수수료도 0원\n \n 우대 말고, 완전무료 혜택으로\n 국내주식 시작해보세요 🚀\n \n #NH투자증권 #나무증권\n #국내주식 #국내주식이벤트 #주식시작하기\n \n *투자 전 설명청취 및 상품설명서 약관 필독\n *원금 손실 가능 및 투자자 귀속\n *이 금융상품(주식)은 예금자보호법에 따라 보호되지 않습니다. \n *이 예탁금 중 증권매수 미사용 현금 잔액은 예금자보호법에 따라 원금과 소정의 이자를 합하여 1인당 “1억원까지”(본 금융회사의 여타 보호상품과 합산) 보호됩니다.\n \n한국금융투자협회 심사필 제 26-03142호 (2026-07-01 ~ 2027-06-30)",
+      "headline": "",
+      "landingUrl": "https://abr.ge/@namuh/facebook.business?ad_creative=2607_1231_BNR_PROMO_NURT_EXCEPT_ZERO-FeeCheck_stock&ad_creative_id={{ad.id}}&ad_group=ZERO_P_2054_EXCEPT_ACTIVE_MO_FBIG_2608&ad_group_id={{adset.id}}&campaign=NAMUH_BR_Meta_ALL_MO_Conversion_Page-Click_2312&campaign_id={{campaign.id}}&routing_short_id=u065661&sub_id={{site_source_name}}&sub_id_1={{placement}}&tracking_template_id=f27886387a4c7158b80e711803fb65e6&ad_type=click&utm_source=facebook.business&utm_campaign=NAMUH_BR_Meta_ALL_MO_Conversion_Page-Click_2312&utm_medium=ZERO_P_2054_EXCEPT_ACTIVE_MO_FBIG_2608&utm_content=2607_1231_BNR_PROMO_NURT_EXCEPT_ZERO-FeeCheck_stock",
+      "sourceUrl": "https://www.facebook.com/ads/library/?id=1772304653761666",
+      "adId": "1772304653761666",
+      "adStartedAt": "2026-08-03",
+      "adLastShownAt": null,
+      "status": "active",
+      "platform": "meta",
+      "placements": "",
+      "keyword": "NH투자증권",
+      "searchType": "brand",
+      "id": "meta_1786222899308_svjd0",
+      "collectedAt": "2026-08-08T21:01:39.308Z",
+      "localPath": "images/meta/meta_NH투자증권_20260808_36lts.jpg",
+      "seenInMonths": [
+        "2026-08"
+      ],
+      "firstSeenAt": "2026-08-08T21:01:41.688Z"
+    },
+    {
+      "mediaType": "image",
       "mediaUrl": "https://scontent-ssn1-1.xx.fbcdn.net/v/t39.35426-6/722285972_860695667086102_2919210614061137307_n.jpg?stp=dst-jpg_s600x600_tt6&_nc_cat=101&ccb=1-7&_nc_sid=c53f8f&_nc_ohc=JhBnvkVXQ8AQ7kNvwGj1977&_nc_oc=AdpyOpjeypOhSDvoFyCTniG_jZYZ0sdRCo3lnZi5hQzjm314TQWRMCmgDSoQQfgO5Yw&_nc_zt=14&_nc_ht=scontent-ssn1-1.xx&_nc_gid=t77gLuVPUiEnn8QsFBH6Lw&_nc_ss=7a289&oh=00_AQHNA9OPrPW2n9JYwarTOtiTsA4j5xkCdI7Uj_zrRuUuuw&oe=6A7D1EDD",
       "advertiserName": "KB증권",
       "copyText": "영 고객이면, 국내주식 수수료 진짜 제로!\nKB증권 영-앤-제로 클럽\n\n요즘 투자? 시작은 가볍게, 혜택은 제대로!\n\n*비대면 최초 신규개설 및 장기미거래 고객 대상\n*1987.01.01 이후 출생 국내거주 개인고객 대상\n\nKB증권 준법감시인 심사필\n제 2026-1297호 (2026.05.26~2027.05.25)",
@@ -11975,30 +11999,6 @@
       "id": "google_1786040845013_7zikt",
       "collectedAt": "2026-08-06T18:27:25.013Z",
       "localPath": "images/google/google_메리츠증권_20260806_qq6kx.jpg",
-      "seenInMonths": [
-        "2026-08"
-      ],
-      "firstSeenAt": "2026-08-06T18:30:10.715Z"
-    },
-    {
-      "mediaType": "image",
-      "mediaUrl": "https://tpc.googlesyndication.com/archive/simgad/7638522426611953046",
-      "thumbnailUrl": "https://tpc.googlesyndication.com/archive/simgad/7638522426611953046",
-      "advertiserName": "메리츠증권(주)",
-      "copyText": "",
-      "headline": "",
-      "landingUrl": "https://adstransparency.google.com/advertiser/AR17866742670626390017/creative/CR13858153211124252673?region=KR",
-      "sourceUrl": "https://adstransparency.google.com/advertiser/AR17866742670626390017?region=KR",
-      "platform": "google",
-      "detailsLink": "https://adstransparency.google.com/advertiser/AR17866742670626390017/creative/CR13858153211124252673?region=KR",
-      "adStartedAt": null,
-      "adLastShownAt": "2025-08-30",
-      "status": "active",
-      "keyword": "메리츠증권",
-      "searchType": "brand",
-      "id": "google_1786040845013_ddzlg",
-      "collectedAt": "2026-08-06T18:27:25.013Z",
-      "localPath": "images/google/google_메리츠증권_20260806_383qv.jpg",
       "seenInMonths": [
         "2026-08"
       ],
@@ -23991,5 +23991,5 @@
       "endedAt": "2026-08-08T13:01:35.855Z"
     }
   ],
-  "lastUpdated": "2026-08-08T19:01:38.972Z"
+  "lastUpdated": "2026-08-09T01:01:39.736Z"
 }

@@ -20,16 +20,16 @@
     "updatedAt": "2026-08-04T06:51:58.231Z"
   },
   "metaMediaBatch": {
-    "lastRunAt": "2026-08-08T19:00:00.939Z",
+    "lastRunAt": "2026-08-09T01:00:00.718Z",
     "attempted": 0,
     "updated": 0,
     "stillPending": 0,
-    "updatedAt": "2026-08-08T19:00:00.939Z"
+    "updatedAt": "2026-08-09T01:00:00.719Z"
   },
   "metaBrandBatch": {
-    "lastCollectedAt": "2026-08-08T19:01:39.075Z",
+    "lastCollectedAt": "2026-08-09T01:01:39.843Z",
     "newCount": 0,
-    "batch": "3/3",
-    "updatedAt": "2026-08-08T19:01:39.076Z"
+    "batch": "2/3",
+    "updatedAt": "2026-08-09T01:01:39.843Z"
   }
 }

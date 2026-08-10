@@ -69,6 +69,10 @@ export default function Home() {
   const [favFolder, setFavFolder] = useState('기본 즐겨찾기');
   const [bsExpanded, setBsExpanded] = useState<Set<string>>(new Set());
   const [bsSelectedWeek, setBsSelectedWeek] = useState<string | null>(null);
+  // 브랜드검색 PC/MO 스크린샷 클릭 시 전체 스크린샷 1장 + 그 디바이스의 메인이미지(슬라이드)들을
+  // 좌우 화살표로 넘겨보는 갤러리 - PC와 MO는 서로 다른 슬라이드라 갤러리를 따로 연다.
+  const [bsGallery, setBsGallery] = useState<string[] | null>(null);
+  const [bsGalleryIndex, setBsGalleryIndex] = useState(0);
 
   // 검색어 트렌드 화면의 코스피/코스닥/나스닥 차트가 데이터랩 조회 기간과 동일한 구간을
   // 보여줘야 해서, 날짜 범위/단위를 여기서 공유 상태로 관리하고 두 컴포넌트에 같이 내려준다.
@@ -426,6 +430,22 @@ export default function Home() {
   const toggleBsExpand = (key: string) => {
     setBsExpanded(prev => { const n = new Set(prev); n.has(key) ? n.delete(key) : n.add(key); return n; });
   };
+
+  const openBsGallery = (images: string[]) => { setBsGallery(images); setBsGalleryIndex(0); };
+  const closeBsGallery = () => setBsGallery(null);
+  const bsGalleryPrev = () => setBsGalleryIndex(i => (bsGallery ? (i - 1 + bsGallery.length) % bsGallery.length : 0));
+  const bsGalleryNext = () => setBsGalleryIndex(i => (bsGallery ? (i + 1) % bsGallery.length : 0));
+
+  useEffect(() => {
+    if (!bsGallery) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') closeBsGallery();
+      else if (e.key === 'ArrowLeft') bsGalleryPrev();
+      else if (e.key === 'ArrowRight') bsGalleryNext();
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [bsGallery]);
 
   const metaItems = useMemo(() => {
     let items = data.filter(i => i.platform === 'meta');
@@ -1128,6 +1148,11 @@ export default function Home() {
                                     }
                                   });
                                 });
+                                // 전체 스크린샷 클릭 시 열리는 갤러리는 PC/MO가 서로 다른 슬라이드를 보여줘야
+                                // 해서 디바이스별로 따로 모은다(위 mainImages는 화면 하단 썸네일 줄에 쓰는
+                                // PC+MO 합친 목록이라 갤러리용으로는 재사용할 수 없음).
+                                const pcSlides: string[] = (set.pc?.buttons || []).filter((b: any) => b.slideImage).map((b: any) => b.slideImage);
+                                const moSlides: string[] = (set.mo?.buttons || []).filter((b: any) => b.slideImage).map((b: any) => b.slideImage);
 
                                 return (
                                   <div key={setIdx} style={{ marginBottom: '28px' }}>
@@ -1135,7 +1160,7 @@ export default function Home() {
                                       <p style={{ fontSize: '13px', fontWeight: 700, color: 'var(--text-primary)', background: 'var(--bg-elevated)', display: 'inline-block', padding: '3px 10px', borderRadius: '6px', marginBottom: '10px' }}>{set.label}</p>
                                     )}
                                     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', marginBottom: mainImages.length > 0 ? '10px' : '24px' }}>
-                                      {[{ item: set.pc, label: 'PC' }, { item: set.mo, label: 'MO' }].map(({ item, label }) => (
+                                      {[{ item: set.pc, label: 'PC', slides: pcSlides }, { item: set.mo, label: 'MO', slides: moSlides }].map(({ item, label, slides }) => (
                                         <div key={label} style={{ background: 'var(--bg-elevated)', border: '1px solid var(--border)', borderRadius: '10px', overflow: 'hidden' }}>
                                           <div style={{ padding: '10px 14px', borderBottom: '1px solid var(--border)', display: 'flex', alignItems: 'center', gap: '8px' }}>
                                             <span style={{ background: '#03c75a', color: '#fff', fontSize: '12px', fontWeight: 700, padding: '2px 8px', borderRadius: '4px' }}>{label}</span>
@@ -1147,10 +1172,10 @@ export default function Home() {
                                               <div style={{ color: 'var(--text-muted)', fontSize: '14px', padding: '20px 0', textAlign: 'center' }}>수집된 데이터 없음</div>
                                             ) : item.localPath ? (
                                               <div style={{ maxHeight: '320px', overflow: 'hidden', borderRadius: '8px', cursor: 'pointer', position: 'relative' }}
-                                                onClick={() => window.open(mediaUrl(item.localPath), '_blank')}>
+                                                onClick={() => openBsGallery([item.localPath, ...slides])}>
                                                 <img src={mediaUrl(item.localPath)} alt="" style={{ width: '100%', display: 'block' }} />
                                                 <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '40px', background: 'linear-gradient(transparent, rgba(0,0,0,0.6))', display: 'flex', alignItems: 'flex-end', justifyContent: 'center', paddingBottom: '6px' }}>
-                                                  <span style={{ fontSize: '12px', color: '#fff' }}>클릭해서 전체 이미지 보기</span>
+                                                  <span style={{ fontSize: '12px', color: '#fff' }}>클릭해서 전체 이미지 보기{slides.length > 0 ? ` (스크린샷 + 메인이미지 ${slides.length}장)` : ''}</span>
                                                 </div>
                                               </div>
                                             ) : (
@@ -1288,6 +1313,28 @@ export default function Home() {
       </div>
 
       {selectedItem && <AdModal item={selectedItem} onClose={() => setSelectedItem(null)} dataDir="/data" />}
+
+      {bsGallery && (
+        <div style={{ position: 'fixed', inset: 0, background: 'rgba(6,6,10,0.85)', backdropFilter: 'blur(6px)', zIndex: 100, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '16px' }}
+          onClick={closeBsGallery}>
+          <button onClick={(e) => { e.stopPropagation(); closeBsGallery(); }}
+            style={{ position: 'absolute', top: '20px', right: '24px', background: 'none', border: 'none', color: '#fff', fontSize: '28px', cursor: 'pointer', lineHeight: 1 }}>✕</button>
+          <span style={{ position: 'absolute', top: '24px', left: '24px', color: 'rgba(255,255,255,0.8)', fontSize: '14px' }}>
+            {bsGalleryIndex + 1} / {bsGallery.length}{bsGalleryIndex === 0 ? ' · 전체 스크린샷' : ' · 메인이미지'}
+          </span>
+          {bsGallery.length > 1 && (
+            <button onClick={(e) => { e.stopPropagation(); bsGalleryPrev(); }}
+              style={{ position: 'absolute', left: '16px', top: '50%', transform: 'translateY(-50%)', background: 'rgba(255,255,255,0.1)', border: 'none', color: '#fff', fontSize: '28px', width: '48px', height: '48px', borderRadius: '50%', cursor: 'pointer' }}>‹</button>
+          )}
+          <img src={mediaUrl(bsGallery[bsGalleryIndex])} alt=""
+            onClick={(e) => e.stopPropagation()}
+            style={{ maxWidth: '90vw', maxHeight: '90vh', objectFit: 'contain', borderRadius: '8px' }} />
+          {bsGallery.length > 1 && (
+            <button onClick={(e) => { e.stopPropagation(); bsGalleryNext(); }}
+              style={{ position: 'absolute', right: '16px', top: '50%', transform: 'translateY(-50%)', background: 'rgba(255,255,255,0.1)', border: 'none', color: '#fff', fontSize: '28px', width: '48px', height: '48px', borderRadius: '50%', cursor: 'pointer' }}>›</button>
+          )}
+        </div>
+      )}
 
       {favPopup && (
         <div style={{ position: 'fixed', bottom: '24px', right: '24px', background: 'var(--bg-surface-solid)', border: '1px solid var(--border)', borderRadius: '12px', padding: '16px 20px', zIndex: 60, minWidth: '260px', boxShadow: '0 8px 32px rgba(0,0,0,0.5)' }}>
