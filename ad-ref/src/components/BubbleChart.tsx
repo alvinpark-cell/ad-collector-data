@@ -172,7 +172,13 @@ export default function BubbleChart({ data }: { data: BubbleDatum[] }) {
           </span>
         ))}
       </div>
-      <svg viewBox={`${minX} ${minY} ${maxX - minX} ${maxY - minY}`} style={{ width: '100%', height: '440px' }}>
+      {/* 원 배치가 대체로 정사각형에 가까운데(패킹 알고리즘 특성), 예전엔 높이를 440px로
+          고정해뒀어서 훨씬 넓은 컨테이너 폭에 억지로 맞추려고 SVG가 세로 기준으로 축소돼
+          원과 글자가 실제보다 훨씬 작게 보였다(2026-08-10 확인, 약 54%까지 축소됨). viewBox와
+          똑같은 비율로 aspect-ratio를 줘서 안 찌그러지게 함 - 내용 폭에 맞는 높이가 그대로
+          나온다. */}
+      <svg viewBox={`${minX} ${minY} ${maxX - minX} ${maxY - minY}`}
+        style={{ width: '100%', maxWidth: '520px', aspectRatio: `${maxX - minX} / ${maxY - minY}`, display: 'block', margin: '0 auto' }}>
         {packed.map(p => {
           const { fontSize, lines } = layoutBubbleText(p.datum.keyword, p.r);
           const lineHeight = fontSize * 1.15;
