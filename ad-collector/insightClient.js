@@ -37,11 +37,15 @@ function generateInsight(promptText, dataPayload, options) {
     ? undefined
     : (typeof dataPayload === 'string' ? dataPayload : JSON.stringify(dataPayload, null, 2));
   const timeout = (options && options.timeout) || 180000;
+  // allowWebSearch: 기본은 true(--allowedTools WebSearch) - Read(로컬 이미지 읽기)는 -p 모드에서
+  // 기본 허용이지만 WebSearch는 명시적으로 허용해야 동작함. 다만 커뮤니티 반응 조사처럼 "우리가
+  // 직접 긁어온 커뮤니티 글만 근거로 쓰고 뉴스/블로그는 섞지 마라"는 요구가 있는 호출은
+  // allowWebSearch: false로 넘겨서 웹 검색 자체를 차단한다(2026-08-11).
+  const allowWebSearch = !options || options.allowWebSearch !== false;
+  const args = ['-p', promptText, '--output-format', 'text'];
+  if (allowWebSearch) args.push('--allowedTools', 'WebSearch');
   try {
-    // --allowedTools WebSearch: 커뮤니티 반응 키워드 조사처럼 웹 검색이 필요한 프롬프트를
-    // 위한 것 - Read(로컬 이미지 읽기)는 -p 모드에서 기본 허용이지만 WebSearch는 명시적으로
-    // 허용해야 동작함(안 하면 "웹 검색 권한이 승인되지 않아..."라고만 답하고 끝남).
-    const result = execFileSync('claude', ['-p', promptText, '--output-format', 'text', '--allowedTools', 'WebSearch'], {
+    const result = execFileSync('claude', args, {
       input,
       encoding: 'utf-8',
       maxBuffer: 1024 * 1024 * 20,
