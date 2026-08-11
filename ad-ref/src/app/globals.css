@@ -1,6 +1,13 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* 예전엔 @tailwind base/components/utilities (v3 문법)를 썼는데, 이 프로젝트가 실제로 쓰는
+   tailwindcss는 v4라 그 문법을 인식하지 못해서 Tailwind 유틸리티 클래스가 전부 무효였음
+   (2026-08-11 발견 - 지금까지는 이 앱이 전부 인라인 style로만 짜여있어서 아무도 몰랐음).
+   v4의 올바른 진입점인 @import로 교체. */
+@import "tailwindcss";
+
+/* 뉴스 클리핑 탭(Tailwind dark: 클래스를 쓰는 컴포넌트)이 이 프로젝트의 실제 테마 방식
+   (<html data-theme="dark">, ThemeProvider가 관리)을 그대로 따르게 함 - Tailwind
+   기본값(dark: 이 OS 설정에만 반응)이 아니라 이 앱의 라이트/다크 토글에 반응하게 함. */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
 * {
   box-sizing: border-box;

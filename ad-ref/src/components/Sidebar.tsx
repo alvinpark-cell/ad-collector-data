@@ -4,7 +4,7 @@ import ThemeToggle from './ThemeToggle';
 
 export type ViewKey =
   | 'home'
-  | 'news-daily' | 'news-weekly'
+  | 'news-daily' | 'news-weekly' | 'news-bookmarks'
   | 'dash-all' | 'dash-meta' | 'dash-google' | 'dash-fav' | 'dash-brand'
   | 'bs' | 'pwl' | 'pwl-brand'
   | 'trend' | 'trend-report' | 'community-trend';
@@ -16,6 +16,7 @@ const GROUPS: NavGroup[] = [
   { title: '뉴스 클리핑', items: [
     { key: 'news-daily', label: '데일리 뉴스', icon: '📰' },
     { key: 'news-weekly', label: '주간 인사이트', icon: '🗞️' },
+    { key: 'news-bookmarks', label: '북마크', icon: '🔖' },
   ] },
   { title: '크리에이티브', items: [
     { key: 'dash-all', label: '전체', icon: '🗂️' },
@@ -69,22 +70,15 @@ export default function Sidebar({ active, onSelect }: SidebarProps) {
   return (
     <aside style={{
       width: '232px', flexShrink: 0, background: 'var(--bg-surface-solid)', borderRight: '1px solid var(--border)',
-      minHeight: '100vh', padding: '22px 14px', position: 'sticky', top: 0, alignSelf: 'flex-start',
+      minHeight: '100vh', padding: '12px 14px 22px', position: 'sticky', top: 0, alignSelf: 'flex-start',
     }}>
       <button onClick={() => onSelect('home')} style={{
         background: 'none', border: 'none', cursor: 'pointer', padding: 0, marginBottom: '22px',
-        display: 'flex', alignItems: 'center', gap: '10px', width: '100%',
+        display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '4px', width: '100%',
       }}>
-        <span style={{
-          width: '32px', height: '32px', borderRadius: '9px', flexShrink: 0,
-          background: 'linear-gradient(135deg, var(--accent), rgba(var(--accent-rgb),0.55))',
-          display: 'flex', alignItems: 'center', justifyContent: 'center',
-          color: '#fff', fontSize: '14px', fontWeight: 800,
-        }}>W</span>
-        <span style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
-          <span style={{ fontSize: '14px', fontWeight: 700, color: 'var(--text-primary)', letterSpacing: '-0.01em' }}>Wisebirds</span>
-          <span style={{ fontSize: '11px', color: 'var(--text-muted)' }}>경쟁사 모니터링</span>
-        </span>
+        {/* 메리츠증권 로고(2026-08-11 교체) - public/meritz-logo.png, 투명 배경 */}
+        <img src="/meritz-logo.png" alt="메리츠증권" style={{ height: '22px', width: 'auto', display: 'block' }} />
+        <span style={{ fontSize: '11px', color: 'var(--text-muted)' }}>경쟁사 모니터링</span>
       </button>
 
       <div style={{ marginBottom: '22px' }}>

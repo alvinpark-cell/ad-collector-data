@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-11T03:49:36.621Z",
+  "updatedAt": "2026-08-11T11:14:57.927Z",
   "history": [
     {
       "date": "2026-07-29",
@@ -2434,6 +2434,698 @@
         }
       ],
       "brand": []
+    },
+    {
+      "date": "2026-08-09",
+      "general": [
+        {
+          "keyword": "반도체 메모리 사이클 회복 기대",
+          "sentiment": "positive",
+          "volume": 850,
+          "reactions": [
+            {
+              "source": "뽐뿌 증권포럼",
+              "text": "메모리 조정장 끝났다는 기대"
+            },
+            {
+              "source": "뽐뿌 증권포럼",
+              "text": "모건스탠리 조정 종료 언급"
+            },
+            {
+              "source": "더쿠 주식",
+              "text": "메모리 사이클 회복 기대감"
+            }
+          ]
+        },
+        {
+          "keyword": "애플 창신메모리 테스트 논란",
+          "sentiment": "negative",
+          "volume": 780,
+          "reactions": [
+            {
+              "source": "뽐뿌 증권포럼",
+              "text": "애플 창신메모리 테스트 소식"
+            },
+            {
+              "source": "뽐뿌 증권포럼",
+              "text": "하이닉스 악재 우려"
+            },
+            {
+              "source": "더쿠 주식",
+              "text": "반도체 호황 끝났다는 우려"
+            }
+          ]
+        },
+        {
+          "keyword": "단일종목 레버리지 규제",
+          "sentiment": "negative",
+          "volume": 720,
+          "reactions": [
+            {
+              "source": "뽐뿌 증권포럼",
+              "text": "레버리지 규제 불만"
+            },
+            {
+              "source": "클리앙 주식한담",
+              "text": "레버리지 심사기간 단축 소식"
+            },
+            {
+              "source": "더쿠 주식",
+              "text": "레버리지 막히자 ETF로 자금이동"
+            }
+          ]
+        },
+        {
+          "keyword": "코스피 급락 전망",
+          "sentiment": "negative",
+          "volume": 650,
+          "reactions": [
+            {
+              "source": "뽐뿌 증권포럼",
+              "text": "씨티 코스피200 770 하회 전망"
+            },
+            {
+              "source": "뽐뿌 증권포럼",
+              "text": "코스피 비관론 확산"
+            },
+            {
+              "source": "디시인사이드 주식 갤러리",
+              "text": "금융직 종사자 바쁘다는 글"
+            }
+          ]
+        },
+        {
+          "keyword": "이란-중동 지정학 리스크",
+          "sentiment": "negative",
+          "volume": 600,
+          "reactions": [
+            {
+              "source": "뽐뿌 증권포럼",
+              "text": "이란 이스라엘 정세 속보 공유"
+            },
+            {
+              "source": "뽐뿌 증권포럼",
+              "text": "후티 사우디 공격 속보"
+            }
+          ]
+        },
+        {
+          "keyword": "삼프로TV 개인정보 유출",
+          "sentiment": "negative",
+          "volume": 580,
+          "reactions": [
+            {
+              "source": "뽐뿌 증권포럼",
+              "text": "회원정보 46만건 유출 우려"
+            },
+            {
+              "source": "더쿠 주식",
+              "text": "삼프로TV 정보유출 공유"
+            }
+          ]
+        },
+        {
+          "keyword": "주가누르기 방지법",
+          "sentiment": "neutral",
+          "volume": 520,
+          "reactions": [
+            {
+              "source": "뽐뿌 증권포럼",
+              "text": "법안 정상화 촉구"
+            },
+            {
+              "source": "클리앙 주식한담",
+              "text": "정책 복잡성 지적"
+            }
+          ]
+        },
+        {
+          "keyword": "국장 장기 침체 불만",
+          "sentiment": "negative",
+          "volume": 500,
+          "reactions": [
+            {
+              "source": "더쿠 주식",
+              "text": "국장 5년형 갇힘 하소연"
+            },
+            {
+              "source": "더쿠 주식",
+              "text": "계좌 -33% 손실 하소연"
+            },
+            {
+              "source": "디시인사이드 주식 갤러리",
+              "text": "코스닥 저점매수 시도"
+            }
+          ]
+        },
+        {
+          "keyword": "하이닉스 주주환원 논란",
+          "sentiment": "negative",
+          "volume": 460,
+          "reactions": [
+            {
+              "source": "뽐뿌 증권포럼",
+              "text": "주주환원 진위 논란"
+            },
+            {
+              "source": "뽐뿌 증권포럼",
+              "text": "배당 계산 방식 이견"
+            }
+          ]
+        },
+        {
+          "keyword": "팔란티어 주가 관심",
+          "sentiment": "positive",
+          "volume": 420,
+          "reactions": [
+            {
+              "source": "뽐뿌 증권포럼",
+              "text": "몰빵 투자 후기 공유"
+            },
+            {
+              "source": "더쿠 주식",
+              "text": "전고점 돌파 기대"
+            }
+          ]
+        },
+        {
+          "keyword": "미실현 이익 과세 논란",
+          "sentiment": "negative",
+          "volume": 380,
+          "reactions": [
+            {
+              "source": "뽐뿌 증권포럼",
+              "text": "미실현 이익 과세 반발"
+            }
+          ]
+        },
+        {
+          "keyword": "ISA 계좌 정책 논란",
+          "sentiment": "negative",
+          "volume": 350,
+          "reactions": [
+            {
+              "source": "더쿠 주식",
+              "text": "ISA 논란에 해지 고민"
+            },
+            {
+              "source": "더쿠 주식",
+              "text": "의무가입 만기 관련 문의"
+            }
+          ]
+        },
+        {
+          "keyword": "종합부동산세 공동명의 이슈",
+          "sentiment": "neutral",
+          "volume": 300,
+          "reactions": [
+            {
+              "source": "더쿠 주식",
+              "text": "종부세 공동명의 공제 문의"
+            }
+          ]
+        },
+        {
+          "keyword": "반도체특별법",
+          "sentiment": "neutral",
+          "volume": 280,
+          "reactions": [
+            {
+              "source": "더쿠 주식",
+              "text": "반도체특별법 내용 문의"
+            }
+          ]
+        },
+        {
+          "keyword": "미국 9월 금리인상 전망",
+          "sentiment": "neutral",
+          "volume": 250,
+          "reactions": [
+            {
+              "source": "클리앙 주식한담",
+              "text": "9월 금리인상 주장 언급"
+            }
+          ]
+        }
+      ],
+      "brand": []
+    },
+    {
+      "date": "2026-08-10",
+      "general": [
+        {
+          "keyword": "메모리 반도체 공급부족 장기화",
+          "sentiment": "positive",
+          "volume": 850,
+          "reactions": [
+            {
+              "source": "뽐뿌 증권포럼",
+              "text": "AI 수요급증 공급부족 장기화 속보"
+            },
+            {
+              "source": "뽐뿌 증권포럼",
+              "text": "낸드가격 상승턴 반가움"
+            },
+            {
+              "source": "뽐뿌 증권포럼",
+              "text": "애플 메모리부족 생산차질 우려"
+            }
+          ]
+        },
+        {
+          "keyword": "마이크론 숏공격 후 반등",
+          "sentiment": "positive",
+          "volume": 780,
+          "reactions": [
+            {
+              "source": "뽐뿌 증권포럼",
+              "text": "숏공격 당해도 결국 양전"
+            },
+            {
+              "source": "뽐뿌 증권포럼",
+              "text": "마이크론 시총 하이닉스 추월"
+            },
+            {
+              "source": "더쿠 주식",
+              "text": "2027년 공급 더 타이트할 전망 공유"
+            }
+          ]
+        },
+        {
+          "keyword": "SK하이닉스 매수 기대",
+          "sentiment": "positive",
+          "volume": 700,
+          "reactions": [
+            {
+              "source": "뽐뿌 증권포럼",
+              "text": "오늘 하이닉스 매수 인증"
+            },
+            {
+              "source": "뽐뿌 증권포럼",
+              "text": "닉스 100 찍고 오를듯 기대"
+            },
+            {
+              "source": "더쿠 주식",
+              "text": "오늘 하닉 매수함 기대"
+            }
+          ]
+        },
+        {
+          "keyword": "하이닉스·삼전 성과급 무산 우려",
+          "sentiment": "negative",
+          "volume": 620,
+          "reactions": [
+            {
+              "source": "뽐뿌 증권포럼",
+              "text": "성과급 무산될거라는 글 확산"
+            },
+            {
+              "source": "뽐뿌 증권포럼",
+              "text": "하닉ADR 공모가 대비 -10퍼 실망"
+            },
+            {
+              "source": "뽐뿌 증권포럼",
+              "text": "무간지옥에 빠졌다는 자조"
+            }
+          ]
+        },
+        {
+          "keyword": "광통신 관련주 급락",
+          "sentiment": "negative",
+          "volume": 590,
+          "reactions": [
+            {
+              "source": "뽐뿌 증권포럼",
+              "text": "광통신 갑자기 빠짐"
+            },
+            {
+              "source": "뽐뿌 증권포럼",
+              "text": "내일 광통신 힘들듯 우려"
+            },
+            {
+              "source": "더쿠 주식",
+              "text": "낼 국장 광통신 나락 전망"
+            }
+          ]
+        },
+        {
+          "keyword": "레버리지 ETF 규제 논란",
+          "sentiment": "negative",
+          "volume": 560,
+          "reactions": [
+            {
+              "source": "클리앙 주식한담",
+              "text": "단타 막으려 거래세 규제 2라운드"
+            },
+            {
+              "source": "더쿠 주식",
+              "text": "미장 레버 규제 풀어달라는 절규"
+            },
+            {
+              "source": "뽐뿌 증권포럼",
+              "text": "단일레버 성급한 도입 사과글"
+            }
+          ]
+        },
+        {
+          "keyword": "팔란티어 강세",
+          "sentiment": "positive",
+          "volume": 640,
+          "reactions": [
+            {
+              "source": "더쿠 주식",
+              "text": "팔란 많이 올랐다는 반응"
+            },
+            {
+              "source": "더쿠 주식",
+              "text": "평단 물림 탈출 기대감"
+            },
+            {
+              "source": "더쿠 주식",
+              "text": "180 돌파 기대"
+            }
+          ]
+        },
+        {
+          "keyword": "마이크로소프트 주가 회복",
+          "sentiment": "positive",
+          "volume": 610,
+          "reactions": [
+            {
+              "source": "더쿠 주식",
+              "text": "지옥갔다 돌아온 마소라는 반응"
+            },
+            {
+              "source": "더쿠 주식",
+              "text": "마소 513 돌파 놀람"
+            },
+            {
+              "source": "뽐뿌 증권포럼",
+              "text": "마소 자체 AI칩 양산 준비 소식"
+            }
+          ]
+        },
+        {
+          "keyword": "증시 손실·물림 트라우마",
+          "sentiment": "negative",
+          "volume": 500,
+          "reactions": [
+            {
+              "source": "뽐뿌 증권포럼",
+              "text": "손실로 힘든 분들 위로글 다수"
+            },
+            {
+              "source": "뽐뿌 증권포럼",
+              "text": "트라우마 생긴듯 하다는 공감"
+            },
+            {
+              "source": "더쿠 주식",
+              "text": "물타도 탈출 못하는 처지 한탄"
+            }
+          ]
+        },
+        {
+          "keyword": "미장-국장 디커플링 불만",
+          "sentiment": "negative",
+          "volume": 480,
+          "reactions": [
+            {
+              "source": "뽐뿌 증권포럼",
+              "text": "미장 오를때 보합 내릴때 동반하락 불만"
+            },
+            {
+              "source": "더쿠 주식",
+              "text": "미장이 최고라는 반응"
+            }
+          ]
+        },
+        {
+          "keyword": "코스피 추가 상승 기대",
+          "sentiment": "positive",
+          "volume": 420,
+          "reactions": [
+            {
+              "source": "뽐뿌 증권포럼",
+              "text": "코스피 호재 아직 안끝났다는 낙관"
+            }
+          ]
+        },
+        {
+          "keyword": "시장 변동성 축소 국면",
+          "sentiment": "neutral",
+          "volume": 300,
+          "reactions": [
+            {
+              "source": "디시인사이드 주식 갤러리",
+              "text": "변동성 축소 구간 진입 분석"
+            }
+          ]
+        },
+        {
+          "keyword": "애플 생산 차질 우려",
+          "sentiment": "negative",
+          "volume": 380,
+          "reactions": [
+            {
+              "source": "뽐뿌 증권포럼",
+              "text": "메모리 부족으로 생산차질 우려"
+            },
+            {
+              "source": "더쿠 주식",
+              "text": "애플 주가 하락 고소하다는 반응"
+            }
+          ]
+        },
+        {
+          "keyword": "유가·금리·주가 동반 상승",
+          "sentiment": "neutral",
+          "volume": 250,
+          "reactions": [
+            {
+              "source": "뽐뿌 증권포럼",
+              "text": "유가 금리 주가 동반상승 특이현상"
+            }
+          ]
+        }
+      ],
+      "brand": [
+        {
+          "keyword": "레버리지ETF 거래세 규제",
+          "sentiment": "negative",
+          "volume": 700,
+          "reactions": [
+            {
+              "source": "클리앙 주식한담",
+              "text": "레버리지ETF 거래세 규제 2라운드 우려"
+            },
+            {
+              "source": "더쿠 주식",
+              "text": "미장 레버 규제 풀어달라는 격한 반발"
+            },
+            {
+              "source": "뽐뿌 증권포럼",
+              "text": "단일레버 성급 도입에 사과 언급"
+            }
+          ]
+        },
+        {
+          "keyword": "마이크론 AI 메모리 수요·공급부족",
+          "sentiment": "positive",
+          "volume": 650,
+          "reactions": [
+            {
+              "source": "뽐뿌 증권포럼",
+              "text": "AI 수요 급증 공급부족 장기화 속보"
+            },
+            {
+              "source": "뽐뿌 증권포럼",
+              "text": "마이크론 시총이 하이닉스 앞섬"
+            },
+            {
+              "source": "더쿠 주식",
+              "text": "2027년이 더 타이트할거란 공유"
+            }
+          ]
+        },
+        {
+          "keyword": "SK하이닉스 주가 부진 우려",
+          "sentiment": "negative",
+          "volume": 600,
+          "reactions": [
+            {
+              "source": "뽐뿌 증권포럼",
+              "text": "하이닉스 무간지옥 빠졌다는 한탄"
+            },
+            {
+              "source": "뽐뿌 증권포럼",
+              "text": "성과급 무산설에 불안"
+            },
+            {
+              "source": "더쿠 주식",
+              "text": "180오면 튀어야한다는 기대"
+            }
+          ]
+        },
+        {
+          "keyword": "광통신 관련주 급락 우려",
+          "sentiment": "negative",
+          "volume": 400,
+          "reactions": [
+            {
+              "source": "뽐뿌 증권포럼",
+              "text": "광통신 갑자기 빠진다는 우려"
+            },
+            {
+              "source": "더쿠 주식",
+              "text": "국장 광통신 나락간다는 걱정"
+            }
+          ]
+        },
+        {
+          "keyword": "국장 미장 디커플링",
+          "sentiment": "negative",
+          "volume": 500,
+          "reactions": [
+            {
+              "source": "뽐뿌 증권포럼",
+              "text": "오를땐 보합 내릴땐 동반하락 불만"
+            },
+            {
+              "source": "클리앙 주식한담",
+              "text": "미장은 설명 안된다는 한탄"
+            },
+            {
+              "source": "더쿠 주식",
+              "text": "미장이 최고같다는 반응"
+            }
+          ]
+        },
+        {
+          "keyword": "개인투자자 손실·물림 트라우마",
+          "sentiment": "negative",
+          "volume": 550,
+          "reactions": [
+            {
+              "source": "뽐뿌 증권포럼",
+              "text": "인생 잃은 사람 많다는 위로글"
+            },
+            {
+              "source": "뽐뿌 증권포럼",
+              "text": "손실로 트라우마 생겼다는 토로"
+            },
+            {
+              "source": "더쿠 주식",
+              "text": "물타다 탈출 못한다는 하소연"
+            }
+          ]
+        },
+        {
+          "keyword": "팔란티어 랠리",
+          "sentiment": "positive",
+          "volume": 500,
+          "reactions": [
+            {
+              "source": "더쿠 주식",
+              "text": "-35%부터 존버성공 인증"
+            },
+            {
+              "source": "더쿠 주식",
+              "text": "팔란 개많이 올랐다는 반응"
+            },
+            {
+              "source": "더쿠 주식",
+              "text": "8개월만에 양전 기쁨"
+            }
+          ]
+        },
+        {
+          "keyword": "마이크로소프트 AI칩·주가회복",
+          "sentiment": "positive",
+          "volume": 400,
+          "reactions": [
+            {
+              "source": "뽐뿌 증권포럼",
+              "text": "지옥갔다 돌아온 마소라는 평가"
+            },
+            {
+              "source": "뽐뿌 증권포럼",
+              "text": "자체 AI칩 양산준비 기대"
+            },
+            {
+              "source": "더쿠 주식",
+              "text": "마소 513 도달에 놀람"
+            }
+          ]
+        },
+        {
+          "keyword": "애플 생산차질·주가하락",
+          "sentiment": "negative",
+          "volume": 300,
+          "reactions": [
+            {
+              "source": "뽐뿌 증권포럼",
+              "text": "메모리부족 생산차질 우려 공유"
+            },
+            {
+              "source": "더쿠 주식",
+              "text": "애플 주가 떨어져 좋다는 반응"
+            },
+            {
+              "source": "더쿠 주식",
+              "text": "협상 결렬이 꼬시다는 반응"
+            }
+          ]
+        },
+        {
+          "keyword": "유가·국채금리 동조화",
+          "sentiment": "neutral",
+          "volume": 250,
+          "reactions": [
+            {
+              "source": "뽐뿌 증권포럼",
+              "text": "유가 금리 주가 동반상승 분석"
+            },
+            {
+              "source": "뽐뿌 증권포럼",
+              "text": "10년물 금리 선물현황 공유"
+            },
+            {
+              "source": "더쿠 주식",
+              "text": "유가가 왜 이러냐는 의문"
+            }
+          ]
+        },
+        {
+          "keyword": "코스피 랠리 지속 기대",
+          "sentiment": "positive",
+          "volume": 300,
+          "reactions": [
+            {
+              "source": "뽐뿌 증권포럼",
+              "text": "코스피 호재 이제 시작이라는 낙관"
+            },
+            {
+              "source": "더쿠 주식",
+              "text": "반도체 시즌2 열차 출발 기대"
+            }
+          ]
+        },
+        {
+          "keyword": "주갤 막타론(랠리 소외감)",
+          "sentiment": "negative",
+          "volume": 200,
+          "reactions": [
+            {
+              "source": "디시인사이드 주식 갤러리",
+              "text": "주갤은 막타만 쳤다는 자조"
+            },
+            {
+              "source": "디시인사이드 주식 갤러리",
+              "text": "변동성 축소구간 돌입 진단"
+            }
+          ]
+        }
+      ]
     }
   ]
 }

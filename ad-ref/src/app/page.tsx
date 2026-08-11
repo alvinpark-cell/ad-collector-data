@@ -11,6 +11,7 @@ import PowerlinkBrandMonitor from '@/components/PowerlinkBrandMonitor';
 import InsightBox from '@/components/InsightBox';
 import TrendReport from '@/components/TrendReport';
 import CommunityTrend from '@/components/CommunityTrend';
+import NewsClipping from '@/components/NewsClipping';
 import WeekSelector from '@/components/WeekSelector';
 import Sidebar, { ViewKey } from '@/components/Sidebar';
 import { getMonthWeekKey, sortMonthWeekKeysDesc } from '@/lib/weekUtils';
@@ -707,19 +708,21 @@ export default function Home() {
           </main>
         )}
 
-        {view !== 'home' && (
-          <main style={{ maxWidth: '1400px', margin: '0 auto', padding: '32px 24px' }}>
+        {/* 뉴스 클리핑 - NewsClipping이 자체 min-h-screen/max-w-7xl 레이아웃을 갖고 있어서
+            (자체 헤더·검색창 포함), 다른 탭처럼 1400px 패딩 <main> 안에 넣지 않고 그대로
+            전체 너비로 렌더링한다(2026-08-11). 사이드바가 daily/weekly/bookmarks를 결정. */}
+        {(view === 'news-daily' || view === 'news-weekly' || view === 'news-bookmarks') && (
+          <NewsClipping
+            view={view === 'news-daily' ? 'daily' : view === 'news-weekly' ? 'weekly' : 'bookmarks'}
+            onViewChange={(v: string) => {
+              const map: Record<string, ViewKey> = { daily: 'news-daily', weekly: 'news-weekly', bookmarks: 'news-bookmarks' };
+              if (map[v]) setView(map[v]);
+            }}
+          />
+        )}
 
-            {/* 뉴스 클리핑 - 스텁 (추후 기존 코드 연결 예정) */}
-            {(view === 'news-daily' || view === 'news-weekly') && (
-              <div style={{ textAlign: 'center', padding: '80px 20px', color: 'var(--text-muted)' }}>
-                <div style={{ fontSize: '40px', marginBottom: '12px' }}>📰</div>
-                <p style={{ fontSize: '15px', fontWeight: 600, color: 'var(--text-primary)', marginBottom: '6px' }}>
-                  {view === 'news-daily' ? '데일리 뉴스' : '주간 인사이트'}
-                </p>
-                <p style={{ fontSize: '15px' }}>준비 중입니다</p>
-              </div>
-            )}
+        {view !== 'home' && view !== 'news-daily' && view !== 'news-weekly' && view !== 'news-bookmarks' && (
+          <main style={{ maxWidth: '1400px', margin: '0 auto', padding: '32px 24px' }}>
 
             {/* 경쟁사 대시보드 > 전체: 광고 검색(슬라이서) + 즐겨찾기 통합 */}
             {view === 'dash-all' && (
