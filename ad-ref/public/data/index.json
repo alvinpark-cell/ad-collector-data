@@ -113251,7 +113251,7 @@
     "adId": "1033294239544048",
     "adStartedAt": "2026-08-10",
     "adLastShownAt": null,
-    "status": "active",
+    "status": "ended",
     "platform": "meta",
     "placements": "",
     "keyword": "삼성증권",
@@ -113261,7 +113261,8 @@
     "localPath": "images/meta/meta_삼성증권_20260811_0n1l3.jpg",
     "seenInMonths": [
       "2026-08"
-    ]
+    ],
+    "endedAt": "2026-08-12T05:01:41.011Z"
   },
   {
     "mediaType": "image",
@@ -113274,7 +113275,7 @@
     "adId": "2240568443385518",
     "adStartedAt": "2026-08-09",
     "adLastShownAt": null,
-    "status": "active",
+    "status": "ended",
     "platform": "meta",
     "placements": "",
     "keyword": "삼성증권",
@@ -113284,7 +113285,8 @@
     "localPath": "images/meta/meta_삼성증권_20260811_crsc7.jpg",
     "seenInMonths": [
       "2026-08"
-    ]
+    ],
+    "endedAt": "2026-08-12T05:01:41.011Z"
   },
   {
     "mediaType": "image",
