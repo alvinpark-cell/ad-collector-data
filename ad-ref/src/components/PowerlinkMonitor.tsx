@@ -19,7 +19,9 @@ interface PowerlinkInsightEntry {
 
 export default function PowerlinkMonitor() {
   const [data, setData] = useState<PowerlinkItem[]>([]);
-  const [insights, setInsights] = useState<Record<string, PowerlinkInsightEntry>>({});
+  // 키워드 -> 주차 -> 인사이트 (2026-08-11부터 - 예전엔 키워드당 최신 주차 하나만 있어서
+  // 지난 주차를 선택하면 인사이트가 안 보였음)
+  const [insights, setInsights] = useState<Record<string, Record<string, PowerlinkInsightEntry>>>({});
   const [loading, setLoading] = useState(true);
   const [expanded, setExpanded] = useState<Set<string>>(new Set());
   const [selectedWeek, setSelectedWeek] = useState<string | null>(null);
@@ -83,8 +85,8 @@ export default function PowerlinkMonitor() {
       {Object.keys(insights).length > 0 && (
         <div style={{ marginBottom: '16px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
           {keywords.map(keyword => {
-            const insight = insights[keyword];
-            if (!insight || insight.weekKey !== selectedWeek) return null;
+            const insight = selectedWeek ? insights[keyword]?.[selectedWeek] : undefined;
+            if (!insight) return null;
             const badge = insight.type === 'change'
               ? `신규 ${insight.newCount}건 · 이탈 ${insight.exitedCount}건 (${insight.prevWeekKey} → ${insight.weekKey})`
               : insight.type === 'first' ? '최초 수집 요약' : undefined;

@@ -26,7 +26,9 @@ interface PwlBrandInsightEntry {
 
 export default function PowerlinkBrandMonitor() {
   const [data, setData] = useState<PwlBrandEntry[]>([]);
-  const [insights, setInsights] = useState<Record<string, PwlBrandInsightEntry>>({});
+  // 브랜드 -> 주차 -> 인사이트(2026-08-11부터) - 예전엔 브랜드당 최신 주차 인사이트 하나만
+  // 있어서 주차를 선택 필터링해도 항상 최신 것만 보였음
+  const [insights, setInsights] = useState<Record<string, Record<string, PwlBrandInsightEntry>>>({});
   const [loading, setLoading] = useState(true);
   const [expanded, setExpanded] = useState<Set<string>>(new Set());
   const [selectedWeek, setSelectedWeek] = useState<string | null>(null);
@@ -74,7 +76,7 @@ export default function PowerlinkBrandMonitor() {
           const mo = entries.find(e => e.device === 'mo');
           const noAds = entries.length > 0 && entries.every(e => e.status === 'no-ads');
           const isOpen = expanded.has(brand);
-          const insight = insights[brand];
+          const insight = selectedWeek ? insights[brand]?.[selectedWeek] : undefined;
 
           return (
             <div key={brand} style={{ background: 'var(--bg-surface)', border: '1px solid var(--border)', borderRadius: '12px', overflow: 'hidden' }}>

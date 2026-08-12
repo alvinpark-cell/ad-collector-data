@@ -751,8 +751,12 @@ export default function Home() {
 
                 {brandOverviewSection()}
 
-                <div style={{ marginBottom: '20px' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap', marginBottom: dynamicInsight ? '10px' : 0 }}>
+                {/* 인사이트 생성 버튼이 카드 없이 그냥 떠있어서 눈에 잘 안 띈다는 피드백으로,
+                    버튼과 생성된 인사이트를 하나의 영역으로 감쌈(2026-08-11) - 인사이트가
+                    없을 땐 버튼만 있는 낮은 카드, 생성되면 그 안에서 자동으로 높이가 늘어남
+                    (일반 블록 레이아웃이라 별도 처리 없이 내용 따라 자동으로 커짐). */}
+                <div style={cardStyle({ padding: '16px 18px', marginBottom: '20px' })}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap', marginBottom: dynamicInsight ? '14px' : 0 }}>
                     <button onClick={generateCreativeInsight} disabled={insightLoading || searchResults.length === 0}
                       style={{
                         fontSize: '14px', color: 'var(--accent-text)', background: 'var(--accent-soft)', border: '1px solid rgba(var(--accent-rgb),0.3)',

@@ -1445,6 +1445,7 @@ function DailyView({ date, setDate, dailyData, dailyDays, loading, bookmarkedByM
 export default function NewsClippingDashboard({ view: viewProp, onViewChange }) {
   const [perspectiveFilter, setPerspectiveFilter] = useState("opp");
   const [period, setPeriod] = useState("2026-W26");
+  const [selWeekMonth, setSelWeekMonth] = useState(null); // null=auto(최신 달), 주간 뷰의 월 필터
   const [activeSection, setActiveSection] = useState("insight");
   const [view, setViewState] = useState(viewProp || "daily");
   useEffect(() => {
@@ -1963,6 +1964,23 @@ export default function NewsClippingDashboard({ view: viewProp, onViewChange }) 
         { value: "2026-W23", label: "6월 1주차 (06.02–06.08)" },
       ];
 
+  // 주차 목록에 월 정보를 붙임 - 데일리 뷰처럼 "월 선택 → 그 달 주차만 칩으로" 구조를
+  // 쓰기 위함(2026-08-11: 주차가 쌓일수록 한 줄에 다 나열하기 어려워짐). 실제 weekId는
+  // "2026-08-03_주간"처럼 날짜로 시작해서 파싱 가능하지만, 샘플 데이터의 "2026-W26" 같은
+  // 값은 날짜로 못 파싱되니 그런 경우는 전부 "전체"라는 가상의 달 하나로 묶는다.
+  const weeksWithMonth = PERIODS.map((p) => {
+    const dt = new Date(p.value.slice(0, 10));
+    const valid = !isNaN(dt.getTime());
+    return {
+      ...p,
+      ym: valid ? `${dt.getFullYear()}-${String(dt.getMonth() + 1).padStart(2, "0")}` : "전체",
+      ymLabel: valid ? `${dt.getFullYear()}년 ${dt.getMonth() + 1}월` : "전체",
+    };
+  });
+  const weekMonths = [...new Set(weeksWithMonth.map((w) => w.ym))];
+  const effectiveWeekMonth = weekMonths.includes(selWeekMonth) ? selWeekMonth : (weekMonths[0] || "전체");
+  const filteredWeeks = weeksWithMonth.filter((w) => w.ym === effectiveWeekMonth);
+
   const TOC = [
     { id: "insight", label: "이번 주 핵심 결론" },
     { id: "topics", label: "화제 키워드 TOP 7" },
@@ -2047,21 +2065,8 @@ export default function NewsClippingDashboard({ view: viewProp, onViewChange }) 
             )}
             {/* 데일리/주간/북마크 탭 전환은 이제 ad-ref 사이드바가 담당(2026-08-11) -
                 여기 내부 탭 버튼은 제거하고 view는 부모가 넘겨주는 값을 그대로 따름 */}
-            {/* 기간 선택 (주간 탭에서만) */}
-            {view === "weekly" && (
-              <div className="relative hidden sm:block">
-                <select
-                  value={period}
-                  onChange={(e) => setPeriod(e.target.value)}
-                  className="appearance-none rounded-lg border border-slate-200 bg-white py-1.5 pl-3 pr-8 text-xs font-medium text-slate-700 hover:border-slate-300 focus:outline-none focus:ring-2 focus:ring-indigo-500/30 dark:border-[#363d4d] dark:bg-[#232936] dark:text-[#c0c7d2]"
-                >
-                  {PERIODS.map((p) => (
-                    <option key={p.value} value={p.value}>{p.label}</option>
-                  ))}
-                </select>
-                <ChevronDown className="pointer-events-none absolute right-2 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-slate-400" />
-              </div>
-            )}
+            {/* 주차 선택 드롭다운은 헤더 구석에 있어서 눈에 안 띈다는 피드백으로 본문 상단
+                가로 칩 목록으로 옮김(2026-08-11) - 아래 "주차 선택" 참고. 여기선 제거함. */}
             {/* 함께 보고 있는 사람 (실시간 접속자, 원형 아바타) */}
             {activeUsers.length > 0 && (
               <div className="hidden items-center -space-x-1.5 sm:flex" title="지금 함께 보고 있는 사람">
@@ -2088,32 +2093,7 @@ export default function NewsClippingDashboard({ view: viewProp, onViewChange }) 
       </header>
 
       <div className="mx-auto flex max-w-7xl gap-6 px-5 pb-16 pt-6">
-        {/* ── 좌측 목차 (주간 탭에서만) ── */}
-        {view === "weekly" && (
-        <aside className="hidden w-52 flex-shrink-0 lg:block">
-          <div className="sticky top-20">
-            <div className="mb-2 flex items-center gap-1.5 px-3 text-[11px] font-semibold uppercase tracking-wide text-slate-400">
-              <List className="h-3.5 w-3.5" />
-              목차
-            </div>
-            <nav className="space-y-0.5">
-              {TOC.map((t) => (
-                <button
-                  key={t.id}
-                  onClick={() => scrollTo(t.id)}
-                  className={`block w-full rounded-lg px-3 py-2 text-left text-sm transition ${
-                    activeSection === t.id
-                      ? "bg-indigo-50 font-medium text-indigo-700 dark:bg-indigo-500/15 dark:text-indigo-300"
-                      : "text-slate-500 hover:bg-slate-100 hover:text-slate-700 dark:text-[#a5adba] dark:hover:bg-[#232936]"
-                  }`}
-                >
-                  {t.label}
-                </button>
-              ))}
-            </nav>
-          </div>
-        </aside>
-        )}
+        {/* 좌측 목차 사이드바 제거함(2026-08-11, 사용자 요청 - 필요 없다고 판단) */}
 
         {/* 경쟁사 슬라이서는 세로 사이드바에서 DailyView 안의 가로 칩 행(날짜 필터 아래
             두 번째 줄)으로 옮김(2026-08-11) - competitors/selCompetitor는 그대로 DailyView에
@@ -2151,9 +2131,42 @@ export default function NewsClippingDashboard({ view: viewProp, onViewChange }) 
           <div>
             <h1 className="text-xl font-bold text-[#303845] dark:text-[#cbd2dc] sm:text-2xl">주간 뉴스 인사이트</h1>
             <p className="mt-1 text-sm text-slate-500 dark:text-[#a5adba]">{wInsight.week} · 11개 키워드 모니터링</p>
-            <div className="mt-3 rounded-xl border border-indigo-100 bg-indigo-50/60 px-4 py-3 dark:border-indigo-500/20 dark:bg-indigo-500/10">
-              <p className="text-sm font-medium leading-relaxed text-slate-700 dark:text-[#c0c7d2]">{stripTermExplanations(wInsight.summary)}</p>
+          </div>
+
+          {/* 주차 선택 - 예전엔 헤더 구석의 작은 드롭다운뿐이라 눈에 안 띈다는 피드백으로,
+              데일리 뷰와 같은 "월 선택 → 그 달 주차만 칩으로" 구조로 옮김(2026-08-11) */}
+          <div className="flex items-center gap-2 overflow-x-auto pb-1">
+            <div className="relative flex-shrink-0">
+              <select
+                value={effectiveWeekMonth}
+                onChange={(e) => setSelWeekMonth(e.target.value)}
+                className="appearance-none rounded-lg border border-slate-200 bg-white py-2 pl-3 pr-7 text-xs font-medium text-slate-700 hover:border-slate-300 focus:outline-none focus:ring-2 focus:ring-indigo-500/30 dark:border-[#363d4d] dark:bg-[#232936] dark:text-[#c0c7d2]"
+              >
+                {weekMonths.map((ym) => {
+                  const lbl = weeksWithMonth.find((w) => w.ym === ym)?.ymLabel || ym;
+                  return <option key={ym} value={ym}>{lbl}</option>;
+                })}
+              </select>
+              <ChevronDown className="pointer-events-none absolute right-1.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-slate-400" />
             </div>
+            <div className="h-8 w-px flex-shrink-0 bg-slate-200 dark:bg-[#2b3242]" />
+            {filteredWeeks.map((p) => (
+              <button
+                key={p.value}
+                onClick={() => setPeriod(p.value)}
+                className={`flex-shrink-0 rounded-lg border px-3 py-1.5 text-xs font-medium transition ${
+                  weeklyPick === p.value
+                    ? "border-slate-900 bg-slate-900 text-white dark:border-slate-100 dark:bg-slate-100 dark:text-slate-900"
+                    : "border-slate-200 bg-white text-slate-500 hover:border-slate-300 dark:border-[#363d4d] dark:bg-[#232936] dark:text-[#a5adba]"
+                }`}
+              >
+                {p.label}
+              </button>
+            ))}
+          </div>
+
+          <div className="rounded-xl border border-indigo-100 bg-indigo-50/60 px-4 py-3 dark:border-indigo-500/20 dark:bg-indigo-500/10">
+            <p className="text-sm font-medium leading-relaxed text-slate-700 dark:text-[#c0c7d2]">{stripTermExplanations(wInsight.summary)}</p>
           </div>
 
           {/* ── 주간 핵심 결론 ── */}

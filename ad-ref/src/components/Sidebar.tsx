@@ -15,7 +15,7 @@ interface NavGroup { title: string; items: NavLeaf[]; }
 const GROUPS: NavGroup[] = [
   { title: '뉴스 클리핑', items: [
     { key: 'news-daily', label: '데일리 뉴스', icon: '📰' },
-    { key: 'news-weekly', label: '주간 인사이트', icon: '🗞️' },
+    { key: 'news-weekly', label: '주간 뉴스 인사이트', icon: '🗞️' },
     { key: 'news-bookmarks', label: '북마크', icon: '🔖' },
   ] },
   { title: '크리에이티브', items: [

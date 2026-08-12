@@ -5,6 +5,13 @@
  */
 
 const { chromium } = require('playwright');
+const { matchesBrand } = require('../brandUtils');
+
+// 일반키워드("증권"/"주식") 검색에서 Facebook의 느슨한 매칭으로 섞여 들어오는, 증권사가
+// 아닌 걸 알면서도 이름에 금융 관련 단어가 들어있어 allowedPatterns를 통과해버리는
+// 광고주들. 실제로 걸러지지 않고 수집된 사례가 확인돼 추가함(2026-08-11: 대한민국
+// 금융위원회 - 정부기관, 한화자산운용 - 자산운용사로 우리가 추적하는 9개 증권사가 아님).
+const KNOWN_IRRELEVANT_ADVERTISERS = ['금융위원회', '금융감독원', '한국거래소', '예금보험공사', '한화자산운용'];
 
 async function scrapeMeta(keywords, brands, settings) {
   const results = [];
@@ -347,15 +354,22 @@ async function scrapeMeta(keywords, brands, settings) {
         '이베스트', '유안타', '하이투자', '부국', '케이프',
       ]).map(function(p) { return p.toLowerCase(); });
 
-      // 키워드/브랜드 검색 모두 advertiserName이 금융/증권 관련 패턴과 매칭되는 것만 허용.
-      // 브랜드 검색이라고 무조건 통과시키면 Facebook의 느슨한 검색 매칭 때문에
-      // 무관한 광고주(예: 보험 마케팅 계정 등)가 섞여 들어오는 걸 막을 수 없어서
-      // 타입 구분 없이 동일하게 필터링한다.
-      // advertiserName이 비어있는 경우(네트워크 인터셉트로만 잡힌 미디어)는 제외
+      // 브랜드 검색(searchType==='brand')은 "그 브랜드 자신의 광고인지"를 엄격하게
+      // 확인한다(matchesBrand, 별칭 포함) - 예전엔 브랜드 검색도 위 느슨한 금융권
+      // allowedPatterns만 통과하면 다 받아줘서, "한국투자증권" 검색에 "SK이노베이션"이,
+      // "삼성증권" 검색에 "신한 SOL ETF"(신한자산운용, 신한투자증권과 다른 회사)가,
+      // "토스증권" 검색에 토스 본체 브랜드 계정("TOSS : 금융이 쉬워진다")이 섞여 들어오는
+      // 문제가 있었음(2026-08-11 실제 발견). 일반키워드("증권"/"주식") 검색은 원래
+      // 목적대로 광범위한 금융권 광고주를 계속 허용하되, 증권사가 아닌 걸 알면서 이름에
+      // 금융 관련 단어가 있어 패턴을 통과해버리는 특정 광고주는 denylist로 제외한다.
+      // advertiserName이 비어있는 경우(네트워크 인터셉트로만 잡힌 미디어)는 둘 다 제외.
       const tagged = allTagged.filter(function(c) {
-        var name = (c.advertiserName || '').toLowerCase().trim();
-        if (!name) return false; // 광고주명 없으면 제외
-        return allowedPatterns.some(function(p) { return name.includes(p); });
+        var name = (c.advertiserName || '').trim();
+        if (!name) return false;
+        if (KNOWN_IRRELEVANT_ADVERTISERS.some(function(bad) { return name.includes(bad); })) return false;
+        if (type === 'brand') return matchesBrand(name, term);
+        var lower = name.toLowerCase();
+        return allowedPatterns.some(function(p) { return lower.includes(p); });
       });
       var filtered = allTagged.length - tagged.length;
       if (filtered > 0) {
