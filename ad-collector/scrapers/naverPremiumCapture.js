@@ -14,6 +14,7 @@ const { chromium } = require('playwright');
 const { execFileSync } = require('child_process');
 const fs = require('fs');
 const path = require('path');
+const { postRow } = require('../sheetWriter');
 
 const REPORT_PATH = path.join(__dirname, '..', 'data', 'competitor_trend_report.json');
 const SCREENSHOT_DIR = path.join(__dirname, '..', 'output', 'screenshots', 'competitor_trend');
@@ -97,8 +98,24 @@ function appendFinding(media, brand, now, imgPath) {
   fs.writeFileSync(REPORT_PATH, JSON.stringify(existing, null, 2));
 }
 
+// 이미지 실물은 아직 공개 URL이 없어서(S3 미연동), 시트엔 파일명만 참고용으로 남긴다.
+async function logToSheet(webAppUrl, media, brand, now, imgPath) {
+  try {
+    await postRow(webAppUrl, media, {
+      '날짜': now.toISOString().slice(0, 10),
+      '시간': now.toLocaleTimeString('ko-KR'),
+      '브랜드': brand,
+      '이미지URL': `(로컬 파일: ${path.basename(imgPath)})`,
+      'URL': '',
+    });
+  } catch (err) {
+    console.error(`[네이버 캡처] ${media} 시트 기록 실패:`, err.message);
+  }
+}
+
 async function runCapture({ test = false } = {}) {
   const now = new Date();
+  const settings = require('../settings.json');
   const browser = await chromium.launch({ headless: true });
 
   for (const [media, captureFn] of [['타임보드', captureTimeboard], ['스페셜DA', captureSpecialDa]]) {
@@ -110,6 +127,7 @@ async function runCapture({ test = false } = {}) {
       if (result && result !== '없음' && COMPETITOR_BRANDS.some((b) => result.includes(b))) {
         const brand = COMPETITOR_BRANDS.find((b) => result.includes(b));
         appendFinding(media, brand, now, imgPath);
+        await logToSheet(settings.competitorSheetWebAppUrl, media, brand, now, imgPath);
         console.log(`[네이버 캡처] ${media}에서 "${brand}" 발견 - 기록 완료`);
       } else if (test) {
         console.log(`[네이버 캡처] ${media} - 경쟁사 미발견 (테스트 모드라 기록 안 함)`);

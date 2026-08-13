@@ -20,17 +20,17 @@
     "updatedAt": "2026-08-11T09:00:54.366Z"
   },
   "metaMediaBatch": {
-    "lastRunAt": "2026-08-12T05:00:00.372Z",
+    "lastRunAt": "2026-08-13T09:00:01.049Z",
     "attempted": 0,
     "updated": 0,
     "stillPending": 0,
-    "updatedAt": "2026-08-12T05:00:00.374Z"
+    "updatedAt": "2026-08-13T09:00:01.051Z"
   },
   "metaBrandBatch": {
-    "lastCollectedAt": "2026-08-12T05:01:41.302Z",
+    "lastCollectedAt": "2026-08-13T09:01:39.787Z",
     "newCount": 0,
-    "batch": "2/3",
-    "updatedAt": "2026-08-12T05:01:41.303Z"
+    "batch": "3/3",
+    "updatedAt": "2026-08-13T09:01:39.788Z"
   },
   "powerlinkBrand": {
     "lastCollectedAt": "2026-08-10T09:45:57.147Z",

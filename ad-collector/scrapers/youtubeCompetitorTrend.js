@@ -19,6 +19,8 @@ const https = require('https');
 const fs = require('fs');
 const path = require('path');
 
+const { postRow } = require('../sheetWriter');
+
 const REPORT_PATH = path.join(__dirname, '..', 'data', 'competitor_trend_report.json');
 const SOURCE_TYPE = 'youtube-api';
 
@@ -156,6 +158,18 @@ async function updateYoutubeCompetitorTrend(settings) {
           date: top.publishedAt.slice(0, 10),
           url: `https://youtu.be/${top.videoId}`,
         });
+        try {
+          await postRow(settings.competitorSheetWebAppUrl, '유튜브', {
+            '브랜드': brand,
+            '영상제목': top.title,
+            '게시월': top.publishedAt.slice(0, 7),
+            '조회수': top.views,
+            '1개월평균조회수': Math.round(baselineAvg),
+            'URL': `https://youtu.be/${top.videoId}`,
+          });
+        } catch (sheetErr) {
+          console.error(`[유튜브 경쟁사 동향] ${brand} 시트 기록 실패:`, sheetErr.message);
+        }
       }
       console.log(`[유튜브 경쟁사 동향] ${brand}: 이번달 ${thisMonthVideos.length}개(전월 ${prevMonthKey} ${baselineVideos.length}개, 평균 ${Math.round(baselineAvg)}) 중 평균 초과 ${aboveAverage.length}개 -> ${top ? '1개 채택' : '0개'}`);
     } catch (err) {

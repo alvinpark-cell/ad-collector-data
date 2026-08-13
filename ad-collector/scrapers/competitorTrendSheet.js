@@ -1,9 +1,11 @@
 /**
- * 경쟁사 동향 시트(타임보드/스페셜DA/유튜브/ATL 4탭)를 CSV로 받아와
- * competitor_trend_report.json에 반영한다. 시트가 "링크가 있는 모든 사용자에게 공개"로
- * 설정돼 있어서 트렌드 리포트와 동일하게 별도 인증 없이 export URL로 바로 읽을 수 있다 -
- * 읽기는 이 방식으로 충분하고, 앱스스크립트(CompetitorTrendCode.gs)는 나중에 저희 쪽
- * 자동화(타임보드 캡처, 유튜브 API)가 시트에 "쓸" 때만 필요하다.
+ * 경쟁사 동향 시트(타임보드/스페셜DA/유튜브/ATL 4탭)를 앱스스크립트 웹앱(CompetitorTrendCode.gs)
+ * 으로 읽어와 competitor_trend_report.json에 반영한다.
+ *
+ * (2026-08-13: 처음엔 구글 시트 공개 CSV export(gviz)로 읽었는데, 그 엔드포인트가 캐시를
+ * 꽤 오래 들고 있어서 방금 쓴 내용이 몇 분간 옛 스냅샷으로 보이는 문제가 있었음 - 이미
+ * 쓰기용으로 앱스스크립트를 쓰고 있으니, 읽기도 같은 앱스스크립트의 list_all로 통일해서
+ * 캐싱 문제 자체를 없앰.)
  *
  * 시트가 항상 최신 기준이라, 이 소스로 채워진 기존 batch는 매번 통째로 지우고 지금
  * 시트 내용으로 교체한다(시트에서 행을 지우거나 고치면 대시보드에도 그대로 반영됨).
@@ -13,67 +15,28 @@ const fs = require('fs');
 const path = require('path');
 const https = require('https');
 
-const SHEET_ID = '11Ju3THj2RysQ_tq9s_AyTvur7m42bzDp-_a1By7rmq0';
 const REPORT_PATH = path.join(__dirname, '..', 'data', 'competitor_trend_report.json');
 const SOURCE_TYPE = 'sheet-sync';
 
-function csvUrl(tabName) {
-  return `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent(tabName)}`;
-}
-
-function fetchText(url, redirectsLeft = 5) {
+function fetchJson(url, redirectsLeft = 5) {
   return new Promise((resolve, reject) => {
     https.get(url, (res) => {
       if ([301, 302, 303, 307, 308].includes(res.statusCode) && res.headers.location && redirectsLeft > 0) {
         res.resume();
-        return fetchText(res.headers.location, redirectsLeft - 1).then(resolve).catch(reject);
+        return fetchJson(res.headers.location, redirectsLeft - 1).then(resolve).catch(reject);
       }
       if (res.statusCode !== 200) {
         res.resume();
-        return reject(new Error(`구글 시트 응답 오류: HTTP ${res.statusCode}`));
+        return reject(new Error(`앱스스크립트 응답 오류: HTTP ${res.statusCode}`));
       }
       let body = '';
       res.setEncoding('utf-8');
       res.on('data', (chunk) => { body += chunk; });
-      res.on('end', () => resolve(body));
+      res.on('end', () => {
+        try { resolve(JSON.parse(body)); } catch (e) { reject(new Error('JSON 파싱 실패: ' + body.slice(0, 200))); }
+      });
     }).on('error', reject);
   });
-}
-
-function splitCsvLine(line) {
-  const result = [];
-  let cur = '';
-  let inQuotes = false;
-  for (let i = 0; i < line.length; i++) {
-    const ch = line[i];
-    if (ch === '"') { inQuotes = !inQuotes; continue; }
-    if (ch === ',' && !inQuotes) { result.push(cur); cur = ''; continue; }
-    cur += ch;
-  }
-  result.push(cur);
-  return result;
-}
-
-function parseCsv(text) {
-  const lines = text.split(/\r?\n/).filter((l) => l.length > 0);
-  if (lines.length === 0) return [];
-  const headers = splitCsvLine(lines[0]).map((h) => h.trim());
-  return lines.slice(1).map((line) => {
-    const cells = splitCsvLine(line);
-    const row = {};
-    headers.forEach((h, i) => { row[h] = (cells[i] || '').trim(); });
-    return row;
-  });
-}
-
-async function fetchTab(tabName) {
-  try {
-    const csv = await fetchText(csvUrl(tabName));
-    return parseCsv(csv);
-  } catch (err) {
-    console.error(`[경쟁사 동향 시트] "${tabName}" 탭 읽기 실패:`, err.message);
-    return [];
-  }
 }
 
 // 시트 헤더가 "브랜드"/"브랜드 명", "이미지URL"/"이미지 URL"처럼 팀마다 띄어쓰기나
@@ -137,13 +100,21 @@ function atlFindings(rows) {
     .filter((f) => f.brand && f.date);
 }
 
-async function updateCompetitorTrendSheet() {
-  const [timeboard, specialDa, youtube, atl] = await Promise.all([
-    fetchTab('타임보드'),
-    fetchTab('스페셜DA'),
-    fetchTab('유튜브'),
-    fetchTab('ATL'),
-  ]);
+async function updateCompetitorTrendSheet(settings) {
+  settings = settings || require('../settings.json');
+  const webAppUrl = settings.competitorSheetWebAppUrl;
+  if (!webAppUrl || webAppUrl.includes('여기에_')) {
+    console.log('[경쟁사 동향 시트] competitorSheetWebAppUrl 미설정 - 건너뜀');
+    return;
+  }
+
+  const data = await fetchJson(`${webAppUrl}?action=list_all`);
+  if (data.error) throw new Error(data.error);
+
+  const timeboard = data['타임보드'] || [];
+  const specialDa = data['스페셜DA'] || [];
+  const youtube = data['유튜브'] || [];
+  const atl = data['ATL'] || [];
 
   const findings = [
     ...timeboardFindings(timeboard, '타임보드'),
