@@ -7,7 +7,8 @@ export type ViewKey =
   | 'news-daily' | 'news-weekly' | 'news-bookmarks'
   | 'dash-all' | 'dash-meta' | 'dash-google' | 'dash-fav' | 'dash-brand'
   | 'bs' | 'pwl' | 'pwl-brand'
-  | 'trend' | 'trend-report' | 'community-trend';
+  | 'trend' | 'trend-report' | 'community-trend'
+  | 'competitor-trend-report';
 
 interface NavLeaf { key: ViewKey; label: string; icon: string; }
 interface NavGroup { title: string; items: NavLeaf[]; }
@@ -33,6 +34,9 @@ const GROUPS: NavGroup[] = [
     { key: 'trend', label: '검색어 트렌드', icon: '📈' },
     { key: 'trend-report', label: '트렌드 리포트', icon: '📊' },
     { key: 'community-trend', label: '커뮤니티 반응', icon: '💬' },
+  ] },
+  { title: '업무 보고', items: [
+    { key: 'competitor-trend-report', label: '경쟁사 동향 보고', icon: '📋' },
   ] },
 ];
 

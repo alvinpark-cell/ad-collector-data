@@ -1,0 +1,70 @@
+[
+  {
+    "reportDate": "2026-07-27",
+    "source": "그린브릭스(김경욱)",
+    "sourceType": "agency-email",
+    "note": "대행사가 이관 시 전달한 경쟁사 동향 이메일 원문 - Outlook 접근 문제로 대시보드에 옮겨둠",
+    "findings": [
+      {
+        "brand": "키움증권",
+        "media": "스페셜DA",
+        "detail": "스페셜DA 노출",
+        "date": "2026-07-07"
+      },
+      {
+        "brand": "키움증권",
+        "media": "타임보드",
+        "detail": "타임보드_동영상 노출",
+        "date": "2026-07-07"
+      },
+      {
+        "brand": "키움증권",
+        "media": "타임보드",
+        "detail": "타임보드_동영상 노출",
+        "date": "2026-07-21"
+      },
+      {
+        "brand": "한국투자증권",
+        "media": "유튜브",
+        "detail": "한국투자증권 x 무신사",
+        "date": "2026-07-06",
+        "url": "https://youtu.be/DWRyAKPHeUI?si=9IFSGgDEZ6mm0EHQ"
+      },
+      {
+        "brand": "KB증권",
+        "media": "유튜브",
+        "detail": "주식투자는 처음이라 EP.1 (곽범 모델 - 주식 투자 스터디 영상)",
+        "date": "2026-07-20",
+        "url": "https://youtu.be/l4MAizC_l20?si=EDTS3YgR_3SMYac5"
+      },
+      {
+        "brand": "키움증권",
+        "media": "ATL",
+        "detail": "유해진 모델 퇴직연금 - \"나 퇴직연금, 더 이상 갇혀 있을 순 없다\" 편",
+        "date": "2026-07-06",
+        "url": "https://tvcf.co.kr/play/bi1833-1022183"
+      },
+      {
+        "brand": "키움증권",
+        "media": "ATL",
+        "detail": "유해진 모델 퇴직연금 - \"나 퇴직연금, 언제까지 묶어 둘꺼야?\" 편",
+        "date": "2026-07-06",
+        "url": "https://tvcf.co.kr/play/ai1844-1022184"
+      },
+      {
+        "brand": "키움증권",
+        "media": "ATL",
+        "detail": "유해진 모델 퇴직연금 - \"나 퇴직연금, 언제까지 재우기만 할꺼야?\" 편",
+        "date": "2026-07-06",
+        "url": "https://tvcf.co.kr/play/bi1855-1022185"
+      },
+      {
+        "brand": "키움증권",
+        "media": "ATL",
+        "detail": "\"퇴직연금도 키움할 때가 왔다!\" 키움증권 편",
+        "date": "2026-07-06",
+        "url": "https://tvcf.co.kr/play/ai1866-1022186"
+      }
+    ]
+  }
+]

@@ -12,6 +12,7 @@ import InsightBox from '@/components/InsightBox';
 import TrendReport from '@/components/TrendReport';
 import CommunityTrend from '@/components/CommunityTrend';
 import NewsClipping from '@/components/NewsClipping';
+import CompetitorTrendReport from '@/components/CompetitorTrendReport';
 import WeekSelector from '@/components/WeekSelector';
 import Sidebar, { ViewKey } from '@/components/Sidebar';
 import { getMonthWeekKey, sortMonthWeekKeysDesc } from '@/lib/weekUtils';
@@ -1325,6 +1326,9 @@ export default function Home() {
                 <PowerlinkBrandMonitor />
               </>
             )}
+
+            {/* 업무 보고 > 경쟁사 동향 보고 */}
+            {view === 'competitor-trend-report' && <CompetitorTrendReport />}
           </main>
         )}
       </div>

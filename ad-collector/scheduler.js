@@ -12,6 +12,8 @@ const { runMetaMediaBatch } = require('./metaMediaBatch');
 const { updateMarketIndex } = require('./scrapers/marketIndex');
 const { updateTrendReport } = require('./scrapers/trendReport');
 const { updateCommunityTrend } = require('./scrapers/communityTrend');
+const { updateCompetitorTrendSheet } = require('./scrapers/competitorTrendSheet');
+const { runCapture: runNaverPremiumCapture } = require('./scrapers/naverPremiumCapture');
 const { backfillMissingImages } = require('./googleMediaBackfill');
 const { backfillGoogleImageText } = require('./googleTextBackfill');
 const { backfillLastShown } = require('./googleLastShownBackfill');
@@ -157,6 +159,33 @@ cron.schedule('0 30 9 * * *', async () => {
     await updateCommunityTrend(settings);
   } catch (err) {
     console.error('커뮤니티 반응 갱신 중 오류:', err.message);
+  }
+}, {
+  timezone: 'Asia/Seoul',
+});
+
+// 네이버 타임보드(PC)/스페셜DA(모바일) 캡처: 매 정시. 상품소개서 확인 결과(2026-08-13)
+// 둘 다 1시간 단위 판매(새벽 00-08시만 4시간 단위)라 정각마다 찍으면 슬롯을 안 놓친다.
+// 캡처 후 Claude Vision으로 경쟁사 브랜드 노출 여부를 판별해 잡히면 자동 기록.
+cron.schedule('0 0 * * * *', async () => {
+  console.log(`\n⏰ 네이버 타임보드/스페셜DA 캡처: ${new Date().toLocaleString('ko-KR')}`);
+  try {
+    await runNaverPremiumCapture();
+  } catch (err) {
+    console.error('네이버 캡처 중 오류:', err.message);
+  }
+}, {
+  timezone: 'Asia/Seoul',
+});
+
+// 경쟁사 동향 시트(타임보드/스페셜DA/유튜브/ATL 4탭) 동기화: 매일 오전 9시 30분.
+// 팀이 시트를 수정하면 다음 이 시각에 자동으로 대시보드에 반영된다.
+cron.schedule('0 30 9 * * *', async () => {
+  console.log(`\n⏰ 경쟁사 동향 시트 동기화: ${new Date().toLocaleString('ko-KR')}`);
+  try {
+    await updateCompetitorTrendSheet();
+  } catch (err) {
+    console.error('경쟁사 동향 시트 동기화 중 오류:', err.message);
   }
 }, {
   timezone: 'Asia/Seoul',

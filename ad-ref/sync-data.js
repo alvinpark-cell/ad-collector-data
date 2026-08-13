@@ -149,6 +149,16 @@ function syncData() {
     fs.writeFileSync(communityDst, '{"general":[],"brand":[]}');
   }
 
+  // competitor_trend_report.json 복사 (업무 보고 > 경쟁사 동향 보고 - 대행사 리포트/유튜브/네이버 타임보드 등)
+  const compTrendSrc = path.join(collectorDir, 'data', 'competitor_trend_report.json');
+  const compTrendDst = path.join(nextPublicDir, 'competitor_trend_report.json');
+  if (fs.existsSync(compTrendSrc)) {
+    fs.copyFileSync(compTrendSrc, compTrendDst);
+    console.log('competitor_trend_report.json 복사 완료');
+  } else {
+    fs.writeFileSync(compTrendDst, '[]');
+  }
+
   if (isS3Enabled()) {
     console.log('S3 스토리지 사용 중 - 이미지/스크린샷 로컬 복사는 건너뜁니다 (localPath가 이미 공개 URL)');
   } else {
