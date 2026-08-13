@@ -14,6 +14,7 @@ const { updateTrendReport } = require('./scrapers/trendReport');
 const { updateCommunityTrend } = require('./scrapers/communityTrend');
 const { updateCompetitorTrendSheet } = require('./scrapers/competitorTrendSheet');
 const { runCapture: runNaverPremiumCapture } = require('./scrapers/naverPremiumCapture');
+const { updateYoutubeCompetitorTrend } = require('./scrapers/youtubeCompetitorTrend');
 const { backfillMissingImages } = require('./googleMediaBackfill');
 const { backfillGoogleImageText } = require('./googleTextBackfill');
 const { backfillLastShown } = require('./googleLastShownBackfill');
@@ -186,6 +187,19 @@ cron.schedule('0 30 9 * * *', async () => {
     await updateCompetitorTrendSheet();
   } catch (err) {
     console.error('경쟁사 동향 시트 동기화 중 오류:', err.message);
+  }
+}, {
+  timezone: 'Asia/Seoul',
+});
+
+// 경쟁사 유튜브 채널 동향: 매일 오전 9시 30분. 채널별 최근 업로드 25개의 조회수
+// 평균을 내서, 이번 달 영상 중 그 평균을 넘는(화제성 있는) 것만 기록한다.
+cron.schedule('0 30 9 * * *', async () => {
+  console.log(`\n⏰ 유튜브 경쟁사 동향 갱신: ${new Date().toLocaleString('ko-KR')}`);
+  try {
+    await updateYoutubeCompetitorTrend(settings);
+  } catch (err) {
+    console.error('유튜브 경쟁사 동향 중 오류:', err.message);
   }
 }, {
   timezone: 'Asia/Seoul',
