@@ -2,7 +2,7 @@
  * 공휴일을 감안한 "이번 주 실행일" 판정 헬퍼.
  */
 
-const { isHoliday, isWeekend } = require('./holidays');
+const { isHoliday, isWeekend, toIsoDate } = require('./holidays');
 
 /**
  * 오늘이 "이번 주(월요일부터)에 처음 맞이하는, 주말도 공휴일도 아닌 평일"인지 확인한다.
@@ -22,4 +22,19 @@ function isFirstBusinessDayOfWeek(date) {
   return true;
 }
 
-module.exports = { isFirstBusinessDayOfWeek };
+/**
+ * 오늘이 "이번 달 목표일(targetDayOfMonth) 또는 그 이전의 가장 가까운 영업일"인지 확인한다.
+ * 목표일이 주말/공휴일이면 하루씩 앞으로 당겨서, 주말도 공휴일도 아닌 첫 날을 찾는다
+ * (예: 24일이 목표인데 24일이 추석 연휴면 23일로, 23일도 연휴면 22일로 계속 당김).
+ * 경쟁사 동향 보고(매월 25일 마감)처럼 "월 1회, 마감 하루 전에 자료를 준비해야 하는" 작업의
+ * 트리거로 쓴다 - 크론 자체는 매일 같은 시각에 돌되, 이 함수가 true인 날에만 실제로 실행한다.
+ */
+function isMonthlyReportTriggerDay(date, targetDayOfMonth) {
+  const target = new Date(date.getFullYear(), date.getMonth(), targetDayOfMonth);
+  while (isWeekend(target) || isHoliday(target)) {
+    target.setDate(target.getDate() - 1);
+  }
+  return toIsoDate(date) === toIsoDate(target);
+}
+
+module.exports = { isFirstBusinessDayOfWeek, isMonthlyReportTriggerDay };

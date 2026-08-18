@@ -20,7 +20,7 @@ const { backfillGoogleImageText } = require('./googleTextBackfill');
 const { backfillLastShown } = require('./googleLastShownBackfill');
 const { backfillNoDateFallback } = require('./noDateFallbackBackfill');
 const { backfillDescriptions } = require('./googleDescriptionBackfill');
-const { isFirstBusinessDayOfWeek } = require('./scheduleUtils');
+const { isFirstBusinessDayOfWeek, isMonthlyReportTriggerDay } = require('./scheduleUtils');
 const settings = require('./settings.json');
 
 console.log('📅 스케줄러 시작');
@@ -194,10 +194,17 @@ cron.schedule('0 30 9 * * *', async () => {
   timezone: 'Asia/Seoul',
 });
 
-// 경쟁사 유튜브 채널 동향: 매일 오전 9시 30분. 채널별 최근 업로드 25개의 조회수
-// 평균을 내서, 이번 달 영상 중 그 평균을 넘는(화제성 있는) 것만 기록한다.
+// 경쟁사 유튜브 채널 동향: 경쟁사 동향 보고는 주 1회가 아니라 매월 25일 마감(2026-08-18
+// 확인) - 크론 자체는 매일 9시반에 돌지만, isMonthlyReportTriggerDay(24)가 true인 날
+// (24일, 주말/공휴일이면 그 전 영업일로 당김)에만 실제로 실행해서 마감 하루 전에 한 번만
+// 채널별 최근 업로드를 확인한다. 채널별 이전 달 평균 조회수를 넘는(화제성 있는) 것만 기록.
 cron.schedule('0 30 9 * * *', async () => {
-  console.log(`\n⏰ 유튜브 경쟁사 동향 갱신: ${new Date().toLocaleString('ko-KR')}`);
+  const now = new Date();
+  if (!isMonthlyReportTriggerDay(now, 24)) {
+    console.log(`\n⏰ [유튜브 경쟁사 동향] ${now.toLocaleDateString('ko-KR')}는 이번 달 실행일이 아님 - 건너뜀`);
+    return;
+  }
+  console.log(`\n⏰ 유튜브 경쟁사 동향 갱신: ${now.toLocaleString('ko-KR')}`);
   try {
     await updateYoutubeCompetitorTrend(settings);
   } catch (err) {
