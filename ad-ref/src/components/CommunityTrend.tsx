@@ -103,16 +103,29 @@ function buildTopicRowsForRange(history: CommunityDaySnapshot[], group: 'general
   return { rows, keywords };
 }
 
-function TopicSection({ title, subtitle, rows, keywords, periodLabel, sparkDayCount }: {
+function TopicSection({ title, subtitle, rows, keywords, periodLabel, sparkDayCount, requireMention }: {
   title: string; subtitle?: string; rows: TopicRow[]; keywords: CommunityKeyword[]; periodLabel: string; sparkDayCount: number;
+  // 브랜드(메리츠증권) 섹션처럼 "실제로 이 단어를 언급한 반응만" 보여줘야 할 때 지정 -
+  // 순위와 무관하게 반응 텍스트에 이 문자열이 있는 것만 찾는다(2026-08-18 사용자 요청 -
+  // 그 전엔 순위만 보고 골라서 메리츠증권 언급이 없어도 상위 반응이 그냥 뜰 수 있었음).
+  requireMention?: string;
 }) {
-  // 대표 반응: 언급량 상위 키워드부터 하나씩, 출처가 겹치지 않게 최대 3개
+  // 대표 반응: requireMention이 없으면(주식/투자 전반) 순위 1~3위 키워드에서 하나씩만
+  // 뽑는다(2026-08-18: 예전엔 출처 중복을 피해 계속 하위 순위로 내려가서 실제로는 5~10위
+  // 반응까지 섞여 들어올 수 있었음 - 순위 1~3위로 명확히 제한). requireMention이 있으면
+  // (메리츠증권) 순위와 무관하게 그 단어를 실제로 언급한 반응만 최대 3개 찾는다.
   const representative: { keyword: string; source: string; text: string }[] = [];
-  const seenSources = new Set<string>();
-  for (const row of rows) {
-    if (representative.length >= 3) break;
-    const r = row.reactions?.find(x => !seenSources.has(x.source));
-    if (r) { representative.push({ keyword: row.keyword, source: r.source, text: r.text }); seenSources.add(r.source); }
+  if (requireMention) {
+    for (const row of rows) {
+      if (representative.length >= 3) break;
+      const r = row.reactions?.find(x => x.text.includes(requireMention) || row.keyword.includes(requireMention));
+      if (r) representative.push({ keyword: row.keyword, source: r.source, text: r.text });
+    }
+  } else {
+    for (const row of rows.slice(0, 3)) {
+      const r = row.reactions?.[0];
+      if (r) representative.push({ keyword: row.keyword, source: r.source, text: r.text });
+    }
   }
 
   return (
@@ -264,7 +277,8 @@ export default function CommunityTrend() {
       <TopicSection title="주식/투자 전반 화제 키워드" subtitle="디시인사이드·에펨코리아·뽐뿌·클리앙·아카라이브·더쿠·블라인드 등 실제 커뮤니티 글 기반(웹서치 미사용). 메리츠증권 한정이 아닌 시장 전체 화제."
         rows={general.rows} keywords={general.keywords} periodLabel={periodLabel} sparkDayCount={sparkDayCount} />
       <TopicSection title="메리츠증권 화제 키워드"
-        rows={brand.rows} keywords={brand.keywords} periodLabel={periodLabel} sparkDayCount={sparkDayCount} />
+        rows={brand.rows} keywords={brand.keywords} periodLabel={periodLabel} sparkDayCount={sparkDayCount}
+        requireMention="메리츠증권" />
     </div>
   );
 }
