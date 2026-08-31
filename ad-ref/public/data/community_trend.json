@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-26T08:40:24.810Z",
+  "updatedAt": "2026-08-31T03:57:12.159Z",
   "history": [
     {
       "date": "2026-07-29",
@@ -7182,6 +7182,1064 @@
             {
               "source": "디시인사이드 주식 갤러리",
               "text": "주린이 22일차 일상 공유"
+            }
+          ]
+        }
+      ],
+      "brand": []
+    },
+    {
+      "date": "2026-08-26",
+      "general": [
+        {
+          "keyword": "환차손",
+          "sentiment": "negative",
+          "volume": 350,
+          "reactions": [
+            {
+              "source": "더쿠 주식",
+              "text": "환차손 미치겠다는 하소연"
+            },
+            {
+              "source": "더쿠 주식",
+              "text": "환차손 어메이징하다는 자조"
+            }
+          ]
+        },
+        {
+          "keyword": "샌디스크 급등락",
+          "sentiment": "negative",
+          "volume": 620,
+          "reactions": [
+            {
+              "source": "더쿠 주식",
+              "text": "물타기 여부 고민"
+            },
+            {
+              "source": "더쿠 주식",
+              "text": "탈출 못한 것 후회"
+            },
+            {
+              "source": "더쿠 주식",
+              "text": "양전 기원하는 반응"
+            }
+          ]
+        },
+        {
+          "keyword": "엔비디아 실적발표 앞둔 관망",
+          "sentiment": "neutral",
+          "volume": 580,
+          "reactions": [
+            {
+              "source": "더쿠 주식",
+              "text": "황사장 믿고 잔다는 반응"
+            },
+            {
+              "source": "더쿠 주식",
+              "text": "실적 발표일 문의 잇따름"
+            },
+            {
+              "source": "더쿠 주식",
+              "text": "잭슨홀 앞두고 눈치보기"
+            }
+          ]
+        },
+        {
+          "keyword": "브로드컴 실적 호평",
+          "sentiment": "positive",
+          "volume": 400,
+          "reactions": [
+            {
+              "source": "더쿠 주식",
+              "text": "컨콜이 지린다는 호평"
+            },
+            {
+              "source": "더쿠 주식",
+              "text": "인텔·브컴 동반보유 문의"
+            }
+          ]
+        },
+        {
+          "keyword": "메타 주가 변동성",
+          "sentiment": "neutral",
+          "volume": 480,
+          "reactions": [
+            {
+              "source": "더쿠 주식",
+              "text": "폭락 후 저가매수 권유"
+            },
+            {
+              "source": "더쿠 주식",
+              "text": "오늘 좋다는 반응"
+            },
+            {
+              "source": "더쿠 주식",
+              "text": "갑자기 왜저러냐는 당혹"
+            }
+          ]
+        },
+        {
+          "keyword": "HBM 가격 상승 전망",
+          "sentiment": "positive",
+          "volume": 280,
+          "reactions": [
+            {
+              "source": "클리앙 주식한담",
+              "text": "2027년 HBM 50퍼센트 인상 전망 공유"
+            }
+          ]
+        },
+        {
+          "keyword": "현대차 자사주 소각",
+          "sentiment": "positive",
+          "volume": 240,
+          "reactions": [
+            {
+              "source": "클리앙 주식한담",
+              "text": "7891억 규모 소각 소식 공유"
+            }
+          ]
+        },
+        {
+          "keyword": "국내증시 강세 전망",
+          "sentiment": "positive",
+          "volume": 200,
+          "reactions": [
+            {
+              "source": "더쿠 주식",
+              "text": "내일 대풀롱 예상하는 반응"
+            }
+          ]
+        },
+        {
+          "keyword": "미국증시 레버리지 규제 완화",
+          "sentiment": "neutral",
+          "volume": 190,
+          "reactions": [
+            {
+              "source": "더쿠 주식",
+              "text": "레버 규제 풀렸다는 반응"
+            }
+          ]
+        },
+        {
+          "keyword": "연기금 매수세",
+          "sentiment": "positive",
+          "volume": 210,
+          "reactions": [
+            {
+              "source": "더쿠 주식",
+              "text": "8월 내내 매수한다는 관측"
+            }
+          ]
+        },
+        {
+          "keyword": "나스닥 거래량 저조",
+          "sentiment": "neutral",
+          "volume": 260,
+          "reactions": [
+            {
+              "source": "더쿠 주식",
+              "text": "평균대비 65퍼센트 저조"
+            },
+            {
+              "source": "더쿠 주식",
+              "text": "7월부터 정체됐다는 하소연"
+            }
+          ]
+        },
+        {
+          "keyword": "코인 시장 동반 약세",
+          "sentiment": "negative",
+          "volume": 300,
+          "reactions": [
+            {
+              "source": "더쿠 주식",
+              "text": "비트코인 마이너스16퍼센트 손실"
+            },
+            {
+              "source": "더쿠 주식",
+              "text": "코인·반도체 역상관 의문"
+            }
+          ]
+        },
+        {
+          "keyword": "구글 주가 부진",
+          "sentiment": "negative",
+          "volume": 180,
+          "reactions": [
+            {
+              "source": "더쿠 주식",
+              "text": "볼때마다 손절하고 싶다는 반응"
+            }
+          ]
+        },
+        {
+          "keyword": "포트폴리오 전반 손실 인증",
+          "sentiment": "negative",
+          "volume": 500,
+          "reactions": [
+            {
+              "source": "더쿠 주식",
+              "text": "계좌 온통 파랗다는 하소연"
+            },
+            {
+              "source": "더쿠 주식",
+              "text": "적자 인증 릴레이"
+            }
+          ]
+        }
+      ],
+      "brand": []
+    },
+    {
+      "date": "2026-08-27",
+      "general": [
+        {
+          "keyword": "엔비디아 실적 서프라이즈",
+          "sentiment": "positive",
+          "volume": 950,
+          "reactions": [
+            {
+              "source": "클리앙 주식한담",
+              "text": "2분기 어닝서프라이즈 메모리계약 3868조원"
+            },
+            {
+              "source": "더쿠 주식",
+              "text": "엔비 8프로 급등에 환호"
+            },
+            {
+              "source": "더쿠 주식",
+              "text": "거래량 300% 급증 화제"
+            }
+          ]
+        },
+        {
+          "keyword": "메모리주(샌디스크) 급락",
+          "sentiment": "negative",
+          "volume": 700,
+          "reactions": [
+            {
+              "source": "더쿠 주식",
+              "text": "샌마 폭포수 하락에 속상함"
+            },
+            {
+              "source": "더쿠 주식",
+              "text": "샌디 마이너스로 욕 나옴"
+            },
+            {
+              "source": "더쿠 주식",
+              "text": "샌디 탈출하면 재매수 안한다는 반응"
+            }
+          ]
+        },
+        {
+          "keyword": "팔란티어 물림 고민",
+          "sentiment": "negative",
+          "volume": 550,
+          "reactions": [
+            {
+              "source": "더쿠 주식",
+              "text": "팔란 평단170 물림 하소연"
+            },
+            {
+              "source": "더쿠 주식",
+              "text": "팔란덬들 다들 팔았는지 궁금해함"
+            },
+            {
+              "source": "더쿠 주식",
+              "text": "팔까말까 고민하다 놓친 후회"
+            }
+          ]
+        },
+        {
+          "keyword": "미국증시 변동성 장세",
+          "sentiment": "negative",
+          "volume": 500,
+          "reactions": [
+            {
+              "source": "더쿠 주식",
+              "text": "미장 무빙이 싸패같다는 반응"
+            },
+            {
+              "source": "클리앙 주식한담",
+              "text": "시장을 조울증 환자로 비유"
+            },
+            {
+              "source": "더쿠 주식",
+              "text": "지수 3년째 나스닥만 쳐다봄"
+            }
+          ]
+        },
+        {
+          "keyword": "한은 기준금리 인상",
+          "sentiment": "negative",
+          "volume": 480,
+          "reactions": [
+            {
+              "source": "클리앙 주식한담",
+              "text": "2연속 인상 2.75→3.00% 부담"
+            },
+            {
+              "source": "디시인사이드 주식 갤러리",
+              "text": "금리 올라 청년 숨은빚 급증 우려"
+            }
+          ]
+        },
+        {
+          "keyword": "주가조작 조사 및 증권사 압수수색",
+          "sentiment": "negative",
+          "volume": 420,
+          "reactions": [
+            {
+              "source": "클리앙 주식한담",
+              "text": "한미회계법인 사건 한투증권 압수수색"
+            }
+          ]
+        },
+        {
+          "keyword": "ETF 규제 강화",
+          "sentiment": "negative",
+          "volume": 380,
+          "reactions": [
+            {
+              "source": "클리앙 주식한담",
+              "text": "홈페이지 ETF광고도 심의 대상"
+            },
+            {
+              "source": "클리앙 주식한담",
+              "text": "퇴근길 ETF거래 도입 철회"
+            }
+          ]
+        },
+        {
+          "keyword": "반도체주 수급 쏠림",
+          "sentiment": "neutral",
+          "volume": 350,
+          "reactions": [
+            {
+              "source": "더쿠 주식",
+              "text": "엔비로 수급 쏠려 반도체주 헤롱"
+            },
+            {
+              "source": "더쿠 주식",
+              "text": "삼하 폭주때 소부장 빠지는 패턴 지적"
+            }
+          ]
+        },
+        {
+          "keyword": "장기 물림 종목 손절 고민",
+          "sentiment": "negative",
+          "volume": 300,
+          "reactions": [
+            {
+              "source": "더쿠 주식",
+              "text": "작년 11월부터 물린 개잡주 탈출고민"
+            },
+            {
+              "source": "더쿠 주식",
+              "text": "프장 전종목 50% 손절 후 안도"
+            }
+          ]
+        },
+        {
+          "keyword": "현대차 악재",
+          "sentiment": "negative",
+          "volume": 300,
+          "reactions": [
+            {
+              "source": "클리앙 주식한담",
+              "text": "현대차 악재 대응 어렵다는 반응"
+            }
+          ]
+        },
+        {
+          "keyword": "내일 국장 향방 우려",
+          "sentiment": "neutral",
+          "volume": 280,
+          "reactions": [
+            {
+              "source": "더쿠 주식",
+              "text": "내일 국장 어떻게 될지 우려"
+            }
+          ]
+        },
+        {
+          "keyword": "보안주(사이버보안) 강세",
+          "sentiment": "positive",
+          "volume": 260,
+          "reactions": [
+            {
+              "source": "더쿠 주식",
+              "text": "보안 섹터 올해 강세 체감"
+            }
+          ]
+        },
+        {
+          "keyword": "공포탐욕지수 탐욕 국면",
+          "sentiment": "neutral",
+          "volume": 250,
+          "reactions": [
+            {
+              "source": "더쿠 주식",
+              "text": "공탐지수 탐욕 진입 언급"
+            }
+          ]
+        },
+        {
+          "keyword": "젠슨황 발언 반도체 공급망 화제",
+          "sentiment": "neutral",
+          "volume": 220,
+          "reactions": [
+            {
+              "source": "디시인사이드 주식 갤러리",
+              "text": "젠슨황이 삼성 SK 관계 설계했다는 요약글"
+            }
+          ]
+        },
+        {
+          "keyword": "반도체 이익 환류 인플레 우려",
+          "sentiment": "negative",
+          "volume": 200,
+          "reactions": [
+            {
+              "source": "디시인사이드 주식 갤러리",
+              "text": "삼전 하닉 이익 국내유입시 인플레 폭발 우려"
+            }
+          ]
+        }
+      ],
+      "brand": []
+    },
+    {
+      "date": "2026-08-28",
+      "general": [
+        {
+          "keyword": "연준의장 후보 워시 발언 증시 변동성",
+          "sentiment": "neutral",
+          "volume": 900,
+          "reactions": [
+            {
+              "source": "더쿠 주식",
+              "text": "발언 중 모든자산 널뛰기 반응"
+            },
+            {
+              "source": "더쿠 주식",
+              "text": "안알랴줄거임 드립 반복"
+            },
+            {
+              "source": "더쿠 주식",
+              "text": "매파 비둘기 해석 엇갈림"
+            }
+          ]
+        },
+        {
+          "keyword": "연준 9월 금리 동결 기대감",
+          "sentiment": "positive",
+          "volume": 700,
+          "reactions": [
+            {
+              "source": "더쿠 주식",
+              "text": "9월 동결각 시장 안도 반응"
+            },
+            {
+              "source": "더쿠 주식",
+              "text": "긴축적 아니다 발언에 안도"
+            }
+          ]
+        },
+        {
+          "keyword": "나스닥 급락 후 변동성 장세",
+          "sentiment": "negative",
+          "volume": 650,
+          "reactions": [
+            {
+              "source": "더쿠 주식",
+              "text": "나스닥 요새도 안좋다는 우려"
+            },
+            {
+              "source": "더쿠 주식",
+              "text": "급락 후 반등 반복 지적"
+            }
+          ]
+        },
+        {
+          "keyword": "원달러 환율 급등 환전 타이밍 후회",
+          "sentiment": "negative",
+          "volume": 550,
+          "reactions": [
+            {
+              "source": "더쿠 주식",
+              "text": "1400중반 환전 후회 토로"
+            },
+            {
+              "source": "더쿠 주식",
+              "text": "1515원 환전 언급"
+            },
+            {
+              "source": "더쿠 주식",
+              "text": "달러 개떡상 체감"
+            }
+          ]
+        },
+        {
+          "keyword": "엔비디아 주가 강세",
+          "sentiment": "positive",
+          "volume": 500,
+          "reactions": [
+            {
+              "source": "클리앙 주식한담",
+              "text": "엔비디아 상승 요약 공유"
+            },
+            {
+              "source": "더쿠 주식",
+              "text": "엔비디아 어제 팔걸 후회"
+            }
+          ]
+        },
+        {
+          "keyword": "빅테크(알파벳 등) 동반 강세",
+          "sentiment": "positive",
+          "volume": 400,
+          "reactions": [
+            {
+              "source": "더쿠 주식",
+              "text": "알파벳 상승에 환호"
+            },
+            {
+              "source": "더쿠 주식",
+              "text": "빅테크들 잘간다는 반응"
+            }
+          ]
+        },
+        {
+          "keyword": "샌디스크(SNDK) 급등락 장세",
+          "sentiment": "negative",
+          "volume": 380,
+          "reactions": [
+            {
+              "source": "더쿠 주식",
+              "text": "몇분새 몇만원 손실 하소연"
+            },
+            {
+              "source": "더쿠 주식",
+              "text": "1500 재돌파 언급"
+            }
+          ]
+        },
+        {
+          "keyword": "메모리 반도체 관세 우려",
+          "sentiment": "negative",
+          "volume": 300,
+          "reactions": [
+            {
+              "source": "클리앙 주식한담",
+              "text": "메모리는 관세에 눌렸다는 요약"
+            }
+          ]
+        },
+        {
+          "keyword": "삼성전자 SK하이닉스 장기 존버 심리",
+          "sentiment": "neutral",
+          "volume": 300,
+          "reactions": [
+            {
+              "source": "더쿠 주식",
+              "text": "삼전 31년 존버하면 된다는 농담"
+            },
+            {
+              "source": "더쿠 주식",
+              "text": "하닉 300 기다린다는 반응"
+            }
+          ]
+        },
+        {
+          "keyword": "로켓랩 투자 후회",
+          "sentiment": "negative",
+          "volume": 220,
+          "reactions": [
+            {
+              "source": "더쿠 주식",
+              "text": "로켓랩 대신 다른 종목 후회"
+            }
+          ]
+        },
+        {
+          "keyword": "부동산 세제개편 갈아타기 전략 논의",
+          "sentiment": "neutral",
+          "volume": 180,
+          "reactions": [
+            {
+              "source": "디시인사이드 주식 갤러리",
+              "text": "세제개편 따른 갈아타기 전략 고민글"
+            }
+          ]
+        },
+        {
+          "keyword": "팔란티어 투자자 심리",
+          "sentiment": "neutral",
+          "volume": 150,
+          "reactions": [
+            {
+              "source": "더쿠 주식",
+              "text": "팔란이들 모여봐 소집글"
+            }
+          ]
+        },
+        {
+          "keyword": "리플 급변동",
+          "sentiment": "neutral",
+          "volume": 120,
+          "reactions": [
+            {
+              "source": "더쿠 주식",
+              "text": "리플 무슨일이냐는 반응"
+            }
+          ]
+        },
+        {
+          "keyword": "종목리서치 사이트 공유",
+          "sentiment": "neutral",
+          "volume": 90,
+          "reactions": [
+            {
+              "source": "디시인사이드 주식 갤러리",
+              "text": "기업분석 리서치 사이트 피드백 요청"
+            }
+          ]
+        }
+      ],
+      "brand": []
+    },
+    {
+      "date": "2026-08-29",
+      "general": [
+        {
+          "keyword": "연준 잭슨홀 발언·물가 우선 기조",
+          "sentiment": "negative",
+          "volume": 450,
+          "reactions": [
+            {
+              "source": "클리앙 주식한담",
+              "text": "연준 물가부터 잡겠다 못박음"
+            },
+            {
+              "source": "클리앙 주식한담",
+              "text": "잭슨홀 연설 요약 공유"
+            }
+          ]
+        },
+        {
+          "keyword": "미국 신문 1면 헤드라인 정리",
+          "sentiment": "neutral",
+          "volume": 200,
+          "reactions": [
+            {
+              "source": "클리앙 주식한담",
+              "text": "미국 신문 1면 헤드라인 모음 공유"
+            }
+          ]
+        },
+        {
+          "keyword": "엔비디아·삼전·하닉 투자 난이도 논쓰",
+          "sentiment": "neutral",
+          "volume": 150,
+          "reactions": [
+            {
+              "source": "클리앙 주식한담",
+              "text": "쉬운 투자 어려운 투자 고민"
+            }
+          ]
+        },
+        {
+          "keyword": "반도체 불장 지속 여부 논쟁",
+          "sentiment": "negative",
+          "volume": 700,
+          "reactions": [
+            {
+              "source": "더쿠 주식",
+              "text": "반도체 진짜 끝난걸까 우려"
+            },
+            {
+              "source": "더쿠 주식",
+              "text": "작년만한 미친 불장 다시 없을듯"
+            },
+            {
+              "source": "더쿠 주식",
+              "text": "삼전 25.0 또가면 또줍냐는 반응"
+            }
+          ]
+        },
+        {
+          "keyword": "SK하이닉스 오픈AI 거래중단설",
+          "sentiment": "negative",
+          "volume": 300,
+          "reactions": [
+            {
+              "source": "더쿠 주식",
+              "text": "오픈AI 거래 끊는다는 루머 우려"
+            }
+          ]
+        },
+        {
+          "keyword": "하닉·닉스 물타기 전략 갑론을박",
+          "sentiment": "negative",
+          "volume": 600,
+          "reactions": [
+            {
+              "source": "더쿠 주식",
+              "text": "하닉 물타기 시기 놓쳤다는 조언"
+            },
+            {
+              "source": "더쿠 주식",
+              "text": "닉스 평단 270 물타기 아깝다는 후회"
+            },
+            {
+              "source": "더쿠 주식",
+              "text": "속쓸 물타기 시점 고민"
+            }
+          ]
+        },
+        {
+          "keyword": "S&P500 적립식 투자 관심 증가",
+          "sentiment": "positive",
+          "volume": 500,
+          "reactions": [
+            {
+              "source": "더쿠 주식",
+              "text": "에센피500 매수 방법 질문"
+            },
+            {
+              "source": "더쿠 주식",
+              "text": "에센피 1000주 목표 적립"
+            },
+            {
+              "source": "더쿠 주식",
+              "text": "자녀 통장 지수 적금 언급"
+            }
+          ]
+        },
+        {
+          "keyword": "국장 대 미장 저평가 논쟁",
+          "sentiment": "neutral",
+          "volume": 350,
+          "reactions": [
+            {
+              "source": "더쿠 주식",
+              "text": "미장 빅테크 외엔 저평가주 불필요론"
+            },
+            {
+              "source": "더쿠 주식",
+              "text": "국장은 네이버뿐이라는 반응"
+            }
+          ]
+        },
+        {
+          "keyword": "전세계 국채금리 급등 우려",
+          "sentiment": "negative",
+          "volume": 250,
+          "reactions": [
+            {
+              "source": "더쿠 주식",
+              "text": "국채금리 심상치 않다는 우려 공유"
+            }
+          ]
+        },
+        {
+          "keyword": "정부 확장재정-긴축통화 엇박자",
+          "sentiment": "negative",
+          "volume": 200,
+          "reactions": [
+            {
+              "source": "더쿠 주식",
+              "text": "확장재정과 긴축통화 엇박자 지적"
+            }
+          ]
+        },
+        {
+          "keyword": "우크라이나 기준금리 15.5% 인상",
+          "sentiment": "neutral",
+          "volume": 150,
+          "reactions": [
+            {
+              "source": "더쿠 주식",
+              "text": "우크라이나 금리 15.5% 인상 소식"
+            }
+          ]
+        },
+        {
+          "keyword": "부동산 대 주식 자산 비교 논쟁",
+          "sentiment": "neutral",
+          "volume": 300,
+          "reactions": [
+            {
+              "source": "더쿠 주식",
+              "text": "서울 집값이 나스닥 이겼다는 비교"
+            },
+            {
+              "source": "더쿠 주식",
+              "text": "부동산이 삶과 밀접해 파이팅난다는 반응"
+            }
+          ]
+        },
+        {
+          "keyword": "흙수저 순자산 24억 성공담",
+          "sentiment": "positive",
+          "volume": 400,
+          "reactions": [
+            {
+              "source": "더쿠 주식",
+              "text": "흙수저에서 순자산 24억 달성 인증"
+            }
+          ]
+        },
+        {
+          "keyword": "코스피 급등 부담감",
+          "sentiment": "negative",
+          "volume": 380,
+          "reactions": [
+            {
+              "source": "더쿠 주식",
+              "text": "너무 급등하는 불장 걱정, 천천히 오르길 바람"
+            },
+            {
+              "source": "더쿠 주식",
+              "text": "9천피 가도 하닉 전고점 힘들거라는 전망"
+            }
+          ]
+        },
+        {
+          "keyword": "주식 초보 학습·입문",
+          "sentiment": "neutral",
+          "volume": 220,
+          "reactions": [
+            {
+              "source": "더쿠 주식",
+              "text": "ISA 연금저축 개설 증권사 추천 문의"
+            },
+            {
+              "source": "디시인사이드 주식 갤러리",
+              "text": "주린이 26일차 인증"
+            }
+          ]
+        }
+      ],
+      "brand": []
+    },
+    {
+      "date": "2026-08-30",
+      "general": [
+        {
+          "keyword": "최태원 발언 논란",
+          "sentiment": "negative",
+          "volume": 750,
+          "reactions": [
+            {
+              "source": "더쿠 주식",
+              "text": "최씨 헛소리에 댓글 반응 폭발"
+            },
+            {
+              "source": "더쿠 주식",
+              "text": "ㅊㅌㅇ 입좀 닫으라는 성토"
+            },
+            {
+              "source": "더쿠 주식",
+              "text": "하닉 탈출할때까지 입 다물라는 비판"
+            }
+          ]
+        },
+        {
+          "keyword": "SK하이닉스 물림 탈출 고민",
+          "sentiment": "negative",
+          "volume": 700,
+          "reactions": [
+            {
+              "source": "더쿠 주식",
+              "text": "하닉 탈출 계획 세웠지만 무서움"
+            },
+            {
+              "source": "더쿠 주식",
+              "text": "평단만 오면 바로 팔고싶다는 하소연"
+            },
+            {
+              "source": "더쿠 주식",
+              "text": "하닉 178만 와라는 염원"
+            }
+          ]
+        },
+        {
+          "keyword": "지수(S&P500) 투자 선호",
+          "sentiment": "positive",
+          "volume": 600,
+          "reactions": [
+            {
+              "source": "더쿠 주식",
+              "text": "지수투자 마이너스 가능성 질문"
+            },
+            {
+              "source": "더쿠 주식",
+              "text": "슨피가 제일 오래 살아남을거란 확신"
+            },
+            {
+              "source": "더쿠 주식",
+              "text": "지수가 잘 맞아 계속하겠다는 반응"
+            }
+          ]
+        },
+        {
+          "keyword": "메모리 반도체 가격 상승 기대",
+          "sentiment": "positive",
+          "volume": 650,
+          "reactions": [
+            {
+              "source": "클리앙 주식한담",
+              "text": "한 주 내내 메모리값 상승 소식만"
+            },
+            {
+              "source": "더쿠 주식",
+              "text": "반도체 다시 오를지 기대감"
+            }
+          ]
+        },
+        {
+          "keyword": "단타매매 어려움",
+          "sentiment": "negative",
+          "volume": 500,
+          "reactions": [
+            {
+              "source": "더쿠 주식",
+              "text": "회사 다니니 단타 못하겠다는 하소연"
+            },
+            {
+              "source": "더쿠 주식",
+              "text": "단타로 30만 벌고싶다는 바람"
+            },
+            {
+              "source": "더쿠 주식",
+              "text": "단타 자체가 어렵다는 공감"
+            }
+          ]
+        },
+        {
+          "keyword": "미국 증시 고점 경계론",
+          "sentiment": "negative",
+          "volume": 480,
+          "reactions": [
+            {
+              "source": "더쿠 주식",
+              "text": "미장 팔아야 할 때 고민"
+            },
+            {
+              "source": "더쿠 주식",
+              "text": "미장이 더 심각하게 물렸다는 하소연"
+            }
+          ]
+        },
+        {
+          "keyword": "레버리지 ETF 투자 지속",
+          "sentiment": "negative",
+          "volume": 450,
+          "reactions": [
+            {
+              "source": "더쿠 주식",
+              "text": "레버 한 사람들 안바뀐다는 자조"
+            },
+            {
+              "source": "더쿠 주식",
+              "text": "soxl 몇천씩 물린 덕들 많냐는 질문"
+            },
+            {
+              "source": "더쿠 주식",
+              "text": "mstu가 사라졌다는 당혹"
+            }
+          ]
+        },
+        {
+          "keyword": "케빈 워시 포워드가이던스 논쟁",
+          "sentiment": "neutral",
+          "volume": 400,
+          "reactions": [
+            {
+              "source": "클리앙 주식한담",
+              "text": "케빈 워시 포워드가이던스 포기 이유 논의"
+            }
+          ]
+        },
+        {
+          "keyword": "삼성전자·하이닉스 법인세 역대급",
+          "sentiment": "neutral",
+          "volume": 350,
+          "reactions": [
+            {
+              "source": "더쿠 주식",
+              "text": "삼전닉스 법인세 역대급 소식 공유"
+            }
+          ]
+        },
+        {
+          "keyword": "절세계좌(ISA·연금) 활용 논의",
+          "sentiment": "neutral",
+          "volume": 380,
+          "reactions": [
+            {
+              "source": "더쿠 주식",
+              "text": "퇴직연금서 ISA로 옮길지 고민"
+            },
+            {
+              "source": "더쿠 주식",
+              "text": "연저펀 계획 문의"
+            }
+          ]
+        },
+        {
+          "keyword": "원달러 환율 환전 부담",
+          "sentiment": "negative",
+          "volume": 300,
+          "reactions": [
+            {
+              "source": "더쿠 주식",
+              "text": "올해 환전 평균 1465원 한탄"
+            }
+          ]
+        },
+        {
+          "keyword": "중소형주 리스크 경계론",
+          "sentiment": "negative",
+          "volume": 320,
+          "reactions": [
+            {
+              "source": "더쿠 주식",
+              "text": "유튜버들 중소형주 정리 권유 전언"
+            }
+          ]
+        },
+        {
+          "keyword": "기아·현대차 저평가 논쟁",
+          "sentiment": "neutral",
+          "volume": 350,
+          "reactions": [
+            {
+              "source": "더쿠 주식",
+              "text": "기아 전고점 89년도라는 놀라움"
+            },
+            {
+              "source": "더쿠 주식",
+              "text": "기아 진입시점 같다는 의견"
+            },
+            {
+              "source": "더쿠 주식",
+              "text": "현차는 버린돈이라는 회의론"
+            }
+          ]
+        },
+        {
+          "keyword": "미국 신문 헤드라인 공유",
+          "sentiment": "neutral",
+          "volume": 250,
+          "reactions": [
+            {
+              "source": "클리앙 주식한담",
+              "text": "8/30 미국 신문 1면 헤드라인 모음 공유"
             }
           ]
         }

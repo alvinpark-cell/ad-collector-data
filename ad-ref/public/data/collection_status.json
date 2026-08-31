@@ -1,40 +1,40 @@
 {
   "google": {
-    "lastCollectedAt": "2026-08-24T02:48:37.154Z",
-    "newCount": 48,
-    "updatedAt": "2026-08-24T02:48:37.155Z"
+    "lastCollectedAt": "2026-08-31T04:12:11.742Z",
+    "newCount": 97,
+    "updatedAt": "2026-08-31T04:12:11.743Z"
   },
   "meta": {
-    "lastCollectedAt": "2026-08-24T02:24:23.279Z",
-    "newCount": 11,
-    "updatedAt": "2026-08-24T02:24:23.280Z"
+    "lastCollectedAt": "2026-08-31T05:46:00.062Z",
+    "newCount": 4,
+    "updatedAt": "2026-08-31T05:46:00.063Z"
   },
   "brandsearch": {
-    "lastCollectedAt": "2026-08-24T03:17:16.816Z",
+    "lastCollectedAt": "2026-08-31T04:40:36.057Z",
     "newCount": 20,
-    "updatedAt": "2026-08-24T03:17:16.817Z"
+    "updatedAt": "2026-08-31T04:40:36.057Z"
   },
   "powerlink": {
-    "lastCollectedAt": "2026-08-24T02:48:59.486Z",
+    "lastCollectedAt": "2026-08-31T04:12:32.999Z",
     "newCount": 4,
-    "updatedAt": "2026-08-24T02:48:59.487Z"
+    "updatedAt": "2026-08-31T04:12:32.999Z"
   },
   "metaMediaBatch": {
-    "lastRunAt": "2026-08-24T11:00:21.697Z",
+    "lastRunAt": "2026-08-31T05:00:18.806Z",
     "attempted": 2,
     "updated": 0,
     "stillPending": 2,
-    "updatedAt": "2026-08-24T11:00:21.698Z"
+    "updatedAt": "2026-08-31T05:00:18.808Z"
   },
   "metaBrandBatch": {
-    "lastCollectedAt": "2026-08-24T11:01:39.172Z",
-    "newCount": 0,
-    "batch": "2/3",
-    "updatedAt": "2026-08-24T11:01:39.173Z"
+    "lastCollectedAt": "2026-08-31T05:02:07.987Z",
+    "newCount": 11,
+    "batch": "3/3",
+    "updatedAt": "2026-08-31T05:02:07.987Z"
   },
   "powerlinkBrand": {
-    "lastCollectedAt": "2026-08-24T03:36:31.607Z",
+    "lastCollectedAt": "2026-08-31T04:59:54.961Z",
     "newCount": 18,
-    "updatedAt": "2026-08-24T03:36:31.608Z"
+    "updatedAt": "2026-08-31T04:59:54.962Z"
   }
 }
