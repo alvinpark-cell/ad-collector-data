@@ -11632,5 +11632,1820 @@
     ],
     "refreshCount": 30,
     "collectedAt": "2026-09-11T09:16:38.042Z"
+  },
+  {
+    "brand": "미래에셋증권",
+    "device": "pc",
+    "weekKey": "2026-09-W4",
+    "status": "collected",
+    "ads": [
+      {
+        "rank": 1,
+        "advertiserName": "미래에셋증권",
+        "displayUrl": "digital.securities.miraeasset.com/",
+        "title": "웰컴 투 미래에셋증권 반가운 첫만남 설레는 첫투자 투자지원금 2만원으로 시작",
+        "description": "첫 투자는 믿을 수 있는 미래에셋증권에서! 투자지원금&수수료 혜택 받고 시작하세요",
+        "adPeriod": "37~60개월",
+        "landingUrl": "http://digital.securities.miraeasset.com/",
+        "adId": "nad-a001-01-000000562605888",
+        "imageUrl": "https://searchad-phinf.pstatic.net/MjAyNjA1MjZfMjY0/MDAxNzc5NzgyMjE0Nzk5.Xp0UA8GTXYqS7gTfCEJFiFKvr8y51csVmiBPFu4BNg8g.0dkFA1ReY5hqHhGjdnLeEgdysIRGIz_v0EuS-t7t5I8g.PNG/609656-b9bbc597-6d38-4a55-a642-adac05ef7139.png",
+        "sublinks": [
+          {
+            "title": "신규계좌개설",
+            "url": "https://ader.naver.com/v1/P2byKleOUHCD7rvHe-mK3I47bTFIKlWCTkmxAPX0BIbcwx3PDCW_zcj-NvyNlLTIpRb41sbfl_AkWqFkYxm7rJbu97RjMCb1Xfh7CgEH5oTKtpxnHFAsGZIbkJ63OBPXr3M3lgV8BJ9Pc9xqWwkG97OlN61usBtXqKJ_DhEEemAQWqqL2rfciIMQ7_yg5REvVtk9Wm0E_EVvc7ZCb7xY6rKmPnTZIZCg-KFywXt5BDtsDZEKAuajng9NM4sc0amKuzJYDxVwlU-cgSeZDxGyXXDV8vrG3G20PUfaoTDxJJj7LI1TQyFmTtwC2LHjVYvkHBYpaWU71l_mncuYZdtid-sctDRemyF8ee35mYivy2OmNk1Gv_--53nV7d3okX4bqONi42bejgBnO0C1ELVw9tZgTHB4MgWFdgfBVKI4lI8NAOGLIZC1QyTit1L45zgu0W6aC1in9BmqSWOPQUnfgSfAp2BIOUOsFqqqeD8gvSZkgh3vg3Rfr8tocdCXNoZ-ziASpxhBJWdSyW29Vl6x6MXDoULApNR1TFVBJcP1pLtuYJS0WKAtEvGc8n4MSxWIWgchIE6grfOiGeY5QLKNpFJsLjMCBRakx1vC-xKwjzQJHKsCcz8tGKZlo5wrxjkHsru7W7KHqbVjHcGsr1rQxL2Lck6yFcvu7qtSgHUAmWBXlcXL5wDPhSgmdSaUvxbcAA4SJA9ySclZmUJwkNjPSVs3M2JIUtmxYfYRbUIHoJsop7diyRBJURH1aSXNURla?c=naver.search.pc.more.plsearch&t=0"
+          },
+          {
+            "title": "투자지원금",
+            "url": "https://ader.naver.com/v1/P2byKleOUHCD7rvHe-mK3I47bTFIKlWCTkmxAPX0BIbcwx3PDCW_zcj-NvyNlLTIpRb41sbfl_AkWqFkYxm7rJbu97RjMCb1Xfh7CgEH5oTKtpxnHFAsGZIbkJ63OBPXr3M3lgV8BJ9Pc9xqWwkG97OlN61usBtXqKJ_DhEEemAQWqqL2rfciIMQ7_yg5REvVtk9Wm0E_EVvc7ZCb7xY6rKmPnTZIZCg-KFywXt5BDtsDZEKAuajng9NM4sc0amKuzJYDxVwlU-cgSeZDxGyXXDV8vrG3G20PUfaoTDxJJj7LI1TQyFmTtwC2LHjVYvkHBYpaWU71l_mncuYZdtid-sctDRemyF8ee35mYivy2OmNk1Gv_--53nV7d3okX4bqONi42bejgBnO0C1ELVw9tZgTHB4MgWFdgfBVKI4lI8NAOGLIZC1QyTit1L45zgu0W6aC1in9BmqSWOPQUnfgSfAp2BIOUOsFqqqeD8gvSZkgh3vg3Rfr8tocdCXNoZ-ziASpxhBJWdSyW29Vl6x6MXDoULApNR1TFVBJcP1pLtuYJS0WKAtEvGc8n4MSxWIWgchIE6grfOiGeY5QLKNpFJsLjMCBRakx1vC-xKwjzQJHKsCcz8tGKZlo5wrxjkHsru7W7KHqbVjHcGsr1rQxL2Lck6yFcvu7qtSgHUAmWBXlcXL5wDPhSgmdSaUvxbcAA4SJA9ySclZmUJwkNjPSVs3M2JIUtmxYfYRbUIHoJsop7diyRBJURH1aSXNURla?c=naver.search.pc.more.plsearch&t=0"
+          },
+          {
+            "title": "수수료 0원",
+            "url": "https://ader.naver.com/v1/P2byKleOUHCD7rvHe-mK3I47bTFIKlWCTkmxAPX0BIbcwx3PDCW_zcj-NvyNlLTIpRb41sbfl_AkWqFkYxm7rJbu97RjMCb1Xfh7CgEH5oTKtpxnHFAsGZIbkJ63OBPXr3M3lgV8BJ9Pc9xqWwkG97OlN61usBtXqKJ_DhEEemAQWqqL2rfciIMQ7_yg5REvVtk9Wm0E_EVvc7ZCb7xY6rKmPnTZIZCg-KFywXt5BDtsDZEKAuajng9NM4sc0amKuzJYDxVwlU-cgSeZDxGyXXDV8vrG3G20PUfaoTDxJJj7LI1TQyFmTtwC2LHjVYvkHBYpaWU71l_mncuYZdtid-sctDRemyF8ee35mYivy2OmNk1Gv_--53nV7d3okX4bqONi42bejgBnO0C1ELVw9tZgTHB4MgWFdgfBVKI4lI8NAOGLIZC1QyTit1L45zgu0W6aC1in9BmqSWOPQUnfgSfAp2BIOUOsFqqqeD8gvSZkgh3vg3Rfr8tocdCXNoZ-ziASpxhBJWdSyW29Vl6x6MXDoULApNR1TFVBJcP1pLtuYJS0WKAtEvGc8n4MSxWIWgchIE6grfOiGeY5QLKNpFJsLjMCBRakx1vC-xKwjzQJHKsCcz8tGKZlo5wrxjkHsru7W7KHqbVjHcGsr1rQxL2Lck6yFcvu7qtSgHUAmWBXlcXL5wDPhSgmdSaUvxbcAA4SJA9ySclZmUJwkNjPSVs3M2JIUtmxYfYRbUIHoJsop7diyRBJURH1aSXNURla?c=naver.search.pc.more.plsearch&t=0"
+          },
+          {
+            "title": "금융상품",
+            "url": "https://ader.naver.com/v1/E6JE5NSTX4bV6c-xFK6sENXJlQw1wp-HdkxLS5Z5BPChj1YjkD5Vtc21ahNUGaJWH7KD_PpVUArOHdBLY06Hx7ulCyUVhVJBhPP-DZzIL5MLpmWu7FlYNK0Kju9kncU56Le4Zl0u0U1RqL3MEc16-5BSclpO-Ebgrz_oVKxV-JI4sToFVB-dGOQg6T7pZpUeoq8xTUrIXER-AEVs2KO21uSMmjxGo5rXsrfHbyh4CD7S8-fcCYahGA3ePaImZkn3MCjIunM76WyDThEbt2k3G9_Bet7IR9L6BDl-ojKOC1wPYotxgKQNAFreSD2kp2YluNh9KxPo-YBuSMfcpYFVi5mmB7g75uf_HwmDh0eRY2dTdzsUs6AKKJV6imQWwoZgRleH8ZklnY_CZ--fOTAhxQCEqMiBdWDevT55ZOGF8_dqHQRItImBvIdvJMC895HpzX9GrZmLc6bMAdF5FMdvDhMHNB-_8y9yFp1LugLjfP54_TwSL3TAs2arvibhN34q93MLDsjD4f4TcxVTItljHJjY-F4HCSqgaBM8bezrjXR-vXtCBUAJPPiOADiUhPpB5Q-5Z5yEYOFsgU4qAqk3Sb9LsSEhAE3sBbdUlrq_OCJGrth6Ny5wiIPomx_WMDAM1PE2rwt1Ud1M6W0y0mc-3iwkPxNAxeCniOnz3pfkxfL16S9m8DwFKl0RiJ5wB5OYKhyrtZf5fYtFYirCSlMTu5z-ycVcncQ7HVnPNCwVuVMtVpK5hmKK5oUTeGxbn8qj?c=naver.search.pc.more.plsearch&t=0"
+          }
+        ],
+        "imageSublinks": [],
+        "extraTitle": null,
+        "localImage": "screenshots/pwl_img_미래에셋증권_pc_1_20260922_k4iy.png"
+      },
+      {
+        "rank": 1,
+        "advertiserName": "미래에셋증권",
+        "displayUrl": "digital.securities.miraeasset.com/",
+        "title": "90일 온라인수수료 무료 더 나은 미래를 위한 선택 지금 바로 개설하세요!",
+        "description": "첫 투자는 믿을 수 있는 미래에셋증권에서! 투자지원금&수수료 혜택 받고 시작하세요 신규고객이라면? 투자지원금 2만원 받고 설레는 첫 투자 시작하세요!",
+        "adPeriod": "37~60개월",
+        "landingUrl": "http://digital.securities.miraeasset.com/",
+        "adId": "nad-a001-01-000000562605888",
+        "imageUrl": "https://searchad-phinf.pstatic.net/MjAyNjA1MjZfMjY0/MDAxNzc5NzgyMjE0Nzk5.Xp0UA8GTXYqS7gTfCEJFiFKvr8y51csVmiBPFu4BNg8g.0dkFA1ReY5hqHhGjdnLeEgdysIRGIz_v0EuS-t7t5I8g.PNG/609656-b9bbc597-6d38-4a55-a642-adac05ef7139.png",
+        "sublinks": [
+          {
+            "title": "신규계좌개설",
+            "url": "https://ader.naver.com/v1/P2byKleOUHCD7rvHe-mK3IDSWp1vlsK6VvDXBnUaDXMZ4oYRfh647SFVZxQJ8BOLfkxM6maUCnPutw7mVDZTIs3R2-MZsnXUasThdFAjDb1gBkyqoP4O6MCe8tEQRfDe0Nxrso6ESNUMoahTG_Eb5oNA85wUozbkoBuoBIhEFuAN1BECPfXdxcltWkhz_q7JqItlhdMCR0G6TaatMgNJf_tzn2eY1UqHLiWhwnavxM5HUHj_XXOlUkZ-TLzm37pR3-elLOc4tQtk8yH-icL46PjmqOAjxUyc6otkFXlkEt62Cux9A7kRW2h4qSNrukeRbOGfNsWnHgyzBxU_ZLhH-2I333Ucti1PvXqw1M1TxoryYSMDs5_p26DA-odWP4TuD9cbFdjEecg4W8pijpoAoZSjoyWvi5ypTPmLTbH770rpro--G0ALJg9MrW-Q3_6i1jcnleE4EBeLKXVoQfCy0OisTLSm1IeNnk7FWPm-sNx7qg9klYknMVyAxTM2iXu3Jw3Owdq54fwjaQy8YSartVS2lqo4P_oebh3AzMYc9KpTRTVbW7X_WJqAgOHTpuLxs6Rr_5GCBMzzOxsDQSTA86EaNU5J_PIkWiOmHCl7j9ufotrpOt9qA-OB4toplKWo54Y_Gd95-C5Xd7655-NhipqoTDfg8dcEKcxDZeOu31PeXycHgN6Q-_bouVqtuLj7tt0CI25NZgNwrKCiH1XhC59_0cdUw9sPZ6I2daB96TLhTH2podJ95aswm_O4URDT?c=naver.search.pc.more.plsearch&t=0"
+          },
+          {
+            "title": "투자지원금",
+            "url": "https://ader.naver.com/v1/P2byKleOUHCD7rvHe-mK3IDSWp1vlsK6VvDXBnUaDXMZ4oYRfh647SFVZxQJ8BOLfkxM6maUCnPutw7mVDZTIs3R2-MZsnXUasThdFAjDb1gBkyqoP4O6MCe8tEQRfDe0Nxrso6ESNUMoahTG_Eb5oNA85wUozbkoBuoBIhEFuAN1BECPfXdxcltWkhz_q7JqItlhdMCR0G6TaatMgNJf_tzn2eY1UqHLiWhwnavxM5HUHj_XXOlUkZ-TLzm37pR3-elLOc4tQtk8yH-icL46PjmqOAjxUyc6otkFXlkEt62Cux9A7kRW2h4qSNrukeRbOGfNsWnHgyzBxU_ZLhH-2I333Ucti1PvXqw1M1TxoryYSMDs5_p26DA-odWP4TuD9cbFdjEecg4W8pijpoAoZSjoyWvi5ypTPmLTbH770rpro--G0ALJg9MrW-Q3_6i1jcnleE4EBeLKXVoQfCy0OisTLSm1IeNnk7FWPm-sNx7qg9klYknMVyAxTM2iXu3Jw3Owdq54fwjaQy8YSartVS2lqo4P_oebh3AzMYc9KpTRTVbW7X_WJqAgOHTpuLxs6Rr_5GCBMzzOxsDQSTA86EaNU5J_PIkWiOmHCl7j9ufotrpOt9qA-OB4toplKWo54Y_Gd95-C5Xd7655-NhipqoTDfg8dcEKcxDZeOu31PeXycHgN6Q-_bouVqtuLj7tt0CI25NZgNwrKCiH1XhC59_0cdUw9sPZ6I2daB96TLhTH2podJ95aswm_O4URDT?c=naver.search.pc.more.plsearch&t=0"
+          },
+          {
+            "title": "수수료 0원",
+            "url": "https://ader.naver.com/v1/P2byKleOUHCD7rvHe-mK3IDSWp1vlsK6VvDXBnUaDXMZ4oYRfh647SFVZxQJ8BOLfkxM6maUCnPutw7mVDZTIs3R2-MZsnXUasThdFAjDb1gBkyqoP4O6MCe8tEQRfDe0Nxrso6ESNUMoahTG_Eb5oNA85wUozbkoBuoBIhEFuAN1BECPfXdxcltWkhz_q7JqItlhdMCR0G6TaatMgNJf_tzn2eY1UqHLiWhwnavxM5HUHj_XXOlUkZ-TLzm37pR3-elLOc4tQtk8yH-icL46PjmqOAjxUyc6otkFXlkEt62Cux9A7kRW2h4qSNrukeRbOGfNsWnHgyzBxU_ZLhH-2I333Ucti1PvXqw1M1TxoryYSMDs5_p26DA-odWP4TuD9cbFdjEecg4W8pijpoAoZSjoyWvi5ypTPmLTbH770rpro--G0ALJg9MrW-Q3_6i1jcnleE4EBeLKXVoQfCy0OisTLSm1IeNnk7FWPm-sNx7qg9klYknMVyAxTM2iXu3Jw3Owdq54fwjaQy8YSartVS2lqo4P_oebh3AzMYc9KpTRTVbW7X_WJqAgOHTpuLxs6Rr_5GCBMzzOxsDQSTA86EaNU5J_PIkWiOmHCl7j9ufotrpOt9qA-OB4toplKWo54Y_Gd95-C5Xd7655-NhipqoTDfg8dcEKcxDZeOu31PeXycHgN6Q-_bouVqtuLj7tt0CI25NZgNwrKCiH1XhC59_0cdUw9sPZ6I2daB96TLhTH2podJ95aswm_O4URDT?c=naver.search.pc.more.plsearch&t=0"
+          },
+          {
+            "title": "금융상품",
+            "url": "https://ader.naver.com/v1/XQV2Ezs6dyjkdWKyFbP8JEjNS3s3lFoIC-rCh0qPVwVsNLLInNSIYvnVxmnEVjXxWQRyNYggSogHX0ZGB8TSFRK-g7VRajCS6L5eX6nsvVEGDKYGQQAw2-_Aupqgr1lY6MzMgdSA-EyuFlS-v33-uRjDXqspRZdDaNaiH6FRnILmJWyVBoJ0ifsYmZjCbtwVE6ak2strNMtW0NsbYmvzEQV5LI2BCNhPxpZF6tK6bBMQNTdY59WQSfM5Ka_Mtm_l9pPNSvQovAcEHRUE2hh5NAB2sImf82VL9skcdUoP7VRJZ1ST0q6WIY_zJ8_FyeEz_n2E1mMfrBf0pYP60E2rWd0p5dv8wDFoENKOoMo1aZ7OIOeeeaXG_7m3E2TQAO48yctGlr2BlIQ3pmT2ysXP43BcboMI0Vwd0xyUQfghbEOcJw4JClSn-9BeXFXuo-q6KHXQ_KHSVV-MejcQg6_KK7IVBzEZeJIAkpK2zErEaVKonfUHq-GwWCW-VnJyVR_IOVhLWd9XpxT2XEZO5eaMDTMmPdgONADIkvT6Js_fQuEcUwr-gjrGeCmv9PKhfnnb6IYsNvFjU5sXhx_Rvc6H3Tu965CtHRbKENMC04JrfJsNjfuRB-Rp1rD4sPHI7_YBjXvBevj6wyZZMjMLmn7Wnty9qcD9bJutJOqnZkjsSgetG4VVQ0iULZkEP_TMm6hwYOezdOjjsosaMTOp1xgICit5gI6alV1-O3XFMvszmi5OqQPsLNuqRDn_jQKWfZiA?c=naver.search.pc.more.plsearch&t=0"
+          }
+        ],
+        "imageSublinks": [],
+        "extraTitle": null,
+        "localImage": "screenshots/pwl_img_미래에셋증권_pc_1_20260922_gnuf.png"
+      },
+      {
+        "rank": 1,
+        "advertiserName": "미래에셋증권",
+        "displayUrl": "digital.securities.miraeasset.com/",
+        "title": "지금 바로 개설하세요! 신규고객 혜택 가득 웰컴 투 미래에셋증권",
+        "description": "첫 투자는 믿을 수 있는 미래에셋증권에서! 투자지원금&수수료 혜택 받고 시작하세요 신규/휴면고객이라면 웰컴! 국내주식 수수료 90일 0원으로 부담없이 시작하자",
+        "adPeriod": "37~60개월",
+        "landingUrl": "http://digital.securities.miraeasset.com/",
+        "adId": "nad-a001-01-000000562605888",
+        "imageUrl": "https://searchad-phinf.pstatic.net/MjAyNjA1MjZfMjY0/MDAxNzc5NzgyMjE0Nzk5.Xp0UA8GTXYqS7gTfCEJFiFKvr8y51csVmiBPFu4BNg8g.0dkFA1ReY5hqHhGjdnLeEgdysIRGIz_v0EuS-t7t5I8g.PNG/609656-b9bbc597-6d38-4a55-a642-adac05ef7139.png",
+        "sublinks": [
+          {
+            "title": "신규계좌개설",
+            "url": "https://ader.naver.com/v1/ij8NZnveKEulAtjG_1BAtg4SeZe80m3jywLAzVJABbohGf6KpgaO6qoZvxc-OHm-xl-Pp6I-G7j726rlKB3HW1ZkvlYYLpT8P8EthMn7wn6KHzi5hvIy97ji2FrgYMAu43SEhDv6vVsuT-isBBEt3Yl7o2MC88v5coordKGjxwnSrnVsOAtqV8NDTdwNGD1Mn1xQsUzujL3RgynWo532CeNk6yKK8zIrFmR3rh3p9KG1H1Vb-Rwo853S2TYrWbRzQfO7JCDY534lfI-_f8Y-K3M-zXc_cZR2gSh0suFnBNqHmBVkCQBh25xkGtZs_Uq-owDbd4yAsDaJE0VBCOp9XjEQeGC81nfIIVk8XcRyG0iP8YjOVrQGMm8utjPY3r5rxsp5vdhQhs3QNAI9uvtFiaRrftzoTHXCLrCSb6dCckpcW6Koj-4FIikPcQu5ly80FhCb1PEW0SJyM5HyK6umi62aicpMOBa2BvoNQjf1XDQAHKKjv6eARtkJBTdkAGIsZuknsDf1OKlUNawW-cYUcm4moo200VRNayh3RhMtS_lbuF5FwW6XydVfIeu0rI6XHLydAiJqRoO9TLlyQmidH5d98wUJhob33G1y-G9ASGngjeEpHvS7s2d8aB6fyqy5uN_qHQ4uy656l5Da1bWIWCYjYrwYGI9eutMIoLIscsuXBfgArAQhF12Wv_i0cjseMmyNfMQXgTNwUL5dG3QPUL1Y7Yw5o6-1beD43fTZy8gOdWM_maKrNOqAZmVncXwq?c=naver.search.pc.more.plsearch&t=0"
+          },
+          {
+            "title": "투자지원금",
+            "url": "https://ader.naver.com/v1/ij8NZnveKEulAtjG_1BAtg4SeZe80m3jywLAzVJABbohGf6KpgaO6qoZvxc-OHm-xl-Pp6I-G7j726rlKB3HW1ZkvlYYLpT8P8EthMn7wn6KHzi5hvIy97ji2FrgYMAu43SEhDv6vVsuT-isBBEt3Yl7o2MC88v5coordKGjxwnSrnVsOAtqV8NDTdwNGD1Mn1xQsUzujL3RgynWo532CeNk6yKK8zIrFmR3rh3p9KG1H1Vb-Rwo853S2TYrWbRzQfO7JCDY534lfI-_f8Y-K3M-zXc_cZR2gSh0suFnBNqHmBVkCQBh25xkGtZs_Uq-owDbd4yAsDaJE0VBCOp9XjEQeGC81nfIIVk8XcRyG0iP8YjOVrQGMm8utjPY3r5rxsp5vdhQhs3QNAI9uvtFiaRrftzoTHXCLrCSb6dCckpcW6Koj-4FIikPcQu5ly80FhCb1PEW0SJyM5HyK6umi62aicpMOBa2BvoNQjf1XDQAHKKjv6eARtkJBTdkAGIsZuknsDf1OKlUNawW-cYUcm4moo200VRNayh3RhMtS_lbuF5FwW6XydVfIeu0rI6XHLydAiJqRoO9TLlyQmidH5d98wUJhob33G1y-G9ASGngjeEpHvS7s2d8aB6fyqy5uN_qHQ4uy656l5Da1bWIWCYjYrwYGI9eutMIoLIscsuXBfgArAQhF12Wv_i0cjseMmyNfMQXgTNwUL5dG3QPUL1Y7Yw5o6-1beD43fTZy8gOdWM_maKrNOqAZmVncXwq?c=naver.search.pc.more.plsearch&t=0"
+          },
+          {
+            "title": "수수료 0원",
+            "url": "https://ader.naver.com/v1/ij8NZnveKEulAtjG_1BAtg4SeZe80m3jywLAzVJABbohGf6KpgaO6qoZvxc-OHm-xl-Pp6I-G7j726rlKB3HW1ZkvlYYLpT8P8EthMn7wn6KHzi5hvIy97ji2FrgYMAu43SEhDv6vVsuT-isBBEt3Yl7o2MC88v5coordKGjxwnSrnVsOAtqV8NDTdwNGD1Mn1xQsUzujL3RgynWo532CeNk6yKK8zIrFmR3rh3p9KG1H1Vb-Rwo853S2TYrWbRzQfO7JCDY534lfI-_f8Y-K3M-zXc_cZR2gSh0suFnBNqHmBVkCQBh25xkGtZs_Uq-owDbd4yAsDaJE0VBCOp9XjEQeGC81nfIIVk8XcRyG0iP8YjOVrQGMm8utjPY3r5rxsp5vdhQhs3QNAI9uvtFiaRrftzoTHXCLrCSb6dCckpcW6Koj-4FIikPcQu5ly80FhCb1PEW0SJyM5HyK6umi62aicpMOBa2BvoNQjf1XDQAHKKjv6eARtkJBTdkAGIsZuknsDf1OKlUNawW-cYUcm4moo200VRNayh3RhMtS_lbuF5FwW6XydVfIeu0rI6XHLydAiJqRoO9TLlyQmidH5d98wUJhob33G1y-G9ASGngjeEpHvS7s2d8aB6fyqy5uN_qHQ4uy656l5Da1bWIWCYjYrwYGI9eutMIoLIscsuXBfgArAQhF12Wv_i0cjseMmyNfMQXgTNwUL5dG3QPUL1Y7Yw5o6-1beD43fTZy8gOdWM_maKrNOqAZmVncXwq?c=naver.search.pc.more.plsearch&t=0"
+          },
+          {
+            "title": "금융상품",
+            "url": "https://ader.naver.com/v1/W9HK_KFa5IKBsv_vuEu6Y39yUNzzNWDaQ3X6uAI3A3HfyrcHLEY_oI9wWVROSDcNHyb9HdJePVYlRYXZl9nqEYT2Z_aSq0xlAkBmczLsO8vzDzIkz5iVAT6tjBvp-9BitiwOCWyAiz728hf7aQF2HP_R8r5hVjtNugSITgJyHbP-dZvoZGt84zuDJZpUwGTpwCVLrBOsHBfGfh6KjvxAeD4T88rg-Zo0bFie6VygHKT3tWNx-0KygvquH1nvWN8JzoCit0CxCcMaSNbr3pQ8sJtT8MnlwyHBhzVTfaQ9c27pPVWkIxZ83GVvTbVTFK2NZuMyLQ_fqQIEK9FXRLlj5YxPrbK5Ys-j1ZdVOthcwEuqShvkX0cA6hoJp-hMmdlYPNN2DgVc0R47r0rF6e5_ckC5HO-bvPulFRJkOGcPIgL0vTYKqfvEca89Esa_QPFVb74_rZGXH9EZVwZ5txd_V1BpXUjyNNxvkGXydZYT55Sqo1Ui8fWy-Ni4Uv_Z6qwB3AeLs-qgfRAyR9TKEaOxx__YstegnSWyJg7BQaesxoI5S23IpHMrT056jLEp1fQIt5huG0WWWPeZOonXwLC6z8fBLSCSW6RxUTVQ6SbzkfrQa39uH8YTpXHHFcJMgtlftRyFjz8A46e3cJLkSqdw7CFXljPpOLTVVPd0m6xGUkW_jX4KZDJGWGEBYgzzt3WsQ06lKgvhGbtUFib7yenrUCcQkRUOWbam7t5lm_H4fkZbrc1EoSeUBrgIztu3EdFW?c=naver.search.pc.more.plsearch&t=0"
+          }
+        ],
+        "imageSublinks": [],
+        "extraTitle": null,
+        "localImage": "screenshots/pwl_img_미래에셋증권_pc_1_20260922_eb2x.png"
+      },
+      {
+        "rank": 1,
+        "advertiserName": "미래에셋증권",
+        "displayUrl": "digital.securities.miraeasset.com/",
+        "title": "지원금 받고 시작하자 신규고객 혜택 가득 지금 바로 개설하세요!",
+        "description": "첫 투자는 믿을 수 있는 미래에셋증권에서! 투자지원금&수수료 혜택 받고 시작하세요",
+        "adPeriod": "37~60개월",
+        "landingUrl": "http://digital.securities.miraeasset.com/",
+        "adId": "nad-a001-01-000000562605888",
+        "imageUrl": "https://searchad-phinf.pstatic.net/MjAyNjA1MjZfMjY0/MDAxNzc5NzgyMjE0Nzk5.Xp0UA8GTXYqS7gTfCEJFiFKvr8y51csVmiBPFu4BNg8g.0dkFA1ReY5hqHhGjdnLeEgdysIRGIz_v0EuS-t7t5I8g.PNG/609656-b9bbc597-6d38-4a55-a642-adac05ef7139.png",
+        "sublinks": [
+          {
+            "title": "신규계좌개설",
+            "url": "https://ader.naver.com/v1/RwknSHL3niGCWYrYfX7uIhXsq2BWe6JhNg9ZHnJm_ceifWMkFqJq3VfBS3xa5JCaoOF8AsOtnDElMAkcMYslrUGoFkgNCvamak6iugjmza1xdpwq5vuRtBrZLNbkaEwxt24f-Axq-XpQzAgxBGlR0SuCobXGT_Atqy9y03fmIgiYu1IWrixlK7tKSMVQXQ2Xt6ACagnYYIj0MWRonTA48NbTfnzyleLP8H41y7kvUoFNlyyRo8eX6_I8sIz9cvXbYYJv1BalG7z9_ofgVeMXAKc-Gr7YOBR4XyHBXWFQ-SzTLrid_4SbHiIMRQohWdoNhxsRKy20pvlMWqSeHAdVAu0iw_DwPwwU2StllmyCExwt3YY32EpExn-Qj1paaL56cUSl56Ha9VuXBuQ-kS-Cb5gADmspSuY-kC2VnOuoAASUEW9mMoNruKuEcfaHEUG0S8oDK8XqGOn2K5P3Nhg6-kPhH3r6GQc4WqL1EYBHuLAnEZzpIvqACn0quGYHLE1Q_JqToiap4-hWExU6hLK48-AdsP2CBioa8a9RRjNPuj_EyEEsil4zK3kcLn0SHGZSsq7wlYEc3o2MOIDUN2DoMvePulGJDeRiyn5gb7O11GT5dL-dHnccim-mH0UncUT7ABS65g7NxBfOLCBEdoN8bcAXMLzKg57EQeNSUTZSorxPsuuVnucY0BOnY0njys3t59-OviahQDGIxQAvhSuL-_p9IQPPRzgDICIHX3fdkZLATsrqviQZN1-f3gkDl3Td?c=naver.search.pc.more.plsearch&t=0"
+          },
+          {
+            "title": "투자지원금",
+            "url": "https://ader.naver.com/v1/RwknSHL3niGCWYrYfX7uIhXsq2BWe6JhNg9ZHnJm_ceifWMkFqJq3VfBS3xa5JCaoOF8AsOtnDElMAkcMYslrUGoFkgNCvamak6iugjmza1xdpwq5vuRtBrZLNbkaEwxt24f-Axq-XpQzAgxBGlR0SuCobXGT_Atqy9y03fmIgiYu1IWrixlK7tKSMVQXQ2Xt6ACagnYYIj0MWRonTA48NbTfnzyleLP8H41y7kvUoFNlyyRo8eX6_I8sIz9cvXbYYJv1BalG7z9_ofgVeMXAKc-Gr7YOBR4XyHBXWFQ-SzTLrid_4SbHiIMRQohWdoNhxsRKy20pvlMWqSeHAdVAu0iw_DwPwwU2StllmyCExwt3YY32EpExn-Qj1paaL56cUSl56Ha9VuXBuQ-kS-Cb5gADmspSuY-kC2VnOuoAASUEW9mMoNruKuEcfaHEUG0S8oDK8XqGOn2K5P3Nhg6-kPhH3r6GQc4WqL1EYBHuLAnEZzpIvqACn0quGYHLE1Q_JqToiap4-hWExU6hLK48-AdsP2CBioa8a9RRjNPuj_EyEEsil4zK3kcLn0SHGZSsq7wlYEc3o2MOIDUN2DoMvePulGJDeRiyn5gb7O11GT5dL-dHnccim-mH0UncUT7ABS65g7NxBfOLCBEdoN8bcAXMLzKg57EQeNSUTZSorxPsuuVnucY0BOnY0njys3t59-OviahQDGIxQAvhSuL-_p9IQPPRzgDICIHX3fdkZLATsrqviQZN1-f3gkDl3Td?c=naver.search.pc.more.plsearch&t=0"
+          },
+          {
+            "title": "수수료 0원",
+            "url": "https://ader.naver.com/v1/RwknSHL3niGCWYrYfX7uIhXsq2BWe6JhNg9ZHnJm_ceifWMkFqJq3VfBS3xa5JCaoOF8AsOtnDElMAkcMYslrUGoFkgNCvamak6iugjmza1xdpwq5vuRtBrZLNbkaEwxt24f-Axq-XpQzAgxBGlR0SuCobXGT_Atqy9y03fmIgiYu1IWrixlK7tKSMVQXQ2Xt6ACagnYYIj0MWRonTA48NbTfnzyleLP8H41y7kvUoFNlyyRo8eX6_I8sIz9cvXbYYJv1BalG7z9_ofgVeMXAKc-Gr7YOBR4XyHBXWFQ-SzTLrid_4SbHiIMRQohWdoNhxsRKy20pvlMWqSeHAdVAu0iw_DwPwwU2StllmyCExwt3YY32EpExn-Qj1paaL56cUSl56Ha9VuXBuQ-kS-Cb5gADmspSuY-kC2VnOuoAASUEW9mMoNruKuEcfaHEUG0S8oDK8XqGOn2K5P3Nhg6-kPhH3r6GQc4WqL1EYBHuLAnEZzpIvqACn0quGYHLE1Q_JqToiap4-hWExU6hLK48-AdsP2CBioa8a9RRjNPuj_EyEEsil4zK3kcLn0SHGZSsq7wlYEc3o2MOIDUN2DoMvePulGJDeRiyn5gb7O11GT5dL-dHnccim-mH0UncUT7ABS65g7NxBfOLCBEdoN8bcAXMLzKg57EQeNSUTZSorxPsuuVnucY0BOnY0njys3t59-OviahQDGIxQAvhSuL-_p9IQPPRzgDICIHX3fdkZLATsrqviQZN1-f3gkDl3Td?c=naver.search.pc.more.plsearch&t=0"
+          },
+          {
+            "title": "금융상품",
+            "url": "https://ader.naver.com/v1/XQV2Ezs6dyjkdWKyFbP8JAZiYJHUd9kAcLDS_iYnPbkfnS9VVnmIXMOTEsKjLecJGM5xzTZMHR5XxU1TE5V_bs7vFkv_S535pBuiOAS-lCi7mwIvJ8JsazX8CSh7VxNkekpZlCFK7JEwcH0PhdgpdLBuNqdklIWpVK1z3l1yAwbpDM9JEFyrnf4TVCFZ2Tmwci_jfVLYy8dI8dFz9YTvAdNXRbDnfrK-jvIFqEPw4zKpJFN76PP_KJtllwZCAkbADxcxYugaWOvgUr312LQx_f3LPXpugfQueJVzUFCAZJs4XvuhvyXRbxksmDBQuUtbKW5_N3An8pVPkQBOLxAlUxA6ldaMdiAEzvjnh3TgIJUEhKY8QnbSV_4TE7GItK9hOy22z0hg4cdcDh02ie5lLMDBF25Ou8ZQyJfCDiNwvhRAMPrUWA8MkPlAwZmPVEq0ViBG0gnyZUlPvn7NoO08qYFWoPyfZy315pNQroxJ7DusQr1P4AA9yRX7xdaGkHmA9CyA2CqzZEyL02Tkx3EUP2rzhb8uvTxTnrFrMJlK7H7_1IUbkh8MPL0b_-BjPRCtkB_-mlwphWhPjigBk76IX1UsTado0n1fMHQsxLiSNv6ZxEZgVkXKQOm-DD-hiUIf52CoT_O1S9qo37KDuXckf_vSjvwkA9YLHlcY4DRXsjyFS3iKE5qeLl89Th-SsZ_bq8wz_Hjcvlik59RodyPDbllTjZk0t4Dlq4z05raBtrZNHmyhJ9QeXg1jMdoxHoeL?c=naver.search.pc.more.plsearch&t=0"
+          }
+        ],
+        "imageSublinks": [],
+        "extraTitle": null,
+        "localImage": "screenshots/pwl_img_미래에셋증권_pc_1_20260922_vr3g.png"
+      }
+    ],
+    "refreshCount": 30,
+    "collectedAt": "2026-09-22T01:52:00.676Z"
+  },
+  {
+    "brand": "미래에셋증권",
+    "device": "mo",
+    "weekKey": "2026-09-W4",
+    "status": "collected",
+    "ads": [
+      {
+        "rank": 1,
+        "advertiserName": "미래에셋증권",
+        "displayUrl": "digital.securities.miraeasset.com/",
+        "title": "웰컴 투 미래에셋증권",
+        "description": "신규/휴면고객이라면 웰컴! 국내주식 수수료 90일 0원으로 부담없이 시작하자 첫 투자는 믿을 수 있는 미래에셋증권에서! 투자지원금&수수료 혜택 받고 시작하세요",
+        "adPeriod": "37~60개월",
+        "landingUrl": "http://digital.securities.miraeasset.com/",
+        "adId": "nad-a001-01-000000562606624",
+        "imageUrl": "https://searchad-phinf.pstatic.net/MjAyNjA1MjZfMjY0/MDAxNzc5NzgyMjE0Nzk5.Xp0UA8GTXYqS7gTfCEJFiFKvr8y51csVmiBPFu4BNg8g.0dkFA1ReY5hqHhGjdnLeEgdysIRGIz_v0EuS-t7t5I8g.PNG/609656-b9bbc597-6d38-4a55-a642-adac05ef7139.png?type=f174_174",
+        "sublinks": [],
+        "imageSublinks": [],
+        "extraTitle": null,
+        "localImage": "screenshots/pwl_img_미래에셋증권_mo_1_20260922_s9jz.png"
+      },
+      {
+        "rank": 1,
+        "advertiserName": "미래에셋증권",
+        "displayUrl": "digital.securities.miraeasset.com/",
+        "title": "투자지원금 2만원으로 시작 더 나은 미래를 위한 선택 90일 온라인수수료 무료",
+        "description": "수수료 혜택과 지원금 받고 시작하는 첫 투자! 미래에셋증권과 함께하세요",
+        "adPeriod": "37~60개월",
+        "landingUrl": "http://digital.securities.miraeasset.com/",
+        "adId": "nad-a001-01-000000562606624",
+        "imageUrl": "https://searchad-phinf.pstatic.net/MjAyNjA1MjZfMjY0/MDAxNzc5NzgyMjE0Nzk5.Xp0UA8GTXYqS7gTfCEJFiFKvr8y51csVmiBPFu4BNg8g.0dkFA1ReY5hqHhGjdnLeEgdysIRGIz_v0EuS-t7t5I8g.PNG/609656-b9bbc597-6d38-4a55-a642-adac05ef7139.png?type=f174_174",
+        "sublinks": [],
+        "imageSublinks": [],
+        "extraTitle": null,
+        "localImage": "screenshots/pwl_img_미래에셋증권_mo_1_20260922_zlrf.png"
+      },
+      {
+        "rank": 1,
+        "advertiserName": "미래에셋증권",
+        "displayUrl": "digital.securities.miraeasset.com/",
+        "title": "더 나은 미래를 위한 선택 투자지원금 2만원으로 시작",
+        "description": "신규/휴면고객이라면 웰컴! 국내주식 수수료 90일 0원으로 부담없이 시작하자 수수료 혜택과 지원금 받고 시작하는 첫 투자! 미래에셋증권과 함께하세요",
+        "adPeriod": "37~60개월",
+        "landingUrl": "http://digital.securities.miraeasset.com/",
+        "adId": "nad-a001-01-000000562606624",
+        "imageUrl": "https://searchad-phinf.pstatic.net/MjAyNjA1MjZfMjY0/MDAxNzc5NzgyMjE0Nzk5.Xp0UA8GTXYqS7gTfCEJFiFKvr8y51csVmiBPFu4BNg8g.0dkFA1ReY5hqHhGjdnLeEgdysIRGIz_v0EuS-t7t5I8g.PNG/609656-b9bbc597-6d38-4a55-a642-adac05ef7139.png?type=f174_174",
+        "sublinks": [],
+        "imageSublinks": [],
+        "extraTitle": null,
+        "localImage": "screenshots/pwl_img_미래에셋증권_mo_1_20260922_2zz7.png"
+      },
+      {
+        "rank": 1,
+        "advertiserName": "미래에셋증권",
+        "displayUrl": "digital.securities.miraeasset.com/",
+        "title": "지원금 받고 시작하자 더 나은 미래를 위한 선택 투자지원금 2만원으로 시작",
+        "description": "첫 투자는 믿을 수 있는 미래에셋증권에서! 투자지원금&수수료 혜택 받고 시작하세요 신규/휴면고객이라면 웰컴! 국내주식 수수료 90일 0원으로 부담없이 시작하자",
+        "adPeriod": "37~60개월",
+        "landingUrl": "http://digital.securities.miraeasset.com/",
+        "adId": "nad-a001-01-000000562606624",
+        "imageUrl": "https://searchad-phinf.pstatic.net/MjAyNjA1MjZfMjY0/MDAxNzc5NzgyMjE0Nzk5.Xp0UA8GTXYqS7gTfCEJFiFKvr8y51csVmiBPFu4BNg8g.0dkFA1ReY5hqHhGjdnLeEgdysIRGIz_v0EuS-t7t5I8g.PNG/609656-b9bbc597-6d38-4a55-a642-adac05ef7139.png?type=f174_174",
+        "sublinks": [],
+        "imageSublinks": [],
+        "extraTitle": null,
+        "localImage": "screenshots/pwl_img_미래에셋증권_mo_1_20260922_mjfr.png"
+      },
+      {
+        "rank": 1,
+        "advertiserName": "미래에셋증권",
+        "displayUrl": "digital.securities.miraeasset.com/",
+        "title": "웰컴 투 미래에셋증권 반가운 첫만남 설레는 첫투자 90일 온라인수수료 무료",
+        "description": "신규/휴면고객이라면 웰컴! 국내주식 수수료 90일 0원으로 부담없이 시작하자 신규고객이라면? 투자지원금 2만원 받고 설레는 첫 투자 시작하세요!",
+        "adPeriod": "37~60개월",
+        "landingUrl": "http://digital.securities.miraeasset.com/",
+        "adId": "nad-a001-01-000000562606624",
+        "imageUrl": "https://searchad-phinf.pstatic.net/MjAyNjA1MjZfMjY0/MDAxNzc5NzgyMjE0Nzk5.Xp0UA8GTXYqS7gTfCEJFiFKvr8y51csVmiBPFu4BNg8g.0dkFA1ReY5hqHhGjdnLeEgdysIRGIz_v0EuS-t7t5I8g.PNG/609656-b9bbc597-6d38-4a55-a642-adac05ef7139.png?type=f174_174",
+        "sublinks": [],
+        "imageSublinks": [],
+        "extraTitle": null,
+        "localImage": "screenshots/pwl_img_미래에셋증권_mo_1_20260922_l8bd.png"
+      },
+      {
+        "rank": 1,
+        "advertiserName": "미래에셋증권",
+        "displayUrl": "digital.securities.miraeasset.com/",
+        "title": "더 나은 미래를 위한 선택",
+        "description": "신규고객이라면? 투자지원금 2만원 받고 설레는 첫 투자 시작하세요! 수수료 혜택과 지원금 받고 시작하는 첫 투자! 미래에셋증권과 함께하세요",
+        "adPeriod": "37~60개월",
+        "landingUrl": "http://digital.securities.miraeasset.com/",
+        "adId": "nad-a001-01-000000562606624",
+        "imageUrl": "https://searchad-phinf.pstatic.net/MjAyNjA1MjZfMjY0/MDAxNzc5NzgyMjE0Nzk5.Xp0UA8GTXYqS7gTfCEJFiFKvr8y51csVmiBPFu4BNg8g.0dkFA1ReY5hqHhGjdnLeEgdysIRGIz_v0EuS-t7t5I8g.PNG/609656-b9bbc597-6d38-4a55-a642-adac05ef7139.png?type=f174_174",
+        "sublinks": [],
+        "imageSublinks": [],
+        "extraTitle": null,
+        "localImage": "screenshots/pwl_img_미래에셋증권_mo_1_20260922_o0n9.png"
+      },
+      {
+        "rank": 1,
+        "advertiserName": "미래에셋증권",
+        "displayUrl": "digital.securities.miraeasset.com/",
+        "title": "웰컴 투 미래에셋증권 투자지원금 2만원으로 시작 반가운 첫만남 설레는 첫투자",
+        "description": "수수료 혜택과 지원금 받고 시작하는 첫 투자! 미래에셋증권과 함께하세요",
+        "adPeriod": "37~60개월",
+        "landingUrl": "http://digital.securities.miraeasset.com/",
+        "adId": "nad-a001-01-000000562606624",
+        "imageUrl": "https://searchad-phinf.pstatic.net/MjAyNjA1MjZfMjY0/MDAxNzc5NzgyMjE0Nzk5.Xp0UA8GTXYqS7gTfCEJFiFKvr8y51csVmiBPFu4BNg8g.0dkFA1ReY5hqHhGjdnLeEgdysIRGIz_v0EuS-t7t5I8g.PNG/609656-b9bbc597-6d38-4a55-a642-adac05ef7139.png?type=f174_174",
+        "sublinks": [],
+        "imageSublinks": [],
+        "extraTitle": null,
+        "localImage": "screenshots/pwl_img_미래에셋증권_mo_1_20260922_r3wm.png"
+      },
+      {
+        "rank": 1,
+        "advertiserName": "미래에셋증권",
+        "displayUrl": "digital.securities.miraeasset.com/",
+        "title": "더 나은 미래를 위한 선택",
+        "description": "첫 투자는 믿을 수 있는 미래에셋증권에서! 투자지원금&수수료 혜택 받고 시작하세요",
+        "adPeriod": "37~60개월",
+        "landingUrl": "http://digital.securities.miraeasset.com/",
+        "adId": "nad-a001-01-000000562606624",
+        "imageUrl": "https://searchad-phinf.pstatic.net/MjAyNjA1MjZfMjY0/MDAxNzc5NzgyMjE0Nzk5.Xp0UA8GTXYqS7gTfCEJFiFKvr8y51csVmiBPFu4BNg8g.0dkFA1ReY5hqHhGjdnLeEgdysIRGIz_v0EuS-t7t5I8g.PNG/609656-b9bbc597-6d38-4a55-a642-adac05ef7139.png?type=f174_174",
+        "sublinks": [],
+        "imageSublinks": [],
+        "extraTitle": null,
+        "localImage": "screenshots/pwl_img_미래에셋증권_mo_1_20260922_37xb.png"
+      },
+      {
+        "rank": 1,
+        "advertiserName": "미래에셋증권",
+        "displayUrl": "digital.securities.miraeasset.com/",
+        "title": "90일 온라인수수료 무료 더 나은 미래를 위한 선택 투자지원금 2만원으로 시작",
+        "description": "신규/휴면고객이라면 웰컴! 국내주식 수수료 90일 0원으로 부담없이 시작하자",
+        "adPeriod": "37~60개월",
+        "landingUrl": "http://digital.securities.miraeasset.com/",
+        "adId": "nad-a001-01-000000562606624",
+        "imageUrl": "https://searchad-phinf.pstatic.net/MjAyNjA1MjZfMjY0/MDAxNzc5NzgyMjE0Nzk5.Xp0UA8GTXYqS7gTfCEJFiFKvr8y51csVmiBPFu4BNg8g.0dkFA1ReY5hqHhGjdnLeEgdysIRGIz_v0EuS-t7t5I8g.PNG/609656-b9bbc597-6d38-4a55-a642-adac05ef7139.png?type=f174_174",
+        "sublinks": [],
+        "imageSublinks": [],
+        "extraTitle": null,
+        "localImage": "screenshots/pwl_img_미래에셋증권_mo_1_20260922_967y.png"
+      },
+      {
+        "rank": 1,
+        "advertiserName": "미래에셋증권",
+        "displayUrl": "digital.securities.miraeasset.com/",
+        "title": "웰컴 투 미래에셋증권",
+        "description": "신규고객이라면? 투자지원금 2만원 받고 설레는 첫 투자 시작하세요! 첫 투자는 믿을 수 있는 미래에셋증권에서! 투자지원금&수수료 혜택 받고 시작하세요",
+        "adPeriod": "37~60개월",
+        "landingUrl": "http://digital.securities.miraeasset.com/",
+        "adId": "nad-a001-01-000000562606624",
+        "imageUrl": "https://searchad-phinf.pstatic.net/MjAyNjA1MjZfMjY0/MDAxNzc5NzgyMjE0Nzk5.Xp0UA8GTXYqS7gTfCEJFiFKvr8y51csVmiBPFu4BNg8g.0dkFA1ReY5hqHhGjdnLeEgdysIRGIz_v0EuS-t7t5I8g.PNG/609656-b9bbc597-6d38-4a55-a642-adac05ef7139.png?type=f174_174",
+        "sublinks": [],
+        "imageSublinks": [],
+        "extraTitle": null,
+        "localImage": "screenshots/pwl_img_미래에셋증권_mo_1_20260922_ydit.png"
+      }
+    ],
+    "refreshCount": 30,
+    "collectedAt": "2026-09-22T01:53:08.882Z"
+  },
+  {
+    "brand": "삼성증권",
+    "device": "pc",
+    "weekKey": "2026-09-W4",
+    "status": "collected",
+    "ads": [
+      {
+        "rank": 2,
+        "advertiserName": "삼성증권",
+        "displayUrl": "onestopsamsungpop.co.kr",
+        "title": "삼성증권 수수료 우대혜택 삼성증권 온라인 수수료 우대 삼성증권 거래수수료 우대",
+        "description": "삼성증권 신규,휴면 고객 모두! 국내주식 1년간 온라인거래수수료 우대 -12/31",
+        "adPeriod": "61개월 이상",
+        "landingUrl": "https://www.onestopsamsungpop.co.kr",
+        "adId": "nad-a001-01-000000546311537",
+        "imageUrl": "https://searchad-phinf.pstatic.net/MjAyMzA2MTRfMTU4/MDAxNjg2NzEwODU0MzQ2.T-xXYGDfLbSIVWsHRQv55LbVxfSE1_VA2FAwWM3M9F4g.gFTiN2H42mu7G4VLp8pBA0UTNoa9juyBZsx-RD-W-Rwg.JPEG/2007160-b7bb28c3-e6ee-446d-9422-91b474e74e0e.jpg",
+        "sublinks": [
+          {
+            "title": "mPOP",
+            "url": "https://ader.naver.com/v1/g01MYm73Epr1x3eqMXmv0PEhliu0-RP4acWYGBuTDyFynvaTCp7pr9Gtah8622cGnc84u_D7ELWXkUWis1KgoWklCn1FBBgq_nH1ogjMYFddA_-Jl5y4V6e_k5pexR2DSs3XFwYZsU4VTUAoCoratpWZJ4x1blCFUWrSOhGSWxssVs7Fh0F0D0gQn96JwCux-MdE2ix5JC6z2dMkvdxRElumU8yWd_d2CbMGB7SFWry_rpO63HsFGN-HAb9BEOOH_PEJLRUAHeGab946aLkjCNJzsPpe6bANdTIVIqVC1-dW-Cz6IcdUHafFtdOaL5YiViplzIrqKWRCVPQCltYnPCN3TwyFTbq6m8wMyhSN_1JBjp1PndDvNJzxXZdNpBTE0bcdqqPEJBg1KDOa1qvV-6d6Kk7dPAALHWKVJCfJPA5acTT6k85Vmvnfi3GdYbwl8DjqJkS2kuix9ryyc8EiKQ==?c=naver.search.pc.more.plsearch&t=0"
+          },
+          {
+            "title": "주식투자",
+            "url": "https://ader.naver.com/v1/aLVRPla-V3mpsut1bzsK41pEh76W1O5UCyCX_ooLZZiUsSK3ehZlviyxHzzg0DNeBGBA0RDUSmaBZmuB1U2y-sLwOJVqc_DZ9hWX7izJN_1xxfi3UH94mVcw-mGquHEuH7I9ZL69gvTayRslBgsvtzLD7oVTfsP1_BQhH5HgI9tygfEe3-IsWSpAKSy3AKABhg6BbQ70MBvu5EoKtY0WXZMQ4HEPGj3PYBHGwM2suNw0yC86pZ6OL1MVg1v1ds1KciUCUZT4aicZZTTu7qOMW1Z-I4F0JoTBaUFDDzmotN2hfPfbc6Ogq0g6GeH15paOAPs2SZGHvTsEnAO981P6lIDD9BFNGtVfGJEqcwnkysXbuDlD-WRc5_y6jGgKPgeC02sVULKyIHauYY8FCs7Yn-Fuzdf6n-HBloxtu7gNocnYQf_4OJmGI6hTLImrfyQBeCzww7xzvq0yUxrhFg1Oc1x0twfjshns50wA8UvbUZo=?c=naver.search.pc.more.plsearch&t=0"
+          },
+          {
+            "title": "삼성증권 팁",
+            "url": "https://ader.naver.com/v1/aLVRPla-V3mpsut1bzsK49VakycZA-ts3dnefMMIhA1K5QClDPcxf2l8eNcgINtx7-P8sAzj2uKr4QiAYh32R-p418pTja9jLgNt4XFYbHpMNlRgErxnt2knmqdGXPZvroyzjTKPFQlUIbaBlPIaNr7iIKTqTnPeweY7XgXJnyTLRmsNpRcsdhchBqW9OVN2F9LCCEqcXabfpzIyC97n9XFMjizhgMxsRjpABg19M0T9To8Zv-WcM7-Poqo_QM4Oh0E-Nyn7Sm0vHvK6io-ygofRDnVCGO5joOU2AI6JGOi8ApLUYg89IYIg-ivRtz-j0NXv9D7YUzgmm539SIrITHGEnEnTWwm6M7HOgYU35gpv3cqILM0zoxPaWlbj_XLFwny7mV-zMxXOYlYXdAYE8mjz8GCTiE3jcvDF7gGos_acagiZcWdfBt9tWn-MlKBrfzDMWtwqCnzAbd0vX0sOUeUEr_z5u4ad7XTxll1yGDo8XuRdhtU7_YrVDUigx-Jn?c=naver.search.pc.more.plsearch&t=0"
+          },
+          {
+            "title": "앱다운로드",
+            "url": "https://ader.naver.com/v1/CUvCRRV-OfhzSQslfgDNKxSUDeb0GOCFTK4aUEwDD7D3AJB3fEGmJSzcxsijfIOmnonUsaQJVKzhery5OIjqT5XUSoLkXtmD4P-QGWR6bbriWzmunJDs7ngbPFMAW-hfqnPdIDADjhfHZZEsQkhljGsDfCotl9E0YzqktrQyBKu5Od0smRQ068tK6YT0-UpqmkjnZcl8poy79EUhlo6dd4oCmqkrz8uuhlTmXNk23gjd_u21n-02X6fI5swoV0IBSY2VrOPfZXOSEQaTy3ACFURPQoftHwleQHSBGqsm-6MckgUjt0FaFGb13VnYlGGKblH9NhaouHHuFLcI_ZYvWQJeIjPxxBfZsaXGE4le_Ezjb_G1pC-2NRiLsxNbTcCLm1gzGlHAI9FcFZPbkeb-MYfFJfUu3fMwc0vwrGVquqElROdi5z-R0djmBnoDMqzEUr75qzURbRUM16vlNR05QwtgJo7aWW86EW6xM_2NOFc=?c=naver.search.pc.more.plsearch&t=0"
+          }
+        ],
+        "imageSublinks": [],
+        "extraTitle": {
+          "badge": "이벤트",
+          "text": "첫거래 혜택 받으러 가기",
+          "url": "https://ader.naver.com/v1/lYlAcz0_CO4U5d5jEgOIQpcxX9GInAX3TcVfmcCpTK6y8tNQOyy0Hdp_6Ye6zjtsACG9XuG-btKFSArCrBHQ_Nd5W5OtzlthO8gxnt80OGfldr954KUBv4KbR-u0CuIIjFDSV1CHN6R7BEu45r0LnC3shaeUnTYkx6FU0W95_Vo2TR6rhfkgLxP0gwHLNtcttVg6Mesutwhuyp1pMJBaMjn7q_bpHOzI8fVziy7iFK6TkT1LFj_8HsAsW44ZuJWV-mqbZQ7OqVnr5tKQd3p0Lm70zPAECbCHiYEzj0rMmS9LPFxVb4_pJbt0aHW3_61kIa_BwYhCbKOUjTayKKqyonPQQKTldkLla0i_FhRRd5sIhCfjDj2bh1ytIjyhbIig9dKz45CRMXN2uVzALBjkptlfc-HUEWZh3DPV3ZbeiPwbKi0vSzKssSlUIVanTcRNbij2n4ljhgUxpfsZ_6hOzt0h1EvLlzfE2L1bzlp_KE8cavf01WLpeBhHFEtGtANP?c=naver.search.pc.more.plsearch&t=0"
+        },
+        "localImage": "screenshots/pwl_img_삼성증권_pc_2_20260922_hxn1.jpg"
+      },
+      {
+        "rank": 2,
+        "advertiserName": "삼성증권",
+        "displayUrl": "onestopsamsungpop.co.kr",
+        "title": "삼성증권 수수료 우대혜택 삼성증권 온라인 수수료 우대",
+        "description": "삼성증권 신규,휴면 고객 모두! 국내주식 1년간 온라인거래수수료 우대 -12/31 삼성증권에서 1년간 온라인 거래 수수료 우대로 국내주식 투자 시작하세요!",
+        "adPeriod": "61개월 이상",
+        "landingUrl": "https://www.onestopsamsungpop.co.kr",
+        "adId": "nad-a001-01-000000546311537",
+        "imageUrl": "https://searchad-phinf.pstatic.net/MjAyMzA0MDVfNTcg/MDAxNjgwNjYwOTQxMzEx.X1gBDVK18QG1qn3AvnVsmQZFF6sKbMnUPuAvfqCgrCAg.Hic4e8Sb6cob3qlYxXTeg-spo-Wzc3BxgekLDxUqefog.JPEG/2007160-a7a11766-655e-469d-854f-87c350d0190e.jpg",
+        "sublinks": [
+          {
+            "title": "mPOP",
+            "url": "https://ader.naver.com/v1/CNoz5mhFch6_pl4diJd-OAt_K8JaQVm3hSBlTS-6K_P28KKPvA49gM2HbdoPLcJtVK2g5OS4SsQKC321v9QsAeRYNC6Hw1MzVJmtKH_xr_oFhrZT4i_Kfu4X73m--twBe4QR5GmcAjxYolpxHKtrRCnvYN441GbwIehFq3LzOO5Yk8UmDXmsJF5_wnjHeRmdhclozXiRYrcqKxMpGsLDTE3gku_bNofQwDnxjX2R51Rj5APOIjStRj7YFZ397HOjlPz-_IHJo60ETmYu5IvZKVZs2teLJzycqDYEVDfrgFl23-d9T1NeL82pCLSHPnJ1LCQRiW7pVJ4VT1ZVeFAmx53jRTj3VvypUnHsJt7JIcrmFEYVgX82Ggef8CXQ4XBMceQJLD9HF5HxL4HOKdDGjKvWmmq4QexmSYZooOxRhUu4-Dx3VKkHF9KGJRFydVw6N4wJuu-JoQPsYmaX4XJ5dw==?c=naver.search.pc.more.plsearch&t=0"
+          },
+          {
+            "title": "주식투자",
+            "url": "https://ader.naver.com/v1/aLVRPla-V3mpsut1bzsK4wPlc0otRlUyPciBa8KibDKRIxlZtTeSYmLuLGwV99fs1k1ikOWHdcXanF3HEcM5MrFBxeasDBwEIJ2x15kRCp4aUGxAvivNiIJGCEMQZjbU-Lm3WGXcmq-rJr7w2mBaNxXz3CyLY4J_pS7xgwl5I7XiX2ViEkyxsK3MG9Qf1O6InIuxMEDCr2OjQKIUhNfjrskarJc8CvfUpMEGabCVLE3cAi-65yQ_EGXiOwTJdBhQ9s8wM7Ve0Hpv9JDPLwYVFgSBMEhRxD1WV5TebBIZ5QxAcQohabBY1_OV4fGDUSevHi97Vp7n8mYIiNJ4ZpoONXPNHWFaJ8Lub6mBOyHl5FbfBxFuCpIXCMggxxjza6j1OxtETAkZR_Q3vKK97larf7XMIQhgxfOn6PITHPkuZq9hfWmY6AAOoa8hDt_jwhPqDOi7mhTvujRxNSN4zQiT4QhntAuIe6HTQKv_TsBBJ-M=?c=naver.search.pc.more.plsearch&t=0"
+          },
+          {
+            "title": "삼성증권 팁",
+            "url": "https://ader.naver.com/v1/aRzD7dWtj-AgLEe-hACa9jESxxbY92TURD32VfWvdN-7Xj4ogHWY4GjIKD-RLB5JyFhd9iDKAHxNbvdJbbSsxZ8BSh8m6zKoWZYCKz0uNipnyGomi9fprD03hTtkOLnQrL0qJca9G32IzmYyqF0dqXtbCITJIB-LSaKS95O6jA4lzpktY6v2NDWxu6Hf29QlgNYB2MlDLaCA4jPO1L_Fb-g0Jp68ugfagkVH4yuq2znhZPInKhdno-RZ4XM0OZ-QUXZu-IwUFF3KHwXP6H76FCTw3_xY9jbe53g0owIkRrn70rEctq0LkOjCqLWlRfiIBCZcgMrCbOTxvYKq3QUor1D5L8EzeSD2a90p-IZ4l05ypc1iNwwPZy2cq6Ub_0RTT87iLNmoMHcb8LsHiYLXWveApQV0cVoy8pa_xjn6hQzPKhC1jTfK9ipkaqQbBHnDbC9yz-SeR4pOq0q6Lj0X20Gw6fkEXNf2Xprb0FFWNzDI4cbYD12BemYF0GJmoJC6?c=naver.search.pc.more.plsearch&t=0"
+          },
+          {
+            "title": "앱다운로드",
+            "url": "https://ader.naver.com/v1/aLVRPla-V3mpsut1bzsK4yr68zMCX0GjwSQJqUVZL5qg8KbOvBW9NaXJBj9jVAiI7LuWyWGRO8kJg0cehy9h3DKmoooeSvIayHcR2IaDUc7iG63JzRQEYWkxYzEEVElCX-EHiu9h9sEIlb_7z9yX_O-14pqQRJpH9M__YYNubYnnONgkNdlPBtFNxC5lnK23ypS7gDvd-KBNg11yKHc2LD-vdqN1_KnVno6y4hXSiAzgS2wiCpC6ZvwO-oMg4CgLsQnzhtWTgnYrym0WCBuPWGIF45KMbKkHQYNAxTcDp0lDCOr1AVqqU7wL1pEf9WosMLH2iqIahrkhqqdYob_QGgbMVKaZ1FaG3SRw0B3WRCZER157mnmb_Qh3xJ6rXcK_mMt9vv8sGbLKIkHHJgn3u7yPOBsxeIRwVnBGvw_AG35UqPQ2SEwNzp893OW2xRzqYga77ns9TFKPCDkZHnPTPhSnS57N8j85LL6q_d_1A_b-e0TKPAvZLRW9mXmlRhx8?c=naver.search.pc.more.plsearch&t=0"
+          }
+        ],
+        "imageSublinks": [],
+        "extraTitle": {
+          "badge": "이벤트",
+          "text": "첫거래 혜택 받으러 가기",
+          "url": "https://ader.naver.com/v1/2uPpM18kcAKj-BOKfKqB30JL4hxpDoeXDPGAPfcjS1WQjag8Zgmil_buZY2jCBUF9tq0oysy1u7P8IT3YJBm4zhURcWa0a-yh4ckdmbuzsSJ55QnQnDYVQw8t-W5OtWRx5gQWUfD7MkTcHgrytXu5arRAQp1i59gEKmZA09CeBdf0Y5L7quAhWnLdE4xtQAGQZ8_PiM9AloI2JcWCwT0pkFreEAjJ7cwxa4KFSN2WU3x2CgRx-UVJGENdgThJ2oT6XEc487i3MefIpbUIkOIuxuKIYYqkZguPk4kTotUo7cZmBi50HSRFc_b_LYhhmvf-Czx5wIpfd7PQeSRwCv1JPNUfIkR3NY0inxmTA1o9Rf-CUxxHFDChu3yYc-YC5AbpOhRtrNTEWHx4-kmKqY8QoLdRTSg16jOpKrgLTlmdYThtfo3gRrZ1QyNrMNtJ6FjnshLPnw2rJLIoSxuca79KPpcdC_hEj0whii-odfmNmMAws30FyAsp6J6e1vVORQw?c=naver.search.pc.more.plsearch&t=0"
+        },
+        "localImage": "screenshots/pwl_img_삼성증권_pc_2_20260922_eobe.jpg"
+      },
+      {
+        "rank": 2,
+        "advertiserName": "삼성증권",
+        "displayUrl": "onestopsamsungpop.co.kr",
+        "title": "삼성증권 수수료 우대혜택 국내주식도 역시 삼성증권 삼성증권 수수료 1년 우대",
+        "description": "삼성증권 신규,휴면 고객 모두! 국내주식 1년간 온라인거래수수료 우대 -12/31 처음이거나 오랜만이라면? 1년간 국내주식 온라인 거래수수료 우대!",
+        "adPeriod": "61개월 이상",
+        "landingUrl": "https://www.onestopsamsungpop.co.kr",
+        "adId": "nad-a001-01-000000546311537",
+        "imageUrl": "https://searchad-phinf.pstatic.net/MjAyMzA2MTRfMTU4/MDAxNjg2NzEwODU0MzQ2.T-xXYGDfLbSIVWsHRQv55LbVxfSE1_VA2FAwWM3M9F4g.gFTiN2H42mu7G4VLp8pBA0UTNoa9juyBZsx-RD-W-Rwg.JPEG/2007160-b7bb28c3-e6ee-446d-9422-91b474e74e0e.jpg",
+        "sublinks": [
+          {
+            "title": "mPOP",
+            "url": "https://ader.naver.com/v1/_3nrdn7rlG6z7e3FnQRZxFk_4ONFSCjTyXCdQiHJyvHRNkFAY8wgh99ExIsEXluj5Fh6DCV_r9Qw0L4VowLpukltrTt0Btr4RFKhbmPrrUYfkIZTw7YCQRxV9ZHAlS9s2R2EGZ86H0dQ9fguZLoTQWqeWNQOk3rIfuY-BcjY5m6DXt1tjXK_m4B6f3NdcYwF3uzFCtCEpVko933ORgniF6gBoIvOr-OCGccB_559EfVF0HvN3E5n3-Hzb64c9TT3biMEke7DyNOgruNjstNCp883BA8y4rLpFyNhIAWo88jXAioSn7cFNSuOnzFghN5sz3u2BZwq5BeZRbUHeKz6xNKGgcSUycXJ7J55PYhMWQhX2ED4ID3xk-NUaMAf0CVSJeTbBjaZUQeVJhA-XRsI-Q2DeEZ4GzNk6NIcL_1mgl0uIhojnXqKaO9tP2YJaehmpn-hROgS7B1J5eFY2ApwZw==?c=naver.search.pc.more.plsearch&t=0"
+          },
+          {
+            "title": "주식투자",
+            "url": "https://ader.naver.com/v1/aLVRPla-V3mpsut1bzsK4zyC4RPVT9wzkftEqt42jqMJf4uTMwxMzOszza3CtwMdcXGcEvtLQjlH6EpQztUexEn8K-9emB_yLFyYn_5WRMqIdMZDcA332PrBVxHf1cy8S_mxm5w98oRLq_2X7ebfB7mNrTczG170Ui9cxvlzreddceNgpQXFJThceacD1MPOUs7ReMSawOumEZfKpZtiyD6rymCrzdaYNhbwtlgBznOx-ZiYcKwUzrDCAIr8Iq4GZYBxeEREBQGyIaXUrU4Uexi0CQY3bJuxf48m5w74QndjZ6ir1RsDCyXBhjhnfvOEgYiqKjr3Qb8Sr_xcRnEKHN9yahPVvjKcNcVwlGrYSBTM0LH9Wx-wIvm6CcYsxSRZxQt-UG3Rrmr4DnkV5pdNGLOng032g-UFLWb-M7DTcyKHMLCT86inC5MHhQRgXpU2oEkgt1lJL-nbC0P3PQk0dTzCxYAw5lY2jf91Rgh1Fu4=?c=naver.search.pc.more.plsearch&t=0"
+          },
+          {
+            "title": "삼성증권 팁",
+            "url": "https://ader.naver.com/v1/53nxmhkPkW05v3cHdSKN-cj0DeVANMDohNz7emehjniHQOT4Zql4U8Gozsv0LNL_VpfoSCmndksDyuGKh2IOV-8irPdE6fIR2rFwHzRcCho-FL677xEdtaE2muGs1q3hETqSmg9Dz6M5sXr7Q48w9HRi4pQ9itntAyW3j3VyvbLE7tsvyERSwQDqBnGeKkjXi1qTd9FXeipTAAlMt-aOxlPHg_B-_TPZ-f2PN7RWASKeC5Zx_TgDUOTbEz97zxI5LIgFTyE_gX1jTQ3sFD8u1aWsSpF2op4kicn9wK3PVMEfEvnq0Xo0O-Ack0sWuTCUow3u5jvW8_IcTNCOXjBiOr9E0F6X4P9OeaQ9Z9LlR_FP7GSE7MAWQNZbDTFp17H5i8ZGuDan9IF2tcLbI302nbtoEwhMftVRq3plZkUOite3_FJW1OGRQeVKIo6wy8swgubK9od4g_9mJp42sabhO2WMOkPZZjkTTm4daTF-QtkM3MhkVyfVLV_9Ll5Kf1bL?c=naver.search.pc.more.plsearch&t=0"
+          },
+          {
+            "title": "앱다운로드",
+            "url": "https://ader.naver.com/v1/xPPLrdYkPQK4xAlYCJCKjtzBfSaIvAXzNKWavYOj5QxhzVjTgMDtU-geGH02qaRyA8JR1icMn7Tq8FU60HQe5ThQDpUnn4gufraGJFBs0o0VckQiWG6W31TGlT2Tm90-iEesV_nv1B1IEiMt26T2ijOw0s_ryzbc6VE1-2ScnLBB59uHHSTAxjfZnINAmX24EnrHMZ3paf-V_8mY8I-IGryGenpC3azNqv8QuTZQTEUMcE5B8VtHqEhnvmEroVYywu4XqwIYwwAX4J0l2-xRJkm4NmQHfKwiZ9-9nY8_b6G7dB4wTNVWYm8Cmw5RIGuF9RUf6R0N2RFYCn0ZO3aW8dWVZNr7XmJ2eW9jHgr3ZKmJUs0s4gx60395xo1-WXgz4ZDhdJV6Qfe7yFyLF84glk_7t5_JFEVibH6KsOjvwUM_r0KU6_xELbkLf-xnIy8qtv-W9LylnhUrlRtO5kGkDb0qAQCWITuoVWqCHsAjz7M=?c=naver.search.pc.more.plsearch&t=0"
+          }
+        ],
+        "imageSublinks": [],
+        "extraTitle": {
+          "badge": "이벤트",
+          "text": "첫거래 혜택 받으러 가기",
+          "url": "https://ader.naver.com/v1/Q2-VcQk8Nk3uQHca6jqmyoL9fzDXuH_bzRLuZBaM1R95Fo53MSoaKEudg2INrYhqtF6jLNrdIjRtMKEPTerFBaJu3UT2A2fnbPT5g9OvdZCvQWcvu3k9uS7uLpwVd7ABg9FUamkMZyHYmQ-JqCLn0tbqDe0EUbZA1bxS7ExWgY1Vuk1S-nhATbPi0_V9nDmjIh4hi16okzYjHVdbhuOIhCuumJvI3tBWAh1Xft204N4oOGIaOFa1v8k_lsYYCxu0qMQq8E0LruVYnp0HhYIb6P8sKUmwKuRGygjvel1DvlDYr4kKLdUZ-JBF7x8JnQE0LFaE2wpbPHzSoTi9q2wcS9-3Zc_in80WemhAxEm8hCyzrDbFyNn9ABS4JymyAL6AR-pDdFJ-Yx7-HCgq6IP_uTMr-7UKh0diGRug55dXyi4rFcAxnz0RF7KBVrkd77EGAJilbo6I89pdLrj3p_vK2oyJF5PxiTq3_7jw7wxHOcQ1QpT1c3qP2_-rwUXg_-KP?c=naver.search.pc.more.plsearch&t=0"
+        },
+        "localImage": "screenshots/pwl_img_삼성증권_pc_2_20260922_qxpx.jpg"
+      },
+      {
+        "rank": 2,
+        "advertiserName": "삼성증권",
+        "displayUrl": "onestopsamsungpop.co.kr",
+        "title": "삼성증권 수수료 우대혜택 국내주식도 역시 삼성증권 삼성증권 거래수수료 우대",
+        "description": "삼성증권 신규,휴면 고객 모두! 국내주식 1년간 온라인거래수수료 우대 -12/31 삼성증권에서 1년간 온라인 거래 수수료 우대로 국내주식 투자 시작하세요!",
+        "adPeriod": "61개월 이상",
+        "landingUrl": "https://www.onestopsamsungpop.co.kr",
+        "adId": "nad-a001-01-000000546311537",
+        "imageUrl": "https://searchad-phinf.pstatic.net/MjAyMzA0MDVfNTcg/MDAxNjgwNjYwOTQxMzEx.X1gBDVK18QG1qn3AvnVsmQZFF6sKbMnUPuAvfqCgrCAg.Hic4e8Sb6cob3qlYxXTeg-spo-Wzc3BxgekLDxUqefog.JPEG/2007160-a7a11766-655e-469d-854f-87c350d0190e.jpg",
+        "sublinks": [
+          {
+            "title": "mPOP",
+            "url": "https://ader.naver.com/v1/CNoz5mhFch6_pl4diJd-OInrMLBD6IONARveqejPQqEQwq7AOrkLVBpN7MSlK8aJZlMS59bMeWu8LAMGYBLIEeO8qK8yOohDBbmOvmCg5UdjD4udbf3JSfteciiYApSltZJPKsZxqeVrFFvEwLmjNCjrawv9P6eXlnzjlXHTEMtXs6fK1jr4XBO4f1Y1aEy4LwHPWWpUmMx-kbbQd7Chk6f_sPXho-5DEd-sgrDAz-akyRDpmKGBsx_3LqgYtYSa4Ny0DwR-ErIw92759l5gKhxkNhBnUZlrNTYlsEZW9bDBHDVU5pgJR255Stg_RM8LMVYP66w_sa5K-Q41o1McVqtVLKp1QqJOKhItLKyWkVpsToo1fOQM36J2xwbkqWpNf-8OAvWy9xCflqVmymAECxfyp_UH6CYl2K1mrHJpRrGcKHIysbQP19JL9lMMAhVBEblzDFYQtc216zZTqYB0kg==?c=naver.search.pc.more.plsearch&t=0"
+          },
+          {
+            "title": "주식투자",
+            "url": "https://ader.naver.com/v1/aLVRPla-V3mpsut1bzsK4yWrEoScleAfXKJs3ZGgUdO-dhBzXzmI1vkb_AxNpPzGg88Qh4MpOWHGFHFSr-AKqnZb3vc9XB4qyzj9RCdMnbVz-HCHZqQnKvug-aa6nYiiNat2uXOwZi1c6BzuZfBOMjK68fdLrRGiUv5ArCRbravKu1DVumisrJuzftF2GsPl83PYHBo8AkMzfxeCQlhHrtEaNyArHfkPorzG3nLsbc48ADYnOTxH7AOaSrzxvYyhcOE_bfS1vhammIhIMWNIy6yAl4_KvVUtNr2g2S29gzeo24Fru28YPaaPbkuc9Yliybz2ecQZDRdxVC-FWy8_CbRc02npKqFZy0Gc7-y5lmx7MqzBuYKwtkO5d3ObyJueBT7gXOwiCkFVQG0pCOLmCoWqYNZhpqkX1UETWNn5XxJiBgre9TgqQyPRIhIFikGTtX5l4giySwe0a6goHFgJupMzKPgr2tntzjlIo0KiVGw=?c=naver.search.pc.more.plsearch&t=0"
+          },
+          {
+            "title": "삼성증권 팁",
+            "url": "https://ader.naver.com/v1/aLVRPla-V3mpsut1bzsK4xZ5Q52s9yR2onqug1nv_9g8d6iWP_OTj9_Jma0jVCbcBzm1TRazU-2kTpMLpHdirUloxVqXMRqJ4kDoDZgFixX7MWkzT61pqRIaBMG3WVWIvPuNcy3_29wchQyFv8S4jWTTIalASqchHBOMrS8wSvk63mAS7kR491P_CN8LEmiMbu6rsuyY_yvCUaahlI8U0YqmPhM8BEXj3YdHeQNtK3BuvZbXO2VbVZH6mK8wWpGeJkeVE1jwY5wUwkUZwuHA0eruO5TeyyurlY3CEq7NW9MKRZ4Oz06nrabcBZDV1Q3IEfq_i4Fp0GU7gNkSfRW59byQE_GZ_LqGCT15CERKNEfOvC4DCLtqkB3F4z2jvYISa2AQ__e1S5O87rzeGEaoj6kUZF9FCQIwaBz0X2nnNkEHDbsXR8ckmxJLtppCHQVNbD5u1Y9DlQr_FXU4q2tOKRQrHAQl9cdjJtosdL3ku1nhK9A3ERhbF_402qizvDUE?c=naver.search.pc.more.plsearch&t=0"
+          },
+          {
+            "title": "앱다운로드",
+            "url": "https://ader.naver.com/v1/rKKv4Cs1Ooloxch35JVxg2avRwbzK33PYKdQUTuWpZsaCxZSicqVVvTH58k7RhPlOzqfCm3fVkGFspBT_atS0WDDn3eRu8y3vOkYhL0ZxV68yxMKTCuvfKreQKp5QqwB0I2xNbk8znxLEnbdEaO2hOPnXUtTHTrukdh9EeHXsJxTdbRh8rnoZhFiZJd4x3ngU12iOYSVGpcUp20HW8geo4lj-xMcdyGSbvnZ6VrScQVFCq9pyWf2Eilc9QBHS9GfuMHeW3k88E_H7d_dZW9PxGZQg3kC5fk3-mTH42KIT4DRn-Hu9Lhe3NZGtQ15HbTIm8Ha2-OnrECm4jWl3DLMMh-vcHQxmUuMKcIxQe-47NoEqH7BsU8FVRCrwQKrMZdWEYAnCP_28B3z2D1lTuFSv-d2CWquOqH6exYG1tQAAhxVatT1dPnzZ0AaliqEB_TjmVl11SBZkKylQJGkngGzS5y6qvc7hv_aGmSSsRGwqT0=?c=naver.search.pc.more.plsearch&t=0"
+          }
+        ],
+        "imageSublinks": [],
+        "extraTitle": {
+          "badge": "이벤트",
+          "text": "첫거래 혜택 받으러 가기",
+          "url": "https://ader.naver.com/v1/IqmZdgn0yeIvE4zNVp61yNyJSkdtn5m5Es-QZapnBhkwEjH072NE2d0s3ND3J9H9QMeqe7uVSLWnCSUHHNL9iqFVRd02U-hjcxmgMNo3RdZAjqy78Uv9fmSFbEYaCtNvoHmD891Vpgr4sbF78X0KcpjmlFJRhaELV6wePusfih1eDa7kXrPUbIiuKRfqz5k9p1saJ4L0CQhOniFTSGAOD8jhSj6jzKOCEM9W2Itdok_khr9AjWFvwUWy7Ku2gGDlHyb1uvGWIJHKPE7kg681UP_aP2rWJqNvPTj2_evv_06FvsO9lzz2NQosp46jKxEZ-n6X3fWZ0LS7kA1aZdTaRlfM_NoABuZCDyj5t5ycOnIllNq8y2bo81V0CRn8_zn0haaqp2U0Lr-Uabj_k3vzahPtiTzTXbcFDncSjvdfwcJHuSJFUD-zctLiKqqSwkEFXF1S4MS8caxJVQ8iEDJPpRWvZ_sc__2z7pFY1_Dyeog=?c=naver.search.pc.more.plsearch&t=0"
+        },
+        "localImage": "screenshots/pwl_img_삼성증권_pc_2_20260922_lt1z.jpg"
+      },
+      {
+        "rank": 2,
+        "advertiserName": "삼성증권",
+        "displayUrl": "onestopsamsungpop.co.kr",
+        "title": "삼성증권 수수료 우대혜택 삼성증권 거래수수료 우대 삼성증권 수수료 1년 우대",
+        "description": "삼성증권 신규,휴면 고객 모두! 국내주식 1년간 온라인거래수수료 우대 -12/31 처음이거나 오랜만이라면? 1년간 국내주식 온라인 거래수수료 우대!",
+        "adPeriod": "61개월 이상",
+        "landingUrl": "https://www.onestopsamsungpop.co.kr",
+        "adId": "nad-a001-01-000000546311537",
+        "imageUrl": "https://searchad-phinf.pstatic.net/MjAyMzA0MDVfNTcg/MDAxNjgwNjYwOTQxMzEx.X1gBDVK18QG1qn3AvnVsmQZFF6sKbMnUPuAvfqCgrCAg.Hic4e8Sb6cob3qlYxXTeg-spo-Wzc3BxgekLDxUqefog.JPEG/2007160-a7a11766-655e-469d-854f-87c350d0190e.jpg",
+        "sublinks": [
+          {
+            "title": "mPOP",
+            "url": "https://ader.naver.com/v1/CNoz5mhFch6_pl4diJd-OHODpbnzALCuHvLs_T245eE_tz65e5-wpcjWLFtDH6apuEPy-71N7xXBnoSwx8M70QEFmCHQPgtE88lGu5q9tSfKjOHLCKSsN_2xTHp208qIbOR9VRgSDnLRaCARg_paRp8RO6hHeBypSao7N4JVGFrx7Ivrgbbn8Z76wmpvjynb3ix0efoV_No8I0kxXPOptpuEQLFxIGfKARLzmg-NX8yhPiBMcK3sxkObuHhWH0HgS5qBbxGK3tJbgQfRVlxjDaw7q6Dhm-Aop6l_ZYnuWnqdXAbgQWVBjfbKU9he9PwyRW6_ONkxarV4F_zS7XqaVyIJS5qmFO6GpmyB0il7Ry5-weEJwnea3rAQM0t8byrn_ehTd5F0Uy6vtv6boN9TG6mU5UlF4LdgWlUpyXvlBxIMFz9djzmkFuOSA7_ixsadb_J9XHSbODwbDWuTQ6HXGQ==?c=naver.search.pc.more.plsearch&t=0"
+          },
+          {
+            "title": "주식투자",
+            "url": "https://ader.naver.com/v1/aLVRPla-V3mpsut1bzsK42BdzJUJKwFLpdVdPT-siiC7flE_1WIKf7Stbimb0WSmUsYGuWG4vS2Hr1S33oUjZqxWxNhweCWGyahDhXHxJjEKZ4PKtUSEaqEYBZtMBIlOLIczuLzVru7crdV4w5CLivFO2Vf7k9xo6wt7R4ZEU5q4p8Ck2fp7NHfwcnn-n08j24IAyFfPXKwTnRG78IntBs942pgEe17Fd_COwkD46_1YVHLYmoRDAhHzjlN_A2ftXCrH4LLGDnaLwZSshcfbTSsCLpTfwfEgwt_XrjV9Am8KSU-qPoitNFdUgnl_5KoAbggn5K9J61ekUROkKDkiqs70qEFX5aRoOBN5KBaPcgSxeiuQ_4HgXm0ELmMLF6SztpKSSe2It_UHYNkUmnwuMdHjnOjeWsXFCYPGBBz757ayIXPedmie-xTjr2Eg-1qfN4jxX20kMvMFgaTSfic0YC0UsKU-xpKQ__n9m6iTvMs=?c=naver.search.pc.more.plsearch&t=0"
+          },
+          {
+            "title": "삼성증권 팁",
+            "url": "https://ader.naver.com/v1/PNPGr5dagSKoHaW8PIcp7rNMHAlo-uTxUhCxBQwJ0fq48K7msj-tnsL2axp4-wMXZdrDHpIX0vxVZqK6hl3_ODP1ibjyOVlBzGf7lc3OkEFmhulL9XKrJy6-rfMkGX0Hzb1TCaWwZg2ZTgUrp0dVSG8aRA2gA-mM3AN3MK2jgFZD_MYYpDxSCO3qHbsUkBETIGcm8zluhMumr4ROR7vC8mtEc5wkwpm3aHz8D9RR_XrKVC2hbaZLDugmEPlF27H7ydMcZ2FsuRkcT38t-gS1903nV1drOogH_pSJwGxZ3NOT3xK5E0qKkQM24c9-LuIVdz-d3Hs83egZ9xvnzIGS_nR2kfGEmdutKFwm5EeybF6wL1874mUUdulDGpC44_HvdWBwSsL7xm4qFOe1U5dg8U7t0cFgomTrxtc4Ntp3LS2W18cevJLc7jML4KHvJDIcYRUEm4tiGlzy5gpxaXVvq1TMG6tZjm6tEet4OUpI6A8b6FqjCZgWwVZ4PlG6foXo?c=naver.search.pc.more.plsearch&t=0"
+          },
+          {
+            "title": "앱다운로드",
+            "url": "https://ader.naver.com/v1/Cl3ndXykXOsq7E5X-7wiZidoyWxfYRlH2R4EdaOikO1HL-U4KJz1rT40FKNIsSOyV_ueoL7wzaHkrs1xpS41Fd5P2tzz__P6DBsFJFJSMTP4ygW9EaMWpzTSArfMu_b3xTL5BPlsN61vedGtYPOlnjznKoqo4AlMo6N7ZDx7VmWVeERluKEhzSt1x8SoyvW1x7xCW8Wyu0BziRVrU0MEfGvB7OHrA9OytBijIeiKYFAnwNIXwGPwpN6COFsQTuS7-A6PUceaI1NqFyjAkt1FhF8kev2izjJrwZHpTbgfgd5AQcwCZRrKE3myGhUB9A_Phn9C_yv9Sxwt63TV9sgplsVndNvS2FhY7AkzJWbDb9IlQJOLBuy6Jhy-txxyBzAl0mHKP7U7adeTlR2lmKSXAVclCzXZ6uJSBvnfkhMj67p7Bcx5vvPpAE2xwng7zqBPu46pWM0Z31OLmkAiwjiesFRvpCW8ZXhIDn-he-fjwA0=?c=naver.search.pc.more.plsearch&t=0"
+          }
+        ],
+        "imageSublinks": [],
+        "extraTitle": {
+          "badge": "이벤트",
+          "text": "첫거래 혜택 받으러 가기",
+          "url": "https://ader.naver.com/v1/lYlAcz0_CO4U5d5jEgOIQkjncCL1kw_truosRb4JCg0_fv0773pA7WphRsTV7irAaDLc7mYBm6EJExPe27-T1u8zRi_W2OEVapqB291m1z6fid2ACAq4ztiiKxr9kxF6n_IVQI-ZNgR5Cei-oQCjmXUalPDNutjU4jqkPjVaAjdI1-UVXX28vyxH6Ke47t4ZSTe8iaZ-pUcoStabpmz4i5-adJxOF-8KrFmOOoZmbYgL__k3rdfMHy6da-DTKT7zRUF211cpRxaO6s-3nwUGvXG7k7HwCqqwloGK6b9Mt9I8pL5dcQhhm9rhHx0z8ScuY9rZnRJLCq3xl0x3NDHkXzda0IAJTLqd777iVdn0NRC5FqFJD0FO_OyxJkIx3w1RrzbYF9gi8-abKHUz44nJpOHszSQuMXs4-QkCQvtHpqBHt-5dldsPqphdT0p4j7658x_I3_CSRzDoxbJV2LQ2nnbecobX_LsZoSmIkuMPxIwM64eu1SjIZGABRG4YUukK?c=naver.search.pc.more.plsearch&t=0"
+        },
+        "localImage": "screenshots/pwl_img_삼성증권_pc_2_20260922_44av.jpg"
+      },
+      {
+        "rank": 2,
+        "advertiserName": "삼성증권",
+        "displayUrl": "onestopsamsungpop.co.kr",
+        "title": "삼성증권 수수료 우대혜택 국내주식도 역시 삼성증권",
+        "description": "삼성증권 신규,휴면 고객 모두! 국내주식 1년간 온라인거래수수료 우대 -12/31 처음이거나 오랜만이라면? 1년간 국내주식 온라인 거래수수료 우대!",
+        "adPeriod": "61개월 이상",
+        "landingUrl": "https://www.onestopsamsungpop.co.kr",
+        "adId": "nad-a001-01-000000546311537",
+        "imageUrl": "https://searchad-phinf.pstatic.net/MjAyMzA0MDVfNTcg/MDAxNjgwNjYwOTQxMzEx.X1gBDVK18QG1qn3AvnVsmQZFF6sKbMnUPuAvfqCgrCAg.Hic4e8Sb6cob3qlYxXTeg-spo-Wzc3BxgekLDxUqefog.JPEG/2007160-a7a11766-655e-469d-854f-87c350d0190e.jpg",
+        "sublinks": [
+          {
+            "title": "mPOP",
+            "url": "https://ader.naver.com/v1/CNoz5mhFch6_pl4diJd-OExO2EfeICGesMvdxHPMxTgSvbD3J3ah2EKQr5clWwdmeqzSVXCWXvz40T-WZKEC4cyLhgX8p3d8kReaG9O0C2hOHzG-bpvOFBY6cqCisdejumymPmYr4Uwl1WakEdOsX1yQrgGV7-393jW7rfz1ns3OXjrbqa-5y-JwtPgaUKoTJTk8qFtiZsp1qwhvPYLdfDWcrQYQfbh50yLSmJIMmPJYvN1QCEbSKiYLgO4vpcnXtS97XtltUDkb4ezozRwx9T1MblyFwlTGzZVolkuJ1Lrnrm06SET8EvP4plecfESUrNZs7YvYw2stSNCRZCLdZoILhYLj8r3lFHx9sAUXgD4RehrxjKU0lnDctUiYt_KQXkF-winzGf7lKv8ukBmsIrEa35p6TNcp7hXdUmRsffta2MFUxxGo2yGXxvmqcI6IMd9RWY21AQHRyHHlLl3Cgg==?c=naver.search.pc.more.plsearch&t=0"
+          },
+          {
+            "title": "주식투자",
+            "url": "https://ader.naver.com/v1/fOJ50TptvZf-K6FkGd7PDi09qWxQbyIJCcHFG0jUXt9ATzHphEi5kHfOH10toFqTxkqr0LOEqyORFgbC9vzVTCKfQO9c8j_-kj_qYOBEIsCXuSs2jb_-0WHq1BGPGheSORwUYkR4ROjBkRuThiW_NMfHednFkazydHYNw45yrCcS4fz8KJxYiMXPeAZ8n00afovprJ1gjyq7piCjvNOyzK_Xkbgm3etzy0eXsI7dg9bI5tUK8TPDNf1wWY5FlLKCevywm7vvbh9s1QLyCtw2pHli3vathwTG6BvDRd27qdg8by-fwo-pFBzLuaLZNwKiCjvN3aQnLkH7J9TsNMa3oM6DoExaNM_SmjcLcFxI4X9oW_fbXVhVODoz20itPnbtwtSd9Wj_xkwd8UEWHX4ESB9JZEmCNGclsHJU_egrQU0G-CSwzLrfUXIc9N946YBlwUMz1tAkKq9q-UoDL9oAEDBC4pLFPiBvyRZbMhdVIpU=?c=naver.search.pc.more.plsearch&t=0"
+          },
+          {
+            "title": "삼성증권 팁",
+            "url": "https://ader.naver.com/v1/fOJ50TptvZf-K6FkGd7PDv-17JjqtSUPPUq9R3EGtOiyUpEHzgbl3DjnkfqgAnmCsIL8snyWgfr0g5Wh_qfc085uTTA4lZZFVMFdIZYYwdziXu7wrQUBFbet4XR7qYDJxcTAKVVy_GqYkAgzz_Zh3x2cNCPAB605CoKq6QE5M2gT6PcvsyQcpmhb6H5xw5nSCQMF2ftX7_EFq00o202iB3I4pIvpyqQBnSi40TwNo3pessHwA9mACOeK0VPS5Smz6q5nwAWMTKNiC9Adq4YP3tgn74hGazh807Rb8rIvlomSOxeMpjP4Yc2-s2P0IHfJQqpXvNx-SfP6ZOQgRseXHd55S1b2JB5UeHEhwqYczJOgo4YDiBfSir-B9uL2pqlELUQRoZodXcsT12C6NzUXkqIJrI125Y_VO-A_x2DP0QPDyaQtQEz5Y_NVY8jijlTDU-kVg7F4P8C8roPHiGMr0rHWBXu_Z64AZhicR6D0xFNHI0YzpFMkGtENAjvZYQRA?c=naver.search.pc.more.plsearch&t=0"
+          },
+          {
+            "title": "앱다운로드",
+            "url": "https://ader.naver.com/v1/rKKv4Cs1Ooloxch35JVxg8o1V5dDrUXTkY3bsgvVzt_eOiAZceQ50J84OJkGTd1FM__MkWNMNZD5N_YQjqbtgA1jomFaNPBYs_II_xWjGeQe4zb-rNoT2To2woFyRD2sTJSHcXlFOPV-XkvhAyEKjrC1FyUaiG-XfD8VCMqliEK6dbWgVNVni5YY2d9Oc9ShJIFWbhzGZPk7MCsZ-Vt4xjy-8t_zgbj0VVuspGQxOXeA66QKo-wnepk8tKZhgholIqppvqfgGwsTRXvgAyr5gPQ2jiSZ7V0MwhzbKgKSFRJb-EGfQwFF7vJaq8Pkd_rcxtVq-XMW3LG9B0LHcT6ITz5kgTdmZ2dCtuC75cMdyy5jIP4rnHmSeCj4fdag0JCvRS9kNrpCzQwp66hYP5QK4tP7cYCBj1elotQ3vZemyGVbT75Ko_bW4ca8ETIEsDDEVPcC8t1Iix-MEHEwO6jXao4-7R2xqqxWRS9pJNZMVXM=?c=naver.search.pc.more.plsearch&t=0"
+          }
+        ],
+        "imageSublinks": [],
+        "extraTitle": {
+          "badge": "이벤트",
+          "text": "첫거래 혜택 받으러 가기",
+          "url": "https://ader.naver.com/v1/tXCo6zWtDmQ7cSjPAJLdEbP--2eis6q948JwLwuAYvsOR1zRce1PfB4MsZgRW5YHNAzskv7QtrhF9Md5ig1UkdLJ5uUVq6FRwpH_qTzjVCd4Yi8NFa_eXyee3cbFzlGkZZcxzWedLm1UF8SrPFhRs0tsPlL3JRAIGVGsLy2v03Y7QMOIJ7TTwC0jmbkPrv1SCEy3JYXz8A8ZuVdcTOovDyrpl13Chi9aeqfGjxj9fXCvX6WqZuEoiFjg2AP1s_K1DOduqN8j2BvRiojVnxeHM1GfEtMASXNpYDdVTGPS34kUlV5xT3JY2SGyGjazdRwTkysO-YrP7kL3F_4qTRUPdS92-gVzBLwBVhlFBO_oJgDryVWsXS7pTAu9voD1Kwf_vvLjBfETE1gZye1vA2ZZJ-5qzWpa9t1SFPA-qMJKDXc91Er1wwzzMsRZ4UWn3xdgyxgg-DfMG94t97_BYx1BNVQztc14seV4eYiJlrcQX6I=?c=naver.search.pc.more.plsearch&t=0"
+        },
+        "localImage": "screenshots/pwl_img_삼성증권_pc_2_20260922_8c6m.jpg"
+      },
+      {
+        "rank": 2,
+        "advertiserName": "삼성증권",
+        "displayUrl": "onestopsamsungpop.co.kr",
+        "title": "삼성증권 수수료 우대혜택 삼성증권 수수료 1년 우대 삼성증권 온라인 수수료 우대",
+        "description": "삼성증권 신규,휴면 고객 모두! 국내주식 1년간 온라인거래수수료 우대 -12/31 처음이거나 오랜만이라면? 1년간 국내주식 온라인 거래수수료 우대!",
+        "adPeriod": "61개월 이상",
+        "landingUrl": "https://www.onestopsamsungpop.co.kr",
+        "adId": "nad-a001-01-000000546311537",
+        "imageUrl": "https://searchad-phinf.pstatic.net/MjAyMzA2MTRfMTU4/MDAxNjg2NzEwODU0MzQ2.T-xXYGDfLbSIVWsHRQv55LbVxfSE1_VA2FAwWM3M9F4g.gFTiN2H42mu7G4VLp8pBA0UTNoa9juyBZsx-RD-W-Rwg.JPEG/2007160-b7bb28c3-e6ee-446d-9422-91b474e74e0e.jpg",
+        "sublinks": [
+          {
+            "title": "mPOP",
+            "url": "https://ader.naver.com/v1/_3nrdn7rlG6z7e3FnQRZxNnuPtq3MOXw1AFNzYn9tSGr82_qSx3YmhtBUnWw5vWzlzaeUPQWbBajyWkGzqR1k3lQgGlP9H_h2Yv2np5QdLG2ilwwAUWpk3NKn3YWBFkIFSNlHOGgBUNTUc8-_DvdFCI26Os4DKhu1XvMC372FnxPgnipVNOs_sXAM8cj799nvyyt6yO9wp8DFtJgc6RJ7xIng2rOnuLoDRhV4yJQ2MlFbPtgtQPLneLKZIXblGLQ6r_4NBDzgrvTjpkcIkB6QdBSsS8SpmQG09txwhnpSchXfWc7H2A-wGybBifMiUlvtixBzUHlX7l8Fk7vbnJkGIVNe4D2WjSKoGiXdbJz_xBBtVh-Yd9Fz4wSz-rExZ7yux3i3FwRgwAE2ZaDwHI1AfsiGCzNCOfY0h6YlXFQSBFIstR0weJz8AqfJELtnQI4hG-XM12P_cbYjjIhHTCKfw==?c=naver.search.pc.more.plsearch&t=0"
+          },
+          {
+            "title": "주식투자",
+            "url": "https://ader.naver.com/v1/grxUokqJxe2ZbnboFWiCR1JOFOuMcon3AoJaQLqz2DKF1SQ3HetDUJzcdNbU5DkeJ6x7SYUKCZRkOT_4CJSeozfdn-Jxyt6b0Jz9GDhVEs5h4okKTqbd5il8NHNTQlS19AANC_9UmzLcXxxkHMsLgdA-NdLdNQ1Em5Y2W1sfd635rzhJhCzWf4szSI6I7GqdBzFJG4rNoH1kw-YLHZtx8izD84E_-V7BIliITc6lToWd-IX9PMqUEvTw2ZWZ55hIvJT0XiCnzg5y_Dl6P1o7on12VnL43RhTuKTK_I2_ZoXEPAzmKz9twHvAdyX7UbhIiPl9HoL9FEJd66rJ3aZ4j3KYuwUKgDA3OOzgJhPkykRy2gjuKC5ksw_jUay2T5IYsjKmYMDfkizIQXdU24A77VxFINjKmuUHXOOa5xxukekMApSugE2kQ7GI_fWUqi9__eE-jJdRkLGdhqEqb0xY3b7mQFJia1iRnVLcS6BUCW8=?c=naver.search.pc.more.plsearch&t=0"
+          },
+          {
+            "title": "삼성증권 팁",
+            "url": "https://ader.naver.com/v1/grxUokqJxe2ZbnboFWiCRz56G6NP0oSFX5W7CDhwSFoT-QgqdTtgNJEXiEFAIYUmrk84SxkQAMDql8o6C4blmiome0mF3HXeyk7tKTF_Suy78e8WEvThzH_5L8yOcM0Qe0EKQYDBXmH4EsEVQmKB-sPROLg5DuhRUc8V-k5lE8UYABqe6Voz2XLP6BGuKW1vFyLXqj3ITo-LlUQXk7z82NGqz3hKUzeQ7mnwOPhO4aBXEDwVf8GIzaFXHMyfdv2qcz2uf8Gcgnx4YsG338tQOxCQUYHEhfmv1BxvC3HIOX9JoWx44J8mvegJejDMbZuKTB0Bulxv8zp5xgYvB75BMS0Ahxgpt8yMRQg8-5A8UrtmfRlhJkg9WMQTYWiAZkondrS2KkwTNTsj7JgAEU_F_csuEDTSu56vekadui5sIQiXs1YiOUXRBUYqFKR75ZC1UaXEkcM50zAxdFQ9nbtq60uYg854PMiyTw6vCScZ8QGyIwMTAckg-UzTEUXxMZpG?c=naver.search.pc.more.plsearch&t=0"
+          },
+          {
+            "title": "앱다운로드",
+            "url": "https://ader.naver.com/v1/PNPGr5dagSKoHaW8PIcp7pn-F0rffBSdLd47MlB5PY8UZvRO3VCWPRqKoWyzLAFnZAOz0z5sYUs5Qpj5Jk4i5YGZ3LONfd9iPSo4pQy3yfpFCN5_1GIuq3vY6kgH2DmsmRlYKwSDhtNsttVTtpegHEfUnGmC2-TQqAcNq5svcY4UpWyNc3DzVUq68M9gO-wy-7IOxLS8KiazKMduWgHlJN0yHEbOt8nfaSZs-UqfwEF8k9cSpcyra2opdZx0VMFSLXV-ybMR3dJobPpSmStBKtLb6-Tt2vzXbysyNkC6DpPaYfU0TXTyoLbLqDOGBCmduJrEMY5dORGHwTKAoopHvf0CDU2q6f_kjSP0_wmGnQ_oU-iaVlvZ8aDwalMIR_ZIB5ld_B4oK-_FxIMm4qq1etUh2QDHnXwUK84ULGL5z_1d0PYpL44akOT4SUQ3p1G2R0YNNOhOiXlN_A7q_32Rv-xW1nOMXhgdZ0YmL8EFRjI=?c=naver.search.pc.more.plsearch&t=0"
+          }
+        ],
+        "imageSublinks": [],
+        "extraTitle": {
+          "badge": "이벤트",
+          "text": "첫거래 혜택 받으러 가기",
+          "url": "https://ader.naver.com/v1/qtorUt_RsJyMlHh8OoikYme5bNjVVcH2l1Aza34ewcsDK8Xj_n2A38JygPKuQgk6FkjCyyhlXnLcftOxTTxUCTCz7qlKMcuNX_YcB2ltIOz6sC4fXXYYp9_EN-cKtomN80cZr53Hg-lBZ7x5NC9CQjPtWnDJ_qX0gOybzx7ZPPhiYJaHYblJMqeGfKbq4P3oOyoCOcx-K_gg2gMGtkwiAbAPLqbjMmYKJ36ldw6hu-CpZVL36ZxJuVmB0yp9_mMVabOIV2S1OnGz5WFqadv3N0TmpP0GWvCM87cPPZK2OmKGV35IkmBTmefcRxQ7x0lKUw_Bod8M_IXDqWOIIMtsLWB9N36wOf9l2XjyFbj9OpNx7QrPopv10TGCFEqd4DSABCLmOAE8DoABVsU6EzweHkfY0yApMA2OKSnlBYv37L0lClY99nRXiZgG380Z4CqmRndA5v69ylpAjTooIa5mI1rNP6I4yOtg0HGvEFsKeug=?c=naver.search.pc.more.plsearch&t=0"
+        },
+        "localImage": "screenshots/pwl_img_삼성증권_pc_2_20260922_ihh1.jpg"
+      },
+      {
+        "rank": 2,
+        "advertiserName": "삼성증권",
+        "displayUrl": "onestopsamsungpop.co.kr",
+        "title": "삼성증권 수수료 우대혜택 삼성증권 온라인 수수료 우대 삼성증권 거래수수료 우대",
+        "description": "삼성증권 신규,휴면 고객 모두! 국내주식 1년간 온라인거래수수료 우대 -12/31 삼성증권에서 1년간 온라인 거래 수수료 우대로 국내주식 투자 시작하세요!",
+        "adPeriod": "61개월 이상",
+        "landingUrl": "https://www.onestopsamsungpop.co.kr",
+        "adId": "nad-a001-01-000000546311537",
+        "imageUrl": "https://searchad-phinf.pstatic.net/MjAyMzA0MDVfNTcg/MDAxNjgwNjYwOTQxMzEx.X1gBDVK18QG1qn3AvnVsmQZFF6sKbMnUPuAvfqCgrCAg.Hic4e8Sb6cob3qlYxXTeg-spo-Wzc3BxgekLDxUqefog.JPEG/2007160-a7a11766-655e-469d-854f-87c350d0190e.jpg",
+        "sublinks": [
+          {
+            "title": "mPOP",
+            "url": "https://ader.naver.com/v1/CNoz5mhFch6_pl4diJd-OIR5LZO_fOo9qDT9OsKO-kEb4BfBQTYHiMH5Z_1RUq_ZM7HU-Gxj_e7d1uPphu1pFYWd_HOUyE7V0iBAzWo0VtvY3obfNtzANBWxgrmp6Xw6EzDohrOLI14WoGvwamJXxyMGuhlqkP4ZH1IHWpnyWj78JPOuiL6PcjJKBzswqqUNRpnBdObOywTDuzcThHAaXPC7msawyMSzyM9ZWQC05bLsjKyOrcZM5StU7K9viw-ZMNOxFSk7gl2UOu4cfZeEAvaX2Prf2asFOKVeK0g8y8vGkNHBSMwtT81YjYQaa5fuuR3Co42kM0LsrOvhs0OuwmVtTOgAjAfUWd6T6QydjSukKHoXdWdMQZkr7-ThdUaqh6sqCR6gfB_nMgT1qIUJGGkfzUxvYtIOXL0iMECH3y6-imcw7yMR1xQnbulVKJQPbpQuSqoYI20TyLSFkSknHw==?c=naver.search.pc.more.plsearch&t=0"
+          },
+          {
+            "title": "주식투자",
+            "url": "https://ader.naver.com/v1/53nxmhkPkW05v3cHdSKN-ZvPRsS3bg-vS7xh5Ndx2PwuWxlyj-npuARBZJHFvc7LFl8Jc3yyB9ci_ivaOQD57B-Qh69F9MSzNnEWZ0lCq1wka6mW_RkfpnjVSZE5VMSt9fQDB8YbVvJE91v-AKJUuYO64GIWVT6Fd_DbCjsonAA6UyxBFWRzZngbdC4UiaIefXwNuO0v5xpiQftA717ZEjxHDS7MI8BHc1z01rJ4Mu4ELCmKw4ghZYGIPpPffMfD_0LLFzS5be8hbW1D6OfIWdw8Cm5tdN7780HGVNUETxq0DPnNHyA72O_YWNG116KZOr_NBVDMkveye7S36BBeAriN7D5MG7xoRn7wHGAKXuGtjmGNkvtFoJ1dPObfxiVqv_VNOdF8JbLJwkIvMnRvJ1to-3zYtDWW-U2dIIMpskdJeoArnRfzxK-j3lz6or-eyGqppSbM495zYcxsGDfHdxLzGvWAbEx1wIAh7bXM4No=?c=naver.search.pc.more.plsearch&t=0"
+          },
+          {
+            "title": "삼성증권 팁",
+            "url": "https://ader.naver.com/v1/53nxmhkPkW05v3cHdSKN-YwlxFk5wQBiCQg2VcwHdDuiJNHT0Jxtb0Njsb4VYJk1X67MJuDh6qGE5bWGyuzRqnjlpCq6s5xO-k2p_MfHHx8NkvS_RyH4v0xDkjq4egIA8bk0AsUZkHzn3Xk-ZyaQ1CBXc9iDYhM0NeFc42-CqYWrn1uqJ-WxRSjw5ycHm8DMxv40Qy7kCr1PtYElgabPghMjSnILjB-PeiG5Gi1SSEKJ7GTBbT54Ll1VbdDtQwl38ywAFMuomUf9z8QIfDwnQv_a8KMQDuZwR679zPj3BXIzpfOtuWrO02t3gLD1WuJdolzYsOEfEEnX0nVi55ctR-D0ooITEWYkwq9eFldaLT_6sZPKE45e0a_G6UTAJK1Cu2lU9ksKpPLCVEa9-iYGdXxnSMqxQY-L9rjBEJ-e9WQ3J6S4qJ7pE-rAQ1ZGqzOpX-8FDMln3WypP4Y3yanVD6Uq5rLzACjiLLobDYHCFeVBzkOX29jKcOmnNlGnY5wX?c=naver.search.pc.more.plsearch&t=0"
+          },
+          {
+            "title": "앱다운로드",
+            "url": "https://ader.naver.com/v1/Cl3ndXykXOsq7E5X-7wiZkHkvPUkoDq9ZjfSu6FxsKlwfvbaVRsa0-s9pip6dOM44BmpAPKbsOonZfCjcq3AquT7Na-_oc9AdaJ1YV2YrAcnrKTF4lmY-L4fgccIABSoSgMJpDBRxz_r8LoZpgpl-XxUhvKYLsr0OqXS1Ej7j64olD0eqimOb9HWyUhJZ1rLDQlSac1TSQAwbdns0snWh3z0iAG0rcuyU3crlnyojNi0MEae11hO-frYb1aXptewwiot6RYhXftWDQa3-fFArCvNWZjzLzEQT_gGFf2zMOh1RFSJc0Az7t0HNQ7vG7weuTWxQSf7DJQzm1hLkd1IZq9YHqZSsk43eLhHpngceNwNQeDfj0D8y_xeGYSYFPKoSVAis3WgUAOHZXrJL4gkAv8Z-osPR3_BUIwSxBHqWyj0JpSmfEXfFBH_fw8H2TCPkbr5KY1xImirSJg7PWQPOYJnt-34HbktUaL14komyNY=?c=naver.search.pc.more.plsearch&t=0"
+          }
+        ],
+        "imageSublinks": [],
+        "extraTitle": {
+          "badge": "이벤트",
+          "text": "첫거래 혜택 받으러 가기",
+          "url": "https://ader.naver.com/v1/2uPpM18kcAKj-BOKfKqB3wW7QBzFqvBNA9e1FW_XJBbzXdStZNIkbXkZ144r3z9yzZ2RtBKfkP1ELz8J16QG_CEcvVEn0dvaRnbSnxXCp9zsJoOih1FtRqIx67c32D54MsKC6SWVmOs5tohHxenoqV7psRVFfZfB1IqgMhrmjEKEC9rtZ7LQQs5EHafa55U9GmbklD0V5QbKr-ojpPPqIFlA8C5gh1GHhR37ueCuS81j725FatmJoFNA5SHpJaotjWFEJxit3DW_vWB5lvzHYrB4X2cvJ2v0BQpGvwzJAgeQLqNavtWiHX0JNkxxGEgE293t85vvH7feQBBZJ_EoLXSA0WpBPE6liGT_DW77XxMrglQVN62QByqwCnRiBCOUWCmZZJQkxQGz8jjcy0B78Aka3cF6fkyPpyPr3g99QrlTFkesa37oSwrWZYbCR064xzFfAppjEffUK6lnjLhj3W5NLkBLrPcEkg5jVp4Tgpc=?c=naver.search.pc.more.plsearch&t=0"
+        },
+        "localImage": "screenshots/pwl_img_삼성증권_pc_2_20260922_bx53.jpg"
+      },
+      {
+        "rank": 2,
+        "advertiserName": "삼성증권",
+        "displayUrl": "onestopsamsungpop.co.kr",
+        "title": "삼성증권 수수료 우대혜택 삼성증권 수수료 1년 우대 삼성증권 온라인 수수료 우대",
+        "description": "삼성증권 신규,휴면 고객 모두! 국내주식 1년간 온라인거래수수료 우대 -12/31 삼성증권에서 1년간 온라인 거래 수수료 우대로 국내주식 투자 시작하세요!",
+        "adPeriod": "61개월 이상",
+        "landingUrl": "https://www.onestopsamsungpop.co.kr",
+        "adId": "nad-a001-01-000000546311537",
+        "imageUrl": "https://searchad-phinf.pstatic.net/MjAyMzA2MTRfMTU4/MDAxNjg2NzEwODU0MzQ2.T-xXYGDfLbSIVWsHRQv55LbVxfSE1_VA2FAwWM3M9F4g.gFTiN2H42mu7G4VLp8pBA0UTNoa9juyBZsx-RD-W-Rwg.JPEG/2007160-b7bb28c3-e6ee-446d-9422-91b474e74e0e.jpg",
+        "sublinks": [
+          {
+            "title": "mPOP",
+            "url": "https://ader.naver.com/v1/CNoz5mhFch6_pl4diJd-OA8rMbbIhEngdVqPyW1z-319Ju4_ly6r-e69Bl8mgW3Fa60gV6Z7twMP1YytelD_e4UUeFX5j4yJujZVM1BhsUUzWuc2zr7zuq20Pl4tU8S_xARvrrCMlM6n99rFenL6_JH5HU8VuUh6ZJiFJyvHVEDiVKvHOKzo9msiGU_TxRZZ3J9TDTSA-lzgV7swjPFbuwF-Y-iDbsPCeNJfTrblm1sifD6Uqcry7sPiCzT8hdRu21WK-MoJRtnxk7IvWJQ97tOe-jN7ECLyXh0ZszM5rwZp8oTn8l8VI7dJTCbKrwuWHUAp8tZt3M5D3muin8bAr0JmPPyNp00bNGQfSD5zaFDwGLNA-sELolvVl55jk_cKrt6xPhUS9sEIl8Cn1LpcieHmZWXPxYegiilE-hUzq_Ig8itRttYVAIVmESFKx_ENmHB-uNAMuSshUDjjr0JLzw==?c=naver.search.pc.more.plsearch&t=0"
+          },
+          {
+            "title": "주식투자",
+            "url": "https://ader.naver.com/v1/rKKv4Cs1Ooloxch35JVxg2bm73iIwtX6qiRwPUdw2ZZZW3i_a-K6RJD09SF8-RcMLusenQ-LOCDS6V1pIkA2WFZH3KqBwRV30gqPRnEpwcLwyFSq95wJckOHi-Ivm_oB3KSumRBh_-LeoNyxL0mqcSdkgORYwaeQdKR6qKafldlDNmRWpzVLYxfVGhF4YrumETV-sM6Iv06tm2D7v1M_kbKZ9c8kR5QucSZlVpGXGO6Bq8km46uTlcQIaPqLrEwzVfTXcZ3K84eo8WyRNleVH2IM-txnSmsDYqd9KATfC26CgIND1UGXPLfVu5tLx90bMW0JfbUYrrSM9y16HCK6bloTJiyWi5GwamlD5mw-rvrmGdGriTR0Zna49smu26fbrr4rgirSjaVAj6XGVzrsSxlW2iUsb3UtNtNJXrDBD-YMrmO1wQOv8T4S8jFjv8v9KV0c_fEVbMrYuktuTLdOhBHkCU4oI_pxDzPsWwDF_YY=?c=naver.search.pc.more.plsearch&t=0"
+          },
+          {
+            "title": "삼성증권 팁",
+            "url": "https://ader.naver.com/v1/53nxmhkPkW05v3cHdSKN-ZKxuHF5WFziKOhTrnvNsdoKI7F0Rf9RrFDti4mAdeG3xwasQ04y1-2X1WEjAuluuZY0ZcB6k1NFlm0MOV3vbtbuDZ47DsoW2xtsBpvDdYhbAxQ41GkQgZ4B8utvXsVGbslKsTfAU_FOl1YQ0Gy_2HPa9xGu5vYvfM8h5J60KzjmP7OnyHOR0leDcrVNCSKI3dH_mBqvaPHJzfzoj2-Vi8Y9nKM58VjKZTrPQC6mhAr5ULD_QoHR4xEA2KwbVrY8WNqOZljcG2mQ0fWkkFFQ_sWYXc1eFjZ_3Xhl33RRcrPo94wTYhCcgzWMzWa5-o3jfnBUdzG4kTBtjD1tByyrmpiyEN2tfO9mPKVEqnJ_2r9qmGTn-iyCXqyELGdKiSh4KLD7dKs2lWVHsTRdyZkGDRfdMQpPJXLqtu_Rj4A3MnizVomWlBMpCsp11nvRKgfti5ezCs-qworDiaPpb-SagN98wlXCl7V6sGwfC3NZFGXT?c=naver.search.pc.more.plsearch&t=0"
+          },
+          {
+            "title": "앱다운로드",
+            "url": "https://ader.naver.com/v1/w0vNB9Eh48nJYRA5CabrcAOlHHCzkgYxVly1s_rtYGr7XKJl8wmcJqbA3me_nWsLfw_qSsPwe_J_4xBIQ2hukf3J5NFQNl9Eq3cndZEdVAtK_gc18iI0AItScHvoDD5ieGYaS_wnAlI2px5mcW5MhChEFLyxe5uXzcALsQDs_a11XrHGICpVrCAUfNqDv8Imydp6mAS46OuMpZUWGP9t7YilIN5CbwXhFtPVufAUteQ-sZYSc71bIYKxPqhYUfv8f5mBBO6tDAyDuvAPYxcOEzWmTDGE-2VVULZj0IFiUDdD7EI7oPpXkiHaWpCz2-wcdfXo_-Mus6nuiNoQooc8iTwX5CoafPBCQhMYZ9aegJFnCJSOCo0IZ4UhSPjG4EyAkieCeb9x0lcdY29G78LyBBTZtfQ9JK3BVTCJ230v1R7Hb5isENZ5ZPkugr-H5Ys92D7gOdq99eJNJzJ_7O7OpdHU-Gf8fXynaLFzqzHSnvo=?c=naver.search.pc.more.plsearch&t=0"
+          }
+        ],
+        "imageSublinks": [],
+        "extraTitle": {
+          "badge": "이벤트",
+          "text": "첫거래 혜택 받으러 가기",
+          "url": "https://ader.naver.com/v1/hhfFQ5V3mFjnG9BRGtUjFNYavhvWhkPszAJpz9rO6OwMaFqzigwO0Ab5Z05JlqwC1LIGeu6Rc-kG-O7UGtPaleZLnvSjSOXokK7tGpzaphbeX4pMsgE8HKZFwywsjKaksT8OU5z23Y62fqz-WUZt611lRtNlFTl8cI53aHcr1wDcOY12KjnTA-Yg6dMTstlY6dQNGqIFWMqvuHRzt_TxonJaKdcdveKD4yfoM0bS1K35IqXOgUHmTr9Up7O4UuyO17r4wtY8e8W62iReRrnyjx8KJ-5pNSw3kxCVRVLvWKwlopK6gDsIHX8HELh9E-2wYIsCHUMozm52DQ17LK_4tRUm4hAdS8kqw2-FxypHnqGOAs5W2fmDjBvjErI67PhZCiShyqXIthEu3IPPWQ33iO9OKF0kMt0yPbG_IdqcM1weNiHKy5atw-WH_KMpLl0lANalQVMA9WTigAjbMoETW474bM_NrT8g2bD-z7dNYRs=?c=naver.search.pc.more.plsearch&t=0"
+        },
+        "localImage": "screenshots/pwl_img_삼성증권_pc_2_20260922_v9m8.jpg"
+      },
+      {
+        "rank": 2,
+        "advertiserName": "삼성증권",
+        "displayUrl": "onestopsamsungpop.co.kr",
+        "title": "삼성증권 수수료 우대혜택 삼성증권 거래수수료 우대 삼성증권 온라인 수수료 우대",
+        "description": "삼성증권 신규,휴면 고객 모두! 국내주식 1년간 온라인거래수수료 우대 -12/31 삼성증권에서 1년간 온라인 거래 수수료 우대로 국내주식 투자 시작하세요!",
+        "adPeriod": "61개월 이상",
+        "landingUrl": "https://www.onestopsamsungpop.co.kr",
+        "adId": "nad-a001-01-000000546311537",
+        "imageUrl": "https://searchad-phinf.pstatic.net/MjAyMzA2MTRfMTU4/MDAxNjg2NzEwODU0MzQ2.T-xXYGDfLbSIVWsHRQv55LbVxfSE1_VA2FAwWM3M9F4g.gFTiN2H42mu7G4VLp8pBA0UTNoa9juyBZsx-RD-W-Rwg.JPEG/2007160-b7bb28c3-e6ee-446d-9422-91b474e74e0e.jpg",
+        "sublinks": [
+          {
+            "title": "mPOP",
+            "url": "https://ader.naver.com/v1/CNoz5mhFch6_pl4diJd-OEnGrEzH5Y8IYH8AY-yudFxY2n3793Mxd8YMBWIwz00whOy9RGUC_XxP57gpwP7TC89iPQd7lwyIPc2JsC5EMn2DznhbpKF_2VikTHbMNiBV9_MFhhwxUrwTEs7uE6ZWjlppT9sg-Gk7wyR-aSszqshjCcQOQ2pJfFo3kQf5g87DOQs0eSLYlr4W_Ete-IvLVe-DWE_d_-h6QfZbOczWuuPJrwbUkV22jn_54FSiDD0UCpUnwqKhia2TE388O5d6Yev2BnoQuBTQtDLNd0siIYl9t3W_CdD432X-prmkcpMCG-4QlqOiSOEl1b9Mi89c7P5b4YDStMy-CVt0U2CSDchJjJT8C6A2mdurEaszZaBE6gW7Ix5KZCue-E23FRcVV4poKAmNcZhsx85NmTIntXS2YU0vq-Mwo2huzPLXHtn8Yn7vI469MvdlxjtbBgRRGA==?c=naver.search.pc.more.plsearch&t=0"
+          },
+          {
+            "title": "주식투자",
+            "url": "https://ader.naver.com/v1/rKKv4Cs1Ooloxch35JVxg3o4oajya-1Z1rv_VmXEQNn7vUPcSCixXkQJ5pu0hXTqlm07TDzMiydVCM0ljd5tElYQXCpUH8Z_LsZzqI-bscZ__uCojnVG3ErYES4-7VRunG50pTWanoZrka-x6MIlEpHOOnSIn4IOD2exi2hceKK90w82mYNnt1P_8aFEeee55v7W9zXWDdA0zVRh7rUQjfOQa0k11sfRw1MTkwJ-2PRq1bdF6jHn_aRrujnAU8Z9xgyRLyOMRZHs3TDpx8VS6Us-2wXpMDMpCo_nVFctBFMSNiODm3Giu-ecTsBqyZ-oU_nrZioJP2cCF0F1zdpNvQ3UTNmOcvIao1wjJ4IxPE_ponvSU-WY0Ebo8wC444CWePTlps3rvU-YC8HW1AoUUkx5A4zX4af8Azt8IzCLImG3zfS4SHg1iPPmTJajbijLj2iJ0UN8AEnknJ50IW8mlwRK71tc1-TcNfYrYFR91Bs=?c=naver.search.pc.more.plsearch&t=0"
+          },
+          {
+            "title": "삼성증권 팁",
+            "url": "https://ader.naver.com/v1/PNPGr5dagSKoHaW8PIcp7rJifWZb9L3JA2avA7iZWSqZeZQQTv4CyDJZWva-BcBF4ycRzopaVGS1eZ_xJ8P7WGfqUYTz0_Wc8OTIWVyCDJ1GUCIdcOWxTfOFomXETEhpsdWxfXZTSZEjJ-zG6tSqQjsuH8y4Imj8wnu3Np7kzDJYtE7NG75jdBXeGvqrgzQL2Lr_Kyg6A9NEzu-eEg0MNCFNB6ydWJSYmArp_xXxhhK2KcmrLvBU_YqnMxxtfhg-FNIvKbkUd4EG8gVOSFzVXNGQkSAOkJV6mJTKWdtoqaRIjDbwzToRbIdKtiKtMW7gLdC74OoQNE7yVcF33Y8BAHyw4Y-ttrUgCceBfDd8s0cofbtBMgTrnwXYcZuyggC-HdWAkN4MOOOrSHkVo4hHUaPkjn_Fts1zAi54KNa9MALU_uevM4bAhpGyxfloDTBd1lyZUsTexOKoYlvZDuiFcIgeIX8Ez_HQ5Gg8HN_jEx3iotNw-jo7eB5rgalXR9Oh?c=naver.search.pc.more.plsearch&t=0"
+          },
+          {
+            "title": "앱다운로드",
+            "url": "https://ader.naver.com/v1/32Dfqnh7P2Zhteojv52mH0YRKGHP6szbVFwVjU7UtpZVKZrPwqhFQI5R_psHUFTk5PGV-mWeiIrlAfBsMUZCMiT2OknXK4ElhBiYSc_I_gjY__p7HstQAUm6f9jYy0KmrBEY89n-MQoOM3ArD-OGp704njMW4_E60oLKNHpaROweDsRM30eRTtxMdSwKVGNpc9MzKakpngo_ogugEFy0M8Iplssuz2watk_puq7Nz_SSK5QTTb_m_dxKFbCRW9bb4sz8MdmwT3G8XxvOmqdTV3nqCxJ4oMVQmTp1MK1Ub_Gt8rXhLC65jlsr3ncBcC7qJLBi2o3u_B7L5e4kaPHNm9SrFNq47ABIgrTLjox7tQbqA4wDLRsGO4oRu_ONZfiqwSYS8qNR2mn-7wRnL9ULtATS28oHZf6ROXIEPHYl1_c9HpI5mXfunu7nK46xZuCekDNeGKnebafbrk5ONuvOEOzDs64SuLqKFnZeqsDQdkY=?c=naver.search.pc.more.plsearch&t=0"
+          }
+        ],
+        "imageSublinks": [],
+        "extraTitle": {
+          "badge": "이벤트",
+          "text": "첫거래 혜택 받으러 가기",
+          "url": "https://ader.naver.com/v1/qtorUt_RsJyMlHh8OoikYtwhgekB--Da6Kv1fCuUJXyW4PRQYxgrUgRrYEzpFB0ZMrYhQzpEKoNBb3wQskA7zJu3VJ5KNrL8spBWcJ30MQ2G_ZprNY3SoQ1MlaWHQDLU98TqpLRxBz4bsJB-ZO2mZ7cmY5Ucf7pErylDd9AwpwiyOGDpoWOlgB2nBvtFvxI_53hYXz90d0ydHf1hEgzhlEC9OWt0Gy80xaWz-bzdIVhl5jyoOLiL4fV_-qSjKwCOl4M5-edJDQAprr4BAxmAUjZxm4qupqPI7sL-HLxR3mRCIAxkk1XDZ7Ve3EP8WNuI1Xeg5EKAtYOAt7ufa4nKl3tyot1mDGRRlowtCabAob9SOogHqz6iRLHqbTzC-poDPGPqlhTQejqGvg9i3fVThv7S21zfM-_mm2HcXnnpfp99CCSfLkd1tfTr9CR5l8WeoNYsA54Z71WQITVwhDTR_bOUPSbDUAUpOyN5eihApaU=?c=naver.search.pc.more.plsearch&t=0"
+        },
+        "localImage": "screenshots/pwl_img_삼성증권_pc_2_20260922_n1sx.jpg"
+      },
+      {
+        "rank": 2,
+        "advertiserName": "삼성증권",
+        "displayUrl": "onestopsamsungpop.co.kr",
+        "title": "삼성증권 수수료 우대혜택 삼성증권 수수료 1년 우대 삼성증권 온라인 수수료 우대",
+        "description": "삼성증권 신규,휴면 고객 모두! 국내주식 1년간 온라인거래수수료 우대 -12/31",
+        "adPeriod": "61개월 이상",
+        "landingUrl": "https://www.onestopsamsungpop.co.kr",
+        "adId": "nad-a001-01-000000546311537",
+        "imageUrl": "https://searchad-phinf.pstatic.net/MjAyMzA0MDVfNTcg/MDAxNjgwNjYwOTQxMzEx.X1gBDVK18QG1qn3AvnVsmQZFF6sKbMnUPuAvfqCgrCAg.Hic4e8Sb6cob3qlYxXTeg-spo-Wzc3BxgekLDxUqefog.JPEG/2007160-a7a11766-655e-469d-854f-87c350d0190e.jpg",
+        "sublinks": [
+          {
+            "title": "mPOP",
+            "url": "https://ader.naver.com/v1/CNoz5mhFch6_pl4diJd-ONFLH_08nS3SQgc00SwH52kG2tjud4JJxgZvyDZ_PYyUhPCRAq2HqlAZ-gWbOP3VaPvb_Iq8d7spSSjDLmyEpGP3y5ENV4KJqWg0dG-fZOmP1EFNEjyEd_-yWm7QB15fCp8Qy1qlbov27xUsjPZs3aEvkbRLg9p-iuFpTpU9mbRGsxb-78fmsuUtmtCBtbT1QRTOh7anD82OECWBzhr6I6tZqkn7oyfZXj8gT2R7kHfTkFy8uyHZPPDrIfeIuFrXmE8WpTIIqniGs4vEfz-Pgxe51kSJH46KlxuC5VOwDi5hX-Xtiawi9xyAO1WXeDewYDlCaMvlT-6X9Jd7gokQyVXT6nd-IOGHyBFbZik4SP2oKEJ7XEr43tgR90Hdk1p21wcmS9SBKKtBZ181ugggNlVlf4jY2Pv1xoveCKJiZAXd1yRBFszhY8-PpCtIrDW8ZKALQHpz2nKFmYoc36HDHtc=?c=naver.search.pc.more.plsearch&t=0"
+          },
+          {
+            "title": "주식투자",
+            "url": "https://ader.naver.com/v1/fOJ50TptvZf-K6FkGd7PDiI5j0r3T4TcNYCOccDm-ddzWLbmJgOHw8hiFi8ZFKWl_igKCNWrh2UFjtcNu_PVX6KrEeYTIot2mhdCG9ZvOc5Ur9qRNHyh3VKPRwMf5sFQi_fgQkf3gr1er7DzhUxlv9qczo3AjqOC43sD3mFgh64k7Y_6M6VmZOcw4dU4EeotltbAbjsq4SdM54ryAJ2qM1IX--mCT1K7t0mBSRseiDVL723XkMI0rldv7-nwqW37W1rUYrN3k_9FHqDexASKFxhm9ETMmdU-klSpzPn08XMNhQ2TUjETPmsjAq0qbzT2Zp02QB6iPmCoEFxlsEkueTGWzHEChlgrpw8ttidiQ8bSvXabuEXLePaN9-SCRYs7T723in-mxUNhNOjyQVPyHv9GB9gDvhbQrkF_JnOXBMEUV7jrx8OFqGe38opFD8ZosWVzzhLRrkVN0BEh0d0eHJoqteLF78LpXG76Xw9VbL4=?c=naver.search.pc.more.plsearch&t=0"
+          },
+          {
+            "title": "삼성증권 팁",
+            "url": "https://ader.naver.com/v1/grxUokqJxe2ZbnboFWiCR5JehyEd6Lh_cUcZqVVhqnxWKqq_uuNMXoqLaq_MMpHsXHuxsYSrzmsTJeQgdUa05lD_bO2fPIVs8fd7losfzIE__bwKuRf6RkaEhX2jZptTkXtzThda6q1I0T4n8g_rSmpeSv88bHLxPBzudmOEr5hbcGp82gieQw6MHAZvaUGiCS3-F_1PlOOBb8oTUVlzUsuOd3iy0xxLIaNmuHVus6Od9D1FKIp9TSxlFgNy6C0a1s-IEZ58AdIMmAtF367E2NkbB8n6pVKo_WPsYV0blzWrCyDU2eYZlnlTF8KcJdoFqqaXWtSgnoMlEEexDYdI18lHnUctMxF2NF5W6u_DX3X_nnz2YAtsvk-nR2TMOIEzpih1PcoLNsg1alU4isGe1EX38lWkpRi4emVMdYeEOfGTwtwmuHTdD2yO8IbzgNcoyhEydpXcY77VAz_cN7CjKzGbh0OeoDkPg2iEdmVkoBTJkkNxH77K9b78mTPLV1S7?c=naver.search.pc.more.plsearch&t=0"
+          },
+          {
+            "title": "앱다운로드",
+            "url": "https://ader.naver.com/v1/xPPLrdYkPQK4xAlYCJCKjrQ6t0OF1rjwAw3KG7AX1iJ08P9m4ZnJbgdxAN3KRx1zihYn5_XhLKkNWICLdIzdVh9nRpHJPrjUhCdL0diUVVbOWDO-cg-EIhltDKfN2kbASuEce6uwt6FORlU8MfxdgwwvMhR98cgFGUYq0v7oO0rqKn3N8KyQdwIp6eDBlc-4nShpEag8shHwH12uJBD4Vt3fnJH8ZL03CBGYJY_MXdDrarIqG8CpY2_YOqWKZtPl6f-vcnNs7gfeaFui9K0_V1QLiJ3WfJufWRXGWqWgFSfqQBSeA4Msr_ScYH1vBk5NLsue2r1vXhd62WBgBO0Vie2Zn4s0Ss0TqThNlYbu1YShoIR8xnh4gmZNYroMHRd5JPlYKGyUaK3qpUNrQP314eJjMDczjULcophghHpJXlrimq5fqqngC5JB_q_mRCkEYp1kjEEmH1OlRXeSN21w5WBagQ61lpYRb34N8NHalfn_Nc2R02-CMt7lqaR1LZLF?c=naver.search.pc.more.plsearch&t=0"
+          }
+        ],
+        "imageSublinks": [],
+        "extraTitle": {
+          "badge": "이벤트",
+          "text": "첫거래 혜택 받으러 가기",
+          "url": "https://ader.naver.com/v1/fqg3aLjTONBxRp1w9ctqLh_bs5cjTG-BHk8B2shXPwlTw-cAY_A8DnhRhLesDQAldmVDGN9Dxcqs0I03go5VvVwGEamVtMgJDFJqPtIJbuoGz5sE-3HKNFMO8U2M23paJQ6duxurv4apTJhX9VE9x_ckpm4aU_KNiD9pD1dHh8safMOvF12aXGYjKku3_7Jog4HNfVDvo6v4E17jyAxIu1pEcnzARLvw44Aqzt1BnK9y_UdhKoJBgK94u0Wgyc2nuRTNXlZ3gkjHdA1l2M4cPwLCwAA9KbvLcY626V2sltCsr5r1vuMH42j5xooWJcg8IW3BYgPF41y5oe2JmBUhNC9_t1YzELARNx5I9my9rUkt26rvhajyi61lvzhrFosKx1R-VUc2XIbzDznawjtzYGjiRoyV11WAOrFQoKSq7fxrGQKoYpE6ysmC4zn-Z36lCFClWqv3omt73qwAsrZ5POa_HYCSidSealt9EIHQjM4xy7qTYSM9aP4pHs88MnfJ?c=naver.search.pc.more.plsearch&t=0"
+        },
+        "localImage": "screenshots/pwl_img_삼성증권_pc_2_20260922_uhc8.jpg"
+      }
+    ],
+    "refreshCount": 30,
+    "collectedAt": "2026-09-22T01:54:08.899Z"
+  },
+  {
+    "brand": "삼성증권",
+    "device": "mo",
+    "weekKey": "2026-09-W4",
+    "status": "collected",
+    "ads": [
+      {
+        "rank": 2,
+        "advertiserName": "삼성증권",
+        "displayUrl": "onestopsamsungpop.co.kr/m",
+        "title": "삼성증권 mPOP으로 시작",
+        "description": "쉽고 편한 삼성증권 mpop으로 계좌개설하고 투자 여정 시작하세요!",
+        "adPeriod": "61개월 이상",
+        "landingUrl": "https://www.onestopsamsungpop.co.kr/m",
+        "adId": "nad-a001-01-000000492179307",
+        "imageUrl": "https://searchad-phinf.pstatic.net/MjAyMzA0MDVfNTcg/MDAxNjgwNjYwOTQxMzEx.X1gBDVK18QG1qn3AvnVsmQZFF6sKbMnUPuAvfqCgrCAg.Hic4e8Sb6cob3qlYxXTeg-spo-Wzc3BxgekLDxUqefog.JPEG/2007160-a7a11766-655e-469d-854f-87c350d0190e.jpg?type=f174_174",
+        "sublinks": [],
+        "imageSublinks": [],
+        "extraTitle": null,
+        "localImage": "screenshots/pwl_img_삼성증권_mo_2_20260922_6jvf.jpg"
+      },
+      {
+        "rank": 2,
+        "advertiserName": "삼성증권",
+        "displayUrl": "onestopsamsungpop.co.kr/m",
+        "title": "투자는 삼성증권으로 간편하게",
+        "description": "주식거래는 역시 삼성증권! 삼성증권에서 스마트한 자산 관리 시작하세요",
+        "adPeriod": "61개월 이상",
+        "landingUrl": "https://www.onestopsamsungpop.co.kr/m",
+        "adId": "nad-a001-01-000000492179307",
+        "imageUrl": "https://searchad-phinf.pstatic.net/MjAyMzA2MTRfMTU4/MDAxNjg2NzEwODU0MzQ2.T-xXYGDfLbSIVWsHRQv55LbVxfSE1_VA2FAwWM3M9F4g.gFTiN2H42mu7G4VLp8pBA0UTNoa9juyBZsx-RD-W-Rwg.JPEG/2007160-b7bb28c3-e6ee-446d-9422-91b474e74e0e.jpg?type=f174_174",
+        "sublinks": [],
+        "imageSublinks": [],
+        "extraTitle": null,
+        "localImage": "screenshots/pwl_img_삼성증권_mo_2_20260922_y4fv.jpg"
+      },
+      {
+        "rank": 2,
+        "advertiserName": "삼성증권",
+        "displayUrl": "onestopsamsungpop.co.kr/m",
+        "title": "괜히 삼성증권이 아니다",
+        "description": "시작이 막막한 순간, 삼성증권이 첫걸음을 안내합니다. 주식거래는 역시 삼성증권! 삼성증권에서 스마트한 자산 관리 시작하세요",
+        "adPeriod": "61개월 이상",
+        "landingUrl": null,
+        "adId": null,
+        "imageUrl": "https://searchad-phinf.pstatic.net/MjAyMzA0MDVfNTcg/MDAxNjgwNjYwOTQxMzEx.X1gBDVK18QG1qn3AvnVsmQZFF6sKbMnUPuAvfqCgrCAg.Hic4e8Sb6cob3qlYxXTeg-spo-Wzc3BxgekLDxUqefog.JPEG/2007160-a7a11766-655e-469d-854f-87c350d0190e.jpg?type=f174_174",
+        "sublinks": [],
+        "imageSublinks": [],
+        "extraTitle": {
+          "badge": "이벤트",
+          "text": "첫거래 혜택 받으러 가기",
+          "url": "https://ader.naver.com/v1/2qvvKAnzlQx7CnIfTHRlqHTE6PvwVTJKJxB66JXST6CW2zahCxqWd7gGa3Gp4yxCBIwZ-LGQ3w_eMlCN24ZLI0X3iIW21_FO51cnWmsx7f5GzgSZeKWVGxy3c-THP2yI44YqmK3ZcOcGcr3qq6pPrG8IttgHEINkG_sc8SdSnvAXoeZuO8CPtigWACkz8xnGySrLs8F5ehUf6SIwlX-6OOiVd4GfkqIDiNQnpOcTKukfqqPTXtVbFJCOUa4wXubQcjEd6rUE3NnVf3BDVf7o-VOelgDVfMcoOf5l64J38YJr4rE_DNeuNn0_piqVNTTJSHN6xFTZvtfbGjXs7U4Al7QAyo9YxQVeU6j4wLpu44fgCHKGhetqt-fWkVZBGn_p45ENB-VeTTs2br_eu5tlp93Mn28YT43Z-9aM1jV8F2L5yJjWpp8TviaDCXvMFkq4WTNe28FN_0Bl01gRSIyfwmwJ5T53G99JmC1P2xDuWSXrf9rgHcw7YmXNYmjmYG291AdS-qlRzl3EDoEBCoIWJeg602AWWTZjYuZWLAR_OaYFSQKCe4SKO36et1apUrsd_s_eQSWb59LDfkaE5gkVHdtJ0FM24Rh6jVY-6rilrf2LTSZ8Dpb4RaZzewwAAGpiZf2K0G7wqccugd3XuQXnHFhUpMis8QhPT3V4Ei0kSEllhdwP3eixmxJzNJt9VImbRSjCPuvnkLt3MmVS5jjCj6yuCHdA1FMyCAdMeFmzlbfoilYRZUOclwJWvP5mVpwOZGGUzUoYhJ6RCEdJF6CZUlbQwoVUjh7gYuzU5zfNissZuMVs7Xdcn5rrU0nJmMTD?c=mnaver.search.more.plsearch&t=0"
+        },
+        "localImage": "screenshots/pwl_img_삼성증권_mo_2_20260922_6zol.jpg"
+      },
+      {
+        "rank": 2,
+        "advertiserName": "삼성증권",
+        "displayUrl": "onestopsamsungpop.co.kr/m",
+        "title": "삼성증권 mPOP으로 시작",
+        "description": "쉽고 편한 삼성증권 mpop으로 계좌개설하고 투자 여정 시작하세요!",
+        "adPeriod": "61개월 이상",
+        "landingUrl": null,
+        "adId": null,
+        "imageUrl": "https://searchad-phinf.pstatic.net/MjAyMzA0MDVfNTcg/MDAxNjgwNjYwOTQxMzEx.X1gBDVK18QG1qn3AvnVsmQZFF6sKbMnUPuAvfqCgrCAg.Hic4e8Sb6cob3qlYxXTeg-spo-Wzc3BxgekLDxUqefog.JPEG/2007160-a7a11766-655e-469d-854f-87c350d0190e.jpg?type=f174_174",
+        "sublinks": [],
+        "imageSublinks": [],
+        "extraTitle": {
+          "badge": "이벤트",
+          "text": "첫거래 혜택 받으러 가기",
+          "url": "https://ader.naver.com/v1/2qvvKAnzlQx7CnIfTHRlqOWz9XIiJ78ogSv-SLHE3ime8WCqZof0TFfJWCFkeohKtLljpWo132SURp-BDh4278uvYs2GX8c1x2s6Q3gPw5h6GQIfpJyAw-dtYQDwQjkVpG9mM8TucjW75HULqoWCsIskK7-ZJSuk4rjMZq3OKcB2GxQmMe0FsfKX1fx5ZQKawbQz1_zGJlNsYJcTjWG5nd1U0OUI6vWuv42KiJ6l2HG4HsPKAE1dy4wH6vy9S0iHzlRQEeLWG7s1RtuKExWgdKEjhyxDjTrA-5wPUcmj_cs4_t6DhG8YhmQC1ShIA-pX4811YLg30IYCtdaD_G3yt79YAmzPmOP8kZby8czWww6KgvYEJGoXKVbrDt66qIc47eaXGMlZomchftJtYbU1l2FS_Wevu6XoCnebcqIr07JfBdPdUfiMpia_TbVzhtwwczslRN51uo9EtYXOYH74un16KuDZ2dYSxvHrpcv3MJDw0ZW3LNbuU9Ih9QqpqB1q2G2VbsSuR9Vgs9J8rULevleSDtGHZFEj5osn9E23XyAw6j9F26-U-uIaqLk8VaF8aiiWfRYESe7jtJEfoFm47Fq51qaDv40fr3U6SOAmdC1dSftytH_L7xX7r_8aFN56PtXVLahoPxjFfh1TZbH90czDItSOO8nz1blP4cQWQ0tZSjYkrpok64LLPhmRVNQqbuy8E3v8WPUHwEDT24xzTryELIqnB9uwfCeJmtIW2ktT1O8xNbB5b4CXotN10vVrqPPDneR9QKsC691dQPkssNPFlXNSZFsC1Tzu_nZ1qe8Xq8Y1O5hmJh3_021lsVph?c=mnaver.search.more.plsearch&t=0"
+        },
+        "localImage": "screenshots/pwl_img_삼성증권_mo_2_20260922_igut.jpg"
+      },
+      {
+        "rank": 2,
+        "advertiserName": "삼성증권",
+        "displayUrl": "onestopsamsungpop.co.kr/m",
+        "title": "눈에 확 들어오는 삼성증권!",
+        "description": "쉽고 편한 삼성증권 mpop으로 계좌개설하고 투자 여정 시작하세요!",
+        "adPeriod": "61개월 이상",
+        "landingUrl": "https://www.onestopsamsungpop.co.kr/m",
+        "adId": "nad-a001-01-000000492179307",
+        "imageUrl": "https://searchad-phinf.pstatic.net/MjAyMzA2MTRfMTU4/MDAxNjg2NzEwODU0MzQ2.T-xXYGDfLbSIVWsHRQv55LbVxfSE1_VA2FAwWM3M9F4g.gFTiN2H42mu7G4VLp8pBA0UTNoa9juyBZsx-RD-W-Rwg.JPEG/2007160-b7bb28c3-e6ee-446d-9422-91b474e74e0e.jpg?type=f174_174",
+        "sublinks": [],
+        "imageSublinks": [],
+        "extraTitle": null,
+        "localImage": "screenshots/pwl_img_삼성증권_mo_2_20260922_vokr.jpg"
+      },
+      {
+        "rank": 2,
+        "advertiserName": "삼성증권",
+        "displayUrl": "onestopsamsungpop.co.kr/m",
+        "title": "괜히 삼성증권이 아니다",
+        "description": "주식부터 펀드, ETF, IRP, ISA까지! 투자자를 위한 증권사, 삼성증권 시작이 막막한 순간, 삼성증권이 첫걸음을 안내합니다.",
+        "adPeriod": "61개월 이상",
+        "landingUrl": null,
+        "adId": null,
+        "imageUrl": "https://searchad-phinf.pstatic.net/MjAyMzA0MDVfNTcg/MDAxNjgwNjYwOTQxMzEx.X1gBDVK18QG1qn3AvnVsmQZFF6sKbMnUPuAvfqCgrCAg.Hic4e8Sb6cob3qlYxXTeg-spo-Wzc3BxgekLDxUqefog.JPEG/2007160-a7a11766-655e-469d-854f-87c350d0190e.jpg?type=f174_174",
+        "sublinks": [],
+        "imageSublinks": [],
+        "extraTitle": {
+          "badge": "이벤트",
+          "text": "첫거래 혜택 받으러 가기",
+          "url": "https://ader.naver.com/v1/T-bITH7aer-D_oWBafjkOsrARatHZltBJ6IrKgGQD7f7KG80-YjjyneuIeW2N8qkE-aFJwDd86oFwVw6SUYUOxvBMo05iIcXXp6pGKB4h7ip876ukxNwyYepmDRD-R2uQSsjE2ZUhxcMBNhZzRpb4OPjourwij8rj9LqOVIPPgg1VlE3h8EapyzW2JbzQ_uLIQzqwZcywCP2tnzuMXN4yXOXRYagByFMjXh-VLsrFLkdxgwKyqi4JOERA6fyjQHQfsaIQgs0KULASnzWjulPW32sWRvry5YvJoPiLYNPwFBZ3tA_0IC8Ol6th-vSTnnlF6-VWnm9i7dkVnEqcWbJS7qfZwjK5XCYV0V2fYl2qhxX2vJPbarYEQkPEmXGW1IMZXekCPQ2FqssO4f6YpAkyR3rucGKaHHv-U2f7rHbL1_4ZEfU9MKYlLDFoYV9TrZd8b31SRc-iW0AbC9Qb5YAIdJNQfQz8tRNV0zZ6E52r9pgG4z0_-PsDg3BzT5J6zHCVArNugGcv4pnYHlx6mi1ZaWOrYkW4MSI300f00j0CvIKaP8UNAJ-rnLkc72-rBiSQ6qQlmMxjcxIOKFQ1s10D0aLK-rGaEKhBHWPwL1ficxHydJkd3-9AISR7FiIDeZEaMk6R1eokpfmhEp9AZiF5wY5DVeKcn9Pb8m4Jlb8vEgWVPqWDJqbmoCq0ej8-rb4sU85ntWSxQZsYC0jnV_dewBRoJYSZrV51aSyfqiEDQdHLzY56zv8fBAyEawHJSrKOklM5dkPJG_LAelYatk9p4xiAluF4myP9DbVXxCEkDe8MC7kLIAtoUH26WAtZVsr?c=mnaver.search.more.plsearch&t=0"
+        },
+        "localImage": "screenshots/pwl_img_삼성증권_mo_2_20260922_mxns.jpg"
+      },
+      {
+        "rank": 2,
+        "advertiserName": "삼성증권",
+        "displayUrl": "onestopsamsungpop.co.kr/m",
+        "title": "괜히 삼성증권이 아니다 당신의 투자 파트너 삼성증권 눈에 확 들어오는 삼성증권!",
+        "description": "주식부터 펀드, ETF, IRP, ISA까지! 투자자를 위한 증권사, 삼성증권 주식거래는 역시 삼성증권! 삼성증권에서 스마트한 자산 관리 시작하세요",
+        "adPeriod": "61개월 이상",
+        "landingUrl": "https://www.onestopsamsungpop.co.kr/m",
+        "adId": "nad-a001-01-000000492179307",
+        "imageUrl": "https://searchad-phinf.pstatic.net/MjAyMzA2MTRfMTU4/MDAxNjg2NzEwODU0MzQ2.T-xXYGDfLbSIVWsHRQv55LbVxfSE1_VA2FAwWM3M9F4g.gFTiN2H42mu7G4VLp8pBA0UTNoa9juyBZsx-RD-W-Rwg.JPEG/2007160-b7bb28c3-e6ee-446d-9422-91b474e74e0e.jpg?type=f174_174",
+        "sublinks": [],
+        "imageSublinks": [],
+        "extraTitle": null,
+        "localImage": "screenshots/pwl_img_삼성증권_mo_2_20260922_fvk2.jpg"
+      },
+      {
+        "rank": 2,
+        "advertiserName": "삼성증권",
+        "displayUrl": "onestopsamsungpop.co.kr/m",
+        "title": "투자는 삼성증권으로 간편하게 괜히 삼성증권이 아니다 삼성증권 mPOP으로 시작",
+        "description": "주식거래는 역시 삼성증권! 삼성증권에서 스마트한 자산 관리 시작하세요 주식부터 펀드, ETF, IRP, ISA까지! 투자자를 위한 증권사, 삼성증권",
+        "adPeriod": "61개월 이상",
+        "landingUrl": null,
+        "adId": null,
+        "imageUrl": "https://searchad-phinf.pstatic.net/MjAyMzA2MTRfMTU4/MDAxNjg2NzEwODU0MzQ2.T-xXYGDfLbSIVWsHRQv55LbVxfSE1_VA2FAwWM3M9F4g.gFTiN2H42mu7G4VLp8pBA0UTNoa9juyBZsx-RD-W-Rwg.JPEG/2007160-b7bb28c3-e6ee-446d-9422-91b474e74e0e.jpg?type=f174_174",
+        "sublinks": [],
+        "imageSublinks": [],
+        "extraTitle": {
+          "badge": "이벤트",
+          "text": "첫거래 혜택 받으러 가기",
+          "url": "https://ader.naver.com/v1/6Ceg8I1eJrhU7wm1MDkJNyp1B7rYZDEnKQM6Z47Rr8EZ3jdctZTvi-GlPQ_aLw9BQ7Sm7dUhc18fjSRzsFuqFOJbxqNetiXZSFHIgvVBB0yF8BPV8e1oI0cAMfXFxwDwb5j7vLon_ImufJnf6hq7WzybXT4qfloUrrbO9rI2oe8eHEn2NLPTj-GdS4VQlBJNOVkPC4QzH6avvfj66DB0jFj-kkBR0swjfc0be29l_b3J2QbdqSn3mWcQz5j24FNSOPoVvrCX2w5UcI4Vs4QVDGyYZnndyyNmjGrttyHcHE9yv7a_YQrxQx3EJIWlkm_k4m-E2McHZ3Y0vZJKHtjPmpQVctOJ6IodCrrQfkU8hK4RVyFvbQTfSnj3vmeOW-zDHMxaGGEkU3czQPoaFM9izyTWLysSM6JWdrVGIyQXNWEZcVSDC8KmzPKOmhjPqMOTPs62ahvC2I5ZykOQVYt2a2WexO0ytGIWRtybuvauv6fSk6AXrB02vONrEDRI0QtQNbYgp8fQO5olSzdrswzIEOWecg0I7kE1UWy1DNnVj2JgmOKfI0k9Ejq5bUCm1tgG23dJw2UUhy_0jFl0wSoEEuuAAKsQkF3ofRDmtZySqCcDV7RtEQIu1XmC9IoZId07UfiWgAQ4wJ5_jlpxt6y26bsauri2OC0_3nFtqY32n2_BkyqHTq0REgFslZu5TX0hJQ-YA1L95A2gLQFGpC2wzNOgnGOQcUEndAb0YmLmXS3O4-zxLyd9sPnt1UXzTD7N9CYFmyp7y-FX_aGOYXABzCNtknEx9nTvGF7Zk713OCZYK3cvRCcB6h1Zn0IUQi3r?c=mnaver.search.more.plsearch&t=0"
+        },
+        "localImage": "screenshots/pwl_img_삼성증권_mo_2_20260922_an8s.jpg"
+      },
+      {
+        "rank": 2,
+        "advertiserName": "삼성증권",
+        "displayUrl": "onestopsamsungpop.co.kr/m",
+        "title": "삼성증권 mPOP으로 시작 눈에 확 들어오는 삼성증권!",
+        "description": "쉽고 편한 삼성증권 mpop으로 계좌개설하고 투자 여정 시작하세요! 시작이 막막한 순간, 삼성증권이 첫걸음을 안내합니다.",
+        "adPeriod": "61개월 이상",
+        "landingUrl": null,
+        "adId": null,
+        "imageUrl": "https://searchad-phinf.pstatic.net/MjAyMzA0MDVfNTcg/MDAxNjgwNjYwOTQxMzEx.X1gBDVK18QG1qn3AvnVsmQZFF6sKbMnUPuAvfqCgrCAg.Hic4e8Sb6cob3qlYxXTeg-spo-Wzc3BxgekLDxUqefog.JPEG/2007160-a7a11766-655e-469d-854f-87c350d0190e.jpg?type=f174_174",
+        "sublinks": [],
+        "imageSublinks": [],
+        "extraTitle": {
+          "badge": "이벤트",
+          "text": "첫거래 혜택 받으러 가기",
+          "url": "https://ader.naver.com/v1/6Ceg8I1eJrhU7wm1MDkJN82yT7YW9ag4PfuYGc9ZrxgN8RMHOoW3RirzhTboti4rEJbi8pMI6_OnIFciF_iF32wUd2r0hSb3LBrrvbcBWDuRtHwusV_x3Gf8ROcBP4z7jpbmmRjNMHYDnFJyZrD_Vhsh7E4crPGhh5SfgrlVjyecXFnTtEtodkCiEGpBKoTY_AFfvzE_kCPcETlWyJqBWCQTTEoWGh05pibdfkGa6t7gzdEt8odFdgkmEzrNi9UiyB6HdWnQVvpmuN5MPu1UcGiGnxTVbKeqFV-L4kMvSF6ya0fa7Dujeo_JQ4AfdNkV78IEwjUGik-D-iz7ht8MQ-BIPp6chODCaGXwZ7ZVGL78L_EDOKMAZ6QbTiz7trSrupx3kjemB4TSxvbZmNN1-OzMMlUaf-OJLoLOL7rMOZH0ELAktZJF-V8ta1TJ5egZr2_N3qRzS46IvS8sVKto_dJSC_-fpxI5gXxfGZbgzTwc2R9Uv-Jh28I07n5aA2tebYYya_GIZUYhTwRrGohcMbeETG-qZn413B3sI5kdhaN9Oda4WTrWYnHFrJkoJczyRr8VN9NdtBICCHablx0rq9mkwg5pB96tyPNBf7sZ93d0VjKOXm7gWyYk3ifIPQp56Ng1bw_6BrAr-clveU1YwSS5x2s_CSESunTHL0LQs_BYrM4LTUUawyip9LspW_ECCA8tilpIttm0lZ_vtpZJYFdv_JY44fQ4YYvAxXZ-ITtC4BfrRqJGxE9J1GaLgG93F4bXM_dMcaN7qNkHoOd7nPc4CrytJani9h_n70T7yNKmKSk7JAANQKmdVtCnizrb?c=mnaver.search.more.plsearch&t=0"
+        },
+        "localImage": "screenshots/pwl_img_삼성증권_mo_2_20260922_uy2q.jpg"
+      },
+      {
+        "rank": 2,
+        "advertiserName": "삼성증권",
+        "displayUrl": "onestopsamsungpop.co.kr/m",
+        "title": "눈에 확 들어오는 삼성증권!",
+        "description": "쉽고 편한 삼성증권 mpop으로 계좌개설하고 투자 여정 시작하세요! 시작이 막막한 순간, 삼성증권이 첫걸음을 안내합니다.",
+        "adPeriod": "61개월 이상",
+        "landingUrl": "https://www.onestopsamsungpop.co.kr/m",
+        "adId": "nad-a001-01-000000492179307",
+        "imageUrl": "https://searchad-phinf.pstatic.net/MjAyMzA2MTRfMTU4/MDAxNjg2NzEwODU0MzQ2.T-xXYGDfLbSIVWsHRQv55LbVxfSE1_VA2FAwWM3M9F4g.gFTiN2H42mu7G4VLp8pBA0UTNoa9juyBZsx-RD-W-Rwg.JPEG/2007160-b7bb28c3-e6ee-446d-9422-91b474e74e0e.jpg?type=f174_174",
+        "sublinks": [],
+        "imageSublinks": [],
+        "extraTitle": null,
+        "localImage": "screenshots/pwl_img_삼성증권_mo_2_20260922_tbtc.jpg"
+      },
+      {
+        "rank": 2,
+        "advertiserName": "삼성증권",
+        "displayUrl": "onestopsamsungpop.co.kr/m",
+        "title": "괜히 삼성증권이 아니다 투자는 삼성증권으로 간편하게",
+        "description": "주식거래는 역시 삼성증권! 삼성증권에서 스마트한 자산 관리 시작하세요 쉽고 편한 삼성증권 mpop으로 계좌개설하고 투자 여정 시작하세요!",
+        "adPeriod": "61개월 이상",
+        "landingUrl": null,
+        "adId": null,
+        "imageUrl": "https://searchad-phinf.pstatic.net/MjAyMzA0MDVfNTcg/MDAxNjgwNjYwOTQxMzEx.X1gBDVK18QG1qn3AvnVsmQZFF6sKbMnUPuAvfqCgrCAg.Hic4e8Sb6cob3qlYxXTeg-spo-Wzc3BxgekLDxUqefog.JPEG/2007160-a7a11766-655e-469d-854f-87c350d0190e.jpg?type=f174_174",
+        "sublinks": [],
+        "imageSublinks": [],
+        "extraTitle": {
+          "badge": "이벤트",
+          "text": "첫거래 혜택 받으러 가기",
+          "url": "https://ader.naver.com/v1/QmYTcg5mXhburkNOIyKlt8y1qLBR-w48wIe3lvNdynwnpBRy8teRSHVLSpt7wUcqDutgd6qoc3t05eytBNg88tL3p6gSHlORSVio12VJN18QtwrA_6EpzKM-B5EEoS1MuwG6a3glmjLCP2sNm6E-KDG2Jov5Pcq0RNErOOIHgeHsF78CzNtSR4n6QjY3g7xxPJ61SxtsvBOBBeipfGhqKamNp9Ddtp-FGTSktq_27v9PshZgvZmJ7TIII4sdfQDZVwVeGT8TdCTJikO_ghdUrvwQgsskyFNiKRbmHdW9BvL8Vb-iV3to2_0CGmBRRez4Wnq9oKFQ_a4-4-VoR_ntTX6GlzVVslVGJB46uLgVhj9DEVnkVT9J7jvHC9Amyb7iA_6T0wEL3pWsxdBw-CMQotO7FjS2D7LKTH471lxwHtAgPGL48jLNiq-B8eYgWHtDxNuFIW5lpJut9MU4K4M8KMrIq5QRddeUJxOYrdeb5_RQ8udzBz-u8l2HcQcepQmiH_Bbvcmqyz8BdTPMq0Zal9kXCNOefScypoNo5KvyCCue7mqblGzRrLXUSKrIHdNLCobJhBJMKm3esqYkM0xrvKFqHmSHqgS_k1qbg14yvy2dajO6SaTWv_pE4u_rxl-DY9-7_OaUhF042Amlpvea_NjpaRULbybK9nyvzpjf3aMPKHsnuK8bayTsRNHe-X_pKE9W3Qr8YgDQeUKQG_J7Ub6imuA8nWwbdY8T1CG1DGIEZQTtzIIsCgKKeK3Lx-r_7Pzp6_X8GP9mz338EkTSSafe88ISAwtBdyx5rxkzbKx78Mbqg147eooochVLKMRr?c=mnaver.search.more.plsearch&t=0"
+        },
+        "localImage": "screenshots/pwl_img_삼성증권_mo_2_20260922_hwye.jpg"
+      },
+      {
+        "rank": 2,
+        "advertiserName": "삼성증권",
+        "displayUrl": "onestopsamsungpop.co.kr/m",
+        "title": "당신의 투자 파트너 삼성증권 눈에 확 들어오는 삼성증권! 괜히 삼성증권이 아니다",
+        "description": "주식부터 펀드, ETF, IRP, ISA까지! 투자자를 위한 증권사, 삼성증권 주식거래는 역시 삼성증권! 삼성증권에서 스마트한 자산 관리 시작하세요",
+        "adPeriod": "61개월 이상",
+        "landingUrl": null,
+        "adId": null,
+        "imageUrl": "https://searchad-phinf.pstatic.net/MjAyMzA0MDVfNTcg/MDAxNjgwNjYwOTQxMzEx.X1gBDVK18QG1qn3AvnVsmQZFF6sKbMnUPuAvfqCgrCAg.Hic4e8Sb6cob3qlYxXTeg-spo-Wzc3BxgekLDxUqefog.JPEG/2007160-a7a11766-655e-469d-854f-87c350d0190e.jpg?type=f174_174",
+        "sublinks": [],
+        "imageSublinks": [],
+        "extraTitle": {
+          "badge": "이벤트",
+          "text": "첫거래 혜택 받으러 가기",
+          "url": "https://ader.naver.com/v1/6Ceg8I1eJrhU7wm1MDkJN_objrvsw53El95jofMoJyBFwZQ_0jDaP6onuu4dQ7kqK8e4B9lJohg24Rm4ea_5awx9VFGQEW1nv0Cl6tRWWSJzZFnTKgH1aDBBEdfz2X3B7-xFQTtGycXDWdCG5dmeBsZPCVsNAgNQecxU4bxkDidVOxDOTreEG3s9LWUY09KaxMTFloOoD-laotdyfBcsCQW-8fJwZ2ZoMNNTmrFKxZf_JY7qiOz7Viiv26Ct0ywFa4oCEZHnvIE4QQPMrOc_fXxjo4VxNGGEM1dJRHO7kqQG_qIpJKZvohypkTHrLdOvvcvg3vyRwUx6ahaf0nbANkskUJyLSewhYrdgtZe7Tiv_L-HuMQ8q4SieCc_oaJrBn_bAWedDacdTbRpxh9Z0ns79KyEppMbeiDlzhtm-7xHx5X1CfXLB1eHp5hwxSf3k4dS-__ZMSL-WJH5UF4cU_4shgMTp5-e2KtaMcjEafHoRTJe7KQCfrmHKjBzxaeCochbB8aSontjZTaPpXNWXCyGZk-Y5BjEk7ZVjD0nB-0h86e0986tLwXAeXfRUa7sH8XJE_qmDZQjZnvGe3I1vBjVFq8U7dBpd2pCnp75-Fsjt0lyKUs4RR4u7-XacBUyDFQJqcCBoJiJl0jvfeSdkNaMh2UnrKI4_8GqN2UYdBm6dh4_BJczof-TmLO09AqfPTmVstz7u7fw7hJANfcYFpglUVW1Ce1vGTG23E1nCRNtQMIjggTXdIA0TOYS1cpVCtQIwk3lLHRCfdej2AOiM6wMCjoTI9o2n6p39IKEhZQa9nZFb50GzBxQ6HVPiu_r9?c=mnaver.search.more.plsearch&t=0"
+        },
+        "localImage": "screenshots/pwl_img_삼성증권_mo_2_20260922_1f5p.jpg"
+      }
+    ],
+    "refreshCount": 30,
+    "collectedAt": "2026-09-22T01:55:17.502Z"
+  },
+  {
+    "brand": "NH투자증권",
+    "device": "pc",
+    "weekKey": "2026-09-W4",
+    "status": "collected",
+    "ads": [
+      {
+        "rank": 1,
+        "advertiserName": "NH투자증권",
+        "displayUrl": "nhsec.com",
+        "title": "NH투자증권100세시대연구소 은퇴 교육 되셨나요?",
+        "description": "연금자산 진단 및 맞춤 컨설팅으로 기나긴 100세시대를 준비하세요!",
+        "adPeriod": "4~12개월",
+        "landingUrl": "https://www.nhsec.com",
+        "adId": "nad-a001-01-000000422550111",
+        "imageUrl": "https://searchad-phinf.pstatic.net/MjAyNjA3MjNfMTE1/MDAxNzg0Nzk3Nzg4MTYy.cn2oxeuy7GNtZ49LHcFCtMJE9jjgTs3euWvNUa6GWnUg.fReQtfrTqqqYcRESvFYyphLIIYmJn2VQIizg8L-8O1Ag.JPEG/1660997-dba089c7-99b2-4b89-b38a-7bfff5af4318.jpg",
+        "sublinks": [],
+        "imageSublinks": [],
+        "extraTitle": null,
+        "localImage": "screenshots/pwl_img_NH투자증권_pc_1_20260922_qhu0.jpg"
+      }
+    ],
+    "refreshCount": 30,
+    "collectedAt": "2026-09-22T01:56:16.217Z"
+  },
+  {
+    "brand": "NH투자증권",
+    "device": "mo",
+    "weekKey": "2026-09-W4",
+    "status": "collected",
+    "ads": [
+      {
+        "rank": 1,
+        "advertiserName": "나무증권",
+        "displayUrl": "mynamuhbegin.com/",
+        "title": "NH투자증권 NH투자증권 내 투자를 위한 금융 앱",
+        "description": "신규, 휴면고객 국내주식 24개월 수수료 완전무료! (-26.12.31.)",
+        "adPeriod": "61개월 이상",
+        "landingUrl": "http://www.mynamuhbegin.com/",
+        "adId": "nad-a001-01-000000552497728",
+        "imageUrl": "https://searchad-phinf.pstatic.net/MjAyMjA1MzFfMjk0/MDAxNjUzOTU4NzM2MjQz.zG3RIiO1bz61ier8hICPt1aZNEd2cMQNZMIiA2LjDAMg.y4bRxU5OOC3kets4YmGkqdEjvmF7GwtCELP8j1FgWX8g.JPEG/284477-ce6536a9-e945-4c3e-bc20-61ca973e77ab.jpg?type=f174_174",
+        "sublinks": [],
+        "imageSublinks": [],
+        "extraTitle": null,
+        "localImage": "screenshots/pwl_img_NH투자증권_mo_1_20260922_a60b.jpg"
+      },
+      {
+        "rank": 2,
+        "advertiserName": "NH투자증권",
+        "displayUrl": "m.nhsec.com",
+        "title": "NH투자증권100세시대연구소 은퇴 교육 되셨나요?",
+        "description": "연금자산 진단 및 맞춤 컨설팅으로 기나긴 100세시대를 준비하세요!",
+        "adPeriod": "4~12개월",
+        "landingUrl": null,
+        "adId": null,
+        "imageUrl": "https://searchad-phinf.pstatic.net/MjAyNjA3MjRfMjE3/MDAxNzg0ODcwMjgyMTY4.y7zfJkIgNROYjAa4sLIbBHnhvao65onqQxtzlIYPdnwg.y-pzWC3ooHy0PMnbzyh3PDtcGu8vdqRt6ZwKkVlPD40g.JPEG/1660997-06f7e292-38e5-41d6-b983-1ae54a9a6014.jpg?type=f174_174",
+        "sublinks": [],
+        "imageSublinks": [],
+        "extraTitle": null,
+        "localImage": "screenshots/pwl_img_NH투자증권_mo_2_20260922_q6mn.jpg"
+      },
+      {
+        "rank": 1,
+        "advertiserName": "나무증권",
+        "displayUrl": "mynamuhbegin.com/",
+        "title": "NH투자증권 NH투자증권 내 투자를 위한 금융 앱",
+        "description": "신규, 휴면고객 국내주식 24개월 수수료 완전무료! (-26.12.31.)",
+        "adPeriod": "61개월 이상",
+        "landingUrl": null,
+        "adId": null,
+        "imageUrl": "https://searchad-phinf.pstatic.net/MjAyMjA1MzFfMjk0/MDAxNjUzOTU4NzM2MjQz.zG3RIiO1bz61ier8hICPt1aZNEd2cMQNZMIiA2LjDAMg.y4bRxU5OOC3kets4YmGkqdEjvmF7GwtCELP8j1FgWX8g.JPEG/284477-ce6536a9-e945-4c3e-bc20-61ca973e77ab.jpg?type=f174_174",
+        "sublinks": [],
+        "imageSublinks": [],
+        "extraTitle": {
+          "badge": "이벤트",
+          "text": "진행중인 이벤트 보러가기",
+          "url": "https://ader.naver.com/v1/H_PmBDCGC81TQ4qjBLY1JxPSzUqR0BY-ZOaDzsKsn1bJIenVgINn8h_sy4gsHGnei96QuJVmvsJ5P-MkdTu-fq0O4ibwuwUiWkzRb-FNC0MnT4Jp8GDyjfqVEo6svv-V_PlaHJ2PapuDUzsdy9fD_pCQHW0JRkeZbw_ABqnVBQlpxu5mD1U7kJkiIcxWELjTLWsyKg4Y36W1_PBMTr-uaAih6Df7hKmLO9XUkFJNAT165YONPfifVuvGlJwjIvylHl4LK_0YfdhRUCmWQknt3m6KLPdmiKj1npbLIiXtz-ECIdyVtgqLAADIwC5jvh5peEEWXv6fE4D3t9AntdKjI9ZbdyX2_zmliaa8U3a1suPp_y6kltUB-PE5lEiC2qbirwSY2bYMaKhhvs50krS_3G6RnInZ43RY_D3e4aWWXCOXw2SQu6FAm6WrSc1HNKAc1PZX0up6UVhxENkguw18IF9U724K0KdT1jUsNnltidsYgALGb7oKiibzd2f82Tt5ek3wawuVdWQm9QSQ81U6Uq5ht05Q2NRrZxGiwaTLY6M0phlbRA5X1D-fFaI4rMQHJDxFKSbad83GHlIt_NKj-RWBwM1rWJC0JAjdiEnQ5bhDLDDSi4Hp51QJjeypL7DJxkuABHJSgl6Ft8Tj9y4COR8CEFxlHAyboAF2CwJz-N2Lsy-TUCPJrxDQ_tImG1jT?c=mnaver.search.more.plsearch&t=0"
+        },
+        "localImage": "screenshots/pwl_img_NH투자증권_mo_1_20260922_u90c.jpg"
+      }
+    ],
+    "refreshCount": 30,
+    "collectedAt": "2026-09-22T01:57:24.454Z"
+  },
+  {
+    "brand": "KB증권",
+    "device": "pc",
+    "weekKey": "2026-09-W4",
+    "status": "no-ads",
+    "ads": [],
+    "refreshCount": 30,
+    "collectedAt": "2026-09-22T01:58:22.046Z"
+  },
+  {
+    "brand": "KB증권",
+    "device": "mo",
+    "weekKey": "2026-09-W4",
+    "status": "collected",
+    "ads": [
+      {
+        "rank": 1,
+        "advertiserName": "KB증권",
+        "displayUrl": "m.kbsec.com",
+        "title": "국내주식은 KB증권 평생 우대받는 수수료 혜택",
+        "description": "KB증권 국내주식 메가페스타! 처음이어도 옮겨와도 혜택을 드려요! (조건충족시)  최초 신규 또는 장기미거래 고객 평생 수수료 우대 (조건 충족 시)",
+        "adPeriod": "61개월 이상",
+        "landingUrl": "http://m.kbsec.com",
+        "adId": "nad-a001-01-000000570942086",
+        "imageUrl": "https://searchad-phinf.pstatic.net/MjAyMjEwMjdfMTQw/MDAxNjY2ODU0MjYxNzQy.mqL0OhZaqfsF0u60PZc5KWC1aJtP5_dMjvjTLDfMKzIg.Oj0P1Wznwm4aQ850EMyTF9hZvArSvEKjX7e2h8Kv_7cg.PNG/801213-26605a72-2e2e-4014-9ed0-b2ba87b09431.png?type=f174_174",
+        "sublinks": [],
+        "imageSublinks": [],
+        "extraTitle": null,
+        "localImage": "screenshots/pwl_img_KB증권_mo_1_20260922_bo7x.png"
+      },
+      {
+        "rank": 1,
+        "advertiserName": "KB증권",
+        "displayUrl": "m.kbsec.com",
+        "title": "국내주식은 KB증권 이전할수록 커지는 쿠폰 혜택",
+        "description": "투자의 전과정을 지원하는 KB증권 국내주식 메가 페스타",
+        "adPeriod": "61개월 이상",
+        "landingUrl": "http://m.kbsec.com",
+        "adId": "nad-a001-01-000000570942087",
+        "imageUrl": "https://searchad-phinf.pstatic.net/MjAyMjEwMjdfMTQw/MDAxNjY2ODU0MjYxNzQy.mqL0OhZaqfsF0u60PZc5KWC1aJtP5_dMjvjTLDfMKzIg.Oj0P1Wznwm4aQ850EMyTF9hZvArSvEKjX7e2h8Kv_7cg.PNG/801213-26605a72-2e2e-4014-9ed0-b2ba87b09431.png?type=f174_174",
+        "sublinks": [],
+        "imageSublinks": [],
+        "extraTitle": null,
+        "localImage": "screenshots/pwl_img_KB증권_mo_1_20260922_uabs.png"
+      },
+      {
+        "rank": 1,
+        "advertiserName": "KB증권",
+        "displayUrl": "m.kbsec.com",
+        "title": "국내주식은 KB증권 첫계좌 최대 5만원 주식쿠폰 이전할수록 커지는 쿠폰 혜택",
+        "description": "KB증권 국내주식 메가페스타! 처음이어도 옮겨와도 혜택을 드려요! (조건충족시)  최초 신규 또는 장기미거래 고객 평생 수수료 우대 (조건 충족 시)",
+        "adPeriod": "61개월 이상",
+        "landingUrl": "http://m.kbsec.com",
+        "adId": "nad-a001-01-000000570942086",
+        "imageUrl": "https://searchad-phinf.pstatic.net/MjAyMjEwMjdfMTQw/MDAxNjY2ODU0MjYxNzQy.mqL0OhZaqfsF0u60PZc5KWC1aJtP5_dMjvjTLDfMKzIg.Oj0P1Wznwm4aQ850EMyTF9hZvArSvEKjX7e2h8Kv_7cg.PNG/801213-26605a72-2e2e-4014-9ed0-b2ba87b09431.png?type=f174_174",
+        "sublinks": [],
+        "imageSublinks": [],
+        "extraTitle": null,
+        "localImage": "screenshots/pwl_img_KB증권_mo_1_20260922_jayc.png"
+      },
+      {
+        "rank": 1,
+        "advertiserName": "KB증권",
+        "displayUrl": "m.kbsec.com",
+        "title": "국내주식은 KB증권 첫계좌 최대 5만원 주식쿠폰 이전할수록 커지는 쿠폰 혜택",
+        "description": "첫 계좌개설 시 주식쿠폰, 수수료 평생 우대! 대장주 득템 행운까지 (조건충족시) 국내주식 KB증권으로 옮기면 최대 400만원 주식 쿠폰 지급 (조건 충족 시)",
+        "adPeriod": "61개월 이상",
+        "landingUrl": "http://m.kbsec.com",
+        "adId": "nad-a001-01-000000570942088",
+        "imageUrl": "https://searchad-phinf.pstatic.net/MjAyMjEwMjdfMTQw/MDAxNjY2ODU0MjYxNzQy.mqL0OhZaqfsF0u60PZc5KWC1aJtP5_dMjvjTLDfMKzIg.Oj0P1Wznwm4aQ850EMyTF9hZvArSvEKjX7e2h8Kv_7cg.PNG/801213-26605a72-2e2e-4014-9ed0-b2ba87b09431.png?type=f174_174",
+        "sublinks": [],
+        "imageSublinks": [],
+        "extraTitle": null,
+        "localImage": "screenshots/pwl_img_KB증권_mo_1_20260922_8g95.png"
+      },
+      {
+        "rank": 1,
+        "advertiserName": "KB증권",
+        "displayUrl": "m.kbsec.com",
+        "title": "국내주식은 KB증권 평생 우대받는 수수료 혜택 이전할수록 커지는 쿠폰 혜택",
+        "description": "첫 계좌개설 시 주식쿠폰, 수수료 평생 우대! 대장주 득템 행운까지 (조건충족시)",
+        "adPeriod": "61개월 이상",
+        "landingUrl": "http://m.kbsec.com",
+        "adId": "nad-a001-01-000000570942088",
+        "imageUrl": "https://searchad-phinf.pstatic.net/MjAyMjEwMjdfMTQw/MDAxNjY2ODU0MjYxNzQy.mqL0OhZaqfsF0u60PZc5KWC1aJtP5_dMjvjTLDfMKzIg.Oj0P1Wznwm4aQ850EMyTF9hZvArSvEKjX7e2h8Kv_7cg.PNG/801213-26605a72-2e2e-4014-9ed0-b2ba87b09431.png?type=f174_174",
+        "sublinks": [],
+        "imageSublinks": [],
+        "extraTitle": null,
+        "localImage": "screenshots/pwl_img_KB증권_mo_1_20260922_befe.png"
+      },
+      {
+        "rank": 1,
+        "advertiserName": "KB증권",
+        "displayUrl": "m.kbsec.com",
+        "title": "국내주식은 KB증권 평생 우대받는 수수료 혜택",
+        "description": "첫 계좌개설 시 주식쿠폰, 수수료 평생 우대! 대장주 득템 행운까지 (조건충족시) 비대면 첫 계좌 개설 시, 주식쿠폰 최대 5만원 지급 (조건 충족 시)",
+        "adPeriod": "61개월 이상",
+        "landingUrl": "http://m.kbsec.com",
+        "adId": "nad-a001-01-000000570942088",
+        "imageUrl": "https://searchad-phinf.pstatic.net/MjAyMjEwMjdfMTQw/MDAxNjY2ODU0MjYxNzQy.mqL0OhZaqfsF0u60PZc5KWC1aJtP5_dMjvjTLDfMKzIg.Oj0P1Wznwm4aQ850EMyTF9hZvArSvEKjX7e2h8Kv_7cg.PNG/801213-26605a72-2e2e-4014-9ed0-b2ba87b09431.png?type=f174_174",
+        "sublinks": [],
+        "imageSublinks": [],
+        "extraTitle": null,
+        "localImage": "screenshots/pwl_img_KB증권_mo_1_20260922_0zq9.png"
+      },
+      {
+        "rank": 1,
+        "advertiserName": "KB증권",
+        "displayUrl": "m.kbsec.com",
+        "title": "국내주식은 KB증권",
+        "description": "투자의 전과정을 지원하는 KB증권 국내주식 메가 페스타  최초 신규 또는 장기미거래 고객 평생 수수료 우대 (조건 충족 시)",
+        "adPeriod": "61개월 이상",
+        "landingUrl": "http://m.kbsec.com",
+        "adId": "nad-a001-01-000000570942087",
+        "imageUrl": "https://searchad-phinf.pstatic.net/MjAyMjEwMjdfMTQw/MDAxNjY2ODU0MjYxNzQy.mqL0OhZaqfsF0u60PZc5KWC1aJtP5_dMjvjTLDfMKzIg.Oj0P1Wznwm4aQ850EMyTF9hZvArSvEKjX7e2h8Kv_7cg.PNG/801213-26605a72-2e2e-4014-9ed0-b2ba87b09431.png?type=f174_174",
+        "sublinks": [],
+        "imageSublinks": [],
+        "extraTitle": null,
+        "localImage": "screenshots/pwl_img_KB증권_mo_1_20260922_22fy.png"
+      },
+      {
+        "rank": 1,
+        "advertiserName": "KB증권",
+        "displayUrl": "m.kbsec.com",
+        "title": "국내주식은 KB증권 평생 우대받는 수수료 혜택 이전할수록 커지는 쿠폰 혜택",
+        "description": "KB증권 국내주식 메가페스타! 처음이어도 옮겨와도 혜택을 드려요! (조건충족시)  최초 신규 또는 장기미거래 고객 평생 수수료 우대 (조건 충족 시)",
+        "adPeriod": "61개월 이상",
+        "landingUrl": "http://m.kbsec.com",
+        "adId": "nad-a001-01-000000570942086",
+        "imageUrl": "https://searchad-phinf.pstatic.net/MjAyMjEwMjdfMTQw/MDAxNjY2ODU0MjYxNzQy.mqL0OhZaqfsF0u60PZc5KWC1aJtP5_dMjvjTLDfMKzIg.Oj0P1Wznwm4aQ850EMyTF9hZvArSvEKjX7e2h8Kv_7cg.PNG/801213-26605a72-2e2e-4014-9ed0-b2ba87b09431.png?type=f174_174",
+        "sublinks": [],
+        "imageSublinks": [],
+        "extraTitle": null,
+        "localImage": "screenshots/pwl_img_KB증권_mo_1_20260922_vddy.png"
+      },
+      {
+        "rank": 1,
+        "advertiserName": "KB증권",
+        "displayUrl": "m.kbsec.com",
+        "title": "국내주식은 KB증권 평생 우대받는 수수료 혜택 이전할수록 커지는 쿠폰 혜택",
+        "description": "투자의 전과정을 지원하는 KB증권 국내주식 메가 페스타  최초 신규 또는 장기미거래 고객 평생 수수료 우대 (조건 충족 시)",
+        "adPeriod": "61개월 이상",
+        "landingUrl": "http://m.kbsec.com",
+        "adId": "nad-a001-01-000000570942087",
+        "imageUrl": "https://searchad-phinf.pstatic.net/MjAyMjEwMjdfMTQw/MDAxNjY2ODU0MjYxNzQy.mqL0OhZaqfsF0u60PZc5KWC1aJtP5_dMjvjTLDfMKzIg.Oj0P1Wznwm4aQ850EMyTF9hZvArSvEKjX7e2h8Kv_7cg.PNG/801213-26605a72-2e2e-4014-9ed0-b2ba87b09431.png?type=f174_174",
+        "sublinks": [],
+        "imageSublinks": [],
+        "extraTitle": null,
+        "localImage": "screenshots/pwl_img_KB증권_mo_1_20260922_pxt1.png"
+      },
+      {
+        "rank": 1,
+        "advertiserName": "KB증권",
+        "displayUrl": "m.kbsec.com",
+        "title": "국내주식은 KB증권 첫계좌 최대 5만원 주식쿠폰 평생 우대받는 수수료 혜택",
+        "description": "투자의 전과정을 지원하는 KB증권 국내주식 메가 페스타 비대면 첫 계좌 개설 시, 주식쿠폰 최대 5만원 지급 (조건 충족 시)",
+        "adPeriod": "61개월 이상",
+        "landingUrl": "http://m.kbsec.com",
+        "adId": "nad-a001-01-000000570942087",
+        "imageUrl": "https://searchad-phinf.pstatic.net/MjAyMjEwMjdfMTQw/MDAxNjY2ODU0MjYxNzQy.mqL0OhZaqfsF0u60PZc5KWC1aJtP5_dMjvjTLDfMKzIg.Oj0P1Wznwm4aQ850EMyTF9hZvArSvEKjX7e2h8Kv_7cg.PNG/801213-26605a72-2e2e-4014-9ed0-b2ba87b09431.png?type=f174_174",
+        "sublinks": [],
+        "imageSublinks": [],
+        "extraTitle": null,
+        "localImage": "screenshots/pwl_img_KB증권_mo_1_20260922_d3oq.png"
+      },
+      {
+        "rank": 1,
+        "advertiserName": "KB증권",
+        "displayUrl": "m.kbsec.com",
+        "title": "국내주식은 KB증권",
+        "description": "KB증권 국내주식 메가페스타! 처음이어도 옮겨와도 혜택을 드려요! (조건충족시) 국내주식 KB증권으로 옮기면 최대 400만원 주식 쿠폰 지급 (조건 충족 시)",
+        "adPeriod": "61개월 이상",
+        "landingUrl": "http://m.kbsec.com",
+        "adId": "nad-a001-01-000000570942086",
+        "imageUrl": "https://searchad-phinf.pstatic.net/MjAyMjEwMjdfMTQw/MDAxNjY2ODU0MjYxNzQy.mqL0OhZaqfsF0u60PZc5KWC1aJtP5_dMjvjTLDfMKzIg.Oj0P1Wznwm4aQ850EMyTF9hZvArSvEKjX7e2h8Kv_7cg.PNG/801213-26605a72-2e2e-4014-9ed0-b2ba87b09431.png?type=f174_174",
+        "sublinks": [],
+        "imageSublinks": [],
+        "extraTitle": null,
+        "localImage": "screenshots/pwl_img_KB증권_mo_1_20260922_tqm4.png"
+      },
+      {
+        "rank": 1,
+        "advertiserName": "KB증권",
+        "displayUrl": "m.kbsec.com",
+        "title": "국내주식은 KB증권 첫계좌 최대 5만원 주식쿠폰 평생 우대받는 수수료 혜택",
+        "description": "투자의 전과정을 지원하는 KB증권 국내주식 메가 페스타  최초 신규 또는 장기미거래 고객 평생 수수료 우대 (조건 충족 시)",
+        "adPeriod": "61개월 이상",
+        "landingUrl": "http://m.kbsec.com",
+        "adId": "nad-a001-01-000000570942087",
+        "imageUrl": "https://searchad-phinf.pstatic.net/MjAyMjEwMjdfMTQw/MDAxNjY2ODU0MjYxNzQy.mqL0OhZaqfsF0u60PZc5KWC1aJtP5_dMjvjTLDfMKzIg.Oj0P1Wznwm4aQ850EMyTF9hZvArSvEKjX7e2h8Kv_7cg.PNG/801213-26605a72-2e2e-4014-9ed0-b2ba87b09431.png?type=f174_174",
+        "sublinks": [],
+        "imageSublinks": [],
+        "extraTitle": null,
+        "localImage": "screenshots/pwl_img_KB증권_mo_1_20260922_giuu.png"
+      },
+      {
+        "rank": 1,
+        "advertiserName": "KB증권",
+        "displayUrl": "m.kbsec.com",
+        "title": "국내주식은 KB증권 이전할수록 커지는 쿠폰 혜택 평생 우대받는 수수료 혜택",
+        "description": "첫 계좌개설 시 주식쿠폰, 수수료 평생 우대! 대장주 득템 행운까지 (조건충족시)  최초 신규 또는 장기미거래 고객 평생 수수료 우대 (조건 충족 시)",
+        "adPeriod": "61개월 이상",
+        "landingUrl": "http://m.kbsec.com",
+        "adId": "nad-a001-01-000000570942088",
+        "imageUrl": "https://searchad-phinf.pstatic.net/MjAyMjEwMjdfMTQw/MDAxNjY2ODU0MjYxNzQy.mqL0OhZaqfsF0u60PZc5KWC1aJtP5_dMjvjTLDfMKzIg.Oj0P1Wznwm4aQ850EMyTF9hZvArSvEKjX7e2h8Kv_7cg.PNG/801213-26605a72-2e2e-4014-9ed0-b2ba87b09431.png?type=f174_174",
+        "sublinks": [],
+        "imageSublinks": [],
+        "extraTitle": null,
+        "localImage": "screenshots/pwl_img_KB증권_mo_1_20260922_khjl.png"
+      },
+      {
+        "rank": 1,
+        "advertiserName": "KB증권",
+        "displayUrl": "m.kbsec.com",
+        "title": "국내주식은 KB증권 이전할수록 커지는 쿠폰 혜택",
+        "description": "KB증권 국내주식 메가페스타! 처음이어도 옮겨와도 혜택을 드려요! (조건충족시)  최초 신규 또는 장기미거래 고객 평생 수수료 우대 (조건 충족 시)",
+        "adPeriod": "61개월 이상",
+        "landingUrl": "http://m.kbsec.com",
+        "adId": "nad-a001-01-000000570942086",
+        "imageUrl": "https://searchad-phinf.pstatic.net/MjAyMjEwMjdfMTQw/MDAxNjY2ODU0MjYxNzQy.mqL0OhZaqfsF0u60PZc5KWC1aJtP5_dMjvjTLDfMKzIg.Oj0P1Wznwm4aQ850EMyTF9hZvArSvEKjX7e2h8Kv_7cg.PNG/801213-26605a72-2e2e-4014-9ed0-b2ba87b09431.png?type=f174_174",
+        "sublinks": [],
+        "imageSublinks": [],
+        "extraTitle": null,
+        "localImage": "screenshots/pwl_img_KB증권_mo_1_20260922_w366.png"
+      },
+      {
+        "rank": 1,
+        "advertiserName": "KB증권",
+        "displayUrl": "m.kbsec.com",
+        "title": "국내주식은 KB증권 첫계좌 최대 5만원 주식쿠폰 평생 우대받는 수수료 혜택",
+        "description": "투자의 전과정을 지원하는 KB증권 국내주식 메가 페스타 국내주식 KB증권으로 옮기면 최대 400만원 주식 쿠폰 지급 (조건 충족 시)",
+        "adPeriod": "61개월 이상",
+        "landingUrl": "http://m.kbsec.com",
+        "adId": "nad-a001-01-000000570942087",
+        "imageUrl": "https://searchad-phinf.pstatic.net/MjAyMjEwMjdfMTQw/MDAxNjY2ODU0MjYxNzQy.mqL0OhZaqfsF0u60PZc5KWC1aJtP5_dMjvjTLDfMKzIg.Oj0P1Wznwm4aQ850EMyTF9hZvArSvEKjX7e2h8Kv_7cg.PNG/801213-26605a72-2e2e-4014-9ed0-b2ba87b09431.png?type=f174_174",
+        "sublinks": [],
+        "imageSublinks": [],
+        "extraTitle": null,
+        "localImage": "screenshots/pwl_img_KB증권_mo_1_20260922_ht55.png"
+      },
+      {
+        "rank": 1,
+        "advertiserName": "KB증권",
+        "displayUrl": "m.kbsec.com",
+        "title": "국내주식은 KB증권 평생 우대받는 수수료 혜택 이전할수록 커지는 쿠폰 혜택",
+        "description": "투자의 전과정을 지원하는 KB증권 국내주식 메가 페스타 비대면 첫 계좌 개설 시, 주식쿠폰 최대 5만원 지급 (조건 충족 시)",
+        "adPeriod": "61개월 이상",
+        "landingUrl": "http://m.kbsec.com",
+        "adId": "nad-a001-01-000000570942087",
+        "imageUrl": "https://searchad-phinf.pstatic.net/MjAyMjEwMjdfMTQw/MDAxNjY2ODU0MjYxNzQy.mqL0OhZaqfsF0u60PZc5KWC1aJtP5_dMjvjTLDfMKzIg.Oj0P1Wznwm4aQ850EMyTF9hZvArSvEKjX7e2h8Kv_7cg.PNG/801213-26605a72-2e2e-4014-9ed0-b2ba87b09431.png?type=f174_174",
+        "sublinks": [],
+        "imageSublinks": [],
+        "extraTitle": null,
+        "localImage": "screenshots/pwl_img_KB증권_mo_1_20260922_fcq0.png"
+      },
+      {
+        "rank": 1,
+        "advertiserName": "KB증권",
+        "displayUrl": "m.kbsec.com",
+        "title": "국내주식은 KB증권 첫계좌 최대 5만원 주식쿠폰",
+        "description": "KB증권 국내주식 메가페스타! 처음이어도 옮겨와도 혜택을 드려요! (조건충족시) 국내주식 KB증권으로 옮기면 최대 400만원 주식 쿠폰 지급 (조건 충족 시)",
+        "adPeriod": "61개월 이상",
+        "landingUrl": "http://m.kbsec.com",
+        "adId": "nad-a001-01-000000570942086",
+        "imageUrl": "https://searchad-phinf.pstatic.net/MjAyMjEwMjdfMTQw/MDAxNjY2ODU0MjYxNzQy.mqL0OhZaqfsF0u60PZc5KWC1aJtP5_dMjvjTLDfMKzIg.Oj0P1Wznwm4aQ850EMyTF9hZvArSvEKjX7e2h8Kv_7cg.PNG/801213-26605a72-2e2e-4014-9ed0-b2ba87b09431.png?type=f174_174",
+        "sublinks": [],
+        "imageSublinks": [],
+        "extraTitle": null,
+        "localImage": "screenshots/pwl_img_KB증권_mo_1_20260922_p1c9.png"
+      }
+    ],
+    "refreshCount": 30,
+    "collectedAt": "2026-09-22T01:59:30.793Z"
+  },
+  {
+    "brand": "신한투자증권",
+    "device": "pc",
+    "weekKey": "2026-09-W4",
+    "status": "collected",
+    "ads": [
+      {
+        "rank": 1,
+        "advertiserName": "신한투자증권",
+        "displayUrl": "shinhansec.com/",
+        "title": "신한투자증권 주식거래 축하금 매주 총 1억원 현금 추첨",
+        "description": "신한투자증권에서 거래하고 축하금 매주 총 1억원 당첨기회 ~10/23, 조건충족시",
+        "adPeriod": "37~60개월",
+        "landingUrl": "https://www.shinhansec.com/",
+        "adId": "nad-a001-01-000000577659784",
+        "imageUrl": "https://searchad-phinf.pstatic.net/MjAyNjA5MDdfNjMg/MDAxNzg4NzY0NDY3NDg3.Rkcd919GSs9Q-r1MIafD7cWiMGuAqDY7lhEVHmpRn_Yg.aTrYk98wPHuEQtLXHe3tuV55Q94Y3ATIsr0n2_tYXEog.PNG/1509480-3ca915ea-aab2-4a5d-9f6f-b26859eb7a60.png",
+        "sublinks": [
+          {
+            "title": "매주 총1억",
+            "url": "https://ader.naver.com/v1/XFnb8Xz297r42P3rhQTWd8c0Snvg2PdWrCWoNcby6jUMD7Zj04tSN3P_KwdDrgp1FET8EHTseJyq6YHSsSVsrs72boj_fCWWWvIngCIgLwzog2GFwZVX4_7cHRtPnhorWHiq9DL7Orv57xncwVO3bHGjlQql2-TPD94u28hNEV4nwPLSzp5uYYljkNUISiH0yijyDlrQ6cw3E7DdpsA4a8fh6VaKnyLbetmlYhjnAVzveEysDKb6Ght9Gd-su4uxcHt-9c4v8l844r8umgGKeRNZbcFuXXM075HrKV7JmCo494s0Pfn4hSldTJF2HFwJ23VRJF6owEN97wmkjQIzYhWoVOV0M8xzA5f-6pDERGCLoMZACiEi4dv6AQZVWfjLwJeR1Zfctycr_3X7TOrwTGwpdPr0mLwjx8LLzwLsxhIWKvBPB3Ft63uaYxw81nNipGX9T25vaexCuvQdqcicDWHy9_NHrNgbYk0OfKdP3SR-DpOCXRtSHJvwsRaS8a0-?c=naver.search.pc.more.plsearch&t=0"
+          },
+          {
+            "title": "백만원 추첨",
+            "url": "https://ader.naver.com/v1/ww2XrFuxoS7BPtufVSjxLxAZ_En8DVlTkNtqwvLQWyTYn4k1r05q6cr5zESkNj7ovbiiE6Cbcrg9SnfJzxT2tZn4Rc9XhW-_hKW3zb9fmUw2HuA6wZ9qLzT32qVEJ7uAPH1vg2kxlEruNkhzGILKC0e31fDVJuEqCddFq1kpQnq5wlvH-l5RDuiJRDu4yZv4QmbYSQGXuaNqXe7gbtekE4fGYzZ64gjzi1goEGdl1x_X9I7BJu-UHuWVvuZLIkfrkoBQc7me0jHkCtbQECtE83nQ6QaGzRRTuK9LqL_OBd5HQ3erjLq_pgAjCRApDdEkE__lUt8PqgxKYD8ptHOwSqhNi8e1aiyE1j8uHwp3t-9Sf2UwG0_l_af43EEGvGFoY1xlTLmiI1SVej3jJcW8_T8YE-4mrh2Su-EBLI6ma03C-s0736MqS3ndCli5iTFXhmz-609bcWpVNPIYN_lStln9d2kFfNQvBx0iwGd7sYenlWeD32cghr7vrQaAgPu-?c=naver.search.pc.more.plsearch&t=0"
+          },
+          {
+            "title": "주식거래하기",
+            "url": "https://ader.naver.com/v1/QgRhz30RGTduR1y-n2zrCyAPP8J-BPWBfIbSmDJwbPZl-jo6V3zEJbc7GEtQu3eQ3Uf_RzkAt7Cnv9Xvoo7RrAaua2jPt1iEZO0QCosp8SJMP7532w1UIoooBh0NWet7rtoCGJlWH3KvC5kPsxXKGdjRzbqSMXZTFW4H-o6HKSnts4dothMFyMmZe0OpqqaNxY7xv5ioCeegnixlhEiaW4ULvG65yx_wReLLY_iKZe-CQ6f9DSka7Vl8latZmPxDEPnCC3KxDH-LGVQxLlZTTlj12l1inTp-7oagt0HwSVAAXODgnLMJzaRtr6QstQqPcwke3UtTlWMvSv0fFIAJPlUhM0senBbCBuVVxg6JMncK-9PBfzr0xb9OPtYzAGOSXEcWpG3Z6nqA5iGDzBMdyMGdqpE_sD32bidhAuVBkfPV6CsLYRMCzx9Ox12Ppktd_jw6pOZuGI9frxeUsYJ3EOh0tWCaGnpqOsy6WWO6XsXtYN_nxGLTt5u3i2eNV58u?c=naver.search.pc.more.plsearch&t=0"
+          },
+          {
+            "title": "이벤트더보기",
+            "url": "https://ader.naver.com/v1/fA_3PCMqdYxIU2R78ESnS3Z7ld5-EWPAJoIyoy_9xTUMBLgB1HSgvXCzDxvM3Su5SOQYWWM3SA0pWzsx42s9udESOpTg7-vSCvtxzRdw_iEHMWIJ6XfkxqMxOltl-bso-MITNEQ6rJ2k7Ez5-SpnrfcAEPF24Z3CW6u5yGbOgDVI4pYyqO_zcXtJoI2dTisEtv63nWQauzpUnkvpP8-6dBV53QNEl1aYCg7QoTAX6IRGAXja_434Foi6sjAZRLQaf5LlrBcbpDbczHF0zt0DCd2ST5lXdvEhQHpSZzfYw-bptHEbATZ5MkrrcZKC7dQsFZKoubNlv-k4h1gMqhtj_Kiijf56LrdgTC3kgrM2_E1Zha_0_dadY5uIpirfCV4GblSqgjMC_IYlFBf8BO5F4f7Y7nlDTtUldoe6GptiFGot8bj-oMjhJRxEPe4PmMQKUzDwrBxluxKPvI33xyRz4HCRO-iQ791rHfkZCt2SgttQ898dgA6utRiepZVpORnE?c=naver.search.pc.more.plsearch&t=0"
+          }
+        ],
+        "imageSublinks": [],
+        "extraTitle": {
+          "badge": "이벤트",
+          "text": "8주간 매주 총1억원 추첨",
+          "url": "https://ader.naver.com/v1/23DKcC0hrQIeXXOBLalznztaBs6eiN-jYmqb1X1Mpdjx_UaQYkrHexmavgXXCW4hIG5IsJNJuI0wIx-l4cpb2spnN1zC2_DQ9enLWAOs9p1OcTgXr7Vp0WRFIkfVlMgUoKh49c4tLlvi2GYtg5RelXWTYmGiSlEFPB2n6_BZFq7nXBrcSVJI2yiNqfxES9Lk2vj2cSW37miXBt6nqlHY34jO8JEYZ0edxlfyI4h_JoNtXbNSYp1R2f_bJetmUIYi3mTnssioRIqQuh3CdvkRdpy8TsinTGBIZ_OHmF_FnrFfZFP4Nz9aWl6Fptbb2Bgts8WyCJZ87uKTlPUTClKc1VIy2oPMdhtrsfTlFS6io0E-TjAaupry_Kjh3d02ay6T16NMC5Y9qSIeYnxR_ROHUpCM123drrGad_prYsGAFRdau70k__ph-0F5CwLq4WJeDLlGgkjsvc6sT2PESsmF57Xz6kQ7O5JgPXNb-DuziwUnR3iZT9bnAVyx6sdmXSVc?c=naver.search.pc.more.plsearch&t=0"
+        },
+        "localImage": "screenshots/pwl_img_신한투자증권_pc_1_20260922_k91w.png"
+      },
+      {
+        "rank": 1,
+        "advertiserName": "신한투자증권",
+        "displayUrl": "shinhansec.com/",
+        "title": "신한투자증권 주식거래 축하금 매주 총 1억원 나눠드려요",
+        "description": "신한투자증권에서 거래하고 축하금 매주 총 1억원 당첨기회 ~10/23, 조건충족시",
+        "adPeriod": "37~60개월",
+        "landingUrl": "https://www.shinhansec.com/",
+        "adId": "nad-a001-01-000000577659784",
+        "imageUrl": "https://searchad-phinf.pstatic.net/MjAyNjA5MDdfMTMg/MDAxNzg4NzY0NDgwNjY1.h_LeZ3Nupb8IrZ0TDhs4ipK_h5sjDVUaKb6Z7xABUrYg.c7rjIcvkpY1rOyrM2VuJXtKZhcYvLn_UPw82uOdy4Aog.PNG/1509480-5456a973-840c-460f-86b6-2a54a23cc012.png",
+        "sublinks": [
+          {
+            "title": "매주 총1억",
+            "url": "https://ader.naver.com/v1/kUT6Pk1Nmgisx2N3tMeuMAQyIFn1woyUqn-gYYImUOl8CFPpAC2slyuakfVbRqsjtVc_JABntWiCp7zwGFDbPrXUnk7WzlbT8Hiah7i3LS-gZAxbvBtgTqE1vy60CHrOTgVX7_xfw2mmmTJIqbsuQAu5MezSpQ-C04T8m2VQThFaZ64RjqXQezADYNCmhw3wK1--JMd8Nly4W7yLvCeog6OavvQBX93GjemjiaLC4NCwl1Ivi0gm-3L_JhUASelOKrOtQiuC1w2nLCfzvaTLXb52zU562JyxsQYci3JKoxRZCZtme7-1HUvaTUp274UWuZLMSlcJSKaO211iX1zh6SvWhIUbdxCHz0JXyDzVlSxH0DjAuMRWTusofL0BSdesGkgapCCk7iV2sBqoFqBJ7iiRa4b0XhAUYIMlUNqzh8-A_lupxQjwlaMFuY3Nx2dD9OT1Ng44y5RgpJbBBssL51qW1GmIQ76uV1a3izBLebNY1P0gqHCJJeAOHkdB1-Pl?c=naver.search.pc.more.plsearch&t=0"
+          },
+          {
+            "title": "백만원 추첨",
+            "url": "https://ader.naver.com/v1/KYuN0QruAYyoS17DWswdcURemh0_lyOjQv-_ufBJSiljVwJT18-G12lufQNbiuSI2-bHOTCIv4l5EGsME2AaGpnqL2lqpGevqmu6pQJF-jLQ363jii0b5YE9Otb7J7r9XsMSPHygp1kyU4xZyqsetUvwgxHl8td8oIGoNAv1KNMqeB-e9cs00tzipGZxpuc9b3Da_gHC3VFmTh0AYCCjcohrjuwAWs4f-QGWSqSgq0Fo4pgfzUQ_mXLzRg6RFBrJHCLx16PveOkoEWkMN8awmG6CY6-BDcUhXn4eDT_6fSRFsTlqHxosBEqcr3IU-_EyaDeQ3HdoihFalbCh65Q19ZvvHt2VrVMVKHQdCSggPVXaaXCEljorfhMUZjCTQRbVW4FqsCdD8t-rawznOrD2FO8SXGYgp1nKbsNV_ksitwVP551pvfcoehNr57zVyJsLNqmrLV7DgP3u1OFzl2D6u1vZf6hCa76OyBJIm0vC-Wi10UzSVJvtB1ZhOJKbL5Xp?c=naver.search.pc.more.plsearch&t=0"
+          },
+          {
+            "title": "국내주식거래",
+            "url": "https://ader.naver.com/v1/epxyiqKzW-1xrl8HHWSWwsEBefTXmhP_llY3d5Fz8z_f-h-eXIFHGQCL4rGJ4pxBPz8HZy4o4UyHc4IDiUsXSu-UZrUzh900lxi_blZPqk8wpx170Lu_JhHOydwJKJY1y5Qw08cdhBN_E4O-MXVjWLUimyggLCw1x9Qm0I-IDoMu7IN79n8uPQBeZpmNIlue8Ziywc3Ov0rK0wbJDZgPLxCdA3TlbTqO7qy4qZIV_4O0ClfiQU98qQc2XS4Tr_fYkxNj50-HMNXMnLpBt-ll6iAY4m_rU0efuPLrlZ4v4g2Iu_LEt_ENtpruLPROFGUBSWYx4bv6wrNERpdsZRJzSO-SQYuCIHK1vCzev5i2O_jTuPGWkgd6A1vm5bfMoX_SccipgAzlXhyZt_x5qj0HdZgUbQPZ0fYCgSxW8WA7f18k_KtT13mZB7sNUQAcOxIIGr1volz3AuAgc4NeI8aJ8A8t2O9g9mu_DVqq5yLajkiBX2sPTt1QSIx99xzQlWHx?c=naver.search.pc.more.plsearch&t=0"
+          },
+          {
+            "title": "이벤트더보기",
+            "url": "https://ader.naver.com/v1/r0hEsHYkTxAAtZ1sVDmpmlOG0uo1Nl_PPcgtbqGCaq8wfnqzCpUuB8RZBfvSI_WfAd_7zIWWq_w91RkLFFRi2f1rH4HvYBGNEIUVfltWe_HrCYvRcaQHmn9LOURHVzcPCTrx3v8mbg3RXPej68Xy_n1rGuFvJFuZ0M9JncyzK6gjepoU6L8W0r5sZdPCIwg-d_KMvrnbQLBNV7s_2-qqHkdLI6JQ-J1VeuoqWVA1EjV-sRJSMXnKPPtsWCRtleZye-9EAUj6AHi8PHnsintUPFyQU3dkMKb-KewyGEIuD7gt2tiDzYvuvWEjPfbM0NIVHbJoJaN6ZT2oShJvXG01kJzlPusSm8moTJzFLgtNCji06Jh3c8Vm_qR_RWeRp46Hid9H1ex8NO_n7Vrv3-02PK6E4DDQAfcUQr7cUpFuGAfDQNMPGDYK5ct2WtN_AtfQAMnxo5FUNY3xJNN0bOnU1gHWE-5silfDYBpMBJ7xzpb6GCpmgi6ZRCC2JCQFqejP?c=naver.search.pc.more.plsearch&t=0"
+          }
+        ],
+        "imageSublinks": [],
+        "extraTitle": {
+          "badge": "이벤트",
+          "text": "8주간 매주 총1억원 추첨",
+          "url": "https://ader.naver.com/v1/23DKcC0hrQIeXXOBLalzn7djGFTmUJrR1Ui-TasE6fLNoe14R4DJCiqJmr0cJHZiOn5GRmTX8E-T_Ea7S0Peg3MGZUJYz3y1z4JN4IVLu2JwnfOG_XogNKEkmzKMUMyMb2USwhLRA4-zb0XzgivMJ_YG6mfm7tnIMCAeFsS3BEb9QczKL4yVbOka0drdGBrDa8vfGLFS1Irb68obCqtCo5_QvHftQpV4dtM1aB8414nz1A_zLTi5KGJg31RxYdBfV3-gCtGQww0Hcha5YKLLC64herdSmYdIUGAssWmYbSvrDr8g3Zzpc4PgpHkYU4sT6EfsLk4id83kzgmcatEXLGUvOTeuLZIbol0kiRswQr-7D631BSuC20zANOzPjJ7MJh27osq4eLHI1crY2mc4O0PB5EkHXTFg3AWPT1ky9jN3EMl4Xe_6Vu7aZLjGa8Y6XCLclxpSR-LidwFgwSuACtFQqzDBGYB5LYKd6q9MbEZGV2I_HHu7cKxoKutVtfp5?c=naver.search.pc.more.plsearch&t=0"
+        },
+        "localImage": "screenshots/pwl_img_신한투자증권_pc_1_20260922_6dyu.png"
+      },
+      {
+        "rank": 1,
+        "advertiserName": "신한투자증권",
+        "displayUrl": "shinhansec.com/",
+        "title": "신한투자증권 주식거래 축하금 매주 총 1억원 현금 혜택",
+        "description": "신한투자증권에서 거래하고 축하금 매주 총 1억원 당첨기회 ~10/23, 조건충족시",
+        "adPeriod": "37~60개월",
+        "landingUrl": "https://www.shinhansec.com/",
+        "adId": "nad-a001-01-000000577659784",
+        "imageUrl": "https://searchad-phinf.pstatic.net/MjAyNjA5MDdfNjMg/MDAxNzg4NzY0NDY3NDg3.Rkcd919GSs9Q-r1MIafD7cWiMGuAqDY7lhEVHmpRn_Yg.aTrYk98wPHuEQtLXHe3tuV55Q94Y3ATIsr0n2_tYXEog.PNG/1509480-3ca915ea-aab2-4a5d-9f6f-b26859eb7a60.png",
+        "sublinks": [
+          {
+            "title": "매주 총1억",
+            "url": "https://ader.naver.com/v1/gViC1_moGWHpf8-PRR3bixRWhJiK_ZynElpbS1hqJo5PowsrFAKwXqiOtdeyFlkdFl7snskvSj1MULT1UdeL9YkA1kXLd-Vp7xOs8ghk4Sq0lsl2vT6ozM13T8qGHidtlPKR2XzOjn8LnJ-mhSC3u2vBluCBoL-75YQI5HR8_RBpwADB25rsL25J3t8ydf27OFcUVfvHZN6U5ERTAI4lFmiVtsxKYDKqooEQCRKZ8jaMZ4tr4gHqCnUiSbA7WYVD1favL-r8z6DKlfQh1xacQsG-O0znpE-1Zyx_NxRClZcW0d3yy7O_cekcKa0xskyaOgL_sz6FkpsxTWIZJW8cLpoUCmYtiGzfMt0x4rQL783R5cdmS_Y0YJd2OX1NuCQJXsk_qt16EoTZQTABVffONC7nS8TPkdtaP8ADwOL2dFissn7TmWsQl67w4Y4dzxR1MrZJR1Pgk5aPpv_P8-y8tWOjuRIpZb0h7C6XGW5rlnZzImv4l27Zk3quJSivu6jL?c=naver.search.pc.more.plsearch&t=0"
+          },
+          {
+            "title": "백만원 추첨",
+            "url": "https://ader.naver.com/v1/epxyiqKzW-1xrl8HHWSWwpYU26p5JKmHh5g-8ltkLi5VmWD-hhZTANzQ9RaKunFCi4PM1xkqRl0lSP97M-lifuJuQV2mnGEeMLK3dYp--VOdhz4EviZlhNwQGz7cN-41NAdPXdqEeh1Xm484QL1YPAE_yPkYo66Xozryzy5A7KxlMgvj1BgRIQYJctU5YuYz3kv7HFEC2HEzIBHYUetV_oRj8D_fBWmaVKeY8Dq1spAXdVWzRSXV-YUlj7d3SILC28fgXgJJjNh0w4FY5lvhKPqxvorcrNhlmbnp_XKkO5cGYIts-qd4X6M97mAjJ3R43mCUQ3ZMJ21hLKbq8VszGRGH7n5Ke4F6u7cM8Y3upjYkAnswkUNM-LxI-VmlPcY_IIl3SH-KjlZNojEUWZ6TTM0b3-McbSJtgqOLzJrBbL3IOx50jwt9lJmHS_WTtmo1NzFbheoSpVQuZ8aV4A9-d_84tppfG1an4SVGufniyvRE6UMRkE1GspJexG8QzT_i?c=naver.search.pc.more.plsearch&t=0"
+          },
+          {
+            "title": "주식거래하기",
+            "url": "https://ader.naver.com/v1/epxyiqKzW-1xrl8HHWSWwqqwImtCFWAa0-RmykTweGzMufgeQN6Uowy68sLhED7sX5uVBLmrQHO4HPyWUK3a6faHfEvADvCIolIwM7eihEiNW_2yj-SeLkH8VIlec6YeDNvRq1qB2wyKhGLeSjI6RTnAUc7Ehi5qrYgxxvwRGfYjjxOn2UwfapZjSiH_Senz6oo_M65jMC8d4OAvfckpVre0IBVnGyLZG2d-G__m7olVUqtovI_y1cFjwFtZloCZPJBD79re3W12ub9CdwCzBhM0sibzW9yXecop6Lz3PHCGe7j98RvSDKqsRTdeSqoyuU1z9txPk8v548cLGq-70iqViWx798qLyXI5N5yXyTtbaUcoXpGQB2_lM5THh5S6vHFwzB4N5ftFBCIuz-eoBQN11pJraUa05zF1LTww6Uu2XkAsXWMHBAEfYVZlP6UBaDTYhD4VsKG3dr6wFhkpMgTTnMRCtCfc-WrlLyJtLncXnySc2LrHgLDcCkXrQasJ?c=naver.search.pc.more.plsearch&t=0"
+          },
+          {
+            "title": "이벤트더보기",
+            "url": "https://ader.naver.com/v1/QgRhz30RGTduR1y-n2zrC9BqoWjYaAduijhKN4l3JYye5kHYfC3Oq1MS5Fb1GbNHEAqboRkF0xygZG8X-okDX_pBdUTXp56R7MD3v3HOoGuUKgWSbrBwauaEW5A5fYAP64EmnAMT-GgEL6THnWSh3b-wVD8h8i4qZkJMesv-gRsjL6D9YVrr4Psbx3Cf05WikIQFSCeTLkHF3pxzLYjjL895sMAVAhMbInQckwznoLQhftxPpqXNGVtXkr8al4WZxgGXNh0eU6PLanrNGQVZSbtaoONErVMlrL5Wu9CgMMtiijAMLKA4ILjNk1YEA2t23yzUNtK06ncj5Mbsr9wBs-kYvxtu-WLAYPj6Eo3CBeg1oRnIAL3Fnly71PlV66BCnaR45r_2KFkbC-hiPdmXYnMpdaRHTa61fT-r5hSqM6U5Kl4q__Sq3hZUJWY3mmEUgRjjQpn2wcaAkVG1fPgxzPxpATd8Yp2lFIYrzlJO8zdM-gE5TJQBl32PWX2gFofa?c=naver.search.pc.more.plsearch&t=0"
+          }
+        ],
+        "imageSublinks": [],
+        "extraTitle": {
+          "badge": "이벤트",
+          "text": "8주간 매주 총1억원 추첨",
+          "url": "https://ader.naver.com/v1/kUT6Pk1Nmgisx2N3tMeuMO9LGVIhghVAknFDcICrCAPOkOuSPEHgpFwyYrGAaJosVcWqGcLbx3OEZ4rpxX6GGTddQNHr7ebjwaQGU7xhAUWP_lJCLYZShf4O4JsQwuUVUqdkli4g3t0gp7N-d4b_0oTwMlrar8pAW1Kcmy1uMsJfrmFOruCxo62HyeX1iJHEvxVjhkpOQEGMrmf1UHxCDB2AZpKvdMea8FEvQzlghnuUm33yKL1D6uXiHcS6V1t6JIdAKFL51LEwhwYOk3d4oA9-lsvnkcUg_QnLHX0pP6XKEQBInHhAPGMSspPiOdbyjgL7if3NVnE3JSdx8sfqv5yseNM69VLwKcgniP7VvdoSxEOLNNQvpPu8f2K1y5_Nn9o4jMEVxJ90NlVibH4XOEVmuXVzY_MGlwb7wyyCooxdYQpxZY5Sspj_5PQrDd31YBWpRjmaD8TpksnVjkfqPtj98f0vrzhGeumfQA9uVBIILU9R4W0feCcuuCzZHV-z?c=naver.search.pc.more.plsearch&t=0"
+        },
+        "localImage": "screenshots/pwl_img_신한투자증권_pc_1_20260922_fi3q.png"
+      },
+      {
+        "rank": 1,
+        "advertiserName": "신한투자증권",
+        "displayUrl": "shinhansec.com/",
+        "title": "신한투자증권 주식거래 축하금 매주 총 1억원 현금 혜택",
+        "description": "신한투자증권에서 거래하고 축하금 매주 총 1억원 당첨기회 ~10/23, 조건충족시",
+        "adPeriod": "37~60개월",
+        "landingUrl": "https://www.shinhansec.com/",
+        "adId": "nad-a001-01-000000577659784",
+        "imageUrl": "https://searchad-phinf.pstatic.net/MjAyNjA5MDdfMTMg/MDAxNzg4NzY0NDgwNjY1.h_LeZ3Nupb8IrZ0TDhs4ipK_h5sjDVUaKb6Z7xABUrYg.c7rjIcvkpY1rOyrM2VuJXtKZhcYvLn_UPw82uOdy4Aog.PNG/1509480-5456a973-840c-460f-86b6-2a54a23cc012.png",
+        "sublinks": [
+          {
+            "title": "매주 총1억",
+            "url": "https://ader.naver.com/v1/QgRhz30RGTduR1y-n2zrCxD0og46KA2L25Z3euCjlCfk7XoTSpyBm7Enp_qzQc213kPb-YM8k6vN8icdiYKOJJgeQ3_PMR7zIT9HveI7-r1gvL8qLv6OB46a-eFqMrkzJq3VoF3ElCgtfZAe32S-NHbViDUpd1xuPmCn0tk5OpQH9h6bgJryx_uK6rkgqU44gM6ayTISOwBTrqmxixAsVi0kkCl0PQ-lZIyDFoLAyxFI9njXwI0rlvaXAnrOb6RfP1JprMBY0zGzzJ1oQ_ffqHDT1VCClzrz3XL4Qnw7JQwwlZWuPpiaUtKl1YkrrLQi11CeunpEYt04E1aaX1IL7WucIi3gNqR6Q8Aq7jM4EqttFn43H7_cWM5qmtb_yo_yJoDr4mg2FMLiuKEvnu4Vsdb70a3_BFFersGSJAsmB4HPwWlFAaLU5c46aC7aKaYXc4lLxZPf7sHqDey04sZ7fteELvBTWUMn7KYlcb8Gefv5iPfI-EJzYR5jnbiXGg7p?c=naver.search.pc.more.plsearch&t=0"
+          },
+          {
+            "title": "백만원 추첨",
+            "url": "https://ader.naver.com/v1/CmHPpeSI8jBp3ZfUuTaEb5mrNwT7jwUW17T4sCsUjeaHsx-HPOoht72yGtlW4vhsDxzv4_g5ZqzLEi5nsN6qncfgEHnmYqbXyFnbd44EBEgP7XiTrwoA8vSl4cr_LWA3yx3KJy0Aq-xHEqp-8qgo5RWdDa-xDuxAIQANM77HSeg9F0V9cFlz_rq460PSru5HX2wvyAAj7CbRQxEESysOO_JcWVBFBVCOhbDW0ZgC0YPlay8ezvxEl0jPkfygztUdBmuE5AXMR3hBs0Nb0_U6DowH2iQqZjzVkMxpnwQQ8hPYgFigPyRsXVRWE7s6z6mFJQuJ6lsrC9Zf5nU3hojWeFteDQBEHfw6Bgk5Ro-_U9NJK5ZmIO0td_8XnGF2pfNeWjP02skjygKVKpowExtJL2RhY8shV51XhU834gsfmefjWfyjKW88NIM5aUH1xd1fzxsuQRvatXDKfEcz41V1765LwmkzOQQpFPtDMsxP7TiBqALPuin48FzccNMvpzcU?c=naver.search.pc.more.plsearch&t=0"
+          },
+          {
+            "title": "국내주식거래",
+            "url": "https://ader.naver.com/v1/9bkKZ9QS7pad9M0qNLL8kCToZVtO1loNl3AOYtG7SScAGhoQ-Mn6xg_ev7BOQF2ruf79hriFijToXplhqgVwJh5jh7wkGITXaGY_IbiT6euWHF4i6QI_wxSfJ7P1cENGdP5Eu_PI8OUEFYCjxAC-tBguU09Lh_sUvbskyWk82Zu07cj3if-ZBWq94HdYe_Lzd78k6gv_LMUzWmauVcangbj0Yd-3pfNQjmpg5vqz-G4aDqrh15t-LsOD44oRmOxxUoHOBqOokVhH3pBEyyqSkmVuNfZ9fdWO0PL9lBpT6nE6oTr7k5ejjvidJiMuXIojICdyycZNPkHsVA8yQaIvtpfreobXgFr0dtCMLAIyP0UDE6AT3BJfEKx8qiHzN5IJB9m58QP2IJTyU7io1Xmygrqs3-FRIwtkuaTzxHLak7wR7PXC5LRf26MAR6yoCPSYZGuLvZIP0W43E8fXoMTlonaBf_Xz-iHF7GV03olIE3vkB6eiujrVGxwIYDWPZRxg?c=naver.search.pc.more.plsearch&t=0"
+          },
+          {
+            "title": "이벤트더보기",
+            "url": "https://ader.naver.com/v1/luOQJ2YlTBM3nYCBQ326Y0hX1JHfUz9ZRBJEZ7uaG6Xy6GWTkGVDyTCMFVmo0SICcSGkfA3Ob3FPByheem-LVvLWysoq7dyZ6MEKfpAfI6uTPK7IKp6yoRuhrp_bsjIYs1albfAWJo0E1ENRbycpISe-W3wnMJ--rHcc4hDxwi83dojZVZYYXf6hUsQQ46wF44o9W2WYrRr1zZ1MzRRXTc5Kk4L9fb-WHPS0LWWoEbeMhHxDooT9ORLog2A3b-KUokSUtbU4MbU1oLh-JsLE5Y3ebpcste-phGRuLwvq9bc5Su6xObBkYCkPoN4HNiEGS5qyBpeD0qjzFnAeQq20UN3tZvUTgxAxq09z1lnuoGUL70DDph5D4r9NyODPM-q2fXXM5aXv4KNgSWTaDTTbqWAZjl1fuux92Aj3QcdA4O-O7gIug0Skso68wUAQbsEEfmkf0PhWwIDtalSXw7khxx9AL46A7PuGAkmGXVwx9-V84xBYzl3EF3ogVf_iRMej?c=naver.search.pc.more.plsearch&t=0"
+          }
+        ],
+        "imageSublinks": [],
+        "extraTitle": {
+          "badge": "이벤트",
+          "text": "8주간 매주 총1억원 추첨",
+          "url": "https://ader.naver.com/v1/23DKcC0hrQIeXXOBLalzn_W7K69vL8j68wo_avUzZKMMEsPuv-GNg2xGRGydzE50el9gIMC5aTVOMxoNJdv3_VSnVU0KjVGqGZ5aKYWYHrfxDlRxwP1mVle76WBF6SFPHa-cAk68kVwFlcOg82YApgnib4973l02_1-20chXGxH071SROjYm0djGaZ6wfmmnPClXvUhAM19fgGFbIcE1NWVtO1CX9lsQoHvEZqXxsirGISxdiUPVZyB85s_Efq0xIH_4DfHMNaaVtmouST080YAD4irkBypLGv87eK3jjk2xvj5ZXfwj-qGmkiRoeJcOJzXicfTW2GcnmQdfSBtRkUEZPmAk0_FbwIeDqup42kGnU3iAgrswJhjo-5Q0e-EKJvwqqXgfnjgEge1byl5lFXwFGjdvghSDKIDFZxGVOfFlw7vfgnTcv0oLZnFKHG4vicvRCEGDXUEAfaTRTmi6srPxSYeVydJGS8SIlpaRiqR51C-piM9wVO5jbrwlbBOK?c=naver.search.pc.more.plsearch&t=0"
+        },
+        "localImage": "screenshots/pwl_img_신한투자증권_pc_1_20260922_bakx.png"
+      },
+      {
+        "rank": 1,
+        "advertiserName": "신한투자증권",
+        "displayUrl": "shinhansec.com/",
+        "title": "신한투자증권 주식거래 축하금 매주 총 1억원 나눠드려요",
+        "description": "신한투자증권에서 거래하고 축하금 매주 총 1억원 당첨기회 ~10/23, 조건충족시",
+        "adPeriod": "37~60개월",
+        "landingUrl": "https://www.shinhansec.com/",
+        "adId": "nad-a001-01-000000577659784",
+        "imageUrl": "https://searchad-phinf.pstatic.net/MjAyNjA5MDdfNjMg/MDAxNzg4NzY0NDY3NDg3.Rkcd919GSs9Q-r1MIafD7cWiMGuAqDY7lhEVHmpRn_Yg.aTrYk98wPHuEQtLXHe3tuV55Q94Y3ATIsr0n2_tYXEog.PNG/1509480-3ca915ea-aab2-4a5d-9f6f-b26859eb7a60.png",
+        "sublinks": [
+          {
+            "title": "매주 총1억",
+            "url": "https://ader.naver.com/v1/wn9soYcWKp7qkuhG1YaPyD4ia20SHxNV9CrjcunAQy1yTiUEI_rsKEHjkyczpCKHybv4gJDyiU9cG14rdaedlEdBlUCJtHV_QYKEFHBU3bvd5UHIBQqBXtzSEMuEg5rLtnS7rm_dil-74UoCBv8q40Ii-VnxIxlXEgmvctWioOABm9piq2MNBN_Ynl7gayjyZ3txbWkW9KS53wZLV2Pq9BE4MLPt0Q2c-Iu0qXRQ2lxxkqATva6fPI4489uZKDdIf-_ixg024AIRCYYBGlYprCK2XMUH4_O4fvALtJB2m-qo-ZnUeq1ePBzMdMTNwrYEKDnwfYLF1817EFEWLd4paBBs8Hx5vBbPvRu-qv_p427w4rGFxt8h5NFtgc_2RLG6G-WMD5FWFqDr4CfCix6JVAEBG-jnD2Ank0KdF5wXzfma8-17-WWudN4AlYnp9wvzN08DZ-k2GETDJcd8crWtYgMsc49C0NLQtR8lVgIuM6NWouZb7ED1OPRxfzB9L2FZ?c=naver.search.pc.more.plsearch&t=0"
+          },
+          {
+            "title": "백만원 추첨",
+            "url": "https://ader.naver.com/v1/fA_3PCMqdYxIU2R78ESnS39_mx0iTcMlYYa57G11BkFByBQI0cE9c3_1f8e1CT23pQL7V7coprhOpv5_upnzDO8Hqjp8RcE-Ei5Hp0jfunesUgmZgBUizmMQqU5kTLUR575JyFIOufohZ_KN-Hof-FEztEu2ClQWmkMm7X0zaixZbD6HVSuYFrlCKnc8zOHue_P1bpQXbYCtFFYfxI4esvueSJVIA4x3yJMuf0Xqyq1lApyAMJ-zrbl_SM1fg-3uBAuFmErNAvAv5qKDNXHKvXIRUuIPGymrAB0rB3q8F9nFfH_gbvLq-OL-zlArlHSkjkhFnJNPC08-uOROWDsk2QtBYpk1wJnrAgHBJZz3gjYBraZWnfCn_n8kcrrOGWCfZhwQai0YI_wxzporyJC4viGDlH6AqsvryXCuWC5MgAwJnRs5IpHFMUSpmkCjWEy_ADHSztB64t6NCH4ByilDOfNW6oVaAeX3u7YPFwYEF8aGbW7TKa7qn43JHpYZmUT_?c=naver.search.pc.more.plsearch&t=0"
+          },
+          {
+            "title": "주식거래하기",
+            "url": "https://ader.naver.com/v1/XFnb8Xz297r42P3rhQTWd0CTfDVs0lRwPKBKCQj-ho_siWw5jPzZ5DfaMzKjOmKO0-HdBweo4tv8Td_k91Fukf5EtTOt8a2ppFIHZ3DG3BWAuLT-DxtiQkxZW4TtyxrMwfKWEbTietlN73TrhMo6wPoz-j2nJtNGEGtkTSiU9QdDeP18-k_Ju7SvtPHvfyTcZZWcUbKdhgD45QdV6_eQ8nQS34qDQ2EJNzFV4C8ezfJthZZO4v0CoshojM6D7T9C_oX8DgwmwyywQWn-DKKD5ofHyFSTcDGloSsELPoSGb8GqQqMEqnmYUdsaFDzRnMoCHEyk_XKPCJjR732CUWUys6NcoTNInDyXGFc6clELA-oz7dHzt-7fCHh-7BlAVNf-GJxOBDbc_DiYzSY2AZyIZK18wUfLHsCEdp382m5cnINmwZjZiccyWJaljOqtbdvpUVlz2FPWmdommWfwFGYOMTpPm_5AXWiHnRGSfC2TzYXzi7X-zUXV01Xsy7yvVhA?c=naver.search.pc.more.plsearch&t=0"
+          },
+          {
+            "title": "이벤트더보기",
+            "url": "https://ader.naver.com/v1/wn9soYcWKp7qkuhG1YaPyB1VaCx6rBN6wqsBJygyVzCvoqKSL169KbY3YrBD46MiN1vEkwGGKFEnD_bdvg24Au-NCq_UwsmyIvZ1X9wsejHl-t8lt5tik-9napZpSJq4m9ZoTc4PZubaelF5WM1RAaCsyDzX7qwEpOzSv4jvqT6yadMRYMCgD1wBbdHbstDaIGszo4UlfMXjsN2Wp8YUXnMRufKgPbeAt8p2TGwWxQ2RX2NB4V_lBknd_GeJRMxjf7dcT7w-DUfSk1lXFvi2i4CLhtayKJ2EbYC0_gXEbUdSgzOGXifYpuxJ91NMe1WLnCkBXWjZRNlyxXOEsQzpB3lGtksx40GOC4-s-g8EWzwjP2ZwmKfO7oj7BITGpBC8ik-g_66RYz4qOQMLztTO3TelePQ7GWBtk61v9gs746qihEIjG5BDdMpi5-OvGFbarvfY5fJAjygT4of4SPO1RvrGjyC6lRIxQ4-PH_mgw_6igQRWG1eK_AU67WRulwaS?c=naver.search.pc.more.plsearch&t=0"
+          }
+        ],
+        "imageSublinks": [],
+        "extraTitle": {
+          "badge": "이벤트",
+          "text": "8주간 매주 총1억원 추첨",
+          "url": "https://ader.naver.com/v1/23DKcC0hrQIeXXOBLalznwgHYNil6uqbcYE8bpfRUJH8aFkRI3UXfFyaRE_zMNT-_P9w1XULNu9oPiqw7gaJl_h0eXLg0M_vZjU7T_Ot22x-cy1d4OeMShE56MRkXhJOPLWyuHBeKBFDFlnFgMDoHxZyngB4Xatfxfa5YG0dCMfzkf7_PspDrmmdnVCZstk7Dun7PeenOP0osFGk6vgpZvgYNDvBZVkpRAqWxzmm2cGIUO2o_H_c0jiOhyzRaKw3zT62OiPgf9e6WluSO7Ge_FV7sH9VmiF4xfEQaTs7unL1vBu3FW6SFfqRkuqfOliwYP_hVrON0grzhCsXBsGk9DsFWjIlcmx2Pggl8qIWRjG7_H4_HOpWx-jMPa6COAXoonHDOlVO11sT28wkw_30WDvZOvwoi_dwDbDtibDmkFd99fnm3lzaSHBIqzBcK-1rxxnGZVTek2D1OO5FIHc4FrOryQ71kc8TM6scqrS7UKLkylFva4Hp2S5zxfuLS0fo?c=naver.search.pc.more.plsearch&t=0"
+        },
+        "localImage": "screenshots/pwl_img_신한투자증권_pc_1_20260922_ddcv.png"
+      },
+      {
+        "rank": 1,
+        "advertiserName": "신한투자증권",
+        "displayUrl": "shinhansec.com/",
+        "title": "신한투자증권 주식거래 축하금 매주 총 1억원 현금 추첨",
+        "description": "신한투자증권에서 거래하고 축하금 매주 총 1억원 당첨기회 ~10/23, 조건충족시",
+        "adPeriod": "37~60개월",
+        "landingUrl": "https://www.shinhansec.com/",
+        "adId": "nad-a001-01-000000577659784",
+        "imageUrl": "https://searchad-phinf.pstatic.net/MjAyNjA5MDdfMTMg/MDAxNzg4NzY0NDgwNjY1.h_LeZ3Nupb8IrZ0TDhs4ipK_h5sjDVUaKb6Z7xABUrYg.c7rjIcvkpY1rOyrM2VuJXtKZhcYvLn_UPw82uOdy4Aog.PNG/1509480-5456a973-840c-460f-86b6-2a54a23cc012.png",
+        "sublinks": [
+          {
+            "title": "매주 총1억",
+            "url": "https://ader.naver.com/v1/kUT6Pk1Nmgisx2N3tMeuMHsU6hFX4EpfmmupyzW7qWAYoegdHLIQWow94d9m3Plds3zAYK_GVJq7HCXtskTFqV8HGIXA_uXjc8zngHlqCvRM66eSnPYdYqH1jgRPy1bPmkmXX25BP6nofEvAbx_rUTcZe3G12jUO8Zo3NPxuwUX_Q6P8DmhX2ssmRTfmJGABH4qRqy_Ma4UWkBI0f4DouU_p12KQllufTDCG6am-ISZ0MxRE2StGBvHVmld8LOdE_KxBKZVfcWI0n7jhzLCQRSiiPmemDd44gzpcVlgnD8zDJBAei6Q-OcbYIN8mKxcqLRwt_h2eCQkQVf-HqDl7_SG4T_S_Zux_5d8gqaTNpLAoYf0yRTUjkeJWWqrLntBWBqwiJrA2xmsouZ6PzO1r5SeztKCpcmO4MdAKTDI2UB-1oUR7NStxazBaYK7WVdulMT7JmEEcXK_OSHiJqcDbFFkWYoF8qojyG81hTvuTpDd9eaywde0ywD7hvlP1DR1_?c=naver.search.pc.more.plsearch&t=0"
+          },
+          {
+            "title": "백만원 추첨",
+            "url": "https://ader.naver.com/v1/kUT6Pk1Nmgisx2N3tMeuMPbVoJcudx6zNcM4mdvC_Xph3uG4P9FaGZZJulZ8zTZ6yWCndB4bIQof_sA_ppj9BF9KZdRUsupQKRwFA4tjosC2l23_g-ZBw2Ob3UP6sFz82X3iCQphVnt8yfCaMICA8Ou6H7AsNkRxtlPcxIwF9D4S0mhR7ZDmvMd7mJe0hc0MX4OwuKlmg0l18A3DNDccrphhuPa6Cbo_hsrrcL1dq_PaTZ0tOR2UyV7wiOSz1pDaWw0Ua389YOeAy1bkQPI23W-CglRgUaHjhnyXeZpUcag1V6K3EEt_SqdlXEiqqezXK-IWQ-HI-zD858Gu2jA8LjWJWm9RPDSPVQm1ca0bLx0FIHxTf-0VZMS8YekuVpNaeQxForsfpOUq0MPvAI8Ccaip2IKmhakR39VnWHa3zOb74FjQO9rn533hfMIOgx1oOeiYb8LQceSRs_jlyPbd0lZyUqDK1-opwMV4XCKQvxlzRAJdRhujrYgCchOeP4QQ?c=naver.search.pc.more.plsearch&t=0"
+          },
+          {
+            "title": "국내주식거래",
+            "url": "https://ader.naver.com/v1/kUT6Pk1Nmgisx2N3tMeuMM1REJA3UH_0mmi-8xMEs_gdJ9tultf-n5w9AoxoE0nwTEE0ERij7IfchIUkgkLwrXH5J30m3UGDHJgX09_Q_RgY2Q7uQI1k_206hvUjvUJleKfgrOgXjgDXKW6PbgvU7pzxqCkQNaoeA_XKFzRsBw17lw-PkM27dlV9X_QnvPuMoGeiQcwHjQxIdfCd8JP0RhHsa30fj99-E28cm5sI3b-U9p1pEcQC6pWEEL73XmrwGr7zVIIx-28zRIjkzAlIppB5GjrHO3cZ3lEWWqOQgOnI5YqvALiXlnIl3W3MC9G409A9BN96FW9zfmB-4LPbLI_n5vjOWtfwBHqY5EMya_fFg-dGqKpGGQfl5bduVsjSY0q_Mj18grUwHXFtDaw7AKelFikKPCTd9uzzu8fgUG3k5BPCqtlOcU-ZMCHzPyPDWxSGa4yVAkcuHxCOJ8V0P3fHfMt7_ONZIZTg_XJye9V3_BsIenNp-1olWvBW65Df?c=naver.search.pc.more.plsearch&t=0"
+          },
+          {
+            "title": "이벤트더보기",
+            "url": "https://ader.naver.com/v1/-fc85-6BxYzDxQlUOCtsmUSsnOPML0TkY2Gi2ZTh6gRW6ebbtxljnzQXdNB8WlGXp1U4sPZKc--pHw3r2d0HPVPOlUmBFv6PIwALnl0RFtgHJKN0FTKnFQIcbBwkyqsrm2W71p7aAGhkP-o17FbndPM95QhczDlFKPfSKujyAzGZe7Ou38au9ocijSNW5yVkJSXchMpFbwIylsmDqTE6-YgunueyqkFus0sM-YIo3DfxZZ5mW9x3k_ucfT3W5VIvTcaIba3Z9USCYXL-8QeQzBwCLewHJJTHWfqCyhObwcD9jeKRFm3yGrOdrfGt0oF4vmi0NnjbA9uM0FPKGpO13M_kLSkula76uBGiao1nEZaVJB9FrLwlPOi_Q0raU-YVfX1fx6YXkwytKod75k_ebLEaVklPGWy4XwIcxydFmGijIQS4LW7CsrgD43OXth4isjg108VJ6SqqvqflmRs49XryjJMlz5PDH9CXCGC1raj7TQPCmUjqx3p0QM5mh2Bh?c=naver.search.pc.more.plsearch&t=0"
+          }
+        ],
+        "imageSublinks": [],
+        "extraTitle": {
+          "badge": "이벤트",
+          "text": "8주간 매주 총1억원 추첨",
+          "url": "https://ader.naver.com/v1/23DKcC0hrQIeXXOBLalznzF3qRpX6zDrg43Bnr3YYtrGFI9Q0vCGBRgdEgO9K-ScIi2LLI63IhirGghuj8DaA7XKt6_3VvUZVjt8YGT4VThrAWluiQO2Bq2QIsiZQ6ZV_5I1P75zBbupHfEA0Qp15HNY6q-XzaxHYX1OnjME15Z1WpgFcwIkr7DAuFiDU6uS5lEmkTpjVq3AEIpuKp6kQMRL0NL-WDHdv_ywTF-fHjmqVfi3mCxvKW1uj2m-qVhfrSfuh1-9hHH4FrkIuqu3ZxBCxLk4MvGD1WIFUSVUYpxF_25BlAyPhR4ehQbAmvJtXS9hHi9Gb-_VOoRXHL5bEahEhvkN7s-hJbp6-c8uRu5U5eccr7k3d5q0U7SSY9djACdh80ds6yYvlCnRmwlXQhJJ6WsbJfvykKmxhQX-o9gE5OulN0B0RiotoOK8KJ3z2-diWHvPUZ2GXSVvqXV1CLgCLPKMd-sLopaoGXZ1NkcU0DefIBkSOyZziv31vNXO?c=naver.search.pc.more.plsearch&t=0"
+        },
+        "localImage": "screenshots/pwl_img_신한투자증권_pc_1_20260922_933t.png"
+      }
+    ],
+    "refreshCount": 30,
+    "collectedAt": "2026-09-22T02:00:30.166Z"
+  },
+  {
+    "brand": "신한투자증권",
+    "device": "mo",
+    "weekKey": "2026-09-W4",
+    "status": "collected",
+    "ads": [
+      {
+        "rank": 1,
+        "advertiserName": "신한투자증권",
+        "displayUrl": "open.shinhansec.com",
+        "title": "신한투자증권 주식거래 혜택 매주 총 1억원 나눠드려요",
+        "description": "국내주식 거래하면 추가 보너스 1백만원 추첨지급까지! ~10/23, 조건충족시",
+        "adPeriod": "37~60개월",
+        "landingUrl": null,
+        "adId": null,
+        "imageUrl": "https://searchad-phinf.pstatic.net/MjAyNjA5MDdfNjMg/MDAxNzg4NzY0NDY3NDg3.Rkcd919GSs9Q-r1MIafD7cWiMGuAqDY7lhEVHmpRn_Yg.aTrYk98wPHuEQtLXHe3tuV55Q94Y3ATIsr0n2_tYXEog.PNG/1509480-3ca915ea-aab2-4a5d-9f6f-b26859eb7a60.png?type=f174_174",
+        "sublinks": [],
+        "imageSublinks": [],
+        "extraTitle": {
+          "badge": "이벤트",
+          "text": "8주간 매주 총1억원 추첨",
+          "url": "https://ader.naver.com/v1/bB0ClOmKvq0hTyQoZpekd3YmzkDiWNm8sHoJKPQBiQQAhLSC4wJCvFFeMkP3Bikb7V-_6pfelBIOq3Tn314jJreoEh-25spjV1fzwTcgcOHL8pwqDMapZDzEMvoRjweNkMR8trvc5p-XDPw27sHvoQR2bouMiolj4uohUpqB1Y2SIzetulmoV8-k2TyxMFKV9A4GPX__BMn8wbeQEgwG2im4v50wvWadkhW43l2zIisrhNKh-7q77FuWnYnynzTX9DJ4ZIcQ5rgT6bkJCAu8vOh3vz4czbOASy_BEiEbPzZIeHht_2lT0-RccJjHaYvmpsnWwz3Ywj4phQvi7TKguHevTKq18zV9aAUheoCEa8oJ3T3zGH06t95y0DXf_ipY_SY_WPV8RujJUTR5kRBW7KL_dDL7O6sVuq2TtcWLQ-lahK87GqRoya5Zwhf92za63roGrMXYTQy9XHGxc4kWnKhG_Bj5B84JohO35zAIzHWdJ1Ih5TenE_7CpJO10w_X?c=mnaver.search.more.plsearch&t=0"
+        },
+        "localImage": "screenshots/pwl_img_신한투자증권_mo_1_20260922_sve2.png"
+      },
+      {
+        "rank": 1,
+        "advertiserName": "신한투자증권",
+        "displayUrl": "open.shinhansec.com",
+        "title": "신한투자증권 주식거래 혜택 매주 총 1억원 현금 혜택",
+        "description": "국내주식 거래하면 추가 보너스 1백만원 추첨지급까지! ~10/23, 조건충족시",
+        "adPeriod": "37~60개월",
+        "landingUrl": "https://open.shinhansec.com",
+        "adId": "nad-a001-01-000000577668953",
+        "imageUrl": "https://searchad-phinf.pstatic.net/MjAyNjA5MDdfNjMg/MDAxNzg4NzY0NDY3NDg3.Rkcd919GSs9Q-r1MIafD7cWiMGuAqDY7lhEVHmpRn_Yg.aTrYk98wPHuEQtLXHe3tuV55Q94Y3ATIsr0n2_tYXEog.PNG/1509480-3ca915ea-aab2-4a5d-9f6f-b26859eb7a60.png?type=f174_174",
+        "sublinks": [],
+        "imageSublinks": [],
+        "extraTitle": null,
+        "localImage": "screenshots/pwl_img_신한투자증권_mo_1_20260922_uk3b.png"
+      },
+      {
+        "rank": 1,
+        "advertiserName": "신한투자증권",
+        "displayUrl": "open.shinhansec.com",
+        "title": "신한투자증권 주식거래 혜택 매주 총 1억원 현금 추첨",
+        "description": "국내주식 거래하면 추가 보너스 1백만원 추첨지급까지! ~10/23, 조건충족시",
+        "adPeriod": "37~60개월",
+        "landingUrl": "https://open.shinhansec.com",
+        "adId": "nad-a001-01-000000577668953",
+        "imageUrl": "https://searchad-phinf.pstatic.net/MjAyNjA5MDdfNjMg/MDAxNzg4NzY0NDY3NDg3.Rkcd919GSs9Q-r1MIafD7cWiMGuAqDY7lhEVHmpRn_Yg.aTrYk98wPHuEQtLXHe3tuV55Q94Y3ATIsr0n2_tYXEog.PNG/1509480-3ca915ea-aab2-4a5d-9f6f-b26859eb7a60.png?type=f174_174",
+        "sublinks": [],
+        "imageSublinks": [],
+        "extraTitle": null,
+        "localImage": "screenshots/pwl_img_신한투자증권_mo_1_20260922_fm0o.png"
+      },
+      {
+        "rank": 1,
+        "advertiserName": "신한투자증권",
+        "displayUrl": "open.shinhansec.com",
+        "title": "신한투자증권 주식거래 혜택 매주 총 1억원 현금 혜택",
+        "description": "국내주식 거래하면 추가 보너스 1백만원 추첨지급까지! ~10/23, 조건충족시",
+        "adPeriod": "37~60개월",
+        "landingUrl": null,
+        "adId": null,
+        "imageUrl": "https://searchad-phinf.pstatic.net/MjAyNjA5MDdfNjMg/MDAxNzg4NzY0NDY3NDg3.Rkcd919GSs9Q-r1MIafD7cWiMGuAqDY7lhEVHmpRn_Yg.aTrYk98wPHuEQtLXHe3tuV55Q94Y3ATIsr0n2_tYXEog.PNG/1509480-3ca915ea-aab2-4a5d-9f6f-b26859eb7a60.png?type=f174_174",
+        "sublinks": [],
+        "imageSublinks": [],
+        "extraTitle": {
+          "badge": "이벤트",
+          "text": "8주간 매주 총1억원 추첨",
+          "url": "https://ader.naver.com/v1/zOuUrCsOPqkGasCA1HaNdo7TpEfqVZty5b1HKiE4hv4n4cFWOZxaSPd4frWW9Enzbp0ZupJt9NtLFLJy5QkHJn2JWoUhUvnXJtbDGFBMEJIYrFb3ykBz2Schji23NE8-gsbKn2aixBw0N91sIj6snPtzdsNQ0fiHQ-uDLp91L8MtAQ4LLkfONnAV47giUnNGWw4ia79bNJPsILaOusuP9ItoU-DMPLi6QR9t5cd5KZCuw4Ymn-KEpFfq0JMAidwoohL6Jl1myA51x01c6Yoq8ixHk8-uKRyCEwGW8vqtiNswb_B1pSoWHAP7WJN1Y9EJEFUyOw6_DO3rGu-rje5f34FWPmqCgikvtC7KU3pjRY9etax37-j-l6_lIpOnWONdnsaKp7AGoE22mp25WUrPsnMcoXdS8PF1fl5EK3Rej5Ajz6wEhp4NYBy6ao2OuGwli1JLihfy3lPyRyXCuzxFHA8yTu7xB6gxJ19LP_jMXs3hW-yfJ7sG-Fj0a2dNSAICet4v7scONz9WrV-3GFhhhg==?c=mnaver.search.more.plsearch&t=0"
+        },
+        "localImage": "screenshots/pwl_img_신한투자증권_mo_1_20260922_a2ec.png"
+      },
+      {
+        "rank": 1,
+        "advertiserName": "신한투자증권",
+        "displayUrl": "open.shinhansec.com",
+        "title": "신한투자증권 주식거래 혜택 매주 총 1억원 나눠드려요",
+        "description": "국내주식 거래하면 추가 보너스 1백만원 추첨지급까지! ~10/23, 조건충족시",
+        "adPeriod": "37~60개월",
+        "landingUrl": "https://open.shinhansec.com",
+        "adId": "nad-a001-01-000000577668953",
+        "imageUrl": "https://searchad-phinf.pstatic.net/MjAyNjA5MDdfMTMg/MDAxNzg4NzY0NDgwNjY1.h_LeZ3Nupb8IrZ0TDhs4ipK_h5sjDVUaKb6Z7xABUrYg.c7rjIcvkpY1rOyrM2VuJXtKZhcYvLn_UPw82uOdy4Aog.PNG/1509480-5456a973-840c-460f-86b6-2a54a23cc012.png?type=f174_174",
+        "sublinks": [],
+        "imageSublinks": [],
+        "extraTitle": null,
+        "localImage": "screenshots/pwl_img_신한투자증권_mo_1_20260922_fgqs.png"
+      },
+      {
+        "rank": 1,
+        "advertiserName": "신한투자증권",
+        "displayUrl": "open.shinhansec.com",
+        "title": "신한투자증권 주식거래 혜택 매주 총 1억원 현금 추첨",
+        "description": "국내주식 거래하면 추가 보너스 1백만원 추첨지급까지! ~10/23, 조건충족시",
+        "adPeriod": "37~60개월",
+        "landingUrl": null,
+        "adId": null,
+        "imageUrl": "https://searchad-phinf.pstatic.net/MjAyNjA5MDdfNjMg/MDAxNzg4NzY0NDY3NDg3.Rkcd919GSs9Q-r1MIafD7cWiMGuAqDY7lhEVHmpRn_Yg.aTrYk98wPHuEQtLXHe3tuV55Q94Y3ATIsr0n2_tYXEog.PNG/1509480-3ca915ea-aab2-4a5d-9f6f-b26859eb7a60.png?type=f174_174",
+        "sublinks": [],
+        "imageSublinks": [],
+        "extraTitle": {
+          "badge": "이벤트",
+          "text": "8주간 매주 총1억원 추첨",
+          "url": "https://ader.naver.com/v1/j7R6TU7j2aV03CrmobOfCyTUU0nBPPUJoydUY328fN93o3AQPH-NihOL93wF4d1vxwUP54EGdILP0yGQk6bUzyFLSPKJDJSkZnAnJMlVo0DMUGnZJ-vYb3JPiJQzHHT1zBaW_aIXUKM1G3lITvTKiFH76uYNbaF_cz3rCkwqEmugVHIyfIcWllep0mirfi293ULucPVveDsnR2rL0Zy0OcABqixLYtMM0FPo0CgTFrQGvYPBPyahKoWwtn-eEIyQTtQXDjlkfcrM-9HeUI1Ocig98AJDGTqlpaEduOY8i_AyxUC9IFBE0mCYpXI8yAE24-YWJ1fPgKSKR5fC9-4QXD3gm-Y4BL7715vwOydPtBhlkp9estFPSlF4PwTHM2pmE4AUGs1HAQO3Hc0s1YkOBG4aesU438UCTf9uWj8D7p0fc5tlTksLtYyj1wo_LbeqhywR7jq6pLF5Nvbya6jvl2wMUkfx891E9mDYV-HK6GBDQjkhTR5e6SDKc6Gf1WTU?c=mnaver.search.more.plsearch&t=0"
+        },
+        "localImage": "screenshots/pwl_img_신한투자증권_mo_1_20260922_qot8.png"
+      }
+    ],
+    "refreshCount": 30,
+    "collectedAt": "2026-09-22T02:01:39.283Z"
+  },
+  {
+    "brand": "한국투자증권",
+    "device": "pc",
+    "weekKey": "2026-09-W4",
+    "status": "no-ads",
+    "ads": [],
+    "refreshCount": 30,
+    "collectedAt": "2026-09-22T02:02:36.925Z"
+  },
+  {
+    "brand": "한국투자증권",
+    "device": "mo",
+    "weekKey": "2026-09-W4",
+    "status": "no-ads",
+    "ads": [],
+    "refreshCount": 30,
+    "collectedAt": "2026-09-22T02:03:44.159Z"
+  },
+  {
+    "brand": "키움증권",
+    "device": "pc",
+    "weekKey": "2026-09-W4",
+    "status": "collected",
+    "ads": [
+      {
+        "rank": 1,
+        "advertiserName": "키움증권",
+        "displayUrl": "kiwoom.com",
+        "title": "키움증권 비대면계좌개설",
+        "description": "신규고객은 계좌 3종 개설하고 5회 공유하면 12만원 받아요",
+        "adPeriod": "61개월 이상",
+        "landingUrl": "http://www.kiwoom.com",
+        "adId": "nad-a001-01-000000569701451",
+        "imageUrl": "https://searchad-phinf.pstatic.net/MjAyNDEyMDRfMTMg/MDAxNzMzMzAwNDg2NDE0.jFeuL5FPyzkqddt0MlcWDNAcG0QtDBJFLRAGo9-jO5gg.g7pF4QYEBLx8Q89gMIFC9Hwdbk_y13K63NNTt2Ug3xAg.JPEG/210348-09b3f344-0606-4bfd-abf9-c3b8a476b618.jpg",
+        "sublinks": [
+          {
+            "title": "휴면고객",
+            "url": "https://ader.naver.com/v1/VKGIcP7QsGfEKsspIuD-hrcHa0X1cvmeSxjHpWIu_cbKOKdIiBVgqiQ5doSzhjRhdONZZmntA2EpiT9ixcYO8K6Us4OY1gWsvcLi4Qv9GUmOlX5HK8OesPx1hEHaxeOJ_QW4aQARKiLxBUXGxWdBb_tkX1ExH1SOT751yL2F1NdTv9G4N1wJ1h9Ou6InmRkgza1ZyIgir2w7ZvycFiuwVCW5fdJCOi72fw1de950IwQsbalFZuL3rl8FdcAmsJauPGG1FgwRFZ-Ix3Nnsh60zQ==?c=naver.search.pc.more.plsearch&t=0"
+          },
+          {
+            "title": "주식옮기기",
+            "url": "https://ader.naver.com/v1/VKGIcP7QsGfEKsspIuD-hrcHa0X1cvmeSxjHpWIu_cbKOKdIiBVgqiQ5doSzhjRhdONZZmntA2EpiT9ixcYO8K6Us4OY1gWsvcLi4Qv9GUknkpPOTJ8-Q6WoAbN5EGK20OCL0bHkPH_yVBPf6pWtJcssyXzSN3PO2yrVLKVN8O-HgHZr1tQOrMCHniLuQWo8Ms3k4uILzbuogsRW873vmh5Rt7IzFo-IrevV91hSIXWDKuhis7vBI-ZPiejo5LxmrYDbVu0gYsU3b_mIiLMugA==?c=naver.search.pc.more.plsearch&t=0"
+          },
+          {
+            "title": "수수료 할인",
+            "url": "https://ader.naver.com/v1/VKGIcP7QsGfEKsspIuD-hrcHa0X1cvmeSxjHpWIu_cbKOKdIiBVgqiQ5doSzhjRhdONZZmntA2EpiT9ixcYO8K6Us4OY1gWsvcLi4Qv9GUmjkhMgRorV9Yaur7EXgNdRG8xlXuzcv9qEZfxVK_nIOWEjaeP3VvzDDqX3fJJidV0hwNE4NOjtCMO0_EjBA7xKVKBoKCBPuEGl8CpQP0cDrIgPi0D7aX_ba7WX7GhZqCNeVNGeJVbSbgrVpil14Gu7jUEIUi1OMx_tiZZC9b_CKg==?c=naver.search.pc.more.plsearch&t=0"
+          }
+        ],
+        "imageSublinks": [],
+        "extraTitle": null,
+        "localImage": "screenshots/pwl_img_키움증권_pc_1_20260922_16al.jpg"
+      }
+    ],
+    "refreshCount": 30,
+    "collectedAt": "2026-09-22T02:04:42.843Z"
+  },
+  {
+    "brand": "키움증권",
+    "device": "mo",
+    "weekKey": "2026-09-W4",
+    "status": "collected",
+    "ads": [
+      {
+        "rank": 1,
+        "advertiserName": "키움증권",
+        "displayUrl": "kiwoom.com",
+        "title": "키움증권 비대면계좌개설",
+        "description": "신규고객은 계좌 3종 개설하고 5회 공유하면 12만원 받아요",
+        "adPeriod": "61개월 이상",
+        "landingUrl": "http://www.kiwoom.com",
+        "adId": "nad-a001-01-000000569670650",
+        "imageUrl": "https://searchad-phinf.pstatic.net/MjAyNDEyMDRfMTMg/MDAxNzMzMzAwNDg2NDE0.jFeuL5FPyzkqddt0MlcWDNAcG0QtDBJFLRAGo9-jO5gg.g7pF4QYEBLx8Q89gMIFC9Hwdbk_y13K63NNTt2Ug3xAg.JPEG/210348-09b3f344-0606-4bfd-abf9-c3b8a476b618.jpg?type=f174_174",
+        "sublinks": [],
+        "imageSublinks": [],
+        "extraTitle": null,
+        "localImage": "screenshots/pwl_img_키움증권_mo_1_20260922_m0ku.jpg"
+      }
+    ],
+    "refreshCount": 30,
+    "collectedAt": "2026-09-22T02:05:51.476Z"
+  },
+  {
+    "brand": "토스증권",
+    "device": "pc",
+    "weekKey": "2026-09-W4",
+    "status": "no-ads",
+    "ads": [],
+    "refreshCount": 30,
+    "collectedAt": "2026-09-22T02:06:55.337Z"
+  },
+  {
+    "brand": "토스증권",
+    "device": "mo",
+    "weekKey": "2026-09-W4",
+    "status": "collected",
+    "ads": [
+      {
+        "rank": 2,
+        "advertiserName": "토스증권",
+        "displayUrl": "tossinvest.com",
+        "title": "토스증권 첫 계좌 이벤트",
+        "description": "첫 계좌라면? 누구나 주식 1주 받을 수 있어요!",
+        "adPeriod": "0~3개월",
+        "landingUrl": null,
+        "adId": null,
+        "imageUrl": "https://searchad-phinf.pstatic.net/MjAyNjA3MzBfMjg3/MDAxNzg1Mzc0MDMxMjMz.grzK9KskaMSyHRP3J-LG1FDW8GL8fu_iVDlzWigzxQUg.9wspCOPx-z_MXwAdDM1ZS_wbKbzi0gH1s7XkDJX6KA4g.PNG/4123689-b8c7cc3c-46d5-4cce-b79b-8810604a705f.png?type=f174_174",
+        "sublinks": [],
+        "imageSublinks": [],
+        "extraTitle": null,
+        "localImage": "screenshots/pwl_img_토스증권_mo_2_20260922_yclg.png"
+      },
+      {
+        "rank": 6,
+        "advertiserName": "토스증권앱",
+        "displayUrl": "phone.hoanbl.co.kr",
+        "title": "토스증권 계좌개설",
+        "description": "토스증권 계좌개설! 24시간 언제 어디서나 OK 쉽고 빠른 비대면 계좌개설",
+        "adPeriod": "4~12개월",
+        "landingUrl": null,
+        "adId": null,
+        "imageUrl": "https://searchad-phinf.pstatic.net/MjAyNjA2MDNfMjY1/MDAxNzgwNDg5Mjg3ODM1.RMuwrY7jCSNwggJwdMBOIzKnuY__jd9cL3nTfdihjZEg.9AWgwCiiQqNNZpSAfPUxgYW12Mjses-adWLD0u9QgG0g.PNG/2578543-3251220e-83ae-40a2-a332-a684d4ab7b25.png?type=f174_174",
+        "sublinks": [],
+        "imageSublinks": [],
+        "extraTitle": null,
+        "localImage": "screenshots/pwl_img_토스증권_mo_6_20260922_iztg.png"
+      }
+    ],
+    "refreshCount": 30,
+    "collectedAt": "2026-09-22T02:08:06.749Z"
+  },
+  {
+    "brand": "메리츠증권",
+    "device": "pc",
+    "weekKey": "2026-09-W4",
+    "status": "collected",
+    "ads": [
+      {
+        "rank": 1,
+        "advertiserName": "메리츠증권",
+        "displayUrl": "moumevent.com",
+        "title": "MOUM 개설하고 혜택받기 추첨을 통해 삼전닉스1주까지",
+        "description": "모일수록 힘이 되는 투자플랫폼 MOUM! 지금 계좌개설하면 현금 증정 조건충족시",
+        "adPeriod": "0~3개월",
+        "landingUrl": "https://moumevent.com",
+        "adId": "nad-a001-01-000000576236286",
+        "imageUrl": "https://searchad-phinf.pstatic.net/MjAyNjA5MDJfMzYg/MDAxNzg4MzE0MDkzNTY5.Yp1hP4fkEF67ogmLuQ-d2x7ack8RffqOCnGgErF26r8g.8_c2TqWN55rQQbHPPTzJsZomcPxsU8A7xjGWDbLtWBQg.PNG/4469258-737a75d5-2813-4ceb-9855-67a8826376a7.png",
+        "sublinks": [
+          {
+            "title": "실시간 반응",
+            "url": "https://ader.naver.com/v1/UKE1u2LHNV6TMExkqUwtNf--tFkDI2f5gi3J9Yj0dqmqlXR-N86gmnOsnRL5KKmANf0-sMNwkj5bwo6dVZ_D2zhgsN4yf2hCFsR1p0ukNTQScexHk2RuvLLsdkStsRebgtEGva8hrgUgYSzqBtVTDhs5jIzQJKaJosKhzn8mM54cNlaI4uuV6onKhopqMRImvDbLPVfZABw2Qy_HbmBrukUuDYX4SR6mR65MZb8KfvI_WBiC-eX2QkwCuKYX4o_qOUpT96Nj-LfeFrUWFD-UR37s9NETzahfURnQbWMn_NxukRIQ1weCeXrTmkjgxsvLspYp9Dpvo0hYUjLNkoMb4SNwtM8cBYFzTukFLNvPXBPKmKMd6kYemxmHLB1jAy9h?c=naver.search.pc.more.plsearch&t=0"
+          },
+          {
+            "title": "메리츠증권",
+            "url": "https://ader.naver.com/v1/tYt9dtQPpssXBYjeUxA2knRuQMFH0j8uQxRSRZFCfjSCQrN5er7lE1zqRaGDRG566JDY0Xg2nDuWW5UCeo-Fe86ROSTib-jE4QOfUVYbB_2eI7Ksmxc-B4M7BGniAWWoQ1zr3NmvHlE9_HlW480GALfHoAjxgVocBnecRWIEZ0Iequ1gjJJDfigSBC9JXwZBg4a_EEBPtSlKrEdTJytc_PwR-Inyx187uA3CxV6jmXALk-gQFfDEDK663rIZ7sWKsVYJ-9Obrpbs2vA8lzrLZjzgIemJ1thkogfVHl1d4ZZI2fH_Cvi5djXisz-8kcJv8YJE5tAIlaHPCEZOZqbDT6hFKrAbZrr27_QxN0YRoieIgUdbwVta6MfKMMed3eu3?c=naver.search.pc.more.plsearch&t=0"
+          },
+          {
+            "title": "모을수록모음",
+            "url": "https://ader.naver.com/v1/pF4AwogidA2o7fidr9jgXxrGnura6BDKExpsIn1IYfqWs_hAIscSyrktCLMRAuknIP4zw2FKEAq1Dxj54ABNWkXNT5niH-nWw4X5bgLjvcqn-ogc_XwhRYy7cMKwHS7uHT4rYOtDy182A0IaQ72ADGBV6Evii3TVtWJ4lG3zWC73JQhYX7uANLcuQ1lkV1yFahxNslyaEaqXlIeQ_zvvp0XIA34F7JEqu8JeHqOYoUuKyzCALu2RExj-PtN_iGx17JmFcMo-16ghavkCMm1N6Ddod2_YoNh_6KtZ_GFeJMr6S-vq9lzPraDfo_UnUST8YUfz61cCpZk2CjJugJJ43FmZuxSMXyOlwFWpl0bUqIAq9bb0vjPx8NG2Z0QXwLuY?c=naver.search.pc.more.plsearch&t=0"
+          },
+          {
+            "title": "투자커뮤니티",
+            "url": "https://ader.naver.com/v1/tYt9dtQPpssXBYjeUxA2kmccHcDg8dJ3ugKGA5LypTamZ1-PR0EegZFBAQsmilsUcss5HuDlV2yMicyr4L4jTgqtTdpm_havZTTPqiFalcO4rbu1b1J7QBwU6duOCRoc6rqi4L7J-RDiYwtC1GoWApOqFzPCw4gVq6FzO1v83XUIZVY_vN3S94lyLjtG1OT1IkESInCR1tXpy1HICGH20hROg_CmMj0iyCBkSjPWHPDbsSxPm4ue5W_Cevny26ckXWv3RmnEEs3OEYvPFzNQn2IuJO9QxgfFncSjtlKl8JBdpYTbXY6gIBACnCmj1AyWKKsSbwkOYmAn6NlGMF8WDu3EbRgymYgWOzuJHuiW5DcPN-CDLPH6szC6xOiNXfGs?c=naver.search.pc.more.plsearch&t=0"
+          }
+        ],
+        "imageSublinks": [],
+        "extraTitle": null,
+        "localImage": "screenshots/pwl_img_메리츠증권_pc_1_20260922_iu3s.png"
+      }
+    ],
+    "refreshCount": 30,
+    "collectedAt": "2026-09-22T02:09:08.454Z"
+  },
+  {
+    "brand": "메리츠증권",
+    "device": "mo",
+    "weekKey": "2026-09-W4",
+    "status": "collected",
+    "ads": [
+      {
+        "rank": 1,
+        "advertiserName": "메리츠증권",
+        "displayUrl": "moumevent.com",
+        "title": "MOUM 개설하고 혜택받기 추첨을 통해 삼전닉스1주까지",
+        "description": "모일수록 힘이 되는 투자플랫폼 MOUM! 지금 계좌개설하면 현금 증정 조건충족시",
+        "adPeriod": "0~3개월",
+        "landingUrl": "https://moumevent.com",
+        "adId": "nad-a001-01-000000576237958",
+        "imageUrl": "https://searchad-phinf.pstatic.net/MjAyNjA5MDJfMzYg/MDAxNzg4MzE0MDkzNTY5.Yp1hP4fkEF67ogmLuQ-d2x7ack8RffqOCnGgErF26r8g.8_c2TqWN55rQQbHPPTzJsZomcPxsU8A7xjGWDbLtWBQg.PNG/4469258-737a75d5-2813-4ceb-9855-67a8826376a7.png?type=f174_174",
+        "sublinks": [],
+        "imageSublinks": [],
+        "extraTitle": null,
+        "localImage": "screenshots/pwl_img_메리츠증권_mo_1_20260922_3oxi.png"
+      }
+    ],
+    "refreshCount": 30,
+    "collectedAt": "2026-09-22T02:10:19.060Z"
   }
 ]

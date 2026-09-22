@@ -9662,5 +9662,1539 @@
     "deviceCreativeIndex": 2,
     "creativeSetId": "메리츠증권_set2",
     "creativeLabel": "소재2"
+  },
+  {
+    "id": "naver_bs_1790040378698_5k2i6",
+    "platform": "naver_bs",
+    "device": "pc",
+    "advertiserName": "미래에셋증권",
+    "keyword": "미래에셋증권",
+    "searchType": "brand",
+    "mediaType": "image",
+    "mediaUrl": "",
+    "localPath": "screenshots/bs_미래에셋증권_pc_20260922_jb2y_c1.jpg",
+    "screenshotPath": "screenshots/bs_미래에셋증권_pc_20260922_jb2y_c1.jpg",
+    "buttons": [
+      {
+        "buttonText": "미래에셋증권 홈페이지",
+        "buttonUrl": "https://securities.miraeasset.com",
+        "area": "홈페이지",
+        "finalUrl": "https://securities.miraeasset.com/",
+        "landingScreenshot": "screenshots/landing_미래에셋증권_pc_1790040326385_tky7.jpg"
+      },
+      {
+        "buttonText": "반가운 첫 만남 설레는 첫 투자",
+        "buttonUrl": "https://digital.securities.miraeasset.com/?utm_campaign=new_ad&utm_medium=BS&utm_source=네이버 브랜드검색_naverpc&utm_content=brandnews&utm_term=BS",
+        "area": "브랜드소식",
+        "finalUrl": "https://digital.securities.miraeasset.com/?utm_campaign=new_ad&utm_medium=BS&utm_source=%EB%84%A4%EC%9D%B4%EB%B2%84%20%EB%B8%8C%EB%9E%9C%EB%93%9C%EA%B2%80%EC%83%89_naverpc&utm_content=brandnews&utm_term=BS",
+        "landingScreenshot": "screenshots/landing_미래에셋증권_pc_1790040332616_tky7.jpg"
+      },
+      {
+        "buttonText": "계좌 만들기",
+        "buttonUrl": "https://digital.securities.miraeasset.com/?utm_campaign=new_ad&utm_medium=BS&utm_source=네이버 브랜드검색_naverpc&utm_content=mainimage1&utm_term=BS",
+        "area": "메인이미지1",
+        "finalUrl": "https://digital.securities.miraeasset.com/?utm_campaign=new_ad&utm_medium=BS&utm_source=%EB%84%A4%EC%9D%B4%EB%B2%84%20%EB%B8%8C%EB%9E%9C%EB%93%9C%EA%B2%80%EC%83%89_naverpc&utm_content=mainimage1&utm_term=BS",
+        "landingScreenshot": "screenshots/landing_미래에셋증권_pc_1790040337143_tky7.jpg",
+        "slideIndex": 0,
+        "slideImage": "screenshots/slide_미래에셋증권_pc_0_1790040297458_c73n.jpg",
+        "slideTitle": "첫 투자는 미래에셋증권에서!",
+        "slideSubText": "국내주식 선물 패키지 받기"
+      },
+      {
+        "buttonText": "계좌 만들기",
+        "buttonUrl": "https://digital.securities.miraeasset.com/ISA/?utm_campaign=new_ad&utm_medium=BS&utm_source=네이버 브랜드검색_naverpc&utm_content=mainimage2&utm_term=BS",
+        "area": "메인이미지2",
+        "finalUrl": "https://digital.securities.miraeasset.com/ISA/?utm_campaign=new_ad&utm_medium=BS&utm_source=%EB%84%A4%EC%9D%B4%EB%B2%84%20%EB%B8%8C%EB%9E%9C%EB%93%9C%EA%B2%80%EC%83%89_naverpc&utm_content=mainimage2&utm_term=BS",
+        "landingScreenshot": "screenshots/landing_미래에셋증권_pc_1790040341607_tky7.jpg",
+        "slideIndex": 1,
+        "slideImage": "screenshots/slide_미래에셋증권_pc_1_1790040297740_c73n.jpg",
+        "slideTitle": "중개형 ISA는 미래에셋증권에서",
+        "slideSubText": "아끼면서 투자하는 똑똑한 방법"
+      },
+      {
+        "buttonText": "계좌 만들기",
+        "buttonUrl": "https://digital.securities.miraeasset.com/personal-pension/?utm_campaign=new_ad&utm_medium=BS&utm_source=네이버 브랜드검색_naverpc&utm_content=mainimage3&utm_term=BS",
+        "area": "메인이미지3",
+        "finalUrl": "https://digital.securities.miraeasset.com/personal-pension/?utm_campaign=new_ad&utm_medium=BS&utm_source=%EB%84%A4%EC%9D%B4%EB%B2%84%20%EB%B8%8C%EB%9E%9C%EB%93%9C%EA%B2%80%EC%83%89_naverpc&utm_content=mainimage3&utm_term=BS",
+        "landingScreenshot": "screenshots/landing_미래에셋증권_pc_1790040346045_tky7.jpg",
+        "slideIndex": 2,
+        "slideImage": "screenshots/slide_미래에셋증권_pc_2_1790040297991_c73n.jpg",
+        "slideTitle": "개인연금, IRP 투자하는 연금",
+        "slideSubText": "미래에셋증권과 함께해요"
+      },
+      {
+        "buttonText": "계좌 만들기",
+        "buttonUrl": "https://digital.securities.miraeasset.com/rich/?utm_campaign=new_ad&utm_medium=BS&utm_source=네이버 브랜드검색_naverpc&utm_content=mainimage4&utm_term=BS",
+        "area": "메인이미지4",
+        "finalUrl": "https://digital.securities.miraeasset.com/rich/?utm_campaign=new_ad&utm_medium=BS&utm_source=%EB%84%A4%EC%9D%B4%EB%B2%84%20%EB%B8%8C%EB%9E%9C%EB%93%9C%EA%B2%80%EC%83%89_naverpc&utm_content=mainimage4&utm_term=BS",
+        "landingScreenshot": "screenshots/landing_미래에셋증권_pc_1790040350768_tky7.jpg",
+        "slideIndex": 3,
+        "slideImage": "screenshots/slide_미래에셋증권_pc_3_1790040298243_c73n.jpg",
+        "slideTitle": "우리아이 첫 계좌 함께 키우는 투자습관",
+        "slideSubText": "용돈 받고 지금 시작해요"
+      },
+      {
+        "buttonText": "더 알아보기",
+        "buttonUrl": "https://digital.securities.miraeasset.com/RIA/?utm_campaign=new_ad&utm_medium=BS&utm_source=네이버 브랜드검색_naverpc&utm_content=mainimage5&utm_term=BS",
+        "area": "메인이미지5",
+        "finalUrl": "https://digital.securities.miraeasset.com/RIA/?utm_campaign=new_ad&utm_medium=BS&utm_source=%EB%84%A4%EC%9D%B4%EB%B2%84%20%EB%B8%8C%EB%9E%9C%EB%93%9C%EA%B2%80%EC%83%89_naverpc&utm_content=mainimage5&utm_term=BS",
+        "landingScreenshot": "screenshots/landing_미래에셋증권_pc_1790040355443_tky7.jpg",
+        "slideIndex": 4,
+        "slideImage": "screenshots/slide_미래에셋증권_pc_4_1790040298525_c73n.jpg",
+        "slideTitle": "세액공제 혜택 받고 RIA계좌 시작하세요",
+        "slideSubText": "해외주식 매도하고 국내주식 재투자 시"
+      },
+      {
+        "buttonText": "신규개설 혜택",
+        "buttonUrl": "https://digital.securities.miraeasset.com/?utm_campaign=new_ad&utm_medium=BS&utm_source=네이버 브랜드검색_naverpc&utm_content=thumbnail01&utm_term=BS",
+        "area": "썸네일1",
+        "finalUrl": "https://digital.securities.miraeasset.com/?utm_campaign=new_ad&utm_medium=BS&utm_source=%EB%84%A4%EC%9D%B4%EB%B2%84%20%EB%B8%8C%EB%9E%9C%EB%93%9C%EA%B2%80%EC%83%89_naverpc&utm_content=thumbnail01&utm_term=BS",
+        "landingScreenshot": "screenshots/landing_미래에셋증권_pc_1790040359835_tky7.jpg"
+      },
+      {
+        "buttonText": "ISA계좌개설",
+        "buttonUrl": "https://digital.securities.miraeasset.com/ISA/?utm_campaign=new_ad&utm_medium=BS&utm_source=네이버 브랜드검색_naverpc&utm_content=thumbnail02&utm_term=BS",
+        "area": "썸네일2",
+        "finalUrl": "https://digital.securities.miraeasset.com/ISA/?utm_campaign=new_ad&utm_medium=BS&utm_source=%EB%84%A4%EC%9D%B4%EB%B2%84%20%EB%B8%8C%EB%9E%9C%EB%93%9C%EA%B2%80%EC%83%89_naverpc&utm_content=thumbnail02&utm_term=BS",
+        "landingScreenshot": "screenshots/landing_미래에셋증권_pc_1790040364267_tky7.jpg"
+      },
+      {
+        "buttonText": "투자하는 연금",
+        "buttonUrl": "https://digital.securities.miraeasset.com/personal-pension/?utm_campaign=new_ad&utm_medium=BS&utm_source=네이버 브랜드검색_naverpc&utm_content=thumbnail03&utm_term=BS",
+        "area": "썸네일3",
+        "finalUrl": "https://digital.securities.miraeasset.com/personal-pension/?utm_campaign=new_ad&utm_medium=BS&utm_source=%EB%84%A4%EC%9D%B4%EB%B2%84%20%EB%B8%8C%EB%9E%9C%EB%93%9C%EA%B2%80%EC%83%89_naverpc&utm_content=thumbnail03&utm_term=BS",
+        "landingScreenshot": "screenshots/landing_미래에셋증권_pc_1790040368683_tky7.jpg"
+      },
+      {
+        "buttonText": "우리아이계좌",
+        "buttonUrl": "https://digital.securities.miraeasset.com/rich/?utm_campaign=new_ad&utm_medium=BS&utm_source=네이버 브랜드검색_naverpc&utm_content=thumbnail04&utm_term=BS",
+        "area": "썸네일4",
+        "finalUrl": "https://digital.securities.miraeasset.com/rich/?utm_campaign=new_ad&utm_medium=BS&utm_source=%EB%84%A4%EC%9D%B4%EB%B2%84%20%EB%B8%8C%EB%9E%9C%EB%93%9C%EA%B2%80%EC%83%89_naverpc&utm_content=thumbnail04&utm_term=BS",
+        "landingScreenshot": "screenshots/landing_미래에셋증권_pc_1790040373382_tky7.jpg"
+      },
+      {
+        "buttonText": "전용계좌 개설",
+        "buttonUrl": "https://digital.securities.miraeasset.com/government-bond/?utm_campaign=new_ad&utm_medium=BS&utm_source=네이버 브랜드검색_naverpc&utm_content=thumbnail05&utm_term=BS",
+        "area": "썸네일5",
+        "finalUrl": "https://digital.securities.miraeasset.com/government-bond/?utm_campaign=new_ad&utm_medium=BS&utm_source=%EB%84%A4%EC%9D%B4%EB%B2%84%20%EB%B8%8C%EB%9E%9C%EB%93%9C%EA%B2%80%EC%83%89_naverpc&utm_content=thumbnail05&utm_term=BS",
+        "landingScreenshot": "screenshots/landing_미래에셋증권_pc_1790040377828_tky7.jpg"
+      }
+    ],
+    "copyText": "",
+    "landingUrl": "https://securities.miraeasset.com/",
+    "collectedAt": "2026-09-22T01:26:18.698Z",
+    "deviceCreativeIndex": 1,
+    "creativeSetId": "미래에셋증권_set1",
+    "creativeLabel": "소재1"
+  },
+  {
+    "id": "naver_bs_1790040464846_v120a",
+    "platform": "naver_bs",
+    "device": "mo",
+    "advertiserName": "미래에셋증권",
+    "keyword": "미래에셋증권",
+    "searchType": "brand",
+    "mediaType": "image",
+    "mediaUrl": "",
+    "localPath": "screenshots/bs_미래에셋증권_mo_20260922_p2m4_c1.jpg",
+    "screenshotPath": "screenshots/bs_미래에셋증권_mo_20260922_p2m4_c1.jpg",
+    "buttons": [
+      {
+        "buttonText": "미래에셋증권 홈페이지",
+        "buttonUrl": "https://securities.miraeasset.com",
+        "area": "홈페이지",
+        "finalUrl": "https://securities.miraeasset.com/mw/main.do",
+        "landingScreenshot": "screenshots/landing_미래에셋증권_mo_1790040412155_tpy2.jpg"
+      },
+      {
+        "buttonText": "반가운 첫 만남 설레는 첫 투자",
+        "buttonUrl": "https://digital.securities.miraeasset.com/?utm_campaign=new_ad&utm_medium=BS&utm_source=네이버 브랜드검색_navermo&utm_content=brandnews&utm_term=BS",
+        "area": "브랜드소식",
+        "finalUrl": "https://digital.securities.miraeasset.com/?utm_campaign=new_ad&utm_medium=BS&utm_source=%EB%84%A4%EC%9D%B4%EB%B2%84%20%EB%B8%8C%EB%9E%9C%EB%93%9C%EA%B2%80%EC%83%89_navermo&utm_content=brandnews&utm_term=BS",
+        "landingScreenshot": "screenshots/landing_미래에셋증권_mo_1790040418988_tpy2.jpg"
+      },
+      {
+        "buttonText": "계좌 만들기",
+        "buttonUrl": "https://digital.securities.miraeasset.com/?utm_campaign=new_ad&utm_medium=BS&utm_source=네이버 브랜드검색_navermo&utm_content=mainimage1&utm_term=BS",
+        "area": "메인이미지1",
+        "finalUrl": "https://digital.securities.miraeasset.com/?utm_campaign=new_ad&utm_medium=BS&utm_source=%EB%84%A4%EC%9D%B4%EB%B2%84%20%EB%B8%8C%EB%9E%9C%EB%93%9C%EA%B2%80%EC%83%89_navermo&utm_content=mainimage1&utm_term=BS",
+        "landingScreenshot": "screenshots/landing_미래에셋증권_mo_1790040423248_tpy2.jpg",
+        "slideIndex": 0,
+        "slideImage": "screenshots/slide_미래에셋증권_mo_0_1790040388008_77ys.jpg",
+        "slideTitle": "첫 투자는 미래에셋증권에서!",
+        "slideSubText": ""
+      },
+      {
+        "buttonText": "계좌 만들기",
+        "buttonUrl": "https://digital.securities.miraeasset.com/ISA/?utm_campaign=new_ad&utm_medium=BS&utm_source=네이버 브랜드검색_navermo&utm_content=mainimage2&utm_term=BS",
+        "area": "메인이미지2",
+        "finalUrl": "https://digital.securities.miraeasset.com/ISA/?utm_campaign=new_ad&utm_medium=BS&utm_source=%EB%84%A4%EC%9D%B4%EB%B2%84%20%EB%B8%8C%EB%9E%9C%EB%93%9C%EA%B2%80%EC%83%89_navermo&utm_content=mainimage2&utm_term=BS",
+        "landingScreenshot": "screenshots/landing_미래에셋증권_mo_1790040427639_tpy2.jpg",
+        "slideIndex": 1,
+        "slideImage": "screenshots/slide_미래에셋증권_mo_1_1790040388277_77ys.jpg",
+        "slideTitle": "중개형 ISA는 미래에셋증권에서",
+        "slideSubText": ""
+      },
+      {
+        "buttonText": "계좌 만들기",
+        "buttonUrl": "https://digital.securities.miraeasset.com/personal-pension/?utm_campaign=new_ad&utm_medium=BS&utm_source=네이버 브랜드검색_navermo&utm_content=mainimage3&utm_term=BS",
+        "area": "메인이미지3",
+        "finalUrl": "https://digital.securities.miraeasset.com/personal-pension/?utm_campaign=new_ad&utm_medium=BS&utm_source=%EB%84%A4%EC%9D%B4%EB%B2%84%20%EB%B8%8C%EB%9E%9C%EB%93%9C%EA%B2%80%EC%83%89_navermo&utm_content=mainimage3&utm_term=BS",
+        "landingScreenshot": "screenshots/landing_미래에셋증권_mo_1790040432094_tpy2.jpg",
+        "slideIndex": 2,
+        "slideImage": "screenshots/slide_미래에셋증권_mo_2_1790040388529_77ys.jpg",
+        "slideTitle": "개인연금, IRP 투자하는 연금",
+        "slideSubText": ""
+      },
+      {
+        "buttonText": "계좌 만들기",
+        "buttonUrl": "https://digital.securities.miraeasset.com/rich/?utm_campaign=new_ad&utm_medium=BS&utm_source=네이버 브랜드검색_navermo&utm_content=mainimage4&utm_term=BS",
+        "area": "메인이미지4",
+        "finalUrl": "https://digital.securities.miraeasset.com/rich/?utm_campaign=new_ad&utm_medium=BS&utm_source=%EB%84%A4%EC%9D%B4%EB%B2%84%20%EB%B8%8C%EB%9E%9C%EB%93%9C%EA%B2%80%EC%83%89_navermo&utm_content=mainimage4&utm_term=BS",
+        "landingScreenshot": "screenshots/landing_미래에셋증권_mo_1790040436734_tpy2.jpg",
+        "slideIndex": 3,
+        "slideImage": "screenshots/slide_미래에셋증권_mo_3_1790040388777_77ys.jpg",
+        "slideTitle": "우리아이 첫 계좌 함께 키우는 투자습관",
+        "slideSubText": ""
+      },
+      {
+        "buttonText": "더 알아보기",
+        "buttonUrl": "https://digital.securities.miraeasset.com/RIA/?utm_campaign=new_ad&utm_medium=BS&utm_source=네이버 브랜드검색_navermo&utm_content=mainimage5&utm_term=BS",
+        "area": "메인이미지5",
+        "finalUrl": "https://digital.securities.miraeasset.com/RIA/?utm_campaign=new_ad&utm_medium=BS&utm_source=%EB%84%A4%EC%9D%B4%EB%B2%84%20%EB%B8%8C%EB%9E%9C%EB%93%9C%EA%B2%80%EC%83%89_navermo&utm_content=mainimage5&utm_term=BS",
+        "landingScreenshot": "screenshots/landing_미래에셋증권_mo_1790040441496_tpy2.jpg",
+        "slideIndex": 4,
+        "slideImage": "screenshots/slide_미래에셋증권_mo_4_1790040389026_77ys.jpg",
+        "slideTitle": "세액공제 혜택 받고 RIA계좌 시작하세요",
+        "slideSubText": ""
+      },
+      {
+        "buttonText": "신규개설 혜택",
+        "buttonUrl": "https://digital.securities.miraeasset.com/?utm_campaign=new_ad&utm_medium=BS&utm_source=네이버 브랜드검색_navermo&utm_content=thumbnail01&utm_term=BS",
+        "area": "썸네일1",
+        "finalUrl": "https://digital.securities.miraeasset.com/?utm_campaign=new_ad&utm_medium=BS&utm_source=%EB%84%A4%EC%9D%B4%EB%B2%84%20%EB%B8%8C%EB%9E%9C%EB%93%9C%EA%B2%80%EC%83%89_navermo&utm_content=thumbnail01&utm_term=BS",
+        "landingScreenshot": "screenshots/landing_미래에셋증권_mo_1790040445901_tpy2.jpg"
+      },
+      {
+        "buttonText": "ISA계좌개설",
+        "buttonUrl": "https://digital.securities.miraeasset.com/ISA/?utm_campaign=new_ad&utm_medium=BS&utm_source=네이버 브랜드검색_navermo&utm_content=thumbnail02&utm_term=BS",
+        "area": "썸네일2",
+        "finalUrl": "https://digital.securities.miraeasset.com/ISA/?utm_campaign=new_ad&utm_medium=BS&utm_source=%EB%84%A4%EC%9D%B4%EB%B2%84%20%EB%B8%8C%EB%9E%9C%EB%93%9C%EA%B2%80%EC%83%89_navermo&utm_content=thumbnail02&utm_term=BS",
+        "landingScreenshot": "screenshots/landing_미래에셋증권_mo_1790040450412_tpy2.jpg"
+      },
+      {
+        "buttonText": "투자하는 연금",
+        "buttonUrl": "https://digital.securities.miraeasset.com/personal-pension/?utm_campaign=new_ad&utm_medium=BS&utm_source=네이버 브랜드검색_navermo&utm_content=thumbnail03&utm_term=BS",
+        "area": "썸네일3",
+        "finalUrl": "https://digital.securities.miraeasset.com/personal-pension/?utm_campaign=new_ad&utm_medium=BS&utm_source=%EB%84%A4%EC%9D%B4%EB%B2%84%20%EB%B8%8C%EB%9E%9C%EB%93%9C%EA%B2%80%EC%83%89_navermo&utm_content=thumbnail03&utm_term=BS",
+        "landingScreenshot": "screenshots/landing_미래에셋증권_mo_1790040454860_tpy2.jpg"
+      },
+      {
+        "buttonText": "우리아이계좌",
+        "buttonUrl": "https://digital.securities.miraeasset.com/rich/?utm_campaign=new_ad&utm_medium=BS&utm_source=네이버 브랜드검색_navermo&utm_content=thumbnail04&utm_term=BS",
+        "area": "썸네일4",
+        "finalUrl": "https://digital.securities.miraeasset.com/rich/?utm_campaign=new_ad&utm_medium=BS&utm_source=%EB%84%A4%EC%9D%B4%EB%B2%84%20%EB%B8%8C%EB%9E%9C%EB%93%9C%EA%B2%80%EC%83%89_navermo&utm_content=thumbnail04&utm_term=BS",
+        "landingScreenshot": "screenshots/landing_미래에셋증권_mo_1790040459563_tpy2.jpg"
+      },
+      {
+        "buttonText": "전용계좌 개설",
+        "buttonUrl": "https://digital.securities.miraeasset.com/government-bond/?utm_campaign=new_ad&utm_medium=BS&utm_source=네이버 브랜드검색_navermo&utm_content=thumbnail05&utm_term=BS",
+        "area": "썸네일5",
+        "finalUrl": "https://digital.securities.miraeasset.com/government-bond/?utm_campaign=new_ad&utm_medium=BS&utm_source=%EB%84%A4%EC%9D%B4%EB%B2%84%20%EB%B8%8C%EB%9E%9C%EB%93%9C%EA%B2%80%EC%83%89_navermo&utm_content=thumbnail05&utm_term=BS",
+        "landingScreenshot": "screenshots/landing_미래에셋증권_mo_1790040463980_tpy2.jpg"
+      }
+    ],
+    "copyText": "",
+    "landingUrl": "https://securities.miraeasset.com/mw/main.do",
+    "collectedAt": "2026-09-22T01:27:44.846Z",
+    "deviceCreativeIndex": 1,
+    "creativeSetId": "미래에셋증권_set1",
+    "creativeLabel": "소재1"
+  },
+  {
+    "id": "naver_bs_1790040860161_wtv76",
+    "platform": "naver_bs",
+    "device": "pc",
+    "advertiserName": "삼성증권",
+    "keyword": "삼성증권",
+    "searchType": "brand",
+    "mediaType": "image",
+    "mediaUrl": "",
+    "localPath": "screenshots/bs_삼성증권_pc_20260922_a8mq_c1.jpg",
+    "screenshotPath": "screenshots/bs_삼성증권_pc_20260922_a8mq_c1.jpg",
+    "buttons": [
+      {
+        "buttonText": "홈페이지",
+        "buttonUrl": "https://custom.onestopsamsungpop.co.kr/@samsungpopkr/naver_bs?ad_creative=%EC%9D%B4%EB%B2%A4%ED%8A%B8_%EC%9D%BC%EB%B0%982608_%EA%B3%A0%EA%B0%9D%EA%B0%90%EC%82%AC%EC%A0%9C&ad_group=2606_%EC%9D%BC%EB%B0%98_pp-image&campaign=%EB%B8%8C%EB%9E%9C%EB%93%9C%EA%B2%80%EC%83%89&content=%ED%99%88%EB%A7%81%ED%81%AC&og_tag_id=701140156&routing_short_id=s4bgy2k&sub_id=bs&term={keyword}&tracking_template_id=4a1888c435d93656ebc1e2107c12d6b7&ad_type=click",
+        "area": "홈페이지",
+        "finalUrl": "https://www.samsungpop.com/index.jsp?airbridge_referrer=airbridge%3Dtrue%26app%3Dsamsungpopkr%26client_id%3D58f33e3d-c340-42b5-aaab-4c61034dbf98%26event_uuid%3D1cb6d3af-781c-4d3b-a949-b15a1230b214%26referrer_timestamp%3D1790040493586%26channel%3Dnaver_bs%26campaign%3D%25EB%25B8%258C%25EB%259E%259C%25EB%2593%259C%25EA%25B2%2580%25EC%2583%2589%26tracking_template_id%3D4a1888c435d93656ebc1e2107c12d6b7%26ad_group%3D2606_%25EC%259D%25BC%25EB%25B0%2598_pp-image%26ad_creative%3D%25EC%259D%25B4%25EB%25B2%25A4%25ED%258A%25B8_%25EC%259D%25BC%25EB%25B0%25982608_%25EA%25B3%25A0%25EA%25B0%259D%25EA%25B0%2590%25EC%2582%25AC%25EC%25A0%259C%26content%3D%25ED%2599%2588%25EB%25A7%2581%25ED%2581%25AC%26term%3D%257Bkeyword%257D%26sub_id%3Dbs%26og_tag_id%3D701140156%26routing_short_id%3Ds4bgy2k%26ad_type%3Dclick&utm_source=naver_bs&utm_campaign=%EB%B8%8C%EB%9E%9C%EB%93%9C%EA%B2%80%EC%83%89&utm_medium=bs&utm_term=%7Bkeyword%7D&utm_content=%ED%99%88%EB%A7%81%ED%81%AC&ad_creative=%EC%9D%B4%EB%B2%A4%ED%8A%B8_%EC%9D%BC%EB%B0%982608_%EA%B3%A0%EA%B0%9D%EA%B0%90%EC%82%AC%EC%A0%9C&ad_group=2606_%EC%9D%BC%EB%B0%98_pp-image&campaign=%EB%B8%8C%EB%9E%9C%EB%93%9C%EA%B2%80%EC%83%89&content=%ED%99%88%EB%A7%81%ED%81%AC&og_tag_id=701140156&routing_short_id=s4bgy2k&sub_id=bs&term=%7Bkeyword%7D&tracking_template_id=4a1888c435d93656ebc1e2107c12d6b7&ad_type=click",
+        "landingScreenshot": "screenshots/landing_삼성증권_pc_1790040498797_adq6.jpg"
+      }
+    ],
+    "copyText": "",
+    "landingUrl": "https://www.samsungpop.com/index.jsp?airbridge_referrer=airbridge%3Dtrue%26app%3Dsamsungpopkr%26client_id%3D58f33e3d-c340-42b5-aaab-4c61034dbf98%26event_uuid%3D1cb6d3af-781c-4d3b-a949-b15a1230b214%26referrer_timestamp%3D1790040493586%26channel%3Dnaver_bs%26campaign%3D%25EB%25B8%258C%25EB%259E%259C%25EB%2593%259C%25EA%25B2%2580%25EC%2583%2589%26tracking_template_id%3D4a1888c435d93656ebc1e2107c12d6b7%26ad_group%3D2606_%25EC%259D%25BC%25EB%25B0%2598_pp-image%26ad_creative%3D%25EC%259D%25B4%25EB%25B2%25A4%25ED%258A%25B8_%25EC%259D%25BC%25EB%25B0%25982608_%25EA%25B3%25A0%25EA%25B0%259D%25EA%25B0%2590%25EC%2582%25AC%25EC%25A0%259C%26content%3D%25ED%2599%2588%25EB%25A7%2581%25ED%2581%25AC%26term%3D%257Bkeyword%257D%26sub_id%3Dbs%26og_tag_id%3D701140156%26routing_short_id%3Ds4bgy2k%26ad_type%3Dclick&utm_source=naver_bs&utm_campaign=%EB%B8%8C%EB%9E%9C%EB%93%9C%EA%B2%80%EC%83%89&utm_medium=bs&utm_term=%7Bkeyword%7D&utm_content=%ED%99%88%EB%A7%81%ED%81%AC&ad_creative=%EC%9D%B4%EB%B2%A4%ED%8A%B8_%EC%9D%BC%EB%B0%982608_%EA%B3%A0%EA%B0%9D%EA%B0%90%EC%82%AC%EC%A0%9C&ad_group=2606_%EC%9D%BC%EB%B0%98_pp-image&campaign=%EB%B8%8C%EB%9E%9C%EB%93%9C%EA%B2%80%EC%83%89&content=%ED%99%88%EB%A7%81%ED%81%AC&og_tag_id=701140156&routing_short_id=s4bgy2k&sub_id=bs&term=%7Bkeyword%7D&tracking_template_id=4a1888c435d93656ebc1e2107c12d6b7&ad_type=click",
+    "collectedAt": "2026-09-22T01:34:20.161Z",
+    "deviceCreativeIndex": 1,
+    "creativeSetId": "삼성증권_set1",
+    "creativeLabel": "소재1"
+  },
+  {
+    "id": "naver_bs_1790040897283_hzhrh",
+    "platform": "naver_bs",
+    "device": "mo",
+    "advertiserName": "삼성증권",
+    "keyword": "삼성증권",
+    "searchType": "brand",
+    "mediaType": "image",
+    "mediaUrl": "",
+    "localPath": "screenshots/bs_삼성증권_mo_20260922_4p6r_c1.jpg",
+    "screenshotPath": "screenshots/bs_삼성증권_mo_20260922_4p6r_c1.jpg",
+    "buttons": [
+      {
+        "buttonText": "홈페이지",
+        "buttonUrl": "https://custom.onestopsamsungpop.co.kr/@samsungpopkr/naver_bs?ad_creative=%EC%9D%B4%EB%B2%A4%ED%8A%B8_%ED%86%B5%ED%95%A92608_%EA%B3%A0%EA%B0%9D%EA%B0%90%EC%82%AC%EC%A0%9C&ad_group=2606_%EC%9D%BC%EB%B0%98_ml-listing&campaign=%EB%B8%8C%EB%9E%9C%EB%93%9C%EA%B2%80%EC%83%89&content=%ED%99%88%EB%A7%81%ED%81%AC&og_tag_id=701189058&routing_short_id=57z2nu&sub_id=bs&term={keyword}&tracking_template_id=bb85a9fcb7688ebd02d647846ae4b46b&ad_type=click",
+        "area": "홈페이지",
+        "finalUrl": "https://www.samsungpop.com/mbw/main/main.do?cmd=main&airbridge_referrer=airbridge%3Dtrue%26app%3Dsamsungpopkr%26client_id%3D9030343c-69db-4081-a1b7-664f0f0fb858%26event_uuid%3D16b6ec40-9271-4d30-a9f8-d18aeeb02724%26referrer_timestamp%3D1790040886793%26channel%3Dnaver_bs%26campaign%3D%25EB%25B8%258C%25EB%259E%259C%25EB%2593%259C%25EA%25B2%2580%25EC%2583%2589%26tracking_template_id%3Dbb85a9fcb7688ebd02d647846ae4b46b%26ad_group%3D2606_%25EC%259D%25BC%25EB%25B0%2598_ml-listing%26ad_creative%3D%25EC%259D%25B4%25EB%25B2%25A4%25ED%258A%25B8_%25ED%2586%25B5%25ED%2595%25A92608_%25EA%25B3%25A0%25EA%25B0%259D%25EA%25B0%2590%25EC%2582%25AC%25EC%25A0%259C%26content%3D%25ED%2599%2588%25EB%25A7%2581%25ED%2581%25AC%26term%3D%257Bkeyword%257D%26sub_id%3Dbs%26og_tag_id%3D701189058%26routing_short_id%3D57z2nu%26ad_type%3Dclick&utm_source=naver_bs&utm_campaign=%EB%B8%8C%EB%9E%9C%EB%93%9C%EA%B2%80%EC%83%89&utm_medium=bs&utm_term=%7Bkeyword%7D&utm_content=%ED%99%88%EB%A7%81%ED%81%AC&ad_creative=%EC%9D%B4%EB%B2%A4%ED%8A%B8_%ED%86%B5%ED%95%A92608_%EA%B3%A0%EA%B0%9D%EA%B0%90%EC%82%AC%EC%A0%9C&ad_group=2606_%EC%9D%BC%EB%B0%98_ml-listing&campaign=%EB%B8%8C%EB%9E%9C%EB%93%9C%EA%B2%80%EC%83%89&content=%ED%99%88%EB%A7%81%ED%81%AC&og_tag_id=701189058&routing_short_id=57z2nu&sub_id=bs&term=%7Bkeyword%7D&tracking_template_id=bb85a9fcb7688ebd02d647846ae4b46b&ad_type=click",
+        "landingScreenshot": "screenshots/landing_삼성증권_mo_1790040896043_flw2.jpg"
+      }
+    ],
+    "copyText": "",
+    "landingUrl": "https://www.samsungpop.com/mbw/main/main.do?cmd=main&airbridge_referrer=airbridge%3Dtrue%26app%3Dsamsungpopkr%26client_id%3D9030343c-69db-4081-a1b7-664f0f0fb858%26event_uuid%3D16b6ec40-9271-4d30-a9f8-d18aeeb02724%26referrer_timestamp%3D1790040886793%26channel%3Dnaver_bs%26campaign%3D%25EB%25B8%258C%25EB%259E%259C%25EB%2593%259C%25EA%25B2%2580%25EC%2583%2589%26tracking_template_id%3Dbb85a9fcb7688ebd02d647846ae4b46b%26ad_group%3D2606_%25EC%259D%25BC%25EB%25B0%2598_ml-listing%26ad_creative%3D%25EC%259D%25B4%25EB%25B2%25A4%25ED%258A%25B8_%25ED%2586%25B5%25ED%2595%25A92608_%25EA%25B3%25A0%25EA%25B0%259D%25EA%25B0%2590%25EC%2582%25AC%25EC%25A0%259C%26content%3D%25ED%2599%2588%25EB%25A7%2581%25ED%2581%25AC%26term%3D%257Bkeyword%257D%26sub_id%3Dbs%26og_tag_id%3D701189058%26routing_short_id%3D57z2nu%26ad_type%3Dclick&utm_source=naver_bs&utm_campaign=%EB%B8%8C%EB%9E%9C%EB%93%9C%EA%B2%80%EC%83%89&utm_medium=bs&utm_term=%7Bkeyword%7D&utm_content=%ED%99%88%EB%A7%81%ED%81%AC&ad_creative=%EC%9D%B4%EB%B2%A4%ED%8A%B8_%ED%86%B5%ED%95%A92608_%EA%B3%A0%EA%B0%9D%EA%B0%90%EC%82%AC%EC%A0%9C&ad_group=2606_%EC%9D%BC%EB%B0%98_ml-listing&campaign=%EB%B8%8C%EB%9E%9C%EB%93%9C%EA%B2%80%EC%83%89&content=%ED%99%88%EB%A7%81%ED%81%AC&og_tag_id=701189058&routing_short_id=57z2nu&sub_id=bs&term=%7Bkeyword%7D&tracking_template_id=bb85a9fcb7688ebd02d647846ae4b46b&ad_type=click",
+    "collectedAt": "2026-09-22T01:34:57.283Z",
+    "deviceCreativeIndex": 1,
+    "creativeSetId": "삼성증권_set1",
+    "creativeLabel": "소재1"
+  },
+  {
+    "id": "naver_bs_1790040966381_cna61",
+    "platform": "naver_bs",
+    "device": "pc",
+    "advertiserName": "NH투자증권",
+    "keyword": "NH투자증권",
+    "searchType": "brand",
+    "mediaType": "image",
+    "mediaUrl": "",
+    "localPath": "screenshots/bs_NH투자증권_pc_20260922_v0r2_c1.jpg",
+    "screenshotPath": "screenshots/bs_NH투자증권_pc_20260922_v0r2_c1.jpg",
+    "buttons": [
+      {
+        "buttonText": "홈페이지",
+        "buttonUrl": "https://www.nhsec.com",
+        "area": "홈페이지",
+        "finalUrl": "https://www.nhsec.com/",
+        "landingScreenshot": "screenshots/landing_NH투자증권_pc_1790040932326_5u44.jpg"
+      },
+      {
+        "buttonText": "IMA, 왜 NH투자증권일까요?",
+        "buttonUrl": "https://werkjrjmoxrq22227357.cdn.ntruss.com/share-ima/main.html?dit=N2",
+        "area": "브랜드소식",
+        "finalUrl": "https://werkjrjmoxrq22227357.cdn.ntruss.com/share-ima/1779349197/index.html?dit=N2",
+        "landingScreenshot": "screenshots/landing_NH투자증권_pc_1790040936035_5u44.jpg"
+      },
+      {
+        "buttonText": "메인이미지",
+        "buttonUrl": "https://werkjrjmoxrq22227357.cdn.ntruss.com/share-ima/main.html?dit=N2",
+        "area": "메인이미지",
+        "finalUrl": "https://werkjrjmoxrq22227357.cdn.ntruss.com/share-ima/1779349197/index.html?dit=N2",
+        "landingScreenshot": "screenshots/landing_NH투자증권_pc_1790040936035_5u44.jpg",
+        "slideIndex": 0,
+        "slideImage": null,
+        "slideTitle": "",
+        "slideSubText": ""
+      },
+      {
+        "buttonText": "당신의 투자, 문화가 되다",
+        "buttonUrl": "https://www.nhsec.com",
+        "area": "설명문구",
+        "finalUrl": "https://www.nhsec.com/",
+        "landingScreenshot": "screenshots/landing_NH투자증권_pc_1790040932326_5u44.jpg"
+      },
+      {
+        "buttonText": "유튜브",
+        "buttonUrl": "https://www.youtube.com/@nhinvest",
+        "area": "서브링크1",
+        "finalUrl": "https://www.youtube.com/@nhinvest",
+        "landingScreenshot": "screenshots/landing_NH투자증권_pc_1790040943813_5u44.jpg"
+      },
+      {
+        "buttonText": "블로그",
+        "buttonUrl": "https://blog.naver.com/nhinvest_official",
+        "area": "서브링크2",
+        "finalUrl": "https://blog.naver.com/nhinvest_official",
+        "landingScreenshot": "screenshots/landing_NH투자증권_pc_1790040947963_5u44.jpg"
+      },
+      {
+        "buttonText": "인스타그램",
+        "buttonUrl": "https://www.instagram.com/nhinvest_official/",
+        "area": "서브링크3",
+        "finalUrl": "https://www.instagram.com/nhinvest_official/",
+        "landingScreenshot": "screenshots/landing_NH투자증권_pc_1790040953638_5u44.jpg"
+      },
+      {
+        "buttonText": "연금3종개설",
+        "buttonUrl": "https://www.nhsec.com/guestGuide/ctmList/eventIngView.action?evt_seq=367",
+        "area": "썸네일1",
+        "finalUrl": "https://www.nhsec.com/index.jsp",
+        "landingScreenshot": "screenshots/landing_NH투자증권_pc_1790040957626_5u44.jpg"
+      },
+      {
+        "buttonText": "ELS가입혜택",
+        "buttonUrl": "https://www.nhsec.com/guestGuide/ctmList/eventIngView.action?evt_seq=488",
+        "area": "썸네일2",
+        "finalUrl": "https://www.nhsec.com/index.jsp",
+        "landingScreenshot": "screenshots/landing_NH투자증권_pc_1790040961542_5u44.jpg"
+      },
+      {
+        "buttonText": "펀드출시이벤트",
+        "buttonUrl": "https://www.nhsec.com/guestGuide/ctmList/eventIngView.action?evt_seq=490",
+        "area": "썸네일3",
+        "finalUrl": "https://www.nhsec.com/index.jsp",
+        "landingScreenshot": "screenshots/landing_NH투자증권_pc_1790040965518_5u44.jpg"
+      }
+    ],
+    "copyText": "",
+    "landingUrl": "https://www.nhsec.com/",
+    "collectedAt": "2026-09-22T01:36:06.381Z",
+    "deviceCreativeIndex": 1,
+    "creativeSetId": "NH투자증권_set1",
+    "creativeLabel": "소재1"
+  },
+  {
+    "id": "naver_bs_1790041023844_l1o2t",
+    "platform": "naver_bs",
+    "device": "mo",
+    "advertiserName": "NH투자증권",
+    "keyword": "NH투자증권",
+    "searchType": "brand",
+    "mediaType": "image",
+    "mediaUrl": "",
+    "localPath": "screenshots/bs_NH투자증권_mo_20260922_8gqw_c1.jpg",
+    "screenshotPath": "screenshots/bs_NH투자증권_mo_20260922_8gqw_c1.jpg",
+    "buttons": [
+      {
+        "buttonText": "홈페이지",
+        "buttonUrl": "https://www.nhsec.com",
+        "area": "홈페이지",
+        "finalUrl": "https://m.nhsec.com/main/main",
+        "landingScreenshot": "screenshots/landing_NH투자증권_mo_1790041000057_65ll.jpg"
+      },
+      {
+        "buttonText": "IMA, 왜 NH투자증권일까요?",
+        "buttonUrl": "https://werkjrjmoxrq22227357.cdn.ntruss.com/share-ima/main.html?dit=N2",
+        "area": "브랜드소식",
+        "finalUrl": "https://werkjrjmoxrq22227357.cdn.ntruss.com/share-ima/1779349197/index.html?dit=N2",
+        "landingScreenshot": "screenshots/landing_NH투자증권_mo_1790041003769_65ll.jpg"
+      },
+      {
+        "buttonText": "NH투자증권",
+        "buttonUrl": "https://werkjrjmoxrq22227357.cdn.ntruss.com/share-ima/main.html?dit=N2",
+        "area": "메인이미지",
+        "finalUrl": "https://werkjrjmoxrq22227357.cdn.ntruss.com/share-ima/1779349197/index.html?dit=N2",
+        "landingScreenshot": "screenshots/landing_NH투자증권_mo_1790041003769_65ll.jpg",
+        "slideIndex": 0,
+        "slideImage": null,
+        "slideTitle": "NH투자증권",
+        "slideSubText": ""
+      },
+      {
+        "buttonText": "당신의 투자, 문화가 되다",
+        "buttonUrl": "https://link.nhsec.com/m73dd8",
+        "area": "설명문구",
+        "finalUrl": "https://nhqv.airbridge.io/abr.ge/openscreen?scrno=5001&airbridge_referrer=airbridge%3Dtrue%26client_id%3D60bc64b6-c5c6-4cf5-97e4-61b1515d8e78%26event_uuid%3Dd8b19a2c-da4c-48cf-93aa-4e793c7f8182%26referrer_timestamp%3D1790041003705%26short_id%3Dm73dd8%26channel%3Dnaverbs_qv%26campaign%3DQV_SA_NaverBS_WHY_ALL_BrandSearch_IMP_2512%26tracking_template_id%3Db479adc59baaa032f86c730fe1071682&https_deeplink=true&short_id=m73dd8",
+        "landingScreenshot": "screenshots/landing_NH투자증권_mo_1790041007739_65ll.jpg"
+      },
+      {
+        "buttonText": "연금3종개설",
+        "buttonUrl": "https://m.nhsec.com/customer/event/eventView?mNo=573",
+        "area": "썸네일1",
+        "finalUrl": "https://m.nhsec.com/customer/event/eventView?mNo=573",
+        "landingScreenshot": "screenshots/landing_NH투자증권_mo_1790041011773_65ll.jpg"
+      },
+      {
+        "buttonText": "ELS가입혜택",
+        "buttonUrl": "https://m.nhsec.com/customer/event/eventView?mNo=1027",
+        "area": "썸네일2",
+        "finalUrl": "https://m.nhsec.com/customer/event/eventView?mNo=1027",
+        "landingScreenshot": "screenshots/landing_NH투자증권_mo_1790041015480_65ll.jpg"
+      },
+      {
+        "buttonText": "펀드출시이벤트",
+        "buttonUrl": "https://m.nhsec.com/customer/event/eventView?mNo=1034",
+        "area": "썸네일3",
+        "finalUrl": "https://m.nhsec.com/customer/event/eventView?mNo=1034",
+        "landingScreenshot": "screenshots/landing_NH투자증권_mo_1790041019220_65ll.jpg"
+      },
+      {
+        "buttonText": "ETF자동투자",
+        "buttonUrl": "https://m.nhsec.com/customer/event/eventView?mNo=1025",
+        "area": "썸네일4",
+        "finalUrl": "https://m.nhsec.com/customer/event/eventView?mNo=1025",
+        "landingScreenshot": "screenshots/landing_NH투자증권_mo_1790041023005_65ll.jpg"
+      }
+    ],
+    "copyText": "",
+    "landingUrl": "https://m.nhsec.com/main/main",
+    "collectedAt": "2026-09-22T01:37:03.844Z",
+    "deviceCreativeIndex": 1,
+    "creativeSetId": "NH투자증권_set1",
+    "creativeLabel": "소재1"
+  },
+  {
+    "id": "naver_bs_1790041073298_w6gai",
+    "platform": "naver_bs",
+    "device": "pc",
+    "advertiserName": "KB증권",
+    "keyword": "KB증권",
+    "searchType": "brand",
+    "mediaType": "image",
+    "mediaUrl": "",
+    "localPath": "screenshots/bs_KB증권_pc_20260922_p5jm_c1.jpg",
+    "screenshotPath": "screenshots/bs_KB증권_pc_20260922_p5jm_c1.jpg",
+    "buttons": [
+      {
+        "buttonText": "홈페이지",
+        "buttonUrl": "https://m-able.app/lkl2li",
+        "area": "홈페이지",
+        "finalUrl": "https://www.kbsec.com/go.able?airbridge_referrer=airbridge%3Dtrue%26client_id%3D58f0c8f4-1a3e-4fda-b616-2d8def408457%26event_uuid%3Da1f6da32-a96c-4e9e-b15c-cc999ae47b19%26referrer_timestamp%3D1790041065470%26short_id%3Dlkl2li%26channel%3Dnaver_brandsearch%26campaign%3D2609_monthly_BSA%26tracking_template_id%3D1725af88f5a629aac3277eb3c6451595%26ad_group%3Dpc_kkabio%26ad_creative%3Dhomelink%26og_tag_id%3D823921055%26routing_short_id%3Dlkl2li&utm_source=naver_brandsearch&utm_campaign=2609_monthly_BSA",
+        "landingScreenshot": "screenshots/landing_KB증권_pc_1790041072420_m63b.jpg"
+      }
+    ],
+    "copyText": "",
+    "landingUrl": "https://www.kbsec.com/go.able?airbridge_referrer=airbridge%3Dtrue%26client_id%3D58f0c8f4-1a3e-4fda-b616-2d8def408457%26event_uuid%3Da1f6da32-a96c-4e9e-b15c-cc999ae47b19%26referrer_timestamp%3D1790041065470%26short_id%3Dlkl2li%26channel%3Dnaver_brandsearch%26campaign%3D2609_monthly_BSA%26tracking_template_id%3D1725af88f5a629aac3277eb3c6451595%26ad_group%3Dpc_kkabio%26ad_creative%3Dhomelink%26og_tag_id%3D823921055%26routing_short_id%3Dlkl2li&utm_source=naver_brandsearch&utm_campaign=2609_monthly_BSA",
+    "collectedAt": "2026-09-22T01:37:53.298Z",
+    "deviceCreativeIndex": 1,
+    "creativeSetId": "KB증권_set1",
+    "creativeLabel": "소재1"
+  },
+  {
+    "id": "naver_bs_1790041155229_zpuht",
+    "platform": "naver_bs",
+    "device": "mo",
+    "advertiserName": "KB증권",
+    "keyword": "KB증권",
+    "searchType": "brand",
+    "mediaType": "image",
+    "mediaUrl": "",
+    "localPath": "screenshots/bs_KB증권_mo_20260922_bgb3_c1.jpg",
+    "screenshotPath": "screenshots/bs_KB증권_mo_20260922_bgb3_c1.jpg",
+    "buttons": [
+      {
+        "buttonText": "홈페이지",
+        "buttonUrl": "https://m-able.app/ee19xf2",
+        "area": "홈페이지",
+        "finalUrl": "https://m.kbsec.com/go.able?airbridge_referrer=airbridge%3Dtrue%26client_id%3Ddcc1f44c-24b0-4b58-886e-46089148803a%26event_uuid%3Dc9d3ad12-7031-40ff-a41c-237e2e63e946%26referrer_timestamp%3D1790041105929%26short_id%3Dee19xf2%26channel%3Dnaver_brandsearch%26campaign%3D2609_monthly_BSA%26tracking_template_id%3D795661372e0a0030c6c67b44e156b998%26ad_group%3Dmo_kkabio%26ad_creative%3Dhomelink%26og_tag_id%3D823932047%26routing_short_id%3Dee19xf2&utm_source=naver_brandsearch&utm_campaign=2609_monthly_BSA",
+        "landingScreenshot": "screenshots/landing_KB증권_mo_1790041111958_xglk.jpg"
+      },
+      {
+        "buttonText": "깨비오 소개",
+        "buttonUrl": "https://m-able.app/j05ait",
+        "area": "탭1 썸네일1",
+        "finalUrl": "https://welcomemable.kbsec.com/?section=sec-f-1&airbridge_referrer=airbridge%3Dtrue%26client_id%3Ddcc1f44c-24b0-4b58-886e-46089148803a%26event_uuid%3D82bc4b5c-ecb9-49ca-beeb-5de4cc21e0d1%26referrer_timestamp%3D1790041111779%26short_id%3Dj05ait%26channel%3Dnaver_brandsearch%26campaign%3D2609_monthly_BSA%26tracking_template_id%3Dccba6b4aea9fcab528605493f39ca910%26ad_group%3Dmo_kkabio%26ad_creative%3Dthum1%26og_tag_id%3D823935927%26routing_short_id%3Dj05ait&utm_source=naver_brandsearch&utm_campaign=2609_monthly_BSA",
+        "landingScreenshot": "screenshots/landing_KB증권_mo_1790041117683_xglk.jpg"
+      },
+      {
+        "buttonText": "출석체크이벤트",
+        "buttonUrl": "https://m-able.app/yeu9ulp",
+        "area": "탭1 썸네일2",
+        "finalUrl": "https://welcomemable.kbsec.com/?section=sec-f-2&airbridge_referrer=airbridge%3Dtrue%26client_id%3Ddcc1f44c-24b0-4b58-886e-46089148803a%26event_uuid%3Dc3e572f1-3308-4f11-9492-61256a993cbe%26referrer_timestamp%3D1790041117499%26short_id%3Dyeu9ulp%26channel%3Dnaver_brandsearch%26campaign%3D2609_monthly_BSA%26tracking_template_id%3D46e8634c14b7c346d983ca17ce37838e%26ad_group%3Dmo_kkabio%26ad_creative%3Dthum2%26og_tag_id%3D823936594%26routing_short_id%3Dyeu9ulp&utm_source=naver_brandsearch&utm_campaign=2609_monthly_BSA",
+        "landingScreenshot": "screenshots/landing_KB증권_mo_1790041122201_xglk.jpg"
+      },
+      {
+        "buttonText": "럭키 드로우",
+        "buttonUrl": "https://m-able.app/v2ur4o",
+        "area": "탭1 썸네일3",
+        "finalUrl": "https://welcomemable.kbsec.com/?section=sec-f-2&airbridge_referrer=airbridge%3Dtrue%26client_id%3Ddcc1f44c-24b0-4b58-886e-46089148803a%26event_uuid%3D1e6cd87d-36d8-49ae-a5b7-9775a2d4ed3d%26referrer_timestamp%3D1790041122017%26short_id%3Dv2ur4o%26channel%3Dnaver_brandsearch%26campaign%3D2609_monthly_BSA%26tracking_template_id%3D2df54482a3a91c9502b55101bf30d2c2%26ad_group%3Dmo_kkabio%26ad_creative%3Dthum3%26og_tag_id%3D823937267%26routing_short_id%3Dv2ur4o&utm_source=naver_brandsearch&utm_campaign=2609_monthly_BSA",
+        "landingScreenshot": "screenshots/landing_KB증권_mo_1790041126793_xglk.jpg"
+      },
+      {
+        "buttonText": "신규고객혜택",
+        "buttonUrl": "https://m-able.app/f2651s",
+        "area": "탭2 썸네일1",
+        "finalUrl": "https://welcomemable.kbsec.com/?section=sec-a-2&airbridge_referrer=airbridge%3Dtrue%26client_id%3Ddcc1f44c-24b0-4b58-886e-46089148803a%26event_uuid%3D3a813308-2aa6-4f70-8fa2-afeac450feed%26referrer_timestamp%3D1790041126589%26short_id%3Df2651s%26channel%3Dnaver_brandsearch%26campaign%3D2609_monthly_BSA%26tracking_template_id%3D6375f9a9beb0d7896fc0c8fa489e3a18%26ad_group%3Dmo_kkabio%26ad_creative%3Dthum4%26og_tag_id%3D823938556%26routing_short_id%3Df2651s&utm_source=naver_brandsearch&utm_campaign=2609_monthly_BSA",
+        "landingScreenshot": "screenshots/landing_KB증권_mo_1790041131404_xglk.jpg"
+      },
+      {
+        "buttonText": "영앤제로혜택",
+        "buttonUrl": "https://m-able.app/r0l2gu",
+        "area": "탭2 썸네일2",
+        "finalUrl": "https://welcomemable.kbsec.com/?section=sec-g-2&airbridge_referrer=airbridge%3Dtrue%26client_id%3Ddcc1f44c-24b0-4b58-886e-46089148803a%26event_uuid%3D3fb236bf-9f81-4c32-9c1a-09a32b3ebf2e%26referrer_timestamp%3D1790041131229%26short_id%3Dr0l2gu%26channel%3Dnaver_brandsearch%26campaign%3D2609_monthly_BSA%26tracking_template_id%3Dd777189eb1034caf2abc8a13cb3e4e7b%26ad_group%3Dmo_kkabio%26ad_creative%3Dthum5%26og_tag_id%3D823939228%26routing_short_id%3Dr0l2gu&utm_source=naver_brandsearch&utm_campaign=2609_monthly_BSA",
+        "landingScreenshot": "screenshots/landing_KB증권_mo_1790041135964_xglk.jpg"
+      },
+      {
+        "buttonText": "국내주식이전",
+        "buttonUrl": "https://m-able.app/ge0mvu",
+        "area": "탭2 썸네일3",
+        "finalUrl": "https://welcomemable.kbsec.com/?section=sec-a-2&airbridge_referrer=airbridge%3Dtrue%26client_id%3Ddcc1f44c-24b0-4b58-886e-46089148803a%26event_uuid%3D7e24cb19-4e22-4f2a-99cd-966b5747fedd%26referrer_timestamp%3D1790041135807%26short_id%3Dge0mvu%26channel%3Dnaver_brandsearch%26campaign%3D2609_monthly_BSA%26tracking_template_id%3D01196f67681cdb23e53f30ba7f02ca5f%26ad_group%3Dmo_kkabio%26ad_creative%3Dthum6%26og_tag_id%3D823940038%26routing_short_id%3Dge0mvu&utm_source=naver_brandsearch&utm_campaign=2609_monthly_BSA",
+        "landingScreenshot": "screenshots/landing_KB증권_mo_1790041140666_xglk.jpg"
+      },
+      {
+        "buttonText": "IRP혜택",
+        "buttonUrl": "https://m-able.app/ld9o3u",
+        "area": "탭3 썸네일1",
+        "finalUrl": "https://welcomemable.kbsec.com/?section=sec-b-3&airbridge_referrer=airbridge%3Dtrue%26client_id%3Ddcc1f44c-24b0-4b58-886e-46089148803a%26event_uuid%3Da03c69bc-0e6a-42e0-9ada-c18572017006%26referrer_timestamp%3D1790041140488%26short_id%3Dld9o3u%26channel%3Dnaver_brandsearch%26campaign%3D2609_monthly_BSA%26tracking_template_id%3D4393bd8b29e3bca8a58fd831dc69ce99%26ad_group%3Dmo_kkabio%26ad_creative%3Dthum7%26og_tag_id%3D823940842%26routing_short_id%3Dld9o3u&utm_source=naver_brandsearch&utm_campaign=2609_monthly_BSA",
+        "landingScreenshot": "screenshots/landing_KB증권_mo_1790041145353_xglk.jpg"
+      },
+      {
+        "buttonText": "연금저축혜택",
+        "buttonUrl": "https://m-able.app/z2r5ysu",
+        "area": "탭3 썸네일2",
+        "finalUrl": "https://welcomemable.kbsec.com/?section=sec-b-3&airbridge_referrer=airbridge%3Dtrue%26client_id%3Ddcc1f44c-24b0-4b58-886e-46089148803a%26event_uuid%3Dd9f0a52a-9cfc-4d3a-89c5-822190565ad5%26referrer_timestamp%3D1790041145172%26short_id%3Dz2r5ysu%26channel%3Dnaver_brandsearch%26campaign%3D2609_monthly_BSA%26tracking_template_id%3D6a6680b4b1c34bef8c7882f3f69a7355%26ad_group%3Dmo_kkabio%26ad_creative%3Dthum8%26og_tag_id%3D823941576%26routing_short_id%3Dz2r5ysu&utm_source=naver_brandsearch&utm_campaign=2609_monthly_BSA",
+        "landingScreenshot": "screenshots/landing_KB증권_mo_1790041149886_xglk.jpg"
+      },
+      {
+        "buttonText": "중개형ISA",
+        "buttonUrl": "https://m-able.app/tgf0xh",
+        "area": "탭3 썸네일3",
+        "finalUrl": "https://welcomemable.kbsec.com/?section=sec-c-2&airbridge_referrer=airbridge%3Dtrue%26client_id%3Ddcc1f44c-24b0-4b58-886e-46089148803a%26event_uuid%3Dec5c8130-10b6-494e-a9b2-65dd82d95004%26referrer_timestamp%3D1790041149704%26short_id%3Dtgf0xh%26channel%3Dnaver_brandsearch%26campaign%3D2609_monthly_BSA%26tracking_template_id%3D299250bfebab2de9fe6c63d3d34a7da8%26ad_group%3Dmo_kkabio%26ad_creative%3Dthum9%26og_tag_id%3D823942662%26routing_short_id%3Dtgf0xh&utm_source=naver_brandsearch&utm_campaign=2609_monthly_BSA",
+        "landingScreenshot": "screenshots/landing_KB증권_mo_1790041154388_xglk.jpg"
+      }
+    ],
+    "copyText": "",
+    "landingUrl": "https://m.kbsec.com/go.able?airbridge_referrer=airbridge%3Dtrue%26client_id%3Ddcc1f44c-24b0-4b58-886e-46089148803a%26event_uuid%3Dc9d3ad12-7031-40ff-a41c-237e2e63e946%26referrer_timestamp%3D1790041105929%26short_id%3Dee19xf2%26channel%3Dnaver_brandsearch%26campaign%3D2609_monthly_BSA%26tracking_template_id%3D795661372e0a0030c6c67b44e156b998%26ad_group%3Dmo_kkabio%26ad_creative%3Dhomelink%26og_tag_id%3D823932047%26routing_short_id%3Dee19xf2&utm_source=naver_brandsearch&utm_campaign=2609_monthly_BSA",
+    "collectedAt": "2026-09-22T01:39:15.229Z",
+    "deviceCreativeIndex": 1,
+    "creativeSetId": "KB증권_set2",
+    "creativeLabel": "소재2"
+  },
+  {
+    "id": "naver_bs_1790041195637_7rp4v",
+    "platform": "naver_bs",
+    "device": "pc",
+    "advertiserName": "신한투자증권",
+    "keyword": "신한투자증권",
+    "searchType": "brand",
+    "mediaType": "image",
+    "mediaUrl": "",
+    "localPath": "screenshots/bs_신한투자증권_pc_20260922_rr9s_c1.jpg",
+    "screenshotPath": "screenshots/bs_신한투자증권_pc_20260922_rr9s_c1.jpg",
+    "buttons": [
+      {
+        "buttonText": "홈페이지",
+        "buttonUrl": "https://abr.ge/@shinhansec/pfm_naver?ad_group=pl__&campaign=home_PC&content=homelink_0901_1&og_tag_id=766004567&routing_short_id=9a9jfu&sub_id=bsa&sub_id_1=PC&term={keyword}&tracking_template_id=7c75c7dec760a7e084317deac3e63d9b&ad_type=click",
+        "area": "홈페이지",
+        "finalUrl": "https://www.shinhansec.com/?airbridge_referrer=airbridge%3Dtrue%26client_id%3Dff631bdf-209f-42ed-84cd-37dd659890c8%26event_uuid%3Ddd50e1d0-270e-45c1-8693-1d5b96912abd%26referrer_timestamp%3D1790041184928%26channel%3Dpfm_naver%26campaign%3Dhome_PC%26tracking_template_id%3D7c75c7dec760a7e084317deac3e63d9b%26ad_group%3Dpl__%26content%3Dhomelink_0901_1%26term%3D%257Bkeyword%257D%26sub_id%3Dbsa%26sub_id_1%3DPC%26og_tag_id%3D766004567%26routing_short_id%3D9a9jfu%26ad_type%3Dclick&utm_source=pfm_naver&utm_campaign=home_PC&utm_medium=bsa&utm_term=%7Bkeyword%7D&utm_content=homelink_0901_1&ad_group=pl__&campaign=home_PC&content=homelink_0901_1&og_tag_id=766004567&routing_short_id=9a9jfu&sub_id=bsa&sub_id_1=PC&term=%7Bkeyword%7D&tracking_template_id=7c75c7dec760a7e084317deac3e63d9b&ad_type=click",
+        "landingScreenshot": "screenshots/landing_신한투자증권_pc_1790041190539_x9nb.jpg"
+      },
+      {
+        "buttonText": "지금 참여하기",
+        "buttonUrl": "https://abr.ge/@shinhansec/pfm_naver?ad_group=pl__&campaign=260901_stock_trading_pc&content=mainimage_1&og_tag_id=766053255&routing_short_id=rdgirn&sub_id=bsa&sub_id_1=PC&term={keyword}&tracking_template_id=26b75c9fe36970e31bbe47628768cbbd&ad_type=click",
+        "area": "메인이미지",
+        "finalUrl": "https://www.shinhansec.com/cms/contents/event/260901_stock-trading_pc.html?airbridge_referrer=airbridge%3Dtrue%26client_id%3Dff631bdf-209f-42ed-84cd-37dd659890c8%26event_uuid%3Dc147f080-6e15-41af-b6df-d495b3c9a8da%26referrer_timestamp%3D1790041190338%26channel%3Dpfm_naver%26campaign%3D260901_stock_trading_pc%26tracking_template_id%3D26b75c9fe36970e31bbe47628768cbbd%26ad_group%3Dpl__%26content%3Dmainimage_1%26term%3D%257Bkeyword%257D%26sub_id%3Dbsa%26sub_id_1%3DPC%26og_tag_id%3D766053255%26routing_short_id%3Drdgirn%26ad_type%3Dclick&utm_source=pfm_naver&utm_campaign=260901_stock_trading_pc&utm_medium=bsa&utm_term=%7Bkeyword%7D&utm_content=mainimage_1&ad_group=pl__&campaign=260901_stock_trading_pc&content=mainimage_1&og_tag_id=766053255&routing_short_id=rdgirn&sub_id=bsa&sub_id_1=PC&term=%7Bkeyword%7D&tracking_template_id=26b75c9fe36970e31bbe47628768cbbd&ad_type=click",
+        "landingScreenshot": "screenshots/landing_신한투자증권_pc_1790041194773_x9nb.jpg",
+        "slideIndex": 0,
+        "slideImage": "screenshots/slide_신한투자증권_pc_0_1790041165414_rg1d.jpg",
+        "slideTitle": "지금 참여하기",
+        "slideSubText": ""
+      }
+    ],
+    "copyText": "",
+    "landingUrl": "https://www.shinhansec.com/?airbridge_referrer=airbridge%3Dtrue%26client_id%3Dff631bdf-209f-42ed-84cd-37dd659890c8%26event_uuid%3Ddd50e1d0-270e-45c1-8693-1d5b96912abd%26referrer_timestamp%3D1790041184928%26channel%3Dpfm_naver%26campaign%3Dhome_PC%26tracking_template_id%3D7c75c7dec760a7e084317deac3e63d9b%26ad_group%3Dpl__%26content%3Dhomelink_0901_1%26term%3D%257Bkeyword%257D%26sub_id%3Dbsa%26sub_id_1%3DPC%26og_tag_id%3D766004567%26routing_short_id%3D9a9jfu%26ad_type%3Dclick&utm_source=pfm_naver&utm_campaign=home_PC&utm_medium=bsa&utm_term=%7Bkeyword%7D&utm_content=homelink_0901_1&ad_group=pl__&campaign=home_PC&content=homelink_0901_1&og_tag_id=766004567&routing_short_id=9a9jfu&sub_id=bsa&sub_id_1=PC&term=%7Bkeyword%7D&tracking_template_id=7c75c7dec760a7e084317deac3e63d9b&ad_type=click",
+    "collectedAt": "2026-09-22T01:39:55.637Z",
+    "deviceCreativeIndex": 1,
+    "creativeSetId": "신한투자증권_set1",
+    "creativeLabel": "소재1"
+  },
+  {
+    "id": "naver_bs_1790041249073_aiqo1",
+    "platform": "naver_bs",
+    "device": "mo",
+    "advertiserName": "신한투자증권",
+    "keyword": "신한투자증권",
+    "searchType": "brand",
+    "mediaType": "image",
+    "mediaUrl": "",
+    "localPath": "screenshots/bs_신한투자증권_mo_20260922_k6gf_c1.jpg",
+    "screenshotPath": "screenshots/bs_신한투자증권_mo_20260922_k6gf_c1.jpg",
+    "buttons": [
+      {
+        "buttonText": "홈페이지",
+        "buttonUrl": "https://abr.ge/@shinhansec/pfm_naver?ad_group=pl__&campaign=home_MO&content=homelink_0901_1&og_tag_id=766090868&routing_short_id=k27hy1d&sub_id=bsa&sub_id_1=MO&term={keyword}&tracking_template_id=c11831371e80f9bbaa204fcbfb0975ea&ad_type=click",
+        "area": "홈페이지",
+        "finalUrl": "https://m.shinhansec.com/mweb?airbridge_referrer=airbridge%3Dtrue%26client_id%3De2f36050-0225-48b0-a177-dde99efbd3ba%26event_uuid%3D22565236-8f04-4de4-acba-c620371a57bb%26referrer_timestamp%3D1790041221975%26channel%3Dpfm_naver%26campaign%3Dhome_MO%26tracking_template_id%3Dc11831371e80f9bbaa204fcbfb0975ea%26ad_group%3Dpl__%26content%3Dhomelink_0901_1%26term%3D%257Bkeyword%257D%26sub_id%3Dbsa%26sub_id_1%3DMO%26og_tag_id%3D766090868%26routing_short_id%3Dk27hy1d%26ad_type%3Dclick&utm_source=pfm_naver&utm_campaign=home_MO&utm_medium=bsa&utm_term=%7Bkeyword%7D&utm_content=homelink_0901_1&ad_group=pl__&campaign=home_MO&content=homelink_0901_1&og_tag_id=766090868&routing_short_id=k27hy1d&sub_id=bsa&sub_id_1=MO&term=%7Bkeyword%7D&tracking_template_id=c11831371e80f9bbaa204fcbfb0975ea&ad_type=click",
+        "landingScreenshot": "screenshots/landing_신한투자증권_mo_1790041228170_x9ol.jpg"
+      },
+      {
+        "buttonText": "신한투자증권",
+        "buttonUrl": "https://abr.ge/@shinhansec/pfm_naver?ad_group=pl__&campaign=260901_stock_trading_mo&content=button1_0901_1&og_tag_id=766119592&routing_short_id=nkt4v1p&sub_id=bsa&sub_id_1=MO&term={keyword}&tracking_template_id=98c153a75fffada947b17ff3b4e8aa1c&ad_type=click",
+        "area": "메인이미지",
+        "finalUrl": "https://shinhansec.airbridge.io/spsso?c25vPTgwMjAmc3VibWVudT0mdGFiaWR4PSZwYXJhbT1zY29kZV5hcDgwMjBQMDEkfFNFUHwkRXZlbnR8U0VQfGh0dHBzOi8vb3Blbi5zaGluaGFuc2VjLmNvbS9tL2V2ZW50Mi8yNjA5MDFfc3RvY2stdHJhZGluZ19tby9ldmVudC5qc3AmbWFya2V0PSZwbmFtZT0=&airbridge_referrer=airbridge%3Dtrue%26client_id%3De2f36050-0225-48b0-a177-dde99efbd3ba%26event_uuid%3D7b5f2a98-e16b-40ac-8194-c01d463bd700%26referrer_timestamp%3D1790041227985%26channel%3Dpfm_naver%26campaign%3D260901_stock_trading_mo%26tracking_template_id%3D98c153a75fffada947b17ff3b4e8aa1c%26ad_group%3Dpl__%26content%3Dbutton1_0901_1%26term%3D%257Bkeyword%257D%26sub_id%3Dbsa%26sub_id_1%3DMO%26og_tag_id%3D766119592%26routing_short_id%3Dnkt4v1p&ad_group=pl__&campaign=260901_stock_trading_mo&content=button1_0901_1&og_tag_id=766119592&routing_short_id=nkt4v1p&sub_id=bsa&sub_id_1=MO&term=%7Bkeyword%7D&tracking_template_id=98c153a75fffada947b17ff3b4e8aa1c&ad_type=click&https_deeplink=true",
+        "landingScreenshot": "screenshots/landing_신한투자증권_mo_1790041232294_x9ol.jpg",
+        "slideIndex": 0,
+        "slideImage": "screenshots/slide_신한투자증권_mo_0_1790041232510_x9ol.jpg",
+        "slideTitle": "신한투자증권",
+        "slideSubText": ""
+      },
+      {
+        "buttonText": "지금 참여하기",
+        "buttonUrl": "https://abr.ge/@shinhansec/pfm_naver?ad_group=pl__&campaign=260901_stock_trading_mo&content=button2_0901_1&og_tag_id=766119612&routing_short_id=4rpnik&sub_id=bsa&sub_id_1=MO&term={keyword}&tracking_template_id=9937592b233100da46cb77f82f053ed4&ad_type=click",
+        "area": "메인이미지",
+        "finalUrl": "https://shinhansec.airbridge.io/spsso?c25vPTgwMjAmc3VibWVudT0mdGFiaWR4PSZwYXJhbT1zY29kZV5hcDgwMjBQMDEkfFNFUHwkRXZlbnR8U0VQfGh0dHBzOi8vb3Blbi5zaGluaGFuc2VjLmNvbS9tL2V2ZW50Mi8yNjA5MDFfc3RvY2stdHJhZGluZ19tby9ldmVudC5qc3AmbWFya2V0PSZwbmFtZT0=&airbridge_referrer=airbridge%3Dtrue%26client_id%3De2f36050-0225-48b0-a177-dde99efbd3ba%26event_uuid%3D3285d410-85f2-4706-8e6f-e75716347e03%26referrer_timestamp%3D1790041232361%26channel%3Dpfm_naver%26campaign%3D260901_stock_trading_mo%26tracking_template_id%3D9937592b233100da46cb77f82f053ed4%26ad_group%3Dpl__%26content%3Dbutton2_0901_1%26term%3D%257Bkeyword%257D%26sub_id%3Dbsa%26sub_id_1%3DMO%26og_tag_id%3D766119612%26routing_short_id%3D4rpnik&ad_group=pl__&campaign=260901_stock_trading_mo&content=button2_0901_1&og_tag_id=766119612&routing_short_id=4rpnik&sub_id=bsa&sub_id_1=MO&term=%7Bkeyword%7D&tracking_template_id=9937592b233100da46cb77f82f053ed4&ad_type=click&https_deeplink=true",
+        "landingScreenshot": "screenshots/landing_신한투자증권_mo_1790041236042_x9ol.jpg",
+        "slideIndex": 1,
+        "slideImage": "screenshots/slide_신한투자증권_mo_1_1790041236175_x9ol.jpg",
+        "slideTitle": "지금 참여하기",
+        "slideSubText": ""
+      },
+      {
+        "buttonText": "국내주식이벤트",
+        "buttonUrl": "https://abr.ge/@shinhansec/pfm_naver?ad_group=pl__&campaign=260901_stock_trading_mo&content=thumb01_1&og_tag_id=766119600&routing_short_id=qgwyj5&sub_id=bsa&sub_id_1=MO&term={keyword}&tracking_template_id=75be8fa409a8fc3dacb0a80a8853d7e4&ad_type=click",
+        "area": "다이나믹 썸네일1",
+        "finalUrl": "https://shinhansec.airbridge.io/spsso?c25vPTgwMjAmc3VibWVudT0mdGFiaWR4PSZwYXJhbT1zY29kZV5hcDgwMjBQMDEkfFNFUHwkRXZlbnR8U0VQfGh0dHBzOi8vb3Blbi5zaGluaGFuc2VjLmNvbS9tL2V2ZW50Mi8yNjA5MDFfc3RvY2stdHJhZGluZ19tby9ldmVudC5qc3AmbWFya2V0PSZwbmFtZT0=&airbridge_referrer=airbridge%3Dtrue%26client_id%3De2f36050-0225-48b0-a177-dde99efbd3ba%26event_uuid%3D1764ccf0-f9d2-436d-b850-39d289e2ccdd%26referrer_timestamp%3D1790041235938%26channel%3Dpfm_naver%26campaign%3D260901_stock_trading_mo%26tracking_template_id%3D75be8fa409a8fc3dacb0a80a8853d7e4%26ad_group%3Dpl__%26content%3Dthumb01_1%26term%3D%257Bkeyword%257D%26sub_id%3Dbsa%26sub_id_1%3DMO%26og_tag_id%3D766119600%26routing_short_id%3Dqgwyj5&ad_group=pl__&campaign=260901_stock_trading_mo&content=thumb01_1&og_tag_id=766119600&routing_short_id=qgwyj5&sub_id=bsa&sub_id_1=MO&term=%7Bkeyword%7D&tracking_template_id=75be8fa409a8fc3dacb0a80a8853d7e4&ad_type=click&https_deeplink=true",
+        "landingScreenshot": "screenshots/landing_신한투자증권_mo_1790041239567_x9ol.jpg"
+      },
+      {
+        "buttonText": "계좌개설이벤트",
+        "buttonUrl": "https://open.shinhansec.com/cms/contents/event/260701_solLink_naver_bsa_mo.html",
+        "area": "다이나믹 썸네일2",
+        "finalUrl": "https://open.shinhansec.com/cms/contents/event/260701_solLink_naver_bsa_mo.html",
+        "landingScreenshot": "screenshots/landing_신한투자증권_mo_1790041244365_x9ol.jpg"
+      },
+      {
+        "buttonText": "입고 이벤트",
+        "buttonUrl": "https://open.shinhansec.com/cms/contents/event/260720_sollink-tesla_naver_bsa_mo.html",
+        "area": "다이나믹 썸네일3",
+        "finalUrl": "https://open.shinhansec.com/cms/contents/event/260720_sollink-tesla_naver_bsa_mo.html",
+        "landingScreenshot": "screenshots/landing_신한투자증권_mo_1790041248232_x9ol.jpg"
+      }
+    ],
+    "copyText": "",
+    "landingUrl": "https://m.shinhansec.com/mweb?airbridge_referrer=airbridge%3Dtrue%26client_id%3De2f36050-0225-48b0-a177-dde99efbd3ba%26event_uuid%3D22565236-8f04-4de4-acba-c620371a57bb%26referrer_timestamp%3D1790041221975%26channel%3Dpfm_naver%26campaign%3Dhome_MO%26tracking_template_id%3Dc11831371e80f9bbaa204fcbfb0975ea%26ad_group%3Dpl__%26content%3Dhomelink_0901_1%26term%3D%257Bkeyword%257D%26sub_id%3Dbsa%26sub_id_1%3DMO%26og_tag_id%3D766090868%26routing_short_id%3Dk27hy1d%26ad_type%3Dclick&utm_source=pfm_naver&utm_campaign=home_MO&utm_medium=bsa&utm_term=%7Bkeyword%7D&utm_content=homelink_0901_1&ad_group=pl__&campaign=home_MO&content=homelink_0901_1&og_tag_id=766090868&routing_short_id=k27hy1d&sub_id=bsa&sub_id_1=MO&term=%7Bkeyword%7D&tracking_template_id=c11831371e80f9bbaa204fcbfb0975ea&ad_type=click",
+    "collectedAt": "2026-09-22T01:40:49.073Z",
+    "deviceCreativeIndex": 1,
+    "creativeSetId": "신한투자증권_set1",
+    "creativeLabel": "소재1"
+  },
+  {
+    "id": "naver_bs_1790041322747_sexdu",
+    "platform": "naver_bs",
+    "device": "pc",
+    "advertiserName": "한국투자증권",
+    "keyword": "한국투자증권",
+    "searchType": "brand",
+    "mediaType": "image",
+    "mediaUrl": "",
+    "localPath": "screenshots/bs_한국투자증권_pc_20260922_zuwl_c1.jpg",
+    "screenshotPath": "screenshots/bs_한국투자증권_pc_20260922_zuwl_c1.jpg",
+    "buttons": [
+      {
+        "buttonText": "홈페이지",
+        "buttonUrl": "https://securities.koreainvestment.com/main/Main.jsp",
+        "area": "홈페이지",
+        "finalUrl": "https://securities.koreainvestment.com/main/Main.jsp",
+        "landingScreenshot": "screenshots/landing_한국투자증권_pc_1790041283531_u1w7.jpg"
+      },
+      {
+        "buttonText": "내 계좌에 福을 담자, 한국투자증권 ISA 중개형 이벤트!",
+        "buttonUrl": "https://neosmtsrenewal.onelink.me/kj1W/j96fhkoa",
+        "area": "브랜드소식",
+        "finalUrl": "https://securities.koreainvestment.com/mobile/customer/_view/MMO50910.jsp?tab=finance&event=moon&af_dp=https%3A%2F%2Fsecurities.koreainvestment.com%2Fmobile%2Fcustomer%2F_view%2FMMO50910.jsp%3Ftab%3Dfinance%26event%3Dmoon&shortlink=j96fhkoa&c=NAVER_BS_PC_%EC%9D%B4%EB%B2%A4%ED%8A%B8_%EB%8B%AC%ED%95%AD%EC%95%84%EB%A6%AC_2608&af_click_lookback=7d&is_retargeting=true&af_xp=custom&source_caller=ui&af_reengagement_window=30d&onelink_id=kj1W&pid=NAVER",
+        "landingScreenshot": "screenshots/landing_한국투자증권_pc_1790041291187_u1w7.jpg"
+      },
+      {
+        "buttonText": "버튼텍스트",
+        "buttonUrl": "https://neosmtsrenewal.onelink.me/kj1W/k30w3um0",
+        "area": "메인이미지",
+        "finalUrl": "https://securities.koreainvestment.com/mobile/customer/_view/MMO50910.jsp?tab=domestic&event=localstock&af_click_lookback=7d&is_retargeting=true&onelink_id=kj1W&c=NAVER_BS_PC_%EB%A9%94%EC%9D%B8%EC%9D%B4%EB%AF%B8%EC%A7%80_%EC%8B%A0%EA%B7%9C%EA%B3%84%EC%A2%8C_2608&shortlink=k30w3um0&pid=NAVER&af_reengagement_window=30d&af_xp=custom&source_caller=ui&af_dp=https%3A%2F%2Fsecurities.koreainvestment.com%2Fmobile%2Fcustomer%2F_view%2FMMO50910.jsp%3Ftab%3Ddomestic%26event%3Dlocalstock",
+        "landingScreenshot": "screenshots/landing_한국투자증권_pc_1790041297528_u1w7.jpg",
+        "slideIndex": 0,
+        "slideImage": "screenshots/slide_한국투자증권_pc_0_1790041258633_3zbr.jpg",
+        "slideTitle": "버튼텍스트",
+        "slideSubText": ""
+      },
+      {
+        "buttonText": "우리아이 계좌",
+        "buttonUrl": "https://neosmtsrenewal.onelink.me/kj1W/gokm4one",
+        "area": "썸네일1",
+        "finalUrl": "https://securities.koreainvestment.com/mobile/customer/_view/MMO50910.jsp?tab=domestic&event=NPAY&af_xp=custom&af_click_lookback=7d&c=NAVER_BS_PC_%EC%8D%B8%EB%84%A4%EC%9D%BC1_%EC%9E%90%EB%85%80%EA%B3%84%EC%A2%8C2608&source_caller=ui&af_dp=https%3A%2F%2Fsecurities.koreainvestment.com%2Fmobile%2Fcustomer%2F_view%2FMMO50910.jsp%3Ftab%3Ddomestic%26event%3DNPAY&pid=NAVER&af_reengagement_window=30d&is_retargeting=true&onelink_id=kj1W&shortlink=gokm4one",
+        "landingScreenshot": "screenshots/landing_한국투자증권_pc_1790041303822_u1w7.jpg"
+      },
+      {
+        "buttonText": "연금이전 혜택",
+        "buttonUrl": "https://kis-pension.onelink.me/WCHo/i8jki9y7?utm_source=naver_pc&utm_medium=bs&utm_campaign=mypension&utm_term={query}&utm_content=thumbnail2",
+        "area": "썸네일2",
+        "finalUrl": "https://securities.koreainvestment.com/main/customer/notice/Event.jsp?gubun=i&cmd=TF04gb010002&num=6744&shortlink=i8jki9y7&source_caller=ui&pid=NAVER&utm_source=naver_pc&utm_term={query}&af_xp=custom&utm_content=thumbnail2&utm_campaign=mypension&is_retargeting=true&af_click_lookback=7d&c=P_NAVER_BS_PC_%EC%8D%B8%EB%84%A4%EC%9D%BC2&af_dp=https%3A%2F%2Fsecurities.koreainvestment.com%2Fapp%2Fmtsrenewal.jsp%3Ftype%3D06%26SSO_SCREENNO%3D2911%26openData%3D215&onelink_id=WCHo&af_reengagement_window=30d&utm_medium=bs",
+        "landingScreenshot": "screenshots/landing_한국투자증권_pc_1790041308960_u1w7.jpg"
+      },
+      {
+        "buttonText": "연금전환 혜택",
+        "buttonUrl": "https://kis-pension.onelink.me/WCHo/szhx3w29?utm_source=naver_pc&utm_medium=bs&utm_campaign=mypension&utm_term={query}&utm_content=thumbnail3",
+        "area": "썸네일3",
+        "finalUrl": "https://securities.koreainvestment.com/main/customer/notice/Event.jsp?gubun=i&cmd=TF04gb010002&num=6743&af_xp=custom&utm_medium=bs&shortlink=szhx3w29&utm_term={query}&af_click_lookback=7d&c=P_NAVER_BS_PC_%EC%8D%B8%EB%84%A4%EC%9D%BC3&source_caller=ui&onelink_id=WCHo&utm_content=thumbnail3&utm_campaign=mypension&pid=NAVER&af_reengagement_window=30d&af_dp=https%3A%2F%2Fsecurities.koreainvestment.com%2Fapp%2Fmtsrenewal.jsp%3Ftype%3D06%26SSO_SCREENNO%3D2911%26openData%3D214&utm_source=naver_pc&is_retargeting=true",
+        "landingScreenshot": "screenshots/landing_한국투자증권_pc_1790041313795_u1w7.jpg"
+      },
+      {
+        "buttonText": "채권입고 혜택",
+        "buttonUrl": "https://neosmtsrenewal.onelink.me/kj1W/0jjk5636",
+        "area": "썸네일4",
+        "finalUrl": "https://www.koreainvestment-event.com/pb/pc/?tab=1&af_dp=https%3A%2F%2Fwww.koreainvestment-event.com%2Fpb%2Fpc%2F%3Ftab%3D1&shortlink=0jjk5636&source_caller=ui&af_click_lookback=7d&pid=NAVER&onelink_id=kj1W&c=NAVER_BS_PC_%EC%8D%B8%EB%84%A4%EC%9D%BC4_%EC%B1%84%EA%B6%8C%EC%9E%85%EA%B3%A0%ED%98%9C%ED%83%9D_2607&is_retargeting=true&af_xp=custom&af_reengagement_window=30d",
+        "landingScreenshot": "screenshots/landing_한국투자증권_pc_1790041317675_u1w7.jpg"
+      },
+      {
+        "buttonText": "발행어음 혜택",
+        "buttonUrl": "https://neosmtsrenewal.onelink.me/kj1W/4jv37vl0",
+        "area": "썸네일5",
+        "finalUrl": "https://www.koreainvestment-event.com/pb/pc/?tab=2&c=NAVER_BS_PC_%EC%8D%B8%EB%84%A4%EC%9D%BC5_%EB%B0%9C%ED%96%89%EC%96%B4%EC%9D%8C%ED%98%9C%ED%83%9D_2607&source_caller=ui&shortlink=4jv37vl0&af_dp=https%3A%2F%2Fwww.koreainvestment-event.com%2Fpb%2Fpc%2F%3Ftab%3D2&is_retargeting=true&af_xp=custom&af_reengagement_window=30d&pid=NAVER&af_click_lookback=7d&onelink_id=kj1W",
+        "landingScreenshot": "screenshots/landing_한국투자증권_pc_1790041321881_u1w7.jpg"
+      }
+    ],
+    "copyText": "",
+    "landingUrl": "https://securities.koreainvestment.com/main/Main.jsp",
+    "collectedAt": "2026-09-22T01:42:02.748Z",
+    "deviceCreativeIndex": 1,
+    "creativeSetId": "한국투자증권_set1",
+    "creativeLabel": "소재1"
+  },
+  {
+    "id": "naver_bs_1790041394132_4gett",
+    "platform": "naver_bs",
+    "device": "mo",
+    "advertiserName": "한국투자증권",
+    "keyword": "한국투자증권",
+    "searchType": "brand",
+    "mediaType": "image",
+    "mediaUrl": "",
+    "localPath": "screenshots/bs_한국투자증권_mo_20260922_5fn9_c1.jpg",
+    "screenshotPath": "screenshots/bs_한국투자증권_mo_20260922_5fn9_c1.jpg",
+    "buttons": [
+      {
+        "buttonText": "홈페이지",
+        "buttonUrl": "https://m.koreainvestment.com/mobile/index.jsp",
+        "area": "홈페이지",
+        "finalUrl": "https://m.koreainvestment.com/mobile/index.jsp",
+        "landingScreenshot": "screenshots/landing_한국투자증권_mo_1790041357107_2vig.jpg"
+      },
+      {
+        "buttonText": "ISA 중개형 계좌에 福을 담자",
+        "buttonUrl": "https://neosmtsrenewal.onelink.me/kj1W/jmxxbe59",
+        "area": "브랜드소식",
+        "finalUrl": "https://neosmtsrenewal.onelink.me/kj1W/jmxxbe59",
+        "landingScreenshot": "screenshots/landing_한국투자증권_mo_1790041361139_2vig.jpg"
+      },
+      {
+        "buttonText": "이벤트 확인",
+        "buttonUrl": "https://neosmtsrenewal.onelink.me/kj1W/xcj4bcm5",
+        "area": "메인이미지1",
+        "finalUrl": "https://neosmtsrenewal.onelink.me/kj1W/xcj4bcm5",
+        "landingScreenshot": "screenshots/landing_한국투자증권_mo_1790041365077_2vig.jpg",
+        "slideIndex": 0,
+        "slideImage": "screenshots/slide_한국투자증권_mo_0_1790041333521_ptsz.jpg",
+        "slideTitle": "특판 발행어음 연 4.9% (1년물)",
+        "slideSubText": ""
+      },
+      {
+        "buttonText": "이벤트 확인",
+        "buttonUrl": "https://neosmtsrenewal.onelink.me/kj1W/9iwyd7f1",
+        "area": "메인이미지2",
+        "finalUrl": "https://neosmtsrenewal.onelink.me/kj1W/9iwyd7f1",
+        "landingScreenshot": "screenshots/landing_한국투자증권_mo_1790041369053_2vig.jpg",
+        "slideIndex": 1,
+        "slideImage": "screenshots/slide_한국투자증권_mo_1_1790041333766_ptsz.jpg",
+        "slideTitle": "투자는 계속된다 신규고객혜택 오픈!",
+        "slideSubText": ""
+      },
+      {
+        "buttonText": "이벤트 확인",
+        "buttonUrl": "https://neosmtsrenewal.onelink.me/kj1W/l0bo2lnc",
+        "area": "메인이미지3",
+        "finalUrl": "https://neosmtsrenewal.onelink.me/kj1W/l0bo2lnc",
+        "landingScreenshot": "screenshots/landing_한국투자증권_mo_1790041372991_2vig.jpg",
+        "slideIndex": 2,
+        "slideImage": "screenshots/slide_한국투자증권_mo_2_1790041334011_ptsz.jpg",
+        "slideTitle": "ISA 중개형x달항아리 채워지는 절세 혜택",
+        "slideSubText": ""
+      },
+      {
+        "buttonText": "이벤트 확인",
+        "buttonUrl": "https://neosmtsrenewal.onelink.me/kj1W/ril2mfm4",
+        "area": "메인이미지4",
+        "finalUrl": "https://neosmtsrenewal.onelink.me/kj1W/ril2mfm4",
+        "landingScreenshot": "screenshots/landing_한국투자증권_mo_1790041376921_2vig.jpg",
+        "slideIndex": 3,
+        "slideImage": "screenshots/slide_한국투자증권_mo_3_1790041334259_ptsz.jpg",
+        "slideTitle": "함께하면 더 커지는 주식 모으기 시즌2",
+        "slideSubText": ""
+      },
+      {
+        "buttonText": "이벤트 확인",
+        "buttonUrl": "https://neosmtsrenewal.onelink.me/kj1W/073lkjla",
+        "area": "메인이미지5",
+        "finalUrl": "https://neosmtsrenewal.onelink.me/kj1W/073lkjla",
+        "landingScreenshot": "screenshots/landing_한국투자증권_mo_1790041380392_2vig.jpg",
+        "slideIndex": 4,
+        "slideImage": "screenshots/slide_한국투자증권_mo_4_1790041334540_ptsz.jpg",
+        "slideTitle": "하루만 맡겨도 드리는 CMA 연 2.85%",
+        "slideSubText": ""
+      },
+      {
+        "buttonText": "신규고객 혜택",
+        "buttonUrl": "https://neosmtsrenewal.onelink.me/kj1W/smzco3y9",
+        "area": "다이나믹 썸네일1",
+        "finalUrl": "https://neosmtsrenewal.onelink.me/kj1W/smzco3y9",
+        "landingScreenshot": "screenshots/landing_한국투자증권_mo_1790041384329_2vig.jpg"
+      },
+      {
+        "buttonText": "연금이전 혜택",
+        "buttonUrl": "https://m.koreainvestment.com/mobile/customer/Notice.jsp?cmd=M_MO_50650&num=1700&isOpen=true",
+        "area": "다이나믹 썸네일2",
+        "finalUrl": "https://m.koreainvestment.com/mobile/customer/Notice.jsp?cmd=M_MO_50650&num=1700&isOpen=true",
+        "landingScreenshot": "screenshots/landing_한국투자증권_mo_1790041389342_2vig.jpg"
+      },
+      {
+        "buttonText": "채권입고 혜택",
+        "buttonUrl": "https://neosmtsrenewal.onelink.me/kj1W/mh1b6tfh",
+        "area": "다이나믹 썸네일3",
+        "finalUrl": "https://neosmtsrenewal.onelink.me/kj1W/mh1b6tfh",
+        "landingScreenshot": "screenshots/landing_한국투자증권_mo_1790041393312_2vig.jpg"
+      }
+    ],
+    "copyText": "",
+    "landingUrl": "https://m.koreainvestment.com/mobile/index.jsp",
+    "collectedAt": "2026-09-22T01:43:14.133Z",
+    "deviceCreativeIndex": 1,
+    "creativeSetId": "한국투자증권_set1",
+    "creativeLabel": "소재1"
+  },
+  {
+    "id": "naver_bs_1790041448861_xom4c",
+    "platform": "naver_bs",
+    "device": "pc",
+    "advertiserName": "키움증권",
+    "keyword": "키움증권",
+    "searchType": "brand",
+    "mediaType": "image",
+    "mediaUrl": "",
+    "localPath": "screenshots/bs_키움증권_pc_20260922_la87_c1.jpg",
+    "screenshotPath": "screenshots/bs_키움증권_pc_20260922_la87_c1.jpg",
+    "buttons": [
+      {
+        "buttonText": "리워드 받기",
+        "buttonUrl": "https://evt.kiwoom.com/e/home/event/VEvent20260084View?from=071",
+        "area": "메인이미지1",
+        "finalUrl": "https://evt.kiwoom.com/e/home/event/VEvent20260084View?from=071",
+        "landingScreenshot": "screenshots/landing_키움증권_pc_1790041433193_2r0r.jpg",
+        "slideIndex": 0,
+        "slideImage": "screenshots/slide_키움증권_pc_0_1790041404050_vu5g.jpg",
+        "slideTitle": "신규고객은 12만원 받아요",
+        "slideSubText": "계좌 3종 개설 및 5회 공유시"
+      },
+      {
+        "buttonText": "자세히 보기",
+        "buttonUrl": "https://www.kiwoom.com/e/home/event/VEvent20260068View?from=071",
+        "area": "메인이미지2",
+        "finalUrl": "https://www.kiwoom.com/e/home/event/VEvent20260068View?from=071",
+        "landingScreenshot": "screenshots/landing_키움증권_pc_1790041436996_2r0r.jpg",
+        "slideIndex": 1,
+        "slideImage": "screenshots/slide_키움증권_pc_1_1790041404335_vu5g.jpg",
+        "slideTitle": "키움으로 국내주식옮기면 최대 300만원",
+        "slideSubText": "조건충족시·삼전닉스 더블 혜택"
+      },
+      {
+        "buttonText": "포인트 받기",
+        "buttonUrl": "https://www.kiwoom.com/e/wm/event/evtUserEC260055View?from=071",
+        "area": "메인이미지4",
+        "finalUrl": "https://www.kiwoom.com/e/wm/event/evtUserEC260055View?from=071",
+        "landingScreenshot": "screenshots/landing_키움증권_pc_1790041444530_2r0r.jpg",
+        "slideIndex": 3,
+        "slideImage": "screenshots/slide_키움증권_pc_3_1790041404873_vu5g.jpg",
+        "slideTitle": "퇴직연금 IRP 최대 3만 포인트",
+        "slideSubText": "조건 충족 시·이벤트 신청 필수"
+      },
+      {
+        "buttonText": "포인트 받기",
+        "buttonUrl": "https://www.kiwoom.com/e/wm/event/evtUserEC260045View?from=071",
+        "area": "메인이미지5",
+        "finalUrl": "https://www.kiwoom.com/e/wm/event/evtUserEC260045View?from=071",
+        "landingScreenshot": "screenshots/landing_키움증권_pc_1790041448023_2r0r.jpg",
+        "slideIndex": 4,
+        "slideImage": "screenshots/slide_키움증권_pc_4_1790041405139_vu5g.jpg",
+        "slideTitle": "발행어음 매수하면 최대 10만 포인트",
+        "slideSubText": "조건 충족 시·키움 포인트 가입 필수"
+      },
+      {
+        "buttonText": "최초신규",
+        "buttonUrl": "https://evt.kiwoom.com/e/home/event/VEvent20260084View?from=071",
+        "area": "썸네일1",
+        "finalUrl": "https://evt.kiwoom.com/e/home/event/VEvent20260084View?from=071",
+        "landingScreenshot": "screenshots/landing_키움증권_pc_1790041433193_2r0r.jpg"
+      },
+      {
+        "buttonText": "주식옮기기",
+        "buttonUrl": "https://www.kiwoom.com/e/home/event/VEvent20260068View?from=071",
+        "area": "썸네일3",
+        "finalUrl": "https://www.kiwoom.com/e/home/event/VEvent20260068View?from=071",
+        "landingScreenshot": "screenshots/landing_키움증권_pc_1790041436996_2r0r.jpg"
+      },
+      {
+        "buttonText": "퇴직연금 IRP",
+        "buttonUrl": "https://www.kiwoom.com/e/wm/event/evtUserEC260055View?from=071",
+        "area": "썸네일4",
+        "finalUrl": "https://www.kiwoom.com/e/wm/event/evtUserEC260055View?from=071",
+        "landingScreenshot": "screenshots/landing_키움증권_pc_1790041444530_2r0r.jpg"
+      },
+      {
+        "buttonText": "발행어음",
+        "buttonUrl": "https://www.kiwoom.com/e/wm/event/evtUserEC260045View?from=071",
+        "area": "썸네일5",
+        "finalUrl": "https://www.kiwoom.com/e/wm/event/evtUserEC260045View?from=071",
+        "landingScreenshot": "screenshots/landing_키움증권_pc_1790041448023_2r0r.jpg"
+      }
+    ],
+    "copyText": "",
+    "landingUrl": "https://evt.kiwoom.com/e/home/event/VEvent20260084View?from=071",
+    "collectedAt": "2026-09-22T01:44:08.861Z",
+    "deviceCreativeIndex": 1,
+    "creativeSetId": "키움증권_set1",
+    "creativeLabel": "소재1"
+  },
+  {
+    "id": "naver_bs_1790041502949_kyv2f",
+    "platform": "naver_bs",
+    "device": "mo",
+    "advertiserName": "키움증권",
+    "keyword": "키움증권",
+    "searchType": "brand",
+    "mediaType": "image",
+    "mediaUrl": "",
+    "localPath": "screenshots/bs_키움증권_mo_20260922_41yr_c1.jpg",
+    "screenshotPath": "screenshots/bs_키움증권_mo_20260922_41yr_c1.jpg",
+    "buttons": [
+      {
+        "buttonText": "키움증권 홈페이지",
+        "buttonUrl": "https://m.kiwoom.com?from=070",
+        "area": "홈페이지",
+        "finalUrl": "https://www1.kiwoom.com/m/main",
+        "landingScreenshot": "screenshots/landing_키움증권_mo_1790041482176_2l5r.jpg"
+      },
+      {
+        "buttonText": "국내주식 점유율 21년 연속 1위",
+        "buttonUrl": "https://m.kiwoom.com?from=070",
+        "area": "브랜드소식",
+        "finalUrl": "https://www1.kiwoom.com/m/main",
+        "landingScreenshot": "screenshots/landing_키움증권_mo_1790041482176_2l5r.jpg"
+      },
+      {
+        "buttonText": "리워드 받기",
+        "buttonUrl": "https://evt.kiwoom.com/e/m/home/event/VEvent20260084View?from=070",
+        "area": "메인이미지1",
+        "finalUrl": "https://evt.kiwoom.com/e/m/home/event/VEvent20260084View?from=070",
+        "landingScreenshot": "screenshots/landing_키움증권_mo_1790041486582_2l5r.jpg",
+        "slideIndex": 0,
+        "slideImage": "screenshots/slide_키움증권_mo_0_1790041458371_mq65.jpg",
+        "slideTitle": "신규고객은 12만원 받아요",
+        "slideSubText": ""
+      },
+      {
+        "buttonText": "자세히 보기",
+        "buttonUrl": "https://www.kiwoom.com/e/m/home/event/VEvent20260068View?from=070",
+        "area": "메인이미지2",
+        "finalUrl": "https://www.kiwoom.com/e/m/home/event/VEvent20260068View?from=070",
+        "landingScreenshot": "screenshots/landing_키움증권_mo_1790041490647_2l5r.jpg",
+        "slideIndex": 1,
+        "slideImage": "screenshots/slide_키움증권_mo_1_1790041458651_mq65.jpg",
+        "slideTitle": "키움으로 국내주식옮기면 최대 300만원",
+        "slideSubText": ""
+      },
+      {
+        "buttonText": "포인트 받기",
+        "buttonUrl": "https://www.kiwoom.com/e/m/wm/event/evtUserEC260055View?from=070",
+        "area": "메인이미지4",
+        "finalUrl": "https://www.kiwoom.com/e/m/wm/event/evtUserEC260055View?from=070",
+        "landingScreenshot": "screenshots/landing_키움증권_mo_1790041498365_2l5r.jpg",
+        "slideIndex": 3,
+        "slideImage": "screenshots/slide_키움증권_mo_3_1790041459174_mq65.jpg",
+        "slideTitle": "퇴직연금 IRP 최대 3만 포인트",
+        "slideSubText": ""
+      },
+      {
+        "buttonText": "포인트 받기",
+        "buttonUrl": "https://www.kiwoom.com/e/m/wm/event/evtUserEC260045View?from=070",
+        "area": "메인이미지5",
+        "finalUrl": "https://www.kiwoom.com/e/m/wm/event/evtUserEC260045View?from=070",
+        "landingScreenshot": "screenshots/landing_키움증권_mo_1790041502119_2l5r.jpg",
+        "slideIndex": 4,
+        "slideImage": "screenshots/slide_키움증권_mo_4_1790041459433_mq65.jpg",
+        "slideTitle": "발행어음 매수하면 최대 10만 포인트",
+        "slideSubText": ""
+      },
+      {
+        "buttonText": "최초신규",
+        "buttonUrl": "https://evt.kiwoom.com/e/m/home/event/VEvent20260084View?from=070",
+        "area": "썸네일1",
+        "finalUrl": "https://evt.kiwoom.com/e/m/home/event/VEvent20260084View?from=070",
+        "landingScreenshot": "screenshots/landing_키움증권_mo_1790041486582_2l5r.jpg"
+      },
+      {
+        "buttonText": "주식옮기기",
+        "buttonUrl": "https://www.kiwoom.com/e/m/home/event/VEvent20260068View?from=070",
+        "area": "썸네일3",
+        "finalUrl": "https://www.kiwoom.com/e/m/home/event/VEvent20260068View?from=070",
+        "landingScreenshot": "screenshots/landing_키움증권_mo_1790041490647_2l5r.jpg"
+      },
+      {
+        "buttonText": "퇴직연금IRP",
+        "buttonUrl": "https://www.kiwoom.com/e/m/wm/event/evtUserEC260055View?from=070",
+        "area": "썸네일4",
+        "finalUrl": "https://www.kiwoom.com/e/m/wm/event/evtUserEC260055View?from=070",
+        "landingScreenshot": "screenshots/landing_키움증권_mo_1790041498365_2l5r.jpg"
+      },
+      {
+        "buttonText": "발행어음",
+        "buttonUrl": "https://www.kiwoom.com/e/m/wm/event/evtUserEC260045View?from=070",
+        "area": "썸네일5",
+        "finalUrl": "https://www.kiwoom.com/e/m/wm/event/evtUserEC260045View?from=070",
+        "landingScreenshot": "screenshots/landing_키움증권_mo_1790041502119_2l5r.jpg"
+      }
+    ],
+    "copyText": "",
+    "landingUrl": "https://www1.kiwoom.com/m/main",
+    "collectedAt": "2026-09-22T01:45:02.949Z",
+    "deviceCreativeIndex": 1,
+    "creativeSetId": "키움증권_set1",
+    "creativeLabel": "소재1"
+  },
+  {
+    "id": "naver_bs_1790041637009_cjwg8",
+    "platform": "naver_bs",
+    "device": "pc",
+    "advertiserName": "토스증권",
+    "keyword": "토스증권",
+    "searchType": "brand",
+    "mediaType": "image",
+    "mediaUrl": "",
+    "localPath": "screenshots/bs_토스증권_pc_20260922_u9v8_c1.jpg",
+    "screenshotPath": "screenshots/bs_토스증권_pc_20260922_u9v8_c1.jpg",
+    "buttons": [
+      {
+        "buttonText": "토스증권 홈페이지",
+        "buttonUrl": "https://corp.tossinvest.com/ko",
+        "area": "홈페이지",
+        "finalUrl": "https://corp.tossinvest.com/ko",
+        "landingScreenshot": "screenshots/landing_토스증권_pc_1790041535110_u46t.jpg"
+      },
+      {
+        "buttonText": "지금 첫 계좌 만들면 누구나 주식/ETF 1주 드려요",
+        "buttonUrl": "https://tossinvest.com/_ul/k0CZSC",
+        "area": "브랜드소식",
+        "finalUrl": "https://mts.tossinvest.com/growth/account-open-stock-draw/web?utm_source=naver-bs&utm_campaign=bs_2607_performance_sec&utm_medium=pc_object_2607&utm_content=object_event_1-free-stock&af_dp=supertoss%3A%2F%2Fsecurities%3Furl%3Dhttps%253A%252F%252Fservice.tossinvest.com%253FnextLandingUrl%253D%25252Fgrowth%25252Faccount-open-stock-draw%25253Futm_source%25253Dnaver-bs%252526utm_campaign%25253Dbs_2607_performance_sec%252526utm_medium%25253Dpc_object_2607%252526utm_content%25253Dobject_event_1-free-stock%26clearHistory%3Dtrue%26swipeRefresh%3Dtrue&is_retargeting=true&af_ad=object_event_1-free-stock&onelinkclid=3264be16-ffca-4be3-8dfd-2c80ab45445a&af_adset=pc_object_2607&pid=naver-bs&c=bs_2607_performance_sec&deep_link_value=supertoss%3A%2F%2Fsecurities%3Furl%3Dhttps%253A%252F%252Fservice.tossinvest.com%253FnextLandingUrl%253D%25252Fgrowth%25252Faccount-open-stock-draw%25253Futm_source%25253Dnaver-bs%252526utm_campaign%25253Dbs_2607_performance_sec%252526utm_medium%25253Dpc_object_2607%252526utm_content%25253Dobject_event_1-free-stock%26clearHistory%3Dtrue%26swipeRefresh%3Dtrue",
+        "landingScreenshot": "screenshots/landing_토스증권_pc_1790041541941_u46t.jpg"
+      },
+      {
+        "buttonText": "메인이미지",
+        "buttonUrl": "https://tossinvest.com/_ul/k0CZUC",
+        "area": "메인이미지",
+        "finalUrl": "https://mts.tossinvest.com/growth/account-open-stock-draw/web?utm_source=naver-bs&utm_campaign=bs_2607_performance_sec&utm_medium=pc_object_2607&utm_content=object_mainimg_1-free-stock&c=bs_2607_performance_sec&onelinkclid=3264be16-ffca-4be3-8dfd-2c80ab45445a&deep_link_value=supertoss%3A%2F%2Fsecurities%3Furl%3Dhttps%253A%252F%252Fservice.tossinvest.com%253FnextLandingUrl%253D%25252Fgrowth%25252Faccount-open-stock-draw%25253Futm_source%25253Dnaver-bs%252526utm_campaign%25253Dbs_2607_performance_sec%252526utm_medium%25253Dpc_object_2607%252526utm_content%25253Dobject_mainimg_1-free-stock%26clearHistory%3Dtrue%26swipeRefresh%3Dtrue&af_ad=object_mainimg_1-free-stock&af_adset=pc_object_2607&af_dp=supertoss%3A%2F%2Fsecurities%3Furl%3Dhttps%253A%252F%252Fservice.tossinvest.com%253FnextLandingUrl%253D%25252Fgrowth%25252Faccount-open-stock-draw%25253Futm_source%25253Dnaver-bs%252526utm_campaign%25253Dbs_2607_performance_sec%252526utm_medium%25253Dpc_object_2607%252526utm_content%25253Dobject_mainimg_1-free-stock%26clearHistory%3Dtrue%26swipeRefresh%3Dtrue&pid=naver-bs&is_retargeting=true",
+        "landingScreenshot": "screenshots/landing_토스증권_pc_1790041547403_u46t.jpg",
+        "slideIndex": 0,
+        "slideImage": "screenshots/slide_토스증권_pc_0_1790041549490_u46t.png",
+        "slideTitle": "",
+        "slideSubText": ""
+      },
+      {
+        "buttonText": "토스증권이 처음이세요?",
+        "buttonUrl": "https://tossinvest.com/_ul/k0CZWC",
+        "area": "설명문구",
+        "finalUrl": "https://mts.tossinvest.com/growth/account-open-stock-draw/web?utm_source=naver-bs&utm_campaign=bs_2607_performance_sec&utm_medium=pc_object_2607&utm_content=object_maintext_1-free-stock&af_dp=supertoss%3A%2F%2Fsecurities%3Furl%3Dhttps%253A%252F%252Fservice.tossinvest.com%253FnextLandingUrl%253D%25252Fgrowth%25252Faccount-open-stock-draw%25253Futm_source%25253Dnaver-bs%252526utm_campaign%25253Dbs_2607_performance_sec%252526utm_medium%25253Dpc_object_2607%252526utm_content%25253Dobject_maintext_1-free-stock%26clearHistory%3Dtrue%26swipeRefresh%3Dtrue&deep_link_value=supertoss%3A%2F%2Fsecurities%3Furl%3Dhttps%253A%252F%252Fservice.tossinvest.com%253FnextLandingUrl%253D%25252Fgrowth%25252Faccount-open-stock-draw%25253Futm_source%25253Dnaver-bs%252526utm_campaign%25253Dbs_2607_performance_sec%252526utm_medium%25253Dpc_object_2607%252526utm_content%25253Dobject_maintext_1-free-stock%26clearHistory%3Dtrue%26swipeRefresh%3Dtrue&c=bs_2607_performance_sec&is_retargeting=true&af_ad=object_maintext_1-free-stock&onelinkclid=3264be16-ffca-4be3-8dfd-2c80ab45445a&pid=naver-bs&af_adset=pc_object_2607",
+        "landingScreenshot": "screenshots/landing_토스증권_pc_1790041554888_u46t.jpg"
+      },
+      {
+        "buttonText": "자주묻는질문",
+        "buttonUrl": "https://tossinvest.com/_ul/k0CX8D",
+        "area": "서브링크2",
+        "finalUrl": "https://corp.tossinvest.com/ko/faq?utm_source=naver-bs&utm_campaign=bs_2607_performance_sec&utm_medium=pc_object_2607&utm_content=object_sub2_faq&af_ad=object_sub2_faq&af_dp=supertoss%3A%2F%2Fsecurities%3Furl%3Dhttps%253A%252F%252Fservice.tossinvest.com%252F%253Ftab%253Dhome%2526utm_source%253Dnaver-bs%2526utm_campaign%253Dbs_2607_performance_sec%2526utm_medium%253Dpc_object_2607%2526utm_content%253Dobject_sub2_faq%26clearHistory%3Dtrue%26swipeRefresh%3Dtrue&deep_link_value=supertoss%3A%2F%2Fsecurities%3Furl%3Dhttps%253A%252F%252Fservice.tossinvest.com%252F%253Ftab%253Dhome%2526utm_source%253Dnaver-bs%2526utm_campaign%253Dbs_2607_performance_sec%2526utm_medium%253Dpc_object_2607%2526utm_content%253Dobject_sub2_faq%26clearHistory%3Dtrue%26swipeRefresh%3Dtrue&onelinkclid=3264be16-ffca-4be3-8dfd-2c80ab45445a&pid=naver-bs&c=bs_2607_performance_sec&af_adset=pc_object_2607&is_retargeting=true",
+        "landingScreenshot": "screenshots/landing_토스증권_pc_1790041619724_u46t.jpg"
+      },
+      {
+        "buttonText": "지급주식 보기",
+        "buttonUrl": "https://tossinvest.com/_ul/k0CZYC",
+        "area": "썸네일1",
+        "finalUrl": "https://mts.tossinvest.com/growth/account-open-stock-draw/web?utm_source=naver-bs&utm_campaign=bs_2607_performance_sec&utm_medium=pc_object_2607&utm_content=object_thumnail1_1-free-stock&c=bs_2607_performance_sec&pid=naver-bs&onelinkclid=3264be16-ffca-4be3-8dfd-2c80ab45445a&af_ad=object_thumnail1_1-free-stock&is_retargeting=true&af_dp=supertoss%3A%2F%2Fsecurities%3Furl%3Dhttps%253A%252F%252Fservice.tossinvest.com%252F%253Ftab%253Dhome%2526utm_source%253Dnaver-bs%2526utm_campaign%253Dbs_2607_performance_sec%2526utm_medium%253Dpc_object_2607%2526utm_content%253Dobject_thumnail1_1-free-stock%26clearHistory%3Dtrue%26swipeRefresh%3Dtrue&af_adset=pc_object_2607&deep_link_value=supertoss%3A%2F%2Fsecurities%3Furl%3Dhttps%253A%252F%252Fservice.tossinvest.com%252F%253Ftab%253Dhome%2526utm_source%253Dnaver-bs%2526utm_campaign%253Dbs_2607_performance_sec%2526utm_medium%253Dpc_object_2607%2526utm_content%253Dobject_thumnail1_1-free-stock%26clearHistory%3Dtrue%26swipeRefresh%3Dtrue",
+        "landingScreenshot": "screenshots/landing_토스증권_pc_1790041625189_u46t.jpg"
+      },
+      {
+        "buttonText": "참여방법 보기",
+        "buttonUrl": "https://tossinvest.com/_ul/k0CZaC",
+        "area": "썸네일2",
+        "finalUrl": "https://mts.tossinvest.com/growth/account-open-stock-draw/web?utm_source=naver-bs&utm_campaign=bs_2607_performance_sec&utm_medium=pc_object_2607&utm_content=object_thumnail2_1-free-stock&af_dp=supertoss%3A%2F%2Fsecurities%3Furl%3Dhttps%253A%252F%252Fservice.tossinvest.com%252F%253Ftab%253Dhome%2526utm_source%253Dnaver-bs%2526utm_campaign%253Dbs_2607_performance_sec%2526utm_medium%253Dpc_object_2607%2526utm_content%253Dobject_thumnail2_1-free-stock%26clearHistory%3Dtrue%26swipeRefresh%3Dtrue&pid=naver-bs&onelinkclid=3264be16-ffca-4be3-8dfd-2c80ab45445a&is_retargeting=true&c=bs_2607_performance_sec&af_adset=pc_object_2607&deep_link_value=supertoss%3A%2F%2Fsecurities%3Furl%3Dhttps%253A%252F%252Fservice.tossinvest.com%252F%253Ftab%253Dhome%2526utm_source%253Dnaver-bs%2526utm_campaign%253Dbs_2607_performance_sec%2526utm_medium%253Dpc_object_2607%2526utm_content%253Dobject_thumnail2_1-free-stock%26clearHistory%3Dtrue%26swipeRefresh%3Dtrue&af_ad=object_thumnail2_1-free-stock",
+        "landingScreenshot": "screenshots/landing_토스증권_pc_1790041630678_u46t.jpg"
+      },
+      {
+        "buttonText": "주식1주 받기",
+        "buttonUrl": "https://tossinvest.com/_ul/k0CZcC",
+        "area": "썸네일3",
+        "finalUrl": "https://mts.tossinvest.com/growth/account-open-stock-draw/web?utm_source=naver-bs&utm_campaign=bs_2607_performance_sec&utm_medium=pc_object_2607&utm_content=object_thumnail3_1-free-stock&is_retargeting=true&onelinkclid=3264be16-ffca-4be3-8dfd-2c80ab45445a&deep_link_value=supertoss%3A%2F%2Fsecurities%3Furl%3Dhttps%253A%252F%252Fservice.tossinvest.com%253FnextLandingUrl%253D%25252Fhome%25252Frealtime-ranking%25253FrankingId%25253Dbiggest_total_amount%252526tag%25253DALL%252526utm_source%25253Dnaver-bs%252526utm_campaign%25253Dbs_2607_performance_sec%252526utm_medium%25253Dpc_object_2607%252526utm_content%25253Dobject_thumnail3_1-free-stock%26clearHistory%3Dtrue%26swipeRefresh%3Dtrue&af_dp=supertoss%3A%2F%2Fsecurities%3Furl%3Dhttps%253A%252F%252Fservice.tossinvest.com%253FnextLandingUrl%253D%25252Fhome%25252Frealtime-ranking%25253FrankingId%25253Dbiggest_total_amount%252526tag%25253DALL%252526utm_source%25253Dnaver-bs%252526utm_campaign%25253Dbs_2607_performance_sec%252526utm_medium%25253Dpc_object_2607%252526utm_content%25253Dobject_thumnail3_1-free-stock%26clearHistory%3Dtrue%26swipeRefresh%3Dtrue&af_ad=object_thumnail3_1-free-stock&af_adset=pc_object_2607&c=bs_2607_performance_sec&pid=naver-bs",
+        "landingScreenshot": "screenshots/landing_토스증권_pc_1790041636111_u46t.jpg"
+      }
+    ],
+    "copyText": "",
+    "landingUrl": "https://corp.tossinvest.com/ko",
+    "collectedAt": "2026-09-22T01:47:17.009Z",
+    "deviceCreativeIndex": 1,
+    "creativeSetId": "토스증권_set1",
+    "creativeLabel": "소재1"
+  },
+  {
+    "id": "naver_bs_1790041692239_bysw8",
+    "platform": "naver_bs",
+    "device": "mo",
+    "advertiserName": "토스증권",
+    "keyword": "토스증권",
+    "searchType": "brand",
+    "mediaType": "image",
+    "mediaUrl": "",
+    "localPath": "screenshots/bs_토스증권_mo_20260922_3x47_c1.jpg",
+    "screenshotPath": "screenshots/bs_토스증권_mo_20260922_3x47_c1.jpg",
+    "buttons": [
+      {
+        "buttonText": "토스증권 홈페이지",
+        "buttonUrl": "https://corp.tossinvest.com/ko",
+        "area": "홈페이지",
+        "finalUrl": "https://corp.tossinvest.com/ko",
+        "landingScreenshot": "screenshots/landing_토스증권_mo_1790041667193_tmmj.jpg"
+      },
+      {
+        "buttonText": "신규 계좌 개설하고 1만원 받아요",
+        "buttonUrl": "https://tossinvest.com/_ul/jcXrAD",
+        "area": "브랜드소식",
+        "finalUrl": "https://toss.onelink.me/3563614660?pid=naver-bs&c=bs_2607_performance_sec&af_adset=mo_object_2607&af_ad=object_event_nau-rw10000_260101&is_retargeting=true&onelinkclid=3264be16-ffca-4be3-8dfd-2c80ab45445a&af_web_dp=https%3A%2F%2Fwww.tossinvest.com%3Futm_source%3Dnaver-bs%26utm_campaign%3Dbs_2607_performance_sec%26utm_medium%3Dmo_object_2607%26utm_content%3Dobject_event_nau-rw10000_260101&af_dp=supertoss%3A%2F%2Fsecurities%3Furl%3Dhttps%253A%252F%252Fservice.tossinvest.com%253FnextLandingUrl%253D%25252Fgrowth%25252Fbenefit-tab-account-open%25253Futm_source%25253Dnaver-bs%252526utm_campaign%25253Dbs_2607_performance_sec%252526utm_medium%25253Dmo_object_2607%252526utm_content%25253Dobject_event_nau-rw10000_260101%26clearHistory%3Dtrue%26swipeRefresh%3Dtrue&deep_link_value=supertoss%3A%2F%2Fsecurities%3Furl%3Dhttps%253A%252F%252Fservice.tossinvest.com%253FnextLandingUrl%253D%25252Fgrowth%25252Fbenefit-tab-account-open%25253Futm_source%25253Dnaver-bs%252526utm_campaign%25253Dbs_2607_performance_sec%252526utm_medium%25253Dmo_object_2607%252526utm_content%25253Dobject_event_nau-rw10000_260101%26clearHistory%3Dtrue%26swipeRefresh%3Dtrue",
+        "landingScreenshot": "screenshots/landing_토스증권_mo_1790041671141_tmmj.jpg"
+      },
+      {
+        "buttonText": "토스증권이 처음이세요?",
+        "buttonUrl": "https://tossinvest.com/_ul/jcXrCD",
+        "area": "메인이미지",
+        "finalUrl": "https://toss.onelink.me/3563614660?pid=naver-bs&c=bs_2607_performance_sec&af_adset=mo_object_2607&af_ad=object_mainimg_nau-rw10000_260101&is_retargeting=true&onelinkclid=3264be16-ffca-4be3-8dfd-2c80ab45445a&af_web_dp=https%3A%2F%2Fwww.tossinvest.com%3Futm_source%3Dnaver-bs%26utm_campaign%3Dbs_2607_performance_sec%26utm_medium%3Dmo_object_2607%26utm_content%3Dobject_mainimg_nau-rw10000_260101&af_dp=supertoss%3A%2F%2Fsecurities%3Furl%3Dhttps%253A%252F%252Fservice.tossinvest.com%253FnextLandingUrl%253D%25252Fgrowth%25252Fbenefit-tab-account-open%25253Futm_source%25253Dnaver-bs%252526utm_campaign%25253Dbs_2607_performance_sec%252526utm_medium%25253Dmo_object_2607%252526utm_content%25253Dobject_mainimg_nau-rw10000_260101%26clearHistory%3Dtrue%26swipeRefresh%3Dtrue&deep_link_value=supertoss%3A%2F%2Fsecurities%3Furl%3Dhttps%253A%252F%252Fservice.tossinvest.com%253FnextLandingUrl%253D%25252Fgrowth%25252Fbenefit-tab-account-open%25253Futm_source%25253Dnaver-bs%252526utm_campaign%25253Dbs_2607_performance_sec%252526utm_medium%25253Dmo_object_2607%252526utm_content%25253Dobject_mainimg_nau-rw10000_260101%26clearHistory%3Dtrue%26swipeRefresh%3Dtrue",
+        "landingScreenshot": "screenshots/landing_토스증권_mo_1790041675415_tmmj.jpg",
+        "slideIndex": 0,
+        "slideImage": "screenshots/slide_토스증권_mo_0_1790041675585_tmmj.png",
+        "slideTitle": "토스증권이 처음이세요?",
+        "slideSubText": ""
+      },
+      {
+        "buttonText": "투자 지원금 1만원 혜택",
+        "buttonUrl": "https://tossinvest.com/_ul/jcXrED",
+        "area": "설명문구",
+        "finalUrl": "https://toss.onelink.me/3563614660?pid=naver-bs&c=bs_2607_performance_sec&af_adset=mo_object_2607&af_ad=object_maintext_nau-rw10000_260101&is_retargeting=true&onelinkclid=3264be16-ffca-4be3-8dfd-2c80ab45445a&af_web_dp=https%3A%2F%2Fwww.tossinvest.com%3Futm_source%3Dnaver-bs%26utm_campaign%3Dbs_2607_performance_sec%26utm_medium%3Dmo_object_2607%26utm_content%3Dobject_maintext_nau-rw10000_260101&af_dp=supertoss%3A%2F%2Fsecurities%3Furl%3Dhttps%253A%252F%252Fservice.tossinvest.com%253FnextLandingUrl%253D%25252Fgrowth%25252Fbenefit-tab-account-open%25253Futm_source%25253Dnaver-bs%252526utm_campaign%25253Dbs_2607_performance_sec%252526utm_medium%25253Dmo_object_2607%252526utm_content%25253Dobject_maintext_nau-rw10000_260101%26clearHistory%3Dtrue%26swipeRefresh%3Dtrue&deep_link_value=supertoss%3A%2F%2Fsecurities%3Furl%3Dhttps%253A%252F%252Fservice.tossinvest.com%253FnextLandingUrl%253D%25252Fgrowth%25252Fbenefit-tab-account-open%25253Futm_source%25253Dnaver-bs%252526utm_campaign%25253Dbs_2607_performance_sec%252526utm_medium%25253Dmo_object_2607%252526utm_content%25253Dobject_maintext_nau-rw10000_260101%26clearHistory%3Dtrue%26swipeRefresh%3Dtrue",
+        "landingScreenshot": "screenshots/landing_토스증권_mo_1790041679891_tmmj.jpg"
+      },
+      {
+        "buttonText": "우리아이 계좌",
+        "buttonUrl": "https://tossinvest.com/_ul/jcXrGD",
+        "area": "다이나믹 썸네일1",
+        "finalUrl": "https://toss.onelink.me/3563614660?pid=naver-bs&c=bs_2607_performance_sec&af_adset=mo_object_2607&af_ad=object_thumnail1_child_260101&is_retargeting=true&onelinkclid=3264be16-ffca-4be3-8dfd-2c80ab45445a&af_web_dp=https%3A%2F%2Fwww.tossinvest.com%3Futm_source%3Dnaver-bs%26utm_campaign%3Dbs_2607_performance_sec%26utm_medium%3Dmo_object_2607%26utm_content%3Dobject_thumnail1_child_260101&af_dp=supertoss%3A%2F%2Fsecurities%3Furl%3Dhttps%253A%252F%252Fservice.tossinvest.com%253FnextLandingUrl%253D%25252Faccounts%25252Fopen%25252F01%25252Fminor%25252Fintro%25253Futm_source%25253Dnaver-bs%252526utm_campaign%25253Dbs_2607_performance_sec%252526utm_medium%25253Dmo_object_2607%252526utm_content%25253Dobject_thumnail1_child_260101%26clearHistory%3Dtrue%26swipeRefresh%3Dtrue&deep_link_value=supertoss%3A%2F%2Fsecurities%3Furl%3Dhttps%253A%252F%252Fservice.tossinvest.com%253FnextLandingUrl%253D%25252Faccounts%25252Fopen%25252F01%25252Fminor%25252Fintro%25253Futm_source%25253Dnaver-bs%252526utm_campaign%25253Dbs_2607_performance_sec%252526utm_medium%25253Dmo_object_2607%252526utm_content%25253Dobject_thumnail1_child_260101%26clearHistory%3Dtrue%26swipeRefresh%3Dtrue",
+        "landingScreenshot": "screenshots/landing_토스증권_mo_1790041683713_tmmj.jpg"
+      },
+      {
+        "buttonText": "주식 옮기기",
+        "buttonUrl": "https://tossinvest.com/_ul/jcHW4C",
+        "area": "다이나믹 썸네일2",
+        "finalUrl": "https://toss.onelink.me/3563614660?pid=naver-bs&c=bs_2607_performance_sec&af_adset=mo_object_2607&af_ad=object_thumnail2_stock-transfer_260101&is_retargeting=true&onelinkclid=3264be16-ffca-4be3-8dfd-2c80ab45445a&af_web_dp=https%3A%2F%2Fcontents.tossinvest.com%2Fevents%2Fstock-transfer%3Futm_source%3Dnaver-bs%26utm_campaign%3Dbs_2607_performance_sec%26utm_medium%3Dmo_object_2607%26utm_content%3Dobject_thumnail2_stock-transfer_260101&af_dp=supertoss%3A%2F%2Fsecurities%3Furl%3Dhttps%253A%252F%252Fservice.tossinvest.com%253FnextLandingUrl%253D%25252Fstock-transfer%25252Fintro%25253Futm_source%25253Dnaver-bs%252526utm_campaign%25253Dbs_2607_performance_sec%252526utm_medium%25253Dmo_object_2607%252526utm_content%25253Dobject_thumnail2_stock-transfer_260101%26clearHistory%3Dtrue%26swipeRefresh%3Dtrue&deep_link_value=supertoss%3A%2F%2Fsecurities%3Furl%3Dhttps%253A%252F%252Fservice.tossinvest.com%253FnextLandingUrl%253D%25252Fstock-transfer%25252Fintro%25253Futm_source%25253Dnaver-bs%252526utm_campaign%25253Dbs_2607_performance_sec%252526utm_medium%25253Dmo_object_2607%252526utm_content%25253Dobject_thumnail2_stock-transfer_260101%26clearHistory%3Dtrue%26swipeRefresh%3Dtrue",
+        "landingScreenshot": "screenshots/landing_토스증권_mo_1790041687554_tmmj.jpg"
+      },
+      {
+        "buttonText": "실시간 이슈",
+        "buttonUrl": "https://tossinvest.com/_ul/jcXrID",
+        "area": "다이나믹 썸네일3",
+        "finalUrl": "https://toss.onelink.me/3563614660?pid=naver-bs&c=bs_2607_performance_sec&af_adset=mo_object_2607&af_ad=object_thumnail3_top20_260101&is_retargeting=true&onelinkclid=3264be16-ffca-4be3-8dfd-2c80ab45445a&af_web_dp=https%3A%2F%2Fwww.tossinvest.com%3Futm_source%3Dnaver-bs%26utm_campaign%3Dbs_2607_performance_sec%26utm_medium%3Dmo_object_2607%26utm_content%3Dobject_thumnail3_top20_260101&af_dp=supertoss%3A%2F%2Fsecurities%3Furl%3Dhttps%253A%252F%252Fservice.tossinvest.com%253FnextLandingUrl%253D%25252Fhome%25252Frealtime-ranking%25253FrankingId%25253Dheavy_soar%252526tag%25253DALL%252526utm_source%25253Dnaver-bs%252526utm_campaign%25253Dbs_2607_performance_sec%252526utm_medium%25253Dmo_object_2607%252526utm_content%25253Dobject_thumnail3_top20_260101%26clearHistory%3Dtrue%26swipeRefresh%3Dtrue&deep_link_value=supertoss%3A%2F%2Fsecurities%3Furl%3Dhttps%253A%252F%252Fservice.tossinvest.com%253FnextLandingUrl%253D%25252Fhome%25252Frealtime-ranking%25253FrankingId%25253Dheavy_soar%252526tag%25253DALL%252526utm_source%25253Dnaver-bs%252526utm_campaign%25253Dbs_2607_performance_sec%252526utm_medium%25253Dmo_object_2607%252526utm_content%25253Dobject_thumnail3_top20_260101%26clearHistory%3Dtrue%26swipeRefresh%3Dtrue",
+        "landingScreenshot": "screenshots/landing_토스증권_mo_1790041691411_tmmj.jpg"
+      }
+    ],
+    "copyText": "",
+    "landingUrl": "https://corp.tossinvest.com/ko",
+    "collectedAt": "2026-09-22T01:48:12.239Z",
+    "deviceCreativeIndex": 1,
+    "creativeSetId": "토스증권_set1",
+    "creativeLabel": "소재1"
+  },
+  {
+    "id": "naver_bs_1790041753644_1tlaw",
+    "platform": "naver_bs",
+    "device": "pc",
+    "advertiserName": "메리츠증권",
+    "keyword": "메리츠증권",
+    "searchType": "brand",
+    "mediaType": "image",
+    "mediaUrl": "",
+    "localPath": "screenshots/bs_메리츠증권_pc_20260922_zvtu_c1.jpg",
+    "screenshotPath": "screenshots/bs_메리츠증권_pc_20260922_zvtu_c1.jpg",
+    "buttons": [
+      {
+        "buttonText": "홈페이지",
+        "buttonUrl": "https://link.moum.me/intro?utm_source=naver.searchad&utm_medium=bs&utm_campaign=moum&utm_content=2609_homelink_pc_03_0915",
+        "area": "홈페이지",
+        "finalUrl": "https://link.moum.me/intro?utm_source=naver.searchad&utm_medium=bs&utm_campaign=moum&utm_content=2609_homelink_pc_03_0915",
+        "landingScreenshot": "screenshots/landing_메리츠증권_pc_1790041725233_0sni.jpg"
+      },
+      {
+        "buttonText": "메인이미지",
+        "buttonUrl": "https://link.moum.me/intro?utm_source=naver.searchad&utm_medium=bs&utm_campaign=moum&utm_content=2609_mainimage_pc_03_0915",
+        "area": "메인이미지",
+        "finalUrl": "https://link.moum.me/intro?utm_source=naver.searchad&utm_medium=bs&utm_campaign=moum&utm_content=2609_mainimage_pc_03_0915",
+        "landingScreenshot": "screenshots/landing_메리츠증권_pc_1790041728852_0sni.jpg",
+        "slideIndex": 0,
+        "slideImage": "screenshots/slide_메리츠증권_pc_0_1790041729095_0sni.png",
+        "slideTitle": "",
+        "slideSubText": ""
+      },
+      {
+        "buttonText": "모일수록 힘이 되는 투자 플랫폼",
+        "buttonUrl": "https://link.moum.me/intro?utm_source=naver.searchad&utm_medium=bs&utm_campaign=moum&utm_content=2609_maintext_pc_03_0915",
+        "area": "설명문구",
+        "finalUrl": "https://link.moum.me/intro?utm_source=naver.searchad&utm_medium=bs&utm_campaign=moum&utm_content=2609_maintext_pc_03_0915",
+        "landingScreenshot": "screenshots/landing_메리츠증권_pc_1790041732581_0sni.jpg"
+      },
+      {
+        "buttonText": "새로운 투자 경험의 시작",
+        "buttonUrl": "https://link.moum.me/intro?utm_source=naver.searchad&utm_medium=bs&utm_campaign=moum&utm_content=2609_sub1_pc_03_0915",
+        "area": "서브링크1",
+        "finalUrl": "https://link.moum.me/intro?utm_source=naver.searchad&utm_medium=bs&utm_campaign=moum&utm_content=2609_sub1_pc_03_0915",
+        "landingScreenshot": "screenshots/landing_메리츠증권_pc_1790041736137_0sni.jpg"
+      },
+      {
+        "buttonText": "이벤트 모음",
+        "buttonUrl": "https://moumevent.com/?utm_source=naver.searchad&utm_medium=bs&utm_campaign=moum&utm_content=2609_sub2_pc_03_0915",
+        "area": "서브링크2",
+        "finalUrl": "https://moumevent.com/?utm_source=naver.searchad&utm_medium=bs&utm_campaign=moum&utm_content=2609_sub2_pc_03_0915",
+        "landingScreenshot": "screenshots/landing_메리츠증권_pc_1790041741067_0sni.jpg"
+      },
+      {
+        "buttonText": "현금 증정",
+        "buttonUrl": "https://moumevent.com/?utm_source=naver.searchad&utm_medium=bs&utm_campaign=moum&utm_content=2609_thum1_pc_03_0915#event1",
+        "area": "썸네일1",
+        "finalUrl": "https://moumevent.com/?utm_source=naver.searchad&utm_medium=bs&utm_campaign=moum&utm_content=2609_thum1_pc_03_0915#event1",
+        "landingScreenshot": "screenshots/landing_메리츠증권_pc_1790041745201_0sni.jpg"
+      },
+      {
+        "buttonText": "9/15 공개",
+        "buttonUrl": "https://moumevent.com/?utm_source=naver.searchad&utm_medium=bs&utm_campaign=moum&utm_content=2609_thum2_pc_03_0915#event2",
+        "area": "썸네일2",
+        "finalUrl": "https://moumevent.com/?utm_source=naver.searchad&utm_medium=bs&utm_campaign=moum&utm_content=2609_thum2_pc_03_0915#event2",
+        "landingScreenshot": "screenshots/landing_메리츠증권_pc_1790041749227_0sni.jpg"
+      },
+      {
+        "buttonText": "포인트 증정",
+        "buttonUrl": "https://link.moum.me/intro?utm_source=naver.searchad&utm_medium=bs&utm_campaign=moum&utm_content=2609_thum3_pc_03_0915",
+        "area": "썸네일3",
+        "finalUrl": "https://link.moum.me/intro?utm_source=naver.searchad&utm_medium=bs&utm_campaign=moum&utm_content=2609_thum3_pc_03_0915",
+        "landingScreenshot": "screenshots/landing_메리츠증권_pc_1790041752732_0sni.jpg"
+      }
+    ],
+    "copyText": "",
+    "landingUrl": "https://link.moum.me/intro?utm_source=naver.searchad&utm_medium=bs&utm_campaign=moum&utm_content=2609_homelink_pc_03_0915",
+    "collectedAt": "2026-09-22T01:49:13.644Z",
+    "deviceCreativeIndex": 1,
+    "creativeSetId": "메리츠증권_set1",
+    "creativeLabel": "소재1"
+  },
+  {
+    "id": "naver_bs_1790041784131_p1x8x",
+    "platform": "naver_bs",
+    "device": "pc",
+    "advertiserName": "메리츠증권",
+    "keyword": "메리츠증권",
+    "searchType": "brand",
+    "mediaType": "image",
+    "mediaUrl": "",
+    "localPath": "screenshots/bs_메리츠증권_pc_20260922_4z79_c2.jpg",
+    "screenshotPath": "screenshots/bs_메리츠증권_pc_20260922_4z79_c2.jpg",
+    "buttons": [
+      {
+        "buttonText": "홈페이지",
+        "buttonUrl": "https://link.moum.me/intro?utm_source=naver.searchad&utm_medium=bs&utm_campaign=moum&utm_content=2609_homelink_pc_02_0915",
+        "area": "홈페이지",
+        "finalUrl": "https://link.moum.me/intro?utm_source=naver.searchad&utm_medium=bs&utm_campaign=moum&utm_content=2609_homelink_pc_02_0915",
+        "landingScreenshot": "screenshots/landing_메리츠증권_pc_1790041756251_f8vq.jpg"
+      },
+      {
+        "buttonText": "메인이미지",
+        "buttonUrl": "https://link.moum.me/intro?utm_source=naver.searchad&utm_medium=bs&utm_campaign=moum&utm_content=2609_mainimage_pc_02_0915",
+        "area": "메인이미지",
+        "finalUrl": "https://link.moum.me/intro?utm_source=naver.searchad&utm_medium=bs&utm_campaign=moum&utm_content=2609_mainimage_pc_02_0915",
+        "landingScreenshot": "screenshots/landing_메리츠증권_pc_1790041759833_f8vq.jpg",
+        "slideIndex": 0,
+        "slideImage": "screenshots/slide_메리츠증권_pc_0_1790041760205_f8vq.png",
+        "slideTitle": "",
+        "slideSubText": ""
+      },
+      {
+        "buttonText": "모일수록 힘이 되는 투자 플랫폼",
+        "buttonUrl": "https://link.moum.me/intro?utm_source=naver.searchad&utm_medium=bs&utm_campaign=moum&utm_content=2609_maintext_pc_02_0915",
+        "area": "설명문구",
+        "finalUrl": "https://link.moum.me/intro?utm_source=naver.searchad&utm_medium=bs&utm_campaign=moum&utm_content=2609_maintext_pc_02_0915",
+        "landingScreenshot": "screenshots/landing_메리츠증권_pc_1790041763720_f8vq.jpg"
+      },
+      {
+        "buttonText": "새로운 투자 경험의 시작",
+        "buttonUrl": "https://link.moum.me/intro?utm_source=naver.searchad&utm_medium=bs&utm_campaign=moum&utm_content=2609_sub1_pc_02_0915",
+        "area": "서브링크1",
+        "finalUrl": "https://link.moum.me/intro?utm_source=naver.searchad&utm_medium=bs&utm_campaign=moum&utm_content=2609_sub1_pc_02_0915",
+        "landingScreenshot": "screenshots/landing_메리츠증권_pc_1790041767349_f8vq.jpg"
+      },
+      {
+        "buttonText": "이벤트 모음",
+        "buttonUrl": "https://moumevent.com/?utm_source=naver.searchad&utm_medium=bs&utm_campaign=moum&utm_content=2609_sub2_pc_02_0915",
+        "area": "서브링크2",
+        "finalUrl": "https://moumevent.com/?utm_source=naver.searchad&utm_medium=bs&utm_campaign=moum&utm_content=2609_sub2_pc_02_0915",
+        "landingScreenshot": "screenshots/landing_메리츠증권_pc_1790041771609_f8vq.jpg"
+      },
+      {
+        "buttonText": "현금 증정",
+        "buttonUrl": "https://moumevent.com/?utm_source=naver.searchad&utm_medium=bs&utm_campaign=moum&utm_content=2609_thum1_pc_02_0915#event1",
+        "area": "썸네일1",
+        "finalUrl": "https://moumevent.com/?utm_source=naver.searchad&utm_medium=bs&utm_campaign=moum&utm_content=2609_thum1_pc_02_0915#event1",
+        "landingScreenshot": "screenshots/landing_메리츠증권_pc_1790041775661_f8vq.jpg"
+      },
+      {
+        "buttonText": "9/15 공개",
+        "buttonUrl": "https://moumevent.com/?utm_source=naver.searchad&utm_medium=bs&utm_campaign=moum&utm_content=2609_thum2_pc_02_0915#event2",
+        "area": "썸네일2",
+        "finalUrl": "https://moumevent.com/?utm_source=naver.searchad&utm_medium=bs&utm_campaign=moum&utm_content=2609_thum2_pc_02_0915#event2",
+        "landingScreenshot": "screenshots/landing_메리츠증권_pc_1790041779696_f8vq.jpg"
+      },
+      {
+        "buttonText": "포인트 증정",
+        "buttonUrl": "https://link.moum.me/intro?utm_source=naver.searchad&utm_medium=bs&utm_campaign=moum&utm_content=2609_thum3_pc_02_0915",
+        "area": "썸네일3",
+        "finalUrl": "https://link.moum.me/intro?utm_source=naver.searchad&utm_medium=bs&utm_campaign=moum&utm_content=2609_thum3_pc_02_0915",
+        "landingScreenshot": "screenshots/landing_메리츠증권_pc_1790041783211_f8vq.jpg"
+      }
+    ],
+    "copyText": "",
+    "landingUrl": "https://link.moum.me/intro?utm_source=naver.searchad&utm_medium=bs&utm_campaign=moum&utm_content=2609_homelink_pc_02_0915",
+    "collectedAt": "2026-09-22T01:49:44.131Z",
+    "deviceCreativeIndex": 2,
+    "creativeSetId": "메리츠증권_set2",
+    "creativeLabel": "소재2"
+  },
+  {
+    "id": "naver_bs_1790041836935_zyakr",
+    "platform": "naver_bs",
+    "device": "mo",
+    "advertiserName": "메리츠증권",
+    "keyword": "메리츠증권",
+    "searchType": "brand",
+    "mediaType": "image",
+    "mediaUrl": "",
+    "localPath": "screenshots/bs_메리츠증권_mo_20260922_t7y1_c1.jpg",
+    "screenshotPath": "screenshots/bs_메리츠증권_mo_20260922_t7y1_c1.jpg",
+    "buttons": [
+      {
+        "buttonText": "홈페이지",
+        "buttonUrl": "https://link.moum.me/intro?utm_source=naver.searchad&utm_medium=bs&utm_campaign=moum&utm_content=2609_homelink_mo_02_0915",
+        "area": "홈페이지",
+        "finalUrl": "https://link.moum.me/intro?utm_source=naver.searchad&utm_medium=bs&utm_campaign=moum&utm_content=2609_homelink_mo_02_0915",
+        "landingScreenshot": "screenshots/landing_메리츠증권_mo_1790041814562_oicd.jpg"
+      },
+      {
+        "buttonText": "모일수록 힘이되는 투자플랫폼",
+        "buttonUrl": "https://link.moum.me/intro?utm_source=naver.searchad&utm_medium=bs&utm_campaign=moum&utm_content=2609_mainimage_mo_02_0915",
+        "area": "메인이미지",
+        "finalUrl": "https://link.moum.me/intro?utm_source=naver.searchad&utm_medium=bs&utm_campaign=moum&utm_content=2609_mainimage_mo_02_0915",
+        "landingScreenshot": "screenshots/landing_메리츠증권_mo_1790041818286_oicd.jpg",
+        "slideIndex": 0,
+        "slideImage": "screenshots/slide_메리츠증권_mo_0_1790041818672_oicd.png",
+        "slideTitle": "모일수록 힘이되는 투자플랫폼",
+        "slideSubText": ""
+      },
+      {
+        "buttonText": "흩어진 투자 경험을 하나로",
+        "buttonUrl": "https://link.moum.me/intro?utm_source=naver.searchad&utm_medium=bs&utm_campaign=moum&utm_content=2609_maintext_mo_02_0915",
+        "area": "설명문구",
+        "finalUrl": "https://link.moum.me/intro?utm_source=naver.searchad&utm_medium=bs&utm_campaign=moum&utm_content=2609_maintext_mo_02_0915",
+        "landingScreenshot": "screenshots/landing_메리츠증권_mo_1790041822266_oicd.jpg"
+      },
+      {
+        "buttonText": "현금 증정",
+        "buttonUrl": "https://s.abr.ge/@moum/naver.searchad?ad_creative={ad}&ad_group=2609_thum1_mo_02_0915&campaign=WEB_MO_All_Naver_Traffic_BSA&content={ad_extension}&hash_str={hash_str}&mall_id={mall_id}&mall_pid={mall_pid}&match={match}&query={query}&rank={rank}&routing_short_id=96z3wm8&sub_id={campaign_type}&sub_id_1={network}&sub_id_2={media}&term={keyword}&term_id={keyword_id}&tracking_template_id=1ffb6cf986e340546583f105973d9d3c&ad_type=click",
+        "area": "다이나믹 썸네일1",
+        "finalUrl": "https://moumevent.com/?utm_source=naver.searchad&utm_medium=bs&utm_campaign=moum&utm_content=2609_thum1_mo_02_0915&airbridge_referrer=airbridge%3Dtrue%26app%3Dmoum%26client_id%3D66ab6349-6b98-4483-9996-68ab2ba55972%26event_uuid%3Dfba06a5c-cfd7-4940-b930-096dbc035e82%26referrer_timestamp%3D1790041822173%26channel%3Dnaver.searchad%26campaign%3DWEB_MO_All_Naver_Traffic_BSA%26tracking_template_id%3D1ffb6cf986e340546583f105973d9d3c%26ad_group%3D2609_thum1_mo_02_0915%26ad_creative%3D%257Bad%257D%26content%3D%257Bad_extension%257D%26term%3D%257Bkeyword%257D%26term_id%3D%257Bkeyword_id%257D%26sub_id%3D%257Bcampaign_type%257D%26sub_id_1%3D%257Bnetwork%257D%26sub_id_2%3D%257Bmedia%257D%26hash_str%3D%257Bhash_str%257D%26routing_short_id%3D96z3wm8&ad_creative=%7Bad%7D&ad_group=2609_thum1_mo_02_0915&campaign=WEB_MO_All_Naver_Traffic_BSA&content=%7Bad_extension%7D&hash_str=%7Bhash_str%7D&mall_id=%7Bmall_id%7D&mall_pid=%7Bmall_pid%7D&match=%7Bmatch%7D&query=%7Bquery%7D&rank=%7Brank%7D&routing_short_id=96z3wm8&sub_id=%7Bcampaign_type%7D&sub_id_1=%7Bnetwork%7D&sub_id_2=%7Bmedia%7D&term=%7Bkeyword%7D&term_id=%7Bkeyword_id%7D&tracking_template_id=1ffb6cf986e340546583f105973d9d3c&ad_type=click#event1",
+        "landingScreenshot": "screenshots/landing_메리츠증권_mo_1790041828058_oicd.jpg"
+      },
+      {
+        "buttonText": "9/15 공개",
+        "buttonUrl": "https://s.abr.ge/@moum/naver.searchad?ad_creative={ad}&ad_group=2609_thum2_mo_02_0915&campaign=WEB_MO_All_Naver_Traffic_BSA&content={ad_extension}&hash_str={hash_str}&mall_id={mall_id}&mall_pid={mall_pid}&match={match}&query={query}&rank={rank}&routing_short_id=sxk6et&sub_id={campaign_type}&sub_id_1={network}&sub_id_2={media}&term={keyword}&term_id={keyword_id}&tracking_template_id=a2de9fc47c56858b7d268a352bd79a07&ad_type=click",
+        "area": "다이나믹 썸네일2",
+        "finalUrl": "https://moumevent.com/?utm_source=naver.searchad&utm_medium=bs&utm_campaign=moum&utm_content=2609_thum2_mo_02_0915&airbridge_referrer=airbridge%3Dtrue%26app%3Dmoum%26client_id%3Dc6f17cb8-e073-459e-86d4-b30d3404685d%26event_uuid%3D9b2ed651-ef77-41c5-b6c7-34986c851bca%26referrer_timestamp%3D1790041827845%26channel%3Dnaver.searchad%26campaign%3DWEB_MO_All_Naver_Traffic_BSA%26tracking_template_id%3Da2de9fc47c56858b7d268a352bd79a07%26ad_group%3D2609_thum2_mo_02_0915%26ad_creative%3D%257Bad%257D%26content%3D%257Bad_extension%257D%26term%3D%257Bkeyword%257D%26term_id%3D%257Bkeyword_id%257D%26sub_id%3D%257Bcampaign_type%257D%26sub_id_1%3D%257Bnetwork%257D%26sub_id_2%3D%257Bmedia%257D%26hash_str%3D%257Bhash_str%257D%26routing_short_id%3Dsxk6et&ad_creative=%7Bad%7D&ad_group=2609_thum2_mo_02_0915&campaign=WEB_MO_All_Naver_Traffic_BSA&content=%7Bad_extension%7D&hash_str=%7Bhash_str%7D&mall_id=%7Bmall_id%7D&mall_pid=%7Bmall_pid%7D&match=%7Bmatch%7D&query=%7Bquery%7D&rank=%7Brank%7D&routing_short_id=sxk6et&sub_id=%7Bcampaign_type%7D&sub_id_1=%7Bnetwork%7D&sub_id_2=%7Bmedia%7D&term=%7Bkeyword%7D&term_id=%7Bkeyword_id%7D&tracking_template_id=a2de9fc47c56858b7d268a352bd79a07&ad_type=click#event2",
+        "landingScreenshot": "screenshots/landing_메리츠증권_mo_1790041832274_oicd.jpg"
+      },
+      {
+        "buttonText": "포인트 증정",
+        "buttonUrl": "https://link.moum.me/intro?utm_source=naver.searchad&utm_medium=bs&utm_campaign=moum&utm_content=2609_thum3_mo_02_0915",
+        "area": "다이나믹 썸네일3",
+        "finalUrl": "https://link.moum.me/intro?utm_source=naver.searchad&utm_medium=bs&utm_campaign=moum&utm_content=2609_thum3_mo_02_0915",
+        "landingScreenshot": "screenshots/landing_메리츠증권_mo_1790041835852_oicd.jpg"
+      }
+    ],
+    "copyText": "",
+    "landingUrl": "https://link.moum.me/intro?utm_source=naver.searchad&utm_medium=bs&utm_campaign=moum&utm_content=2609_homelink_mo_02_0915",
+    "collectedAt": "2026-09-22T01:50:36.935Z",
+    "deviceCreativeIndex": 1,
+    "creativeSetId": "메리츠증권_set1",
+    "creativeLabel": "소재1"
+  },
+  {
+    "id": "naver_bs_1790041859896_agte5",
+    "platform": "naver_bs",
+    "device": "mo",
+    "advertiserName": "메리츠증권",
+    "keyword": "메리츠증권",
+    "searchType": "brand",
+    "mediaType": "image",
+    "mediaUrl": "",
+    "localPath": "screenshots/bs_메리츠증권_mo_20260922_2tb0_c2.jpg",
+    "screenshotPath": "screenshots/bs_메리츠증권_mo_20260922_2tb0_c2.jpg",
+    "buttons": [
+      {
+        "buttonText": "홈페이지",
+        "buttonUrl": "https://link.moum.me/intro?utm_source=naver.searchad&utm_medium=bs&utm_campaign=moum&utm_content=2609_homelink_mo_01_0915",
+        "area": "홈페이지",
+        "finalUrl": "https://link.moum.me/intro?utm_source=naver.searchad&utm_medium=bs&utm_campaign=moum&utm_content=2609_homelink_mo_01_0915",
+        "landingScreenshot": "screenshots/landing_메리츠증권_mo_1790041839682_gjld.jpg"
+      },
+      {
+        "buttonText": "모일수록 힘이되는 투자플랫폼",
+        "buttonUrl": "https://link.moum.me/intro?utm_source=naver.searchad&utm_medium=bs&utm_campaign=moum&utm_content=2609_mainimage_mo_01_0915",
+        "area": "메인이미지",
+        "finalUrl": "https://link.moum.me/intro?utm_source=naver.searchad&utm_medium=bs&utm_campaign=moum&utm_content=2609_mainimage_mo_01_0915",
+        "landingScreenshot": "screenshots/landing_메리츠증권_mo_1790041843215_gjld.jpg",
+        "slideIndex": 0,
+        "slideImage": "screenshots/slide_메리츠증권_mo_0_1790041843568_gjld.png",
+        "slideTitle": "모일수록 힘이되는 투자플랫폼",
+        "slideSubText": ""
+      },
+      {
+        "buttonText": "흩어진 투자 경험을 하나로",
+        "buttonUrl": "https://link.moum.me/intro?utm_source=naver.searchad&utm_medium=bs&utm_campaign=moum&utm_content=2609_maintext_mo_01_0915",
+        "area": "설명문구",
+        "finalUrl": "https://link.moum.me/intro?utm_source=naver.searchad&utm_medium=bs&utm_campaign=moum&utm_content=2609_maintext_mo_01_0915",
+        "landingScreenshot": "screenshots/landing_메리츠증권_mo_1790041846995_gjld.jpg"
+      },
+      {
+        "buttonText": "현금 증정",
+        "buttonUrl": "https://s.abr.ge/@moum/naver.searchad?ad_creative={ad}&ad_group=2609_thum1_mo_01_0915&campaign=WEB_MO_All_Naver_Traffic_BSA&content={ad_extension}&hash_str={hash_str}&mall_id={mall_id}&mall_pid={mall_pid}&match={match}&query={query}&rank={rank}&routing_short_id=xfbgvi&sub_id={campaign_type}&sub_id_1={network}&sub_id_2={media}&term={keyword}&term_id={keyword_id}&tracking_template_id=71499ec1fd3272c75e17f3b744584dfe&ad_type=click",
+        "area": "다이나믹 썸네일1",
+        "finalUrl": "https://moumevent.com/?utm_source=naver.searchad&utm_medium=bs&utm_campaign=moum&utm_content=2609_thum1_mo_01_0915&airbridge_referrer=airbridge%3Dtrue%26app%3Dmoum%26client_id%3Ddbcabc63-9b03-4a14-a6c7-1ec1f1d4cbb5%26event_uuid%3D8fb5aec2-4269-4382-92b8-5d0d8277b1e4%26referrer_timestamp%3D1790041846857%26channel%3Dnaver.searchad%26campaign%3DWEB_MO_All_Naver_Traffic_BSA%26tracking_template_id%3D71499ec1fd3272c75e17f3b744584dfe%26ad_group%3D2609_thum1_mo_01_0915%26ad_creative%3D%257Bad%257D%26content%3D%257Bad_extension%257D%26term%3D%257Bkeyword%257D%26term_id%3D%257Bkeyword_id%257D%26sub_id%3D%257Bcampaign_type%257D%26sub_id_1%3D%257Bnetwork%257D%26sub_id_2%3D%257Bmedia%257D%26hash_str%3D%257Bhash_str%257D%26routing_short_id%3Dxfbgvi&ad_creative=%7Bad%7D&ad_group=2609_thum1_mo_01_0915&campaign=WEB_MO_All_Naver_Traffic_BSA&content=%7Bad_extension%7D&hash_str=%7Bhash_str%7D&mall_id=%7Bmall_id%7D&mall_pid=%7Bmall_pid%7D&match=%7Bmatch%7D&query=%7Bquery%7D&rank=%7Brank%7D&routing_short_id=xfbgvi&sub_id=%7Bcampaign_type%7D&sub_id_1=%7Bnetwork%7D&sub_id_2=%7Bmedia%7D&term=%7Bkeyword%7D&term_id=%7Bkeyword_id%7D&tracking_template_id=71499ec1fd3272c75e17f3b744584dfe&ad_type=click#event1",
+        "landingScreenshot": "screenshots/landing_메리츠증권_mo_1790041851300_gjld.jpg"
+      },
+      {
+        "buttonText": "9/15 공개",
+        "buttonUrl": "https://s.abr.ge/@moum/naver.searchad?ad_creative={ad}&ad_group=2609_thum2_mo_01_0915&campaign=WEB_MO_All_Naver_Traffic_BSA&content={ad_extension}&hash_str={hash_str}&mall_id={mall_id}&mall_pid={mall_pid}&match={match}&query={query}&rank={rank}&routing_short_id=tumqknl&sub_id={campaign_type}&sub_id_1={network}&sub_id_2={media}&term={keyword}&term_id={keyword_id}&tracking_template_id=0fcc913a1b82d5480721e1c8d856c93c&ad_type=click",
+        "area": "다이나믹 썸네일2",
+        "finalUrl": "https://moumevent.com/?utm_source=naver.searchad&utm_medium=bs&utm_campaign=moum&utm_content=2609_thum2_mo_01_0915&airbridge_referrer=airbridge%3Dtrue%26app%3Dmoum%26client_id%3Dfbb1b7ec-957a-48a6-9064-9ff28739a14b%26event_uuid%3D1a88bbb5-03e8-4858-962b-7483a9bcf20c%26referrer_timestamp%3D1790041851087%26channel%3Dnaver.searchad%26campaign%3DWEB_MO_All_Naver_Traffic_BSA%26tracking_template_id%3D0fcc913a1b82d5480721e1c8d856c93c%26ad_group%3D2609_thum2_mo_01_0915%26ad_creative%3D%257Bad%257D%26content%3D%257Bad_extension%257D%26term%3D%257Bkeyword%257D%26term_id%3D%257Bkeyword_id%257D%26sub_id%3D%257Bcampaign_type%257D%26sub_id_1%3D%257Bnetwork%257D%26sub_id_2%3D%257Bmedia%257D%26hash_str%3D%257Bhash_str%257D%26routing_short_id%3Dtumqknl&ad_creative=%7Bad%7D&ad_group=2609_thum2_mo_01_0915&campaign=WEB_MO_All_Naver_Traffic_BSA&content=%7Bad_extension%7D&hash_str=%7Bhash_str%7D&mall_id=%7Bmall_id%7D&mall_pid=%7Bmall_pid%7D&match=%7Bmatch%7D&query=%7Bquery%7D&rank=%7Brank%7D&routing_short_id=tumqknl&sub_id=%7Bcampaign_type%7D&sub_id_1=%7Bnetwork%7D&sub_id_2=%7Bmedia%7D&term=%7Bkeyword%7D&term_id=%7Bkeyword_id%7D&tracking_template_id=0fcc913a1b82d5480721e1c8d856c93c&ad_type=click#event2",
+        "landingScreenshot": "screenshots/landing_메리츠증권_mo_1790041855494_gjld.jpg"
+      },
+      {
+        "buttonText": "포인트 증정",
+        "buttonUrl": "https://link.moum.me/intro?utm_source=naver.searchad&utm_medium=bs&utm_campaign=moum&utm_content=2609_thum3_mo_01_0915",
+        "area": "다이나믹 썸네일3",
+        "finalUrl": "https://link.moum.me/intro?utm_source=naver.searchad&utm_medium=bs&utm_campaign=moum&utm_content=2609_thum3_mo_01_0915",
+        "landingScreenshot": "screenshots/landing_메리츠증권_mo_1790041858962_gjld.jpg"
+      }
+    ],
+    "copyText": "",
+    "landingUrl": "https://link.moum.me/intro?utm_source=naver.searchad&utm_medium=bs&utm_campaign=moum&utm_content=2609_homelink_mo_01_0915",
+    "collectedAt": "2026-09-22T01:50:59.896Z",
+    "deviceCreativeIndex": 2,
+    "creativeSetId": "메리츠증권_set2",
+    "creativeLabel": "소재2"
   }
 ]
