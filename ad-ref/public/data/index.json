@@ -130766,7 +130766,7 @@
     "adId": "2526247897890230",
     "adStartedAt": "2026-09-04",
     "adLastShownAt": null,
-    "status": "active",
+    "status": "ended",
     "platform": "meta",
     "placements": "",
     "keyword": "증권",
@@ -130776,7 +130776,8 @@
     "localPath": "images/meta/meta_증권_20260922_5hxn2.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.844Z"
   },
   {
     "mediaType": "video",
@@ -130790,7 +130791,7 @@
     "adId": "1099149502972152",
     "adStartedAt": "2026-09-15",
     "adLastShownAt": null,
-    "status": "active",
+    "status": "ended",
     "platform": "meta",
     "placements": "",
     "keyword": "증권",
@@ -130801,7 +130802,8 @@
     "localThumb": "images/meta/video_thumbs/meta_증권_20260922_eyp7a.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.844Z"
   },
   {
     "mediaType": "image",
@@ -130814,7 +130816,7 @@
     "adId": "1612175216955781",
     "adStartedAt": "2026-09-10",
     "adLastShownAt": null,
-    "status": "active",
+    "status": "ended",
     "platform": "meta",
     "placements": "",
     "keyword": "증권",
@@ -130824,7 +130826,8 @@
     "localPath": "images/meta/meta_증권_20260922_y5phn.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.844Z"
   },
   {
     "mediaType": "image",
@@ -130837,7 +130840,7 @@
     "adId": "2086559661934866",
     "adStartedAt": "2026-08-31",
     "adLastShownAt": null,
-    "status": "active",
+    "status": "ended",
     "platform": "meta",
     "placements": "",
     "keyword": "증권",
@@ -130847,7 +130850,8 @@
     "localPath": "images/meta/meta_증권_20260922_5nri4.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.844Z"
   },
   {
     "mediaType": "image",
@@ -130860,7 +130864,7 @@
     "adId": "2256506805128221",
     "adStartedAt": "2026-08-31",
     "adLastShownAt": null,
-    "status": "active",
+    "status": "ended",
     "platform": "meta",
     "placements": "",
     "keyword": "증권",
@@ -130870,7 +130874,8 @@
     "localPath": "images/meta/meta_증권_20260922_66awa.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.844Z"
   },
   {
     "mediaType": "image",
@@ -130883,7 +130888,7 @@
     "adId": "1679751906829486",
     "adStartedAt": "2026-09-13",
     "adLastShownAt": null,
-    "status": "active",
+    "status": "ended",
     "platform": "meta",
     "placements": "",
     "keyword": "증권",
@@ -130893,7 +130898,8 @@
     "localPath": "images/meta/meta_증권_20260922_o3rg4.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.844Z"
   },
   {
     "mediaType": "image",
@@ -130906,7 +130912,7 @@
     "adId": "1389453979412868",
     "adStartedAt": "2026-09-11",
     "adLastShownAt": null,
-    "status": "active",
+    "status": "ended",
     "platform": "meta",
     "placements": "",
     "keyword": "증권",
@@ -130916,7 +130922,8 @@
     "localPath": "images/meta/meta_증권_20260922_e5n0b.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.844Z"
   },
   {
     "mediaType": "video",
@@ -130930,7 +130937,7 @@
     "adId": "1063243353251881",
     "adStartedAt": "2026-09-20",
     "adLastShownAt": null,
-    "status": "active",
+    "status": "ended",
     "platform": "meta",
     "placements": "",
     "keyword": "증권",
@@ -130941,7 +130948,8 @@
     "localThumb": "images/meta/video_thumbs/meta_증권_20260922_t1e3l.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.844Z"
   },
   {
     "mediaType": "image",
@@ -130954,7 +130962,7 @@
     "adId": "1343407770936510",
     "adStartedAt": "2026-09-10",
     "adLastShownAt": null,
-    "status": "active",
+    "status": "ended",
     "platform": "meta",
     "placements": "",
     "keyword": "증권",
@@ -130964,7 +130972,8 @@
     "localPath": "images/meta/meta_증권_20260922_35cu1.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.844Z"
   },
   {
     "mediaType": "image",
@@ -130977,7 +130986,7 @@
     "adId": "1069687825820898",
     "adStartedAt": "2026-09-16",
     "adLastShownAt": null,
-    "status": "active",
+    "status": "ended",
     "platform": "meta",
     "placements": "",
     "keyword": "증권",
@@ -130987,7 +130996,8 @@
     "localPath": "images/meta/meta_증권_20260922_2eg84.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.844Z"
   },
   {
     "mediaType": "image",
@@ -131000,7 +131010,7 @@
     "adId": "2948606172151276",
     "adStartedAt": "2026-09-16",
     "adLastShownAt": null,
-    "status": "active",
+    "status": "ended",
     "platform": "meta",
     "placements": "",
     "keyword": "증권",
@@ -131010,7 +131020,8 @@
     "localPath": "images/meta/meta_증권_20260922_j7ruh.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.844Z"
   },
   {
     "mediaType": "image",
@@ -131023,7 +131034,7 @@
     "adId": "3393978040784205",
     "adStartedAt": "2026-09-17",
     "adLastShownAt": null,
-    "status": "active",
+    "status": "ended",
     "platform": "meta",
     "placements": "",
     "keyword": "증권",
@@ -131033,7 +131044,8 @@
     "localPath": "images/meta/meta_증권_20260922_bufnw.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.844Z"
   },
   {
     "mediaType": "image",
@@ -131046,7 +131058,7 @@
     "adId": "1010200938740378",
     "adStartedAt": "2026-09-17",
     "adLastShownAt": null,
-    "status": "active",
+    "status": "ended",
     "platform": "meta",
     "placements": "",
     "keyword": "증권",
@@ -131056,7 +131068,8 @@
     "localPath": "images/meta/meta_증권_20260922_fjtsu.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.844Z"
   },
   {
     "mediaType": "image",
@@ -131069,7 +131082,7 @@
     "adId": "3359132894269509",
     "adStartedAt": "2026-09-18",
     "adLastShownAt": null,
-    "status": "active",
+    "status": "ended",
     "platform": "meta",
     "placements": "",
     "keyword": "증권",
@@ -131079,7 +131092,8 @@
     "localPath": "images/meta/meta_증권_20260922_ml43g.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.844Z"
   },
   {
     "mediaType": "image",
@@ -131092,7 +131106,7 @@
     "adId": "1609805287210012",
     "adStartedAt": "2026-09-11",
     "adLastShownAt": null,
-    "status": "active",
+    "status": "ended",
     "platform": "meta",
     "placements": "",
     "keyword": "증권",
@@ -131102,7 +131116,8 @@
     "localPath": "images/meta/meta_증권_20260922_76lil.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.844Z"
   },
   {
     "advertiserName": "KB증권",
@@ -131114,7 +131129,7 @@
     "adId": "4605737966351780",
     "adStartedAt": "2026-09-10",
     "adLastShownAt": "2026-09-21",
-    "status": "active",
+    "status": "ended",
     "platform": "meta",
     "collectedAt": "2026-09-22T01:27:50.628Z",
     "placements": "facebook,instagram,threads",
@@ -131125,7 +131140,8 @@
     ],
     "localPath": "images/meta/meta_증권_20260922_1085v.jpg",
     "mediaType": "image",
-    "mediaUrl": "https://scontent-icn2-1.xx.fbcdn.net/v/t39.35426-6/803585979_2333029424108817_4362054185341209094_n.jpg?stp=dst-jpg_s600x600_tt6&_nc_cat=105&ccb=1-7&_nc_sid=c53f8f&_nc_ohc=jJ5VsRALogIQ7kNvwHBMSsF&_nc_oc=AdomXibDGLaYMpRgz-8gT0quTX9n3eak9i5JQxS8jAKKG6uSKGsW1oKJ3n3Qvw9ssis&_nc_zt=14&_nc_ht=scontent-icn2-1.xx&_nc_gid=sPkJfZOZh4vTR6VihULaxw&_nc_ss=7b289&oh=00_AQLq3dgTOxUf7cXxUmUKyMplF7JedSQe1WICNABLr1dfpQ&oe=6AB7D305"
+    "mediaUrl": "https://scontent-icn2-1.xx.fbcdn.net/v/t39.35426-6/803585979_2333029424108817_4362054185341209094_n.jpg?stp=dst-jpg_s600x600_tt6&_nc_cat=105&ccb=1-7&_nc_sid=c53f8f&_nc_ohc=jJ5VsRALogIQ7kNvwHBMSsF&_nc_oc=AdomXibDGLaYMpRgz-8gT0quTX9n3eak9i5JQxS8jAKKG6uSKGsW1oKJ3n3Qvw9ssis&_nc_zt=14&_nc_ht=scontent-icn2-1.xx&_nc_gid=sPkJfZOZh4vTR6VihULaxw&_nc_ss=7b289&oh=00_AQLq3dgTOxUf7cXxUmUKyMplF7JedSQe1WICNABLr1dfpQ&oe=6AB7D305",
+    "endedAt": "2026-09-28T01:01:45.844Z"
   },
   {
     "advertiserName": "KB증권",
@@ -131137,7 +131153,7 @@
     "adId": "1969264903721922",
     "adStartedAt": "2026-09-10",
     "adLastShownAt": "2026-09-21",
-    "status": "active",
+    "status": "ended",
     "platform": "meta",
     "collectedAt": "2026-09-22T01:27:50.628Z",
     "placements": "facebook,instagram,audience_network,messenger,threads",
@@ -131148,7 +131164,8 @@
     ],
     "localPath": "images/meta/meta_증권_20260922_prylk.jpg",
     "mediaType": "image",
-    "mediaUrl": "https://scontent-icn2-1.xx.fbcdn.net/v/t39.35426-6/803102794_1617588380096501_3010622403190602115_n.jpg?stp=dst-jpg_s600x600_tt6&_nc_cat=111&ccb=1-7&_nc_sid=c53f8f&_nc_ohc=UitRF_5tpvMQ7kNvwHEPc7O&_nc_oc=AdpE2_dghxhXvjzS4_JXte6IVjfVt0qC68KepBLTN8jy6aXOodCELnDcyH2rIqIgfRk&_nc_zt=14&_nc_ht=scontent-icn2-1.xx&_nc_gid=WcXk_1RWfuBhWbCYJZSeFQ&_nc_ss=7b289&oh=00_AQKUJQPFIbn4YHXzFYn49FXEdPHFWNa5lqRDtbiCPI87jA&oe=6AB7BB82"
+    "mediaUrl": "https://scontent-icn2-1.xx.fbcdn.net/v/t39.35426-6/803102794_1617588380096501_3010622403190602115_n.jpg?stp=dst-jpg_s600x600_tt6&_nc_cat=111&ccb=1-7&_nc_sid=c53f8f&_nc_ohc=UitRF_5tpvMQ7kNvwHEPc7O&_nc_oc=AdpE2_dghxhXvjzS4_JXte6IVjfVt0qC68KepBLTN8jy6aXOodCELnDcyH2rIqIgfRk&_nc_zt=14&_nc_ht=scontent-icn2-1.xx&_nc_gid=WcXk_1RWfuBhWbCYJZSeFQ&_nc_ss=7b289&oh=00_AQKUJQPFIbn4YHXzFYn49FXEdPHFWNa5lqRDtbiCPI87jA&oe=6AB7BB82",
+    "endedAt": "2026-09-28T01:01:45.844Z"
   },
   {
     "advertiserName": "KB증권",
@@ -131160,7 +131177,7 @@
     "adId": "1626390078870992",
     "adStartedAt": "2026-09-20",
     "adLastShownAt": "2026-09-21",
-    "status": "active",
+    "status": "ended",
     "platform": "meta",
     "collectedAt": "2026-09-22T01:27:50.628Z",
     "placements": "facebook,instagram",
@@ -131171,7 +131188,8 @@
     ],
     "localPath": "images/meta/meta_증권_20260922_z5yag.jpg",
     "mediaType": "image",
-    "mediaUrl": "https://scontent-icn2-1.xx.fbcdn.net/v/t39.35426-6/814714243_1650165053380192_6295871158211380901_n.jpg?stp=dst-jpg_s600x600_tt6&_nc_cat=102&ccb=1-7&_nc_sid=c53f8f&_nc_ohc=au6Eoh2eJ9AQ7kNvwGbutth&_nc_oc=AdpvMujHtf_GN7IvCmTuj1TQhIEXrn3PXKpH8R7jDJNvKrOGpQq5Cr-cBIhPFmZJJLs&_nc_zt=14&_nc_ht=scontent-icn2-1.xx&_nc_gid=TVzL1CdLg2pZapkppTW0mw&_nc_ss=7b289&oh=00_AQKGlsEXVL8Cqt6VC0ItYbha1yhpo8dMqsLDryKW0b1TTQ&oe=6AB7C94E"
+    "mediaUrl": "https://scontent-icn2-1.xx.fbcdn.net/v/t39.35426-6/814714243_1650165053380192_6295871158211380901_n.jpg?stp=dst-jpg_s600x600_tt6&_nc_cat=102&ccb=1-7&_nc_sid=c53f8f&_nc_ohc=au6Eoh2eJ9AQ7kNvwGbutth&_nc_oc=AdpvMujHtf_GN7IvCmTuj1TQhIEXrn3PXKpH8R7jDJNvKrOGpQq5Cr-cBIhPFmZJJLs&_nc_zt=14&_nc_ht=scontent-icn2-1.xx&_nc_gid=TVzL1CdLg2pZapkppTW0mw&_nc_ss=7b289&oh=00_AQKGlsEXVL8Cqt6VC0ItYbha1yhpo8dMqsLDryKW0b1TTQ&oe=6AB7C94E",
+    "endedAt": "2026-09-28T01:01:45.844Z"
   },
   {
     "advertiserName": "삼성증권",
@@ -131183,7 +131201,7 @@
     "adId": "1065735316046700",
     "adStartedAt": "2026-09-21",
     "adLastShownAt": "2026-09-21",
-    "status": "active",
+    "status": "ended",
     "platform": "meta",
     "collectedAt": "2026-09-22T01:27:50.628Z",
     "placements": "instagram",
@@ -131194,7 +131212,8 @@
     ],
     "localPath": "images/meta/videos/meta_증권_20260922_pyf4z.mp4",
     "mediaType": "video",
-    "mediaUrl": "https://video-icn2-1.xx.fbcdn.net/o1/v/t2/f2/m412/AQOijdHT_L4f_hk4EH3pTgbH5XgEnohh3vSMAA9fTqDL75jlzDfTKfo0hR0TvYwRpNkIoYuICencsB_sGsIKPG3nzchzEtA1TCXIBfAwOQ.mp4?_nc_cat=108&_nc_sid=ef5aa3&_nc_ht=video-icn2-1.xx.fbcdn.net&_nc_ohc=s-UsouMqQ8QQ7kNvwF4en4J&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTU3MzE5MzU2Mzc5NTQyNywiYXNzZXRfYWdlX2RheXMiOjMsInZpX3VzZWNhc2VfaWQiOjEwMTM5LCJkdXJhdGlvbl9zIjozMCwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=YTTtq-n8FmrPYUCGFE9EPQ&_nc_ss=7b289&_nc_zt=28&oh=00_AQKQZLF-cHZa-kaVTGIKseSWhRZu-eY7pZXZi63lRbBsMQ&oe=6AB7BF3A"
+    "mediaUrl": "https://video-icn2-1.xx.fbcdn.net/o1/v/t2/f2/m412/AQOijdHT_L4f_hk4EH3pTgbH5XgEnohh3vSMAA9fTqDL75jlzDfTKfo0hR0TvYwRpNkIoYuICencsB_sGsIKPG3nzchzEtA1TCXIBfAwOQ.mp4?_nc_cat=108&_nc_sid=ef5aa3&_nc_ht=video-icn2-1.xx.fbcdn.net&_nc_ohc=s-UsouMqQ8QQ7kNvwF4en4J&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTU3MzE5MzU2Mzc5NTQyNywiYXNzZXRfYWdlX2RheXMiOjMsInZpX3VzZWNhc2VfaWQiOjEwMTM5LCJkdXJhdGlvbl9zIjozMCwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=YTTtq-n8FmrPYUCGFE9EPQ&_nc_ss=7b289&_nc_zt=28&oh=00_AQKQZLF-cHZa-kaVTGIKseSWhRZu-eY7pZXZi63lRbBsMQ&oe=6AB7BF3A",
+    "endedAt": "2026-09-28T01:01:45.844Z"
   },
   {
     "advertiserName": "SK증권",
@@ -131206,7 +131225,7 @@
     "adId": "1317622793674103",
     "adStartedAt": "2026-09-11",
     "adLastShownAt": "2026-09-21",
-    "status": "active",
+    "status": "ended",
     "platform": "meta",
     "collectedAt": "2026-09-22T01:27:50.628Z",
     "placements": "facebook,instagram,audience_network,threads",
@@ -131217,7 +131236,8 @@
     ],
     "localPath": "images/meta/meta_증권_20260922_1wj89.jpg",
     "mediaType": "image",
-    "mediaUrl": "https://scontent-icn2-1.xx.fbcdn.net/v/t39.35426-6/803268788_1989492721730296_5616485665807337915_n.jpg?stp=dst-jpg_s600x600_tt6&_nc_cat=109&ccb=1-7&_nc_sid=c53f8f&_nc_ohc=TrXnHWY8fEIQ7kNvwGJ8W_j&_nc_oc=AdojCQrRrbLiM1YgdGpjeWFN_MHWys0QO3yMhlzQqKbyr8vmA3Y9nFRkisKsK12ETa8&_nc_zt=14&_nc_ht=scontent-icn2-1.xx&_nc_gid=t9BN0IFOiTaqZ30qnutRzA&_nc_ss=7b289&oh=00_AQIgoekg8uj9F28d7NilJs3gdU1YH-MIwkrONk4AR3FztA&oe=6AB7AF7B"
+    "mediaUrl": "https://scontent-icn2-1.xx.fbcdn.net/v/t39.35426-6/803268788_1989492721730296_5616485665807337915_n.jpg?stp=dst-jpg_s600x600_tt6&_nc_cat=109&ccb=1-7&_nc_sid=c53f8f&_nc_ohc=TrXnHWY8fEIQ7kNvwGJ8W_j&_nc_oc=AdojCQrRrbLiM1YgdGpjeWFN_MHWys0QO3yMhlzQqKbyr8vmA3Y9nFRkisKsK12ETa8&_nc_zt=14&_nc_ht=scontent-icn2-1.xx&_nc_gid=t9BN0IFOiTaqZ30qnutRzA&_nc_ss=7b289&oh=00_AQIgoekg8uj9F28d7NilJs3gdU1YH-MIwkrONk4AR3FztA&oe=6AB7AF7B",
+    "endedAt": "2026-09-28T01:01:45.844Z"
   },
   {
     "advertiserName": "SK증권",
@@ -131229,7 +131249,7 @@
     "adId": "1617403033102585",
     "adStartedAt": "2026-09-11",
     "adLastShownAt": "2026-09-21",
-    "status": "active",
+    "status": "ended",
     "platform": "meta",
     "collectedAt": "2026-09-22T01:27:50.628Z",
     "placements": "facebook,instagram,audience_network,threads",
@@ -131240,7 +131260,8 @@
     ],
     "localPath": "images/meta/meta_증권_20260922_o2x8u.jpg",
     "mediaType": "image",
-    "mediaUrl": "https://scontent-icn2-1.xx.fbcdn.net/v/t39.35426-6/805764721_1536671454809613_592153305440070437_n.jpg?stp=dst-jpg_s600x600_tt6&_nc_cat=104&ccb=1-7&_nc_sid=c53f8f&_nc_ohc=7LTlsvawEacQ7kNvwG7YzZ-&_nc_oc=Adq3IxXBOr_SliysSNMtrAKW4CSny2kQjOh4Rx4Tvx5Xij96uX80DhB_BGLWCDVxDGc&_nc_zt=14&_nc_ht=scontent-icn2-1.xx&_nc_gid=XQDjcCujor6CSF_A0Xmc1g&_nc_ss=7b289&oh=00_AQLlkM_P2lbUjMRB39wOBfuR1FJtNSmCL4acQwp9VTadcA&oe=6AB7D611"
+    "mediaUrl": "https://scontent-icn2-1.xx.fbcdn.net/v/t39.35426-6/805764721_1536671454809613_592153305440070437_n.jpg?stp=dst-jpg_s600x600_tt6&_nc_cat=104&ccb=1-7&_nc_sid=c53f8f&_nc_ohc=7LTlsvawEacQ7kNvwG7YzZ-&_nc_oc=Adq3IxXBOr_SliysSNMtrAKW4CSny2kQjOh4Rx4Tvx5Xij96uX80DhB_BGLWCDVxDGc&_nc_zt=14&_nc_ht=scontent-icn2-1.xx&_nc_gid=XQDjcCujor6CSF_A0Xmc1g&_nc_ss=7b289&oh=00_AQLlkM_P2lbUjMRB39wOBfuR1FJtNSmCL4acQwp9VTadcA&oe=6AB7D611",
+    "endedAt": "2026-09-28T01:01:45.844Z"
   },
   {
     "advertiserName": "SK증권",
@@ -131252,7 +131273,7 @@
     "adId": "2570146916766709",
     "adStartedAt": "2026-09-11",
     "adLastShownAt": "2026-09-21",
-    "status": "active",
+    "status": "ended",
     "platform": "meta",
     "collectedAt": "2026-09-22T01:27:50.628Z",
     "placements": "facebook,instagram,audience_network,threads",
@@ -131263,7 +131284,8 @@
     ],
     "localPath": "images/meta/meta_증권_20260922_ymgjw.jpg",
     "mediaType": "image",
-    "mediaUrl": "https://scontent-icn2-1.xx.fbcdn.net/v/t39.35426-6/802702623_1461607222682009_1794979651416561616_n.jpg?stp=dst-jpg_s600x600_tt6&_nc_cat=104&ccb=1-7&_nc_sid=c53f8f&_nc_ohc=zvPdtDKGvioQ7kNvwFNul_1&_nc_oc=AdqhdyVN-crV4jhgpFTi0Ac9Xx3u49tADXK9zk9kpVVLZpLciSOnqoJwe3xDNVzYiVU&_nc_zt=14&_nc_ht=scontent-icn2-1.xx&_nc_gid=ZLo5CHXNrNZ868cYDZNb2g&_nc_ss=7b289&oh=00_AQIChsicMh_Mpch-pLqqQKXfiAg7b3W8uTF6QOF2U5XCKQ&oe=6AB7DB92"
+    "mediaUrl": "https://scontent-icn2-1.xx.fbcdn.net/v/t39.35426-6/802702623_1461607222682009_1794979651416561616_n.jpg?stp=dst-jpg_s600x600_tt6&_nc_cat=104&ccb=1-7&_nc_sid=c53f8f&_nc_ohc=zvPdtDKGvioQ7kNvwFNul_1&_nc_oc=AdqhdyVN-crV4jhgpFTi0Ac9Xx3u49tADXK9zk9kpVVLZpLciSOnqoJwe3xDNVzYiVU&_nc_zt=14&_nc_ht=scontent-icn2-1.xx&_nc_gid=ZLo5CHXNrNZ868cYDZNb2g&_nc_ss=7b289&oh=00_AQIChsicMh_Mpch-pLqqQKXfiAg7b3W8uTF6QOF2U5XCKQ&oe=6AB7DB92",
+    "endedAt": "2026-09-28T01:01:45.844Z"
   },
   {
     "advertiserName": "KB증권",
@@ -131275,7 +131297,7 @@
     "adId": "1057573810229553",
     "adStartedAt": "2026-09-20",
     "adLastShownAt": "2026-09-21",
-    "status": "active",
+    "status": "ended",
     "platform": "meta",
     "collectedAt": "2026-09-22T01:27:50.628Z",
     "placements": "facebook,instagram",
@@ -131286,7 +131308,8 @@
     ],
     "localPath": "images/meta/meta_증권_20260922_oezci.jpg",
     "mediaType": "image",
-    "mediaUrl": "https://scontent-icn2-1.xx.fbcdn.net/v/t39.35426-6/797419452_1059993343695045_8750328967393124491_n.jpg?stp=dst-jpg_s600x600_tt6&_nc_cat=101&ccb=1-7&_nc_sid=c53f8f&_nc_ohc=dRjR-HV39H0Q7kNvwGQIyxM&_nc_oc=Adqn-8Sk_9uRLpt0hLsd2EhjRrP0TdVl6Ue2zWufKar4B7ML77TW-nKvzZeUQUT8OlI&_nc_zt=14&_nc_ht=scontent-icn2-1.xx&_nc_gid=YwKLajQl3fKoTy_duxW6OA&_nc_ss=7b289&oh=00_AQL1aYtjrb5sO6kE-Ngnxz7eWMKbD4-yTGWA2ZKiV1nEQw&oe=6AB7C5CA"
+    "mediaUrl": "https://scontent-icn2-1.xx.fbcdn.net/v/t39.35426-6/797419452_1059993343695045_8750328967393124491_n.jpg?stp=dst-jpg_s600x600_tt6&_nc_cat=101&ccb=1-7&_nc_sid=c53f8f&_nc_ohc=dRjR-HV39H0Q7kNvwGQIyxM&_nc_oc=Adqn-8Sk_9uRLpt0hLsd2EhjRrP0TdVl6Ue2zWufKar4B7ML77TW-nKvzZeUQUT8OlI&_nc_zt=14&_nc_ht=scontent-icn2-1.xx&_nc_gid=YwKLajQl3fKoTy_duxW6OA&_nc_ss=7b289&oh=00_AQL1aYtjrb5sO6kE-Ngnxz7eWMKbD4-yTGWA2ZKiV1nEQw&oe=6AB7C5CA",
+    "endedAt": "2026-09-28T01:01:45.844Z"
   },
   {
     "advertiserName": "SK증권",
@@ -131298,7 +131321,7 @@
     "adId": "1119677147286751",
     "adStartedAt": "2026-09-17",
     "adLastShownAt": "2026-09-21",
-    "status": "active",
+    "status": "ended",
     "platform": "meta",
     "collectedAt": "2026-09-22T01:27:50.628Z",
     "placements": "facebook,instagram",
@@ -131309,7 +131332,8 @@
     ],
     "localPath": "images/meta/meta_증권_20260922_6y13y.jpg",
     "mediaType": "image",
-    "mediaUrl": "https://scontent-icn2-1.xx.fbcdn.net/v/t39.35426-6/799869155_1429332895960223_4535034750832660086_n.jpg?stp=dst-jpg_s600x600_tt6&_nc_cat=106&ccb=1-7&_nc_sid=c53f8f&_nc_ohc=GQs_WUejN-sQ7kNvwF6x3gS&_nc_oc=AdqYLkMBOOXA9zi9pWrHyooYtqHd9DziIZDX2nYnKYuHgyFjfkBfP2T4y54ga-zhMy4&_nc_zt=14&_nc_ht=scontent-icn2-1.xx&_nc_gid=WO0smtsFgiVfq7b5PW3Z4g&_nc_ss=7b289&oh=00_AQKo9-s8HXcNAOI1x3yo9mJdCJZf8Fz63xuU0jaZhHUqMw&oe=6AB7CAF7"
+    "mediaUrl": "https://scontent-icn2-1.xx.fbcdn.net/v/t39.35426-6/799869155_1429332895960223_4535034750832660086_n.jpg?stp=dst-jpg_s600x600_tt6&_nc_cat=106&ccb=1-7&_nc_sid=c53f8f&_nc_ohc=GQs_WUejN-sQ7kNvwF6x3gS&_nc_oc=AdqYLkMBOOXA9zi9pWrHyooYtqHd9DziIZDX2nYnKYuHgyFjfkBfP2T4y54ga-zhMy4&_nc_zt=14&_nc_ht=scontent-icn2-1.xx&_nc_gid=WO0smtsFgiVfq7b5PW3Z4g&_nc_ss=7b289&oh=00_AQKo9-s8HXcNAOI1x3yo9mJdCJZf8Fz63xuU0jaZhHUqMw&oe=6AB7CAF7",
+    "endedAt": "2026-09-28T01:01:45.844Z"
   },
   {
     "advertiserName": "KB증권",
@@ -131321,7 +131345,7 @@
     "adId": "1430006945740913",
     "adStartedAt": "2026-09-10",
     "adLastShownAt": "2026-09-21",
-    "status": "active",
+    "status": "ended",
     "platform": "meta",
     "collectedAt": "2026-09-22T01:27:50.628Z",
     "placements": "facebook,instagram,threads",
@@ -131332,7 +131356,8 @@
     ],
     "localPath": "images/meta/meta_증권_20260922_slefl.jpg",
     "mediaType": "image",
-    "mediaUrl": "https://scontent-icn2-1.xx.fbcdn.net/v/t39.35426-6/803600846_1998559337512449_9117787373366094912_n.jpg?stp=dst-jpg_s600x600_tt6&_nc_cat=103&ccb=1-7&_nc_sid=c53f8f&_nc_ohc=2UTcG_tB_TsQ7kNvwHGxdlG&_nc_oc=Adpj6hFtzkyt8AZHswtJeDQeXkeRrIbbDKH71wefr5hTYwLfqBxDfeMqh8FT-5mDcyU&_nc_zt=14&_nc_ht=scontent-icn2-1.xx&_nc_gid=YB6uf6JGxBvVUuO4nJ5reA&_nc_ss=7b289&oh=00_AQIlImyK2TCARic_9uqA325CTlP2GH_uryWyjbHjxpgvVg&oe=6AB7BB72"
+    "mediaUrl": "https://scontent-icn2-1.xx.fbcdn.net/v/t39.35426-6/803600846_1998559337512449_9117787373366094912_n.jpg?stp=dst-jpg_s600x600_tt6&_nc_cat=103&ccb=1-7&_nc_sid=c53f8f&_nc_ohc=2UTcG_tB_TsQ7kNvwHGxdlG&_nc_oc=Adpj6hFtzkyt8AZHswtJeDQeXkeRrIbbDKH71wefr5hTYwLfqBxDfeMqh8FT-5mDcyU&_nc_zt=14&_nc_ht=scontent-icn2-1.xx&_nc_gid=YB6uf6JGxBvVUuO4nJ5reA&_nc_ss=7b289&oh=00_AQIlImyK2TCARic_9uqA325CTlP2GH_uryWyjbHjxpgvVg&oe=6AB7BB72",
+    "endedAt": "2026-09-28T01:01:45.844Z"
   },
   {
     "advertiserName": "KB증권",
@@ -131344,7 +131369,7 @@
     "adId": "1301070091996118",
     "adStartedAt": "2026-09-10",
     "adLastShownAt": "2026-09-21",
-    "status": "active",
+    "status": "ended",
     "platform": "meta",
     "collectedAt": "2026-09-22T01:27:50.628Z",
     "placements": "facebook,instagram,audience_network,messenger,threads",
@@ -131355,7 +131380,8 @@
     ],
     "localPath": "images/meta/meta_증권_20260922_1hm5r.jpg",
     "mediaType": "image",
-    "mediaUrl": "https://scontent-icn2-1.xx.fbcdn.net/v/t39.35426-6/797904606_1359819932898657_5327487081070615040_n.jpg?stp=dst-jpg_s600x600_tt6&_nc_cat=100&ccb=1-7&_nc_sid=c53f8f&_nc_ohc=upf0IjvhVxUQ7kNvwEVUiAb&_nc_oc=AdoNfNtzaOp0k-1jOhEGILn98ZJauE2ptAQsAcOTZb_bvgiYsE8NkWsf25UM9I4FLz0&_nc_zt=14&_nc_ht=scontent-icn2-1.xx&_nc_gid=hyEwbDnzoavq5h4SJt_HEA&_nc_ss=7b289&oh=00_AQJpHlqua4SurTy6s48tfzuW61a0o3vLXKkU3qbg-ZwNHA&oe=6AB7B36D"
+    "mediaUrl": "https://scontent-icn2-1.xx.fbcdn.net/v/t39.35426-6/797904606_1359819932898657_5327487081070615040_n.jpg?stp=dst-jpg_s600x600_tt6&_nc_cat=100&ccb=1-7&_nc_sid=c53f8f&_nc_ohc=upf0IjvhVxUQ7kNvwEVUiAb&_nc_oc=AdoNfNtzaOp0k-1jOhEGILn98ZJauE2ptAQsAcOTZb_bvgiYsE8NkWsf25UM9I4FLz0&_nc_zt=14&_nc_ht=scontent-icn2-1.xx&_nc_gid=hyEwbDnzoavq5h4SJt_HEA&_nc_ss=7b289&oh=00_AQJpHlqua4SurTy6s48tfzuW61a0o3vLXKkU3qbg-ZwNHA&oe=6AB7B36D",
+    "endedAt": "2026-09-28T01:01:45.844Z"
   },
   {
     "advertiserName": "대신증권",
@@ -131367,7 +131393,7 @@
     "adId": "4611135982454040",
     "adStartedAt": "2026-09-21",
     "adLastShownAt": "2026-09-21",
-    "status": "active",
+    "status": "ended",
     "platform": "meta",
     "collectedAt": "2026-09-22T01:27:50.628Z",
     "placements": "facebook,instagram,threads",
@@ -131378,7 +131404,8 @@
     ],
     "localPath": "images/meta/meta_증권_20260922_o5fug.jpg",
     "mediaType": "image",
-    "mediaUrl": "https://scontent-icn2-1.xx.fbcdn.net/v/t39.35426-6/818384847_28840618878962670_342317333039253086_n.jpg?stp=dst-jpg_s600x600_tt6&_nc_cat=107&ccb=1-7&_nc_sid=c53f8f&_nc_ohc=HZAvCWD2kOQQ7kNvwHqIfY-&_nc_oc=AdqO5DKtXfPK8DtGPtP2vcCyZpLNKl_nf5UwxQJvrkWQpcw4m-DztYh7HY6yrRl4YBY&_nc_zt=14&_nc_ht=scontent-icn2-1.xx&_nc_gid=jHL0QoybCR7M-qGp1KofxQ&_nc_ss=7b289&oh=00_AQIzEOObzGkH75v077h02ra99xqXwBwOGbiU2fLhTvFJQA&oe=6AB7A8EE"
+    "mediaUrl": "https://scontent-icn2-1.xx.fbcdn.net/v/t39.35426-6/818384847_28840618878962670_342317333039253086_n.jpg?stp=dst-jpg_s600x600_tt6&_nc_cat=107&ccb=1-7&_nc_sid=c53f8f&_nc_ohc=HZAvCWD2kOQQ7kNvwHqIfY-&_nc_oc=AdqO5DKtXfPK8DtGPtP2vcCyZpLNKl_nf5UwxQJvrkWQpcw4m-DztYh7HY6yrRl4YBY&_nc_zt=14&_nc_ht=scontent-icn2-1.xx&_nc_gid=jHL0QoybCR7M-qGp1KofxQ&_nc_ss=7b289&oh=00_AQIzEOObzGkH75v077h02ra99xqXwBwOGbiU2fLhTvFJQA&oe=6AB7A8EE",
+    "endedAt": "2026-09-28T01:01:45.844Z"
   },
   {
     "advertiserName": "SK증권",
@@ -131390,7 +131417,7 @@
     "adId": "1055126533955867",
     "adStartedAt": "2026-09-17",
     "adLastShownAt": "2026-09-21",
-    "status": "active",
+    "status": "ended",
     "platform": "meta",
     "collectedAt": "2026-09-22T01:27:50.628Z",
     "placements": "facebook,instagram",
@@ -131401,7 +131428,8 @@
     ],
     "localPath": "images/meta/meta_증권_20260922_0il0z.jpg",
     "mediaType": "image",
-    "mediaUrl": "https://scontent-icn2-1.xx.fbcdn.net/v/t39.35426-6/799525863_1416302743714465_5676170294329283888_n.jpg?stp=dst-jpg_s600x600_tt6&_nc_cat=100&ccb=1-7&_nc_sid=c53f8f&_nc_ohc=aPG4gB7J5-EQ7kNvwGh3CH5&_nc_oc=AdqkgXHYA_xju3LAEqwUltOdx4vXoBiMIAj4exCm9H_qZnZ05JocBWbs5ML0vVPz2Wc&_nc_zt=14&_nc_ht=scontent-icn2-1.xx&_nc_gid=NcednUAxkbojZtQzruPVfw&_nc_ss=7b289&oh=00_AQKD_aMUsXPdvf2s9104nMx8sIf59VEnEeqrhHd-VmH1IA&oe=6AB7C1FF"
+    "mediaUrl": "https://scontent-icn2-1.xx.fbcdn.net/v/t39.35426-6/799525863_1416302743714465_5676170294329283888_n.jpg?stp=dst-jpg_s600x600_tt6&_nc_cat=100&ccb=1-7&_nc_sid=c53f8f&_nc_ohc=aPG4gB7J5-EQ7kNvwGh3CH5&_nc_oc=AdqkgXHYA_xju3LAEqwUltOdx4vXoBiMIAj4exCm9H_qZnZ05JocBWbs5ML0vVPz2Wc&_nc_zt=14&_nc_ht=scontent-icn2-1.xx&_nc_gid=NcednUAxkbojZtQzruPVfw&_nc_ss=7b289&oh=00_AQKD_aMUsXPdvf2s9104nMx8sIf59VEnEeqrhHd-VmH1IA&oe=6AB7C1FF",
+    "endedAt": "2026-09-28T01:01:45.844Z"
   },
   {
     "advertiserName": "KB증권",
@@ -131413,7 +131441,7 @@
     "adId": "1048850894813146",
     "adStartedAt": "2026-09-21",
     "adLastShownAt": "2026-09-21",
-    "status": "active",
+    "status": "ended",
     "platform": "meta",
     "collectedAt": "2026-09-22T01:27:50.628Z",
     "placements": "facebook,instagram",
@@ -131424,7 +131452,8 @@
     ],
     "localPath": "images/meta/meta_증권_20260922_r9ym0.jpg",
     "mediaType": "image",
-    "mediaUrl": "https://scontent-icn2-1.xx.fbcdn.net/v/t39.35426-6/817968015_1092153346559357_1417878749632562970_n.jpg?stp=dst-jpg_s600x600_tt6&_nc_cat=103&ccb=1-7&_nc_sid=c53f8f&_nc_ohc=jxL6pZyEJckQ7kNvwFLwCaZ&_nc_oc=AdqNLWRMnZ63ThvJd_I6N1GFssT44wqp1yIZnyQeNpTZKyx6hgwEMSAty1Ru4lqFp_k&_nc_zt=14&_nc_ht=scontent-icn2-1.xx&_nc_gid=70aPDf_sheCK85kjyfkReg&_nc_ss=7b289&oh=00_AQLIaBEwXnYCFTim1fZBsTp9Mh3W5tmPnZlo3nrtubv4uw&oe=6AB7D4B6"
+    "mediaUrl": "https://scontent-icn2-1.xx.fbcdn.net/v/t39.35426-6/817968015_1092153346559357_1417878749632562970_n.jpg?stp=dst-jpg_s600x600_tt6&_nc_cat=103&ccb=1-7&_nc_sid=c53f8f&_nc_ohc=jxL6pZyEJckQ7kNvwFLwCaZ&_nc_oc=AdqNLWRMnZ63ThvJd_I6N1GFssT44wqp1yIZnyQeNpTZKyx6hgwEMSAty1Ru4lqFp_k&_nc_zt=14&_nc_ht=scontent-icn2-1.xx&_nc_gid=70aPDf_sheCK85kjyfkReg&_nc_ss=7b289&oh=00_AQLIaBEwXnYCFTim1fZBsTp9Mh3W5tmPnZlo3nrtubv4uw&oe=6AB7D4B6",
+    "endedAt": "2026-09-28T01:01:45.844Z"
   },
   {
     "advertiserName": "대신증권",
@@ -131436,7 +131465,7 @@
     "adId": "1647813496965356",
     "adStartedAt": "2026-09-21",
     "adLastShownAt": "2026-09-21",
-    "status": "active",
+    "status": "ended",
     "platform": "meta",
     "collectedAt": "2026-09-22T01:27:50.628Z",
     "placements": "facebook,instagram,threads",
@@ -131447,7 +131476,8 @@
     ],
     "localPath": "images/meta/meta_증권_20260922_u828g.jpg",
     "mediaType": "image",
-    "mediaUrl": "https://scontent-icn2-1.xx.fbcdn.net/v/t39.35426-6/818948829_2905245709831112_3211593404704187304_n.jpg?stp=dst-jpg_s600x600_tt6&_nc_cat=108&ccb=1-7&_nc_sid=c53f8f&_nc_ohc=MkLwkIfSxWoQ7kNvwFZr0Ol&_nc_oc=AdoWp1RZHRn2Oij4ejlRrJxgkRiuh_ACoUvrKQC-pJgFWbefozWalp5BZ0Y6MLa3kUs&_nc_zt=14&_nc_ht=scontent-icn2-1.xx&_nc_gid=M9Wducqi_6PfiRVIqmQ4Kg&_nc_ss=7b289&oh=00_AQK_EkGjkKQl-0EWbVC9624gwmqysKe_RzHGWe0Yy0Maxw&oe=6AB7D2EC"
+    "mediaUrl": "https://scontent-icn2-1.xx.fbcdn.net/v/t39.35426-6/818948829_2905245709831112_3211593404704187304_n.jpg?stp=dst-jpg_s600x600_tt6&_nc_cat=108&ccb=1-7&_nc_sid=c53f8f&_nc_ohc=MkLwkIfSxWoQ7kNvwFZr0Ol&_nc_oc=AdoWp1RZHRn2Oij4ejlRrJxgkRiuh_ACoUvrKQC-pJgFWbefozWalp5BZ0Y6MLa3kUs&_nc_zt=14&_nc_ht=scontent-icn2-1.xx&_nc_gid=M9Wducqi_6PfiRVIqmQ4Kg&_nc_ss=7b289&oh=00_AQK_EkGjkKQl-0EWbVC9624gwmqysKe_RzHGWe0Yy0Maxw&oe=6AB7D2EC",
+    "endedAt": "2026-09-28T01:01:45.844Z"
   },
   {
     "advertiserName": "삼성증권",
@@ -131459,7 +131489,7 @@
     "adId": "1727302165052142",
     "adStartedAt": "2026-09-21",
     "adLastShownAt": "2026-09-21",
-    "status": "active",
+    "status": "ended",
     "platform": "meta",
     "collectedAt": "2026-09-22T01:27:50.628Z",
     "placements": "instagram",
@@ -131470,7 +131500,8 @@
     ],
     "localPath": "images/meta/videos/meta_증권_20260922_j3bla.mp4",
     "mediaType": "video",
-    "mediaUrl": "https://video-icn2-1.xx.fbcdn.net/o1/v/t2/f2/m412/AQOijdHT_L4f_hk4EH3pTgbH5XgEnohh3vSMAA9fTqDL75jlzDfTKfo0hR0TvYwRpNkIoYuICencsB_sGsIKPG3nzchzEtA1TCXIBfAwOQ.mp4?_nc_cat=108&_nc_sid=ef5aa3&_nc_ht=video-icn2-1.xx.fbcdn.net&_nc_ohc=s-UsouMqQ8QQ7kNvwF4en4J&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTU3MzE5MzU2Mzc5NTQyNywiYXNzZXRfYWdlX2RheXMiOjMsInZpX3VzZWNhc2VfaWQiOjEwMTM5LCJkdXJhdGlvbl9zIjozMCwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=hceYoLDtcqp3hvoWNhJ5LQ&_nc_ss=7b289&_nc_zt=28&oh=00_AQKT_dkdr4elY8ZsRjFIu8Sbl902dvHj-sh0R0V0FYHzRA&oe=6AB7BF3A"
+    "mediaUrl": "https://video-icn2-1.xx.fbcdn.net/o1/v/t2/f2/m412/AQOijdHT_L4f_hk4EH3pTgbH5XgEnohh3vSMAA9fTqDL75jlzDfTKfo0hR0TvYwRpNkIoYuICencsB_sGsIKPG3nzchzEtA1TCXIBfAwOQ.mp4?_nc_cat=108&_nc_sid=ef5aa3&_nc_ht=video-icn2-1.xx.fbcdn.net&_nc_ohc=s-UsouMqQ8QQ7kNvwF4en4J&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTU3MzE5MzU2Mzc5NTQyNywiYXNzZXRfYWdlX2RheXMiOjMsInZpX3VzZWNhc2VfaWQiOjEwMTM5LCJkdXJhdGlvbl9zIjozMCwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=hceYoLDtcqp3hvoWNhJ5LQ&_nc_ss=7b289&_nc_zt=28&oh=00_AQKT_dkdr4elY8ZsRjFIu8Sbl902dvHj-sh0R0V0FYHzRA&oe=6AB7BF3A",
+    "endedAt": "2026-09-28T01:01:45.844Z"
   },
   {
     "advertiserName": "SK증권",
@@ -131482,7 +131513,7 @@
     "adId": "2292230088195224",
     "adStartedAt": "2026-09-17",
     "adLastShownAt": "2026-09-20",
-    "status": "active",
+    "status": "ended",
     "platform": "meta",
     "collectedAt": "2026-09-22T01:27:50.628Z",
     "placements": "facebook,instagram",
@@ -131493,7 +131524,8 @@
     ],
     "localPath": "images/meta/meta_증권_20260922_ma2is.jpg",
     "mediaType": "image",
-    "mediaUrl": "https://scontent-icn2-1.xx.fbcdn.net/v/t39.35426-6/800826258_1703414984092889_5145651371257689678_n.jpg?stp=dst-jpg_s600x600_tt6&_nc_cat=111&ccb=1-7&_nc_sid=c53f8f&_nc_ohc=Z74E4gO-dk8Q7kNvwFJlx3Q&_nc_oc=AdromOdJk_Q76uRdKxqsJaqwoPum2PtHi-d9_q25wT_9eLtKQQIxlRdmycQhD6BWJXo&_nc_zt=14&_nc_ht=scontent-icn2-1.xx&_nc_gid=WL_UOkzvpNxEM-4hJMXAqA&_nc_ss=7b289&oh=00_AQKpvDXFbi_aTEDeHgdrTmYAla79fLcbzaAzDVRxWgP9Dw&oe=6AB7D0D5"
+    "mediaUrl": "https://scontent-icn2-1.xx.fbcdn.net/v/t39.35426-6/800826258_1703414984092889_5145651371257689678_n.jpg?stp=dst-jpg_s600x600_tt6&_nc_cat=111&ccb=1-7&_nc_sid=c53f8f&_nc_ohc=Z74E4gO-dk8Q7kNvwFJlx3Q&_nc_oc=AdromOdJk_Q76uRdKxqsJaqwoPum2PtHi-d9_q25wT_9eLtKQQIxlRdmycQhD6BWJXo&_nc_zt=14&_nc_ht=scontent-icn2-1.xx&_nc_gid=WL_UOkzvpNxEM-4hJMXAqA&_nc_ss=7b289&oh=00_AQKpvDXFbi_aTEDeHgdrTmYAla79fLcbzaAzDVRxWgP9Dw&oe=6AB7D0D5",
+    "endedAt": "2026-09-28T01:01:45.844Z"
   },
   {
     "advertiserName": "한국투자증권",
@@ -131505,7 +131537,7 @@
     "adId": "950090454802214",
     "adStartedAt": "2026-09-21",
     "adLastShownAt": "2026-09-21",
-    "status": "active",
+    "status": "ended",
     "platform": "meta",
     "collectedAt": "2026-09-22T01:27:50.628Z",
     "placements": "instagram",
@@ -131516,7 +131548,8 @@
     ],
     "localPath": "images/meta/meta_증권_20260922_1upcv.jpg",
     "mediaType": "image",
-    "mediaUrl": "https://scontent-icn2-1.xx.fbcdn.net/v/t39.35426-6/795494461_27857528260591752_6797406544129688620_n.jpg?stp=dst-jpg_s600x600_tt6&_nc_cat=100&ccb=1-7&_nc_sid=c53f8f&_nc_ohc=0uxhna6ant4Q7kNvwGWweUi&_nc_oc=Adr2y48-uSKTbriXMvrsePRyMy7VYZ50qI2mzIPv8O5EVcvDiFyQRKWMyo6CjnFAIR4&_nc_zt=14&_nc_ht=scontent-icn2-1.xx&_nc_gid=StSYF2TNifnRildJ4EFCKg&_nc_ss=7b289&oh=00_AQLP6YlDDX4dIBMS9ffJIFl82CwRF9CG4menfUSm1tjb1w&oe=6AB7AAD4"
+    "mediaUrl": "https://scontent-icn2-1.xx.fbcdn.net/v/t39.35426-6/795494461_27857528260591752_6797406544129688620_n.jpg?stp=dst-jpg_s600x600_tt6&_nc_cat=100&ccb=1-7&_nc_sid=c53f8f&_nc_ohc=0uxhna6ant4Q7kNvwGWweUi&_nc_oc=Adr2y48-uSKTbriXMvrsePRyMy7VYZ50qI2mzIPv8O5EVcvDiFyQRKWMyo6CjnFAIR4&_nc_zt=14&_nc_ht=scontent-icn2-1.xx&_nc_gid=StSYF2TNifnRildJ4EFCKg&_nc_ss=7b289&oh=00_AQLP6YlDDX4dIBMS9ffJIFl82CwRF9CG4menfUSm1tjb1w&oe=6AB7AAD4",
+    "endedAt": "2026-09-28T01:01:45.844Z"
   },
   {
     "advertiserName": "SK증권",
@@ -131528,7 +131561,7 @@
     "adId": "1387416443551162",
     "adStartedAt": "2026-09-17",
     "adLastShownAt": "2026-09-21",
-    "status": "active",
+    "status": "ended",
     "platform": "meta",
     "collectedAt": "2026-09-22T01:27:50.628Z",
     "placements": "facebook,instagram",
@@ -131539,7 +131572,8 @@
     ],
     "localPath": "images/meta/meta_증권_20260922_z9412.jpg",
     "mediaType": "image",
-    "mediaUrl": "https://scontent-icn2-1.xx.fbcdn.net/v/t39.35426-6/799858134_1613075207030333_6393819112942470208_n.jpg?stp=dst-jpg_s600x600_tt6&_nc_cat=106&ccb=1-7&_nc_sid=c53f8f&_nc_ohc=r9Mgcl7FQn4Q7kNvwGkJVIu&_nc_oc=Adq60kBv-AOrdjO-hkDRJKS5bfEAFRdgRU5Q1Pf0IRxJf8swgz2dMcQxN999EGCZOU8&_nc_zt=14&_nc_ht=scontent-icn2-1.xx&_nc_gid=DXdzRYvLmkTACc-s9Cxq4w&_nc_ss=7b289&oh=00_AQKfQCMcHa2bWAw0blcU8OdTspzqfA9pojIcBDQO7x_k5g&oe=6AB7C7CD"
+    "mediaUrl": "https://scontent-icn2-1.xx.fbcdn.net/v/t39.35426-6/799858134_1613075207030333_6393819112942470208_n.jpg?stp=dst-jpg_s600x600_tt6&_nc_cat=106&ccb=1-7&_nc_sid=c53f8f&_nc_ohc=r9Mgcl7FQn4Q7kNvwGkJVIu&_nc_oc=Adq60kBv-AOrdjO-hkDRJKS5bfEAFRdgRU5Q1Pf0IRxJf8swgz2dMcQxN999EGCZOU8&_nc_zt=14&_nc_ht=scontent-icn2-1.xx&_nc_gid=DXdzRYvLmkTACc-s9Cxq4w&_nc_ss=7b289&oh=00_AQKfQCMcHa2bWAw0blcU8OdTspzqfA9pojIcBDQO7x_k5g&oe=6AB7C7CD",
+    "endedAt": "2026-09-28T01:01:45.844Z"
   },
   {
     "advertiserName": "KB 국민은행",
@@ -131551,7 +131585,7 @@
     "adId": "2062975484334909",
     "adStartedAt": "2026-09-10",
     "adLastShownAt": "2026-09-21",
-    "status": "active",
+    "status": "ended",
     "platform": "meta",
     "collectedAt": "2026-09-22T01:26:23.814Z",
     "placements": "instagram",
@@ -131562,7 +131596,8 @@
     ],
     "localPath": "images/meta/videos/meta_주식_20260922_al3nc.mp4",
     "mediaType": "video",
-    "mediaUrl": "https://video-icn2-1.xx.fbcdn.net/o1/v/t2/f2/m367/AQNFVQVdJZEbiTNNaIqyVjIkWx9YZcaM1Nkbm1xYCBQ4uBivmlGMQHFeb3qDJrs4KaDDhf0kx2moP4G_HPdFcRxsQk0htbZ8XNCzIt0wGQ.mp4?_nc_cat=106&_nc_sid=ef5aa3&_nc_ht=video-icn2-1.xx.fbcdn.net&_nc_ohc=QAuS94xX-oAQ7kNvwHMio-7&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuNjQwLnByb2dyZXNzaXZlX2gyNjQtYmFzaWMtZ2VuMl8zNjBwIiwieHB2X2Fzc2V0X2lkIjoxMzIwMzU1ODkzMzQ4MDI0LCJhc3NldF9hZ2VfZGF5cyI6MTEsInZpX3VzZWNhc2VfaWQiOjEyMzc0LCJkdXJhdGlvbl9zIjozMCwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=F55BhtIDAKhML9ev9b_FIw&_nc_ss=7b289&_nc_zt=28&oh=00_AQK6H5fV-gFlFu2W1R2xFK3jZjTfCXZBwpVW7lsjh5Vl8g&oe=6AB7D124"
+    "mediaUrl": "https://video-icn2-1.xx.fbcdn.net/o1/v/t2/f2/m367/AQNFVQVdJZEbiTNNaIqyVjIkWx9YZcaM1Nkbm1xYCBQ4uBivmlGMQHFeb3qDJrs4KaDDhf0kx2moP4G_HPdFcRxsQk0htbZ8XNCzIt0wGQ.mp4?_nc_cat=106&_nc_sid=ef5aa3&_nc_ht=video-icn2-1.xx.fbcdn.net&_nc_ohc=QAuS94xX-oAQ7kNvwHMio-7&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuNjQwLnByb2dyZXNzaXZlX2gyNjQtYmFzaWMtZ2VuMl8zNjBwIiwieHB2X2Fzc2V0X2lkIjoxMzIwMzU1ODkzMzQ4MDI0LCJhc3NldF9hZ2VfZGF5cyI6MTEsInZpX3VzZWNhc2VfaWQiOjEyMzc0LCJkdXJhdGlvbl9zIjozMCwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=F55BhtIDAKhML9ev9b_FIw&_nc_ss=7b289&_nc_zt=28&oh=00_AQK6H5fV-gFlFu2W1R2xFK3jZjTfCXZBwpVW7lsjh5Vl8g&oe=6AB7D124",
+    "endedAt": "2026-09-28T01:01:45.844Z"
   },
   {
     "advertiserName": "신한은행 (Shinhan Bank)",
@@ -131574,7 +131609,7 @@
     "adId": "2280771172687695",
     "adStartedAt": "2026-09-18",
     "adLastShownAt": "2026-09-21",
-    "status": "active",
+    "status": "ended",
     "platform": "meta",
     "collectedAt": "2026-09-22T01:26:23.814Z",
     "placements": "instagram",
@@ -131585,7 +131620,8 @@
     ],
     "localPath": "images/meta/videos/meta_주식_20260922_pzs20.mp4",
     "mediaType": "video",
-    "mediaUrl": "https://video-icn2-1.xx.fbcdn.net/o1/v/t2/f2/m412/AQNUNJg71hwUYs8o9mG6FfqiJhHgSOODg01GKY6cQAbt5mmpiP8kxWU5GCVOJb5RRrSPzfRfXe9VKgiORwFNFNMdSj4lG2fMG83Em5XVGQ.mp4?_nc_cat=107&_nc_sid=ef5aa3&_nc_ht=video-icn2-1.xx.fbcdn.net&_nc_ohc=nTeiTI7fneYQ7kNvwHOOJfh&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTM3OTk0NzgyNDIyMzE0MiwiYXNzZXRfYWdlX2RheXMiOjMsInZpX3VzZWNhc2VfaWQiOjEwMTM5LCJkdXJhdGlvbl9zIjozNywidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=V4urP55-c_4FPLO3of4kBw&_nc_ss=7b289&_nc_zt=28&oh=00_AQIDOlArWL3MCf5ad851VEi6OJfzbSbRF49A7IiHoZGWxA&oe=6AB7CD63"
+    "mediaUrl": "https://video-icn2-1.xx.fbcdn.net/o1/v/t2/f2/m412/AQNUNJg71hwUYs8o9mG6FfqiJhHgSOODg01GKY6cQAbt5mmpiP8kxWU5GCVOJb5RRrSPzfRfXe9VKgiORwFNFNMdSj4lG2fMG83Em5XVGQ.mp4?_nc_cat=107&_nc_sid=ef5aa3&_nc_ht=video-icn2-1.xx.fbcdn.net&_nc_ohc=nTeiTI7fneYQ7kNvwHOOJfh&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTM3OTk0NzgyNDIyMzE0MiwiYXNzZXRfYWdlX2RheXMiOjMsInZpX3VzZWNhc2VfaWQiOjEwMTM5LCJkdXJhdGlvbl9zIjozNywidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=V4urP55-c_4FPLO3of4kBw&_nc_ss=7b289&_nc_zt=28&oh=00_AQIDOlArWL3MCf5ad851VEi6OJfzbSbRF49A7IiHoZGWxA&oe=6AB7CD63",
+    "endedAt": "2026-09-28T01:01:45.844Z"
   },
   {
     "advertiserName": "KB 국민은행",
@@ -131597,7 +131633,7 @@
     "adId": "3402307136609331",
     "adStartedAt": "2026-09-15",
     "adLastShownAt": "2026-09-21",
-    "status": "active",
+    "status": "ended",
     "platform": "meta",
     "collectedAt": "2026-09-22T01:26:23.814Z",
     "placements": "instagram",
@@ -131608,7 +131644,8 @@
     ],
     "localPath": "images/meta/videos/meta_주식_20260922_2misn.mp4",
     "mediaType": "video",
-    "mediaUrl": "https://video-icn2-1.xx.fbcdn.net/o1/v/t2/f2/m367/AQNrL7Hwc2T--4hBOHC9qObt3G0egATvBU5R7TjMEf4Z440VxW-AtjiB-N3ZXIagXYkfhJ_59N4QbmVPAoWZTKuMXUVjqa0vy5YzEhsMRw.mp4?_nc_cat=102&_nc_sid=ef5aa3&_nc_ht=video-icn2-1.xx.fbcdn.net&_nc_ohc=UV5rpI8ADA4Q7kNvwGmDNKt&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuNjQwLnByb2dyZXNzaXZlX2gyNjQtYmFzaWMtZ2VuMl8zNjBwIiwieHB2X2Fzc2V0X2lkIjoxMDY3OTIxMjQ5MjE3NzA5LCJhc3NldF9hZ2VfZGF5cyI6MTEsInZpX3VzZWNhc2VfaWQiOjEyMzc0LCJkdXJhdGlvbl9zIjoyMCwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=Dr22X3h8RnT6priBdxaPdA&_nc_ss=7b289&_nc_zt=28&oh=00_AQJJLwGmxQsQROlqjUHwRva6mQrchI7BbdI4fej7cmFoMA&oe=6AB7BD6C"
+    "mediaUrl": "https://video-icn2-1.xx.fbcdn.net/o1/v/t2/f2/m367/AQNrL7Hwc2T--4hBOHC9qObt3G0egATvBU5R7TjMEf4Z440VxW-AtjiB-N3ZXIagXYkfhJ_59N4QbmVPAoWZTKuMXUVjqa0vy5YzEhsMRw.mp4?_nc_cat=102&_nc_sid=ef5aa3&_nc_ht=video-icn2-1.xx.fbcdn.net&_nc_ohc=UV5rpI8ADA4Q7kNvwGmDNKt&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuNjQwLnByb2dyZXNzaXZlX2gyNjQtYmFzaWMtZ2VuMl8zNjBwIiwieHB2X2Fzc2V0X2lkIjoxMDY3OTIxMjQ5MjE3NzA5LCJhc3NldF9hZ2VfZGF5cyI6MTEsInZpX3VzZWNhc2VfaWQiOjEyMzc0LCJkdXJhdGlvbl9zIjoyMCwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=Dr22X3h8RnT6priBdxaPdA&_nc_ss=7b289&_nc_zt=28&oh=00_AQJJLwGmxQsQROlqjUHwRva6mQrchI7BbdI4fej7cmFoMA&oe=6AB7BD6C",
+    "endedAt": "2026-09-28T01:01:45.844Z"
   },
   {
     "advertiserName": "KB 국민은행",
@@ -131620,7 +131657,7 @@
     "adId": "1070791642423742",
     "adStartedAt": "2026-09-15",
     "adLastShownAt": "2026-09-21",
-    "status": "active",
+    "status": "ended",
     "platform": "meta",
     "collectedAt": "2026-09-22T01:26:23.814Z",
     "placements": "instagram",
@@ -131631,7 +131668,8 @@
     ],
     "localPath": "images/meta/videos/meta_주식_20260922_fy1jk.mp4",
     "mediaType": "video",
-    "mediaUrl": "https://video-icn2-1.xx.fbcdn.net/o1/v/t2/f2/m367/AQMhUXwNAFZaYFiRUCFEIZuZGegfHQuM2E_ZrxDdlq1IoTqc0yg9rPKr6IrJe-isD2YjFoidPK3YQgMEbHMYx1iU0FqoWSV_AWcJsyR20w.mp4?_nc_cat=109&_nc_sid=ef5aa3&_nc_ht=video-icn2-1.xx.fbcdn.net&_nc_ohc=4fJzXGx8cWEQ7kNvwHZrV7T&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuNjQwLnByb2dyZXNzaXZlX2gyNjQtYmFzaWMtZ2VuMl8zNjBwIiwieHB2X2Fzc2V0X2lkIjoxMTAwODI1NDAyNTk3ODYzLCJhc3NldF9hZ2VfZGF5cyI6MTEsInZpX3VzZWNhc2VfaWQiOjEyMzc0LCJkdXJhdGlvbl9zIjoxNSwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=O10iYmIha01kzulC9VxEzQ&_nc_ss=7b289&_nc_zt=28&oh=00_AQKW9X7UP8_TJnVm_Y-5mf1sgHKhM3uugWOERZiDdet2Zw&oe=6AB7CD1D"
+    "mediaUrl": "https://video-icn2-1.xx.fbcdn.net/o1/v/t2/f2/m367/AQMhUXwNAFZaYFiRUCFEIZuZGegfHQuM2E_ZrxDdlq1IoTqc0yg9rPKr6IrJe-isD2YjFoidPK3YQgMEbHMYx1iU0FqoWSV_AWcJsyR20w.mp4?_nc_cat=109&_nc_sid=ef5aa3&_nc_ht=video-icn2-1.xx.fbcdn.net&_nc_ohc=4fJzXGx8cWEQ7kNvwHZrV7T&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuNjQwLnByb2dyZXNzaXZlX2gyNjQtYmFzaWMtZ2VuMl8zNjBwIiwieHB2X2Fzc2V0X2lkIjoxMTAwODI1NDAyNTk3ODYzLCJhc3NldF9hZ2VfZGF5cyI6MTEsInZpX3VzZWNhc2VfaWQiOjEyMzc0LCJkdXJhdGlvbl9zIjoxNSwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=O10iYmIha01kzulC9VxEzQ&_nc_ss=7b289&_nc_zt=28&oh=00_AQKW9X7UP8_TJnVm_Y-5mf1sgHKhM3uugWOERZiDdet2Zw&oe=6AB7CD1D",
+    "endedAt": "2026-09-28T01:01:45.844Z"
   },
   {
     "advertiserName": "KB 국민은행",
@@ -131643,7 +131681,7 @@
     "adId": "4103041093160928",
     "adStartedAt": "2026-09-15",
     "adLastShownAt": "2026-09-21",
-    "status": "active",
+    "status": "ended",
     "platform": "meta",
     "collectedAt": "2026-09-22T01:26:23.814Z",
     "placements": "instagram",
@@ -131654,7 +131692,8 @@
     ],
     "localPath": "images/meta/videos/meta_주식_20260922_6suus.mp4",
     "mediaType": "video",
-    "mediaUrl": "https://video-icn2-1.xx.fbcdn.net/o1/v/t2/f2/m367/AQMjMaH04OZmf-g6JWLpnon94SUmuKXjDnG2ISae398msyP5jDHsVgv2PTHwlv_od4d5A2tZBQVGEtMqgvrYyp2IAgT90t1AJ7ivJ9hxcQ.mp4?_nc_cat=110&_nc_sid=ef5aa3&_nc_ht=video-icn2-1.xx.fbcdn.net&_nc_ohc=aguXTE_2WwUQ7kNvwG5lFdl&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuNjQwLnByb2dyZXNzaXZlX2gyNjQtYmFzaWMtZ2VuMl8zNjBwIiwieHB2X2Fzc2V0X2lkIjoxMDQ2MzgxNzQ4MTk1NDI3LCJhc3NldF9hZ2VfZGF5cyI6MTEsInZpX3VzZWNhc2VfaWQiOjEyMzc0LCJkdXJhdGlvbl9zIjoxNSwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=yLWNA86H8i-lGFl1p7FFGg&_nc_ss=7b289&_nc_zt=28&oh=00_AQJHQNokxQb4n_hrVQR03xaq1bGhVUGRBoafgc5HU4JNMg&oe=6AB7CF20"
+    "mediaUrl": "https://video-icn2-1.xx.fbcdn.net/o1/v/t2/f2/m367/AQMjMaH04OZmf-g6JWLpnon94SUmuKXjDnG2ISae398msyP5jDHsVgv2PTHwlv_od4d5A2tZBQVGEtMqgvrYyp2IAgT90t1AJ7ivJ9hxcQ.mp4?_nc_cat=110&_nc_sid=ef5aa3&_nc_ht=video-icn2-1.xx.fbcdn.net&_nc_ohc=aguXTE_2WwUQ7kNvwG5lFdl&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuNjQwLnByb2dyZXNzaXZlX2gyNjQtYmFzaWMtZ2VuMl8zNjBwIiwieHB2X2Fzc2V0X2lkIjoxMDQ2MzgxNzQ4MTk1NDI3LCJhc3NldF9hZ2VfZGF5cyI6MTEsInZpX3VzZWNhc2VfaWQiOjEyMzc0LCJkdXJhdGlvbl9zIjoxNSwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=yLWNA86H8i-lGFl1p7FFGg&_nc_ss=7b289&_nc_zt=28&oh=00_AQJHQNokxQb4n_hrVQR03xaq1bGhVUGRBoafgc5HU4JNMg&oe=6AB7CF20",
+    "endedAt": "2026-09-28T01:01:45.844Z"
   },
   {
     "advertiserName": "KB 국민은행",
@@ -131666,7 +131705,7 @@
     "adId": "957291926721921",
     "adStartedAt": "2026-09-14",
     "adLastShownAt": "2026-09-21",
-    "status": "active",
+    "status": "ended",
     "platform": "meta",
     "collectedAt": "2026-09-22T01:26:23.814Z",
     "placements": "instagram",
@@ -131677,7 +131716,8 @@
     ],
     "localPath": "images/meta/videos/meta_주식_20260922_kaqfj.mp4",
     "mediaType": "video",
-    "mediaUrl": "https://video-icn2-1.xx.fbcdn.net/o1/v/t2/f2/m367/AQP_luDwoZ9CrQOoAQz98W7yq-Ef18fxD_TNhW8BNYPzaR4q0zdTbkDpQcyRk3l1MJid6hDi_ES4RnMJQ4LEwuULWDk_4HEY_ojJNoN6AQ.mp4?_nc_cat=110&_nc_sid=ef5aa3&_nc_ht=video-icn2-1.xx.fbcdn.net&_nc_ohc=M3a5sglJcJ0Q7kNvwFVKQvo&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuNjQwLnByb2dyZXNzaXZlX2gyNjQtYmFzaWMtZ2VuMl8zNjBwIiwieHB2X2Fzc2V0X2lkIjoyODE3OTM1ODg5ODQxMTQyMSwiYXNzZXRfYWdlX2RheXMiOjExLCJ2aV91c2VjYXNlX2lkIjoxMjM3NCwiZHVyYXRpb25fcyI6ODMsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&_nc_gid=fnRIzIfdF3PJ8sEzo1_vsg&_nc_ss=7b289&_nc_zt=28&oh=00_AQKdPMEB4ydpv2R-WNnRiPOeIi4ihO3EPu7xL7OQeH3rGA&oe=6AB7DBC4"
+    "mediaUrl": "https://video-icn2-1.xx.fbcdn.net/o1/v/t2/f2/m367/AQP_luDwoZ9CrQOoAQz98W7yq-Ef18fxD_TNhW8BNYPzaR4q0zdTbkDpQcyRk3l1MJid6hDi_ES4RnMJQ4LEwuULWDk_4HEY_ojJNoN6AQ.mp4?_nc_cat=110&_nc_sid=ef5aa3&_nc_ht=video-icn2-1.xx.fbcdn.net&_nc_ohc=M3a5sglJcJ0Q7kNvwFVKQvo&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuNjQwLnByb2dyZXNzaXZlX2gyNjQtYmFzaWMtZ2VuMl8zNjBwIiwieHB2X2Fzc2V0X2lkIjoyODE3OTM1ODg5ODQxMTQyMSwiYXNzZXRfYWdlX2RheXMiOjExLCJ2aV91c2VjYXNlX2lkIjoxMjM3NCwiZHVyYXRpb25fcyI6ODMsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&_nc_gid=fnRIzIfdF3PJ8sEzo1_vsg&_nc_ss=7b289&_nc_zt=28&oh=00_AQKdPMEB4ydpv2R-WNnRiPOeIi4ihO3EPu7xL7OQeH3rGA&oe=6AB7DBC4",
+    "endedAt": "2026-09-28T01:01:45.844Z"
   },
   {
     "advertiserName": "키움증권",
@@ -131689,7 +131729,7 @@
     "adId": "1587959186161988",
     "adStartedAt": "2026-09-13",
     "adLastShownAt": "2026-09-21",
-    "status": "active",
+    "status": "ended",
     "platform": "meta",
     "collectedAt": "2026-09-22T01:26:23.814Z",
     "placements": "instagram",
@@ -131700,7 +131740,8 @@
     ],
     "localPath": "images/meta/videos/meta_주식_20260922_fqqhp.mp4",
     "mediaType": "video",
-    "mediaUrl": "https://video-icn2-1.xx.fbcdn.net/o1/v/t2/f2/m367/AQOJw1YKieQtcWkFLonR8de9emwy1VfLkyd-BX2E67sAXrtUppZkHmyYHL5ANMOZiBYqUL4xupLb6S4U9yzhtUhlOKVtcK9hmF-W18Q5Xw.mp4?_nc_cat=111&_nc_sid=ef5aa3&_nc_ht=video-icn2-1.xx.fbcdn.net&_nc_ohc=bGjySTN4_cQQ7kNvwFqCbRk&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuMzYwLnByb2dyZXNzaXZlX2gyNjQtYmFzaWMtZ2VuMl8zNjBwIiwieHB2X2Fzc2V0X2lkIjoxNjM5MDYxNTM3NzQ4MDU0LCJhc3NldF9hZ2VfZGF5cyI6MTIsInZpX3VzZWNhc2VfaWQiOjEyMzc0LCJkdXJhdGlvbl9zIjo0OSwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=f5OHvZhuEekubTCcLpe_tw&_nc_ss=7b289&_nc_zt=28&oh=00_AQKkEy_uD0nHjW8odk68JUY61i478VDH6OuQILOhanwpMg&oe=6AB7BE27"
+    "mediaUrl": "https://video-icn2-1.xx.fbcdn.net/o1/v/t2/f2/m367/AQOJw1YKieQtcWkFLonR8de9emwy1VfLkyd-BX2E67sAXrtUppZkHmyYHL5ANMOZiBYqUL4xupLb6S4U9yzhtUhlOKVtcK9hmF-W18Q5Xw.mp4?_nc_cat=111&_nc_sid=ef5aa3&_nc_ht=video-icn2-1.xx.fbcdn.net&_nc_ohc=bGjySTN4_cQQ7kNvwFqCbRk&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuMzYwLnByb2dyZXNzaXZlX2gyNjQtYmFzaWMtZ2VuMl8zNjBwIiwieHB2X2Fzc2V0X2lkIjoxNjM5MDYxNTM3NzQ4MDU0LCJhc3NldF9hZ2VfZGF5cyI6MTIsInZpX3VzZWNhc2VfaWQiOjEyMzc0LCJkdXJhdGlvbl9zIjo0OSwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=f5OHvZhuEekubTCcLpe_tw&_nc_ss=7b289&_nc_zt=28&oh=00_AQKkEy_uD0nHjW8odk68JUY61i478VDH6OuQILOhanwpMg&oe=6AB7BE27",
+    "endedAt": "2026-09-28T01:01:45.844Z"
   },
   {
     "advertiserName": "신한은행 (Shinhan Bank)",
@@ -131712,7 +131753,7 @@
     "adId": "1771111888074560",
     "adStartedAt": "2026-09-18",
     "adLastShownAt": "2026-09-21",
-    "status": "active",
+    "status": "ended",
     "platform": "meta",
     "collectedAt": "2026-09-22T01:26:23.814Z",
     "placements": "instagram",
@@ -131723,7 +131764,8 @@
     ],
     "localPath": "images/meta/videos/meta_주식_20260922_qqe41.mp4",
     "mediaType": "video",
-    "mediaUrl": "https://video-icn2-1.xx.fbcdn.net/o1/v/t2/f2/m412/AQOG9ceEfw33VEPBlpSex-lbsf729hmqRCi7viySI5DDcQpD_TPhiNAzk4IysC8yzm1o4CrZ0_nhczm-Qf0SjmI209AVhUR7yLyPJrCPfg.mp4?_nc_cat=104&_nc_sid=ef5aa3&_nc_ht=video-icn2-1.xx.fbcdn.net&_nc_ohc=DhWHHJ69wEoQ7kNvwFO3Nao&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuMzYwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTY0MDUzNTgwNDQ0Mjc3NywiYXNzZXRfYWdlX2RheXMiOjMsInZpX3VzZWNhc2VfaWQiOjEwMTM5LCJkdXJhdGlvbl9zIjoyOSwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=sAxNRr6U8maJ_6qsuKitNw&_nc_ss=7b289&_nc_zt=28&oh=00_AQIzq79piS-Arf_Un60AG0g5WqdPiXurQLvrbg_4agDdWA&oe=6AB7A81A"
+    "mediaUrl": "https://video-icn2-1.xx.fbcdn.net/o1/v/t2/f2/m412/AQOG9ceEfw33VEPBlpSex-lbsf729hmqRCi7viySI5DDcQpD_TPhiNAzk4IysC8yzm1o4CrZ0_nhczm-Qf0SjmI209AVhUR7yLyPJrCPfg.mp4?_nc_cat=104&_nc_sid=ef5aa3&_nc_ht=video-icn2-1.xx.fbcdn.net&_nc_ohc=DhWHHJ69wEoQ7kNvwFO3Nao&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuMzYwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTY0MDUzNTgwNDQ0Mjc3NywiYXNzZXRfYWdlX2RheXMiOjMsInZpX3VzZWNhc2VfaWQiOjEwMTM5LCJkdXJhdGlvbl9zIjoyOSwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=sAxNRr6U8maJ_6qsuKitNw&_nc_ss=7b289&_nc_zt=28&oh=00_AQIzq79piS-Arf_Un60AG0g5WqdPiXurQLvrbg_4agDdWA&oe=6AB7A81A",
+    "endedAt": "2026-09-28T01:01:45.844Z"
   },
   {
     "mediaType": "image",
@@ -131738,7 +131780,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR18194268587332468737/creative/CR16634484418458681345?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2026-09-21",
-    "status": "active",
+    "status": "ended",
     "keyword": "미래에셋증권",
     "searchType": "brand",
     "id": "google_1790040731007_0n3oo",
@@ -131747,7 +131789,8 @@
     "localPath": "images/google/google_미래에셋증권_20260922_6byxm.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.844Z"
   },
   {
     "mediaType": "image",
@@ -131762,7 +131805,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR18194268587332468737/creative/CR09509379140365582337?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2026-09-21",
-    "status": "active",
+    "status": "ended",
     "keyword": "미래에셋증권",
     "searchType": "brand",
     "id": "google_1790040731008_u1kyy",
@@ -131771,7 +131814,8 @@
     "localPath": "images/google/google_미래에셋증권_20260922_qq1p2.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.844Z"
   },
   {
     "mediaType": "image",
@@ -131786,7 +131830,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR18194268587332468737/creative/CR15157013744489332737?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2026-09-21",
-    "status": "active",
+    "status": "ended",
     "keyword": "미래에셋증권",
     "searchType": "brand",
     "id": "google_1790040731008_i93br",
@@ -131795,7 +131839,8 @@
     "localPath": "images/google/google_미래에셋증권_20260922_xvp35.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -131810,7 +131855,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR18194268587332468737/creative/CR17264784956639412225?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2026-09-21",
-    "status": "active",
+    "status": "ended",
     "keyword": "미래에셋증권",
     "searchType": "brand",
     "id": "google_1790040731008_6jq9o",
@@ -131819,7 +131864,8 @@
     "localPath": "images/google/google_미래에셋증권_20260922_sv7pr.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -131834,7 +131880,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR18194268587332468737/creative/CR14200183679065522177?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2026-09-21",
-    "status": "active",
+    "status": "ended",
     "keyword": "미래에셋증권",
     "searchType": "brand",
     "id": "google_1790040731008_02b03",
@@ -131843,7 +131889,8 @@
     "localPath": "images/google/google_미래에셋증권_20260922_sgdbr.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -131858,7 +131905,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR18194268587332468737/creative/CR03748996490761076737?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2026-09-21",
-    "status": "active",
+    "status": "ended",
     "keyword": "미래에셋증권",
     "searchType": "brand",
     "id": "google_1790040731008_hd3yi",
@@ -131867,7 +131914,8 @@
     "localPath": "images/google/google_미래에셋증권_20260922_17z7n.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -131882,7 +131930,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR18194268587332468737/creative/CR10401339806457004033?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2026-09-21",
-    "status": "active",
+    "status": "ended",
     "keyword": "미래에셋증권",
     "searchType": "brand",
     "id": "google_1790040731008_ro0rj",
@@ -131891,7 +131939,8 @@
     "localPath": "images/google/google_미래에셋증권_20260922_7mgi6.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -131906,7 +131955,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR18194268587332468737/creative/CR18131938991140765697?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2026-09-21",
-    "status": "active",
+    "status": "ended",
     "keyword": "미래에셋증권",
     "searchType": "brand",
     "id": "google_1790040731008_vf9fh",
@@ -131915,7 +131964,8 @@
     "localPath": "images/google/google_미래에셋증권_20260922_9b7dh.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -131930,7 +131980,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR18194268587332468737/creative/CR13618588207460384769?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2026-09-21",
-    "status": "active",
+    "status": "ended",
     "keyword": "미래에셋증권",
     "searchType": "brand",
     "id": "google_1790040731008_dudh6",
@@ -131939,7 +131989,8 @@
     "localPath": "images/google/google_미래에셋증권_20260922_7k71q.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -131954,7 +132005,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR18194268587332468737/creative/CR14734643774382669825?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2026-09-21",
-    "status": "active",
+    "status": "ended",
     "keyword": "미래에셋증권",
     "searchType": "brand",
     "id": "google_1790040731008_jneov",
@@ -131963,7 +132014,8 @@
     "localPath": "images/google/google_미래에셋증권_20260922_k2i6a.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -131978,7 +132030,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR18194268587332468737/creative/CR02849315054019411969?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2025-01-01",
-    "status": "active",
+    "status": "ended",
     "keyword": "미래에셋증권",
     "searchType": "brand",
     "id": "google_1790040731008_ged4h",
@@ -131988,7 +132040,8 @@
     "seenInMonths": [
       "2026-09"
     ],
-    "adDateEstimated": true
+    "adDateEstimated": true,
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -132003,7 +132056,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR18194268587332468737/creative/CR01303772790540730369?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2026-09-21",
-    "status": "active",
+    "status": "ended",
     "keyword": "미래에셋증권",
     "searchType": "brand",
     "id": "google_1790040731008_zxtlt",
@@ -132012,7 +132065,8 @@
     "localPath": "images/google/google_미래에셋증권_20260922_ujv3o.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -132027,7 +132081,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR18194268587332468737/creative/CR05169912959522045953?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2025-01-01",
-    "status": "active",
+    "status": "ended",
     "keyword": "미래에셋증권",
     "searchType": "brand",
     "id": "google_1790040731008_humrq",
@@ -132037,7 +132091,8 @@
     "seenInMonths": [
       "2026-09"
     ],
-    "adDateEstimated": true
+    "adDateEstimated": true,
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -132052,7 +132107,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR18194268587332468737/creative/CR06737543037213212673?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2026-09-20",
-    "status": "active",
+    "status": "ended",
     "keyword": "미래에셋증권",
     "searchType": "brand",
     "id": "google_1790040731008_gaszc",
@@ -132061,7 +132116,8 @@
     "localPath": "images/google/google_미래에셋증권_20260922_bwqd0.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -132076,7 +132132,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR18194268587332468737/creative/CR00097025793707737089?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2025-01-01",
-    "status": "active",
+    "status": "ended",
     "keyword": "미래에셋증권",
     "searchType": "brand",
     "id": "google_1790040731008_qldih",
@@ -132086,7 +132142,8 @@
     "seenInMonths": [
       "2026-09"
     ],
-    "adDateEstimated": true
+    "adDateEstimated": true,
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -132101,7 +132158,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR18194268587332468737/creative/CR05304338426500218881?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2025-01-01",
-    "status": "active",
+    "status": "ended",
     "keyword": "미래에셋증권",
     "searchType": "brand",
     "id": "google_1790040731008_dr4m7",
@@ -132111,7 +132168,8 @@
     "seenInMonths": [
       "2026-09"
     ],
-    "adDateEstimated": true
+    "adDateEstimated": true,
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -132126,7 +132184,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR18194268587332468737/creative/CR10548177660201140225?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2026-09-20",
-    "status": "active",
+    "status": "ended",
     "keyword": "미래에셋증권",
     "searchType": "brand",
     "id": "google_1790040731008_2xfwf",
@@ -132135,7 +132193,8 @@
     "localPath": "images/google/google_미래에셋증권_20260922_o3a9z.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -132150,7 +132209,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR18194268587332468737/creative/CR09397032966384779265?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2025-01-01",
-    "status": "active",
+    "status": "ended",
     "keyword": "미래에셋증권",
     "searchType": "brand",
     "id": "google_1790040731008_7rza9",
@@ -132160,7 +132219,8 @@
     "seenInMonths": [
       "2026-09"
     ],
-    "adDateEstimated": true
+    "adDateEstimated": true,
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -132175,7 +132235,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR18194268587332468737/creative/CR09227633408916586497?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2026-09-20",
-    "status": "active",
+    "status": "ended",
     "keyword": "미래에셋증권",
     "searchType": "brand",
     "id": "google_1790040731008_ke1ea",
@@ -132184,7 +132244,8 @@
     "localPath": "images/google/google_미래에셋증권_20260922_vvavi.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -132199,7 +132260,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR18194268587332468737/creative/CR03438535089007362049?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2025-01-01",
-    "status": "active",
+    "status": "ended",
     "keyword": "미래에셋증권",
     "searchType": "brand",
     "id": "google_1790040731008_a7cg5",
@@ -132209,7 +132270,8 @@
     "seenInMonths": [
       "2026-09"
     ],
-    "adDateEstimated": true
+    "adDateEstimated": true,
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -132224,7 +132286,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR18194268587332468737/creative/CR14402642390085009409?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2026-09-16",
-    "status": "active",
+    "status": "ended",
     "keyword": "미래에셋증권",
     "searchType": "brand",
     "id": "google_1790040731008_zdfup",
@@ -132233,7 +132295,8 @@
     "localPath": "images/google/google_미래에셋증권_20260922_cikbr.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -132248,7 +132311,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR18194268587332468737/creative/CR05320856664562204673?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2025-01-01",
-    "status": "active",
+    "status": "ended",
     "keyword": "미래에셋증권",
     "searchType": "brand",
     "id": "google_1790040731008_0ndym",
@@ -132258,7 +132321,8 @@
     "seenInMonths": [
       "2026-09"
     ],
-    "adDateEstimated": true
+    "adDateEstimated": true,
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -132273,7 +132337,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR18194268587332468737/creative/CR05636671588431560705?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2026-09-16",
-    "status": "active",
+    "status": "ended",
     "keyword": "미래에셋증권",
     "searchType": "brand",
     "id": "google_1790040731008_oy6y6",
@@ -132282,7 +132346,8 @@
     "localPath": "images/google/google_미래에셋증권_20260922_61xrd.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -132297,7 +132362,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR18194268587332468737/creative/CR00853285834210672641?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2025-01-01",
-    "status": "active",
+    "status": "ended",
     "keyword": "미래에셋증권",
     "searchType": "brand",
     "id": "google_1790040731008_wylxk",
@@ -132307,7 +132372,8 @@
     "seenInMonths": [
       "2026-09"
     ],
-    "adDateEstimated": true
+    "adDateEstimated": true,
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -132322,7 +132388,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR18194268587332468737/creative/CR17334771620526424065?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2025-01-01",
-    "status": "active",
+    "status": "ended",
     "keyword": "미래에셋증권",
     "searchType": "brand",
     "id": "google_1790040731008_nfdu7",
@@ -132332,7 +132398,8 @@
     "seenInMonths": [
       "2026-09"
     ],
-    "adDateEstimated": true
+    "adDateEstimated": true,
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -132347,7 +132414,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR18194268587332468737/creative/CR15503374338328887297?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2026-09-15",
-    "status": "active",
+    "status": "ended",
     "keyword": "미래에셋증권",
     "searchType": "brand",
     "id": "google_1790040731008_bu236",
@@ -132356,7 +132423,8 @@
     "localPath": "images/google/google_미래에셋증권_20260922_g0ie0.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -132371,7 +132439,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR18194268587332468737/creative/CR10684626778330234881?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2025-01-01",
-    "status": "active",
+    "status": "ended",
     "keyword": "미래에셋증권",
     "searchType": "brand",
     "id": "google_1790040731008_9ir39",
@@ -132381,7 +132449,8 @@
     "seenInMonths": [
       "2026-09"
     ],
-    "adDateEstimated": true
+    "adDateEstimated": true,
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -132396,7 +132465,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR18194268587332468737/creative/CR07444146108948807681?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2026-09-14",
-    "status": "active",
+    "status": "ended",
     "keyword": "미래에셋증권",
     "searchType": "brand",
     "id": "google_1790040731008_fo33t",
@@ -132405,7 +132474,8 @@
     "localPath": "images/google/google_미래에셋증권_20260922_slxqi.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -132420,7 +132490,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR18194268587332468737/creative/CR09512424237818707969?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2025-01-01",
-    "status": "active",
+    "status": "ended",
     "keyword": "미래에셋증권",
     "searchType": "brand",
     "id": "google_1790040731008_zzmw1",
@@ -132430,7 +132500,8 @@
     "seenInMonths": [
       "2026-09"
     ],
-    "adDateEstimated": true
+    "adDateEstimated": true,
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -132445,7 +132516,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR18194268587332468737/creative/CR14916743790663303169?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2026-09-14",
-    "status": "active",
+    "status": "ended",
     "keyword": "미래에셋증권",
     "searchType": "brand",
     "id": "google_1790040731008_d7nwu",
@@ -132454,7 +132525,8 @@
     "localPath": "images/google/google_미래에셋증권_20260922_0a3h0.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -132469,7 +132541,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR18194268587332468737/creative/CR07918704123589951489?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2025-01-01",
-    "status": "active",
+    "status": "ended",
     "keyword": "미래에셋증권",
     "searchType": "brand",
     "id": "google_1790040731008_8x3iv",
@@ -132479,7 +132551,8 @@
     "seenInMonths": [
       "2026-09"
     ],
-    "adDateEstimated": true
+    "adDateEstimated": true,
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -132494,7 +132567,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR18194268587332468737/creative/CR13096295582694113281?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2025-01-01",
-    "status": "active",
+    "status": "ended",
     "keyword": "미래에셋증권",
     "searchType": "brand",
     "id": "google_1790040731008_9da91",
@@ -132504,7 +132577,8 @@
     "seenInMonths": [
       "2026-09"
     ],
-    "adDateEstimated": true
+    "adDateEstimated": true,
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -132519,7 +132593,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR18194268587332468737/creative/CR08007650216230518785?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2026-09-08",
-    "status": "active",
+    "status": "ended",
     "keyword": "미래에셋증권",
     "searchType": "brand",
     "id": "google_1790040731008_jo0li",
@@ -132528,7 +132602,8 @@
     "localPath": "images/google/google_미래에셋증권_20260922_m3pvo.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -132543,7 +132618,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR18194268587332468737/creative/CR06672200435564019713?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2025-01-01",
-    "status": "active",
+    "status": "ended",
     "keyword": "미래에셋증권",
     "searchType": "brand",
     "id": "google_1790040731008_ok8st",
@@ -132553,7 +132628,8 @@
     "seenInMonths": [
       "2026-09"
     ],
-    "adDateEstimated": true
+    "adDateEstimated": true,
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -132568,7 +132644,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR18194268587332468737/creative/CR16390735541122891777?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2026-05-27",
-    "status": "active",
+    "status": "ended",
     "keyword": "미래에셋증권",
     "searchType": "brand",
     "id": "google_1790040731009_mbwlu",
@@ -132577,7 +132653,8 @@
     "localPath": "images/google/google_미래에셋증권_20260922_y3a8c.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -132592,7 +132669,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR18194268587332468737/creative/CR16504088635826503681?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2025-01-01",
-    "status": "active",
+    "status": "ended",
     "keyword": "미래에셋증권",
     "searchType": "brand",
     "id": "google_1790040731009_77jb4",
@@ -132602,7 +132679,8 @@
     "seenInMonths": [
       "2026-09"
     ],
-    "adDateEstimated": true
+    "adDateEstimated": true,
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -132617,7 +132695,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR18194268587332468737/creative/CR13010139749917130753?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2025-01-01",
-    "status": "active",
+    "status": "ended",
     "keyword": "미래에셋증권",
     "searchType": "brand",
     "id": "google_1790040731009_g9qwj",
@@ -132627,7 +132705,8 @@
     "seenInMonths": [
       "2026-09"
     ],
-    "adDateEstimated": true
+    "adDateEstimated": true,
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -132642,7 +132721,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR18194268587332468737/creative/CR07986046711120265217?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2025-12-18",
-    "status": "active",
+    "status": "ended",
     "keyword": "미래에셋증권",
     "searchType": "brand",
     "id": "google_1790040731010_znagc",
@@ -132651,7 +132730,8 @@
     "localPath": "images/google/google_미래에셋증권_20260922_edbyx.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -132666,7 +132746,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR18194268587332468737/creative/CR09234726057779658753?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2025-01-01",
-    "status": "active",
+    "status": "ended",
     "keyword": "미래에셋증권",
     "searchType": "brand",
     "id": "google_1790040731010_2fjij",
@@ -132676,7 +132756,8 @@
     "seenInMonths": [
       "2026-09"
     ],
-    "adDateEstimated": true
+    "adDateEstimated": true,
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -132691,7 +132772,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR18194268587332468737/creative/CR10221520976156295169?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2025-12-17",
-    "status": "active",
+    "status": "ended",
     "keyword": "미래에셋증권",
     "searchType": "brand",
     "id": "google_1790040731010_kbsso",
@@ -132700,7 +132781,8 @@
     "localPath": "images/google/google_미래에셋증권_20260922_qrwif.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -132715,7 +132797,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR18194268587332468737/creative/CR02267495531150311425?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2025-01-01",
-    "status": "active",
+    "status": "ended",
     "keyword": "미래에셋증권",
     "searchType": "brand",
     "id": "google_1790040731010_yls7g",
@@ -132725,7 +132807,8 @@
     "seenInMonths": [
       "2026-09"
     ],
-    "adDateEstimated": true
+    "adDateEstimated": true,
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -132740,7 +132823,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR18194268587332468737/creative/CR01682837369906003969?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2025-12-17",
-    "status": "active",
+    "status": "ended",
     "keyword": "미래에셋증권",
     "searchType": "brand",
     "id": "google_1790040731010_5pqu7",
@@ -132749,7 +132832,8 @@
     "localPath": "images/google/google_미래에셋증권_20260922_2iyv5.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -132764,7 +132848,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR18194268587332468737/creative/CR15961921651193413633?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2025-01-01",
-    "status": "active",
+    "status": "ended",
     "keyword": "미래에셋증권",
     "searchType": "brand",
     "id": "google_1790040731010_pbi8g",
@@ -132774,7 +132858,8 @@
     "seenInMonths": [
       "2026-09"
     ],
-    "adDateEstimated": true
+    "adDateEstimated": true,
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -132789,7 +132874,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR18194268587332468737/creative/CR17392834879674122241?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2025-01-01",
-    "status": "active",
+    "status": "ended",
     "keyword": "미래에셋증권",
     "searchType": "brand",
     "id": "google_1790040731010_wxceg",
@@ -132799,7 +132884,8 @@
     "seenInMonths": [
       "2026-09"
     ],
-    "adDateEstimated": true
+    "adDateEstimated": true,
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -132814,7 +132900,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR18194268587332468737/creative/CR16855777256855830529?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2025-12-17",
-    "status": "active",
+    "status": "ended",
     "keyword": "미래에셋증권",
     "searchType": "brand",
     "id": "google_1790040731010_284k8",
@@ -132823,7 +132909,8 @@
     "localPath": "images/google/google_미래에셋증권_20260922_b9rpf.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -132838,7 +132925,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR18194268587332468737/creative/CR06766697112009703425?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2025-01-01",
-    "status": "active",
+    "status": "ended",
     "keyword": "미래에셋증권",
     "searchType": "brand",
     "id": "google_1790040731010_xpk0d",
@@ -132848,7 +132935,8 @@
     "seenInMonths": [
       "2026-09"
     ],
-    "adDateEstimated": true
+    "adDateEstimated": true,
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -132863,7 +132951,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR18194268587332468737/creative/CR16270957536121716737?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2025-12-17",
-    "status": "active",
+    "status": "ended",
     "keyword": "미래에셋증권",
     "searchType": "brand",
     "id": "google_1790040731010_5gw67",
@@ -132872,7 +132960,8 @@
     "localPath": "images/google/google_미래에셋증권_20260922_whv1o.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -132887,7 +132976,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR18194268587332468737/creative/CR12122383066534510593?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2025-01-01",
-    "status": "active",
+    "status": "ended",
     "keyword": "미래에셋증권",
     "searchType": "brand",
     "id": "google_1790040731010_d3v41",
@@ -132897,7 +132986,8 @@
     "seenInMonths": [
       "2026-09"
     ],
-    "adDateEstimated": true
+    "adDateEstimated": true,
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -132912,7 +133002,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR18194268587332468737/creative/CR13852579236927242241?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2025-01-01",
-    "status": "active",
+    "status": "ended",
     "keyword": "미래에셋증권",
     "searchType": "brand",
     "id": "google_1790040731010_63djd",
@@ -132922,7 +133012,8 @@
     "seenInMonths": [
       "2026-09"
     ],
-    "adDateEstimated": true
+    "adDateEstimated": true,
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -132937,7 +133028,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR18194268587332468737/creative/CR03047931633324785665?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2025-12-17",
-    "status": "active",
+    "status": "ended",
     "keyword": "미래에셋증권",
     "searchType": "brand",
     "id": "google_1790040731010_boflg",
@@ -132946,7 +133037,8 @@
     "localPath": "images/google/google_미래에셋증권_20260922_e0qvh.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -132961,7 +133053,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR18194268587332468737/creative/CR03743374730757931009?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2025-01-01",
-    "status": "active",
+    "status": "ended",
     "keyword": "미래에셋증권",
     "searchType": "brand",
     "id": "google_1790040731010_g62pu",
@@ -132971,7 +133063,8 @@
     "seenInMonths": [
       "2026-09"
     ],
-    "adDateEstimated": true
+    "adDateEstimated": true,
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -132986,7 +133079,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR18194268587332468737/creative/CR04319016553057091585?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2025-12-13",
-    "status": "active",
+    "status": "ended",
     "keyword": "미래에셋증권",
     "searchType": "brand",
     "id": "google_1790040731010_4rzwx",
@@ -132995,7 +133088,8 @@
     "localPath": "images/google/google_미래에셋증권_20260922_yhqvq.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -133010,7 +133104,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR18194268587332468737/creative/CR00164800832905150465?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2025-01-01",
-    "status": "active",
+    "status": "ended",
     "keyword": "미래에셋증권",
     "searchType": "brand",
     "id": "google_1790040731010_s5bbi",
@@ -133020,7 +133114,8 @@
     "seenInMonths": [
       "2026-09"
     ],
-    "adDateEstimated": true
+    "adDateEstimated": true,
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -133035,7 +133130,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR18194268587332468737/creative/CR14085525412520132609?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2025-11-30",
-    "status": "active",
+    "status": "ended",
     "keyword": "미래에셋증권",
     "searchType": "brand",
     "id": "google_1790040731010_z7wxr",
@@ -133044,7 +133139,8 @@
     "localPath": "images/google/google_미래에셋증권_20260922_fmux3.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -133059,7 +133155,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR18194268587332468737/creative/CR00568558270176821249?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2025-01-01",
-    "status": "active",
+    "status": "ended",
     "keyword": "미래에셋증권",
     "searchType": "brand",
     "id": "google_1790040731010_96vbo",
@@ -133069,7 +133165,8 @@
     "seenInMonths": [
       "2026-09"
     ],
-    "adDateEstimated": true
+    "adDateEstimated": true,
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -133084,7 +133181,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR18194268587332468737/creative/CR13832204667989262337?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2025-01-01",
-    "status": "active",
+    "status": "ended",
     "keyword": "미래에셋증권",
     "searchType": "brand",
     "id": "google_1790040731010_e5ky2",
@@ -133094,7 +133191,8 @@
     "seenInMonths": [
       "2026-09"
     ],
-    "adDateEstimated": true
+    "adDateEstimated": true,
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -133109,7 +133207,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR18194268587332468737/creative/CR05161338323603554305?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2025-11-29",
-    "status": "active",
+    "status": "ended",
     "keyword": "미래에셋증권",
     "searchType": "brand",
     "id": "google_1790040731010_lfwbn",
@@ -133118,7 +133216,8 @@
     "localPath": "images/google/google_미래에셋증권_20260922_d1m2e.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -133133,7 +133232,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR18194268587332468737/creative/CR16904434769553522689?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2025-01-01",
-    "status": "active",
+    "status": "ended",
     "keyword": "미래에셋증권",
     "searchType": "brand",
     "id": "google_1790040731011_a3ixa",
@@ -133143,7 +133242,8 @@
     "seenInMonths": [
       "2026-09"
     ],
-    "adDateEstimated": true
+    "adDateEstimated": true,
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -133158,7 +133258,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR18194268587332468737/creative/CR13685813490843910145?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2025-10-12",
-    "status": "active",
+    "status": "ended",
     "keyword": "미래에셋증권",
     "searchType": "brand",
     "id": "google_1790040731011_rfnb4",
@@ -133167,7 +133267,8 @@
     "localPath": "images/google/google_미래에셋증권_20260922_jwrq1.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -133182,7 +133283,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR18194268587332468737/creative/CR12176085069860962305?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2025-01-01",
-    "status": "active",
+    "status": "ended",
     "keyword": "미래에셋증권",
     "searchType": "brand",
     "id": "google_1790040731011_znjzx",
@@ -133192,7 +133293,8 @@
     "seenInMonths": [
       "2026-09"
     ],
-    "adDateEstimated": true
+    "adDateEstimated": true,
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -133207,7 +133309,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR18194268587332468737/creative/CR18353926995764576257?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2025-01-01",
-    "status": "active",
+    "status": "ended",
     "keyword": "미래에셋증권",
     "searchType": "brand",
     "id": "google_1790040731011_uc81b",
@@ -133217,7 +133319,8 @@
     "seenInMonths": [
       "2026-09"
     ],
-    "adDateEstimated": true
+    "adDateEstimated": true,
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -133232,7 +133335,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR18194268587332468737/creative/CR01139975700082589697?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2025-10-12",
-    "status": "active",
+    "status": "ended",
     "keyword": "미래에셋증권",
     "searchType": "brand",
     "id": "google_1790040731011_9043k",
@@ -133241,7 +133344,8 @@
     "localPath": "images/google/google_미래에셋증권_20260922_g5lsg.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -133256,7 +133360,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR18194268587332468737/creative/CR11999081633572454401?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2025-01-01",
-    "status": "active",
+    "status": "ended",
     "keyword": "미래에셋증권",
     "searchType": "brand",
     "id": "google_1790040731011_vkjf5",
@@ -133266,7 +133370,8 @@
     "seenInMonths": [
       "2026-09"
     ],
-    "adDateEstimated": true
+    "adDateEstimated": true,
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -133281,7 +133386,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR18194268587332468737/creative/CR14847438179740418049?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2025-09-30",
-    "status": "active",
+    "status": "ended",
     "keyword": "미래에셋증권",
     "searchType": "brand",
     "id": "google_1790040731011_w2nqn",
@@ -133290,7 +133395,8 @@
     "localPath": "images/google/google_미래에셋증권_20260922_mknpo.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -133305,7 +133411,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR18194268587332468737/creative/CR15944830773731786753?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2025-01-01",
-    "status": "active",
+    "status": "ended",
     "keyword": "미래에셋증권",
     "searchType": "brand",
     "id": "google_1790040731011_iv061",
@@ -133315,7 +133421,8 @@
     "seenInMonths": [
       "2026-09"
     ],
-    "adDateEstimated": true
+    "adDateEstimated": true,
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -133330,7 +133437,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR18194268587332468737/creative/CR03572765298182324225?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2025-09-30",
-    "status": "active",
+    "status": "ended",
     "keyword": "미래에셋증권",
     "searchType": "brand",
     "id": "google_1790040731011_xn88d",
@@ -133339,7 +133446,8 @@
     "localPath": "images/google/google_미래에셋증권_20260922_ayv3b.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -133354,7 +133462,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR18194268587332468737/creative/CR10879200728258183169?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2025-01-01",
-    "status": "active",
+    "status": "ended",
     "keyword": "미래에셋증권",
     "searchType": "brand",
     "id": "google_1790040731011_ao0n5",
@@ -133364,7 +133472,8 @@
     "seenInMonths": [
       "2026-09"
     ],
-    "adDateEstimated": true
+    "adDateEstimated": true,
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -133379,7 +133488,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR18194268587332468737/creative/CR02789913087925288961?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2025-01-01",
-    "status": "active",
+    "status": "ended",
     "keyword": "미래에셋증권",
     "searchType": "brand",
     "id": "google_1790040731011_h93xl",
@@ -133389,7 +133498,8 @@
     "seenInMonths": [
       "2026-09"
     ],
-    "adDateEstimated": true
+    "adDateEstimated": true,
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -133404,7 +133514,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR18194268587332468737/creative/CR09289901200528900097?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2025-09-29",
-    "status": "active",
+    "status": "ended",
     "keyword": "미래에셋증권",
     "searchType": "brand",
     "id": "google_1790040731011_xitv6",
@@ -133413,7 +133523,8 @@
     "localPath": "images/google/google_미래에셋증권_20260922_svc5f.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -133428,7 +133539,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR18194268587332468737/creative/CR08565086917702451201?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2025-01-01",
-    "status": "active",
+    "status": "ended",
     "keyword": "미래에셋증권",
     "searchType": "brand",
     "id": "google_1790040731011_mh67f",
@@ -133438,7 +133549,8 @@
     "seenInMonths": [
       "2026-09"
     ],
-    "adDateEstimated": true
+    "adDateEstimated": true,
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -133453,7 +133565,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR18194268587332468737/creative/CR02221625830184845313?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2025-09-29",
-    "status": "active",
+    "status": "ended",
     "keyword": "미래에셋증권",
     "searchType": "brand",
     "id": "google_1790040731011_2oczk",
@@ -133462,7 +133574,8 @@
     "localPath": "images/google/google_미래에셋증권_20260922_t6vef.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -133477,7 +133590,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR18194268587332468737/creative/CR09733568985743491073?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2025-01-01",
-    "status": "active",
+    "status": "ended",
     "keyword": "미래에셋증권",
     "searchType": "brand",
     "id": "google_1790040731011_jv4s5",
@@ -133487,7 +133600,8 @@
     "seenInMonths": [
       "2026-09"
     ],
-    "adDateEstimated": true
+    "adDateEstimated": true,
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -133502,7 +133616,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR18194268587332468737/creative/CR01453041913601982465?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2025-09-25",
-    "status": "active",
+    "status": "ended",
     "keyword": "미래에셋증권",
     "searchType": "brand",
     "id": "google_1790040731012_ersfl",
@@ -133511,7 +133625,8 @@
     "localPath": "images/google/google_미래에셋증권_20260922_ne9u6.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -133526,7 +133641,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR18194268587332468737/creative/CR07467428173177683969?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2025-01-01",
-    "status": "active",
+    "status": "ended",
     "keyword": "미래에셋증권",
     "searchType": "brand",
     "id": "google_1790040731012_4thwy",
@@ -133536,7 +133651,8 @@
     "seenInMonths": [
       "2026-09"
     ],
-    "adDateEstimated": true
+    "adDateEstimated": true,
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -133551,7 +133667,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR18194268587332468737/creative/CR10665824760128077825?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2025-01-01",
-    "status": "active",
+    "status": "ended",
     "keyword": "미래에셋증권",
     "searchType": "brand",
     "id": "google_1790040731012_415xg",
@@ -133561,7 +133677,8 @@
     "seenInMonths": [
       "2026-09"
     ],
-    "adDateEstimated": true
+    "adDateEstimated": true,
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -133576,7 +133693,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR18194268587332468737/creative/CR13115678297654558721?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2025-09-25",
-    "status": "active",
+    "status": "ended",
     "keyword": "미래에셋증권",
     "searchType": "brand",
     "id": "google_1790040731012_c9nzo",
@@ -133585,7 +133702,8 @@
     "localPath": "images/google/google_미래에셋증권_20260922_cuail.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -133600,7 +133718,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR18194268587332468737/creative/CR13050399398960300033?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2025-01-01",
-    "status": "active",
+    "status": "ended",
     "keyword": "미래에셋증권",
     "searchType": "brand",
     "id": "google_1790040731012_mccub",
@@ -133610,7 +133728,8 @@
     "seenInMonths": [
       "2026-09"
     ],
-    "adDateEstimated": true
+    "adDateEstimated": true,
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -133625,7 +133744,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR18194268587332468737/creative/CR10467969085818798081?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2025-09-23",
-    "status": "active",
+    "status": "ended",
     "keyword": "미래에셋증권",
     "searchType": "brand",
     "id": "google_1790040731012_dd9m7",
@@ -133634,7 +133753,8 @@
     "localPath": "images/google/google_미래에셋증권_20260922_ar54h.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -133649,7 +133769,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR18194268587332468737/creative/CR09870911182192246785?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2025-01-01",
-    "status": "active",
+    "status": "ended",
     "keyword": "미래에셋증권",
     "searchType": "brand",
     "id": "google_1790040731012_8mm4t",
@@ -133659,7 +133779,8 @@
     "seenInMonths": [
       "2026-09"
     ],
-    "adDateEstimated": true
+    "adDateEstimated": true,
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -133674,7 +133795,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR18194268587332468737/creative/CR11586469279406489601?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2025-01-01",
-    "status": "active",
+    "status": "ended",
     "keyword": "미래에셋증권",
     "searchType": "brand",
     "id": "google_1790040731012_x79yh",
@@ -133684,7 +133805,8 @@
     "seenInMonths": [
       "2026-09"
     ],
-    "adDateEstimated": true
+    "adDateEstimated": true,
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "video",
@@ -133706,7 +133828,9 @@
     "seenInMonths": [
       "2026-09"
     ],
-    "adDateEstimated": true
+    "adDateEstimated": true,
+    "status": "ended",
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "video",
@@ -133728,7 +133852,9 @@
     "seenInMonths": [
       "2026-09"
     ],
-    "adDateEstimated": true
+    "adDateEstimated": true,
+    "status": "ended",
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "video",
@@ -133750,7 +133876,9 @@
     "seenInMonths": [
       "2026-09"
     ],
-    "adDateEstimated": true
+    "adDateEstimated": true,
+    "status": "ended",
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "video",
@@ -133772,7 +133900,9 @@
     "seenInMonths": [
       "2026-09"
     ],
-    "adDateEstimated": true
+    "adDateEstimated": true,
+    "status": "ended",
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "video",
@@ -133794,7 +133924,9 @@
     "seenInMonths": [
       "2026-09"
     ],
-    "adDateEstimated": true
+    "adDateEstimated": true,
+    "status": "ended",
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "video",
@@ -133809,7 +133941,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR11621934095679881217/creative/CR06139870884543856641?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2026-09-20",
-    "status": "active",
+    "status": "ended",
     "keyword": "삼성증권",
     "searchType": "brand",
     "id": "google_1790041747366_bt74b",
@@ -133817,7 +133949,8 @@
     "localThumb": "images/google/google_삼성증권_20260922_u2jve.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "video",
@@ -133832,7 +133965,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR11621934095679881217/creative/CR10475451941050646529?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2026-09-18",
-    "status": "active",
+    "status": "ended",
     "keyword": "삼성증권",
     "searchType": "brand",
     "id": "google_1790041747366_8nqgl",
@@ -133840,7 +133973,8 @@
     "localThumb": "images/google/google_삼성증권_20260922_96a7u.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "video",
@@ -133855,7 +133989,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR11621934095679881217/creative/CR03670979097024004097?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2026-09-18",
-    "status": "active",
+    "status": "ended",
     "keyword": "삼성증권",
     "searchType": "brand",
     "id": "google_1790041747366_0ofs3",
@@ -133863,7 +133997,8 @@
     "localThumb": "images/google/google_삼성증권_20260922_up4mg.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "video",
@@ -133878,7 +134013,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR11621934095679881217/creative/CR08218488820761362433?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2026-09-18",
-    "status": "active",
+    "status": "ended",
     "keyword": "삼성증권",
     "searchType": "brand",
     "id": "google_1790041747366_r5zd4",
@@ -133886,7 +134021,8 @@
     "localThumb": "images/google/google_삼성증권_20260922_f39aa.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "video",
@@ -133901,7 +134037,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR11621934095679881217/creative/CR10558812514622111745?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2026-09-18",
-    "status": "active",
+    "status": "ended",
     "keyword": "삼성증권",
     "searchType": "brand",
     "id": "google_1790041747366_ju55q",
@@ -133909,7 +134045,8 @@
     "localThumb": "images/google/google_삼성증권_20260922_09jmo.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "video",
@@ -133924,7 +134061,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR11621934095679881217/creative/CR18243712697520619521?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2026-09-18",
-    "status": "active",
+    "status": "ended",
     "keyword": "삼성증권",
     "searchType": "brand",
     "id": "google_1790041747366_2m7se",
@@ -133932,7 +134069,8 @@
     "localThumb": "images/google/google_삼성증권_20260922_vr0r3.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "video",
@@ -133947,7 +134085,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR11621934095679881217/creative/CR01362462075531558913?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2026-09-18",
-    "status": "active",
+    "status": "ended",
     "keyword": "삼성증권",
     "searchType": "brand",
     "id": "google_1790041747366_fydr6",
@@ -133955,7 +134093,8 @@
     "localThumb": "images/google/google_삼성증권_20260922_4f8md.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "video",
@@ -133970,7 +134109,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR11621934095679881217/creative/CR10954003381923872769?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2026-09-18",
-    "status": "active",
+    "status": "ended",
     "keyword": "삼성증권",
     "searchType": "brand",
     "id": "google_1790041747366_hfz0j",
@@ -133978,7 +134117,8 @@
     "localThumb": "images/google/google_삼성증권_20260922_v4q70.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "video",
@@ -133993,7 +134133,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR11621934095679881217/creative/CR07361749360398303233?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2025-01-01",
-    "status": "active",
+    "status": "ended",
     "keyword": "삼성증권",
     "searchType": "brand",
     "id": "google_1790041747366_jnlo0",
@@ -134002,7 +134142,8 @@
     "seenInMonths": [
       "2026-09"
     ],
-    "adDateEstimated": true
+    "adDateEstimated": true,
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "video",
@@ -134017,7 +134158,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR11621934095679881217/creative/CR03316901065428828161?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2026-09-17",
-    "status": "active",
+    "status": "ended",
     "keyword": "삼성증권",
     "searchType": "brand",
     "id": "google_1790041747366_0l7sl",
@@ -134025,7 +134166,8 @@
     "localThumb": "images/google/google_삼성증권_20260922_lvpks.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "video",
@@ -134040,7 +134182,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR11621934095679881217/creative/CR15972578968293343233?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2025-01-01",
-    "status": "active",
+    "status": "ended",
     "keyword": "삼성증권",
     "searchType": "brand",
     "id": "google_1790041747366_fui9x",
@@ -134049,7 +134191,8 @@
     "seenInMonths": [
       "2026-09"
     ],
-    "adDateEstimated": true
+    "adDateEstimated": true,
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "video",
@@ -134064,7 +134207,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR11621934095679881217/creative/CR04667523556802822145?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2026-09-16",
-    "status": "active",
+    "status": "ended",
     "keyword": "삼성증권",
     "searchType": "brand",
     "id": "google_1790041747366_wg4oe",
@@ -134072,7 +134215,8 @@
     "localThumb": "images/google/google_삼성증권_20260922_f43bx.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "video",
@@ -134087,7 +134231,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR11621934095679881217/creative/CR12724454494075617281?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2025-01-01",
-    "status": "active",
+    "status": "ended",
     "keyword": "삼성증권",
     "searchType": "brand",
     "id": "google_1790041747366_5r3qw",
@@ -134096,7 +134240,8 @@
     "seenInMonths": [
       "2026-09"
     ],
-    "adDateEstimated": true
+    "adDateEstimated": true,
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "video",
@@ -134111,7 +134256,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR11621934095679881217/creative/CR05402815360808255489?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2026-09-16",
-    "status": "active",
+    "status": "ended",
     "keyword": "삼성증권",
     "searchType": "brand",
     "id": "google_1790041747366_ij4q4",
@@ -134119,7 +134264,8 @@
     "localThumb": "images/google/google_삼성증권_20260922_iwy29.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "video",
@@ -134134,7 +134280,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR11621934095679881217/creative/CR11547660393006497793?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2026-09-15",
-    "status": "active",
+    "status": "ended",
     "keyword": "삼성증권",
     "searchType": "brand",
     "id": "google_1790041747366_wh1z6",
@@ -134142,7 +134288,8 @@
     "localThumb": "images/google/google_삼성증권_20260922_vwdg8.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "video",
@@ -134157,7 +134304,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR11621934095679881217/creative/CR07988448894918852609?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2025-01-01",
-    "status": "active",
+    "status": "ended",
     "keyword": "삼성증권",
     "searchType": "brand",
     "id": "google_1790041747366_y143y",
@@ -134166,7 +134313,8 @@
     "seenInMonths": [
       "2026-09"
     ],
-    "adDateEstimated": true
+    "adDateEstimated": true,
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "video",
@@ -134181,7 +134329,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR11621934095679881217/creative/CR14458854922055057409?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2025-01-01",
-    "status": "active",
+    "status": "ended",
     "keyword": "삼성증권",
     "searchType": "brand",
     "id": "google_1790041747366_m29vi",
@@ -134190,7 +134338,8 @@
     "seenInMonths": [
       "2026-09"
     ],
-    "adDateEstimated": true
+    "adDateEstimated": true,
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "video",
@@ -134205,7 +134354,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR11621934095679881217/creative/CR05144812758327361537?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2026-09-15",
-    "status": "active",
+    "status": "ended",
     "keyword": "삼성증권",
     "searchType": "brand",
     "id": "google_1790041747366_22xkt",
@@ -134213,7 +134362,8 @@
     "localThumb": "images/google/google_삼성증권_20260922_zyve7.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "video",
@@ -134228,7 +134378,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR11621934095679881217/creative/CR09657982534906019841?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2025-01-01",
-    "status": "active",
+    "status": "ended",
     "keyword": "삼성증권",
     "searchType": "brand",
     "id": "google_1790041747366_bp302",
@@ -134237,7 +134387,8 @@
     "seenInMonths": [
       "2026-09"
     ],
-    "adDateEstimated": true
+    "adDateEstimated": true,
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "video",
@@ -134252,7 +134403,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR11621934095679881217/creative/CR07856542683957821441?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2026-09-14",
-    "status": "active",
+    "status": "ended",
     "keyword": "삼성증권",
     "searchType": "brand",
     "id": "google_1790041747366_pukru",
@@ -134260,7 +134411,8 @@
     "localThumb": "images/google/google_삼성증권_20260922_x4hx0.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "video",
@@ -134275,7 +134427,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR11621934095679881217/creative/CR04093143080499150849?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2025-01-01",
-    "status": "active",
+    "status": "ended",
     "keyword": "삼성증권",
     "searchType": "brand",
     "id": "google_1790041747366_yn5k0",
@@ -134284,7 +134436,8 @@
     "seenInMonths": [
       "2026-09"
     ],
-    "adDateEstimated": true
+    "adDateEstimated": true,
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "video",
@@ -134299,7 +134452,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR11621934095679881217/creative/CR01816654832723820545?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2025-01-01",
-    "status": "active",
+    "status": "ended",
     "keyword": "삼성증권",
     "searchType": "brand",
     "id": "google_1790041747366_bk8n1",
@@ -134308,7 +134461,8 @@
     "seenInMonths": [
       "2026-09"
     ],
-    "adDateEstimated": true
+    "adDateEstimated": true,
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "video",
@@ -134323,7 +134477,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR11621934095679881217/creative/CR01626377748467417089?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2025-01-01",
-    "status": "active",
+    "status": "ended",
     "keyword": "삼성증권",
     "searchType": "brand",
     "id": "google_1790041747366_pael3",
@@ -134332,7 +134486,8 @@
     "seenInMonths": [
       "2026-09"
     ],
-    "adDateEstimated": true
+    "adDateEstimated": true,
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "video",
@@ -134347,7 +134502,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR11621934095679881217/creative/CR16040623344889888769?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2026-09-13",
-    "status": "active",
+    "status": "ended",
     "keyword": "삼성증권",
     "searchType": "brand",
     "id": "google_1790041747366_oh984",
@@ -134355,7 +134510,8 @@
     "localThumb": "images/google/google_삼성증권_20260922_6gl51.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "video",
@@ -134370,7 +134526,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR11621934095679881217/creative/CR03199734907349762049?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2025-01-01",
-    "status": "active",
+    "status": "ended",
     "keyword": "삼성증권",
     "searchType": "brand",
     "id": "google_1790041747366_hdsa7",
@@ -134379,7 +134535,8 @@
     "seenInMonths": [
       "2026-09"
     ],
-    "adDateEstimated": true
+    "adDateEstimated": true,
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "video",
@@ -134394,7 +134551,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR11621934095679881217/creative/CR16652105741561233409?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2025-01-01",
-    "status": "active",
+    "status": "ended",
     "keyword": "삼성증권",
     "searchType": "brand",
     "id": "google_1790041747366_622xz",
@@ -134403,7 +134560,8 @@
     "seenInMonths": [
       "2026-09"
     ],
-    "adDateEstimated": true
+    "adDateEstimated": true,
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "video",
@@ -134418,7 +134576,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR11621934095679881217/creative/CR05867611911218003969?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2026-09-10",
-    "status": "active",
+    "status": "ended",
     "keyword": "삼성증권",
     "searchType": "brand",
     "id": "google_1790041747366_nbuja",
@@ -134426,7 +134584,8 @@
     "localThumb": "images/google/google_삼성증권_20260922_jv9om.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "video",
@@ -134441,7 +134600,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR11621934095679881217/creative/CR15061094823983316993?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2025-01-01",
-    "status": "active",
+    "status": "ended",
     "keyword": "삼성증권",
     "searchType": "brand",
     "id": "google_1790041747366_gw7h1",
@@ -134450,7 +134609,8 @@
     "seenInMonths": [
       "2026-09"
     ],
-    "adDateEstimated": true
+    "adDateEstimated": true,
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "video",
@@ -134465,7 +134625,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR11621934095679881217/creative/CR09347871327605751809?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2026-09-03",
-    "status": "active",
+    "status": "ended",
     "keyword": "삼성증권",
     "searchType": "brand",
     "id": "google_1790041747366_92ps8",
@@ -134473,7 +134633,8 @@
     "localThumb": "images/google/google_삼성증권_20260922_ad2e4.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "video",
@@ -134488,7 +134649,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR11621934095679881217/creative/CR01392176274192990209?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2025-01-01",
-    "status": "active",
+    "status": "ended",
     "keyword": "삼성증권",
     "searchType": "brand",
     "id": "google_1790041747366_iz2ea",
@@ -134497,7 +134658,8 @@
     "seenInMonths": [
       "2026-09"
     ],
-    "adDateEstimated": true
+    "adDateEstimated": true,
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "video",
@@ -134512,7 +134674,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR11621934095679881217/creative/CR17746998320988946433?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2026-09-03",
-    "status": "active",
+    "status": "ended",
     "keyword": "삼성증권",
     "searchType": "brand",
     "id": "google_1790041747366_2e2js",
@@ -134520,7 +134682,8 @@
     "localThumb": "images/google/google_삼성증권_20260922_vu8yl.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "video",
@@ -134535,7 +134698,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR11621934095679881217/creative/CR08054688972934217729?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2025-01-01",
-    "status": "active",
+    "status": "ended",
     "keyword": "삼성증권",
     "searchType": "brand",
     "id": "google_1790041747366_pc6z7",
@@ -134544,7 +134707,8 @@
     "seenInMonths": [
       "2026-09"
     ],
-    "adDateEstimated": true
+    "adDateEstimated": true,
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "video",
@@ -134559,7 +134723,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR11621934095679881217/creative/CR00462745901094404097?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2025-01-01",
-    "status": "active",
+    "status": "ended",
     "keyword": "삼성증권",
     "searchType": "brand",
     "id": "google_1790041747366_rgkvi",
@@ -134568,7 +134732,8 @@
     "seenInMonths": [
       "2026-09"
     ],
-    "adDateEstimated": true
+    "adDateEstimated": true,
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "video",
@@ -134583,7 +134748,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR11621934095679881217/creative/CR15699549340395634689?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2026-09-02",
-    "status": "active",
+    "status": "ended",
     "keyword": "삼성증권",
     "searchType": "brand",
     "id": "google_1790041747366_gobv4",
@@ -134591,7 +134756,8 @@
     "localThumb": "images/google/google_삼성증권_20260922_326rx.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "video",
@@ -134606,7 +134772,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR11621934095679881217/creative/CR11725122669241171969?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2025-01-01",
-    "status": "active",
+    "status": "ended",
     "keyword": "삼성증권",
     "searchType": "brand",
     "id": "google_1790041747366_0t4ci",
@@ -134615,7 +134781,8 @@
     "seenInMonths": [
       "2026-09"
     ],
-    "adDateEstimated": true
+    "adDateEstimated": true,
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "video",
@@ -134630,7 +134797,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR11621934095679881217/creative/CR04912529382087589889?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2026-09-02",
-    "status": "active",
+    "status": "ended",
     "keyword": "삼성증권",
     "searchType": "brand",
     "id": "google_1790041747366_q1nbc",
@@ -134638,7 +134805,8 @@
     "localThumb": "images/google/google_삼성증권_20260922_4g5ok.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "video",
@@ -134653,7 +134821,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR11621934095679881217/creative/CR02189610826132881409?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2025-01-01",
-    "status": "active",
+    "status": "ended",
     "keyword": "삼성증권",
     "searchType": "brand",
     "id": "google_1790041747366_bcm09",
@@ -134662,7 +134830,8 @@
     "seenInMonths": [
       "2026-09"
     ],
-    "adDateEstimated": true
+    "adDateEstimated": true,
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "video",
@@ -134677,7 +134846,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR11621934095679881217/creative/CR15072553384412184577?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2025-01-01",
-    "status": "active",
+    "status": "ended",
     "keyword": "삼성증권",
     "searchType": "brand",
     "id": "google_1790041747366_mmjuw",
@@ -134686,7 +134855,8 @@
     "seenInMonths": [
       "2026-09"
     ],
-    "adDateEstimated": true
+    "adDateEstimated": true,
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "video",
@@ -134701,7 +134871,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR11621934095679881217/creative/CR01034270395944927233?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2026-09-01",
-    "status": "active",
+    "status": "ended",
     "keyword": "삼성증권",
     "searchType": "brand",
     "id": "google_1790041747366_r6xb5",
@@ -134709,7 +134879,8 @@
     "localThumb": "images/google/google_삼성증권_20260922_7xpj5.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "video",
@@ -134724,7 +134895,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR11621934095679881217/creative/CR07666335418689781761?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2025-01-01",
-    "status": "active",
+    "status": "ended",
     "keyword": "삼성증권",
     "searchType": "brand",
     "id": "google_1790041747366_8vfxe",
@@ -134733,7 +134904,8 @@
     "seenInMonths": [
       "2026-09"
     ],
-    "adDateEstimated": true
+    "adDateEstimated": true,
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "video",
@@ -134748,7 +134920,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR11621934095679881217/creative/CR06693487530433576961?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2026-09-01",
-    "status": "active",
+    "status": "ended",
     "keyword": "삼성증권",
     "searchType": "brand",
     "id": "google_1790041747368_4n807",
@@ -134756,7 +134928,8 @@
     "localThumb": "images/google/google_삼성증권_20260922_oauyj.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "video",
@@ -134771,7 +134944,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR11621934095679881217/creative/CR18376511059088375809?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2025-01-01",
-    "status": "active",
+    "status": "ended",
     "keyword": "삼성증권",
     "searchType": "brand",
     "id": "google_1790041747368_ch34h",
@@ -134780,7 +134953,8 @@
     "seenInMonths": [
       "2026-09"
     ],
-    "adDateEstimated": true
+    "adDateEstimated": true,
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "video",
@@ -134795,7 +134969,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR11621934095679881217/creative/CR05168297776940843009?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2025-01-01",
-    "status": "active",
+    "status": "ended",
     "keyword": "삼성증권",
     "searchType": "brand",
     "id": "google_1790041747368_iybv6",
@@ -134804,7 +134978,8 @@
     "seenInMonths": [
       "2026-09"
     ],
-    "adDateEstimated": true
+    "adDateEstimated": true,
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "video",
@@ -134819,7 +134994,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR11621934095679881217/creative/CR17867947348823375873?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2026-08-31",
-    "status": "active",
+    "status": "ended",
     "keyword": "삼성증권",
     "searchType": "brand",
     "id": "google_1790041747368_ddzj1",
@@ -134827,7 +135002,8 @@
     "localThumb": "images/google/google_삼성증권_20260922_18600.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "video",
@@ -134842,7 +135018,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR11621934095679881217/creative/CR01010859594366320641?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2025-01-01",
-    "status": "active",
+    "status": "ended",
     "keyword": "삼성증권",
     "searchType": "brand",
     "id": "google_1790041747368_5nk24",
@@ -134851,7 +135027,8 @@
     "seenInMonths": [
       "2026-09"
     ],
-    "adDateEstimated": true
+    "adDateEstimated": true,
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "video",
@@ -134866,7 +135043,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR11621934095679881217/creative/CR12840478809329238017?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2026-08-31",
-    "status": "active",
+    "status": "ended",
     "keyword": "삼성증권",
     "searchType": "brand",
     "id": "google_1790041747368_peqtn",
@@ -134874,7 +135051,8 @@
     "localThumb": "images/google/google_삼성증권_20260922_w3ces.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "video",
@@ -134889,7 +135067,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR11621934095679881217/creative/CR11962417619480346625?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2025-01-01",
-    "status": "active",
+    "status": "ended",
     "keyword": "삼성증권",
     "searchType": "brand",
     "id": "google_1790041747368_strhw",
@@ -134898,7 +135076,8 @@
     "seenInMonths": [
       "2026-09"
     ],
-    "adDateEstimated": true
+    "adDateEstimated": true,
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "video",
@@ -134913,7 +135092,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR11621934095679881217/creative/CR13489111504879878145?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2026-08-31",
-    "status": "active",
+    "status": "ended",
     "keyword": "삼성증권",
     "searchType": "brand",
     "id": "google_1790041747368_hp4eb",
@@ -134921,7 +135100,8 @@
     "localThumb": "images/google/google_삼성증권_20260922_z2b8n.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "video",
@@ -134936,7 +135116,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR11621934095679881217/creative/CR14280214519111221249?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2025-01-01",
-    "status": "active",
+    "status": "ended",
     "keyword": "삼성증권",
     "searchType": "brand",
     "id": "google_1790041747368_wnr5a",
@@ -134945,7 +135125,8 @@
     "seenInMonths": [
       "2026-09"
     ],
-    "adDateEstimated": true
+    "adDateEstimated": true,
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "video",
@@ -134960,7 +135141,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR11621934095679881217/creative/CR13309671207226834945?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2025-01-01",
-    "status": "active",
+    "status": "ended",
     "keyword": "삼성증권",
     "searchType": "brand",
     "id": "google_1790041747368_7hsfa",
@@ -134969,7 +135150,8 @@
     "seenInMonths": [
       "2026-09"
     ],
-    "adDateEstimated": true
+    "adDateEstimated": true,
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "video",
@@ -134984,7 +135166,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR11621934095679881217/creative/CR15097318784316211201?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2026-08-31",
-    "status": "active",
+    "status": "ended",
     "keyword": "삼성증권",
     "searchType": "brand",
     "id": "google_1790041747368_mx0rn",
@@ -134992,7 +135174,8 @@
     "localThumb": "images/google/google_삼성증권_20260922_rx6q2.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "video",
@@ -135007,7 +135190,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR11621934095679881217/creative/CR02461344129821442049?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2025-01-01",
-    "status": "active",
+    "status": "ended",
     "keyword": "삼성증권",
     "searchType": "brand",
     "id": "google_1790041747368_eor13",
@@ -135016,7 +135199,8 @@
     "seenInMonths": [
       "2026-09"
     ],
-    "adDateEstimated": true
+    "adDateEstimated": true,
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "video",
@@ -135031,7 +135215,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR11621934095679881217/creative/CR02684592956454731777?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2026-05-21",
-    "status": "active",
+    "status": "ended",
     "keyword": "삼성증권",
     "searchType": "brand",
     "id": "google_1790041747369_hjn7v",
@@ -135039,7 +135223,8 @@
     "localThumb": "images/google/google_삼성증권_20260922_ampm6.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "video",
@@ -135054,7 +135239,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR11621934095679881217/creative/CR02339306722914467841?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2025-01-01",
-    "status": "active",
+    "status": "ended",
     "keyword": "삼성증권",
     "searchType": "brand",
     "id": "google_1790041747369_kat9v",
@@ -135063,7 +135248,8 @@
     "seenInMonths": [
       "2026-09"
     ],
-    "adDateEstimated": true
+    "adDateEstimated": true,
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "video",
@@ -135078,7 +135264,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR11621934095679881217/creative/CR16213201727912935425?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2025-01-01",
-    "status": "active",
+    "status": "ended",
     "keyword": "삼성증권",
     "searchType": "brand",
     "id": "google_1790041747369_fwnaa",
@@ -135087,7 +135273,8 @@
     "seenInMonths": [
       "2026-09"
     ],
-    "adDateEstimated": true
+    "adDateEstimated": true,
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "video",
@@ -135102,7 +135289,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR11621934095679881217/creative/CR04211460564691451905?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2026-05-19",
-    "status": "active",
+    "status": "ended",
     "keyword": "삼성증권",
     "searchType": "brand",
     "id": "google_1790041747369_zszqk",
@@ -135110,7 +135297,8 @@
     "localThumb": "images/google/google_삼성증권_20260922_41hs0.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "video",
@@ -135125,7 +135313,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR11621934095679881217/creative/CR16567525947033518081?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2025-01-01",
-    "status": "active",
+    "status": "ended",
     "keyword": "삼성증권",
     "searchType": "brand",
     "id": "google_1790041747369_7b6ko",
@@ -135134,7 +135322,8 @@
     "seenInMonths": [
       "2026-09"
     ],
-    "adDateEstimated": true
+    "adDateEstimated": true,
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "video",
@@ -135149,7 +135338,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR11621934095679881217/creative/CR07733706481853267969?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2026-05-18",
-    "status": "active",
+    "status": "ended",
     "keyword": "삼성증권",
     "searchType": "brand",
     "id": "google_1790041747369_n1fng",
@@ -135157,7 +135346,8 @@
     "localThumb": "images/google/google_삼성증권_20260922_3fjlv.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "video",
@@ -135172,7 +135362,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR11621934095679881217/creative/CR14567918916387995649?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2025-01-01",
-    "status": "active",
+    "status": "ended",
     "keyword": "삼성증권",
     "searchType": "brand",
     "id": "google_1790041747369_ifu6d",
@@ -135181,7 +135371,8 @@
     "seenInMonths": [
       "2026-09"
     ],
-    "adDateEstimated": true
+    "adDateEstimated": true,
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "video",
@@ -135196,7 +135387,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR11621934095679881217/creative/CR10282973668875173889?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2026-05-14",
-    "status": "active",
+    "status": "ended",
     "keyword": "삼성증권",
     "searchType": "brand",
     "id": "google_1790041747369_ytbmr",
@@ -135204,7 +135395,8 @@
     "localThumb": "images/google/google_삼성증권_20260922_j4t0p.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "video",
@@ -135219,7 +135411,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR11621934095679881217/creative/CR05714463273047293953?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2025-01-01",
-    "status": "active",
+    "status": "ended",
     "keyword": "삼성증권",
     "searchType": "brand",
     "id": "google_1790041747369_auci9",
@@ -135228,7 +135420,8 @@
     "seenInMonths": [
       "2026-09"
     ],
-    "adDateEstimated": true
+    "adDateEstimated": true,
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "video",
@@ -135243,7 +135436,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR11621934095679881217/creative/CR04766948132695048193?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2025-01-01",
-    "status": "active",
+    "status": "ended",
     "keyword": "삼성증권",
     "searchType": "brand",
     "id": "google_1790041747369_cre1m",
@@ -135252,7 +135445,8 @@
     "seenInMonths": [
       "2026-09"
     ],
-    "adDateEstimated": true
+    "adDateEstimated": true,
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "video",
@@ -135267,7 +135461,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR11621934095679881217/creative/CR00776195912891367425?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2026-05-13",
-    "status": "active",
+    "status": "ended",
     "keyword": "삼성증권",
     "searchType": "brand",
     "id": "google_1790041747369_g4b3p",
@@ -135275,7 +135469,8 @@
     "localThumb": "images/google/google_삼성증권_20260922_9oa2b.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "video",
@@ -135290,7 +135485,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR11621934095679881217/creative/CR08490483842577072129?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2025-01-01",
-    "status": "active",
+    "status": "ended",
     "keyword": "삼성증권",
     "searchType": "brand",
     "id": "google_1790041747369_dv5is",
@@ -135299,7 +135494,8 @@
     "seenInMonths": [
       "2026-09"
     ],
-    "adDateEstimated": true
+    "adDateEstimated": true,
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "video",
@@ -135314,7 +135510,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR11621934095679881217/creative/CR11689581093312266241?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2026-05-12",
-    "status": "active",
+    "status": "ended",
     "keyword": "삼성증권",
     "searchType": "brand",
     "id": "google_1790041747369_ls0j8",
@@ -135322,7 +135518,8 @@
     "localThumb": "images/google/google_삼성증권_20260922_axmeu.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "video",
@@ -135337,7 +135534,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR11621934095679881217/creative/CR13436414798778597377?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2025-01-01",
-    "status": "active",
+    "status": "ended",
     "keyword": "삼성증권",
     "searchType": "brand",
     "id": "google_1790041747369_ia422",
@@ -135346,7 +135543,8 @@
     "seenInMonths": [
       "2026-09"
     ],
-    "adDateEstimated": true
+    "adDateEstimated": true,
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "video",
@@ -135361,7 +135559,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR11621934095679881217/creative/CR12547648763721678849?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2025-01-01",
-    "status": "active",
+    "status": "ended",
     "keyword": "삼성증권",
     "searchType": "brand",
     "id": "google_1790041747369_pwu7b",
@@ -135370,7 +135568,8 @@
     "seenInMonths": [
       "2026-09"
     ],
-    "adDateEstimated": true
+    "adDateEstimated": true,
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "video",
@@ -135385,7 +135584,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR11621934095679881217/creative/CR04567195251072040961?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2026-05-07",
-    "status": "active",
+    "status": "ended",
     "keyword": "삼성증권",
     "searchType": "brand",
     "id": "google_1790041747369_ycrh5",
@@ -135393,7 +135592,8 @@
     "localThumb": "images/google/google_삼성증권_20260922_0ykfx.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "video",
@@ -135408,7 +135608,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR11621934095679881217/creative/CR05899688994727264257?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2025-01-01",
-    "status": "active",
+    "status": "ended",
     "keyword": "삼성증권",
     "searchType": "brand",
     "id": "google_1790041747369_ntyh5",
@@ -135417,7 +135617,8 @@
     "seenInMonths": [
       "2026-09"
     ],
-    "adDateEstimated": true
+    "adDateEstimated": true,
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "video",
@@ -135432,7 +135633,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR11621934095679881217/creative/CR17386260581824069633?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2026-05-06",
-    "status": "active",
+    "status": "ended",
     "keyword": "삼성증권",
     "searchType": "brand",
     "id": "google_1790041747369_78g6s",
@@ -135440,7 +135641,8 @@
     "localThumb": "images/google/google_삼성증권_20260922_3wuop.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "video",
@@ -135455,7 +135657,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR11621934095679881217/creative/CR16051576611006316545?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2025-01-01",
-    "status": "active",
+    "status": "ended",
     "keyword": "삼성증권",
     "searchType": "brand",
     "id": "google_1790041747369_ixlsl",
@@ -135464,7 +135666,8 @@
     "seenInMonths": [
       "2026-09"
     ],
-    "adDateEstimated": true
+    "adDateEstimated": true,
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "video",
@@ -135479,7 +135682,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR11621934095679881217/creative/CR16152797651459375105?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2026-05-04",
-    "status": "active",
+    "status": "ended",
     "keyword": "삼성증권",
     "searchType": "brand",
     "id": "google_1790041747369_ah2w7",
@@ -135487,7 +135690,8 @@
     "localThumb": "images/google/google_삼성증권_20260922_v8bpu.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "video",
@@ -135502,7 +135706,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR11621934095679881217/creative/CR07242933763078881281?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2025-01-01",
-    "status": "active",
+    "status": "ended",
     "keyword": "삼성증권",
     "searchType": "brand",
     "id": "google_1790041747369_5f8nr",
@@ -135511,7 +135715,8 @@
     "seenInMonths": [
       "2026-09"
     ],
-    "adDateEstimated": true
+    "adDateEstimated": true,
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "video",
@@ -135526,7 +135731,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR11621934095679881217/creative/CR15782321606526763009?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2025-01-01",
-    "status": "active",
+    "status": "ended",
     "keyword": "삼성증권",
     "searchType": "brand",
     "id": "google_1790041747369_b8l2h",
@@ -135535,7 +135740,8 @@
     "seenInMonths": [
       "2026-09"
     ],
-    "adDateEstimated": true
+    "adDateEstimated": true,
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "video",
@@ -135550,7 +135756,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR11621934095679881217/creative/CR17820921717539733505?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2026-04-29",
-    "status": "active",
+    "status": "ended",
     "keyword": "삼성증권",
     "searchType": "brand",
     "id": "google_1790041747369_zd058",
@@ -135558,7 +135764,8 @@
     "localThumb": "images/google/google_삼성증권_20260922_4fnlr.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "video",
@@ -135573,7 +135780,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR11621934095679881217/creative/CR13282415894522232833?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2025-01-01",
-    "status": "active",
+    "status": "ended",
     "keyword": "삼성증권",
     "searchType": "brand",
     "id": "google_1790041747369_kxi4n",
@@ -135582,7 +135789,8 @@
     "seenInMonths": [
       "2026-09"
     ],
-    "adDateEstimated": true
+    "adDateEstimated": true,
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "video",
@@ -135597,7 +135805,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR11621934095679881217/creative/CR13534916540817735681?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2026-04-28",
-    "status": "active",
+    "status": "ended",
     "keyword": "삼성증권",
     "searchType": "brand",
     "id": "google_1790041747369_xwmwo",
@@ -135605,7 +135813,8 @@
     "localThumb": "images/google/google_삼성증권_20260922_p9qha.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "video",
@@ -135620,7 +135829,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR11621934095679881217/creative/CR12682926970686668801?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2025-01-01",
-    "status": "active",
+    "status": "ended",
     "keyword": "삼성증권",
     "searchType": "brand",
     "id": "google_1790041747369_ix3tm",
@@ -135629,7 +135838,8 @@
     "seenInMonths": [
       "2026-09"
     ],
-    "adDateEstimated": true
+    "adDateEstimated": true,
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "video",
@@ -135644,7 +135854,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR11621934095679881217/creative/CR15055589500543565825?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2026-04-27",
-    "status": "active",
+    "status": "ended",
     "keyword": "삼성증권",
     "searchType": "brand",
     "id": "google_1790041747369_60rzy",
@@ -135652,7 +135862,8 @@
     "localThumb": "images/google/google_삼성증권_20260922_909k7.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -135667,7 +135878,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR11495104218235142145/creative/CR09581677802327900161?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2026-08-31",
-    "status": "active",
+    "status": "ended",
     "keyword": "신한투자증권",
     "searchType": "brand",
     "id": "google_1790041906582_kvwh8",
@@ -135676,7 +135887,8 @@
     "localPath": "images/google/google_신한투자증권_20260922_y9ogo.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -135691,7 +135903,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR11495104218235142145/creative/CR10446368930783035393?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2026-08-31",
-    "status": "active",
+    "status": "ended",
     "keyword": "신한투자증권",
     "searchType": "brand",
     "id": "google_1790041906582_cm5ba",
@@ -135700,7 +135912,8 @@
     "localPath": "images/google/google_신한투자증권_20260922_sfgxp.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -135715,7 +135928,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR11495104218235142145/creative/CR04289807502679212033?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2026-08-31",
-    "status": "active",
+    "status": "ended",
     "keyword": "신한투자증권",
     "searchType": "brand",
     "id": "google_1790041906582_2v9vx",
@@ -135724,7 +135937,8 @@
     "localPath": "images/google/google_신한투자증권_20260922_h5ojj.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -135739,7 +135953,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR11495104218235142145/creative/CR17067462932016660481?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2025-09-25",
-    "status": "active",
+    "status": "ended",
     "keyword": "신한투자증권",
     "searchType": "brand",
     "id": "google_1790041906582_vk0q1",
@@ -135748,7 +135962,8 @@
     "localPath": "images/google/google_신한투자증권_20260922_q9n2h.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "video",
@@ -135770,7 +135985,9 @@
     "seenInMonths": [
       "2026-09"
     ],
-    "adDateEstimated": true
+    "adDateEstimated": true,
+    "status": "ended",
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "video",
@@ -135792,7 +136009,9 @@
     "seenInMonths": [
       "2026-09"
     ],
-    "adDateEstimated": true
+    "adDateEstimated": true,
+    "status": "ended",
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "video",
@@ -135814,7 +136033,9 @@
     "seenInMonths": [
       "2026-09"
     ],
-    "adDateEstimated": true
+    "adDateEstimated": true,
+    "status": "ended",
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "video",
@@ -135836,7 +136057,9 @@
     "seenInMonths": [
       "2026-09"
     ],
-    "adDateEstimated": true
+    "adDateEstimated": true,
+    "status": "ended",
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "video",
@@ -135858,7 +136081,9 @@
     "seenInMonths": [
       "2026-09"
     ],
-    "adDateEstimated": true
+    "adDateEstimated": true,
+    "status": "ended",
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -135873,7 +136098,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR14574789352233107457/creative/CR01132985202721685505?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2026-09-21",
-    "status": "active",
+    "status": "ended",
     "keyword": "메리츠증권",
     "searchType": "brand",
     "id": "google_1790042715981_79k6c",
@@ -135882,7 +136107,8 @@
     "localPath": "images/google/google_메리츠증권_20260922_xjx6f.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -135897,7 +136123,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR14574789352233107457/creative/CR10686663726699905025?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2026-09-21",
-    "status": "active",
+    "status": "ended",
     "keyword": "메리츠증권",
     "searchType": "brand",
     "id": "google_1790042715981_eilwi",
@@ -135906,7 +136132,8 @@
     "localPath": "images/google/google_메리츠증권_20260922_xefgh.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -135921,7 +136148,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR14574789352233107457/creative/CR04342864264478851073?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2026-09-21",
-    "status": "active",
+    "status": "ended",
     "keyword": "메리츠증권",
     "searchType": "brand",
     "id": "google_1790042715981_c5inc",
@@ -135930,7 +136157,8 @@
     "localPath": "images/google/google_메리츠증권_20260922_twonl.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -135945,7 +136173,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR14574789352233107457/creative/CR00176282543207743489?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2026-09-20",
-    "status": "active",
+    "status": "ended",
     "keyword": "메리츠증권",
     "searchType": "brand",
     "id": "google_1790042715981_72tg9",
@@ -135954,7 +136182,8 @@
     "localPath": "images/google/google_메리츠증권_20260922_fmmna.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -135969,7 +136198,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR14574789352233107457/creative/CR06190253702784221185?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2026-09-14",
-    "status": "active",
+    "status": "ended",
     "keyword": "메리츠증권",
     "searchType": "brand",
     "id": "google_1790042715981_mck11",
@@ -135978,7 +136207,8 @@
     "localPath": "images/google/google_메리츠증권_20260922_jclro.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -135993,7 +136223,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR14574789352233107457/creative/CR12085582163244744705?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2026-09-14",
-    "status": "active",
+    "status": "ended",
     "keyword": "메리츠증권",
     "searchType": "brand",
     "id": "google_1790042715981_x6koa",
@@ -136002,7 +136232,8 @@
     "localPath": "images/google/google_메리츠증권_20260922_fk4mv.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -136017,7 +136248,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR14574789352233107457/creative/CR14979707873783709697?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2026-09-14",
-    "status": "active",
+    "status": "ended",
     "keyword": "메리츠증권",
     "searchType": "brand",
     "id": "google_1790042715981_13p8y",
@@ -136026,7 +136257,8 @@
     "localPath": "images/google/google_메리츠증권_20260922_59ioz.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -136041,7 +136273,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR14574789352233107457/creative/CR09433689859421110273?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2026-09-14",
-    "status": "active",
+    "status": "ended",
     "keyword": "메리츠증권",
     "searchType": "brand",
     "id": "google_1790042715981_ddcyi",
@@ -136050,7 +136282,8 @@
     "localPath": "images/google/google_메리츠증권_20260922_fceeo.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -136065,7 +136298,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR14574789352233107457/creative/CR10462767596955500545?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2026-08-31",
-    "status": "active",
+    "status": "ended",
     "keyword": "메리츠증권",
     "searchType": "brand",
     "id": "google_1790042715981_ut3af",
@@ -136074,7 +136307,8 @@
     "localPath": "images/google/google_메리츠증권_20260922_ft526.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -136089,7 +136323,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR14574789352233107457/creative/CR10594915700474642433?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2026-08-31",
-    "status": "active",
+    "status": "ended",
     "keyword": "메리츠증권",
     "searchType": "brand",
     "id": "google_1790042715981_pjk5l",
@@ -136098,7 +136332,8 @@
     "localPath": "images/google/google_메리츠증권_20260922_s656d.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -136113,7 +136348,7 @@
     "detailsLink": "https://adstransparency.google.com/advertiser/AR14574789352233107457/creative/CR04894570173907861505?region=KR",
     "adStartedAt": null,
     "adLastShownAt": "2025-01-01",
-    "status": "active",
+    "status": "ended",
     "keyword": "메리츠증권",
     "searchType": "brand",
     "id": "google_1790042715981_8n1a2",
@@ -136123,7 +136358,8 @@
     "seenInMonths": [
       "2026-09"
     ],
-    "adDateEstimated": true
+    "adDateEstimated": true,
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -136136,7 +136372,7 @@
     "adId": "2067461837213244",
     "adStartedAt": "2026-09-17",
     "adLastShownAt": null,
-    "status": "active",
+    "status": "ended",
     "platform": "meta",
     "placements": "",
     "keyword": "키움증권",
@@ -136146,7 +136382,8 @@
     "localPath": "images/meta/meta_키움증권_20260922_ux4k0.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -136159,7 +136396,7 @@
     "adId": "960170949778512",
     "adStartedAt": "2026-09-16",
     "adLastShownAt": null,
-    "status": "active",
+    "status": "ended",
     "platform": "meta",
     "placements": "",
     "keyword": "키움증권",
@@ -136169,7 +136406,8 @@
     "localPath": "images/meta/meta_키움증권_20260922_alqkl.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -136182,7 +136420,7 @@
     "adId": "3532262333621657",
     "adStartedAt": "2026-09-15",
     "adLastShownAt": null,
-    "status": "active",
+    "status": "ended",
     "platform": "meta",
     "placements": "",
     "keyword": "키움증권",
@@ -136192,7 +136430,8 @@
     "localPath": "images/meta/meta_키움증권_20260922_95b2p.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -136205,7 +136444,7 @@
     "adId": "854254927681210",
     "adStartedAt": "2026-09-11",
     "adLastShownAt": null,
-    "status": "active",
+    "status": "ended",
     "platform": "meta",
     "placements": "",
     "keyword": "키움증권",
@@ -136215,7 +136454,8 @@
     "localPath": "images/meta/meta_키움증권_20260922_sjpll.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -136228,7 +136468,7 @@
     "adId": "1337493478459579",
     "adStartedAt": "2026-09-20",
     "adLastShownAt": null,
-    "status": "active",
+    "status": "ended",
     "platform": "meta",
     "placements": "",
     "keyword": "키움증권",
@@ -136238,7 +136478,8 @@
     "localPath": "images/meta/meta_키움증권_20260922_anzqu.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -136251,7 +136492,7 @@
     "adId": "4634568013493313",
     "adStartedAt": "2026-09-20",
     "adLastShownAt": null,
-    "status": "active",
+    "status": "ended",
     "platform": "meta",
     "placements": "",
     "keyword": "키움증권",
@@ -136261,7 +136502,8 @@
     "localPath": "images/meta/meta_키움증권_20260922_3y0jp.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -136274,7 +136516,7 @@
     "adId": "1077937837957562",
     "adStartedAt": "2026-09-20",
     "adLastShownAt": null,
-    "status": "active",
+    "status": "ended",
     "platform": "meta",
     "placements": "",
     "keyword": "키움증권",
@@ -136284,7 +136526,8 @@
     "localPath": "images/meta/meta_키움증권_20260922_eqa5z.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "video",
@@ -136298,7 +136541,7 @@
     "adId": "1838296560496015",
     "adStartedAt": "2026-09-17",
     "adLastShownAt": null,
-    "status": "active",
+    "status": "ended",
     "platform": "meta",
     "placements": "",
     "keyword": "미래에셋증권",
@@ -136309,7 +136552,8 @@
     "localThumb": "images/meta/video_thumbs/meta_미래에셋증권_20260922_joz4e.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -136322,7 +136566,7 @@
     "adId": "1960979601244493",
     "adStartedAt": "2026-09-16",
     "adLastShownAt": null,
-    "status": "active",
+    "status": "ended",
     "platform": "meta",
     "placements": "",
     "keyword": "미래에셋증권",
@@ -136332,7 +136576,8 @@
     "localPath": "images/meta/meta_미래에셋증권_20260922_2pxl6.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -136345,7 +136590,7 @@
     "adId": "1099575276364961",
     "adStartedAt": "2026-09-16",
     "adLastShownAt": null,
-    "status": "active",
+    "status": "ended",
     "platform": "meta",
     "placements": "",
     "keyword": "미래에셋증권",
@@ -136355,7 +136600,8 @@
     "localPath": "images/meta/meta_미래에셋증권_20260922_ixfv6.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -136368,7 +136614,7 @@
     "adId": "1634833971564412",
     "adStartedAt": "2026-09-16",
     "adLastShownAt": null,
-    "status": "active",
+    "status": "ended",
     "platform": "meta",
     "placements": "",
     "keyword": "미래에셋증권",
@@ -136378,7 +136624,8 @@
     "localPath": "images/meta/meta_미래에셋증권_20260922_341lo.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "video",
@@ -136392,7 +136639,7 @@
     "adId": "28312011615087177",
     "adStartedAt": "2026-09-17",
     "adLastShownAt": null,
-    "status": "active",
+    "status": "ended",
     "platform": "meta",
     "placements": "",
     "keyword": "미래에셋증권",
@@ -136403,7 +136650,8 @@
     "localThumb": "images/meta/video_thumbs/meta_미래에셋증권_20260922_b3zf8.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -136416,7 +136664,7 @@
     "adId": "1622583709419321",
     "adStartedAt": "2026-09-17",
     "adLastShownAt": null,
-    "status": "active",
+    "status": "ended",
     "platform": "meta",
     "placements": "",
     "keyword": "삼성증권",
@@ -136426,7 +136674,8 @@
     "localPath": "images/meta/meta_삼성증권_20260922_m23zo.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -136439,7 +136688,7 @@
     "adId": "1111999324628562",
     "adStartedAt": "2026-09-17",
     "adLastShownAt": null,
-    "status": "active",
+    "status": "ended",
     "platform": "meta",
     "placements": "",
     "keyword": "삼성증권",
@@ -136449,7 +136698,8 @@
     "localPath": "images/meta/meta_삼성증권_20260922_hlomx.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -136462,7 +136712,7 @@
     "adId": "1707334933681182",
     "adStartedAt": "2026-09-15",
     "adLastShownAt": null,
-    "status": "active",
+    "status": "ended",
     "platform": "meta",
     "placements": "",
     "keyword": "삼성증권",
@@ -136472,7 +136722,8 @@
     "localPath": "images/meta/meta_삼성증권_20260922_lw4gh.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -136485,7 +136736,7 @@
     "adId": "1121694843620323",
     "adStartedAt": "2026-09-16",
     "adLastShownAt": null,
-    "status": "active",
+    "status": "ended",
     "platform": "meta",
     "placements": "",
     "keyword": "삼성증권",
@@ -136495,7 +136746,8 @@
     "localPath": "images/meta/meta_삼성증권_20260922_1js5c.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -136508,7 +136760,7 @@
     "adId": "1466384351996356",
     "adStartedAt": "2026-09-15",
     "adLastShownAt": null,
-    "status": "active",
+    "status": "ended",
     "platform": "meta",
     "placements": "",
     "keyword": "삼성증권",
@@ -136518,7 +136770,8 @@
     "localPath": "images/meta/meta_삼성증권_20260922_zuyxj.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -136531,7 +136784,7 @@
     "adId": "1052757694420808",
     "adStartedAt": "2026-09-16",
     "adLastShownAt": null,
-    "status": "active",
+    "status": "ended",
     "platform": "meta",
     "placements": "",
     "keyword": "삼성증권",
@@ -136541,7 +136794,8 @@
     "localPath": "images/meta/meta_삼성증권_20260922_rcfih.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -136554,7 +136808,7 @@
     "adId": "2349172299245136",
     "adStartedAt": "2026-09-12",
     "adLastShownAt": null,
-    "status": "active",
+    "status": "ended",
     "platform": "meta",
     "placements": "",
     "keyword": "삼성증권",
@@ -136564,7 +136818,8 @@
     "localPath": "images/meta/meta_삼성증권_20260922_e3lre.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "video",
@@ -136578,7 +136833,7 @@
     "adId": "1418347366841216",
     "adStartedAt": "2026-09-10",
     "adLastShownAt": null,
-    "status": "active",
+    "status": "ended",
     "platform": "meta",
     "placements": "",
     "keyword": "삼성증권",
@@ -136589,7 +136844,8 @@
     "localThumb": "images/meta/video_thumbs/meta_삼성증권_20260922_wf3e2.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -136602,7 +136858,7 @@
     "adId": "2152723082340531",
     "adStartedAt": "2026-09-21",
     "adLastShownAt": null,
-    "status": "active",
+    "status": "ended",
     "platform": "meta",
     "placements": "",
     "keyword": "삼성증권",
@@ -136612,7 +136868,8 @@
     "localPath": "images/meta/meta_삼성증권_20260922_t0htn.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -136625,7 +136882,7 @@
     "adId": "1740398233914404",
     "adStartedAt": "2026-09-21",
     "adLastShownAt": null,
-    "status": "active",
+    "status": "ended",
     "platform": "meta",
     "placements": "",
     "keyword": "삼성증권",
@@ -136635,7 +136892,8 @@
     "localPath": "images/meta/meta_삼성증권_20260922_sssgn.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "video",
@@ -136649,7 +136907,7 @@
     "adId": "1053806620800721",
     "adStartedAt": "2026-09-18",
     "adLastShownAt": null,
-    "status": "active",
+    "status": "ended",
     "platform": "meta",
     "placements": "",
     "keyword": "신한투자증권",
@@ -136660,7 +136918,8 @@
     "localThumb": "images/meta/video_thumbs/meta_신한투자증권_20260922_88pc4.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "video",
@@ -136674,7 +136933,7 @@
     "adId": "1109633408189811",
     "adStartedAt": "2026-09-20",
     "adLastShownAt": null,
-    "status": "active",
+    "status": "ended",
     "platform": "meta",
     "placements": "",
     "keyword": "한국투자증권",
@@ -136685,7 +136944,8 @@
     "localThumb": "images/meta/video_thumbs/meta_한국투자증권_20260922_pnvss.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -136698,7 +136958,7 @@
     "adId": "1561779615637025",
     "adStartedAt": "2026-09-21",
     "adLastShownAt": null,
-    "status": "active",
+    "status": "ended",
     "platform": "meta",
     "placements": "",
     "keyword": "메리츠증권",
@@ -136708,7 +136968,8 @@
     "localPath": "images/meta/meta_메리츠증권_20260922_8fec3.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -136721,7 +136982,7 @@
     "adId": "2096143784321749",
     "adStartedAt": "2026-09-22",
     "adLastShownAt": null,
-    "status": "active",
+    "status": "ended",
     "platform": "meta",
     "placements": "",
     "keyword": "미래에셋증권",
@@ -136731,7 +136992,8 @@
     "localPath": "images/meta/meta_미래에셋증권_20260922_ysnkf.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -136744,7 +137006,7 @@
     "adId": "1757796795472706",
     "adStartedAt": "2026-09-22",
     "adLastShownAt": null,
-    "status": "active",
+    "status": "ended",
     "platform": "meta",
     "placements": "",
     "keyword": "미래에셋증권",
@@ -136754,7 +137016,8 @@
     "localPath": "images/meta/meta_미래에셋증권_20260922_6jwvs.jpg",
     "seenInMonths": [
       "2026-09"
-    ]
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
   },
   {
     "mediaType": "image",
@@ -136767,7 +137030,7 @@
     "adId": "1401606035484747",
     "adStartedAt": "2026-09-22",
     "adLastShownAt": null,
-    "status": "active",
+    "status": "ended",
     "platform": "meta",
     "placements": "",
     "keyword": "미래에셋증권",
@@ -136775,6 +137038,101 @@
     "id": "meta_1790074832697_uyobk",
     "collectedAt": "2026-09-22T11:00:32.697Z",
     "localPath": "images/meta/meta_미래에셋증권_20260922_io8ti.jpg",
+    "seenInMonths": [
+      "2026-09"
+    ],
+    "endedAt": "2026-09-28T01:01:45.845Z"
+  },
+  {
+    "mediaType": "image",
+    "mediaUrl": "https://scontent-ssn1-1.xx.fbcdn.net/v/t39.35426-6/796335119_1010671204952161_5218695607670654108_n.jpg?stp=dst-jpg_s600x600_tt6&_nc_cat=107&ccb=1-7&_nc_sid=c53f8f&_nc_ohc=KBThbyFkcboQ7kNvwFE9lZG&_nc_oc=Adp2E7z7ikT9Re0jEnSHBUIE-K8Hd_ohkJyVfsoZClIaKit4HVvVEt6NbP8Wdgq_I4s&_nc_zt=14&_nc_ht=scontent-ssn1-1.xx&_nc_gid=yk5F-3-ZKKtTOITk6lyVZg&_nc_ss=7b289&oh=00_AQNbyOgEMmKh8tcq6NOEvCVevhUT2nlDxlxNIGZpLtGL0Q&oe=6ABF7C3F",
+    "advertiserName": "KB증권",
+    "copyText": "KB증권 연금저축 이벤트!\n\n지금 연금저축 순입금하고\n최대 150만원 상품권 골라가세요!\n(타사 이전, 타사 ISA 만기 전환 시 실적 2배 인정)\n(조건충족시)\n\n지금 KB증권 연금저축 이벤트 참여하고\n다양한 혜택 받으세요!\n\n#연금저축 #이벤트 #KB증권 #자산성장\n\nKB증권 준법감시인 심사필\n제 2026-1958호 (2026.07.29~2027.07.28)",
+    "headline": "",
+    "landingUrl": "https://m-able.app/tngjsx",
+    "sourceUrl": "https://www.facebook.com/ads/library/?id=2443526686137849",
+    "adId": "2443526686137849",
+    "adStartedAt": "2026-09-22",
+    "adLastShownAt": null,
+    "status": "active",
+    "platform": "meta",
+    "placements": "",
+    "keyword": "KB증권",
+    "searchType": "brand",
+    "id": "meta_1790557230633_llyus",
+    "collectedAt": "2026-09-28T01:00:30.633Z",
+    "localPath": "images/meta/meta_KB증권_20260928_nk9hb.jpg",
+    "seenInMonths": [
+      "2026-09"
+    ]
+  },
+  {
+    "mediaType": "image",
+    "mediaUrl": "https://scontent-ssn1-1.xx.fbcdn.net/v/t39.35426-6/818977467_1107505581969947_7118927715968244589_n.jpg?stp=dst-jpg_s600x600_tt6&_nc_cat=103&ccb=1-7&_nc_sid=c53f8f&_nc_ohc=zuT4GIm-nr4Q7kNvwGyz-m2&_nc_oc=AdpqXEZ3RjKbroiQgBoEkmYr11l7ROXrSzAy_8MVE3UxoDHNHqOCh7ZZfhiiklZepCM&_nc_zt=14&_nc_ht=scontent-ssn1-1.xx&_nc_gid=_Ahz9VQV21Z-b8EndWbMJA&_nc_ss=7b289&oh=00_AQPhpawY4Qkjp2LTz4_VnphKB1W8CBaQCxakssQ_7IJV1w&oe=6ABF9018",
+    "advertiserName": "KB증권",
+    "copyText": "KB증권 연금저축 이벤트!\n\n연금저축 신규/순입금/투자하면\n원하는 혜택이 쏟아진다!\n\n백화점 상품권 최대 150만원부터\nNpay, CU편의점 등 내 취향에 맞는 쿠폰까지!\n지금 KB증권 연금저축 이벤트 참여하고\n다양한 혜택 받으세요!\n(조건충족시)\n\n#연금저축 #이벤트 #KB증권 #자산성장\n\nKB증권 준법감시인 심사필\n제 2026-1958호 (2026.07.29~2027.07.28)",
+    "headline": "",
+    "landingUrl": "https://m-able.app/35l0yz3",
+    "sourceUrl": "https://www.facebook.com/ads/library/?id=2313949129418554",
+    "adId": "2313949129418554",
+    "adStartedAt": "2026-09-22",
+    "adLastShownAt": null,
+    "status": "active",
+    "platform": "meta",
+    "placements": "",
+    "keyword": "KB증권",
+    "searchType": "brand",
+    "id": "meta_1790557230633_o1ukx",
+    "collectedAt": "2026-09-28T01:00:30.633Z",
+    "localPath": "images/meta/meta_KB증권_20260928_k7m71.jpg",
+    "seenInMonths": [
+      "2026-09"
+    ]
+  },
+  {
+    "mediaType": "image",
+    "mediaUrl": "https://scontent-ssn1-1.xx.fbcdn.net/v/t39.35426-6/819276303_2343498796463827_4444688107720318161_n.jpg?stp=dst-jpg_s600x600_tt6&_nc_cat=105&ccb=1-7&_nc_sid=c53f8f&_nc_ohc=DRFc1_wRdGIQ7kNvwHCLZFr&_nc_oc=AdoFYcxv71ni_VUqD9XIIWpnpt_w2AY4-1v9ns-QuwyTJ7L9DkeRs3EKXUMpzBl4A4E&_nc_zt=14&_nc_ht=scontent-ssn1-1.xx&_nc_gid=_Ahz9VQV21Z-b8EndWbMJA&_nc_ss=7b289&oh=00_AQOGV7XkdF11MKT8FNTJG9teaPb9XtZiLk8aLEDYKhL66w&oe=6ABF742A",
+    "advertiserName": "KB증권",
+    "copyText": "KB증권 연금저축 이벤트!\n\n여름 휴가는 계획대로 완벽하게!\n은퇴는 KB증권과 든든하게~!\n\n지금 KB증권 연금저축으로 준비하고\n최대 150만원 상품권 골라가세요!\n(조건충족시)\n\n#연금저축 #이벤트 #KB증권 #자산성장\n\nKB증권 준법감시인 심사필\n제 2026-1958호(2026.07.29~2027.07.28)",
+    "headline": "",
+    "landingUrl": "https://m-able.app/44d1q7w",
+    "sourceUrl": "https://www.facebook.com/ads/library/?id=27483841824625496",
+    "adId": "27483841824625496",
+    "adStartedAt": "2026-09-22",
+    "adLastShownAt": null,
+    "status": "active",
+    "platform": "meta",
+    "placements": "",
+    "keyword": "KB증권",
+    "searchType": "brand",
+    "id": "meta_1790557230633_a0tgp",
+    "collectedAt": "2026-09-28T01:00:30.633Z",
+    "localPath": "images/meta/meta_KB증권_20260928_vz2yj.jpg",
+    "seenInMonths": [
+      "2026-09"
+    ]
+  },
+  {
+    "mediaType": "video",
+    "mediaUrl": "https://video-ssn1-1.xx.fbcdn.net/o1/v/t2/f2/m367/AQNomtX1Pl2EpgapOGPkWIwQz9e1MZohsv0f1bdjh4KB1Y9WQEGDrLbpy_bCytfhfbuqt3BiMGQ1Ju0lLizBNoZ76k_F1tHgKfS5LsYu7w.mp4?_nc_cat=104&_nc_sid=ef5aa3&_nc_ht=video-ssn1-1.xx.fbcdn.net&_nc_ohc=eGwzUmhZaY0Q7kNvwGnWSft&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuMzYwLnByb2dyZXNzaXZlX2gyNjQtYmFzaWMtZ2VuMl8zNjBwIiwieHB2X2Fzc2V0X2lkIjo5ODE5Nzk1MjE2MTI0MjUsImFzc2V0X2FnZV9kYXlzIjo0LCJ2aV91c2VjYXNlX2lkIjoxMjM3NCwiZHVyYXRpb25fcyI6MTAzLCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&_nc_gid=Yzy3mjhVBQ0fQjiG62qwDA&_nc_ss=7b289&_nc_zt=28&oh=00_AQPg5cyBV6ux6ssDd3qk14ajfdfZ-zQt97l_DNZ25efiUw&oe=6ABF9152",
+    "thumbnailUrl": "https://scontent-ssn1-1.xx.fbcdn.net/v/t39.35426-6/819175833_1884824616223107_4353244470948767062_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=c53f8f&_nc_ohc=RIAABfg4qXkQ7kNvwGfXZf0&_nc_oc=AdqevhYM-x34BHp0SsSHqxh50BkNkc8ELv-wKAd0nZsEqRYWJMT58YsW5LUD0BuA_GE&_nc_zt=14&_nc_ht=scontent-ssn1-1.xx&_nc_gid=Yzy3mjhVBQ0fQjiG62qwDA&_nc_ss=7b289&oh=00_AQMHEmvsx5lZHvm-uLQYOTNmAyF61zdOe9CNGtoUfntoHg&oe=6ABF9BA4",
+    "advertiserName": "신한투자증권",
+    "copyText": "코 앞으로 다가온 추석🌕\n\n명절 연휴를 앞둔 사람들의\nSOL직한 인터뷰🎤\n\n명절 때 가장 부담되는 지출부터\n우리집의 명절 잔소리까지!\n\n영상을 끝까지 시청하고,\n여러분의 추석 연휴 계획을\n댓글로 공유해 주세요🙌\n\n투자 SOL로 서기, 신한투자증권",
+    "headline": "",
+    "landingUrl": "https://www.instagram.com/shinhansec_official/",
+    "sourceUrl": "https://www.facebook.com/ads/library/?id=2153577455222050",
+    "adId": "2153577455222050",
+    "adStartedAt": "2026-09-22",
+    "adLastShownAt": null,
+    "status": "active",
+    "platform": "meta",
+    "placements": "",
+    "keyword": "신한투자증권",
+    "searchType": "brand",
+    "id": "meta_1790557262640_fg7r0",
+    "collectedAt": "2026-09-28T01:01:02.640Z",
+    "localPath": "images/meta/videos/meta_신한투자증권_20260928_5uj96.mp4",
+    "localThumb": "images/meta/video_thumbs/meta_신한투자증권_20260928_5uj96.jpg",
     "seenInMonths": [
       "2026-09"
     ]

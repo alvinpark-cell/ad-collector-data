@@ -78,102 +78,21 @@
         "detail": "스페셜DA 노출 (오후 5:00:00 캡처)",
         "date": "2026-08-13",
         "imageUrl": "screenshots/competitor_trend/스페셜DA_20260813_1700.png"
-      }
-    ]
-  },
-  {
-    "reportDate": "2026-08-24",
-    "source": "유튜브 API(자동)",
-    "sourceType": "youtube-api",
-    "findings": [
-      {
-        "brand": "키움증권",
-        "media": "유튜브",
-        "detail": "소외됐던 소프트웨어주가 다시 뜨는 이유 (조회수 4,663, 전월(2026-07) 평균 2,145)",
-        "date": "2026-08-12",
-        "url": "https://youtu.be/WAuYOPQymwE"
-      },
-      {
-        "brand": "미래에셋증권",
-        "media": "유튜브",
-        "detail": "Tiger vs Black ShadowㅣZoo Rangers2 Ep.5ㅣAI Animation (조회수 78,515, 전월(2026-07) 평균 27,706)",
-        "date": "2026-08-05",
-        "url": "https://youtu.be/ekFAHrptuS0"
       },
       {
         "brand": "삼성증권",
-        "media": "유튜브",
-        "detail": "[북극에서 투자한 썰 푼다] (조회수 127,799, 전월(2026-07) 평균 46,318)",
-        "date": "2026-08-11",
-        "url": "https://youtu.be/ahikzR9gSIw"
-      },
-      {
-        "brand": "NH투자증권",
-        "media": "유튜브",
-        "detail": "\"2차전지 산업 보이기 시작하는 회복의 시그널\" [화목한오픈스탁_161회] (조회수 8,063, 전월(2026-07) 평균 1,950)",
-        "date": "2026-08-12",
-        "url": "https://youtu.be/4xkL5I5efVY"
-      },
-      {
-        "brand": "KB증권",
-        "media": "유튜브",
-        "detail": "[KB증권] 영앤제로 클럽, 삼성전자 1주 당첨의 기회! (조회수 479,713, 전월(2026-07) 평균 35,646)",
-        "date": "2026-08-05",
-        "url": "https://youtu.be/twguPeYd-70"
-      },
-      {
-        "brand": "한국투자증권",
-        "media": "유튜브",
-        "detail": "[모닝한투-핫리포트] POSCO홀딩스, 에코프로비엠, 효성중공업, 아모레퍼시픽 (조회수 3,533, 전월(2026-07) 평균 836)",
-        "date": "2026-08-03",
-        "url": "https://youtu.be/BGOxz0iD-Fs"
-      },
-      {
-        "brand": "신한투자증권",
-        "media": "유튜브",
-        "detail": "한 명씩 만날 시간이 없어서 셋을 한 번에 만나봤습니다 /신한투자증권 (조회수 146,734, 전월(2026-07) 평균 39,607)",
-        "date": "2026-08-20",
-        "url": "https://youtu.be/c-KyAURUxN4"
-      },
-      {
-        "brand": "대신증권",
-        "media": "유튜브",
-        "detail": "왜 한국인은 프랑스차를 안 살까?ㅣ수요시장 (조회수 309,855, 전월(2026-07) 평균 59,506)",
-        "date": "2026-08-05",
-        "url": "https://youtu.be/cdTglx92suw"
-      },
-      {
-        "brand": "한화투자증권",
-        "media": "유튜브",
-        "detail": "(262화) 메모리 폭락, 이제 끝났나? I해외주식 쩐쟁I (*이벤트 종료*) (조회수 13,424, 전월(2026-07) 평균 2,663)",
-        "date": "2026-08-10",
-        "url": "https://youtu.be/9lMGgb0MH1c"
+        "media": "스페셜DA",
+        "detail": "스페셜DA 노출 (오전 10:05:00 캡처)",
+        "date": "2026-09-28",
+        "imageUrl": "screenshots/competitor_trend/스페셜DA_20260928_1005.png"
       }
     ]
   },
   {
-    "reportDate": "2026-09-22",
+    "reportDate": "2026-09-28",
     "source": "경쟁사 동향 시트(팀 입력)",
     "sourceType": "sheet-sync",
     "findings": [
-      {
-        "brand": "키움증권",
-        "media": "타임보드",
-        "detail": "타임보드 노출 (12시)",
-        "date": "2026-07-07"
-      },
-      {
-        "brand": "키움증권",
-        "media": "타임보드",
-        "detail": "타임보드 노출 (15시)",
-        "date": "2026-07-21"
-      },
-      {
-        "brand": "키움증권",
-        "media": "스페셜DA",
-        "detail": "스페셜DA 노출 (12시)",
-        "date": "2026-07-07"
-      },
       {
         "brand": "한국투자증권",
         "media": "유튜브",
@@ -250,34 +169,76 @@
         "detail": "(262화) 메모리 폭락, 이제 끝났나? I해외주식 쩐쟁I (*이벤트 종료*) (조회수 13424, 1개월평균 2663)",
         "date": "2026-08-01",
         "url": "https://youtu.be/9lMGgb0MH1c"
-      },
+      }
+    ]
+  },
+  {
+    "reportDate": "2026-09-28",
+    "source": "유튜브 API(자동)",
+    "sourceType": "youtube-api",
+    "findings": [
       {
         "brand": "키움증권",
-        "media": "ATL",
-        "detail": "나 퇴직연금, 더 이상 갇혀 있을 순 없다 편",
-        "date": "2026-07-06",
-        "url": "https://tvcf.co.kr/play/bi1833-1022183"
+        "media": "유튜브",
+        "detail": "엔비디아가 메모리를 사긴 사는데... [마스터 클래스] (조회수 40,631, 전월(2026-08) 평균 2,611)",
+        "date": "2026-09-26",
+        "url": "https://youtu.be/lgEdxj1j3A4"
       },
       {
-        "brand": "키움증권",
-        "media": "ATL",
-        "detail": "나 퇴직연금, 언제까지 묶어 둘꺼야? 편",
-        "date": "2026-07-06",
-        "url": "https://tvcf.co.kr/play/ai1844-1022184"
+        "brand": "미래에셋증권",
+        "media": "유튜브",
+        "detail": "미래에셋증권 개인투자용국채(나무편) (조회수 9,335,681, 전월(2026-08) 평균 17,252)",
+        "date": "2026-09-01",
+        "url": "https://youtu.be/w6DoUIYb_5k"
       },
       {
-        "brand": "키움증권",
-        "media": "ATL",
-        "detail": "나 퇴직연금, 언제까지 재우기만 할꺼야? 편",
-        "date": "2026-07-06",
-        "url": "https://tvcf.co.kr/play/bi1855-1022185"
+        "brand": "삼성증권",
+        "media": "유튜브",
+        "detail": "발행어음의 새로운 기준, 삼성증권 발행어음 (조회수 2,460,759, 전월(2026-08) 평균 40,303)",
+        "date": "2026-09-18",
+        "url": "https://youtu.be/jpdheR1KSII"
       },
       {
-        "brand": "키움증권",
-        "media": "ATL",
-        "detail": "퇴직연금도 키움할 때가 왔다! 키움증권 편",
-        "date": "2026-07-06",
-        "url": "https://tvcf.co.kr/play/ai1866-1022186"
+        "brand": "NH투자증권",
+        "media": "유튜브",
+        "detail": "대선을 앞둔 브라질, 브라질채권 언제가 투자 기회일까?[화목한오픈스탁_165회] (조회수 16,940, 전월(2026-08) 평균 2,198)",
+        "date": "2026-09-09",
+        "url": "https://youtu.be/TftoL1179dg"
+      },
+      {
+        "brand": "KB증권",
+        "media": "유튜브",
+        "detail": "[KB증권] KB증권 국내주식 메가페스타 (조회수 3,837,430, 전월(2026-08) 평균 7,173)",
+        "date": "2026-09-04",
+        "url": "https://youtu.be/XkS9GdHKVJI"
+      },
+      {
+        "brand": "한국투자증권",
+        "media": "유튜브",
+        "detail": "[리서치톡톡] 최근 한 달 수익률은 장비에서 부품군으로 (조회수 17,284, 전월(2026-08) 평균 1,725)",
+        "date": "2026-09-23",
+        "url": "https://youtu.be/J2Jm-y6l0ZA"
+      },
+      {
+        "brand": "신한투자증권",
+        "media": "유튜브",
+        "detail": "하룻밤 소개팅, 그 마지막 이야기 / 신한투자증권 (조회수 214,434, 전월(2026-08) 평균 43,712)",
+        "date": "2026-09-15",
+        "url": "https://youtu.be/s8W9o0drP3U"
+      },
+      {
+        "brand": "대신증권",
+        "media": "유튜브",
+        "detail": "취소에만 '24조 원'이 필요하다ㅣ빈 살만이 추진한 꿈의 신도시, 네옴의 몰락ㅣ인사이트플러스 (조회수 1,286,749, 전월(2026-08) 평균 140,496)",
+        "date": "2026-09-22",
+        "url": "https://youtu.be/vhEW086YHBg"
+      },
+      {
+        "brand": "한화투자증권",
+        "media": "유튜브",
+        "detail": "(265화) 트럼프가 은행 규제를 푸는 이유 I해외주식 쩐쟁I (조회수 46,813, 전월(2026-08) 평균 8,784)",
+        "date": "2026-09-07",
+        "url": "https://youtu.be/7nWbtlACUsc"
       }
     ]
   }
