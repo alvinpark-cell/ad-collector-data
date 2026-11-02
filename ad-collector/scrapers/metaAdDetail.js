@@ -37,9 +37,13 @@ function saveMetaMediaMerged(indexPath, updatedByAdId) {
   fresh.forEach(item => {
     const update = updatedByAdId.get(item.adId);
     if (update) {
-      item.localPath = update.localPath;
-      item.mediaType = update.mediaType;
-      item.mediaUrl = update.mediaUrl;
+      if (update.localPath) {
+        item.localPath = update.localPath;
+        item.mediaType = update.mediaType;
+        item.mediaUrl = update.mediaUrl;
+      }
+      if (update.mediaAttempts !== undefined) item.mediaAttempts = update.mediaAttempts;
+      if (update.mediaUnavailable) item.mediaUnavailable = true;
     }
   });
   saveIndex(indexPath, fresh);
@@ -230,7 +234,7 @@ async function hydrateWithMedia(adMetaRows, maxVisitsPerRun) {
  * @returns {Promise<{attempted:number, updated:number}>}
  */
 async function backfillPendingMedia(existingIndex, settings, cap) {
-  const pending = existingIndex.filter(i => i.platform === 'meta' && i.adId && !i.mediaType);
+  const pending = existingIndex.filter(i => i.platform === 'meta' && i.adId && !i.mediaType && !i.mediaUnavailable);
   if (pending.length === 0 || cap <= 0) return { attempted: 0, updated: 0 };
 
   const toVisit = pending.slice(0, cap);
@@ -262,6 +266,16 @@ async function backfillPendingMedia(existingIndex, settings, cap) {
 
       if (mediaList.length === 0) {
         console.log(`  ⚠ 광고 ${target.adId} 미디어를 찾지 못해 건너뜀`);
+        // 광고 라이브러리에서 삭제된 광고는 영영 못 받는다. 수집 14일 이상 지난 건이 3번 연속
+        // 실패하면 대기 목록에서 빼고 대시보드에서도 숨긴다(Meta 일시 차단으로 신규 건이
+        // 한꺼번에 숨겨지는 걸 막으려고 14일 조건을 둠).
+        const attempts = (target.mediaAttempts || 0) + 1;
+        const ageDays = (Date.now() - new Date(target.collectedAt).getTime()) / 86400000;
+        const dead = attempts >= 3 && ageDays >= 14;
+        target.mediaAttempts = attempts;
+        updatedByAdId.set(target.adId, { mediaAttempts: attempts, mediaUnavailable: dead });
+        saveMetaMediaMerged(indexPath, updatedByAdId);
+        if (dead) console.log(`  ⚠ 광고 ${target.adId} ${attempts}회 연속 실패 - 삭제된 광고로 보고 대기 목록에서 제외`);
       } else {
         // adId 기준 저장이라 대표 미디어 1개만 쓰지만, 첫 후보가 프로필 사진/트래킹
         // 픽셀처럼 너무 작은 이미지면 버리고 다음 후보로 넘어간다.

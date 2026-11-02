@@ -27,7 +27,7 @@ async function runMetaMediaBatch() {
 
   // 이번 실행 뒤 다시 읽어서 아직 미디어 없는 건 몇 개나 남았는지 기록 (대시보드에서 진행 상황 확인용)
   const afterIndex = loadIndex(indexPath);
-  const stillPending = afterIndex.filter(i => i.platform === 'meta' && i.adId && !i.mediaType).length;
+  const stillPending = afterIndex.filter(i => i.platform === 'meta' && i.adId && !i.mediaType && !i.mediaUnavailable).length;
   updateCollectionStatus(settings.dataDir, 'metaMediaBatch', {
     lastRunAt: new Date().toISOString(),
     attempted,

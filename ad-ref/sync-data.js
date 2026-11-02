@@ -43,9 +43,11 @@ function syncData() {
   }
 
   if (fs.existsSync(indexSrc)) {
-    fs.copyFileSync(indexSrc, indexDst);
-    const count = JSON.parse(fs.readFileSync(indexSrc, 'utf-8')).length;
-    console.log(`index.json 복사 완료: ${count}개 항목`);
+    // 광고 라이브러리에서 삭제돼 이미지를 못 받는 메타 광고(mediaUnavailable)는 대시보드에서 뺀다
+    const all = JSON.parse(fs.readFileSync(indexSrc, 'utf-8'));
+    const visible = all.filter(i => !i.mediaUnavailable);
+    fs.writeFileSync(indexDst, JSON.stringify(visible, null, 2));
+    console.log(`index.json 복사 완료: ${visible.length}개 항목 (이미지 없는 광고 ${all.length - visible.length}개 제외)`);
   } else {
     console.log('index.json 없음 - 빈 배열로 생성');
     fs.writeFileSync(indexDst, '[]');
